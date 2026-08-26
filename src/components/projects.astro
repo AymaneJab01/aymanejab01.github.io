@@ -1,63 +1,300 @@
----
-import Terminal from "../React/Terminal.tsx";
----
-
 <section
   id="projects"
-  class="text-[var(--white)] py-24 md:py-36"
+  class="relative overflow-hidden py-24 md:py-36 text-[var(--white)]"
 >
-  <div class="max-w-5xl mx-auto px-6">
-    <div
-      class="relative overflow-hidden rounded-2xl border border-[var(--white-icon-tr)]
-      bg-[#1414149c] px-6 py-8 md:px-10 md:py-10
-      backdrop-blur-sm"
+  <div class="max-w-6xl mx-auto px-6">
+
+    <!-- Section header -->
+    <div class="mb-12">
+      <span
+        class="text-xs md:text-sm tracking-[0.25em] uppercase
+        text-[var(--sec)] shiny-sec"
+      >
+        Selected project
+      </span>
+
+      <h2
+        class="mt-3 text-3xl md:text-5xl font-medium tracking-tight"
+      >
+        Projects<span class="text-[var(--sec)]">.</span>
+      </h2>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- PROJECT 01 -->
+    <!-- ========================================================= -->
+
+    <a
+      href="#terminal"
+      class="group block relative overflow-hidden rounded-2xl
+      border border-[var(--white-icon-tr)]
+      bg-[#1414149c] backdrop-blur-sm
+      transition-all duration-500
+      hover:border-[var(--sec)]
+      hover:shadow-[0_0_40px_rgba(0,255,140,0.08)]"
     >
-      <!-- Subtle green glow -->
+
+      <!-- Subtle background glow -->
       <div
-        class="absolute -top-24 left-1/2 h-48 w-48 -translate-x-1/2
-        rounded-full bg-[var(--sec)] opacity-10 blur-3xl"
+        class="pointer-events-none absolute -top-32 -right-32
+        h-72 w-72 rounded-full
+        bg-[var(--sec)] opacity-[0.06]
+        blur-3xl transition-opacity duration-500
+        group-hover:opacity-[0.12]"
       ></div>
 
-      <div class="relative">
+      <div class="relative grid md:grid-cols-[1fr_1.4fr]">
 
-        <!-- Project heading -->
-        <div class="mb-8 text-center">
-          <div class="mb-4 flex items-center justify-center gap-2">
-            <span
-              class="h-2 w-2 rounded-full bg-[var(--sec)]
-              shadow-[0_0_12px_var(--sec)] animate-pulse"
-            ></span>
+        <!-- ===================================================== -->
+        <!-- LEFT : PROJECT INFORMATION -->
+        <!-- ===================================================== -->
 
-            <span
-              class="text-sm tracking-widest uppercase
-              text-[var(--sec)] shiny-sec"
+        <div
+          class="flex flex-col justify-between
+          border-b md:border-b-0 md:border-r
+          border-[var(--white-icon-tr)]
+          p-8 md:p-12"
+        >
+
+          <div>
+
+            <!-- Project number -->
+            <div
+              class="flex items-center justify-between mb-10"
             >
-              Interactive Project
-            </span>
+              <span
+                class="font-mono text-sm tracking-widest
+                text-[var(--white-icon)]"
+              >
+                01
+              </span>
+
+              <span
+                class="flex items-center gap-2
+                text-xs uppercase tracking-widest
+                text-[var(--sec)]"
+              >
+                <span
+                  class="h-1.5 w-1.5 rounded-full
+                  bg-[var(--sec)]
+                  shadow-[0_0_10px_var(--sec)]
+                  animate-pulse"
+                ></span>
+
+                Evolving
+              </span>
+            </div>
+
+            <!-- Title -->
+            <h3
+              class="text-3xl md:text-4xl font-medium
+              tracking-tight"
+            >
+              Interactive Terminal<span
+                class="text-[var(--sec)]"
+              >.</span>
+            </h3>
+
+            <!-- Description -->
+            <p
+              class="mt-5 max-w-md
+              text-[var(--white-icon)]
+              leading-relaxed"
+            >
+              A terminal-inspired interface built directly into
+              the portfolio. It is an evolving project that will
+              continue to grow, improve and gain new features
+              day after day.
+            </p>
+
           </div>
 
-          <h2
-            class="text-3xl md:text-5xl font-medium tracking-tight
-            text-[var(--white)]"
-          >
-            Portfolio<span class="text-[var(--sec)]"> Terminal.</span>
-          </h2>
+          <!-- Bottom information -->
+          <div class="mt-10">
 
-          <p
-            class="mt-4 mx-auto max-w-2xl text-base md:text-lg
-            text-[var(--white-icon)] leading-relaxed"
-          >
-            An interactive terminal where you can explore my background,
-            skills, projects, education and contact information.
-          </p>
+            <div
+              class="h-px w-full
+              bg-[var(--white-icon-tr)]"
+            ></div>
+
+            <div
+              class="mt-5 flex items-center
+              justify-between"
+            >
+
+              <span
+                class="font-mono text-xs
+                text-[var(--white-icon)]"
+              >
+                PROJECT_01
+              </span>
+
+              <span
+                class="flex items-center gap-2
+                text-sm text-[var(--white-icon)]
+                transition-colors duration-300
+                group-hover:text-[var(--sec)]"
+              >
+                Explore
+
+                <span
+                  class="transition-transform duration-300
+                  group-hover:translate-y-[-2px]"
+                >
+                  ↑
+                </span>
+              </span>
+
+            </div>
+          </div>
+
         </div>
 
-        <!-- Terminal -->
-        <div class="w-full">
-          <Terminal client:load />
+        <!-- ===================================================== -->
+        <!-- RIGHT : TERMINAL PREVIEW -->
+        <!-- ===================================================== -->
+
+        <div
+          class="relative min-h-[320px] md:min-h-[430px]
+          bg-[#090909]"
+        >
+
+          <!-- Terminal window -->
+          <div
+            class="absolute inset-6 md:inset-10
+            overflow-hidden rounded-xl
+            border border-[var(--white-icon-tr)]
+            bg-[#050505]
+            transition-transform duration-500
+            group-hover:scale-[1.015]"
+          >
+
+            <!-- Terminal top bar -->
+            <div
+              class="flex h-10 items-center
+              border-b border-[var(--white-icon-tr)]
+              px-4"
+            >
+
+              <div class="flex gap-1.5">
+                <span
+                  class="h-2.5 w-2.5 rounded-full
+                  bg-red-400/70"
+                ></span>
+
+                <span
+                  class="h-2.5 w-2.5 rounded-full
+                  bg-yellow-400/70"
+                ></span>
+
+                <span
+                  class="h-2.5 w-2.5 rounded-full
+                  bg-green-400/70"
+                ></span>
+              </div>
+
+              <span
+                class="absolute left-1/2
+                -translate-x-1/2
+                font-mono text-[10px]
+                text-[var(--white-icon)]"
+              >
+                aymane@portfolio:~
+              </span>
+
+            </div>
+
+            <!-- Fake terminal content -->
+            <div
+              class="p-5 md:p-7
+              font-mono text-xs md:text-sm
+              leading-7 text-[var(--white-icon)]"
+            >
+
+              <div>
+                <span class="text-[var(--sec)]">
+                  aymane@portfolio
+                </span>
+                <span>:</span>
+                <span class="text-[var(--white)]">~</span>
+                <span>$</span>
+                <span class="text-[var(--white)]">
+                  ./terminal
+                </span>
+              </div>
+
+              <div class="mt-3 opacity-70">
+                Initializing portfolio terminal...
+              </div>
+
+              <div class="opacity-70">
+                Loading developer environment...
+              </div>
+
+              <div class="mt-3">
+                <span class="text-[var(--sec)]">
+                  ✓
+                </span>
+                Terminal online
+              </div>
+
+              <div>
+                <span class="text-[var(--sec)]">
+                  ✓
+                </span>
+                Interactive interface ready
+              </div>
+
+              <div>
+                <span class="text-[var(--sec)]">
+                  ✓
+                </span>
+                Future updates: <span
+                  class="text-[var(--white)]"
+                >always</span>
+              </div>
+
+              <div class="mt-5">
+
+                <span class="text-[var(--sec)]">
+                  aymane@portfolio
+                </span>
+                <span>:</span>
+                <span class="text-[var(--white)]">~</span>
+                <span>$</span>
+
+                <span
+                  class="ml-1 inline-block h-4 w-2
+                  translate-y-1
+                  bg-[var(--sec)]
+                  animate-pulse"
+                ></span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Hover arrow -->
+          <div
+            class="absolute bottom-8 right-8
+            flex h-10 w-10 items-center justify-center
+            rounded-full
+            border border-[var(--white-icon-tr)]
+            text-[var(--white-icon)]
+            transition-all duration-300
+            group-hover:border-[var(--sec)]
+            group-hover:text-[var(--sec)]
+            group-hover:-translate-y-1"
+          >
+            ↑
+          </div>
+
         </div>
 
       </div>
-    </div>
+    </a>
+
   </div>
 </section>
