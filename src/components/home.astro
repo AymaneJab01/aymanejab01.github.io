@@ -13,27 +13,10 @@ import SkillsList from "../React/SkillsList.tsx";
   <!-- ========================================================= -->
 
   <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-    <!-- Premium liquid-glass gradient field -->
-    <div class="liquid-scene" aria-hidden="true">
-      <div class="liquid-capsule capsule-1"></div>
-      <div class="liquid-capsule capsule-2"></div>
-      <div class="liquid-capsule capsule-3"></div>
-      <div class="liquid-capsule capsule-4"></div>
-      <div class="liquid-capsule capsule-5"></div>
-      <div class="liquid-capsule capsule-6"></div>
-      <div class="liquid-capsule capsule-7"></div>
-      <div class="liquid-capsule capsule-8"></div>
-    </div>
-
-    <!-- Focused ambient light behind the hero -->
-    <div class="hero-ambient"></div>
-
     <!-- Very subtle technical texture -->
     <div class="absolute inset-0 hero-grid opacity-[0.08]"></div>
     <div class="absolute inset-0 noise-layer opacity-[0.018]"></div>
 
-    <!-- Keeps text and cards readable -->
-    <div class="hero-vignette"></div>
   </div>
 
   <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
@@ -441,12 +424,31 @@ import SkillsList from "../React/SkillsList.tsx";
     <!-- ========================================================= -->
 
     <div
-      class="relative overflow-hidden border-t border-white/[0.06] py-24 text-center sm:py-32"
+      class="relative min-h-[500px] overflow-hidden border-t border-white/[0.06] py-24 text-center sm:py-32"
     >
+
+      <!-- ========================================================= -->
+      <!-- LIQUID GLASS CTA BACKGROUND -->
+      <!-- Only appears in the "Let's build something together" area -->
+      <!-- ========================================================= -->
+      <div class="cta-liquid-scene" aria-hidden="true">
+        <div class="cta-liquid-capsule cta-capsule-1"></div>
+        <div class="cta-liquid-capsule cta-capsule-2"></div>
+        <div class="cta-liquid-capsule cta-capsule-3"></div>
+        <div class="cta-liquid-capsule cta-capsule-4"></div>
+        <div class="cta-liquid-capsule cta-capsule-5"></div>
+        <div class="cta-liquid-capsule cta-capsule-6"></div>
+        <div class="cta-liquid-capsule cta-capsule-7"></div>
+        <div class="cta-liquid-capsule cta-capsule-8"></div>
+      </div>
+
+      <div class="cta-liquid-atmosphere" aria-hidden="true"></div>
+      <div class="cta-liquid-vignette" aria-hidden="true"></div>
 
       <!-- CTA glow -->
       <div class="absolute left-1/2 top-1/2 -z-10 h-[280px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/[0.045] blur-[120px]"></div>
 
+      <div class="relative z-10">
       <p class="section-eyebrow mb-5">
         Have an idea?
       </p>
@@ -522,154 +524,130 @@ import SkillsList from "../React/SkillsList.tsx";
   }
 
   /* ============================================================= */
-  /* PREMIUM LIQUID GLASS BACKGROUND */
+  /* CTA LIQUID GLASS BACKGROUND */
   /* ============================================================= */
 
-  .liquid-scene {
+  .cta-liquid-scene {
     position: absolute;
-    inset: 0;
+    inset: -10% -7%;
+    z-index: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(10px, 1.25vw, 22px);
-    padding: 4vh 7vw;
-    opacity: .58;
-    transform: translateZ(0);
+    gap: clamp(9px, 1.35vw, 22px);
+    padding: 5vh 7vw;
+    opacity: .72;
     filter: saturate(1.08);
-    mask-image: radial-gradient(ellipse 78% 82% at 50% 42%, black 35%, rgba(0,0,0,.86) 63%, transparent 100%);
-    -webkit-mask-image: radial-gradient(ellipse 78% 82% at 50% 42%, black 35%, rgba(0,0,0,.86) 63%, transparent 100%);
+    transform: translateZ(0);
+    mask-image: radial-gradient(ellipse 82% 88% at 50% 48%, black 28%, rgba(0,0,0,.9) 58%, transparent 92%);
+    -webkit-mask-image: radial-gradient(ellipse 82% 88% at 50% 48%, black 28%, rgba(0,0,0,.9) 58%, transparent 92%);
   }
 
-  .liquid-capsule {
+  .cta-liquid-capsule {
     position: relative;
-    width: clamp(46px, 7vw, 118px);
-    height: 76%;
-    flex: 0 1 clamp(46px, 7vw, 118px);
+    width: clamp(42px, 6.6vw, 105px);
+    height: 92%;
+    flex: 0 1 clamp(42px, 6.6vw, 105px);
     border-radius: 999px;
     overflow: hidden;
     isolation: isolate;
-
     background:
       linear-gradient(
         180deg,
-        #d8b4fe 0%,
-        #a978f5 13%,
-        #7049e9 28%,
-        #3d36d9 43%,
-        #3146e2 54%,
-        #5b8eea 68%,
-        #8bd8d0 82%,
-        #b8edcf 94%,
-        #d9f5df 100%
+        #d9b8ff 0%,
+        #a875f4 16%,
+        #6945e8 31%,
+        #3035d9 47%,
+        #345be8 59%,
+        #63a5e9 70%,
+        #8edbcf 82%,
+        #baf0d1 94%,
+        #ddf7e4 100%
       );
-
-    border: 1px solid rgba(255,255,255,.16);
-
+    border: 1px solid rgba(255,255,255,.17);
     box-shadow:
       inset 7px 0 18px rgba(255,255,255,.08),
-      inset -9px 0 22px rgba(21,17,74,.16),
-      inset 0 1px 0 rgba(255,255,255,.34),
-      0 24px 55px rgba(42,29,123,.14),
-      0 0 35px rgba(86,73,226,.09);
-
-    opacity: .88;
+      inset -9px 0 22px rgba(21,17,74,.15),
+      inset 0 1px 0 rgba(255,255,255,.36),
+      0 20px 48px rgba(42,29,123,.16),
+      0 0 34px rgba(86,73,226,.11);
+    opacity: .9;
     transform-origin: center;
-    animation: capsuleFloat 13s cubic-bezier(.45,.05,.55,.95) infinite;
+    animation: ctaCapsuleFloat 14s cubic-bezier(.45,.05,.55,.95) infinite;
   }
 
-  /* Internal color diffusion */
-  .liquid-capsule::before {
+  .cta-liquid-capsule::before {
     content: "";
     position: absolute;
     inset: 0;
     border-radius: inherit;
     background:
-      radial-gradient(
-        ellipse 70% 23% at 50% 16%,
-        rgba(255,255,255,.27),
-        transparent 72%
-      ),
-      radial-gradient(
-        ellipse 95% 28% at 50% 77%,
-        rgba(184,250,222,.20),
-        transparent 72%
-      );
+      radial-gradient(ellipse 72% 22% at 50% 15%, rgba(255,255,255,.29), transparent 72%),
+      radial-gradient(ellipse 95% 28% at 50% 78%, rgba(184,250,222,.22), transparent 72%);
     mix-blend-mode: screen;
     opacity: .9;
   }
 
-  /* Glass reflection */
-  .liquid-capsule::after {
+  .cta-liquid-capsule::after {
     content: "";
     position: absolute;
     top: 2%;
     left: 8%;
-    width: 24%;
+    width: 23%;
     height: 94%;
     border-radius: 999px;
     background: linear-gradient(
       180deg,
-      rgba(255,255,255,.30),
-      rgba(255,255,255,.08) 24%,
-      rgba(255,255,255,.015) 58%,
+      rgba(255,255,255,.32),
+      rgba(255,255,255,.09) 24%,
+      rgba(255,255,255,.018) 58%,
       transparent 100%
     );
     filter: blur(5px);
-    opacity: .75;
+    opacity: .72;
   }
 
-  .capsule-1 { height: 92%; margin-top: -4%; animation-delay: -1s; }
-  .capsule-2 { height: 72%; margin-top: 8%; animation-delay: -5s; }
-  .capsule-3 { height: 86%; margin-top: -1%; animation-delay: -9s; }
-  .capsule-4 { height: 64%; margin-top: 13%; animation-delay: -3s; }
-  .capsule-5 { height: 95%; margin-top: -5%; animation-delay: -7s; }
-  .capsule-6 { height: 78%; margin-top: 6%; animation-delay: -11s; }
-  .capsule-7 { height: 89%; margin-top: -2%; animation-delay: -4s; }
-  .capsule-8 { height: 68%; margin-top: 11%; animation-delay: -8s; }
+  .cta-capsule-1 { height: 98%; margin-top: -5%; animation-delay: -1s; }
+  .cta-capsule-2 { height: 74%; margin-top: 9%; animation-delay: -5s; }
+  .cta-capsule-3 { height: 88%; margin-top: 0%; animation-delay: -9s; }
+  .cta-capsule-4 { height: 67%; margin-top: 14%; animation-delay: -3s; }
+  .cta-capsule-5 { height: 101%; margin-top: -6%; animation-delay: -7s; }
+  .cta-capsule-6 { height: 79%; margin-top: 7%; animation-delay: -11s; }
+  .cta-capsule-7 { height: 91%; margin-top: -2%; animation-delay: -4s; }
+  .cta-capsule-8 { height: 70%; margin-top: 12%; animation-delay: -8s; }
 
-  .hero-ambient {
+  .cta-liquid-atmosphere {
     position: absolute;
+    z-index: 1;
     left: 50%;
-    top: 42%;
-    width: min(1000px, 92vw);
-    height: 680px;
+    top: 50%;
+    width: min(900px, 95vw);
+    height: 500px;
     transform: translate(-50%, -50%);
     background:
-      radial-gradient(
-        ellipse at 50% 48%,
-        rgba(92,72,235,.16) 0%,
-        rgba(67,92,230,.10) 28%,
-        rgba(92,208,188,.055) 49%,
-        transparent 73%
-      );
+      radial-gradient(ellipse at 50% 50%, rgba(105,72,235,.16) 0%, rgba(64,111,232,.09) 28%, rgba(94,214,191,.055) 52%, transparent 74%);
     filter: blur(55px);
     opacity: .9;
+    pointer-events: none;
   }
 
-  .hero-vignette {
+  .cta-liquid-vignette {
     position: absolute;
+    z-index: 2;
     inset: 0;
+    pointer-events: none;
     background:
-      linear-gradient(
-        90deg,
-        rgba(5,6,12,.48) 0%,
-        transparent 26%,
-        transparent 72%,
-        rgba(5,6,12,.48) 100%
-      ),
-      radial-gradient(
-        ellipse 72% 72% at 50% 45%,
-        transparent 38%,
-        rgba(5,6,12,.32) 100%
-      );
+      linear-gradient(90deg, rgba(5,6,12,.58), transparent 25%, transparent 75%, rgba(5,6,12,.58)),
+      linear-gradient(180deg, rgba(5,6,12,.32), transparent 24%, transparent 76%, rgba(5,6,12,.42)),
+      radial-gradient(ellipse 72% 82% at 50% 50%, transparent 28%, rgba(5,6,12,.34) 100%);
   }
 
-  @keyframes capsuleFloat {
+  @keyframes ctaCapsuleFloat {
     0%, 100% {
-      transform: translate3d(0, -8px, 0) scaleY(.985);
+      transform: translate3d(0, -7px, 0) scaleY(.988);
     }
     50% {
-      transform: translate3d(0, 13px, 0) scaleY(1.015);
+      transform: translate3d(0, 11px, 0) scaleY(1.012);
     }
   }
 
@@ -1242,27 +1220,28 @@ import SkillsList from "../React/SkillsList.tsx";
 
   @media (max-width: 640px) {
 
-    .liquid-scene {
-      gap: 7px;
-      padding: 7vh 4vw;
-      opacity: .42;
-      mask-image: radial-gradient(ellipse 105% 75% at 50% 40%, black 25%, transparent 88%);
-      -webkit-mask-image: radial-gradient(ellipse 105% 75% at 50% 40%, black 25%, transparent 88%);
+    .cta-liquid-scene {
+      inset: -12% -10%;
+      gap: 6px;
+      padding: 6vh 3vw;
+      opacity: .56;
+      mask-image: radial-gradient(ellipse 112% 82% at 50% 48%, black 22%, transparent 90%);
+      -webkit-mask-image: radial-gradient(ellipse 112% 82% at 50% 48%, black 22%, transparent 90%);
     }
 
-    .liquid-capsule {
-      width: clamp(31px, 9vw, 52px);
-      flex-basis: clamp(31px, 9vw, 52px);
+    .cta-liquid-capsule {
+      width: clamp(27px, 8vw, 48px);
+      flex-basis: clamp(27px, 8vw, 48px);
     }
 
-    .liquid-capsule:nth-child(2),
-    .liquid-capsule:nth-child(6) {
+    .cta-liquid-capsule:nth-child(2),
+    .cta-liquid-capsule:nth-child(7) {
       display: none;
     }
 
-    .hero-ambient {
-      width: 120vw;
-      height: 58vh;
+    .cta-liquid-atmosphere {
+      width: 125vw;
+      height: 70%;
       filter: blur(45px);
     }
 
@@ -1309,8 +1288,7 @@ import SkillsList from "../React/SkillsList.tsx";
 
     .shiny-sec,
     .glitch-glow,
-    .liquid-scene,
-    .liquid-capsule {
+    .cta-liquid-capsule {
       animation: none;
     }
 
