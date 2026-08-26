@@ -13,8 +13,6 @@ import SkillsList from "../React/SkillsList.tsx";
   <!-- ========================================================= -->
 
   <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-
-    <!-- Premium liquid-glass gradient field -->
     <div class="liquid-scene" aria-hidden="true">
       <div class="liquid-capsule capsule-1"></div>
       <div class="liquid-capsule capsule-2"></div>
@@ -26,14 +24,11 @@ import SkillsList from "../React/SkillsList.tsx";
       <div class="liquid-capsule capsule-8"></div>
     </div>
 
-    <!-- Focused ambient light behind the hero -->
     <div class="hero-ambient"></div>
 
-    <!-- Very subtle technical texture -->
     <div class="absolute inset-0 hero-grid opacity-[0.08]"></div>
     <div class="absolute inset-0 noise-layer opacity-[0.018]"></div>
 
-    <!-- Keeps text and cards readable -->
     <div class="hero-vignette"></div>
   </div>
 
@@ -50,7 +45,6 @@ import SkillsList from "../React/SkillsList.tsx";
       <!-- LEFT -->
       <div class="relative z-10 min-w-0">
 
-        <!-- Available badge -->
         <div
           class="status-badge mb-8 inline-flex items-center gap-2.5 rounded-full px-3.5 py-2"
         >
@@ -67,7 +61,6 @@ import SkillsList from "../React/SkillsList.tsx";
           <span>Open to opportunities</span>
         </div>
 
-        <!-- Intro -->
         <div class="mb-5">
           <p
             class="text-xs font-medium uppercase tracking-[0.22em] text-white/45 sm:text-sm"
@@ -77,7 +70,6 @@ import SkillsList from "../React/SkillsList.tsx";
           </p>
         </div>
 
-        <!-- Main title -->
         <h1
           class="hero-title max-w-5xl text-[3.8rem] font-semibold leading-[0.88] tracking-[-0.065em] sm:text-7xl lg:text-[6.6rem]"
         >
@@ -85,7 +77,6 @@ import SkillsList from "../React/SkillsList.tsx";
           <span class="block title-muted">Developer.</span>
         </h1>
 
-        <!-- Description -->
         <p
           class="mt-8 max-w-xl text-base leading-[1.75] text-white/55 sm:text-lg lg:text-xl"
         >
@@ -94,7 +85,6 @@ import SkillsList from "../React/SkillsList.tsx";
           journey through code, systems and creative ideas.
         </p>
 
-        <!-- CTA -->
         <div class="mt-9 flex flex-wrap items-center gap-3">
 
           <a
@@ -182,7 +172,6 @@ import SkillsList from "../React/SkillsList.tsx";
           </div>
         </div>
 
-        <!-- Small metadata -->
         <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-white/30">
           <span class="inline-flex items-center gap-2">
             <span class="h-1.5 w-1.5 rounded-full bg-emerald-400/70"></span>
@@ -198,22 +187,17 @@ import SkillsList from "../React/SkillsList.tsx";
       <!-- RIGHT -->
       <div class="relative flex justify-center lg:justify-end">
 
-        <!-- Outer glow -->
         <div class="glitch-glow"></div>
 
-        <!-- Decorative ring -->
         <div class="absolute h-[390px] w-[390px] rounded-full border border-white/[0.035] sm:h-[470px] sm:w-[470px]"></div>
 
         <div class="absolute h-[320px] w-[320px] rounded-full border border-emerald-400/[0.035] sm:h-[400px] sm:w-[400px]"></div>
 
-        <!-- Main card -->
         <div class="glitch-card relative aspect-square w-full max-w-[340px] overflow-hidden rounded-[2rem] p-2 sm:max-w-[420px]">
 
-          <!-- Top shine -->
           <div class="absolute left-[15%] right-[15%] top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
 
           <div class="relative h-full w-full overflow-hidden rounded-[1.65rem]">
-
             <LetterGlitch
               client:load
               glitchColors={["#270d6d", "#1f0b81", "#241a38"]}
@@ -226,17 +210,14 @@ import SkillsList from "../React/SkillsList.tsx";
             <div class="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent"></div>
           </div>
 
-          <!-- Terminal label -->
           <div class="absolute bottom-5 left-5 flex items-center gap-2 rounded-lg border border-white/10 bg-black/50 px-3 py-2 font-mono text-[10px] text-white/50 backdrop-blur-xl">
             <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(74,222,128,.8)]"></span>
             {"< build />"}
           </div>
 
-          <!-- Corner -->
           <div class="absolute right-5 top-5 font-mono text-[9px] uppercase tracking-[0.2em] text-white/25">
             01 / 01
           </div>
-
         </div>
       </div>
     </div>
@@ -301,109 +282,6 @@ import SkillsList from "../React/SkillsList.tsx";
     </div>
 
     <!-- ========================================================= -->
-    <!-- FUNCTIONAL TERMINAL -->
-    <!-- ========================================================= -->
-
-    <div
-      id="terminal"
-      class="terminal-section section-block border-t border-white/[0.06]"
-    >
-
-      <div class="mb-10 max-w-2xl">
-        <p class="section-eyebrow mb-4 text-emerald-400/80">
-          Interactive
-        </p>
-
-        <h2 class="section-title">
-          Explore through
-          <span>the terminal.</span>
-        </h2>
-
-        <p class="section-description">
-          A small interactive terminal containing information about me,
-          my skills, projects and ways to get in touch.
-        </p>
-      </div>
-
-      <!-- Terminal -->
-      <div class="terminal-shell">
-
-        <!-- Terminal top bar -->
-        <div class="terminal-header">
-
-          <div class="terminal-dots">
-            <span class="terminal-dot terminal-dot-red"></span>
-            <span class="terminal-dot terminal-dot-yellow"></span>
-            <span class="terminal-dot terminal-dot-green"></span>
-          </div>
-
-          <div class="terminal-title">
-            aymane@portfolio — terminal
-          </div>
-
-          <div class="terminal-header-spacer"></div>
-        </div>
-
-        <!-- Terminal body -->
-        <div
-          id="terminal-output"
-          class="terminal-output"
-          aria-live="polite"
-        ></div>
-
-        <!-- Terminal input -->
-        <form
-          id="terminal-form"
-          class="terminal-input-row"
-          autocomplete="off"
-        >
-          <span class="terminal-prompt">
-            aymane@portfolio ~ %
-          </span>
-
-          <input
-            id="terminal-input"
-            class="terminal-input"
-            type="text"
-            autocomplete="off"
-            autocapitalize="off"
-            spellcheck="false"
-            aria-label="Terminal command"
-          />
-
-          <span class="terminal-cursor"></span>
-        </form>
-
-      </div>
-
-      <!-- Terminal help -->
-      <div class="terminal-hints">
-        <span>Try</span>
-
-        <button type="button" class="terminal-hint" data-command="help">
-          help
-        </button>
-
-        <button type="button" class="terminal-hint" data-command="whoami">
-          whoami
-        </button>
-
-        <button type="button" class="terminal-hint" data-command="skills">
-          skills
-        </button>
-
-        <button type="button" class="terminal-hint" data-command="projects">
-          projects
-        </button>
-
-        <button type="button" class="terminal-hint" data-command="status">
-          status
-        </button>
-      </div>
-
-    </div>
-
-    <!-- ========================================================= -->
     <!-- NOTES -->
     <!-- ========================================================= -->
 
@@ -428,7 +306,6 @@ import SkillsList from "../React/SkillsList.tsx";
         </p>
       </div>
 
-      <!-- Notes -->
       <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 
         <a
@@ -543,6 +420,140 @@ import SkillsList from "../React/SkillsList.tsx";
     </div>
 
     <!-- ========================================================= -->
+    <!-- TERMINAL -->
+    <!-- ========================================================= -->
+
+    <div
+      id="terminal"
+      class="section-block border-t border-white/[0.06]"
+    >
+
+      <div class="mx-auto max-w-5xl">
+
+        <div class="mb-10 text-center">
+          <p class="section-eyebrow mb-4 text-emerald-400/80">
+            Interactive
+          </p>
+
+          <h2 class="section-title mx-auto">
+            Explore through
+            <span>the terminal.</span>
+          </h2>
+
+          <p class="section-description mx-auto">
+            Type a command below to explore my skills, projects,
+            contact information and more.
+          </p>
+        </div>
+
+        <!-- Terminal window -->
+        <div class="terminal-shell">
+
+          <!-- Terminal top bar -->
+          <div class="terminal-header">
+
+            <div class="terminal-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <div class="terminal-title">
+              aymane@portfolio:~
+            </div>
+
+            <div class="terminal-header-status">
+              <span></span>
+              online
+            </div>
+          </div>
+
+          <!-- Terminal body -->
+          <div
+            id="portfolio-terminal"
+            class="terminal-body"
+            tabindex="0"
+            aria-label="Interactive portfolio terminal"
+          >
+
+            <div
+              id="terminal-output"
+              class="terminal-output"
+            >
+              <div class="terminal-line terminal-system">
+                <span class="terminal-prompt">›</span>
+                <span>Initializing portfolio terminal...</span>
+              </div>
+
+              <div class="terminal-line terminal-success">
+                <span class="terminal-prompt">✓</span>
+                <span>Connection established.</span>
+              </div>
+
+              <div class="terminal-line terminal-muted">
+                <span class="terminal-prompt">›</span>
+                <span>Type <strong>help</strong> to see available commands.</span>
+              </div>
+
+              <div class="terminal-spacer"></div>
+            </div>
+
+            <!-- Input line -->
+            <form
+              id="terminal-form"
+              class="terminal-input-row"
+              autocomplete="off"
+            >
+              <span class="terminal-prompt-main">
+                <span class="terminal-user">aymane</span>
+                <span class="terminal-at">@</span>
+                <span class="terminal-host">portfolio</span>
+                <span class="terminal-colon">:</span>
+                <span class="terminal-path">~</span>
+                <span class="terminal-symbol">$</span>
+              </span>
+
+              <input
+                id="terminal-input"
+                class="terminal-input"
+                type="text"
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+                aria-label="Terminal command"
+                placeholder="type a command..."
+              />
+            </form>
+
+          </div>
+
+          <!-- Bottom status -->
+          <div class="terminal-footer">
+
+            <div>
+              <span class="terminal-key">↑</span>
+              <span class="terminal-key">↓</span>
+              history
+            </div>
+
+            <div>
+              <span class="terminal-key">Enter</span>
+              execute
+            </div>
+
+            <div class="terminal-footer-right">
+              <span class="terminal-live-dot"></span>
+              interactive
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
     <!-- CTA -->
     <!-- ========================================================= -->
 
@@ -550,10 +561,7 @@ import SkillsList from "../React/SkillsList.tsx";
       class="relative overflow-hidden border-t border-white/[0.06] py-24 text-center sm:py-32"
     >
 
-      <!-- CTA glow -->
-      <div
-        class="absolute left-1/2 top-1/2 -z-10 h-[280px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/[0.045] blur-[120px]"
-      ></div>
+      <div class="absolute left-1/2 top-1/2 -z-10 h-[280px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/[0.045] blur-[120px]"></div>
 
       <p class="section-eyebrow mb-5">
         Have an idea?
@@ -595,6 +603,462 @@ import SkillsList from "../React/SkillsList.tsx";
 
   </div>
 </section>
+
+<!-- ============================================================= -->
+<!-- TERMINAL SCRIPT -->
+<!-- ============================================================= -->
+
+<script>
+  const terminalInput =
+    document.querySelector("#terminal-input") as HTMLInputElement | null;
+
+  const terminalOutput =
+    document.querySelector("#terminal-output") as HTMLDivElement | null;
+
+  const terminalForm =
+    document.querySelector("#terminal-form") as HTMLFormElement | null;
+
+  const terminalWindow =
+    document.querySelector("#portfolio-terminal") as HTMLDivElement | null;
+
+  type TerminalCommand = () => string;
+
+  const history: string[] = [];
+  let historyIndex: number = -1;
+
+  const escapeHTML = (value: string): string => {
+    return value
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  };
+
+  const addCommand = (command: string): void => {
+    if (!terminalOutput) return;
+
+    const line = document.createElement("div");
+
+    line.className = "terminal-command-line";
+
+    line.innerHTML = `
+      <span class="terminal-prompt-main">
+        <span class="terminal-user">aymane</span>
+        <span class="terminal-at">@</span>
+        <span class="terminal-host">portfolio</span>
+        <span class="terminal-colon">:</span>
+        <span class="terminal-path">~</span>
+        <span class="terminal-symbol">$</span>
+      </span>
+      <span class="terminal-command-text">${escapeHTML(command)}</span>
+    `;
+
+    terminalOutput.appendChild(line);
+  };
+
+  const addResponse = (html: string): void => {
+    if (!terminalOutput) return;
+
+    const response = document.createElement("div");
+
+    response.className = "terminal-response";
+
+    response.innerHTML = html;
+
+    terminalOutput.appendChild(response);
+
+    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+  };
+
+  const commands: Record<string, TerminalCommand> = {
+
+    help: (): string => `
+      <div class="terminal-help">
+        <div class="terminal-response-title">Available commands</div>
+
+        <div class="terminal-command-grid">
+
+          <div>
+            <span class="terminal-command-name">whoami</span>
+            <span class="terminal-command-description">
+              — about me
+            </span>
+          </div>
+
+          <div>
+            <span class="terminal-command-name">skills</span>
+            <span class="terminal-command-description">
+              — technologies & tools
+            </span>
+          </div>
+
+          <div>
+            <span class="terminal-command-name">projects</span>
+            <span class="terminal-command-description">
+              — view my projects
+            </span>
+          </div>
+
+          <div>
+            <span class="terminal-command-name">contact</span>
+            <span class="terminal-command-description">
+              — contact information
+            </span>
+          </div>
+
+          <div>
+            <span class="terminal-command-name">status</span>
+            <span class="terminal-command-description">
+              — current status
+            </span>
+          </div>
+
+          <div>
+            <span class="terminal-command-name">date</span>
+            <span class="terminal-command-description">
+              — current date
+            </span>
+          </div>
+
+          <div>
+            <span class="terminal-command-name">open github</span>
+            <span class="terminal-command-description">
+              — GitHub profile
+            </span>
+          </div>
+
+          <div>
+            <span class="terminal-command-name">open linkedin</span>
+            <span class="terminal-command-description">
+              — LinkedIn profile
+            </span>
+          </div>
+
+          <div>
+            <span class="terminal-command-name">open email</span>
+            <span class="terminal-command-description">
+              — email me
+            </span>
+          </div>
+
+          <div>
+            <span class="terminal-command-name">clear</span>
+            <span class="terminal-command-description">
+              — clear terminal
+            </span>
+          </div>
+
+        </div>
+      </div>
+    `,
+
+    whoami: (): string => `
+      <div class="terminal-info-block">
+
+        <div class="terminal-response-title">
+          Aymane Jabrane
+        </div>
+
+        <div class="terminal-terminal-text">
+          Software Developer · Computer Science
+        </div>
+
+        <div class="terminal-terminal-text">
+          Interested in software, systems, programming
+          and building things with code.
+        </div>
+
+      </div>
+    `,
+
+    skills: (): string => `
+      <div class="terminal-info-block">
+
+        <div class="terminal-response-title">
+          Core skills
+        </div>
+
+        <div class="terminal-list">
+          <div><span>01</span> Programming</div>
+          <div><span>02</span> Data Structures & Algorithms</div>
+          <div><span>03</span> Computer Architecture</div>
+          <div><span>04</span> Operating Systems</div>
+          <div><span>05</span> Networking</div>
+          <div><span>06</span> Git & GitHub</div>
+          <div><span>07</span> Web Development</div>
+          <div><span>08</span> Flutter & Dart</div>
+        </div>
+
+      </div>
+    `,
+
+    projects: (): string => `
+      <div class="terminal-info-block">
+
+        <div class="terminal-response-title">
+          Projects
+        </div>
+
+        <div class="terminal-list">
+          <div>
+            <span>01</span>
+            Portfolio — Astro / React / Tailwind
+          </div>
+
+          <div>
+            <span>02</span>
+            Flutter applications
+          </div>
+
+          <div>
+            <span>03</span>
+            Computer Science projects
+          </div>
+
+          <div>
+            <span>04</span>
+            Algorithms & data structures
+          </div>
+        </div>
+
+        <div class="terminal-terminal-text terminal-small-gap">
+          Use <strong>View my work</strong> above to explore
+          the portfolio.
+        </div>
+
+      </div>
+    `,
+
+    contact: (): string => `
+      <div class="terminal-info-block">
+
+        <div class="terminal-response-title">
+          Contact
+        </div>
+
+        <div class="terminal-terminal-text">
+          Email:
+          <span class="terminal-highlight">
+            aymanejabranesm@gmail.com
+          </span>
+        </div>
+
+        <div class="terminal-terminal-text">
+          GitHub:
+          <span class="terminal-highlight">
+            github.com/AymaneJab01
+          </span>
+        </div>
+
+        <div class="terminal-terminal-text">
+          LinkedIn:
+          <span class="terminal-highlight">
+            Aymane Jabrane
+          </span>
+        </div>
+
+      </div>
+    `,
+
+    status: (): string => `
+      <div class="terminal-info-block">
+
+        <div class="terminal-response-title">
+          System status
+        </div>
+
+        <div class="terminal-status-row">
+          <span class="terminal-live-dot"></span>
+          Portfolio operational
+        </div>
+
+        <div class="terminal-status-row">
+          <span class="terminal-live-dot"></span>
+          Open to opportunities
+        </div>
+
+        <div class="terminal-status-row">
+          <span class="terminal-live-dot"></span>
+          Available for interesting projects
+        </div>
+
+      </div>
+    `,
+
+    date: (): string => {
+      return `
+        <div class="terminal-info-block">
+          <div class="terminal-response-title">
+            Current date
+          </div>
+
+          <div class="terminal-terminal-text">
+            ${new Date().toLocaleString()}
+          </div>
+        </div>
+      `;
+    },
+
+    "open github": (): string => {
+      window.open(
+        "https://github.com/AymaneJab01",
+        "_blank",
+        "noopener,noreferrer"
+      );
+
+      return `
+        <div class="terminal-success-response">
+          ✓ Opening GitHub...
+        </div>
+      `;
+    },
+
+    "open linkedin": (): string => {
+      window.open(
+        "https://www.linkedin.com/in/aymane-jabrane-73025726a/",
+        "_blank",
+        "noopener,noreferrer"
+      );
+
+      return `
+        <div class="terminal-success-response">
+          ✓ Opening LinkedIn...
+        </div>
+      `;
+    },
+
+    "open email": (): string => {
+      window.open(
+        "https://mail.google.com/mail/?view=cm&fs=1&to=aymanejabranesm@gmail.com&su=Hey%20Jabrane!",
+        "_blank",
+        "noopener,noreferrer"
+      );
+
+      return `
+        <div class="terminal-success-response">
+          ✓ Opening email...
+        </div>
+      `;
+    },
+  };
+
+  const executeCommand = (rawCommand: string): void => {
+    const command = rawCommand.trim().toLowerCase();
+
+    if (!command) return;
+
+    if (command === "clear") {
+      if (terminalOutput) {
+        terminalOutput.innerHTML = "";
+      }
+
+      return;
+    }
+
+    addCommand(command);
+
+    if (command in commands) {
+      addResponse(commands[command]());
+    } else {
+      addResponse(`
+        <div class="terminal-error">
+          command not found:
+          <span>${escapeHTML(command)}</span>
+        </div>
+
+        <div class="terminal-terminal-text">
+          Type <strong>help</strong> to see available commands.
+        </div>
+      `);
+    }
+  };
+
+  if (terminalForm && terminalInput) {
+    terminalForm.addEventListener("submit", (event: SubmitEvent) => {
+      event.preventDefault();
+
+      const command = terminalInput.value.trim();
+
+      if (!command) {
+        terminalInput.focus();
+        return;
+      }
+
+      history.push(command);
+
+      historyIndex = history.length;
+
+      executeCommand(command);
+
+      terminalInput.value = "";
+      terminalInput.focus();
+    });
+
+    terminalInput.addEventListener(
+      "keydown",
+      (event: KeyboardEvent) => {
+
+        if (event.key === "ArrowUp") {
+          event.preventDefault();
+
+          if (history.length === 0) return;
+
+          if (historyIndex > 0) {
+            historyIndex--;
+          }
+
+          terminalInput.value =
+            history[historyIndex] ?? "";
+
+          return;
+        }
+
+        if (event.key === "ArrowDown") {
+          event.preventDefault();
+
+          if (history.length === 0) return;
+
+          if (historyIndex < history.length - 1) {
+            historyIndex++;
+
+            terminalInput.value =
+              history[historyIndex] ?? "";
+          } else {
+            historyIndex = history.length;
+            terminalInput.value = "";
+          }
+
+          return;
+        }
+
+        if (event.key === "Escape") {
+          terminalInput.value = "";
+          historyIndex = history.length;
+        }
+      }
+    );
+  }
+
+  if (terminalWindow) {
+    terminalWindow.addEventListener("click", () => {
+      terminalInput?.focus();
+    });
+
+    terminalWindow.addEventListener(
+      "keydown",
+      (event: KeyboardEvent) => {
+        if (
+          event.key === "/" &&
+          document.activeElement !== terminalInput
+        ) {
+          event.preventDefault();
+          terminalInput?.focus();
+        }
+      }
+    );
+  }
+</script>
 
 <style is:global>
 
@@ -644,7 +1108,6 @@ import SkillsList from "../React/SkillsList.tsx";
     opacity: .58;
     transform: translateZ(0);
     filter: saturate(1.08);
-
     mask-image:
       radial-gradient(
         ellipse 78% 82% at 50% 42%,
@@ -652,7 +1115,6 @@ import SkillsList from "../React/SkillsList.tsx";
         rgba(0,0,0,.86) 63%,
         transparent 100%
       );
-
     -webkit-mask-image:
       radial-gradient(
         ellipse 78% 82% at 50% 42%,
@@ -698,7 +1160,10 @@ import SkillsList from "../React/SkillsList.tsx";
     transform-origin: center;
 
     animation:
-      capsuleFloat 13s cubic-bezier(.45,.05,.55,.95) infinite;
+      capsuleFloat
+      13s
+      cubic-bezier(.45,.05,.55,.95)
+      infinite;
   }
 
   .liquid-capsule::before {
@@ -728,8 +1193,10 @@ import SkillsList from "../React/SkillsList.tsx";
     position: absolute;
     top: 2%;
     left: 8%;
+
     width: 24%;
     height: 94%;
+
     border-radius: 999px;
 
     background:
@@ -797,8 +1264,10 @@ import SkillsList from "../React/SkillsList.tsx";
     position: absolute;
     left: 50%;
     top: 42%;
+
     width: min(1000px, 92vw);
     height: 680px;
+
     transform: translate(-50%, -50%);
 
     background:
@@ -835,11 +1304,15 @@ import SkillsList from "../React/SkillsList.tsx";
 
   @keyframes capsuleFloat {
     0%, 100% {
-      transform: translate3d(0, -8px, 0) scaleY(.985);
+      transform:
+        translate3d(0, -8px, 0)
+        scaleY(.985);
     }
 
     50% {
-      transform: translate3d(0, 13px, 0) scaleY(1.015);
+      transform:
+        translate3d(0, 13px, 0)
+        scaleY(1.015);
     }
   }
 
@@ -1050,7 +1523,10 @@ import SkillsList from "../React/SkillsList.tsx";
     filter: blur(45px);
 
     animation:
-      pulseGlow 6s ease-in-out infinite;
+      pulseGlow
+      6s
+      ease-in-out
+      infinite;
   }
 
   .glitch-card {
@@ -1075,7 +1551,9 @@ import SkillsList from "../React/SkillsList.tsx";
   }
 
   .glitch-card:hover {
-    transform: translateY(-6px) rotate(.35deg);
+    transform:
+      translateY(-6px)
+      rotate(.35deg);
 
     border-color: rgba(255,255,255,.16);
   }
@@ -1200,325 +1678,6 @@ import SkillsList from "../React/SkillsList.tsx";
   }
 
   /* ============================================================= */
-  /* TERMINAL */
-  /* ============================================================= */
-
-  .terminal-section {
-    position: relative;
-  }
-
-  .terminal-shell {
-    position: relative;
-
-    overflow: hidden;
-
-    width: 100%;
-
-    border: 1px solid rgba(255,255,255,.09);
-    border-radius: 20px;
-
-    background:
-      linear-gradient(
-        145deg,
-        rgba(15,17,23,.97),
-        rgba(5,7,12,.98)
-      );
-
-    box-shadow:
-      0 30px 80px rgba(0,0,0,.35),
-      0 0 60px rgba(74,222,128,.025),
-      inset 0 1px 0 rgba(255,255,255,.055);
-
-    backdrop-filter: blur(24px);
-  }
-
-  .terminal-shell::before {
-    content: "";
-
-    position: absolute;
-
-    left: 15%;
-    right: 15%;
-    top: 0;
-
-    height: 1px;
-
-    background:
-      linear-gradient(
-        90deg,
-        transparent,
-        rgba(74,222,128,.45),
-        transparent
-      );
-
-    pointer-events: none;
-  }
-
-  .terminal-header {
-    display: flex;
-    align-items: center;
-
-    height: 48px;
-
-    padding: 0 18px;
-
-    border-bottom: 1px solid rgba(255,255,255,.06);
-
-    background:
-      linear-gradient(
-        180deg,
-        rgba(255,255,255,.035),
-        rgba(255,255,255,.012)
-      );
-  }
-
-  .terminal-dots {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-
-    width: 90px;
-  }
-
-  .terminal-dot {
-    display: block;
-
-    width: 9px;
-    height: 9px;
-
-    border-radius: 999px;
-
-    box-shadow:
-      inset 0 1px 1px rgba(255,255,255,.15);
-  }
-
-  .terminal-dot-red {
-    background: rgba(255,95,86,.8);
-  }
-
-  .terminal-dot-yellow {
-    background: rgba(255,189,46,.8);
-  }
-
-  .terminal-dot-green {
-    background: rgba(39,201,63,.8);
-  }
-
-  .terminal-title {
-    flex: 1;
-
-    text-align: center;
-
-    font-family:
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      Monaco,
-      Consolas,
-      monospace;
-
-    font-size: .65rem;
-
-    letter-spacing: .05em;
-
-    color: rgba(255,255,255,.28);
-  }
-
-  .terminal-header-spacer {
-    width: 90px;
-  }
-
-  .terminal-output {
-    height: 390px;
-
-    overflow-y: auto;
-
-    padding: 24px;
-
-    font-family:
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      Monaco,
-      Consolas,
-      monospace;
-
-    font-size: .78rem;
-
-    line-height: 1.75;
-
-    scrollbar-width: thin;
-    scrollbar-color:
-      rgba(255,255,255,.1)
-      transparent;
-  }
-
-  .terminal-output::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  .terminal-output::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .terminal-output::-webkit-scrollbar-thumb {
-    border-radius: 999px;
-    background: rgba(255,255,255,.1);
-  }
-
-  .terminal-line {
-    display: flex;
-    flex-wrap: wrap;
-
-    margin-bottom: .35rem;
-  }
-
-  .terminal-prompt {
-    flex-shrink: 0;
-
-    color: #86efac;
-  }
-
-  .terminal-command-text {
-    margin-left: .5rem;
-
-    color: rgba(255,255,255,.85);
-  }
-
-  .terminal-response {
-    margin: 0 0 1.2rem 0;
-
-    white-space: pre-wrap;
-
-    font-family:
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      Monaco,
-      Consolas,
-      monospace;
-
-    color: rgba(255,255,255,.5);
-  }
-
-  .terminal-input-row {
-    display: flex;
-    align-items: center;
-
-    min-height: 54px;
-
-    padding: 0 24px;
-
-    border-top: 1px solid rgba(255,255,255,.055);
-
-    background: rgba(0,0,0,.18);
-
-    font-family:
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      Monaco,
-      Consolas,
-      monospace;
-
-    font-size: .78rem;
-  }
-
-  .terminal-input {
-    min-width: 0;
-    flex: 1;
-
-    margin-left: .5rem;
-
-    border: 0;
-    outline: 0;
-
-    background: transparent;
-
-    color: rgba(255,255,255,.9);
-
-    font: inherit;
-  }
-
-  .terminal-input::selection {
-    background: rgba(74,222,128,.25);
-  }
-
-  .terminal-cursor {
-    width: 7px;
-    height: 15px;
-
-    margin-left: 2px;
-
-    background: #86efac;
-
-    box-shadow:
-      0 0 10px rgba(74,222,128,.5);
-
-    animation: terminalCursor 1s steps(2,end) infinite;
-  }
-
-  @keyframes terminalCursor {
-    0%, 45% {
-      opacity: 1;
-    }
-
-    46%, 100% {
-      opacity: 0;
-    }
-  }
-
-  .terminal-hints {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-
-    gap: .5rem;
-
-    margin-top: 14px;
-
-    font-family:
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      Monaco,
-      Consolas,
-      monospace;
-
-    font-size: .65rem;
-
-    color: rgba(255,255,255,.22);
-  }
-
-  .terminal-hint {
-    border: 1px solid rgba(255,255,255,.07);
-    border-radius: 7px;
-
-    padding: .3rem .55rem;
-
-    background: rgba(255,255,255,.025);
-
-    color: rgba(255,255,255,.38);
-
-    font: inherit;
-
-    cursor: pointer;
-
-    transition:
-      color 200ms ease,
-      border-color 200ms ease,
-      background 200ms ease;
-  }
-
-  .terminal-hint:hover {
-    border-color: rgba(74,222,128,.25);
-
-    background: rgba(74,222,128,.05);
-
-    color: #86efac;
-  }
-
-  /* ============================================================= */
   /* NOTE CARDS */
   /* ============================================================= */
 
@@ -1526,7 +1685,6 @@ import SkillsList from "../React/SkillsList.tsx";
     position: relative;
 
     display: flex;
-
     min-height: 230px;
 
     flex-direction: column;
@@ -1684,7 +1842,567 @@ import SkillsList from "../React/SkillsList.tsx";
   .note-card:hover .note-arrow {
     color: #86efac;
 
-    transform: translate(3px,-3px);
+    transform:
+      translate(3px,-3px);
+  }
+
+  /* ============================================================= */
+  /* TERMINAL */
+  /* ============================================================= */
+
+  .terminal-shell {
+    position: relative;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 22px;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255,255,255,.045),
+        rgba(255,255,255,.012)
+      );
+
+    box-shadow:
+      0 35px 80px rgba(0,0,0,.25),
+      inset 0 1px 0 rgba(255,255,255,.045);
+
+    backdrop-filter: blur(24px);
+
+    transition:
+      border-color 400ms ease,
+      box-shadow 400ms ease;
+  }
+
+  .terminal-shell:hover {
+    border-color: rgba(74,222,128,.16);
+
+    box-shadow:
+      0 35px 80px rgba(0,0,0,.3),
+      0 0 60px rgba(74,222,128,.035),
+      inset 0 1px 0 rgba(255,255,255,.055);
+  }
+
+  .terminal-header {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 52px;
+
+    border-bottom: 1px solid rgba(255,255,255,.065);
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255,255,255,.035),
+        rgba(255,255,255,.012)
+      );
+  }
+
+  .terminal-dots {
+    position: absolute;
+    left: 18px;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .terminal-dots span {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 999px;
+
+    background: rgba(255,255,255,.18);
+
+    box-shadow:
+      0 0 8px rgba(255,255,255,.03);
+  }
+
+  .terminal-dots span:nth-child(1) {
+    background: rgba(255,255,255,.25);
+  }
+
+  .terminal-dots span:nth-child(2) {
+    background: rgba(255,255,255,.16);
+  }
+
+  .terminal-dots span:nth-child(3) {
+    background: rgba(74,222,128,.5);
+
+    box-shadow:
+      0 0 8px rgba(74,222,128,.25);
+  }
+
+  .terminal-title {
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
+
+    font-size: 10px;
+
+    letter-spacing: .08em;
+
+    color: rgba(255,255,255,.3);
+  }
+
+  .terminal-header-status {
+    position: absolute;
+    right: 18px;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
+
+    font-size: 9px;
+
+    text-transform: uppercase;
+    letter-spacing: .12em;
+
+    color: rgba(255,255,255,.22);
+  }
+
+  .terminal-header-status span {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 999px;
+
+    background: #4ade80;
+
+    box-shadow:
+      0 0 9px rgba(74,222,128,.65);
+
+    animation:
+      terminalPulse
+      2s
+      ease-in-out
+      infinite;
+  }
+
+  .terminal-body {
+    position: relative;
+
+    min-height: 410px;
+    max-height: 510px;
+
+    overflow-y: auto;
+
+    padding: 24px;
+
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
+
+    font-size: 12px;
+    line-height: 1.7;
+
+    background:
+      radial-gradient(
+        ellipse at 50% 0%,
+        rgba(74,222,128,.025),
+        transparent 55%
+      ),
+      rgba(3,5,8,.72);
+
+    scrollbar-width: thin;
+    scrollbar-color:
+      rgba(74,222,128,.16)
+      transparent;
+  }
+
+  .terminal-body::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(255,255,255,.006) 4px
+      );
+
+    opacity: .5;
+  }
+
+  .terminal-output {
+    position: relative;
+    z-index: 1;
+  }
+
+  .terminal-line {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    margin-bottom: 5px;
+
+    color: rgba(255,255,255,.48);
+  }
+
+  .terminal-prompt {
+    flex-shrink: 0;
+
+    color: #4ade80;
+
+    text-shadow:
+      0 0 10px rgba(74,222,128,.4);
+  }
+
+  .terminal-system {
+    color: rgba(255,255,255,.42);
+  }
+
+  .terminal-success {
+    color: rgba(134,239,172,.65);
+  }
+
+  .terminal-muted {
+    color: rgba(255,255,255,.28);
+  }
+
+  .terminal-muted strong {
+    color: rgba(255,255,255,.65);
+
+    font-weight: 500;
+  }
+
+  .terminal-spacer {
+    height: 17px;
+  }
+
+  .terminal-command-line {
+    position: relative;
+
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-top: 13px;
+    margin-bottom: 6px;
+
+    color: rgba(255,255,255,.8);
+  }
+
+  .terminal-command-text {
+    color: rgba(255,255,255,.75);
+
+    word-break: break-word;
+  }
+
+  .terminal-response {
+    margin-left: 24px;
+    margin-bottom: 12px;
+
+    color: rgba(255,255,255,.38);
+  }
+
+  .terminal-response-title {
+    margin-bottom: 8px;
+
+    color: rgba(255,255,255,.72);
+
+    font-weight: 500;
+  }
+
+  .terminal-terminal-text {
+    max-width: 720px;
+
+    color: rgba(255,255,255,.38);
+  }
+
+  .terminal-small-gap {
+    margin-top: 10px;
+  }
+
+  .terminal-highlight {
+    color: #86efac;
+
+    text-shadow:
+      0 0 12px rgba(74,222,128,.15);
+  }
+
+  .terminal-success-response {
+    color: #86efac;
+
+    text-shadow:
+      0 0 12px rgba(74,222,128,.18);
+  }
+
+  .terminal-error {
+    color: #fca5a5;
+  }
+
+  .terminal-error span {
+    color: #fecaca;
+  }
+
+  .terminal-help {
+    padding: 2px 0;
+  }
+
+  .terminal-command-grid {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap:
+      7px 35px;
+
+    margin-top: 12px;
+  }
+
+  .terminal-command-grid > div {
+    min-width: 0;
+  }
+
+  .terminal-command-name {
+    color: #86efac;
+
+    text-shadow:
+      0 0 10px rgba(74,222,128,.12);
+  }
+
+  .terminal-command-description {
+    color: rgba(255,255,255,.25);
+  }
+
+  .terminal-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    margin-top: 8px;
+  }
+
+  .terminal-list div {
+    color: rgba(255,255,255,.42);
+  }
+
+  .terminal-list span {
+    display: inline-block;
+
+    min-width: 25px;
+
+    color: rgba(134,239,172,.55);
+  }
+
+  .terminal-status-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 5px;
+
+    color: rgba(255,255,255,.4);
+  }
+
+  .terminal-live-dot {
+    display: inline-block;
+
+    width: 5px;
+    height: 5px;
+
+    flex-shrink: 0;
+
+    border-radius: 999px;
+
+    background: #4ade80;
+
+    box-shadow:
+      0 0 8px rgba(74,222,128,.65);
+  }
+
+  .terminal-input-row {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 14px;
+  }
+
+  .terminal-prompt-main {
+    display: inline-flex;
+    align-items: baseline;
+
+    flex-shrink: 0;
+
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
+
+    white-space: nowrap;
+  }
+
+  .terminal-user {
+    color: #86efac;
+  }
+
+  .terminal-at {
+    color: rgba(255,255,255,.2);
+  }
+
+  .terminal-host {
+    color: rgba(255,255,255,.45);
+  }
+
+  .terminal-colon,
+  .terminal-path {
+    color: rgba(255,255,255,.25);
+  }
+
+  .terminal-symbol {
+    margin-left: 5px;
+
+    color: rgba(134,239,172,.7);
+  }
+
+  .terminal-input {
+    min-width: 0;
+    width: 100%;
+
+    padding: 0;
+
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+
+    color: rgba(255,255,255,.82);
+
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
+
+    font-size: 12px;
+
+    caret-color: #4ade80;
+  }
+
+  .terminal-input::placeholder {
+    color: rgba(255,255,255,.13);
+  }
+
+  .terminal-input:focus {
+    outline: none;
+  }
+
+  .terminal-footer {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    min-height: 38px;
+
+    padding:
+      0
+      18px;
+
+    border-top: 1px solid rgba(255,255,255,.055);
+
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
+
+    font-size: 9px;
+
+    text-transform: uppercase;
+    letter-spacing: .1em;
+
+    color: rgba(255,255,255,.18);
+
+    background:
+      rgba(255,255,255,.012);
+  }
+
+  .terminal-footer-right {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .terminal-key {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 18px;
+    height: 17px;
+
+    margin-right: 3px;
+
+    padding: 0 4px;
+
+    border:
+      1px solid
+      rgba(255,255,255,.08);
+
+    border-radius: 4px;
+
+    color: rgba(255,255,255,.3);
+
+    background:
+      rgba(255,255,255,.025);
+  }
+
+  @keyframes terminalPulse {
+    0%, 100% {
+      opacity: .55;
+    }
+
+    50% {
+      opacity: 1;
+    }
   }
 
   /* ============================================================= */
@@ -1807,39 +2525,51 @@ import SkillsList from "../React/SkillsList.tsx";
       white-space: normal;
     }
 
-    .terminal-output {
-      height: 340px;
+    /* Terminal mobile */
+
+    .terminal-body {
+      min-height: 390px;
       padding: 18px;
-      font-size: .7rem;
+
+      font-size: 11px;
     }
 
-    .terminal-input-row {
-      padding: 0 18px;
-      font-size: .7rem;
-    }
-
-    .terminal-prompt {
-      white-space: nowrap;
-    }
-
-    .terminal-header {
-      padding: 0 14px;
-    }
-
-    .terminal-dots {
-      width: 60px;
-    }
-
-    .terminal-header-spacer {
-      width: 60px;
+    .terminal-header-status {
+      display: none;
     }
 
     .terminal-title {
-      font-size: .58rem;
+      font-size: 9px;
     }
 
-    .terminal-hints {
-      font-size: .6rem;
+    .terminal-command-grid {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+
+    .terminal-response {
+      margin-left: 0;
+    }
+
+    .terminal-input-row {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .terminal-input {
+      width: 100%;
+      padding-left: 0;
+    }
+
+    .terminal-footer {
+      gap: 8px;
+      padding: 0 12px;
+      font-size: 8px;
+    }
+
+    .terminal-footer-right {
+      display: none;
     }
   }
 
@@ -1853,7 +2583,7 @@ import SkillsList from "../React/SkillsList.tsx";
     .glitch-glow,
     .liquid-scene,
     .liquid-capsule,
-    .terminal-cursor {
+    .terminal-header-status span {
       animation: none;
     }
 
@@ -1863,312 +2593,9 @@ import SkillsList from "../React/SkillsList.tsx";
     .note-arrow,
     .talk-button,
     .glitch-card,
-    .terminal-hint {
+    .terminal-shell {
       transition: none;
     }
   }
 
 </style>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const terminalInput = document.querySelector(
-      "#terminal-input"
-    ) as HTMLInputElement | null;
-
-    const terminalOutput = document.querySelector(
-      "#terminal-output"
-    ) as HTMLElement | null;
-
-    const terminalForm = document.querySelector(
-      "#terminal-form"
-    ) as HTMLFormElement | null;
-
-    if (!terminalInput || !terminalOutput || !terminalForm) {
-      return;
-    }
-
-    type CommandFunction = () => string;
-
-    const commands: Record<string, CommandFunction> = {
-
-      help: () => `
-Available commands:
-
-  help        Show available commands
-  whoami      About me
-  skills      Show my technical skills
-  projects    Show my projects
-  contact     Show contact information
-  status      Show current status
-  date        Show current date
-  clear       Clear the terminal
-
-Open links:
-
-  open github
-  open linkedin
-  open email
-      `,
-
-      whoami: () => `
-Aymane Jabrane
-
-Software Developer
-Computer Science
-
-Building software through code, systems
-and creative ideas.
-      `,
-
-      skills: () => `
-Languages:
-  Java
-  JavaScript
-  TypeScript
-  Python
-  Dart
-
-Technologies:
-  Astro
-  React
-  Flutter
-  Git
-  GitHub
-  Linux
-
-Concepts:
-  Data Structures
-  Algorithms
-  Operating Systems
-  Computer Architecture
-  Networking
-      `,
-
-      projects: () => `
-Projects
-
-  → Portfolio
-  → Flutter applications
-  → Computer Science projects
-  → Data Structures & Algorithms
-  → Systems & Networking
-      `,
-
-      contact: () => `
-Let's build something together.
-
-Email:
-  aymanejabranesm@gmail.com
-
-LinkedIn:
-  linkedin.com/in/aymane-jabrane-73025726a
-      `,
-
-      status: () => `
-[ ONLINE ]
-
-System:
-  portfolio      operational
-  frontend       operational
-  terminal       operational
-
-Status:
-  Open to opportunities
-      `,
-
-      date: () => {
-        return new Date().toString();
-      },
-
-      "open github": () => {
-        window.open(
-          "https://github.com/AymaneJab01",
-          "_blank",
-          "noopener,noreferrer"
-        );
-
-        return "Opening GitHub...";
-      },
-
-      "open linkedin": () => {
-        window.open(
-          "https://www.linkedin.com/in/aymane-jabrane-73025726a/",
-          "_blank",
-          "noopener,noreferrer"
-        );
-
-        return "Opening LinkedIn...";
-      },
-
-      "open email": () => {
-        window.open(
-          "https://mail.google.com/mail/?view=cm&fs=1&to=aymanejabranesm@gmail.com&su=Hey%20Jabrane!",
-          "_blank",
-          "noopener,noreferrer"
-        );
-
-        return "Opening email...";
-      },
-    };
-
-    const history: string[] = [];
-    let historyIndex = -1;
-
-    function escapeHTML(value: string): string {
-      return value
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-    }
-
-    function scrollTerminal(): void {
-      terminalOutput.scrollTop = terminalOutput.scrollHeight;
-    }
-
-    function addCommand(command: string): void {
-      const line = document.createElement("div");
-
-      line.className = "terminal-line terminal-command";
-
-      line.innerHTML = `
-        <span class="terminal-prompt">aymane@portfolio ~ %</span>
-        <span class="terminal-command-text">${escapeHTML(command)}</span>
-      `;
-
-      terminalOutput.appendChild(line);
-
-      scrollTerminal();
-    }
-
-    function addResponse(html: string): void {
-      const response = document.createElement("pre");
-
-      response.className = "terminal-response";
-      response.textContent = html.trim();
-
-      terminalOutput.appendChild(response);
-
-      scrollTerminal();
-    }
-
-    function clearTerminal(): void {
-      terminalOutput.innerHTML = "";
-    }
-
-    function executeCommand(rawCommand: string): void {
-      const command = rawCommand.trim().toLowerCase();
-
-      if (!command) {
-        return;
-      }
-
-      addCommand(rawCommand);
-
-      history.push(rawCommand);
-      historyIndex = history.length;
-
-      if (command === "clear" || command === "cls") {
-        clearTerminal();
-        terminalInput.value = "";
-        terminalInput.focus();
-        return;
-      }
-
-      const commandFunction = commands[command];
-
-      if (commandFunction) {
-        addResponse(commandFunction());
-      } else {
-        addResponse(
-          `Command not found: ${rawCommand}\nType "help" to see available commands.`
-        );
-      }
-
-      terminalInput.value = "";
-      terminalInput.focus();
-    }
-
-    terminalForm.addEventListener(
-      "submit",
-      (event: SubmitEvent) => {
-        event.preventDefault();
-
-        executeCommand(terminalInput.value);
-      }
-    );
-
-    terminalInput.addEventListener(
-      "keydown",
-      (event: KeyboardEvent) => {
-
-        if (event.key === "ArrowUp") {
-          event.preventDefault();
-
-          if (history.length === 0) {
-            return;
-          }
-
-          historyIndex = Math.max(
-            0,
-            historyIndex - 1
-          );
-
-          terminalInput.value =
-            history[historyIndex] ?? "";
-
-          return;
-        }
-
-        if (event.key === "ArrowDown") {
-          event.preventDefault();
-
-          if (history.length === 0) {
-            return;
-          }
-
-          historyIndex = Math.min(
-            history.length,
-            historyIndex + 1
-          );
-
-          terminalInput.value =
-            history[historyIndex] ?? "";
-
-          return;
-        }
-
-        if (event.key === "Escape") {
-          terminalInput.value = "";
-        }
-      }
-    );
-
-    const terminalHints =
-      document.querySelectorAll<HTMLButtonElement>(
-        ".terminal-hint"
-      );
-
-    terminalHints.forEach((button) => {
-      button.addEventListener("click", () => {
-        const command =
-          button.dataset.command ?? "";
-
-        executeCommand(command);
-      });
-    });
-
-    /*
-     * Initial terminal message
-     */
-    addResponse(`
-Welcome to Aymane's portfolio terminal.
-
-Type "help" to see available commands.
-    `);
-
-    terminalInput.focus();
-  });
-</script>
