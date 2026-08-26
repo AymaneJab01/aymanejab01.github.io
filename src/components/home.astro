@@ -13,7 +13,7 @@ import SkillsList from "../React/SkillsList.tsx";
   <!-- ========================================================= -->
 
   <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-    <!-- Premium liquid-glass gradient field -->
+
     <div class="liquid-scene" aria-hidden="true">
       <div class="liquid-capsule capsule-1"></div>
       <div class="liquid-capsule capsule-2"></div>
@@ -25,16 +25,15 @@ import SkillsList from "../React/SkillsList.tsx";
       <div class="liquid-capsule capsule-8"></div>
     </div>
 
-    <!-- Focused ambient light behind the hero -->
     <div class="hero-ambient"></div>
 
-    <!-- Very subtle technical texture -->
     <div class="absolute inset-0 hero-grid opacity-[0.08]"></div>
+
     <div class="absolute inset-0 noise-layer opacity-[0.018]"></div>
 
-    <!-- Keeps text and cards readable -->
     <div class="hero-vignette"></div>
   </div>
+
 
   <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
 
@@ -46,14 +45,19 @@ import SkillsList from "../React/SkillsList.tsx";
       class="relative grid min-h-[780px] items-center gap-16 py-20 sm:py-24 lg:grid-cols-[1.08fr_.92fr] lg:gap-20 lg:py-28"
     >
 
+      <!-- ======================================================= -->
       <!-- LEFT -->
+      <!-- ======================================================= -->
+
       <div class="relative z-10 min-w-0">
 
         <!-- Available badge -->
+
         <div
           class="status-badge mb-8 inline-flex items-center gap-2.5 rounded-full px-3.5 py-2"
         >
           <span class="relative flex h-2 w-2 shrink-0">
+
             <span
               class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-50"
             ></span>
@@ -61,22 +65,29 @@ import SkillsList from "../React/SkillsList.tsx";
             <span
               class="relative inline-flex h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(74,222,128,.8)]"
             ></span>
+
           </span>
 
           <span>Open to opportunities</span>
         </div>
 
+
         <!-- Intro -->
+
         <div class="mb-5">
+
           <p
             class="text-xs font-medium uppercase tracking-[0.22em] text-white/45 sm:text-sm"
           >
             Hi, I'm
             <span class="name-glow"> Aymane Jabrane</span>
           </p>
+
         </div>
 
+
         <!-- Main title -->
+
         <h1
           class="hero-title max-w-5xl text-[3.8rem] font-semibold leading-[0.88] tracking-[-0.065em] sm:text-7xl lg:text-[6.6rem]"
         >
@@ -84,7 +95,9 @@ import SkillsList from "../React/SkillsList.tsx";
           <span class="block title-muted">Developer.</span>
         </h1>
 
+
         <!-- Description -->
+
         <p
           class="mt-8 max-w-xl text-base leading-[1.75] text-white/55 sm:text-lg lg:text-xl"
         >
@@ -93,7 +106,9 @@ import SkillsList from "../React/SkillsList.tsx";
           journey through code, systems and creative ideas.
         </p>
 
+
         <!-- CTA -->
+
         <div class="mt-9 flex flex-wrap items-center gap-3">
 
           <a
@@ -116,9 +131,13 @@ import SkillsList from "../React/SkillsList.tsx";
             </svg>
           </a>
 
+
+          <!-- Social links -->
+
           <div class="flex items-center gap-2">
 
             <!-- GitHub -->
+
             <a
               target="_blank"
               rel="noopener noreferrer"
@@ -138,7 +157,9 @@ import SkillsList from "../React/SkillsList.tsx";
               </svg>
             </a>
 
+
             <!-- LinkedIn -->
+
             <a
               target="_blank"
               rel="noopener noreferrer"
@@ -158,7 +179,9 @@ import SkillsList from "../React/SkillsList.tsx";
               </svg>
             </a>
 
+
             <!-- Email -->
+
             <a
               target="_blank"
               rel="noopener noreferrer"
@@ -181,8 +204,13 @@ import SkillsList from "../React/SkillsList.tsx";
           </div>
         </div>
 
-        <!-- Small metadata -->
-        <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-white/30">
+
+        <!-- Metadata -->
+
+        <div
+          class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-white/30"
+        >
+
           <span class="inline-flex items-center gap-2">
             <span class="h-1.5 w-1.5 rounded-full bg-emerald-400/70"></span>
             Computer Science
@@ -191,27 +219,48 @@ import SkillsList from "../React/SkillsList.tsx";
           <span class="hidden h-3 w-px bg-white/10 sm:block"></span>
 
           <span>Software · Systems · Code</span>
+
         </div>
+
       </div>
 
-      <!-- RIGHT -->
+
+      <!-- ======================================================= -->
+      <!-- RIGHT / GLITCH CARD -->
+      <!-- ======================================================= -->
+
       <div class="relative flex justify-center lg:justify-end">
 
         <!-- Outer glow -->
+
         <div class="glitch-glow"></div>
 
-        <!-- Decorative ring -->
-        <div class="absolute h-[390px] w-[390px] rounded-full border border-white/[0.035] sm:h-[470px] sm:w-[470px]"></div>
 
-        <div class="absolute h-[320px] w-[320px] rounded-full border border-emerald-400/[0.035] sm:h-[400px] sm:w-[400px]"></div>
+        <!-- Decorative rings -->
 
-        <!-- Main card -->
-        <div class="glitch-card relative aspect-square w-full max-w-[340px] overflow-hidden rounded-[2rem] p-2 sm:max-w-[420px]">
+        <div
+          class="absolute h-[390px] w-[390px] rounded-full border border-white/[0.035] sm:h-[470px] sm:w-[470px]"
+        ></div>
 
-          <!-- Top shine -->
-          <div class="absolute left-[15%] right-[15%] top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+        <div
+          class="absolute h-[320px] w-[320px] rounded-full border border-emerald-400/[0.035] sm:h-[400px] sm:w-[400px]"
+        ></div>
 
-          <div class="relative h-full w-full overflow-hidden rounded-[1.65rem]">
+
+        <!-- ===================================================== -->
+        <!-- MAIN CARD -->
+        <!-- ===================================================== -->
+
+        <div
+          class="glitch-card relative aspect-square w-full max-w-[340px] overflow-hidden rounded-[2rem] p-2 sm:max-w-[420px]"
+        >
+
+          <!-- ================================================= -->
+          <!-- GLITCH BACKGROUND -->
+          <!-- ================================================= -->
+
+          <div class="glitch-background">
+
             <LetterGlitch
               client:load
               glitchColors={["#270d6d", "#1f0b81", "#241a38"]}
@@ -221,52 +270,133 @@ import SkillsList from "../React/SkillsList.tsx";
               smooth={true}
             />
 
-            <div class="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent"></div>
+            <!-- Darkening layer -->
+
+            <div class="absolute inset-0 bg-black/10"></div>
+
+            <!-- Bottom readability gradient -->
+
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
+            ></div>
+
           </div>
 
-          <!-- Terminal label -->
-          <div class="absolute bottom-5 left-5 flex items-center gap-2 rounded-lg border border-white/10 bg-black/50 px-3 py-2 font-mono text-[10px] text-white/50 backdrop-blur-xl">
-            <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(74,222,128,.8)]"></span>
-            {"< build />"}
+
+          <!-- ================================================= -->
+          <!-- CARD CONTENT -->
+          <!-- ================================================= -->
+
+          <div
+            class="relative z-20 h-full w-full pointer-events-none"
+          >
+
+            <!-- Top shine -->
+
+            <div
+              class="absolute left-[15%] right-[15%] top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent"
+            ></div>
+
+
+            <!-- Center text -->
+
+            <div
+              class="absolute inset-0 flex items-center justify-center px-8 text-center"
+            >
+
+              <div class="glitch-card-title">
+
+                <p
+                  class="mb-3 font-mono text-[9px] uppercase tracking-[0.3em] text-emerald-300/80"
+                >
+                  Software Developer
+                </p>
+
+                <h3>
+                  Building
+                  <span>digital systems.</span>
+                </h3>
+
+                <div
+                  class="mx-auto mt-5 h-px w-16 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                ></div>
+
+              </div>
+
+            </div>
+
+
+            <!-- Terminal label -->
+
+            <div
+              class="absolute bottom-5 left-5 flex items-center gap-2 rounded-lg border border-white/10 bg-black/60 px-3 py-2 font-mono text-[10px] text-white/70 backdrop-blur-xl"
+            >
+
+              <span
+                class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(74,222,128,.8)]"
+              ></span>
+
+              <span>{"< build />"}</span>
+
+            </div>
+
+
+            <!-- Corner -->
+
+            <div
+              class="absolute right-5 top-5 font-mono text-[9px] uppercase tracking-[0.2em] text-white/50"
+            >
+              01 / 01
+            </div>
+
           </div>
 
-          <!-- Corner -->
-          <div class="absolute right-5 top-5 font-mono text-[9px] uppercase tracking-[0.2em] text-white/25">
-            01 / 01
-          </div>
         </div>
+
       </div>
+
     </div>
+
 
     <!-- ========================================================= -->
     <!-- TECH STRIP -->
     <!-- ========================================================= -->
 
     <div class="section-line">
+
       <div class="py-10 sm:py-12">
 
         <div class="mb-8 flex items-center justify-between gap-4">
+
           <p class="section-eyebrow">
             Technologies
           </p>
 
-          <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/20">
+          <span
+            class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/20"
+          >
             Tools I work with
           </span>
+
         </div>
 
         <LogoWall />
+
       </div>
+
     </div>
+
 
     <!-- ========================================================= -->
     <!-- SKILLS -->
     <!-- ========================================================= -->
 
     <div class="section-block">
+
       <div class="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
 
         <div>
+
           <p class="section-eyebrow mb-4">
             Skills & tools
           </p>
@@ -282,20 +412,26 @@ import SkillsList from "../React/SkillsList.tsx";
           </p>
 
           <div class="mt-8 hidden lg:block">
+
             <div class="skill-line">
               <span></span>
               <span></span>
               <span></span>
             </div>
+
           </div>
+
         </div>
+
 
         <div class="skills-panel">
           <SkillsList client:load />
         </div>
 
       </div>
+
     </div>
+
 
     <!-- ========================================================= -->
     <!-- NOTES -->
@@ -307,6 +443,7 @@ import SkillsList from "../React/SkillsList.tsx";
     >
 
       <div class="max-w-2xl">
+
         <p class="section-eyebrow mb-4 text-emerald-400/80">
           Things I've studied & explored
         </p>
@@ -320,10 +457,15 @@ import SkillsList from "../React/SkillsList.tsx";
           A collection of notes and concepts I've been studying along
           my computer science journey.
         </p>
+
       </div>
 
+
       <!-- Notes -->
+
       <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+        <!-- 01 -->
 
         <a
           href="https://app.notion.com/p/Tablas-Hash-Vista-Practica-3a762e0580cb80de84eee02fade92863?source=copy_link"
@@ -332,16 +474,37 @@ import SkillsList from "../React/SkillsList.tsx";
           class="note-card"
         >
           <div>
-            <div class="note-number">01</div>
-            <span class="note-label">Hash Tables</span>
-            <h3>Tablas Hash — Vista Práctica</h3>
+
+            <div class="note-number">
+              01
+            </div>
+
+            <span class="note-label">
+              Hash Tables
+            </span>
+
+            <h3>
+              Tablas Hash — Vista Práctica
+            </h3>
+
           </div>
 
           <div class="note-footer">
-            <span>Open note</span>
-            <span class="note-arrow">↗</span>
+
+            <span>
+              Open note
+            </span>
+
+            <span class="note-arrow">
+              ↗
+            </span>
+
           </div>
+
         </a>
+
+
+        <!-- 02 -->
 
         <a
           href="https://app.notion.com/p/Computer-from-hardware-perspective-3a362e0580cb80cfbfa5f1228d060bcc?source=copy_link"
@@ -350,16 +513,37 @@ import SkillsList from "../React/SkillsList.tsx";
           class="note-card"
         >
           <div>
-            <div class="note-number">02</div>
-            <span class="note-label">Computer Science</span>
-            <h3>Computer from a Hardware Perspective</h3>
+
+            <div class="note-number">
+              02
+            </div>
+
+            <span class="note-label">
+              Computer Science
+            </span>
+
+            <h3>
+              Computer from a Hardware Perspective
+            </h3>
+
           </div>
 
           <div class="note-footer">
-            <span>Open note</span>
-            <span class="note-arrow">↗</span>
+
+            <span>
+              Open note
+            </span>
+
+            <span class="note-arrow">
+              ↗
+            </span>
+
           </div>
+
         </a>
+
+
+        <!-- 03 -->
 
         <a
           href="https://app.notion.com/p/Tablas-Hash-Definiciones-3a662e0580cb80089dd9c287f8864a93?source=copy_link"
@@ -368,16 +552,37 @@ import SkillsList from "../React/SkillsList.tsx";
           class="note-card"
         >
           <div>
-            <div class="note-number">03</div>
-            <span class="note-label">Data Structures</span>
-            <h3>Tablas Hash — Definiciones</h3>
+
+            <div class="note-number">
+              03
+            </div>
+
+            <span class="note-label">
+              Data Structures
+            </span>
+
+            <h3>
+              Tablas Hash — Definiciones
+            </h3>
+
           </div>
 
           <div class="note-footer">
-            <span>Open note</span>
-            <span class="note-arrow">↗</span>
+
+            <span>
+              Open note
+            </span>
+
+            <span class="note-arrow">
+              ↗
+            </span>
+
           </div>
+
         </a>
+
+
+        <!-- 04 -->
 
         <a
           href="https://app.notion.com/p/Git-Github-3a562e0580cb801089e5d47fbbaa221f?source=copy_link"
@@ -386,16 +591,37 @@ import SkillsList from "../React/SkillsList.tsx";
           class="note-card"
         >
           <div>
-            <div class="note-number">04</div>
-            <span class="note-label">Development</span>
-            <h3>Git & GitHub</h3>
+
+            <div class="note-number">
+              04
+            </div>
+
+            <span class="note-label">
+              Development
+            </span>
+
+            <h3>
+              Git & GitHub
+            </h3>
+
           </div>
 
           <div class="note-footer">
-            <span>Open note</span>
-            <span class="note-arrow">↗</span>
+
+            <span>
+              Open note
+            </span>
+
+            <span class="note-arrow">
+              ↗
+            </span>
+
           </div>
+
         </a>
+
+
+        <!-- 05 -->
 
         <a
           href="https://app.notion.com/p/Syst-me-Signaux-Analogue-vs-Digitale-3b062e0580cb80d3ba80cb3e8232dee1?source=copy_link"
@@ -404,16 +630,37 @@ import SkillsList from "../React/SkillsList.tsx";
           class="note-card"
         >
           <div>
-            <div class="note-number">05</div>
-            <span class="note-label">Systems</span>
-            <h3>Système — Signaux Analogues vs Digitaux</h3>
+
+            <div class="note-number">
+              05
+            </div>
+
+            <span class="note-label">
+              Systems
+            </span>
+
+            <h3>
+              Système — Signaux Analogues vs Digitaux
+            </h3>
+
           </div>
 
           <div class="note-footer">
-            <span>Open note</span>
-            <span class="note-arrow">↗</span>
+
+            <span>
+              Open note
+            </span>
+
+            <span class="note-arrow">
+              ↗
+            </span>
+
           </div>
+
         </a>
+
+
+        <!-- 06 -->
 
         <a
           href="https://app.notion.com/p/Java-3a262e0580cb8037bee0c0e9aa4b480c?source=copy_link"
@@ -422,19 +669,39 @@ import SkillsList from "../React/SkillsList.tsx";
           class="note-card"
         >
           <div>
-            <div class="note-number">06</div>
-            <span class="note-label">Programming</span>
-            <h3>Java</h3>
+
+            <div class="note-number">
+              06
+            </div>
+
+            <span class="note-label">
+              Programming
+            </span>
+
+            <h3>
+              Java
+            </h3>
+
           </div>
 
           <div class="note-footer">
-            <span>Open note</span>
-            <span class="note-arrow">↗</span>
+
+            <span>
+              Open note
+            </span>
+
+            <span class="note-arrow">
+              ↗
+            </span>
+
           </div>
+
         </a>
 
       </div>
+
     </div>
+
 
     <!-- ========================================================= -->
     <!-- CTA -->
@@ -444,30 +711,42 @@ import SkillsList from "../React/SkillsList.tsx";
       class="relative overflow-hidden border-t border-white/[0.06] py-24 text-center sm:py-32"
     >
 
-      <!-- CTA glow -->
-      <div class="absolute left-1/2 top-1/2 -z-10 h-[280px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/[0.045] blur-[120px]"></div>
+      <div
+        class="absolute left-1/2 top-1/2 -z-10 h-[280px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/[0.045] blur-[120px]"
+      ></div>
+
 
       <p class="section-eyebrow mb-5">
         Have an idea?
       </p>
 
+
       <h2
         class="mx-auto max-w-3xl text-4xl font-semibold leading-[0.95] tracking-[-0.055em] text-white sm:text-6xl"
       >
         Let's build
-        <span class="shiny-sec"> something together.</span>
+        <span class="shiny-sec">
+          something together.
+        </span>
       </h2>
 
-      <p class="mx-auto mt-6 max-w-lg text-base leading-[1.7] text-white/40 sm:text-lg">
+
+      <p
+        class="mx-auto mt-6 max-w-lg text-base leading-[1.7] text-white/40 sm:text-lg"
+      >
         Whether it's a project, an idea or simply a conversation,
         I'd love to hear from you.
       </p>
+
 
       <a
         href="#contact"
         class="talk-button group mt-9 inline-flex items-center gap-2.5 rounded-xl px-6 py-3.5 text-sm font-medium"
       >
-        <span>Let's talk</span>
+
+        <span>
+          Let's talk
+        </span>
 
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -477,10 +756,11 @@ import SkillsList from "../React/SkillsList.tsx";
         >
           <path
             fill-rule="evenodd"
-            d="M3 10a.75.75 0 0 1 .75-.75h10.69l-3.22-3.22a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H3.75A.75.75 0 0 1 3 10Z"
+            d="M3 10a.75.75 0 0 1 .75-.75h10.69l-3.22-3.22a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06 1.06l3.22-3.22H3.75A.75.75 0 0 1 3 10Z"
             clip-rule="evenodd"
           />
         </svg>
+
       </a>
 
     </div>
@@ -488,840 +768,1213 @@ import SkillsList from "../React/SkillsList.tsx";
   </div>
 </section>
 
+
 <style is:global>
 
-  /* ============================================================= */
-  /* BACKGROUND */
-  /* ============================================================= */
+/* ============================================================= */
+/* BACKGROUND */
+/* ============================================================= */
 
-  .hero-grid {
-    background-image:
-      linear-gradient(
-        rgba(255,255,255,.025) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        90deg,
-        rgba(255,255,255,.025) 1px,
-        transparent 1px
-      );
+.hero-grid {
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    );
 
-    background-size: 52px 52px;
+  background-size: 52px 52px;
 
-    mask-image:
-      radial-gradient(
-        ellipse 70% 60% at 50% 25%,
-        black 0%,
-        transparent 75%
-      );
-  }
+  mask-image:
+    radial-gradient(
+      ellipse 70% 60% at 50% 25%,
+      black 0%,
+      transparent 75%
+    );
+}
 
-  .noise-layer {
-    background-image:
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
-  }
 
-  /* ============================================================= */
-  /* PREMIUM LIQUID GLASS BACKGROUND */
-  /* ============================================================= */
+.noise-layer {
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+}
 
-  .liquid-scene {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: clamp(10px, 1.25vw, 22px);
-    padding: 4vh 7vw;
-    opacity: .58;
-    transform: translateZ(0);
-    filter: saturate(1.08);
-    mask-image: radial-gradient(ellipse 78% 82% at 50% 42%, black 35%, rgba(0,0,0,.86) 63%, transparent 100%);
-    -webkit-mask-image: radial-gradient(ellipse 78% 82% at 50% 42%, black 35%, rgba(0,0,0,.86) 63%, transparent 100%);
-  }
 
-  .liquid-capsule {
-    position: relative;
-    width: clamp(46px, 7vw, 118px);
-    height: 76%;
-    flex: 0 1 clamp(46px, 7vw, 118px);
-    border-radius: 999px;
-    overflow: hidden;
-    isolation: isolate;
+/* ============================================================= */
+/* LIQUID GLASS */
+/* ============================================================= */
 
-    background:
-      linear-gradient(
-        180deg,
-        #d8b4fe 0%,
-        #a978f5 13%,
-        #7049e9 28%,
-        #3d36d9 43%,
-        #3146e2 54%,
-        #5b8eea 68%,
-        #8bd8d0 82%,
-        #b8edcf 94%,
-        #d9f5df 100%
-      );
+.liquid-scene {
+  position: absolute;
+  inset: 0;
 
-    border: 1px solid rgba(255,255,255,.16);
+  display: flex;
 
-    box-shadow:
-      inset 7px 0 18px rgba(255,255,255,.08),
-      inset -9px 0 22px rgba(21,17,74,.16),
-      inset 0 1px 0 rgba(255,255,255,.34),
-      0 24px 55px rgba(42,29,123,.14),
-      0 0 35px rgba(86,73,226,.09);
+  align-items: center;
+  justify-content: center;
 
-    opacity: .88;
-    transform-origin: center;
-    animation: capsuleFloat 13s cubic-bezier(.45,.05,.55,.95) infinite;
-  }
+  gap: clamp(10px, 1.25vw, 22px);
 
-  /* Internal color diffusion */
-  .liquid-capsule::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background:
-      radial-gradient(
-        ellipse 70% 23% at 50% 16%,
-        rgba(255,255,255,.27),
-        transparent 72%
-      ),
-      radial-gradient(
-        ellipse 95% 28% at 50% 77%,
-        rgba(184,250,222,.20),
-        transparent 72%
-      );
-    mix-blend-mode: screen;
-    opacity: .9;
-  }
+  padding: 4vh 7vw;
 
-  /* Glass reflection */
-  .liquid-capsule::after {
-    content: "";
-    position: absolute;
-    top: 2%;
-    left: 8%;
-    width: 24%;
-    height: 94%;
-    border-radius: 999px;
-    background: linear-gradient(
+  opacity: .58;
+
+  transform: translateZ(0);
+
+  filter: saturate(1.08);
+
+  mask-image:
+    radial-gradient(
+      ellipse 78% 82% at 50% 42%,
+      black 35%,
+      rgba(0,0,0,.86) 63%,
+      transparent 100%
+    );
+
+  -webkit-mask-image:
+    radial-gradient(
+      ellipse 78% 82% at 50% 42%,
+      black 35%,
+      rgba(0,0,0,.86) 63%,
+      transparent 100%
+    );
+}
+
+
+.liquid-capsule {
+  position: relative;
+
+  width: clamp(46px, 7vw, 118px);
+
+  height: 76%;
+
+  flex: 0 1 clamp(46px, 7vw, 118px);
+
+  border-radius: 999px;
+
+  overflow: hidden;
+
+  isolation: isolate;
+
+  background:
+    linear-gradient(
+      180deg,
+      #d8b4fe 0%,
+      #a978f5 13%,
+      #7049e9 28%,
+      #3d36d9 43%,
+      #3146e2 54%,
+      #5b8eea 68%,
+      #8bd8d0 82%,
+      #b8edcf 94%,
+      #d9f5df 100%
+    );
+
+  border: 1px solid rgba(255,255,255,.16);
+
+  box-shadow:
+    inset 7px 0 18px rgba(255,255,255,.08),
+    inset -9px 0 22px rgba(21,17,74,.16),
+    inset 0 1px 0 rgba(255,255,255,.34),
+    0 24px 55px rgba(42,29,123,.14),
+    0 0 35px rgba(86,73,226,.09);
+
+  opacity: .88;
+
+  transform-origin: center;
+
+  animation:
+    capsuleFloat
+    13s
+    cubic-bezier(.45,.05,.55,.95)
+    infinite;
+}
+
+
+.liquid-capsule::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  border-radius: inherit;
+
+  background:
+    radial-gradient(
+      ellipse 70% 23% at 50% 16%,
+      rgba(255,255,255,.27),
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 95% 28% at 50% 77%,
+      rgba(184,250,222,.20),
+      transparent 72%
+    );
+
+  mix-blend-mode: screen;
+
+  opacity: .9;
+}
+
+
+.liquid-capsule::after {
+  content: "";
+
+  position: absolute;
+
+  top: 2%;
+  left: 8%;
+
+  width: 24%;
+  height: 94%;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
       180deg,
       rgba(255,255,255,.30),
       rgba(255,255,255,.08) 24%,
       rgba(255,255,255,.015) 58%,
       transparent 100%
     );
-    filter: blur(5px);
-    opacity: .75;
+
+  filter: blur(5px);
+
+  opacity: .75;
+}
+
+
+.capsule-1 {
+  height: 92%;
+  margin-top: -4%;
+  animation-delay: -1s;
+}
+
+
+.capsule-2 {
+  height: 72%;
+  margin-top: 8%;
+  animation-delay: -5s;
+}
+
+
+.capsule-3 {
+  height: 86%;
+  margin-top: -1%;
+  animation-delay: -9s;
+}
+
+
+.capsule-4 {
+  height: 64%;
+  margin-top: 13%;
+  animation-delay: -3s;
+}
+
+
+.capsule-5 {
+  height: 95%;
+  margin-top: -5%;
+  animation-delay: -7s;
+}
+
+
+.capsule-6 {
+  height: 78%;
+  margin-top: 6%;
+  animation-delay: -11s;
+}
+
+
+.capsule-7 {
+  height: 89%;
+  margin-top: -2%;
+  animation-delay: -4s;
+}
+
+
+.capsule-8 {
+  height: 68%;
+  margin-top: 11%;
+  animation-delay: -8s;
+}
+
+
+.hero-ambient {
+  position: absolute;
+
+  left: 50%;
+  top: 42%;
+
+  width: min(1000px, 92vw);
+  height: 680px;
+
+  transform: translate(-50%, -50%);
+
+  background:
+    radial-gradient(
+      ellipse at 50% 48%,
+      rgba(92,72,235,.16) 0%,
+      rgba(67,92,230,.10) 28%,
+      rgba(92,208,188,.055) 49%,
+      transparent 73%
+    );
+
+  filter: blur(55px);
+
+  opacity: .9;
+}
+
+
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5,6,12,.48) 0%,
+      transparent 26%,
+      transparent 72%,
+      rgba(5,6,12,.48) 100%
+    ),
+    radial-gradient(
+      ellipse 72% 72% at 50% 45%,
+      transparent 38%,
+      rgba(5,6,12,.32) 100%
+    );
+}
+
+
+@keyframes capsuleFloat {
+
+  0%, 100% {
+    transform:
+      translate3d(0, -8px, 0)
+      scaleY(.985);
   }
 
-  .capsule-1 { height: 92%; margin-top: -4%; animation-delay: -1s; }
-  .capsule-2 { height: 72%; margin-top: 8%; animation-delay: -5s; }
-  .capsule-3 { height: 86%; margin-top: -1%; animation-delay: -9s; }
-  .capsule-4 { height: 64%; margin-top: 13%; animation-delay: -3s; }
-  .capsule-5 { height: 95%; margin-top: -5%; animation-delay: -7s; }
-  .capsule-6 { height: 78%; margin-top: 6%; animation-delay: -11s; }
-  .capsule-7 { height: 89%; margin-top: -2%; animation-delay: -4s; }
-  .capsule-8 { height: 68%; margin-top: 11%; animation-delay: -8s; }
+  50% {
+    transform:
+      translate3d(0, 13px, 0)
+      scaleY(1.015);
+  }
+
+}
+
+
+/* ============================================================= */
+/* STATUS */
+/* ============================================================= */
+
+.status-badge {
+  border: 1px solid rgba(255,255,255,.08);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.055),
+      rgba(255,255,255,.018)
+    );
+
+  color: rgba(255,255,255,.55);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.04),
+    0 10px 30px rgba(0,0,0,.08);
+
+  backdrop-filter: blur(18px);
+}
+
+
+/* ============================================================= */
+/* NAME */
+/* ============================================================= */
+
+.name-glow {
+  color: #86efac;
+
+  text-shadow:
+    0 0 8px rgba(74,222,128,.35),
+    0 0 22px rgba(74,222,128,.14);
+
+  transition:
+    color 300ms ease,
+    text-shadow 300ms ease;
+}
+
+
+.name-glow:hover {
+  color: #bbf7d0;
+
+  text-shadow:
+    0 0 10px rgba(74,222,128,.65),
+    0 0 28px rgba(74,222,128,.3);
+}
+
+
+/* ============================================================= */
+/* HERO TITLE */
+/* ============================================================= */
+
+.hero-title {
+  text-wrap: balance;
+}
+
+
+.title-muted {
+  color: rgba(255,255,255,.42);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.58),
+      rgba(255,255,255,.24)
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* ============================================================= */
+/* SHINY TEXT */
+/* ============================================================= */
+
+.shiny-sec {
+  background:
+    linear-gradient(
+      110deg,
+      #7667ff 0%,
+      #a99cff 25%,
+      #ffffff 50%,
+      #6251ff 75%,
+      #7667ff 100%
+    );
+
+  background-size: 250% 100%;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+
+  animation:
+    shine
+    5s
+    ease-in-out
+    infinite;
+}
+
+
+@keyframes shine {
+
+  0%, 100% {
+    background-position: 100% 50%;
+  }
+
+  50% {
+    background-position: 0% 50%;
+  }
+
+}
+
+
+/* ============================================================= */
+/* BUTTONS */
+/* ============================================================= */
+
+.primary-button {
+  color: #09090b;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #e9e9eb
+    );
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.2),
+    inset 0 1px 0 rgba(255,255,255,.8);
+
+  transition:
+    transform 300ms ease,
+    box-shadow 300ms ease;
+}
+
+
+.primary-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.25),
+    0 0 30px rgba(255,255,255,.08);
+}
+
+
+.social-link {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 46px;
+  height: 46px;
+
+  border: 1px solid rgba(255,255,255,.08);
+
+  border-radius: 13px;
+
+  color: rgba(255,255,255,.48);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.045),
+      rgba(255,255,255,.015)
+    );
+
+  backdrop-filter: blur(14px);
+
+  transition:
+    color 300ms ease,
+    background 300ms ease,
+    border-color 300ms ease,
+    transform 300ms ease,
+    box-shadow 300ms ease;
+}
+
+
+.social-link:hover {
+  color: white;
+
+  border-color: rgba(74,222,128,.25);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(74,222,128,.08),
+      rgba(255,255,255,.025)
+    );
+
+  box-shadow:
+    0 0 20px rgba(74,222,128,.06);
+
+  transform: translateY(-3px);
+}
+
+
+/* ============================================================= */
+/* GLITCH CARD */
+/* ============================================================= */
+
+.glitch-glow {
+  position: absolute;
+
+  width: 270px;
+  height: 270px;
+
+  border-radius: 999px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(88,58,220,.22),
+      rgba(74,222,128,.025) 55%,
+      transparent 72%
+    );
+
+  filter: blur(45px);
+
+  animation:
+    pulseGlow
+    6s
+    ease-in-out
+    infinite;
+
+  pointer-events: none;
+}
+
+
+.glitch-card {
+  position: relative;
+
+  isolation: isolate;
+
+  border: 1px solid rgba(255,255,255,.1);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.065),
+      rgba(255,255,255,.018)
+    );
+
+  box-shadow:
+    0 35px 80px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.06);
+
+  backdrop-filter: blur(20px);
+
+  transition:
+    transform 500ms cubic-bezier(.2,.8,.2,1),
+    border-color 400ms ease;
+
+  overflow: hidden;
+}
+
+
+/* ============================================================= */
+/* GLITCH BACKGROUND */
+/* ============================================================= */
+
+.glitch-background {
+  position: absolute;
+
+  inset: 8px;
+
+  z-index: 1;
+
+  overflow: hidden;
+
+  border-radius: 1.65rem;
+
+  opacity: .72;
+
+  pointer-events: none;
+
+  isolation: isolate;
+}
+
+
+.glitch-background canvas {
+  opacity: .72 !important;
+
+  pointer-events: none !important;
+}
+
+
+/* ============================================================= */
+/* CARD CONTENT */
+/* ============================================================= */
+
+.glitch-card > .relative.z-20 {
+  position: relative;
+
+  z-index: 20;
+}
+
+
+/* ============================================================= */
+/* CENTER CARD TEXT */
+/* ============================================================= */
+
+.glitch-card-title {
+  position: relative;
+
+  z-index: 30;
+
+  max-width: 300px;
+
+  text-shadow:
+    0 2px 15px rgba(0,0,0,.85),
+    0 0 30px rgba(0,0,0,.45);
+}
+
+
+.glitch-card-title h3 {
+  margin: 0;
+
+  font-size:
+    clamp(
+      1.7rem,
+      4vw,
+      2.8rem
+    );
+
+  font-weight: 600;
+
+  line-height: .95;
+
+  letter-spacing: -.055em;
+
+  color: white;
+}
+
+
+.glitch-card-title h3 span {
+  display: block;
+
+  margin-top: .25rem;
+
+  color: rgba(255,255,255,.62);
+}
+
+
+/* ============================================================= */
+/* CARD HOVER */
+/* ============================================================= */
+
+.glitch-card:hover {
+  transform:
+    translateY(-6px)
+    rotate(.35deg);
+
+  border-color:
+    rgba(255,255,255,.16);
+}
+
+
+@keyframes pulseGlow {
+
+  0%, 100% {
+    opacity: .65;
+
+    transform:
+      scale(.95);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      scale(1.05);
+  }
+
+}
+
+
+/* ============================================================= */
+/* SECTIONS */
+/* ============================================================= */
+
+.section-line {
+  border-top:
+    1px solid rgba(255,255,255,.055);
+
+  border-bottom:
+    1px solid rgba(255,255,255,.055);
+}
+
+
+.section-block {
+  padding-top: 6.5rem;
+
+  padding-bottom: 6.5rem;
+}
+
+
+.section-eyebrow {
+  font-size: .7rem;
+
+  font-weight: 500;
+
+  text-transform: uppercase;
+
+  letter-spacing: .22em;
+
+  line-height: 1;
+
+  color: rgba(255,255,255,.32);
+}
+
+
+.section-title {
+  max-width: 650px;
+
+  font-size: 2.25rem;
+
+  font-weight: 600;
+
+  line-height: 1.02;
+
+  letter-spacing: -.045em;
+
+  color: white;
+}
+
+
+.section-title span {
+  display: block;
+
+  color: rgba(255,255,255,.34);
+}
+
+
+.section-description {
+  max-width: 550px;
+
+  margin-top: 1.35rem;
+
+  font-size: 1rem;
+
+  line-height: 1.75;
+
+  color: rgba(255,255,255,.4);
+}
+
+
+/* ============================================================= */
+/* SKILLS */
+/* ============================================================= */
+
+.skills-panel {
+  position: relative;
+
+  padding: 1.5rem;
+
+  border:
+    1px solid rgba(255,255,255,.065);
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.035),
+      rgba(255,255,255,.012)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.035),
+    0 25px 60px rgba(0,0,0,.12);
+}
+
+
+.skill-line {
+  display: flex;
+
+  align-items: center;
+
+  gap: .45rem;
+}
+
+
+.skill-line span {
+  display: block;
+
+  height: 3px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(255,255,255,.1);
+}
+
+
+.skill-line span:nth-child(1) {
+  width: 42px;
+
+  background:
+    rgba(74,222,128,.5);
+}
+
+
+.skill-line span:nth-child(2) {
+  width: 18px;
+}
+
+
+.skill-line span:nth-child(3) {
+  width: 8px;
+}
+
+
+/* ============================================================= */
+/* NOTE CARDS */
+/* ============================================================= */
+
+.note-card {
+  position: relative;
+
+  display: flex;
+
+  min-height: 230px;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  overflow: hidden;
+
+  padding: 24px;
+
+  border:
+    1px solid rgba(255,255,255,.07);
+
+  border-radius: 20px;
+
+  color: white;
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(74,222,128,.055),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.045),
+      rgba(255,255,255,.012)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.035);
+
+  transition:
+    transform 400ms cubic-bezier(.2,.8,.2,1),
+    border-color 300ms ease,
+    box-shadow 400ms ease,
+    background 400ms ease;
+}
+
+
+.note-card::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(74,222,128,.35),
+      transparent
+    );
+
+  opacity: 0;
+
+  transition:
+    opacity 300ms ease;
+}
+
+
+.note-card:hover {
+  transform:
+    translateY(-6px);
+
+  border-color:
+    rgba(74,222,128,.2);
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(74,222,128,.1),
+      transparent 40%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.055),
+      rgba(255,255,255,.018)
+    );
+
+  box-shadow:
+    0 25px 60px rgba(0,0,0,.22),
+    0 0 35px rgba(74,222,128,.035);
+}
+
+
+.note-card:hover::before {
+  opacity: 1;
+}
+
+
+.note-number {
+  margin-bottom: 2.5rem;
+
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    monospace;
+
+  font-size: .65rem;
+
+  letter-spacing: .16em;
+
+  color:
+    rgba(255,255,255,.2);
+}
+
+
+.note-label {
+  display: block;
+
+  font-size: .65rem;
+
+  font-weight: 500;
+
+  text-transform: uppercase;
+
+  letter-spacing: .16em;
+
+  color:
+    rgba(74,222,128,.7);
+}
+
+
+.note-card h3 {
+  max-width: 90%;
+
+  margin-top: .75rem;
+
+  font-size: 1.05rem;
+
+  font-weight: 500;
+
+  line-height: 1.35;
+
+  letter-spacing: -.015em;
+
+  color:
+    rgba(255,255,255,.84);
+}
+
+
+.note-footer {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-top: 2rem;
+
+  font-size: .68rem;
+
+  text-transform: uppercase;
+
+  letter-spacing: .12em;
+
+  color:
+    rgba(255,255,255,.25);
+}
+
+
+.note-arrow {
+  font-size: 1.1rem;
+
+  color:
+    rgba(255,255,255,.3);
+
+  transition:
+    color 300ms ease,
+    transform 300ms ease;
+}
+
+
+.note-card:hover .note-arrow {
+  color:
+    #86efac;
+
+  transform:
+    translate(3px,-3px);
+}
+
+
+/* ============================================================= */
+/* TALK BUTTON */
+/* ============================================================= */
+
+.talk-button {
+  color:
+    #bbf7d0;
+
+  border:
+    1px solid rgba(74,222,128,.25);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(74,222,128,.13),
+      rgba(74,222,128,.035)
+    );
+
+  box-shadow:
+    0 0 25px rgba(74,222,128,.07),
+    inset 0 1px 0 rgba(255,255,255,.04);
+
+  transition:
+    transform 300ms ease,
+    border-color 300ms ease,
+    background 300ms ease,
+    box-shadow 300ms ease;
+}
+
+
+.talk-button:hover {
+  transform:
+    translateY(-3px);
+
+  border-color:
+    rgba(74,222,128,.55);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(74,222,128,.2),
+      rgba(74,222,128,.06)
+    );
+
+  box-shadow:
+    0 0 15px rgba(74,222,128,.16),
+    0 0 45px rgba(74,222,128,.08);
+}
+
+
+/* ============================================================= */
+/* MOBILE */
+/* ============================================================= */
+
+@media (max-width: 640px) {
+
+  .liquid-scene {
+    gap: 7px;
+
+    padding:
+      7vh 4vw;
+
+    opacity: .42;
+
+    mask-image:
+      radial-gradient(
+        ellipse 105% 75% at 50% 40%,
+        black 25%,
+        transparent 88%
+      );
+
+    -webkit-mask-image:
+      radial-gradient(
+        ellipse 105% 75% at 50% 40%,
+        black 25%,
+        transparent 88%
+      );
+  }
+
+
+  .liquid-capsule {
+    width:
+      clamp(31px, 9vw, 52px);
+
+    flex-basis:
+      clamp(31px, 9vw, 52px);
+  }
+
+
+  .liquid-capsule:nth-child(2),
+  .liquid-capsule:nth-child(6) {
+    display: none;
+  }
+
 
   .hero-ambient {
-    position: absolute;
-    left: 50%;
-    top: 42%;
-    width: min(1000px, 92vw);
-    height: 680px;
-    transform: translate(-50%, -50%);
-    background:
-      radial-gradient(
-        ellipse at 50% 48%,
-        rgba(92,72,235,.16) 0%,
-        rgba(67,92,230,.10) 28%,
-        rgba(92,208,188,.055) 49%,
-        transparent 73%
-      );
-    filter: blur(55px);
-    opacity: .9;
-  }
+    width: 120vw;
 
-  .hero-vignette {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(
-        90deg,
-        rgba(5,6,12,.48) 0%,
-        transparent 26%,
-        transparent 72%,
-        rgba(5,6,12,.48) 100%
-      ),
-      radial-gradient(
-        ellipse 72% 72% at 50% 45%,
-        transparent 38%,
-        rgba(5,6,12,.32) 100%
-      );
-  }
-
-  @keyframes capsuleFloat {
-    0%, 100% {
-      transform: translate3d(0, -8px, 0) scaleY(.985);
-    }
-    50% {
-      transform: translate3d(0, 13px, 0) scaleY(1.015);
-    }
-  }
-
-  /* ============================================================= */
-  /* STATUS */
-  /* ============================================================= */
-
-  .status-badge {
-    border: 1px solid rgba(255,255,255,.08);
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255,255,255,.055),
-        rgba(255,255,255,.018)
-      );
-
-    color: rgba(255,255,255,.55);
-
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,.04),
-      0 10px 30px rgba(0,0,0,.08);
-
-    backdrop-filter: blur(18px);
-  }
-
-  /* ============================================================= */
-  /* NAME */
-  /* ============================================================= */
-
-  .name-glow {
-    color: #86efac;
-
-    text-shadow:
-      0 0 8px rgba(74,222,128,.35),
-      0 0 22px rgba(74,222,128,.14);
-
-    transition:
-      color 300ms ease,
-      text-shadow 300ms ease;
-  }
-
-  .name-glow:hover {
-    color: #bbf7d0;
-
-    text-shadow:
-      0 0 10px rgba(74,222,128,.65),
-      0 0 28px rgba(74,222,128,.3);
-  }
-
-  /* ============================================================= */
-  /* HERO TITLE */
-  /* ============================================================= */
-
-  .hero-title {
-    text-wrap: balance;
-  }
-
-  .title-muted {
-    color: rgba(255,255,255,.42);
-
-    background:
-      linear-gradient(
-        180deg,
-        rgba(255,255,255,.58),
-        rgba(255,255,255,.24)
-      );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  /* ============================================================= */
-  /* SHINY TEXT */
-  /* ============================================================= */
-
-  .shiny-sec {
-    background:
-      linear-gradient(
-        110deg,
-        #7667ff 0%,
-        #a99cff 25%,
-        #ffffff 50%,
-        #6251ff 75%,
-        #7667ff 100%
-      );
-
-    background-size: 250% 100%;
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    color: transparent;
-
-    animation: shine 5s ease-in-out infinite;
-  }
-
-  @keyframes shine {
-    0%,
-    100% {
-      background-position: 100% 50%;
-    }
-
-    50% {
-      background-position: 0% 50%;
-    }
-  }
-
-  /* ============================================================= */
-  /* BUTTONS */
-  /* ============================================================= */
-
-  .primary-button {
-    color: #09090b;
-
-    background:
-      linear-gradient(
-        135deg,
-        #ffffff,
-        #e9e9eb
-      );
-
-    box-shadow:
-      0 10px 30px rgba(0,0,0,.2),
-      inset 0 1px 0 rgba(255,255,255,.8);
-
-    transition:
-      transform 300ms ease,
-      box-shadow 300ms ease;
-  }
-
-  .primary-button:hover {
-    transform: translateY(-2px);
-
-    box-shadow:
-      0 15px 35px rgba(0,0,0,.25),
-      0 0 30px rgba(255,255,255,.08);
-  }
-
-  .social-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 46px;
-    height: 46px;
-
-    border: 1px solid rgba(255,255,255,.08);
-    border-radius: 13px;
-
-    color: rgba(255,255,255,.48);
-
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255,255,255,.045),
-        rgba(255,255,255,.015)
-      );
-
-    backdrop-filter: blur(14px);
-
-    transition:
-      color 300ms ease,
-      background 300ms ease,
-      border-color 300ms ease,
-      transform 300ms ease,
-      box-shadow 300ms ease;
-  }
-
-  .social-link:hover {
-    color: white;
-
-    border-color: rgba(74,222,128,.25);
-
-    background:
-      linear-gradient(
-        135deg,
-        rgba(74,222,128,.08),
-        rgba(255,255,255,.025)
-      );
-
-    box-shadow:
-      0 0 20px rgba(74,222,128,.06);
-
-    transform: translateY(-3px);
-  }
-
-  /* ============================================================= */
-  /* GLITCH CARD */
-  /* ============================================================= */
-
-  .glitch-glow {
-    position: absolute;
-
-    width: 270px;
-    height: 270px;
-
-    border-radius: 999px;
-
-    background:
-      radial-gradient(
-        circle,
-        rgba(88,58,220,.22),
-        rgba(74,222,128,.025) 55%,
-        transparent 72%
-      );
+    height: 58vh;
 
     filter: blur(45px);
-
-    animation: pulseGlow 6s ease-in-out infinite;
   }
 
-  .glitch-card {
-    border: 1px solid rgba(255,255,255,.1);
 
-    background:
-      linear-gradient(
-        145deg,
-        rgba(255,255,255,.065),
-        rgba(255,255,255,.018)
-      );
-
-    box-shadow:
-      0 35px 80px rgba(0,0,0,.35),
-      inset 0 1px 0 rgba(255,255,255,.06);
-
-    backdrop-filter: blur(20px);
-
-    transition:
-      transform 500ms cubic-bezier(.2,.8,.2,1),
-      border-color 400ms ease;
+  .hero-grid {
+    background-size: 34px 34px;
   }
 
-  .glitch-card:hover {
-    transform: translateY(-6px) rotate(.35deg);
-
-    border-color: rgba(255,255,255,.16);
-  }
-
-  @keyframes pulseGlow {
-    0%,
-    100% {
-      opacity: .65;
-      transform: scale(.95);
-    }
-
-    50% {
-      opacity: 1;
-      transform: scale(1.05);
-    }
-  }
-
-  /* ============================================================= */
-  /* SECTION */
-  /* ============================================================= */
-
-  .section-line {
-    border-top: 1px solid rgba(255,255,255,.055);
-    border-bottom: 1px solid rgba(255,255,255,.055);
-  }
 
   .section-block {
-    padding-top: 6.5rem;
-    padding-bottom: 6.5rem;
+    padding-top: 4.5rem;
+
+    padding-bottom: 4.5rem;
   }
 
-  .section-eyebrow {
-    font-size: .7rem;
-    font-weight: 500;
-
-    text-transform: uppercase;
-    letter-spacing: .22em;
-
-    line-height: 1;
-
-    color: rgba(255,255,255,.32);
-  }
 
   .section-title {
-    max-width: 650px;
-
-    font-size: 2.25rem;
-    font-weight: 600;
-
-    line-height: 1.02;
-    letter-spacing: -.045em;
-
-    color: white;
+    font-size: 2rem;
   }
 
-  .section-title span {
-    display: block;
-    color: rgba(255,255,255,.34);
-  }
 
   .section-description {
-    max-width: 550px;
-
-    margin-top: 1.35rem;
-
-    font-size: 1rem;
-    line-height: 1.75;
-
-    color: rgba(255,255,255,.4);
+    font-size: .95rem;
   }
 
-  /* ============================================================= */
-  /* SKILLS */
-  /* ============================================================= */
 
-  .skills-panel {
-    position: relative;
-
-    padding: 1.5rem;
-
-    border: 1px solid rgba(255,255,255,.065);
-    border-radius: 24px;
-
-    background:
-      linear-gradient(
-        145deg,
-        rgba(255,255,255,.035),
-        rgba(255,255,255,.012)
-      );
-
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,.035),
-      0 25px 60px rgba(0,0,0,.12);
+  .glitch-card:hover {
+    transform: none;
   }
 
-  .skill-line {
-    display: flex;
-    align-items: center;
-    gap: .45rem;
-  }
-
-  .skill-line span {
-    display: block;
-
-    height: 3px;
-
-    border-radius: 999px;
-
-    background: rgba(255,255,255,.1);
-  }
-
-  .skill-line span:nth-child(1) {
-    width: 42px;
-    background: rgba(74,222,128,.5);
-  }
-
-  .skill-line span:nth-child(2) {
-    width: 18px;
-  }
-
-  .skill-line span:nth-child(3) {
-    width: 8px;
-  }
-
-  /* ============================================================= */
-  /* NOTE CARDS */
-  /* ============================================================= */
 
   .note-card {
-    position: relative;
+    min-height: 205px;
 
-    display: flex;
-    min-height: 230px;
-
-    flex-direction: column;
-    justify-content: space-between;
-
-    overflow: hidden;
-
-    padding: 24px;
-
-    border: 1px solid rgba(255,255,255,.07);
-    border-radius: 20px;
-
-    color: white;
-
-    background:
-      radial-gradient(
-        circle at 100% 0%,
-        rgba(74,222,128,.055),
-        transparent 35%
-      ),
-      linear-gradient(
-        145deg,
-        rgba(255,255,255,.045),
-        rgba(255,255,255,.012)
-      );
-
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,.035);
-
-    transition:
-      transform 400ms cubic-bezier(.2,.8,.2,1),
-      border-color 300ms ease,
-      box-shadow 400ms ease,
-      background 400ms ease;
+    padding: 20px;
   }
 
-  .note-card::before {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    top: 0;
-
-    width: 100%;
-    height: 1px;
-
-    background:
-      linear-gradient(
-        90deg,
-        transparent,
-        rgba(74,222,128,.35),
-        transparent
-      );
-
-    opacity: 0;
-
-    transition: opacity 300ms ease;
-  }
-
-  .note-card:hover {
-    transform: translateY(-6px);
-
-    border-color: rgba(74,222,128,.2);
-
-    background:
-      radial-gradient(
-        circle at 100% 0%,
-        rgba(74,222,128,.1),
-        transparent 40%
-      ),
-      linear-gradient(
-        145deg,
-        rgba(255,255,255,.055),
-        rgba(255,255,255,.018)
-      );
-
-    box-shadow:
-      0 25px 60px rgba(0,0,0,.22),
-      0 0 35px rgba(74,222,128,.035);
-  }
-
-  .note-card:hover::before {
-    opacity: 1;
-  }
 
   .note-number {
-    margin-bottom: 2.5rem;
-
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: .65rem;
-
-    letter-spacing: .16em;
-
-    color: rgba(255,255,255,.2);
+    margin-bottom: 2rem;
   }
 
-  .note-label {
-    display: block;
 
-    font-size: .65rem;
-    font-weight: 500;
-
-    text-transform: uppercase;
-    letter-spacing: .16em;
-
-    color: rgba(74,222,128,.7);
+  .shiny-sec {
+    white-space: normal;
   }
 
-  .note-card h3 {
-    max-width: 90%;
 
-    margin-top: .75rem;
+  /* Make glitch even softer on small screens */
 
-    font-size: 1.05rem;
-    font-weight: 500;
-
-    line-height: 1.35;
-    letter-spacing: -.015em;
-
-    color: rgba(255,255,255,.84);
+  .glitch-background {
+    opacity: .58;
   }
 
-  .note-footer {
-    display: flex;
 
-    align-items: center;
-    justify-content: space-between;
-
-    margin-top: 2rem;
-
-    font-size: .68rem;
-
-    text-transform: uppercase;
-    letter-spacing: .12em;
-
-    color: rgba(255,255,255,.25);
+  .glitch-background canvas {
+    opacity: .58 !important;
   }
 
-  .note-arrow {
-    font-size: 1.1rem;
 
-    color: rgba(255,255,255,.3);
-
-    transition:
-      color 300ms ease,
-      transform 300ms ease;
+  .glitch-card-title h3 {
+    font-size: 1.8rem;
   }
 
-  .note-card:hover .note-arrow {
-    color: #86efac;
+}
 
-    transform: translate(3px,-3px);
+
+/* ============================================================= */
+/* REDUCED MOTION */
+/* ============================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .shiny-sec,
+  .glitch-glow,
+  .liquid-scene,
+  .liquid-capsule {
+    animation: none;
   }
 
-  /* ============================================================= */
-  /* TALK BUTTON */
-  /* ============================================================= */
 
-  .talk-button {
-    color: #bbf7d0;
-
-    border: 1px solid rgba(74,222,128,.25);
-
-    background:
-      linear-gradient(
-        135deg,
-        rgba(74,222,128,.13),
-        rgba(74,222,128,.035)
-      );
-
-    box-shadow:
-      0 0 25px rgba(74,222,128,.07),
-      inset 0 1px 0 rgba(255,255,255,.04);
-
-    transition:
-      transform 300ms ease,
-      border-color 300ms ease,
-      background 300ms ease,
-      box-shadow 300ms ease;
+  .social-link,
+  .primary-button,
+  .note-card,
+  .note-arrow,
+  .talk-button,
+  .glitch-card {
+    transition: none;
   }
 
-  .talk-button:hover {
-    transform: translateY(-3px);
-
-    border-color: rgba(74,222,128,.55);
-
-    background:
-      linear-gradient(
-        135deg,
-        rgba(74,222,128,.2),
-        rgba(74,222,128,.06)
-      );
-
-    box-shadow:
-      0 0 15px rgba(74,222,128,.16),
-      0 0 45px rgba(74,222,128,.08);
-  }
-
-  /* ============================================================= */
-  /* MOBILE */
-  /* ============================================================= */
-
-  @media (max-width: 640px) {
-
-    .liquid-scene {
-      gap: 7px;
-      padding: 7vh 4vw;
-      opacity: .42;
-      mask-image: radial-gradient(ellipse 105% 75% at 50% 40%, black 25%, transparent 88%);
-      -webkit-mask-image: radial-gradient(ellipse 105% 75% at 50% 40%, black 25%, transparent 88%);
-    }
-
-    .liquid-capsule {
-      width: clamp(31px, 9vw, 52px);
-      flex-basis: clamp(31px, 9vw, 52px);
-    }
-
-    .liquid-capsule:nth-child(2),
-    .liquid-capsule:nth-child(6) {
-      display: none;
-    }
-
-    .hero-ambient {
-      width: 120vw;
-      height: 58vh;
-      filter: blur(45px);
-    }
-
-    .hero-grid {
-      background-size: 34px 34px;
-    }
-
-    .section-block {
-      padding-top: 4.5rem;
-      padding-bottom: 4.5rem;
-    }
-
-    .section-title {
-      font-size: 2rem;
-    }
-
-    .section-description {
-      font-size: .95rem;
-    }
-
-    .glitch-card:hover {
-      transform: none;
-    }
-
-    .note-card {
-      min-height: 205px;
-      padding: 20px;
-    }
-
-    .note-number {
-      margin-bottom: 2rem;
-    }
-
-    .shiny-sec {
-      white-space: normal;
-    }
-  }
-
-  /* ============================================================= */
-  /* REDUCED MOTION */
-  /* ============================================================= */
-
-  @media (prefers-reduced-motion: reduce) {
-
-    .shiny-sec,
-    .glitch-glow,
-    .liquid-scene,
-    .liquid-capsule {
-      animation: none;
-    }
-
-    .social-link,
-    .primary-button,
-    .note-card,
-    .note-arrow,
-    .talk-button,
-    .glitch-card {
-      transition: none;
-    }
-  }
+}
 
 </style>
