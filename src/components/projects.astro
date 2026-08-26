@@ -1,3 +1,7 @@
+---
+import Terminal from "../React/Terminal.tsx";
+---
+
 <section
   id="projects"
   class="text-[var(--white)] py-24 md:py-36"
@@ -5,8 +9,8 @@
   <div class="max-w-5xl mx-auto px-6">
     <div
       class="relative overflow-hidden rounded-2xl border border-[var(--white-icon-tr)]
-      bg-[#1414149c] px-8 py-16 md:px-16 md:py-24
-      text-center backdrop-blur-sm"
+      bg-[#1414149c] px-6 py-8 md:px-10 md:py-10
+      backdrop-blur-sm"
     >
       <!-- Subtle green glow -->
       <div
@@ -15,41 +19,44 @@
       ></div>
 
       <div class="relative">
-        <!-- Status indicator -->
-        <div class="mb-6 flex items-center justify-center gap-2">
-          <span
-            class="h-2 w-2 rounded-full bg-[var(--sec)]
-            shadow-[0_0_12px_var(--sec)] animate-pulse"
-          ></span>
 
-          <span
-            class="text-sm tracking-widest uppercase text-[var(--sec)] shiny-sec"
+        <!-- Project heading -->
+        <div class="mb-8 text-center">
+          <div class="mb-4 flex items-center justify-center gap-2">
+            <span
+              class="h-2 w-2 rounded-full bg-[var(--sec)]
+              shadow-[0_0_12px_var(--sec)] animate-pulse"
+            ></span>
+
+            <span
+              class="text-sm tracking-widest uppercase
+              text-[var(--sec)] shiny-sec"
+            >
+              Interactive Project
+            </span>
+          </div>
+
+          <h2
+            class="text-3xl md:text-5xl font-medium tracking-tight
+            text-[var(--white)]"
           >
-            In progress
-          </span>
+            Portfolio<span class="text-[var(--sec)]"> Terminal.</span>
+          </h2>
+
+          <p
+            class="mt-4 mx-auto max-w-2xl text-base md:text-lg
+            text-[var(--white-icon)] leading-relaxed"
+          >
+            An interactive terminal where you can explore my background,
+            skills, projects, education and contact information.
+          </p>
         </div>
 
-        <!-- Main message -->
-        <h2
-          class="text-3xl md:text-5xl font-medium tracking-tight
-          text-[var(--white)]"
-        >
-          Working on<span class="text-[var(--sec)]">.</span>
-        </h2>
+        <!-- Terminal -->
+        <div class="w-full">
+          <Terminal client:load />
+        </div>
 
-        <p
-          class="mt-4 text-lg md:text-xl text-[var(--white-icon)]
-          max-w-xl mx-auto leading-relaxed"
-        >
-          This section is currently under development.
-          <br class="hidden md:block" />
-          Will be updated shortly.
-        </p>
-
-        <!-- Decorative line -->
-        <div
-          class="mx-auto mt-8 h-px w-24 bg-[var(--sec)] opacity-60"
-        ></div>
       </div>
     </div>
   </div>
