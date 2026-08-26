@@ -9,7 +9,7 @@ import SkillsList from "../React/SkillsList.tsx";
   class="relative overflow-hidden bg-transparent text-[var(--white)]"
 >
   <!-- ========================================================= -->
-  <!-- GLOBAL / HERO BACKGROUND                                  -->
+  <!-- BACKGROUND -->
   <!-- ========================================================= -->
 
   <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
@@ -20,7 +20,7 @@ import SkillsList from "../React/SkillsList.tsx";
   <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
 
     <!-- ========================================================= -->
-    <!-- HERO                                                     -->
+    <!-- HERO -->
     <!-- ========================================================= -->
 
     <div
@@ -134,7 +134,7 @@ import SkillsList from "../React/SkillsList.tsx";
                 class="size-5"
               >
                 <path
-                  d="M18.3362 18.339H15.6707V14.1622C15.6707 13.1662 15.6505 11.8845 14.2817 11.8845C12.892 11.8845 12.6797 12.9683 12.6797 14.0887V18.339H10.0142V9.75H12.5747V10.9207H12.6092C12.967 10.2457 13.837 9.53325 15.1367 9.53325C17.8375 9.53325 18.337 11.3108 18.337 13.6245V18.339H18.3362ZM7.00373 8.57475C6.14573 8.57475 5.45648 7.88025 5.45648 7.026C5.45648 6.1725 6.14648 5.47875 7.00373 5.47875C7.85873 5.47875 8.55173 6.1725 8.55173 7.026C8.55173 7.88025 7.85798 8.57475 7.00373 8.57475ZM8.34023 18.339H5.66723V9.75H8.34023V18.339ZM19.6697 3H4.32923C3.59498 3 3.00098 3.5805 3.00098 4.29675V19.7033C3.00098 20.4202 3.59498 21 4.32923 21H19.6675C20.401 21 21.001 20.4202 21.001 19.7033V4.29675C21.001 3.5805 20.401 3 19.6675 3Z"
+                  d="M18.3362 18.339H15.6707V14.1622C15.6707 13.1662 15.6505 11.8845 14.2817 11.8845C12.892 11.8845 12.6797 12.9683 12.6797 14.0887V18.339H10.0142V9.75H12.5747V10.9207H12.6092C12.967 10.2457 13.837 9.53325 15.1367 9.53325C17.8375 9.53325 18.337 11.3108 18.337 13.6245V18.339H18.3362ZM7.00373 8.57475C6.14573 8.57475 5.45648 7.8805 5.45648 7.026C5.45648 6.1725 6.14648 5.47875 7.00373 5.47875C7.85873 5.47875 8.55173 6.1725 8.55173 7.026C8.55173 7.8805 7.85798 8.57475 7.00373 8.57475ZM8.34023 18.339H5.66723V9.75H8.34023V18.339ZM19.6697 3H4.32923C3.59498 3 3.00098 3.5805 3.00098 4.29675V19.7033C3.00098 20.4202 3.59498 21 4.32923 21H19.6675C20.401 21 21.001 20.4202 21.001 19.7033V4.29675C21.001 3.5805 20.401 3 19.6697 3Z"
                 />
               </svg>
             </a>
@@ -167,7 +167,9 @@ import SkillsList from "../React/SkillsList.tsx";
           class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-white/30"
         >
           <span class="inline-flex items-center gap-2">
-            <span class="h-1.5 w-1.5 rounded-full bg-emerald-400/70"></span>
+            <span
+              class="h-1.5 w-1.5 rounded-full bg-emerald-400/70"
+            ></span>
             Computer Science
           </span>
 
@@ -177,10 +179,7 @@ import SkillsList from "../React/SkillsList.tsx";
         </div>
       </div>
 
-      <!-- ======================================================= -->
-      <!-- RIGHT / GLITCH CARD                                     -->
-      <!-- ======================================================= -->
-
+      <!-- RIGHT -->
       <div class="relative flex justify-center lg:justify-end">
 
         <div class="glitch-glow"></div>
@@ -201,8 +200,9 @@ import SkillsList from "../React/SkillsList.tsx";
             class="absolute left-[15%] right-[15%] top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"
           ></div>
 
-          <div class="relative h-full w-full overflow-hidden rounded-[1.65rem]">
-
+          <div
+            class="relative h-full w-full overflow-hidden rounded-[1.65rem]"
+          >
             <LetterGlitch
               client:load
               glitchColors={["#270d6d", "#1f0b81", "#241a38"]}
@@ -215,7 +215,6 @@ import SkillsList from "../React/SkillsList.tsx";
             <div
               class="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent"
             ></div>
-
           </div>
 
           <div
@@ -224,7 +223,6 @@ import SkillsList from "../React/SkillsList.tsx";
             <span
               class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(74,222,128,.8)]"
             ></span>
-
             {"< build />"}
           </div>
 
@@ -239,10 +237,11 @@ import SkillsList from "../React/SkillsList.tsx";
     </div>
 
     <!-- ========================================================= -->
-    <!-- TECHNOLOGIES                                             -->
+    <!-- TECHNOLOGIES -->
     <!-- ========================================================= -->
 
     <div class="section-line">
+
       <div class="py-10 sm:py-12">
 
         <div class="mb-8 flex items-center justify-between gap-4">
@@ -262,10 +261,11 @@ import SkillsList from "../React/SkillsList.tsx";
         <LogoWall />
 
       </div>
+
     </div>
 
     <!-- ========================================================= -->
-    <!-- SKILLS                                                   -->
+    <!-- SKILLS -->
     <!-- ========================================================= -->
 
     <div class="section-block">
@@ -291,11 +291,13 @@ import SkillsList from "../React/SkillsList.tsx";
           </p>
 
           <div class="mt-8 hidden lg:block">
+
             <div class="skill-line">
               <span></span>
               <span></span>
               <span></span>
             </div>
+
           </div>
 
         </div>
@@ -305,10 +307,11 @@ import SkillsList from "../React/SkillsList.tsx";
         </div>
 
       </div>
+
     </div>
 
     <!-- ========================================================= -->
-    <!-- NOTES                                                     -->
+    <!-- NOTES -->
     <!-- ========================================================= -->
 
     <div
@@ -334,9 +337,10 @@ import SkillsList from "../React/SkillsList.tsx";
 
       </div>
 
+      <!-- Notes -->
+
       <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 
-        <!-- NOTE 01 -->
         <a
           href="https://app.notion.com/p/Tablas-Hash-Vista-Practica-3a762e0580cb80de84eee02fade92863?source=copy_link"
           target="_blank"
@@ -355,7 +359,6 @@ import SkillsList from "../React/SkillsList.tsx";
           </div>
         </a>
 
-        <!-- NOTE 02 -->
         <a
           href="https://app.notion.com/p/Computer-from-hardware-perspective-3a362e0580cb80cfbfa5f1228d060bcc?source=copy_link"
           target="_blank"
@@ -374,7 +377,6 @@ import SkillsList from "../React/SkillsList.tsx";
           </div>
         </a>
 
-        <!-- NOTE 03 -->
         <a
           href="https://app.notion.com/p/Tablas-Hash-Definiciones-3a662e0580cb80089dd9c287f8864a93?source=copy_link"
           target="_blank"
@@ -393,7 +395,6 @@ import SkillsList from "../React/SkillsList.tsx";
           </div>
         </a>
 
-        <!-- NOTE 04 -->
         <a
           href="https://app.notion.com/p/Git-Github-3a562e0580cb801089e5d47fbbaa221f?source=copy_link"
           target="_blank"
@@ -412,7 +413,6 @@ import SkillsList from "../React/SkillsList.tsx";
           </div>
         </a>
 
-        <!-- NOTE 05 -->
         <a
           href="https://app.notion.com/p/Syst-me-Signaux-Analogue-vs-Digitale-3b062e0580cb80d3ba80cb3e8232dee1?source=copy_link"
           target="_blank"
@@ -431,7 +431,6 @@ import SkillsList from "../React/SkillsList.tsx";
           </div>
         </a>
 
-        <!-- NOTE 06 -->
         <a
           href="https://app.notion.com/p/Java-3a262e0580cb8037bee0c0e9aa4b480c?source=copy_link"
           target="_blank"
@@ -451,25 +450,26 @@ import SkillsList from "../React/SkillsList.tsx";
         </a>
 
       </div>
+
     </div>
 
     <!-- ========================================================= -->
-    <!-- CTA — LIQUID GLASS ONLY HERE                             -->
+    <!-- CTA -->
     <!-- ========================================================= -->
 
     <div
-      class="cta-section relative isolate min-h-[500px] overflow-hidden border-t border-white/[0.06] py-24 text-center sm:py-32"
+      class="cta-section relative min-h-[500px] overflow-hidden border-t border-white/[0.06] py-24 text-center sm:py-32"
     >
 
       <!-- ======================================================= -->
-      <!-- LIQUID GLASS BACKGROUND                                 -->
-      <!-- IMPORTANT: EVERYTHING BELOW IS CONTAINED IN CTA         -->
+      <!-- LIQUID GLASS BACKGROUND -->
       <!-- ======================================================= -->
 
       <div
         class="cta-liquid-scene"
         aria-hidden="true"
       >
+
         <div class="cta-liquid-capsule cta-capsule-1"></div>
         <div class="cta-liquid-capsule cta-capsule-2"></div>
         <div class="cta-liquid-capsule cta-capsule-3"></div>
@@ -478,32 +478,44 @@ import SkillsList from "../React/SkillsList.tsx";
         <div class="cta-liquid-capsule cta-capsule-6"></div>
         <div class="cta-liquid-capsule cta-capsule-7"></div>
         <div class="cta-liquid-capsule cta-capsule-8"></div>
+
       </div>
+
+      <!-- Atmospheric glow -->
 
       <div
         class="cta-liquid-atmosphere"
         aria-hidden="true"
       ></div>
 
+      <!-- Dark vignette -->
+
       <div
         class="cta-liquid-vignette"
         aria-hidden="true"
       ></div>
 
-      <!-- Center glow -->
+      <!-- Center readability -->
+
       <div
-        class="absolute left-1/2 top-1/2 z-0 h-[280px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/[0.045] blur-[120px]"
+        class="cta-readable-center"
+        aria-hidden="true"
       ></div>
 
+      <!-- ======================================================= -->
       <!-- CTA CONTENT -->
-      <div class="relative z-10">
+      <!-- ======================================================= -->
+
+      <div
+        class="cta-content relative z-20 mx-auto max-w-4xl"
+      >
 
         <p class="section-eyebrow mb-5">
           Have an idea?
         </p>
 
         <h2
-          class="mx-auto max-w-3xl text-4xl font-semibold leading-[0.95] tracking-[-0.055em] text-white sm:text-6xl"
+          class="cta-title mx-auto max-w-3xl text-4xl font-semibold leading-[0.95] tracking-[-0.055em] text-white sm:text-6xl"
         >
           Let's build
           <span class="shiny-sec">
@@ -512,7 +524,7 @@ import SkillsList from "../React/SkillsList.tsx";
         </h2>
 
         <p
-          class="mx-auto mt-6 max-w-lg text-base leading-[1.7] text-white/40 sm:text-lg"
+          class="mx-auto mt-6 max-w-lg text-base leading-[1.7] text-white/55 sm:text-lg"
         >
           Whether it's a project, an idea or simply a conversation,
           I'd love to hear from you.
@@ -522,6 +534,7 @@ import SkillsList from "../React/SkillsList.tsx";
           href="#contact"
           class="talk-button group mt-9 inline-flex items-center gap-2.5 rounded-xl px-6 py-3.5 text-sm font-medium"
         >
+
           <span>Let's talk</span>
 
           <svg
@@ -532,13 +545,15 @@ import SkillsList from "../React/SkillsList.tsx";
           >
             <path
               fill-rule="evenodd"
-              d="M3 10a.75.75 0 0 1 .75-.75h10.69l-3.22-3.22a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H3.75A.75.75 0 0 1 3 10Z"
+              d="M3 10a.75.75 0 0 1 .75-.75h10.69l-3.22-3.22a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 1 1-1.06-1.06l3.22-3.22H3.75A.75.75 0 0 1 3 10Z"
               clip-rule="evenodd"
             />
           </svg>
+
         </a>
 
       </div>
+
     </div>
 
   </div>
@@ -546,1034 +561,1103 @@ import SkillsList from "../React/SkillsList.tsx";
 
 <style is:global>
 
-  /* ============================================================= */
-  /* HERO BACKGROUND                                               */
-  /* ============================================================= */
+/* ============================================================= */
+/* PAGE BACKGROUND */
+/* ============================================================= */
 
-  .hero-grid {
-    background-image:
-      linear-gradient(
-        rgba(255,255,255,.025) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        90deg,
-        rgba(255,255,255,.025) 1px,
-        transparent 1px
-      );
+.hero-grid {
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    );
 
-    background-size: 52px 52px;
+  background-size: 52px 52px;
 
-    mask-image:
-      radial-gradient(
-        ellipse 70% 60% at 50% 25%,
-        black 0%,
-        transparent 75%
-      );
+  mask-image:
+    radial-gradient(
+      ellipse 70% 60% at 50% 25%,
+      black 0%,
+      transparent 75%
+    );
+}
+
+.noise-layer {
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+}
+
+
+/* ============================================================= */
+/* STATUS */
+/* ============================================================= */
+
+.status-badge {
+  border: 1px solid rgba(255,255,255,.08);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.055),
+      rgba(255,255,255,.018)
+    );
+
+  color: rgba(255,255,255,.55);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.04),
+    0 10px 30px rgba(0,0,0,.08);
+
+  backdrop-filter: blur(18px);
+}
+
+
+/* ============================================================= */
+/* NAME */
+/* ============================================================= */
+
+.name-glow {
+  color: #86efac;
+
+  text-shadow:
+    0 0 8px rgba(74,222,128,.35),
+    0 0 22px rgba(74,222,128,.14);
+
+  transition:
+    color 300ms ease,
+    text-shadow 300ms ease;
+}
+
+.name-glow:hover {
+  color: #bbf7d0;
+
+  text-shadow:
+    0 0 10px rgba(74,222,128,.65),
+    0 0 28px rgba(74,222,128,.3);
+}
+
+
+/* ============================================================= */
+/* HERO TITLE */
+/* ============================================================= */
+
+.hero-title {
+  text-wrap: balance;
+}
+
+.title-muted {
+  color: rgba(255,255,255,.42);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.58),
+      rgba(255,255,255,.24)
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* ============================================================= */
+/* SHINY TEXT */
+/* ============================================================= */
+
+.shiny-sec {
+  background:
+    linear-gradient(
+      110deg,
+      #7667ff 0%,
+      #a99cff 25%,
+      #ffffff 50%,
+      #6251ff 75%,
+      #7667ff 100%
+    );
+
+  background-size: 250% 100%;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+
+  animation:
+    shine 5s ease-in-out infinite;
+}
+
+@keyframes shine {
+
+  0%,
+  100% {
+    background-position: 100% 50%;
   }
 
-  .noise-layer {
-    background-image:
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+  50% {
+    background-position: 0% 50%;
+  }
+}
+
+
+/* ============================================================= */
+/* BUTTONS */
+/* ============================================================= */
+
+.primary-button {
+  color: #09090b;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #e9e9eb
+    );
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.2),
+    inset 0 1px 0 rgba(255,255,255,.8);
+
+  transition:
+    transform 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.primary-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.25),
+    0 0 30px rgba(255,255,255,.08);
+}
+
+.social-link {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 46px;
+  height: 46px;
+
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 13px;
+
+  color: rgba(255,255,255,.48);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.045),
+      rgba(255,255,255,.015)
+    );
+
+  backdrop-filter: blur(14px);
+
+  transition:
+    color 300ms ease,
+    background 300ms ease,
+    border-color 300ms ease,
+    transform 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.social-link:hover {
+  color: white;
+
+  border-color: rgba(74,222,128,.25);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(74,222,128,.08),
+      rgba(255,255,255,.025)
+    );
+
+  box-shadow:
+    0 0 20px rgba(74,222,128,.06);
+
+  transform: translateY(-3px);
+}
+
+
+/* ============================================================= */
+/* GLITCH CARD */
+/* ============================================================= */
+
+.glitch-glow {
+  position: absolute;
+
+  width: 270px;
+  height: 270px;
+
+  border-radius: 999px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(88,58,220,.22),
+      rgba(74,222,128,.025) 55%,
+      transparent 72%
+    );
+
+  filter: blur(45px);
+
+  animation:
+    pulseGlow 6s ease-in-out infinite;
+}
+
+.glitch-card {
+  border: 1px solid rgba(255,255,255,.1);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.065),
+      rgba(255,255,255,.018)
+    );
+
+  box-shadow:
+    0 35px 80px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.06);
+
+  backdrop-filter: blur(20px);
+
+  transition:
+    transform 500ms cubic-bezier(.2,.8,.2,1),
+    border-color 400ms ease;
+}
+
+.glitch-card:hover {
+  transform:
+    translateY(-6px)
+    rotate(.35deg);
+
+  border-color: rgba(255,255,255,.16);
+}
+
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    opacity: .65;
+    transform: scale(.95);
   }
 
-  /* ============================================================= */
-  /* CTA LIQUID GLASS                                             */
-  /* THIS EFFECT ONLY EXISTS INSIDE .cta-section                  */
-  /* ============================================================= */
-
-  .cta-section {
-    isolation: isolate;
-    contain: paint;
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
   }
+}
+
+
+/* ============================================================= */
+/* SECTIONS */
+/* ============================================================= */
+
+.section-line {
+  border-top: 1px solid rgba(255,255,255,.055);
+  border-bottom: 1px solid rgba(255,255,255,.055);
+}
+
+.section-block {
+  padding-top: 6.5rem;
+  padding-bottom: 6.5rem;
+}
+
+.section-eyebrow {
+  font-size: .7rem;
+  font-weight: 500;
+
+  text-transform: uppercase;
+  letter-spacing: .22em;
+
+  line-height: 1;
+
+  color: rgba(255,255,255,.32);
+}
+
+.section-title {
+  max-width: 650px;
+
+  font-size: 2.25rem;
+  font-weight: 600;
+
+  line-height: 1.02;
+  letter-spacing: -.045em;
+
+  color: white;
+}
+
+.section-title span {
+  display: block;
+
+  color: rgba(255,255,255,.34);
+}
+
+.section-description {
+  max-width: 550px;
+
+  margin-top: 1.35rem;
+
+  font-size: 1rem;
+  line-height: 1.75;
+
+  color: rgba(255,255,255,.4);
+}
+
+
+/* ============================================================= */
+/* SKILLS */
+/* ============================================================= */
+
+.skills-panel {
+  position: relative;
+
+  padding: 1.5rem;
+
+  border: 1px solid rgba(255,255,255,.065);
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.035),
+      rgba(255,255,255,.012)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.035),
+    0 25px 60px rgba(0,0,0,.12);
+}
+
+.skill-line {
+  display: flex;
+
+  align-items: center;
+
+  gap: .45rem;
+}
+
+.skill-line span {
+  display: block;
+
+  height: 3px;
+
+  border-radius: 999px;
+
+  background: rgba(255,255,255,.1);
+}
+
+.skill-line span:nth-child(1) {
+  width: 42px;
+
+  background: rgba(74,222,128,.5);
+}
+
+.skill-line span:nth-child(2) {
+  width: 18px;
+}
+
+.skill-line span:nth-child(3) {
+  width: 8px;
+}
+
+
+/* ============================================================= */
+/* NOTE CARDS */
+/* ============================================================= */
+
+.note-card {
+  position: relative;
+
+  display: flex;
+
+  min-height: 230px;
+
+  flex-direction: column;
+  justify-content: space-between;
+
+  overflow: hidden;
+
+  padding: 24px;
+
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 20px;
+
+  color: white;
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(74,222,128,.055),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.045),
+      rgba(255,255,255,.012)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.035);
+
+  transition:
+    transform 400ms cubic-bezier(.2,.8,.2,1),
+    border-color 300ms ease,
+    box-shadow 400ms ease,
+    background 400ms ease;
+}
+
+.note-card::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(74,222,128,.35),
+      transparent
+    );
+
+  opacity: 0;
+
+  transition: opacity 300ms ease;
+}
+
+.note-card:hover {
+  transform: translateY(-6px);
+
+  border-color: rgba(74,222,128,.2);
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(74,222,128,.1),
+      transparent 40%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.055),
+      rgba(255,255,255,.018)
+    );
+
+  box-shadow:
+    0 25px 60px rgba(0,0,0,.22),
+    0 0 35px rgba(74,222,128,.035);
+}
+
+.note-card:hover::before {
+  opacity: 1;
+}
+
+.note-number {
+  margin-bottom: 2.5rem;
+
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    monospace;
+
+  font-size: .65rem;
+
+  letter-spacing: .16em;
+
+  color: rgba(255,255,255,.2);
+}
+
+.note-label {
+  display: block;
+
+  font-size: .65rem;
+  font-weight: 500;
+
+  text-transform: uppercase;
+  letter-spacing: .16em;
+
+  color: rgba(74,222,128,.7);
+}
+
+.note-card h3 {
+  max-width: 90%;
+
+  margin-top: .75rem;
+
+  font-size: 1.05rem;
+  font-weight: 500;
+
+  line-height: 1.35;
+  letter-spacing: -.015em;
+
+  color: rgba(255,255,255,.84);
+}
+
+.note-footer {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 2rem;
+
+  font-size: .68rem;
+
+  text-transform: uppercase;
+  letter-spacing: .12em;
+
+  color: rgba(255,255,255,.25);
+}
+
+.note-arrow {
+  font-size: 1.1rem;
+
+  color: rgba(255,255,255,.3);
+
+  transition:
+    color 300ms ease,
+    transform 300ms ease;
+}
+
+.note-card:hover .note-arrow {
+  color: #86efac;
+
+  transform:
+    translate(3px,-3px);
+}
+
+
+/* ============================================================= */
+/* CTA LIQUID GLASS */
+/* ============================================================= */
+
+.cta-section {
+  isolation: isolate;
+}
+
+
+/* Liquid background */
+
+.cta-liquid-scene {
+  position: absolute;
+
+  inset: -10% -7%;
+
+  z-index: -3;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: clamp(9px, 1.35vw, 22px);
+
+  padding: 5vh 7vw;
+
+  opacity: .72;
+
+  filter: saturate(1.08);
+
+  transform: translateZ(0);
+
+  mask-image:
+    radial-gradient(
+      ellipse 82% 88% at 50% 48%,
+      black 28%,
+      rgba(0,0,0,.9) 58%,
+      transparent 92%
+    );
+
+  -webkit-mask-image:
+    radial-gradient(
+      ellipse 82% 88% at 50% 48%,
+      black 28%,
+      rgba(0,0,0,.9) 58%,
+      transparent 92%
+    );
+}
+
+.cta-liquid-capsule {
+  position: relative;
+
+  width: clamp(42px, 6.6vw, 105px);
+
+  height: 92%;
+
+  flex: 0 1 clamp(42px, 6.6vw, 105px);
+
+  border-radius: 999px;
+
+  overflow: hidden;
+
+  isolation: isolate;
+
+  background:
+    linear-gradient(
+      180deg,
+      #d9b8ff 0%,
+      #a875f4 16%,
+      #6945e8 31%,
+      #3035d9 47%,
+      #345be8 59%,
+      #63a5e9 70%,
+      #8edbcf 82%,
+      #baf0d1 94%,
+      #ddf7e4 100%
+    );
+
+  border: 1px solid rgba(255,255,255,.17);
+
+  box-shadow:
+    inset 7px 0 18px rgba(255,255,255,.08),
+    inset -9px 0 22px rgba(21,17,74,.15),
+    inset 0 1px 0 rgba(255,255,255,.36),
+    0 20px 48px rgba(42,29,123,.16),
+    0 0 34px rgba(86,73,226,.11);
+
+  opacity: .9;
+
+  transform-origin: center;
+
+  animation:
+    ctaCapsuleFloat
+    14s cubic-bezier(.45,.05,.55,.95)
+    infinite;
+}
+
+.cta-liquid-capsule::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: inherit;
+
+  background:
+    radial-gradient(
+      ellipse 72% 22% at 50% 15%,
+      rgba(255,255,255,.29),
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 95% 28% at 50% 78%,
+      rgba(184,250,222,.22),
+      transparent 72%
+    );
+
+  mix-blend-mode: screen;
+
+  opacity: .9;
+}
+
+.cta-liquid-capsule::after {
+  content: "";
+
+  position: absolute;
+
+  top: 2%;
+  left: 8%;
+
+  width: 23%;
+  height: 94%;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.32),
+      rgba(255,255,255,.09) 24%,
+      rgba(255,255,255,.018) 58%,
+      transparent 100%
+    );
+
+  filter: blur(5px);
+
+  opacity: .72;
+}
+
+
+/* Capsule positions */
+
+.cta-capsule-1 {
+  height: 98%;
+  margin-top: -5%;
+  animation-delay: -1s;
+}
+
+.cta-capsule-2 {
+  height: 74%;
+  margin-top: 9%;
+  animation-delay: -5s;
+}
+
+.cta-capsule-3 {
+  height: 88%;
+  margin-top: 0%;
+  animation-delay: -9s;
+}
+
+.cta-capsule-4 {
+  height: 67%;
+  margin-top: 14%;
+  animation-delay: -3s;
+}
+
+.cta-capsule-5 {
+  height: 101%;
+  margin-top: -6%;
+  animation-delay: -7s;
+}
+
+.cta-capsule-6 {
+  height: 79%;
+  margin-top: 7%;
+  animation-delay: -11s;
+}
+
+.cta-capsule-7 {
+  height: 91%;
+  margin-top: -2%;
+  animation-delay: -4s;
+}
+
+.cta-capsule-8 {
+  height: 70%;
+  margin-top: 12%;
+  animation-delay: -8s;
+}
+
+
+/* ============================================================= */
+/* CTA ATMOSPHERE */
+/* ============================================================= */
+
+.cta-liquid-atmosphere {
+  position: absolute;
+
+  z-index: -2;
+
+  left: 50%;
+  top: 50%;
+
+  width: min(900px, 95vw);
+
+  height: 500px;
+
+  transform:
+    translate(-50%, -50%);
+
+  background:
+    radial-gradient(
+      ellipse at 50% 50%,
+      rgba(105,72,235,.16) 0%,
+      rgba(64,111,232,.09) 28%,
+      rgba(94,214,191,.055) 52%,
+      transparent 74%
+    );
+
+  filter: blur(55px);
+
+  opacity: .9;
+
+  pointer-events: none;
+}
+
+
+/* ============================================================= */
+/* CTA VIGNETTE */
+/* ============================================================= */
+
+.cta-liquid-vignette {
+  position: absolute;
+
+  z-index: -1;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5,6,12,.58),
+      transparent 25%,
+      transparent 75%,
+      rgba(5,6,12,.58)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(5,6,12,.32),
+      transparent 24%,
+      transparent 76%,
+      rgba(5,6,12,.42)
+    ),
+    radial-gradient(
+      ellipse 72% 82% at 50% 50%,
+      transparent 28%,
+      rgba(5,6,12,.34) 100%
+    );
+}
+
+
+/* ============================================================= */
+/* CENTER READABILITY */
+/* ============================================================= */
+
+.cta-readable-center {
+  position: absolute;
+
+  z-index: -1;
+
+  left: 50%;
+  top: 50%;
+
+  width: min(780px, 90%);
+
+  height: 360px;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(5,6,12,.46) 0%,
+      rgba(5,6,12,.30) 38%,
+      rgba(5,6,12,.10) 65%,
+      transparent 78%
+    );
+
+  filter: blur(18px);
+
+  pointer-events: none;
+}
+
+
+/* ============================================================= */
+/* CTA CONTENT */
+/* ============================================================= */
+
+.cta-content {
+  position: relative;
+
+  z-index: 20;
+
+  text-shadow:
+    0 2px 20px rgba(0,0,0,.45),
+    0 0 35px rgba(0,0,0,.25);
+}
+
+.cta-title {
+  position: relative;
+
+  z-index: 21;
+}
+
+
+/* ============================================================= */
+/* CTA BUTTON */
+/* ============================================================= */
+
+.talk-button {
+  color: #bbf7d0;
+
+  border: 1px solid rgba(74,222,128,.25);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(74,222,128,.13),
+      rgba(74,222,128,.035)
+    );
+
+  box-shadow:
+    0 0 25px rgba(74,222,128,.07),
+    inset 0 1px 0 rgba(255,255,255,.04);
+
+  transition:
+    transform 300ms ease,
+    border-color 300ms ease,
+    background 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.talk-button:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(74,222,128,.55);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(74,222,128,.2),
+      rgba(74,222,128,.06)
+    );
+
+  box-shadow:
+    0 0 15px rgba(74,222,128,.16),
+    0 0 45px rgba(74,222,128,.08);
+}
+
+
+/* ============================================================= */
+/* CTA ANIMATION */
+/* ============================================================= */
+
+@keyframes ctaCapsuleFloat {
+
+  0%,
+  100% {
+    transform:
+      translate3d(0, -7px, 0)
+      scaleY(.988);
+  }
+
+  50% {
+    transform:
+      translate3d(0, 11px, 0)
+      scaleY(1.012);
+  }
+}
+
+
+/* ============================================================= */
+/* MOBILE */
+/* ============================================================= */
+
+@media (max-width: 640px) {
 
   .cta-liquid-scene {
-    position: absolute;
-    inset: -10% -7%;
+    inset: -12% -10%;
 
-    z-index: -3;
+    gap: 6px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 6vh 3vw;
 
-    gap: clamp(9px, 1.35vw, 22px);
-
-    padding: 5vh 7vw;
-
-    opacity: .72;
-
-    filter: saturate(1.08);
-
-    transform: translateZ(0);
-
-    pointer-events: none;
+    opacity: .56;
 
     mask-image:
       radial-gradient(
-        ellipse 82% 88% at 50% 48%,
-        black 28%,
-        rgba(0,0,0,.9) 58%,
-        transparent 92%
+        ellipse 112% 82% at 50% 48%,
+        black 22%,
+        transparent 90%
       );
 
     -webkit-mask-image:
       radial-gradient(
-        ellipse 82% 88% at 50% 48%,
-        black 28%,
-        rgba(0,0,0,.9) 58%,
-        transparent 92%
+        ellipse 112% 82% at 50% 48%,
+        black 22%,
+        transparent 90%
       );
   }
 
   .cta-liquid-capsule {
-    position: relative;
+    width: clamp(27px, 8vw, 48px);
 
-    width: clamp(42px, 6.6vw, 105px);
-
-    height: 92%;
-
-    flex: 0 1 clamp(42px, 6.6vw, 105px);
-
-    border-radius: 999px;
-
-    overflow: hidden;
-
-    isolation: isolate;
-
-    background:
-      linear-gradient(
-        180deg,
-        #d9b8ff 0%,
-        #a875f4 16%,
-        #6945e8 31%,
-        #3035d9 47%,
-        #345be8 59%,
-        #63a5e9 70%,
-        #8edbcf 82%,
-        #baf0d1 94%,
-        #ddf7e4 100%
-      );
-
-    border: 1px solid rgba(255,255,255,.17);
-
-    box-shadow:
-      inset 7px 0 18px rgba(255,255,255,.08),
-      inset -9px 0 22px rgba(21,17,74,.15),
-      inset 0 1px 0 rgba(255,255,255,.36),
-      0 20px 48px rgba(42,29,123,.16),
-      0 0 34px rgba(86,73,226,.11);
-
-    opacity: .9;
-
-    transform-origin: center;
-
-    animation:
-      ctaCapsuleFloat
-      14s
-      cubic-bezier(.45,.05,.55,.95)
-      infinite;
+    flex-basis:
+      clamp(27px, 8vw, 48px);
   }
 
-  .cta-liquid-capsule::before {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    border-radius: inherit;
-
-    background:
-      radial-gradient(
-        ellipse 72% 22% at 50% 15%,
-        rgba(255,255,255,.29),
-        transparent 72%
-      ),
-      radial-gradient(
-        ellipse 95% 28% at 50% 78%,
-        rgba(184,250,222,.22),
-        transparent 72%
-      );
-
-    mix-blend-mode: screen;
-
-    opacity: .9;
-  }
-
-  .cta-liquid-capsule::after {
-    content: "";
-
-    position: absolute;
-
-    top: 2%;
-    left: 8%;
-
-    width: 23%;
-    height: 94%;
-
-    border-radius: 999px;
-
-    background:
-      linear-gradient(
-        180deg,
-        rgba(255,255,255,.32),
-        rgba(255,255,255,.09) 24%,
-        rgba(255,255,255,.018) 58%,
-        transparent 100%
-      );
-
-    filter: blur(5px);
-
-    opacity: .72;
-  }
-
-  .cta-capsule-1 {
-    height: 98%;
-    margin-top: -5%;
-    animation-delay: -1s;
-  }
-
-  .cta-capsule-2 {
-    height: 74%;
-    margin-top: 9%;
-    animation-delay: -5s;
-  }
-
-  .cta-capsule-3 {
-    height: 88%;
-    margin-top: 0%;
-    animation-delay: -9s;
-  }
-
-  .cta-capsule-4 {
-    height: 67%;
-    margin-top: 14%;
-    animation-delay: -3s;
-  }
-
-  .cta-capsule-5 {
-    height: 101%;
-    margin-top: -6%;
-    animation-delay: -7s;
-  }
-
-  .cta-capsule-6 {
-    height: 79%;
-    margin-top: 7%;
-    animation-delay: -11s;
-  }
-
-  .cta-capsule-7 {
-    height: 91%;
-    margin-top: -2%;
-    animation-delay: -4s;
-  }
-
-  .cta-capsule-8 {
-    height: 70%;
-    margin-top: 12%;
-    animation-delay: -8s;
+  .cta-liquid-capsule:nth-child(2),
+  .cta-liquid-capsule:nth-child(7) {
+    display: none;
   }
 
   .cta-liquid-atmosphere {
-    position: absolute;
+    width: 125vw;
 
-    z-index: -2;
-
-    left: 50%;
-    top: 50%;
-
-    width: min(900px, 95vw);
-    height: 500px;
-
-    transform: translate(-50%, -50%);
-
-    background:
-      radial-gradient(
-        ellipse at 50% 50%,
-        rgba(105,72,235,.16) 0%,
-        rgba(64,111,232,.09) 28%,
-        rgba(94,214,191,.055) 52%,
-        transparent 74%
-      );
-
-    filter: blur(55px);
-
-    opacity: .9;
-
-    pointer-events: none;
-  }
-
-  .cta-liquid-vignette {
-    position: absolute;
-
-    z-index: -1;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    background:
-      linear-gradient(
-        90deg,
-        rgba(5,6,12,.58),
-        transparent 25%,
-        transparent 75%,
-        rgba(5,6,12,.58)
-      ),
-      linear-gradient(
-        180deg,
-        rgba(5,6,12,.32),
-        transparent 24%,
-        transparent 76%,
-        rgba(5,6,12,.42)
-      ),
-      radial-gradient(
-        ellipse 72% 82% at 50% 50%,
-        transparent 28%,
-        rgba(5,6,12,.34) 100%
-      );
-  }
-
-  @keyframes ctaCapsuleFloat {
-
-    0%,
-    100% {
-      transform:
-        translate3d(0, -7px, 0)
-        scaleY(.988);
-    }
-
-    50% {
-      transform:
-        translate3d(0, 11px, 0)
-        scaleY(1.012);
-    }
-  }
-
-  /* ============================================================= */
-  /* STATUS                                                        */
-  /* ============================================================= */
-
-  .status-badge {
-    border: 1px solid rgba(255,255,255,.08);
-
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255,255,255,.055),
-        rgba(255,255,255,.018)
-      );
-
-    color: rgba(255,255,255,.55);
-
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,.04),
-      0 10px 30px rgba(0,0,0,.08);
-
-    backdrop-filter: blur(18px);
-  }
-
-  /* ============================================================= */
-  /* NAME                                                          */
-  /* ============================================================= */
-
-  .name-glow {
-    color: #86efac;
-
-    text-shadow:
-      0 0 8px rgba(74,222,128,.35),
-      0 0 22px rgba(74,222,128,.14);
-
-    transition:
-      color 300ms ease,
-      text-shadow 300ms ease;
-  }
-
-  .name-glow:hover {
-    color: #bbf7d0;
-
-    text-shadow:
-      0 0 10px rgba(74,222,128,.65),
-      0 0 28px rgba(74,222,128,.3);
-  }
-
-  /* ============================================================= */
-  /* HERO TITLE                                                    */
-  /* ============================================================= */
-
-  .hero-title {
-    text-wrap: balance;
-  }
-
-  .title-muted {
-    color: rgba(255,255,255,.42);
-
-    background:
-      linear-gradient(
-        180deg,
-        rgba(255,255,255,.58),
-        rgba(255,255,255,.24)
-      );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    -webkit-text-fill-color: transparent;
-  }
-
-  /* ============================================================= */
-  /* SHINY TEXT                                                    */
-  /* ============================================================= */
-
-  .shiny-sec {
-    background:
-      linear-gradient(
-        110deg,
-        #7667ff 0%,
-        #a99cff 25%,
-        #ffffff 50%,
-        #6251ff 75%,
-        #7667ff 100%
-      );
-
-    background-size: 250% 100%;
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    color: transparent;
-
-    animation:
-      shine
-      5s
-      ease-in-out
-      infinite;
-  }
-
-  @keyframes shine {
-
-    0%,
-    100% {
-      background-position: 100% 50%;
-    }
-
-    50% {
-      background-position: 0% 50%;
-    }
-  }
-
-  /* ============================================================= */
-  /* BUTTONS                                                       */
-  /* ============================================================= */
-
-  .primary-button {
-    color: #09090b;
-
-    background:
-      linear-gradient(
-        135deg,
-        #ffffff,
-        #e9e9eb
-      );
-
-    box-shadow:
-      0 10px 30px rgba(0,0,0,.2),
-      inset 0 1px 0 rgba(255,255,255,.8);
-
-    transition:
-      transform 300ms ease,
-      box-shadow 300ms ease;
-  }
-
-  .primary-button:hover {
-    transform: translateY(-2px);
-
-    box-shadow:
-      0 15px 35px rgba(0,0,0,.25),
-      0 0 30px rgba(255,255,255,.08);
-  }
-
-  .social-link {
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    width: 46px;
-    height: 46px;
-
-    border: 1px solid rgba(255,255,255,.08);
-
-    border-radius: 13px;
-
-    color: rgba(255,255,255,.48);
-
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255,255,255,.045),
-        rgba(255,255,255,.015)
-      );
-
-    backdrop-filter: blur(14px);
-
-    transition:
-      color 300ms ease,
-      background 300ms ease,
-      border-color 300ms ease,
-      transform 300ms ease,
-      box-shadow 300ms ease;
-  }
-
-  .social-link:hover {
-    color: white;
-
-    border-color: rgba(74,222,128,.25);
-
-    background:
-      linear-gradient(
-        135deg,
-        rgba(74,222,128,.08),
-        rgba(255,255,255,.025)
-      );
-
-    box-shadow:
-      0 0 20px rgba(74,222,128,.06);
-
-    transform: translateY(-3px);
-  }
-
-  /* ============================================================= */
-  /* GLITCH CARD                                                   */
-  /* ============================================================= */
-
-  .glitch-glow {
-    position: absolute;
-
-    width: 270px;
-    height: 270px;
-
-    border-radius: 999px;
-
-    background:
-      radial-gradient(
-        circle,
-        rgba(88,58,220,.22),
-        rgba(74,222,128,.025) 55%,
-        transparent 72%
-      );
+    height: 70%;
 
     filter: blur(45px);
-
-    animation:
-      pulseGlow
-      6s
-      ease-in-out
-      infinite;
   }
 
-  .glitch-card {
-    border: 1px solid rgba(255,255,255,.1);
+  .cta-readable-center {
+    width: 120vw;
 
-    background:
-      linear-gradient(
-        145deg,
-        rgba(255,255,255,.065),
-        rgba(255,255,255,.018)
-      );
-
-    box-shadow:
-      0 35px 80px rgba(0,0,0,.35),
-      inset 0 1px 0 rgba(255,255,255,.06);
-
-    backdrop-filter: blur(20px);
-
-    transition:
-      transform 500ms cubic-bezier(.2,.8,.2,1),
-      border-color 400ms ease;
+    height: 300px;
   }
 
-  .glitch-card:hover {
-    transform:
-      translateY(-6px)
-      rotate(.35deg);
-
-    border-color:
-      rgba(255,255,255,.16);
-  }
-
-  @keyframes pulseGlow {
-
-    0%,
-    100% {
-      opacity: .65;
-      transform: scale(.95);
-    }
-
-    50% {
-      opacity: 1;
-      transform: scale(1.05);
-    }
-  }
-
-  /* ============================================================= */
-  /* SECTION                                                       */
-  /* ============================================================= */
-
-  .section-line {
-    border-top:
-      1px solid rgba(255,255,255,.055);
-
-    border-bottom:
-      1px solid rgba(255,255,255,.055);
+  .hero-grid {
+    background-size: 34px 34px;
   }
 
   .section-block {
-    padding-top: 6.5rem;
-    padding-bottom: 6.5rem;
-  }
+    padding-top: 4.5rem;
 
-  .section-eyebrow {
-    font-size: .7rem;
-
-    font-weight: 500;
-
-    text-transform: uppercase;
-
-    letter-spacing: .22em;
-
-    line-height: 1;
-
-    color: rgba(255,255,255,.32);
+    padding-bottom: 4.5rem;
   }
 
   .section-title {
-    max-width: 650px;
-
-    font-size: 2.25rem;
-
-    font-weight: 600;
-
-    line-height: 1.02;
-
-    letter-spacing: -.045em;
-
-    color: white;
-  }
-
-  .section-title span {
-    display: block;
-
-    color: rgba(255,255,255,.34);
+    font-size: 2rem;
   }
 
   .section-description {
-    max-width: 550px;
-
-    margin-top: 1.35rem;
-
-    font-size: 1rem;
-
-    line-height: 1.75;
-
-    color: rgba(255,255,255,.4);
+    font-size: .95rem;
   }
 
-  /* ============================================================= */
-  /* SKILLS                                                        */
-  /* ============================================================= */
-
-  .skills-panel {
-    position: relative;
-
-    padding: 1.5rem;
-
-    border: 1px solid rgba(255,255,255,.065);
-
-    border-radius: 24px;
-
-    background:
-      linear-gradient(
-        145deg,
-        rgba(255,255,255,.035),
-        rgba(255,255,255,.012)
-      );
-
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,.035),
-      0 25px 60px rgba(0,0,0,.12);
+  .glitch-card:hover {
+    transform: none;
   }
-
-  .skill-line {
-    display: flex;
-
-    align-items: center;
-
-    gap: .45rem;
-  }
-
-  .skill-line span {
-    display: block;
-
-    height: 3px;
-
-    border-radius: 999px;
-
-    background: rgba(255,255,255,.1);
-  }
-
-  .skill-line span:nth-child(1) {
-    width: 42px;
-
-    background:
-      rgba(74,222,128,.5);
-  }
-
-  .skill-line span:nth-child(2) {
-    width: 18px;
-  }
-
-  .skill-line span:nth-child(3) {
-    width: 8px;
-  }
-
-  /* ============================================================= */
-  /* NOTE CARDS                                                     */
-  /* ============================================================= */
 
   .note-card {
-    position: relative;
+    min-height: 205px;
 
-    display: flex;
-
-    min-height: 230px;
-
-    flex-direction: column;
-
-    justify-content: space-between;
-
-    overflow: hidden;
-
-    padding: 24px;
-
-    border:
-      1px solid rgba(255,255,255,.07);
-
-    border-radius: 20px;
-
-    color: white;
-
-    background:
-      radial-gradient(
-        circle at 100% 0%,
-        rgba(74,222,128,.055),
-        transparent 35%
-      ),
-      linear-gradient(
-        145deg,
-        rgba(255,255,255,.045),
-        rgba(255,255,255,.012)
-      );
-
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,.035);
-
-    transition:
-      transform 400ms cubic-bezier(.2,.8,.2,1),
-      border-color 300ms ease,
-      box-shadow 400ms ease,
-      background 400ms ease;
-  }
-
-  .note-card::before {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    top: 0;
-
-    width: 100%;
-    height: 1px;
-
-    background:
-      linear-gradient(
-        90deg,
-        transparent,
-        rgba(74,222,128,.35),
-        transparent
-      );
-
-    opacity: 0;
-
-    transition:
-      opacity 300ms ease;
-  }
-
-  .note-card:hover {
-    transform:
-      translateY(-6px);
-
-    border-color:
-      rgba(74,222,128,.2);
-
-    background:
-      radial-gradient(
-        circle at 100% 0%,
-        rgba(74,222,128,.1),
-        transparent 40%
-      ),
-      linear-gradient(
-        145deg,
-        rgba(255,255,255,.055),
-        rgba(255,255,255,.018)
-      );
-
-    box-shadow:
-      0 25px 60px rgba(0,0,0,.22),
-      0 0 35px rgba(74,222,128,.035);
-  }
-
-  .note-card:hover::before {
-    opacity: 1;
+    padding: 20px;
   }
 
   .note-number {
-    margin-bottom: 2.5rem;
-
-    font-family:
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      monospace;
-
-    font-size: .65rem;
-
-    letter-spacing: .16em;
-
-    color: rgba(255,255,255,.2);
+    margin-bottom: 2rem;
   }
 
-  .note-label {
-    display: block;
-
-    font-size: .65rem;
-
-    font-weight: 500;
-
-    text-transform: uppercase;
-
-    letter-spacing: .16em;
-
-    color: rgba(74,222,128,.7);
+  .shiny-sec {
+    white-space: normal;
   }
 
-  .note-card h3 {
-    max-width: 90%;
+  .cta-title {
+    font-size: 2.5rem;
 
-    margin-top: .75rem;
+    line-height: .98;
+  }
+}
 
-    font-size: 1.05rem;
 
-    font-weight: 500;
+/* ============================================================= */
+/* REDUCED MOTION */
+/* ============================================================= */
 
-    line-height: 1.35;
+@media (prefers-reduced-motion: reduce) {
 
-    letter-spacing: -.015em;
-
-    color: rgba(255,255,255,.84);
+  .shiny-sec,
+  .glitch-glow,
+  .cta-liquid-capsule {
+    animation: none;
   }
 
-  .note-footer {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    margin-top: 2rem;
-
-    font-size: .68rem;
-
-    text-transform: uppercase;
-
-    letter-spacing: .12em;
-
-    color: rgba(255,255,255,.25);
+  .social-link,
+  .primary-button,
+  .note-card,
+  .note-arrow,
+  .talk-button,
+  .glitch-card {
+    transition: none;
   }
-
-  .note-arrow {
-    font-size: 1.1rem;
-
-    color: rgba(255,255,255,.3);
-
-    transition:
-      color 300ms ease,
-      transform 300ms ease;
-  }
-
-  .note-card:hover .note-arrow {
-    color: #86efac;
-
-    transform:
-      translate(3px,-3px);
-  }
-
-  /* ============================================================= */
-  /* TALK BUTTON                                                    */
-  /* ============================================================= */
-
-  .talk-button {
-    color: #bbf7d0;
-
-    border:
-      1px solid rgba(74,222,128,.25);
-
-    background:
-      linear-gradient(
-        135deg,
-        rgba(74,222,128,.13),
-        rgba(74,222,128,.035)
-      );
-
-    box-shadow:
-      0 0 25px rgba(74,222,128,.07),
-      inset 0 1px 0 rgba(255,255,255,.04);
-
-    transition:
-      transform 300ms ease,
-      border-color 300ms ease,
-      background 300ms ease,
-      box-shadow 300ms ease;
-  }
-
-  .talk-button:hover {
-    transform:
-      translateY(-3px);
-
-    border-color:
-      rgba(74,222,128,.55);
-
-    background:
-      linear-gradient(
-        135deg,
-        rgba(74,222,128,.2),
-        rgba(74,222,128,.06)
-      );
-
-    box-shadow:
-      0 0 15px rgba(74,222,128,.16),
-      0 0 45px rgba(74,222,128,.08);
-  }
-
-  /* ============================================================= */
-  /* MOBILE                                                         */
-  /* ============================================================= */
-
-  @media (max-width: 640px) {
-
-    .cta-liquid-scene {
-      inset: -12% -10%;
-
-      gap: 6px;
-
-      padding: 6vh 3vw;
-
-      opacity: .56;
-
-      mask-image:
-        radial-gradient(
-          ellipse 112% 82% at 50% 48%,
-          black 22%,
-          transparent 90%
-        );
-
-      -webkit-mask-image:
-        radial-gradient(
-          ellipse 112% 82% at 50% 48%,
-          black 22%,
-          transparent 90%
-        );
-    }
-
-    .cta-liquid-capsule {
-      width: clamp(27px, 8vw, 48px);
-
-      flex-basis:
-        clamp(27px, 8vw, 48px);
-    }
-
-    .cta-liquid-capsule:nth-child(2),
-    .cta-liquid-capsule:nth-child(7) {
-      display: none;
-    }
-
-    .cta-liquid-atmosphere {
-      width: 125vw;
-
-      height: 70%;
-
-      filter: blur(45px);
-    }
-
-    .hero-grid {
-      background-size: 34px 34px;
-    }
-
-    .section-block {
-      padding-top: 4.5rem;
-      padding-bottom: 4.5rem;
-    }
-
-    .section-title {
-      font-size: 2rem;
-    }
-
-    .section-description {
-      font-size: .95rem;
-    }
-
-    .glitch-card:hover {
-      transform: none;
-    }
-
-    .note-card {
-      min-height: 205px;
-
-      padding: 20px;
-    }
-
-    .note-number {
-      margin-bottom: 2rem;
-    }
-
-    .shiny-sec {
-      white-space: normal;
-    }
-  }
-
-  /* ============================================================= */
-  /* REDUCED MOTION                                                 */
-  /* ============================================================= */
-
-  @media (prefers-reduced-motion: reduce) {
-
-    .shiny-sec,
-    .glitch-glow,
-    .cta-liquid-capsule {
-      animation: none;
-    }
-
-    .social-link,
-    .primary-button,
-    .note-card,
-    .note-arrow,
-    .talk-button,
-    .glitch-card {
-      transition: none;
-    }
-  }
+}
 
 </style>
