@@ -181,9 +181,7 @@ import SkillsList from "../React/SkillsList.tsx";
         </div>
 
         <!-- Small metadata -->
-        <div
-          class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-white/30"
-        >
+        <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-white/30">
           <span class="inline-flex items-center gap-2">
             <span class="h-1.5 w-1.5 rounded-full bg-emerald-400/70"></span>
             Computer Science
@@ -202,23 +200,15 @@ import SkillsList from "../React/SkillsList.tsx";
         <div class="glitch-glow"></div>
 
         <!-- Decorative ring -->
-        <div
-          class="absolute h-[390px] w-[390px] rounded-full border border-white/[0.035] sm:h-[470px] sm:w-[470px]"
-        ></div>
+        <div class="absolute h-[390px] w-[390px] rounded-full border border-white/[0.035] sm:h-[470px] sm:w-[470px]"></div>
 
-        <div
-          class="absolute h-[320px] w-[320px] rounded-full border border-emerald-400/[0.035] sm:h-[400px] sm:w-[400px]"
-        ></div>
+        <div class="absolute h-[320px] w-[320px] rounded-full border border-emerald-400/[0.035] sm:h-[400px] sm:w-[400px]"></div>
 
         <!-- Main card -->
-        <div
-          class="glitch-card relative aspect-square w-full max-w-[340px] overflow-hidden rounded-[2rem] p-2 sm:max-w-[420px]"
-        >
+        <div class="glitch-card relative aspect-square w-full max-w-[340px] overflow-hidden rounded-[2rem] p-2 sm:max-w-[420px]">
 
           <!-- Top shine -->
-          <div
-            class="absolute left-[15%] right-[15%] top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"
-          ></div>
+          <div class="absolute left-[15%] right-[15%] top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
 
           <div class="relative h-full w-full overflow-hidden rounded-[1.65rem]">
             <LetterGlitch
@@ -230,26 +220,17 @@ import SkillsList from "../React/SkillsList.tsx";
               smooth={true}
             />
 
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent"
-            ></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent"></div>
           </div>
 
           <!-- Terminal label -->
-          <div
-            class="absolute bottom-5 left-5 flex items-center gap-2 rounded-lg border border-white/10 bg-black/50 px-3 py-2 font-mono text-[10px] text-white/50 backdrop-blur-xl"
-          >
-            <span
-              class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(74,222,128,.8)]"
-            ></span>
-
+          <div class="absolute bottom-5 left-5 flex items-center gap-2 rounded-lg border border-white/10 bg-black/50 px-3 py-2 font-mono text-[10px] text-white/50 backdrop-blur-xl">
+            <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(74,222,128,.8)]"></span>
             {"< build />"}
           </div>
 
           <!-- Corner -->
-          <div
-            class="absolute right-5 top-5 font-mono text-[9px] uppercase tracking-[0.2em] text-white/25"
-          >
+          <div class="absolute right-5 top-5 font-mono text-[9px] uppercase tracking-[0.2em] text-white/25">
             01 / 01
           </div>
         </div>
@@ -268,9 +249,7 @@ import SkillsList from "../React/SkillsList.tsx";
             Technologies
           </p>
 
-          <span
-            class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/20"
-          >
+          <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/20">
             Tools I work with
           </span>
         </div>
@@ -457,88 +436,51 @@ import SkillsList from "../React/SkillsList.tsx";
     </div>
 
     <!-- ========================================================= -->
-    <!-- CTA / INTERACTIVE COLOR EFFECT -->
+    <!-- CTA -->
     <!-- ========================================================= -->
 
     <div
-      id="build"
-      class="build-section relative overflow-hidden border-t border-white/[0.06] py-24 text-center sm:py-32"
+      class="relative overflow-hidden border-t border-white/[0.06] py-24 text-center sm:py-32"
     >
 
-      <!-- ======================================================= -->
-      <!-- INTERACTIVE BACKGROUND -->
-      <!-- ======================================================= -->
+      <!-- CTA glow -->
+      <div class="absolute left-1/2 top-1/2 -z-10 h-[280px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/[0.045] blur-[120px]"></div>
 
-      <div class="build-effect" aria-hidden="true">
+      <p class="section-eyebrow mb-5">
+        Have an idea?
+      </p>
 
-        <!-- Main color field -->
-        <div class="build-color-field"></div>
+      <h2
+        class="mx-auto max-w-3xl text-4xl font-semibold leading-[0.95] tracking-[-0.055em] text-white sm:text-6xl"
+      >
+        Let's build
+        <span class="shiny-sec"> something together.</span>
+      </h2>
 
-        <!-- Moving violet orb -->
-        <div class="build-orb build-orb-violet"></div>
+      <p class="mx-auto mt-6 max-w-lg text-base leading-[1.7] text-white/40 sm:text-lg">
+        Whether it's a project, an idea or simply a conversation,
+        I'd love to hear from you.
+      </p>
 
-        <!-- Moving blue orb -->
-        <div class="build-orb build-orb-blue"></div>
+      <a
+        href="#contact"
+        class="talk-button group mt-9 inline-flex items-center gap-2.5 rounded-xl px-6 py-3.5 text-sm font-medium"
+      >
+        <span>Let's talk</span>
 
-        <!-- Emerald orb -->
-        <div class="build-orb build-orb-green"></div>
-
-        <!-- Fine grid -->
-        <div class="build-grid"></div>
-
-        <!-- Vignette -->
-        <div class="build-vignette"></div>
-
-        <!-- Cursor glow -->
-        <div class="build-cursor"></div>
-
-      </div>
-
-      <!-- ======================================================= -->
-      <!-- CTA CONTENT -->
-      <!-- ======================================================= -->
-
-      <div class="relative z-10 mx-auto max-w-4xl">
-
-        <p class="section-eyebrow mb-5">
-          Have an idea?
-        </p>
-
-        <h2
-          class="mx-auto max-w-3xl text-4xl font-semibold leading-[0.95] tracking-[-0.055em] text-white sm:text-6xl"
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          class="size-4 transition-transform duration-300 group-hover:translate-x-1"
         >
-          Let's build
-          <span class="shiny-sec"> something together.</span>
-        </h2>
-
-        <p
-          class="mx-auto mt-6 max-w-lg text-base leading-[1.7] text-white/40 sm:text-lg"
-        >
-          Whether it's a project, an idea or simply a conversation,
-          I'd love to hear from you.
-        </p>
-
-        <a
-          href="#contact"
-          class="talk-button group mt-9 inline-flex items-center gap-2.5 rounded-xl px-6 py-3.5 text-sm font-medium"
-        >
-          <span>Let's talk</span>
-
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            class="size-4 transition-transform duration-300 group-hover:translate-x-1"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M3 10a.75.75 0 0 1 .75-.75h10.69l-3.22-3.22a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06 1.06l3.22-3.22H3.75A.75.75 0 0 1 3 10Z"
-              clip-rule="evenodd"
-            />
-          </svg>
-        </a>
-
-      </div>
+          <path
+            fill-rule="evenodd"
+            d="M3 10a.75.75 0 0 1 .75-.75h10.69l-3.22-3.22a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H3.75A.75.75 0 0 1 3 10Z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </a>
 
     </div>
 
@@ -584,7 +526,6 @@ import SkillsList from "../React/SkillsList.tsx";
 
   .status-badge {
     border: 1px solid rgba(255,255,255,.08);
-
     background:
       linear-gradient(
         135deg,
@@ -1099,320 +1040,24 @@ import SkillsList from "../React/SkillsList.tsx";
   }
 
   /* ============================================================= */
+  /* TALK BUTTON */
   /* ============================================================= */
-  /* BUILD SECTION — INTERACTIVE COLOR EFFECT */
-  /* ============================================================= */
-  /* ============================================================= */
-
-  .build-section {
-    isolation: isolate;
-  }
-
-  /*
-   * The complete effect lives inside .build-effect.
-   * Nothing here changes the rest of the homepage.
-   */
-
-  .build-effect {
-    position: absolute;
-
-    inset: 0;
-
-    z-index: -1;
-
-    overflow: hidden;
-
-    pointer-events: none;
-
-    opacity: .95;
-
-    background:
-      radial-gradient(
-        ellipse 70% 80% at 50% 50%,
-        rgba(45,32,130,.13),
-        transparent 72%
-      );
-  }
-
-  /* ------------------------------------------------------------- */
-  /* Main animated color field */
-  /* ------------------------------------------------------------- */
-
-  .build-color-field {
-    position: absolute;
-
-    width: 75%;
-    height: 130%;
-
-    left: 12.5%;
-    top: -15%;
-
-    border-radius: 50%;
-
-    background:
-      conic-gradient(
-        from 180deg,
-        rgba(60,42,180,0),
-        rgba(90,55,220,.15),
-        rgba(45,115,255,.13),
-        rgba(75,220,180,.08),
-        rgba(90,55,220,.14),
-        rgba(60,42,180,0)
-      );
-
-    filter: blur(70px);
-
-    opacity: .75;
-
-    animation:
-      buildColorRotate 16s linear infinite,
-      buildColorPulse 8s ease-in-out infinite;
-  }
-
-  @keyframes buildColorRotate {
-    from {
-      transform: rotate(0deg) scale(1);
-    }
-
-    to {
-      transform: rotate(360deg) scale(1);
-    }
-  }
-
-  @keyframes buildColorPulse {
-    0%,
-    100% {
-      opacity: .55;
-      filter: blur(75px);
-    }
-
-    50% {
-      opacity: .9;
-      filter: blur(55px);
-    }
-  }
-
-  /* ------------------------------------------------------------- */
-  /* Floating color orbs */
-  /* ------------------------------------------------------------- */
-
-  .build-orb {
-    position: absolute;
-
-    border-radius: 999px;
-
-    filter: blur(75px);
-
-    mix-blend-mode: screen;
-
-    will-change: transform;
-  }
-
-  .build-orb-violet {
-    width: 300px;
-    height: 300px;
-
-    left: 8%;
-    top: 5%;
-
-    background:
-      radial-gradient(
-        circle,
-        rgba(105,75,255,.2),
-        rgba(82,55,220,.08) 45%,
-        transparent 72%
-      );
-
-    animation:
-      buildVioletMove 11s ease-in-out infinite;
-  }
-
-  .build-orb-blue {
-    width: 330px;
-    height: 330px;
-
-    right: 7%;
-    bottom: -5%;
-
-    background:
-      radial-gradient(
-        circle,
-        rgba(40,120,255,.16),
-        rgba(35,100,220,.06) 48%,
-        transparent 72%
-      );
-
-    animation:
-      buildBlueMove 13s ease-in-out infinite;
-  }
-
-  .build-orb-green {
-    width: 220px;
-    height: 220px;
-
-    left: 50%;
-    top: 48%;
-
-    transform: translate(-50%, -50%);
-
-    background:
-      radial-gradient(
-        circle,
-        rgba(50,220,170,.08),
-        rgba(40,170,130,.025) 48%,
-        transparent 72%
-      );
-
-    animation:
-      buildGreenMove 9s ease-in-out infinite;
-  }
-
-  @keyframes buildVioletMove {
-    0%,
-    100% {
-      transform: translate3d(-30px, -15px, 0) scale(.9);
-    }
-
-    50% {
-      transform: translate3d(90px, 55px, 0) scale(1.18);
-    }
-  }
-
-  @keyframes buildBlueMove {
-    0%,
-    100% {
-      transform: translate3d(35px, 30px, 0) scale(.9);
-    }
-
-    50% {
-      transform: translate3d(-85px, -65px, 0) scale(1.15);
-    }
-  }
-
-  @keyframes buildGreenMove {
-    0%,
-    100% {
-      transform: translate(-50%, -50%) scale(.8);
-      opacity: .4;
-    }
-
-    50% {
-      transform: translate(-50%, -50%) scale(1.3);
-      opacity: .9;
-    }
-  }
-
-  /* ------------------------------------------------------------- */
-  /* Fine grid */
-  /* ------------------------------------------------------------- */
-
-  .build-grid {
-    position: absolute;
-
-    inset: 0;
-
-    opacity: .16;
-
-    background-image:
-      linear-gradient(
-        rgba(255,255,255,.018) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        90deg,
-        rgba(255,255,255,.018) 1px,
-        transparent 1px
-      );
-
-    background-size: 46px 46px;
-
-    mask-image:
-      radial-gradient(
-        ellipse 75% 90% at 50% 50%,
-        black,
-        transparent 80%
-      );
-  }
-
-  /* ------------------------------------------------------------- */
-  /* Dark vignette */
-  /* ------------------------------------------------------------- */
-
-  .build-vignette {
-    position: absolute;
-
-    inset: 0;
-
-    background:
-      radial-gradient(
-        ellipse 65% 90% at 50% 50%,
-        transparent 15%,
-        rgba(5,5,10,.15) 55%,
-        rgba(5,5,10,.7) 100%
-      );
-  }
-
-  /* ------------------------------------------------------------- */
-  /* Cursor light */
-  /* ------------------------------------------------------------- */
-
-  .build-cursor {
-    position: absolute;
-
-    width: 320px;
-    height: 320px;
-
-    left: var(--build-mouse-x, 50%);
-    top: var(--build-mouse-y, 50%);
-
-    transform: translate(-50%, -50%);
-
-    border-radius: 50%;
-
-    background:
-      radial-gradient(
-        circle,
-        rgba(120,100,255,.13) 0%,
-        rgba(80,120,255,.06) 30%,
-        transparent 68%
-      );
-
-    filter: blur(30px);
-
-    opacity: .75;
-
-    transition:
-      left 900ms cubic-bezier(.16,1,.3,1),
-      top 900ms cubic-bezier(.16,1,.3,1);
-
-    will-change: left, top;
-
-    mix-blend-mode: screen;
-  }
-
-  /* ------------------------------------------------------------- */
-  /* CTA */
-  /* ------------------------------------------------------------- */
 
   .talk-button {
-    position: relative;
+    color: #bbf7d0;
 
-    color: #d8ffe5;
-
-    border: 1px solid rgba(120,255,180,.3);
+    border: 1px solid rgba(74,222,128,.25);
 
     background:
       linear-gradient(
         135deg,
-        rgba(90,220,170,.12),
-        rgba(100,80,255,.08)
+        rgba(74,222,128,.13),
+        rgba(74,222,128,.035)
       );
 
     box-shadow:
-      0 0 25px rgba(100,120,255,.06),
-      inset 0 1px 0 rgba(255,255,255,.05);
-
-    backdrop-filter: blur(14px);
+      0 0 25px rgba(74,222,128,.07),
+      inset 0 1px 0 rgba(255,255,255,.04);
 
     transition:
       transform 300ms ease,
@@ -1424,18 +1069,18 @@ import SkillsList from "../React/SkillsList.tsx";
   .talk-button:hover {
     transform: translateY(-3px);
 
-    border-color: rgba(140,255,195,.6);
+    border-color: rgba(74,222,128,.55);
 
     background:
       linear-gradient(
         135deg,
-        rgba(80,230,170,.2),
-        rgba(100,90,255,.13)
+        rgba(74,222,128,.2),
+        rgba(74,222,128,.06)
       );
 
     box-shadow:
-      0 0 20px rgba(80,220,170,.14),
-      0 0 55px rgba(90,90,255,.1);
+      0 0 15px rgba(74,222,128,.16),
+      0 0 45px rgba(74,222,128,.08);
   }
 
   /* ============================================================= */
@@ -1477,46 +1122,6 @@ import SkillsList from "../React/SkillsList.tsx";
     .shiny-sec {
       white-space: normal;
     }
-
-    /* Smaller effect on mobile */
-    .build-color-field {
-      width: 110%;
-      left: -5%;
-
-      filter: blur(55px);
-    }
-
-    .build-orb-violet {
-      width: 200px;
-      height: 200px;
-
-      left: -5%;
-    }
-
-    .build-orb-blue {
-      width: 220px;
-      height: 220px;
-
-      right: -5%;
-    }
-
-    .build-orb-green {
-      width: 150px;
-      height: 150px;
-    }
-
-    .build-cursor {
-      width: 220px;
-      height: 220px;
-    }
-
-    .build-grid {
-      background-size: 34px 34px;
-    }
-
-    .talk-button:hover {
-      transform: none;
-    }
   }
 
   /* ============================================================= */
@@ -1526,9 +1131,7 @@ import SkillsList from "../React/SkillsList.tsx";
   @media (prefers-reduced-motion: reduce) {
 
     .shiny-sec,
-    .glitch-glow,
-    .build-color-field,
-    .build-orb {
+    .glitch-glow {
       animation: none;
     }
 
@@ -1540,83 +1143,6 @@ import SkillsList from "../React/SkillsList.tsx";
     .glitch-card {
       transition: none;
     }
-
-    .build-cursor {
-      transition: none;
-    }
   }
 
 </style>
-
-<!-- ============================================================= -->
-<!-- INTERACTIVE CURSOR SCRIPT -->
-<!-- ============================================================= -->
-
-<script>
-  const buildSection = document.querySelector(".build-section");
-
-  if (buildSection) {
-    let targetX = 50;
-    let targetY = 50;
-
-    let currentX = 50;
-    let currentY = 50;
-
-    let animationFrame = 0;
-
-    const updateCursor = () => {
-      currentX += (targetX - currentX) * 0.08;
-      currentY += (targetY - currentY) * 0.08;
-
-      buildSection.style.setProperty(
-        "--build-mouse-x",
-        `${currentX}%`
-      );
-
-      buildSection.style.setProperty(
-        "--build-mouse-y",
-        `${currentY}%`
-      );
-
-      animationFrame = requestAnimationFrame(updateCursor);
-    };
-
-    const handleMouseMove = (event: MouseEvent) => {
-      const rect = buildSection.getBoundingClientRect();
-
-      targetX =
-        ((event.clientX - rect.left) / rect.width) * 100;
-
-      targetY =
-        ((event.clientY - rect.top) / rect.height) * 100;
-
-      targetX = Math.max(0, Math.min(100, targetX));
-      targetY = Math.max(0, Math.min(100, targetY));
-    };
-
-    const handleMouseLeave = () => {
-      targetX = 50;
-      targetY = 50;
-    };
-
-    buildSection.addEventListener(
-      "mousemove",
-      handleMouseMove
-    );
-
-    buildSection.addEventListener(
-      "mouseleave",
-      handleMouseLeave
-    );
-
-    animationFrame = requestAnimationFrame(updateCursor);
-
-    window.addEventListener(
-      "beforeunload",
-      () => {
-        cancelAnimationFrame(animationFrame);
-      },
-      { once: true }
-    );
-  }
-</script>
