@@ -5,28 +5,93 @@ on:
     branches:
       - main
 
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+      # ---------------------------------------------------------
+      # Checkout repository
+      # ---------------------------------------------------------
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: pnpm
-
+      # ---------------------------------------------------------
+      # Install pnpm BEFORE setup-node
+      # This prevents "Unable to locate executable file: pnpm"
+      # ---------------------------------------------------------
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9.15.0
           run_install: false
 
+      # ---------------------------------------------------------
+      # Setup Node.js
+      # ---------------------------------------------------------
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      # ---------------------------------------------------------
+      # Verify environment
+      # ---------------------------------------------------------
+      - name: Check Node and pnpm versions
+        run: |
+          node --version
+          pnpm --version
+
+      # ---------------------------------------------------------
+      # Install dependencies
+      # ---------------------------------------------------------
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # ---------------------------------------------------------
+      # Build Astro
+      #
+      # Increase Node heap to prevent:
+      # "JavaScript heap out of memory"
+      # ---------------------------------------------------------
       - name: Build Astro site
-        run: NODE_OPTIONS="--max-old-space-size=6144" pnpm run build
+        run: pnpm run build
+        env:
+          NODE_OPTIONS: --max-old-space-size=6144
+
+      # ---------------------------------------------------------
+      # Upload Astro build
+      # ---------------------------------------------------------
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  # -----------------------------------------------------------
+  # Deploy to GitHub Pages
+  # -----------------------------------------------------------
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
