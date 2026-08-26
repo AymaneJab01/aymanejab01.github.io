@@ -1,9 +1,10 @@
-name: Build Astro site
+name: Deploy Astro to GitHub Pages
 
 on:
   push:
     branches:
       - main
+
   workflow_dispatch:
 
 permissions:
@@ -17,53 +18,76 @@ concurrency:
 
 jobs:
   build:
+    name: Build Astro site
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      # ---------------------------------------------------------
+      # Checkout
+      # ---------------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v6
 
-      # Install pnpm FIRST
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
+      # ---------------------------------------------------------
+      # Setup Node.js
+      # ---------------------------------------------------------
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      # ---------------------------------------------------------
+      # Setup pnpm 9.15.0
+      # ---------------------------------------------------------
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
         with:
           version: 9.15.0
           run_install: false
 
-      # Then install Node
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: pnpm
-          cache-dependency-path: pnpm-lock.yaml
+      # ---------------------------------------------------------
+      # Verify pnpm
+      # ---------------------------------------------------------
+      - name: Verify pnpm
+        run: pnpm --version
 
+      # ---------------------------------------------------------
       # Install dependencies
+      # ---------------------------------------------------------
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # ---------------------------------------------------------
       # Build Astro
+      # ---------------------------------------------------------
       - name: Build Astro site
         run: pnpm run build
-        env:
-          NODE_OPTIONS: --max-old-space-size=6144
 
-      # Upload Astro build
+      # ---------------------------------------------------------
+      # Configure GitHub Pages
+      # ---------------------------------------------------------
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # ---------------------------------------------------------
+      # Upload Astro dist folder
+      # ---------------------------------------------------------
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
 
   deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+
+    runs-on: ubuntu-latest
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
-    runs-on: ubuntu-latest
-
-    needs: build
-
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
