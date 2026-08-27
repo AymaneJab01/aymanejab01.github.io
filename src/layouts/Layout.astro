@@ -1,89 +1,86 @@
 ---
-
 interface Props {
-title: string;
+  title: string;
 }
 
-## const { title } = Astro.props;
+const { title } = Astro.props;
+---
 
 <!doctype html>
-
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
 
-```
-<title>{title} | Software Developer</title>
+    <title>{title} | Software Developer</title>
 
-<meta
-  name="description"
-  content="Aymane Jabrane - Software Developer building interactive and seamless digital experiences."
-/>
+    <meta
+      name="description"
+      content="Aymane Jabrane - Software Developer building interactive and seamless digital experiences."
+    />
 
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
-/>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
 
-<link rel="icon" type="image/png" href="/icon.png" />
+    <link rel="icon" type="image/png" href="/icon.png" />
 
-<link
-  rel="canonical"
-  href="https://aymanejab01.github.io/"
-/>
+    <link
+      rel="canonical"
+      href="https://aymanejab01.github.io/"
+    />
 
-<link
-  rel="preload"
-  href="/fonts/montserrat-latin-wght-normal.woff2"
-  as="font"
-  type="font/woff2"
-  crossorigin="anonymous"
-/>
+    <link
+      rel="preload"
+      href="/fonts/montserrat-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
 
-<meta
-  property="og:title"
-  content="Aymane Jabrane | Software Developer"
-/>
+    <meta
+      property="og:title"
+      content="Aymane Jabrane | Software Developer"
+    />
 
-<meta
-  property="og:description"
-  content="Portfolio of Aymane Jabrane, Software Developer interested in frontend development, machine learning, hardware, software, and computer architecture."
-/>
+    <meta
+      property="og:description"
+      content="Portfolio of Aymane Jabrane, Software Developer interested in frontend development, machine learning, hardware, software, and computer architecture."
+    />
 
-<meta
-  property="og:image"
-  content="https://aymanejab01.github.io/aj2.png"
-/>
+    <meta
+      property="og:image"
+      content="https://aymanejab01.github.io/aj2.png"
+    />
 
-<meta
-  property="og:url"
-  content="https://aymanejab01.github.io"
-/>
+    <meta
+      property="og:url"
+      content="https://aymanejab01.github.io"
+    />
 
-<meta property="og:type" content="website" />
+    <meta property="og:type" content="website" />
 
-<meta
-  property="og:site_name"
-  content="Aymane Jabrane Portfolio"
-/>
+    <meta
+      property="og:site_name"
+      content="Aymane Jabrane Portfolio"
+    />
 
-<script is:inline type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Aymane Jabrane",
-    "url": "https://aymanejab01.github.io",
-    "image": "https://aymanejab01.github.io/og.image.png",
-    "sameAs": [
-      "https://github.com/AymaneJab01",
-      "https://www.linkedin.com/in/aymane-jabrane-73025726a/"
-    ],
-    "jobTitle": "Software Developer",
-    "description": "Software Developer interested in frontend development, machine learning, hardware, software, and computer architecture."
-  }
-</script>
-```
-
+    <!-- Structured Data (JSON-LD) -->
+    <script is:inline type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Aymane Jabrane",
+        "url": "https://aymanejab01.github.io",
+        "image": "https://aymanejab01.github.io/og.image.png",
+        "sameAs": [
+          "https://github.com/AymaneJab01",
+          "https://www.linkedin.com/in/aymane-jabrane-73025726a/"
+        ],
+        "jobTitle": "Software Developer",
+        "description": "Software Developer interested in frontend development, machine learning, hardware, software, and computer architecture."
+      }
+    </script>
   </head>
 
   <body class="bg-[var(--background)] sm:px-28 lg:px-20 px-9">
@@ -92,10 +89,6 @@ title: string;
 </html>
 
 <style is:global>
-  /* ========================================================= */
-  /* FONT */
-  /* ========================================================= */
-
   @font-face {
     font-family: "Montserrat Variable";
     src: url("/fonts/montserrat-latin-wght-normal.woff2")
@@ -105,207 +98,54 @@ title: string;
     font-display: swap;
   }
 
-  /* ========================================================= */
-  /* GLOBAL COLOR SYSTEM */
-  /* ========================================================= */
-
   :root {
-    --background: #07111f;
-
-    --sec: #00aaff;
-
-    --electric-blue: #008cff;
-
-    --electric-cyan: #19c8ff;
-
-    --white: #f8fbff;
-
-    --white-icon: rgba(235, 245, 255, 0.72);
-
-    --white-icon-tr: rgba(235, 245, 255, 0.11);
-
-    --container: #0c1a2b;
-
-    --container-light: #10243a;
-
-    --blue-glass: rgba(0, 140, 255, 0.08);
-
-    --blue-border: rgba(0, 170, 255, 0.24);
-
-    --blue-glow: rgba(0, 170, 255, 0.16);
+    --background: #101010;
+    --sec: #a476ff;
+    --white: #dfdfdf;
+    --white-icon: #f3f3f398;
+    --white-icon-tr: #f3f3f310;
   }
 
-  /* ========================================================= */
-  /* GLOBAL RESET */
-  /* ========================================================= */
-
-  *,
-  *::before,
-  *::after {
+  * {
     font-family:
       "Montserrat Variable",
       -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
       system-ui,
       sans-serif;
-
     box-sizing: border-box;
-
     padding: 0;
     margin: 0;
   }
 
-  html {
-    background: var(--background);
-    scroll-behavior: smooth;
-  }
-
-  body {
-    min-height: 100vh;
-
-    background:
-      radial-gradient(
-        circle at 50% -10%,
-        rgba(0, 170, 255, 0.1),
-        transparent 38%
-      ),
-      var(--background);
-
-    color: var(--white);
-
-    text-rendering: optimizeLegibility;
-
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ========================================================= */
-  /* SELECTION */
-  /* ========================================================= */
-
   *::selection {
     background-color: var(--sec);
-    color: #00111f;
+    color: var(--background);
   }
 
-  /* ========================================================= */
-  /* LINKS */
-  /* ========================================================= */
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  /* ========================================================= */
-  /* SCROLLBAR */
-  /* ========================================================= */
+  /* Scrollbar */
 
   ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 15px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #06101d;
+    background: var(--container);
+    border-radius: 30px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(0, 170, 255, 0.45);
-    border-radius: 999px;
-    border: 2px solid #06101d;
+    background: var(--background);
+    border-radius: 10px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
     background: var(--sec);
   }
 
+  /* Firefox scrollbar */
+
   * {
     scrollbar-width: thin;
-    scrollbar-color:
-      rgba(0, 170, 255, 0.5)
-      #06101d;
-  }
-
-  /* ========================================================= */
-  /* WEATHER UTILITIES */
-  /* ========================================================= */
-
-  .weather-surface {
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.97),
-        rgba(238, 248, 255, 0.96)
-      );
-
-    color: #07111f;
-
-    border:
-      1px solid
-      rgba(0, 140, 255, 0.15);
-
-    box-shadow:
-      0 20px 60px
-      rgba(0, 30, 70, 0.18);
-  }
-
-  .weather-blue-surface {
-    background:
-      linear-gradient(
-        135deg,
-        #007eea,
-        #00aaff
-      );
-
-    color: white;
-
-    box-shadow:
-      0 20px 60px
-      rgba(0, 140, 255, 0.22);
-  }
-
-  .weather-glow {
-    box-shadow:
-      0 0 0 1px
-      rgba(0, 170, 255, 0.06),
-      0 20px 70px
-      rgba(0, 140, 255, 0.12);
-  }
-
-  /* ========================================================= */
-  /* REDUCED MOTION */
-  /* ========================================================= */
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-  }
-
-  /* ========================================================= */
-  /* MOBILE */
-  /* ========================================================= */
-
-  @media (max-width: 640px) {
-    body {
-      background:
-        radial-gradient(
-          circle at 50% -5%,
-          rgba(0, 170, 255, 0.08),
-          transparent 42%
-        ),
-        var(--background);
-    }
+    scrollbar-color: var(--sec) var(--background);
   }
 </style>
-
