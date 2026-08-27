@@ -1,42 +1,10 @@
+```astro
 ---
 interface WeatherLocation {
   name: string;
   region: string;
   latitude: number;
   longitude: number;
-}
-
-interface WeatherCurrent { 
-  temperature_2m: number;
-  apparent_temperature: number;
-  relative_humidity_2m: number;
-  wind_speed_10m: number;
-  surface_pressure: number;
-  visibility: number;
-  weather_code: number;
-}
-
-interface WeatherHourly {
-  time: string[];
-  temperature_2m: number[];
-  precipitation_probability: number[];
-  weather_code: number[];
-}
-
-interface WeatherDaily {
-  time: string[];
-  weather_code: number[];
-  temperature_2m_max: number[];
-  temperature_2m_min: number[];
-  precipitation_probability_max: number[];
-  sunrise: string[];
-  sunset: string[];
-}
-
-interface WeatherResponse {
-  current: WeatherCurrent;
-  hourly: WeatherHourly;
-  daily: WeatherDaily;
 }
 
 const locations: Record<string, WeatherLocation> = {
@@ -69,51 +37,103 @@ const defaultLocation = "Alcoi";
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1"
-    />
-
-    <title>Weather Dashboard</title>
+    <title>Weather | Aymane Jabrane</title>
 
     <meta
       name="description"
-      content="Interactive weather dashboard for Alcoi, Torrevieja and Valencia."
+      content="Weather dashboard for Alcoi, Torrevieja and Valencia."
     />
-
-    <link rel="icon" type="image/png" href="/icon.png" />
   </head>
 
   <body>
     <main class="weather-page">
-      <!-- HEADER -->
+
+      <!-- ===================================================== -->
+      <!-- TOP NAVIGATION -->
+      <!-- ===================================================== -->
+
       <header class="weather-header">
         <div class="header-inner">
-          <a href="/" class="back-link">
+
+          <a href="/" class="brand">
+            <span class="brand-mark">AJ</span>
+
+            <span class="brand-text">
+              <strong>AYMANE JABRANE</strong>
+              <small>WEATHER SYSTEM</small>
+            </span>
+          </a>
+
+          <nav class="main-nav" aria-label="Weather navigation">
+            <button class="nav-item active" type="button">
+              Today
+            </button>
+
+            <button class="nav-item" type="button" id="nav-hourly">
+              Hourly
+            </button>
+
+            <button class="nav-item" type="button" id="nav-daily">
+              7 Days
+            </button>
+          </nav>
+
+          <a href="/" class="portfolio-link">
             ← Portfolio
           </a>
 
-          <div class="header-title">
-            <span class="status-dot"></span>
-            <span>WEATHER</span>
-          </div>
-
-          <div
-            class="header-status"
-            id="header-status"
-          >
-            Live data
-          </div>
         </div>
       </header>
 
-      <div class="weather-container">
-        <!-- LOCATION TABS -->
-        <nav
-          class="location-tabs"
-          aria-label="Weather locations"
-        >
+
+      <!-- ===================================================== -->
+      <!-- LOCATION BAR -->
+      <!-- ===================================================== -->
+
+      <div class="location-bar">
+        <div class="content-width location-bar-inner">
+
+          <div class="location-selector">
+            <span class="location-pin">⌖</span>
+
+            <div>
+              <span class="location-label">LOCATION</span>
+
+              <strong id="location-name-top">
+                Alcoi
+              </strong>
+            </div>
+          </div>
+
+          <div class="live-indicator">
+            <span class="live-dot"></span>
+            <span id="header-status">LIVE DATA</span>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ===================================================== -->
+      <!-- LOCATION SELECTOR -->
+      <!-- ===================================================== -->
+
+      <section class="locations-section content-width">
+
+        <div class="locations-heading">
+          <div>
+            <span class="section-kicker">YOUR LOCATIONS</span>
+
+            <h2>
+              Weather overview
+            </h2>
+          </div>
+        </div>
+
+        <div class="location-tabs" aria-label="Weather locations">
+
           {
             Object.values(locations).map((location) => (
               <button
@@ -124,303 +144,372 @@ const defaultLocation = "Alcoi";
                 data-location={location.name}
                 type="button"
               >
-                <span>{location.name}</span>
-                <small>{location.region}</small>
+                <span class="location-tab-name">
+                  {location.name}
+                </span>
+
+                <span class="location-tab-region">
+                  {location.region}
+                </span>
+
+                <span class="location-tab-arrow">
+                  →
+                </span>
               </button>
             ))
           }
-        </nav>
 
-        <!-- LOCATION HEADING -->
-        <section class="location-heading">
+        </div>
+
+      </section>
+
+
+      <!-- ===================================================== -->
+      <!-- MAIN WEATHER -->
+      <!-- ===================================================== -->
+
+      <section class="content-width weather-main">
+
+        <div class="weather-heading">
+
           <div>
-            <p class="eyebrow">CURRENT CONDITIONS</p>
+            <span class="section-kicker">
+              CURRENT CONDITIONS
+            </span>
 
             <h1 id="location-name">
-              {locations[defaultLocation].name}
+              Alcoi
             </h1>
 
             <p id="location-region">
-              {locations[defaultLocation].region}
+              Alicante, España
             </p>
           </div>
 
-          <div class="last-updated">
-            <span>LAST UPDATED</span>
-            <strong id="last-updated">—</strong>
+          <div class="updated-block">
+            <span>UPDATED</span>
+
+            <strong id="last-updated">
+              —
+            </strong>
           </div>
-        </section>
 
-        <!-- CURRENT WEATHER -->
-        <section
-          class="hero-weather"
-          aria-live="polite"
-        >
-          <div class="hero-main">
-            <div class="weather-icon-container">
-              <div
-                class="weather-icon"
-                id="weather-icon"
-              >
-                ☀️
-              </div>
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- HERO WEATHER CARD -->
+        <!-- ================================================= -->
+
+        <article class="current-weather-card">
+
+          <div class="current-glow"></div>
+
+          <div class="current-left">
+
+            <div class="weather-condition-icon" id="weather-icon">
+              ☀️
             </div>
 
-            <div class="hero-temperature">
-              <div
-                class="temperature"
-                id="temperature"
-              >
-                —°
-              </div>
+            <div class="current-temperature">
+              <span id="temperature">
+                —
+              </span>
 
-              <div class="feels-like">
-                Feels like
-                <strong id="feels-like">—°</strong>
-              </div>
+              <sup>°C</sup>
             </div>
 
-            <div class="hero-description">
+            <div class="current-condition">
+
               <h2 id="description">
                 Loading...
               </h2>
 
               <p>
+                Feels like
+                <strong id="feels-like">—°</strong>
+              </p>
+
+              <p>
                 Humidity
                 <strong id="hero-humidity">—%</strong>
               </p>
+
             </div>
+
           </div>
 
-          <div class="hero-side">
-            <div class="metric">
-              <span class="metric-label">
-                WIND
-              </span>
 
-              <strong id="wind">
-                — km/h
-              </strong>
+          <div class="current-right">
+
+            <div class="hero-stat">
+              <span>HIGH</span>
+              <strong id="today-high">—°</strong>
             </div>
 
-            <div class="metric">
-              <span class="metric-label">
-                PRESSURE
-              </span>
-
-              <strong id="pressure">
-                — hPa
-              </strong>
+            <div class="hero-stat">
+              <span>LOW</span>
+              <strong id="today-low">—°</strong>
             </div>
 
-            <div class="metric">
-              <span class="metric-label">
-                VISIBILITY
-              </span>
-
-              <strong id="visibility">
-                — km
-              </strong>
+            <div class="hero-stat">
+              <span>RAIN</span>
+              <strong id="hero-rain">—%</strong>
             </div>
+
           </div>
+
+        </article>
+
+
+        <!-- ================================================= -->
+        <!-- QUICK DATA -->
+        <!-- ================================================= -->
+
+        <section class="quick-data">
+
+          <div class="quick-data-heading">
+            <span class="section-kicker">
+              TODAY'S CONDITIONS
+            </span>
+
+            <span class="data-line"></span>
+          </div>
+
+          <div class="metrics-grid">
+
+            <article class="metric-card">
+              <span class="metric-icon">↗</span>
+
+              <div>
+                <span>WIND</span>
+                <strong id="wind">— km/h</strong>
+              </div>
+            </article>
+
+
+            <article class="metric-card">
+              <span class="metric-icon">◌</span>
+
+              <div>
+                <span>HUMIDITY</span>
+                <strong id="humidity">—%</strong>
+              </div>
+            </article>
+
+
+            <article class="metric-card">
+              <span class="metric-icon">◎</span>
+
+              <div>
+                <span>PRESSURE</span>
+                <strong id="pressure">— hPa</strong>
+              </div>
+            </article>
+
+
+            <article class="metric-card">
+              <span class="metric-icon">◉</span>
+
+              <div>
+                <span>VISIBILITY</span>
+                <strong id="visibility">— km</strong>
+              </div>
+            </article>
+
+
+            <article class="metric-card">
+              <span class="metric-icon">◇</span>
+
+              <div>
+                <span>FEELS LIKE</span>
+                <strong id="feels-detail">—°C</strong>
+              </div>
+            </article>
+
+
+            <article class="metric-card">
+              <span class="metric-icon">△</span>
+
+              <div>
+                <span>RAIN CHANCE</span>
+                <strong id="rain-detail">—%</strong>
+              </div>
+            </article>
+
+          </div>
+
         </section>
 
-        <!-- HOURLY -->
-        <section class="weather-section">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">
-                NEXT 24 HOURS
-              </p>
 
-              <h2>Hourly forecast</h2>
+        <!-- ================================================= -->
+        <!-- HOURLY -->
+        <!-- ================================================= -->
+
+        <section
+          class="forecast-section"
+          id="hourly-section"
+        >
+
+          <div class="forecast-heading">
+
+            <div>
+              <span class="section-kicker">
+                HOURLY FORECAST
+              </span>
+
+              <h2>
+                Next 24 hours
+              </h2>
             </div>
+
+            <div class="forecast-controls">
+
+              <button
+                class="forecast-arrow"
+                id="hourly-prev"
+                type="button"
+                aria-label="Previous hours"
+              >
+                ←
+              </button>
+
+              <button
+                class="forecast-arrow"
+                id="hourly-next"
+                type="button"
+                aria-label="Next hours"
+              >
+                →
+              </button>
+
+            </div>
+
           </div>
 
-          <div class="hourly-wrapper">
-            <button
-              class="forecast-arrow"
-              id="hourly-prev"
-              type="button"
-              aria-label="Previous hours"
-            >
-              ←
-            </button>
+
+          <div class="hourly-frame">
 
             <div
-              class="hourly-scroll"
+              class="hourly-container"
               id="hourly-container"
             ></div>
 
-            <button
-              class="forecast-arrow"
-              id="hourly-next"
-              type="button"
-              aria-label="Next hours"
-            >
-              →
-            </button>
           </div>
+
         </section>
 
-        <!-- DAILY -->
-        <section class="weather-section">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">
-                UPCOMING
-              </p>
 
-              <h2>7-day forecast</h2>
+        <!-- ================================================= -->
+        <!-- DAILY -->
+        <!-- ================================================= -->
+
+        <section
+          class="forecast-section"
+          id="daily-section"
+        >
+
+          <div class="forecast-heading">
+
+            <div>
+              <span class="section-kicker">
+                EXTENDED FORECAST
+              </span>
+
+              <h2>
+                Next 7 days
+              </h2>
             </div>
+
           </div>
+
 
           <div
             class="daily-container"
             id="daily-container"
           ></div>
+
         </section>
 
-        <!-- DETAILS -->
-        <section class="weather-section">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">
-                ADDITIONAL DATA
-              </p>
 
-              <h2>Weather details</h2>
+        <!-- ================================================= -->
+        <!-- SUN -->
+        <!-- ================================================= -->
+
+        <section class="sun-section">
+
+          <div class="forecast-heading">
+
+            <div>
+              <span class="section-kicker">
+                SOLAR DATA
+              </span>
+
+              <h2>
+                Sun today
+              </h2>
             </div>
           </div>
 
-          <div class="details-grid">
-            <article class="detail-card">
-              <span class="detail-icon">💧</span>
 
-              <div>
-                <span class="detail-label">
-                  Humidity
-                </span>
-
-                <strong id="humidity">
-                  —%
-                </strong>
-              </div>
-            </article>
-
-            <article class="detail-card">
-              <span class="detail-icon">💨</span>
-
-              <div>
-                <span class="detail-label">
-                  Wind speed
-                </span>
-
-                <strong id="wind-detail">
-                  — km/h
-                </strong>
-              </div>
-            </article>
-
-            <article class="detail-card">
-              <span class="detail-icon">🌡️</span>
-
-              <div>
-                <span class="detail-label">
-                  Feels like
-                </span>
-
-                <strong id="feels-detail">
-                  —°C
-                </strong>
-              </div>
-            </article>
-
-            <article class="detail-card">
-              <span class="detail-icon">🔵</span>
-
-              <div>
-                <span class="detail-label">
-                  Pressure
-                </span>
-
-                <strong id="pressure-detail">
-                  — hPa
-                </strong>
-              </div>
-            </article>
-
-            <article class="detail-card">
-              <span class="detail-icon">👁️</span>
-
-              <div>
-                <span class="detail-label">
-                  Visibility
-                </span>
-
-                <strong id="visibility-detail">
-                  — km
-                </strong>
-              </div>
-            </article>
-
-            <article class="detail-card">
-              <span class="detail-icon">🌧️</span>
-
-              <div>
-                <span class="detail-label">
-                  Rain probability
-                </span>
-
-                <strong id="rain-detail">
-                  —%
-                </strong>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <!-- SUN -->
-        <section class="weather-section sun-section">
           <div class="sun-card">
-            <div>
-              <span class="sun-label">
-                SUNRISE
-              </span>
 
+            <div class="sun-time">
+              <span>SUNRISE</span>
               <strong id="sunrise">—</strong>
             </div>
 
-            <div class="sun-line">
-              <span class="sun-ball"></span>
+            <div class="sun-trajectory">
+
+              <div class="sun-trajectory-line"></div>
+
+              <div class="sun-position"></div>
+
             </div>
 
-            <div>
-              <span class="sun-label">
-                SUNSET
-              </span>
-
+            <div class="sun-time right">
+              <span>SUNSET</span>
               <strong id="sunset">—</strong>
             </div>
+
           </div>
+
         </section>
 
+
+        <!-- ================================================= -->
         <!-- FOOTER -->
+        <!-- ================================================= -->
+
         <footer class="weather-footer">
-          <span>
-            Weather data powered by Open-Meteo
-          </span>
 
-          <span>•</span>
+          <div class="footer-brand">
+            <span class="footer-mark">AJ</span>
 
-          <span id="footer-location">
-            {defaultLocation}
-          </span>
+            <div>
+              <strong>WEATHER SYSTEM</strong>
+
+              <span>
+                Data powered by Open-Meteo
+              </span>
+            </div>
+          </div>
+
+          <div class="footer-location">
+            <span>ACTIVE LOCATION</span>
+            <strong id="footer-location">
+              Alcoi
+            </strong>
+          </div>
+
         </footer>
-      </div>
+
+      </section>
+
     </main>
   </body>
 </html>
+
 
 <script>
   type LocationData = {
@@ -430,7 +519,7 @@ const defaultLocation = "Alcoi";
     longitude: number;
   };
 
-  type WeatherCurrentData = {
+  type WeatherCurrent = {
     temperature_2m: number;
     apparent_temperature: number;
     relative_humidity_2m: number;
@@ -440,14 +529,14 @@ const defaultLocation = "Alcoi";
     weather_code: number;
   };
 
-  type WeatherHourlyData = {
+  type WeatherHourly = {
     time: string[];
     temperature_2m: number[];
     precipitation_probability: number[];
     weather_code: number[];
   };
 
-  type WeatherDailyData = {
+  type WeatherDaily = {
     time: string[];
     weather_code: number[];
     temperature_2m_max: number[];
@@ -457,10 +546,10 @@ const defaultLocation = "Alcoi";
     sunset: string[];
   };
 
-  type WeatherData = {
-    current: WeatherCurrentData;
-    hourly: WeatherHourlyData;
-    daily: WeatherDailyData;
+  type WeatherResponse = {
+    current: WeatherCurrent;
+    hourly: WeatherHourly;
+    daily: WeatherDaily;
   };
 
   const locations: Record<string, LocationData> = {
@@ -487,81 +576,101 @@ const defaultLocation = "Alcoi";
   };
 
   let selectedLocation = "Alcoi";
-  let weatherData: WeatherData | null = null;
-
-  /*
-   * This represents the first hour currently displayed.
-   * We keep the real "current hour" separately so
-   * navigation does not incorrectly label another hour
-   * as NOW.
-   */
+  let weatherData: WeatherResponse | null = null;
   let hourlyStartIndex = 0;
-  let currentHourIndex = 0;
 
-  const getElement = <T extends HTMLElement>(
+
+  /* ========================================================= */
+  /* DOM HELPERS */
+  /* ========================================================= */
+
+  function getElement<T extends HTMLElement>(
     id: string,
-  ): T | null => {
+  ): T | null {
     return document.getElementById(id) as T | null;
-  };
+  }
+
+
+  function updateElement(
+    id: string,
+    value: string,
+  ): void {
+    const element = document.getElementById(id);
+
+    if (element) {
+      element.textContent = value;
+    }
+  }
+
+
+  /* ========================================================= */
+  /* WEATHER ICONS */
+  /* ========================================================= */
 
   function getWeatherIcon(
     code: number,
     isNight = false,
   ): string {
-    if (isNight) {
-      if (code === 0) return "🌙";
 
-      if (
-        code === 1 ||
-        code === 2 ||
-        code === 3
-      ) {
-        return "☁️";
-      }
+    if (isNight) {
+      if (code === 0) return "☾";
+      if (code >= 1 && code <= 3) return "☁";
     }
 
-    if (code === 0) return "☀️";
-    if (code === 1) return "🌤️";
-    if (code === 2) return "⛅";
-    if (code === 3) return "☁️";
+    if (code === 0) return "☀";
+
+    if (code === 1) return "◐";
+
+    if (code === 2) return "◑";
+
+    if (code === 3) return "☁";
 
     if (code === 45 || code === 48) {
-      return "🌫️";
+      return "≋";
     }
 
     if (code >= 51 && code <= 57) {
-      return "🌦️";
+      return "☂";
     }
 
     if (code >= 61 && code <= 67) {
-      return "🌧️";
+      return "☂";
     }
 
     if (code >= 71 && code <= 77) {
-      return "❄️";
+      return "❄";
     }
 
     if (code >= 80 && code <= 82) {
-      return "🌦️";
+      return "☂";
     }
 
     if (code >= 85 && code <= 86) {
-      return "🌨️";
+      return "❄";
     }
 
     if (code >= 95 && code <= 99) {
-      return "⛈️";
+      return "ϟ";
     }
 
-    return "🌤️";
+    return "☀";
   }
+
+
+  /* ========================================================= */
+  /* WEATHER DESCRIPTION */
+  /* ========================================================= */
 
   function getWeatherDescription(
     code: number,
   ): string {
+
     if (code === 0) return "Clear sky";
+
     if (code === 1) return "Mainly clear";
+
     if (code === 2) return "Partly cloudy";
+
     if (code === 3) return "Overcast";
 
     if (code === 45 || code === 48) {
@@ -592,12 +701,18 @@ const defaultLocation = "Alcoi";
       return "Thunderstorm";
     }
 
-    return "Unknown conditions";
+    return "Unknown";
   }
+
+
+  /* ========================================================= */
+  /* DATE HELPERS */
+  /* ========================================================= */
 
   function formatHour(
     value: string,
   ): string {
+
     const date = new Date(value);
 
     return date.toLocaleTimeString(
@@ -610,17 +725,18 @@ const defaultLocation = "Alcoi";
     );
   }
 
+
   function formatDay(
     value: string,
     index: number,
   ): string {
+
     if (index === 0) {
       return "Today";
     }
 
-    const date = new Date(
-      `${value}T12:00:00`,
-    );
+    const date =
+      new Date(`${value}T12:00:00`);
 
     return date.toLocaleDateString(
       "en-GB",
@@ -630,7 +746,9 @@ const defaultLocation = "Alcoi";
     );
   }
 
+
   function formatDateTime(): string {
+
     return new Date().toLocaleTimeString(
       "en-GB",
       {
@@ -641,37 +759,39 @@ const defaultLocation = "Alcoi";
     );
   }
 
+
   function getIsNight(
     time: string,
     sunrise: string,
     sunset: string,
   ): boolean {
-    const current = new Date(time).getTime();
-    const rise = new Date(sunrise).getTime();
-    const set = new Date(sunset).getTime();
+
+    const current =
+      new Date(time).getTime();
+
+    const rise =
+      new Date(sunrise).getTime();
+
+    const set =
+      new Date(sunset).getTime();
 
     return current < rise || current > set;
   }
 
-  function updateElement(
-    id: string,
-    value: string,
-  ): void {
-    const element =
-      document.getElementById(id);
 
-    if (element) {
-      element.textContent = value;
-    }
-  }
+  /* ========================================================= */
+  /* CURRENT WEATHER */
+  /* ========================================================= */
 
   function renderCurrent(
-    data: WeatherData,
+    data: WeatherResponse,
   ): void {
+
     const location =
       locations[selectedLocation];
 
-    const current = data.current;
+    const current =
+      data.current;
 
     const todaySunrise =
       data.daily.sunrise[0];
@@ -679,14 +799,21 @@ const defaultLocation = "Alcoi";
     const todaySunset =
       data.daily.sunset[0];
 
-    const isNight = getIsNight(
-      new Date().toISOString(),
-      todaySunrise,
-      todaySunset,
-    );
+    const isNight =
+      getIsNight(
+        new Date().toISOString(),
+        todaySunrise,
+        todaySunset,
+      );
+
 
     updateElement(
       "location-name",
+      location.name,
+    );
+
+    updateElement(
+      "location-name-top",
       location.name,
     );
 
@@ -700,19 +827,24 @@ const defaultLocation = "Alcoi";
       location.name,
     );
 
+
     updateElement(
       "temperature",
-      `${Math.round(
-        current.temperature_2m,
-      )}°`,
+      `${Math.round(current.temperature_2m)}`,
     );
+
 
     updateElement(
       "feels-like",
-      `${Math.round(
-        current.apparent_temperature,
-      )}°`,
+      `${Math.round(current.apparent_temperature)}°`,
     );
+
+
+    updateElement(
+      "feels-detail",
+      `${Math.round(current.apparent_temperature)}°C`,
+    );
+
 
     updateElement(
       "description",
@@ -720,6 +852,7 @@ const defaultLocation = "Alcoi";
         current.weather_code,
       ),
     );
+
 
     updateElement(
       "weather-icon",
@@ -729,84 +862,72 @@ const defaultLocation = "Alcoi";
       ),
     );
 
+
     updateElement(
       "humidity",
-      `${Math.round(
-        current.relative_humidity_2m,
-      )}%`,
+      `${Math.round(current.relative_humidity_2m)}%`,
     );
+
 
     updateElement(
       "hero-humidity",
-      `${Math.round(
-        current.relative_humidity_2m,
-      )}%`,
+      `${Math.round(current.relative_humidity_2m)}%`,
     );
+
 
     updateElement(
       "wind",
-      `${Math.round(
-        current.wind_speed_10m,
-      )} km/h`,
+      `${Math.round(current.wind_speed_10m)} km/h`,
     );
 
-    updateElement(
-      "wind-detail",
-      `${Math.round(
-        current.wind_speed_10m,
-      )} km/h`,
-    );
 
     updateElement(
       "pressure",
-      `${Math.round(
-        current.surface_pressure,
-      )} hPa`,
+      `${Math.round(current.surface_pressure)} hPa`,
     );
 
-    updateElement(
-      "pressure-detail",
-      `${Math.round(
-        current.surface_pressure,
-      )} hPa`,
-    );
 
     updateElement(
       "visibility",
-      `${Math.round(
-        current.visibility / 1000,
-      )} km`,
+      `${Math.round(current.visibility / 1000)} km`,
     );
 
-    updateElement(
-      "visibility-detail",
-      `${Math.round(
-        current.visibility / 1000,
-      )} km`,
-    );
-
-    updateElement(
-      "feels-detail",
-      `${Math.round(
-        current.apparent_temperature,
-      )}°C`,
-    );
 
     updateElement(
       "rain-detail",
-      `${data.daily
-        .precipitation_probability_max[0] ?? 0}%`,
+      `${data.daily.precipitation_probability_max[0] ?? 0}%`,
     );
+
+
+    updateElement(
+      "hero-rain",
+      `${data.daily.precipitation_probability_max[0] ?? 0}%`,
+    );
+
+
+    updateElement(
+      "today-high",
+      `${Math.round(data.daily.temperature_2m_max[0] ?? 0)}°`,
+    );
+
+
+    updateElement(
+      "today-low",
+      `${Math.round(data.daily.temperature_2m_min[0] ?? 0)}°`,
+    );
+
 
     updateElement(
       "sunrise",
       formatHour(todaySunrise),
     );
 
+
     updateElement(
       "sunset",
       formatHour(todaySunset),
     );
+
 
     updateElement(
       "last-updated",
@@ -814,60 +935,15 @@ const defaultLocation = "Alcoi";
     );
   }
 
-  function createHourlyCard(
-    data: WeatherData,
-    index: number,
-  ): HTMLElement {
-    const time =
-      data.hourly.time[index];
 
-    const temperature =
-      data.hourly.temperature_2m[index] ?? 0;
-
-    const rain =
-      data.hourly
-        .precipitation_probability[index] ?? 0;
-
-    const code =
-      data.hourly.weather_code[index] ?? 0;
-
-    const item =
-      document.createElement("article");
-
-    item.className =
-      index === currentHourIndex
-        ? "hour-card current"
-        : "hour-card";
-
-    const timeLabel =
-      index === currentHourIndex
-        ? "NOW"
-        : formatHour(time);
-
-    item.innerHTML = `
-      <span class="hour-time">
-        ${timeLabel}
-      </span>
-
-      <span class="hour-icon">
-        ${getWeatherIcon(code)}
-      </span>
-
-      <strong class="hour-temperature">
-        ${Math.round(temperature)}°
-      </strong>
-
-      <span class="hour-rain">
-        ${rain}% rain
-      </span>
-    `;
-
-    return item;
-  }
+  /* ========================================================= */
+  /* HOURLY FORECAST */
+  /* ========================================================= */
 
   function renderHourly(
-    data: WeatherData,
+    data: WeatherResponse,
   ): void {
+
     const container =
       getElement<HTMLDivElement>(
         "hourly-container",
@@ -875,68 +951,124 @@ const defaultLocation = "Alcoi";
 
     if (!container) return;
 
-    const endIndex = Math.min(
-      hourlyStartIndex + 12,
-      data.hourly.time.length,
+
+    const now =
+      new Date();
+
+    let startIndex =
+      data.hourly.time.findIndex(
+        (time) =>
+          new Date(time) >= now,
+      );
+
+
+    if (startIndex < 0) {
+      startIndex = 0;
+    }
+
+
+    hourlyStartIndex =
+      Math.max(0, startIndex);
+
+
+    renderHourlyWindow(
+      data,
+      hourlyStartIndex,
     );
+  }
+
+
+  function renderHourlyWindow(
+    data: WeatherResponse,
+    startIndex: number,
+  ): void {
+
+    const container =
+      getElement<HTMLDivElement>(
+        "hourly-container",
+      );
+
+    if (!container) return;
+
 
     container.innerHTML = "";
 
+
+    const endIndex =
+      Math.min(
+        startIndex + 12,
+        data.hourly.time.length,
+      );
+
+
     for (
-      let i = hourlyStartIndex;
+      let i = startIndex;
       i < endIndex;
       i += 1
     ) {
-      container.appendChild(
-        createHourlyCard(data, i),
-      );
-    }
 
-    updateHourlyButtons();
+      const time =
+        data.hourly.time[i];
+
+      const temperature =
+        data.hourly.temperature_2m[i] ?? 0;
+
+      const rain =
+        data.hourly
+          .precipitation_probability[i] ?? 0;
+
+      const code =
+        data.hourly.weather_code[i] ?? 0;
+
+
+      const card =
+        document.createElement(
+          "article",
+        );
+
+
+      card.className =
+        i === startIndex
+          ? "hour-card current"
+          : "hour-card";
+
+
+      card.innerHTML = `
+        <span class="hour-time">
+          ${
+            i === startIndex
+              ? "NOW"
+              : formatHour(time)
+          }
+        </span>
+
+        <span class="hour-icon">
+          ${getWeatherIcon(code)}
+        </span>
+
+        <strong class="hour-temperature">
+          ${Math.round(temperature)}°
+        </strong>
+
+        <span class="hour-rain">
+          ${rain}% rain
+        </span>
+      `;
+
+
+      container.appendChild(card);
+    }
   }
 
-  function updateHourlyButtons(): void {
-    const previousButton =
-      getElement<HTMLButtonElement>(
-        "hourly-prev",
-      );
 
-    const nextButton =
-      getElement<HTMLButtonElement>(
-        "hourly-next",
-      );
-
-    if (!weatherData) {
-      if (previousButton) {
-        previousButton.disabled = true;
-      }
-
-      if (nextButton) {
-        nextButton.disabled = true;
-      }
-
-      return;
-    }
-
-    const maxStart = Math.max(
-      0,
-      weatherData.hourly.time.length - 12,
-    );
-
-    if (previousButton) {
-      previousButton.disabled =
-        hourlyStartIndex <= 0;
-    }
-
-    if (nextButton) {
-      nextButton.disabled =
-        hourlyStartIndex >= maxStart;
-    }
-  }
+  /* ========================================================= */
+  /* DAILY FORECAST */
+  /* ========================================================= */
 
   function renderDaily(
-    data: WeatherData,
+    data: WeatherResponse,
   ): void {
+
     const container =
       getElement<HTMLDivElement>(
         "daily-container",
@@ -944,20 +1076,22 @@ const defaultLocation = "Alcoi";
 
     if (!container) return;
 
+
     container.innerHTML = "";
 
-    const days = Math.min(
-      data.daily.time.length,
-      7,
-    );
+
+    const days =
+      Math.min(
+        data.daily.time.length,
+        7,
+      );
+
 
     for (
       let i = 0;
       i < days;
       i += 1
     ) {
-      const day =
-        data.daily.time[i];
 
       const code =
         data.daily.weather_code[i] ?? 0;
@@ -972,14 +1106,31 @@ const defaultLocation = "Alcoi";
         data.daily
           .precipitation_probability_max[i] ?? 0;
 
-      const row =
-        document.createElement("article");
 
-      row.className = "daily-row";
+      const row =
+        document.createElement(
+          "article",
+        );
+
+
+      row.className =
+        i === 0
+          ? "daily-row today"
+          : "daily-row";
+
 
       row.innerHTML = `
         <div class="daily-day">
-          ${formatDay(day, i)}
+          <strong>
+            ${formatDay(
+              data.daily.time[i],
+              i,
+            )}
+          </strong>
+
+          <span>
+            ${data.daily.time[i]}
+          </span>
         </div>
 
         <div class="daily-icon">
@@ -992,11 +1143,11 @@ const defaultLocation = "Alcoi";
           </strong>
 
           <span>
-            ${rain}% rain
+            ${rain}% chance of rain
           </span>
         </div>
 
-        <div class="daily-temperatures">
+        <div class="daily-temperature">
           <strong>
             ${Math.round(high)}°
           </strong>
@@ -1007,14 +1158,21 @@ const defaultLocation = "Alcoi";
         </div>
       `;
 
+
       container.appendChild(row);
     }
   }
 
+
+  /* ========================================================= */
+  /* LOADING / ERROR */
+  /* ========================================================= */
+
   function setLoadingState(): void {
+
     updateElement(
       "header-status",
-      "Loading...",
+      "LOADING DATA",
     );
 
     updateElement(
@@ -1023,12 +1181,14 @@ const defaultLocation = "Alcoi";
     );
   }
 
+
   function setErrorState(
     message: string,
   ): void {
+
     updateElement(
       "header-status",
-      "Offline",
+      "OFFLINE",
     );
 
     updateElement(
@@ -1042,9 +1202,15 @@ const defaultLocation = "Alcoi";
     );
   }
 
+
+  /* ========================================================= */
+  /* API */
+  /* ========================================================= */
+
   async function fetchWeather(
     location: LocationData,
-  ): Promise<WeatherData> {
+  ): Promise<WeatherResponse> {
+
     const url =
       "https://api.open-meteo.com/v1/forecast" +
       `?latitude=${location.latitude}` +
@@ -1055,8 +1221,10 @@ const defaultLocation = "Alcoi";
       "&timezone=auto" +
       "&forecast_days=7";
 
+
     const response =
       await fetch(url);
+
 
     if (!response.ok) {
       throw new Error(
@@ -1064,78 +1232,74 @@ const defaultLocation = "Alcoi";
       );
     }
 
-    return (await response.json()) as WeatherData;
+
+    return
+      (await response.json()) as WeatherResponse;
   }
+
+
+  /* ========================================================= */
+  /* LOAD WEATHER */
+  /* ========================================================= */
 
   async function loadWeather(
     locationName: string,
   ): Promise<void> {
+
     const location =
       locations[locationName];
 
+
     if (!location) return;
+
 
     selectedLocation =
       locationName;
 
-    weatherData = null;
-    hourlyStartIndex = 0;
-    currentHourIndex = 0;
 
     setLoadingState();
+
 
     document
       .querySelectorAll<HTMLButtonElement>(
         ".location-tab",
       )
       .forEach((button) => {
+
         button.classList.toggle(
           "active",
           button.dataset.location ===
             locationName,
         );
+
       });
 
+
     try {
+
       const response =
         await fetchWeather(location);
 
-      weatherData = response;
 
-      /*
-       * Find the first forecast hour that is
-       * equal to or later than the current time.
-       */
-      const now = new Date();
+      weatherData =
+        response;
 
-      const foundIndex =
-        response.hourly.time.findIndex(
-          (time) =>
-            new Date(time).getTime() >=
-            now.getTime(),
-        );
-
-      currentHourIndex =
-        foundIndex >= 0
-          ? foundIndex
-          : 0;
-
-      hourlyStartIndex =
-        currentHourIndex;
 
       renderCurrent(response);
+
       renderHourly(response);
+
       renderDaily(response);
+
 
       updateElement(
         "header-status",
-        "Live data",
+        "LIVE DATA",
       );
+
     } catch (error) {
-      console.error(
-        "Weather loading error:",
-        error,
-      );
+
+      console.error(error);
 
       setErrorState(
         "Unable to load weather data.",
@@ -1143,38 +1307,48 @@ const defaultLocation = "Alcoi";
     }
   }
 
-  /*
-   * Location buttons
-   */
+
+  /* ========================================================= */
+  /* LOCATION BUTTONS */
+  /* ========================================================= */
+
   document
     .querySelectorAll<HTMLButtonElement>(
       ".location-tab",
     )
     .forEach((button) => {
+
       button.addEventListener(
         "click",
         () => {
+
           const locationName =
             button.dataset.location;
 
+
           if (!locationName) return;
 
-          void loadWeather(
+
+          loadWeather(
             locationName,
           );
         },
       );
     });
 
-  /*
-   * Previous hourly forecast
-   */
+
+  /* ========================================================= */
+  /* HOURLY NAVIGATION */
+  /* ========================================================= */
+
   getElement<HTMLButtonElement>(
     "hourly-prev",
   )?.addEventListener(
     "click",
     () => {
+
       if (!weatherData) return;
+
 
       hourlyStartIndex =
         Math.max(
@@ -1182,26 +1356,30 @@ const defaultLocation = "Alcoi";
           hourlyStartIndex - 6,
         );
 
-      renderHourly(weatherData);
+
+      renderHourlyWindow(
+        weatherData,
+        hourlyStartIndex,
+      );
     },
   );
 
-  /*
-   * Next hourly forecast
-   */
+
   getElement<HTMLButtonElement>(
     "hourly-next",
   )?.addEventListener(
     "click",
     () => {
+
       if (!weatherData) return;
+
 
       const maxStart =
         Math.max(
           0,
-          weatherData.hourly.time.length -
-            12,
+          weatherData.hourly.time.length - 12,
         );
+
 
       hourlyStartIndex =
         Math.min(
@@ -1209,130 +1387,442 @@ const defaultLocation = "Alcoi";
           hourlyStartIndex + 6,
         );
 
-      renderHourly(weatherData);
+
+      renderHourlyWindow(
+        weatherData,
+        hourlyStartIndex,
+      );
     },
   );
 
-  /*
-   * Initial weather request
-   */
-  void loadWeather("Alcoi");
+
+  /* ========================================================= */
+  /* TOP NAVIGATION */
+  /* ========================================================= */
+
+  getElement<HTMLButtonElement>(
+    "nav-hourly",
+  )?.addEventListener(
+    "click",
+    () => {
+
+      document
+        .getElementById(
+          "hourly-section",
+        )
+        ?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+    },
+  );
+
+
+  getElement<HTMLButtonElement>(
+    "nav-daily",
+  )?.addEventListener(
+    "click",
+    () => {
+
+      document
+        .getElementById(
+          "daily-section",
+        )
+        ?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+    },
+  );
+
+
+  /* ========================================================= */
+  /* START */
+  /* ========================================================= */
+
+  loadWeather("Alcoi");
 </script>
 
+
 <style>
+
+  /* ========================================================= */
+  /* VARIABLES */
+  /* ========================================================= */
+
   :global(html) {
-    background: #101010;
+    background: #070b12;
+    scroll-behavior: smooth;
   }
+
 
   :global(body) {
     margin: 0;
-    background: #101010;
-    color: #dfdfdf;
+    background: #070b12;
+    color: #f5f7fb;
   }
+
+
+  :root {
+    --blue: #1687ff;
+    --blue-bright: #42a5ff;
+    --blue-soft: rgba(22, 135, 255, 0.12);
+    --blue-border: rgba(22, 135, 255, 0.35);
+
+    --white: #f5f7fb;
+    --muted: rgba(245, 247, 251, 0.55);
+    --dim: rgba(245, 247, 251, 0.32);
+
+    --background: #070b12;
+    --surface: #0c121c;
+    --surface-light: #101925;
+
+    --border: rgba(255, 255, 255, 0.08);
+  }
+
+
+  /* ========================================================= */
+  /* PAGE */
+  /* ========================================================= */
 
   .weather-page {
     min-height: 100vh;
+
     background:
       radial-gradient(
-        circle at 20% 0%,
-        rgba(164, 118, 255, 0.09),
-        transparent 32rem
+        circle at 50% -10%,
+        rgba(22, 135, 255, 0.16),
+        transparent 35rem
       ),
-      #101010;
-    color: #dfdfdf;
+      radial-gradient(
+        circle at 0% 45%,
+        rgba(22, 135, 255, 0.05),
+        transparent 30rem
+      ),
+      var(--background);
+
+    color: var(--white);
   }
 
-  .weather-header {
-    border-bottom: 1px solid
-      rgba(255, 255, 255, 0.08);
 
-    background: rgba(16, 16, 16, 0.88);
-
-    backdrop-filter: blur(18px);
-
-    position: sticky;
-    top: 0;
-    z-index: 20;
-  }
-
-  .header-inner,
-  .weather-container {
+  .content-width {
     width: min(
-      100% - 28px,
-      1200px
+      calc(100% - 40px),
+      1180px
     );
 
     margin-inline: auto;
   }
 
+
+  /* ========================================================= */
+  /* HEADER */
+  /* ========================================================= */
+
+  .weather-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+
+    border-bottom:
+      1px solid var(--border);
+
+    background:
+      rgba(7, 11, 18, 0.86);
+
+    backdrop-filter:
+      blur(20px);
+  }
+
+
   .header-inner {
-    min-height: 70px;
+    width: min(
+      calc(100% - 40px),
+      1180px
+    );
+
+    min-height: 76px;
+
+    margin-inline: auto;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    gap: 20px;
+    gap: 30px;
   }
 
-  .back-link {
-    color: #a476ff;
 
-    text-decoration: none;
-
-    font-size: 0.78rem;
-    font-weight: 700;
-
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-
-    transition: opacity 0.2s ease;
-  }
-
-  .back-link:hover {
-    opacity: 0.7;
-  }
-
-  .header-title {
+  .brand {
     display: flex;
     align-items: center;
 
-    gap: 9px;
+    gap: 12px;
 
-    font-size: 0.78rem;
+    color: var(--white);
+
+    text-decoration: none;
+  }
+
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+
+    display: grid;
+    place-items: center;
+
+    border:
+      1px solid var(--blue-border);
+
+    border-radius: 9px;
+
+    background:
+      rgba(22, 135, 255, 0.1);
+
+    color: var(--blue-bright);
+
+    font-size: 0.65rem;
+    font-weight: 900;
+
+    letter-spacing: -0.04em;
+  }
+
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+  }
+
+
+  .brand-text strong {
+    font-size: 0.72rem;
+
+    letter-spacing: 0.08em;
+  }
+
+
+  .brand-text small {
+    color: var(--dim);
+
+    font-size: 0.5rem;
+
+    letter-spacing: 0.16em;
+  }
+
+
+  .main-nav {
+    display: flex;
+    align-items: center;
+
+    gap: 4px;
+
+    padding: 4px;
+
+    border:
+      1px solid var(--border);
+
+    border-radius: 10px;
+
+    background:
+      rgba(255, 255, 255, 0.025);
+  }
+
+
+  .nav-item {
+    border: 0;
+
+    border-radius: 7px;
+
+    padding:
+      8px 15px;
+
+    background: transparent;
+
+    color: var(--muted);
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-size: 0.68rem;
+
+    font-weight: 700;
+
+    transition:
+      background 0.2s ease,
+      color 0.2s ease;
+  }
+
+
+  .nav-item:hover,
+  .nav-item.active {
+    background:
+      var(--blue-soft);
+
+    color:
+      var(--blue-bright);
+  }
+
+
+  .portfolio-link {
+    color: var(--muted);
+
+    text-decoration: none;
+
+    font-size: 0.68rem;
+
+    font-weight: 700;
+
+    transition:
+      color 0.2s ease;
+  }
+
+
+  .portfolio-link:hover {
+    color: var(--blue-bright);
+  }
+
+
+  /* ========================================================= */
+  /* LOCATION BAR */
+  /* ========================================================= */
+
+  .location-bar {
+    border-bottom:
+      1px solid var(--border);
+
+    background:
+      rgba(255, 255, 255, 0.015);
+  }
+
+
+  .location-bar-inner {
+    min-height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+
+  .location-selector {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+  }
+
+
+  .location-pin {
+    color: var(--blue-bright);
+
+    font-size: 1.15rem;
+  }
+
+
+  .location-selector > div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+  }
+
+
+  .location-label,
+  .live-indicator {
+    color: var(--dim);
+
+    font-size: 0.52rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.13em;
+  }
+
+
+  .location-selector strong {
+    font-size: 0.72rem;
+  }
+
+
+  .live-indicator {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: var(--muted);
+  }
+
+
+  .live-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background:
+      var(--blue-bright);
+
+    box-shadow:
+      0 0 12px
+      rgba(66, 165, 255, 0.9);
+
+    animation:
+      pulse 2s infinite;
+  }
+
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.4;
+    }
+  }
+
+
+  /* ========================================================= */
+  /* LOCATIONS */
+  /* ========================================================= */
+
+  .locations-section {
+    padding-top: 40px;
+  }
+
+
+  .locations-heading {
+    margin-bottom: 16px;
+  }
+
+
+  .section-kicker {
+    display: block;
+
+    color: var(--blue-bright);
+
+    font-size: 0.55rem;
+
     font-weight: 800;
 
     letter-spacing: 0.18em;
   }
 
-  .status-dot {
-    width: 7px;
-    height: 7px;
 
-    border-radius: 50%;
+  .locations-heading h2 {
+    margin: 7px 0 0;
 
-    background: #a476ff;
+    font-size: 1.35rem;
 
-    box-shadow:
-      0 0 12px
-      rgba(164, 118, 255, 0.8);
+    letter-spacing: -0.04em;
   }
 
-  .header-status {
-    color: rgba(
-      223,
-      223,
-      223,
-      0.5
-    );
-
-    font-size: 0.7rem;
-  }
-
-  .weather-container {
-    padding-top: 35px;
-    padding-bottom: 70px;
-  }
 
   .location-tabs {
     display: grid;
@@ -1340,124 +1830,172 @@ const defaultLocation = "Alcoi";
     grid-template-columns:
       repeat(3, 1fr);
 
-    gap: 8px;
+    gap: 10px;
   }
 
+
   .location-tab {
-    min-height: 65px;
+    position: relative;
 
-    border: 1px solid
-      rgba(255, 255, 255, 0.09);
+    min-height: 82px;
 
-    border-radius: 14px;
-
-    background: rgba(
-      255,
-      255,
-      255,
-      0.025
-    );
-
-    color: #dfdfdf;
-
-    cursor: pointer;
-
-    padding: 12px 16px;
+    padding: 17px;
 
     display: flex;
     flex-direction: column;
 
     align-items: flex-start;
+
     justify-content: center;
 
-    gap: 5px;
+    border:
+      1px solid var(--border);
+
+    border-radius: 12px;
+
+    background:
+      rgba(255, 255, 255, 0.025);
+
+    color: var(--white);
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    text-align: left;
+
+    overflow: hidden;
 
     transition:
+      transform 0.2s ease,
       border-color 0.2s ease,
-      background 0.2s ease,
-      transform 0.2s ease;
+      background 0.2s ease;
   }
+
+
+  .location-tab::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 2px;
+
+    background:
+      var(--blue);
+
+    opacity: 0;
+
+    transition:
+      opacity 0.2s ease;
+  }
+
 
   .location-tab:hover {
-    transform: translateY(-1px);
+    transform:
+      translateY(-2px);
 
     border-color:
-      rgba(164, 118, 255, 0.4);
+      var(--blue-border);
   }
+
 
   .location-tab.active {
     border-color:
-      rgba(164, 118, 255, 0.65);
+      var(--blue-border);
 
     background:
-      rgba(164, 118, 255, 0.1);
+      linear-gradient(
+        135deg,
+        rgba(22, 135, 255, 0.12),
+        rgba(22, 135, 255, 0.025)
+      );
   }
 
-  .location-tab span {
-    font-weight: 700;
+
+  .location-tab.active::before {
+    opacity: 1;
+  }
+
+
+  .location-tab-name {
     font-size: 0.9rem;
+
+    font-weight: 750;
   }
 
-  .location-tab small {
-    color: rgba(
-      223,
-      223,
-      223,
-      0.45
-    );
 
-    font-size: 0.65rem;
+  .location-tab-region {
+    margin-top: 4px;
+
+    color: var(--dim);
+
+    font-size: 0.58rem;
   }
 
-  .location-heading {
-    margin-top: 45px;
 
+  .location-tab-arrow {
+    position: absolute;
+
+    right: 17px;
+    top: 50%;
+
+    transform:
+      translateY(-50%);
+
+    color: var(--blue);
+
+    font-size: 1rem;
+  }
+
+
+  /* ========================================================= */
+  /* WEATHER MAIN */
+  /* ========================================================= */
+
+  .weather-main {
+    padding-top: 55px;
+    padding-bottom: 70px;
+  }
+
+
+  .weather-heading {
     display: flex;
-    align-items: flex-end;
+
     justify-content: space-between;
 
-    gap: 30px;
+    align-items: flex-end;
+
+    gap: 20px;
   }
 
-  .eyebrow {
-    margin: 0 0 8px;
 
-    color: #a476ff;
+  .weather-heading h1 {
+    margin: 6px 0 0;
 
-    font-size: 0.65rem;
-    font-weight: 800;
+    font-size:
+      clamp(2.8rem, 7vw, 5rem);
 
-    letter-spacing: 0.18em;
+    line-height: 0.9;
+
+    letter-spacing:
+      -0.075em;
   }
 
-  .location-heading h1 {
-    margin: 0;
 
-    font-size: clamp(
-      2.6rem,
-      6vw,
-      4.8rem
-    );
+  .weather-heading p {
+    margin: 12px 0 0;
 
-    line-height: 0.95;
+    color: var(--muted);
 
-    letter-spacing: -0.06em;
+    font-size: 0.72rem;
   }
 
-  #location-region {
-    margin-top: 12px;
 
-    color: rgba(
-      223,
-      223,
-      223,
-      0.45
-    );
-
-    font-size: 0.8rem;
-  }
-
-  .last-updated {
+  .updated-block {
     display: flex;
     flex-direction: column;
 
@@ -1465,65 +2003,103 @@ const defaultLocation = "Alcoi";
 
     gap: 5px;
 
-    color: rgba(
-      223,
-      223,
-      223,
-      0.4
-    );
+    color: var(--dim);
 
-    font-size: 0.6rem;
+    font-size: 0.5rem;
 
-    letter-spacing: 0.12em;
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
   }
 
-  .last-updated strong {
-    color: #dfdfdf;
 
-    font-size: 0.8rem;
+  .updated-block strong {
+    color: var(--muted);
+
+    font-size: 0.68rem;
 
     letter-spacing: 0;
   }
 
-  .hero-weather {
-    margin-top: 45px;
+
+  /* ========================================================= */
+  /* HERO */
+  /* ========================================================= */
+
+  .current-weather-card {
+    position: relative;
+
+    min-height: 300px;
+
+    margin-top: 35px;
+
+    padding: 42px;
 
     display: grid;
 
     grid-template-columns:
       minmax(0, 1fr)
-      240px;
+      260px;
 
-    gap: 25px;
+    align-items: center;
+
+    gap: 30px;
+
+    overflow: hidden;
+
+    border:
+      1px solid
+      rgba(66, 165, 255, 0.25);
+
+    border-radius: 20px;
+
+    background:
+      linear-gradient(
+        135deg,
+        #0e1826,
+        #0a1019
+      );
+
+    box-shadow:
+      0 25px 80px
+      rgba(0, 0, 0, 0.25);
   }
 
-  .hero-main,
-  .hero-side {
-    border: 1px solid
-      rgba(255, 255, 255, 0.08);
 
-    border-radius: 22px;
+  .current-glow {
+    position: absolute;
 
-    background: rgba(
-      255,
-      255,
-      255,
-      0.025
-    );
+    width: 400px;
+    height: 400px;
+
+    left: -150px;
+    top: -180px;
+
+    border-radius: 50%;
+
+    background:
+      radial-gradient(
+        circle,
+        rgba(22, 135, 255, 0.17),
+        transparent 68%
+      );
+
+    pointer-events: none;
   }
 
-  .hero-main {
-    min-height: 310px;
 
-    padding: 40px 35px;
+  .current-left {
+    position: relative;
 
     display: flex;
+
     align-items: center;
 
     gap: 30px;
   }
 
-  .weather-icon-container {
+
+  .weather-condition-icon {
     width: 100px;
     height: 100px;
 
@@ -1531,373 +2107,152 @@ const defaultLocation = "Alcoi";
 
     display: grid;
     place-items: center;
-  }
 
-  .weather-icon {
-    font-size: 5.4rem;
+    color: var(--blue-bright);
+
+    font-size: 5.3rem;
 
     line-height: 1;
 
-    filter:
-      drop-shadow(
-        0 10px 25px
-        rgba(164, 118, 255, 0.15)
-      );
+    text-shadow:
+      0 0 35px
+      rgba(66, 165, 255, 0.3);
   }
 
-  .hero-temperature {
-    min-width: 170px;
+
+  .current-temperature {
+    display: flex;
+
+    align-items: flex-start;
+
+    font-size:
+      clamp(5rem, 10vw, 8rem);
+
+    font-weight: 650;
+
+    line-height: 0.78;
+
+    letter-spacing:
+      -0.1em;
   }
 
-  .temperature {
-    font-size: clamp(
-      3.6rem,
-      8vw,
-      6.5rem
-    );
+
+  .current-temperature sup {
+    margin-top: 5px;
+
+    margin-left: 5px;
+
+    color: var(--blue-bright);
+
+    font-size: 1.2rem;
 
     font-weight: 700;
 
-    letter-spacing: -0.08em;
-
-    line-height: 0.9;
+    letter-spacing: 0;
   }
 
-  .feels-like {
-    margin-top: 12px;
 
-    color: rgba(
-      223,
-      223,
-      223,
-      0.45
-    );
-
-    font-size: 0.75rem;
+  .current-condition {
+    margin-left: 5px;
   }
 
-  .feels-like strong {
-    color: #dfdfdf;
-  }
 
-  .hero-description {
-    margin-left: auto;
-  }
-
-  .hero-description h2 {
+  .current-condition h2 {
     margin: 0;
 
-    font-size: 1.15rem;
-
-    font-weight: 600;
-  }
-
-  .hero-description p {
-    margin-top: 9px;
-
-    color: rgba(
-      223,
-      223,
-      223,
-      0.45
-    );
-
-    font-size: 0.72rem;
-  }
-
-  .hero-description strong {
-    color: #dfdfdf;
-  }
-
-  .hero-side {
-    padding: 30px 25px;
-
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
-
-    gap: 30px;
-  }
-
-  .metric {
-    display: flex;
-    flex-direction: column;
-
-    gap: 7px;
-  }
-
-  .metric-label,
-  .detail-label,
-  .sun-label {
-    color: rgba(
-      223,
-      223,
-      223,
-      0.38
-    );
-
-    font-size: 0.62rem;
-
-    font-weight: 700;
-
-    letter-spacing: 0.12em;
-  }
-
-  .metric strong {
     font-size: 1rem;
+
+    font-weight: 650;
   }
 
-  .weather-section {
-    margin-top: 60px;
+
+  .current-condition p {
+    margin: 8px 0 0;
+
+    color: var(--muted);
+
+    font-size: 0.64rem;
   }
 
-  .section-heading {
-    display: flex;
 
-    justify-content: space-between;
-    align-items: flex-end;
-
-    margin-bottom: 18px;
+  .current-condition strong {
+    color: var(--white);
   }
 
-  .section-heading h2 {
-    margin: 0;
 
-    font-size: 1.6rem;
+  .current-right {
+    position: relative;
 
-    letter-spacing: -0.04em;
-  }
+    padding-left: 30px;
 
-  .hourly-wrapper {
     display: grid;
 
     grid-template-columns:
-      40px
-      minmax(0, 1fr)
-      40px;
+      repeat(3, 1fr);
 
-    gap: 8px;
+    gap: 10px;
 
-    align-items: stretch;
+    border-left:
+      1px solid var(--border);
   }
 
-  .hourly-scroll {
-    display: flex;
 
-    gap: 8px;
-
-    overflow-x: auto;
-
-    scrollbar-width: none;
-
-    scroll-behavior: smooth;
-  }
-
-  .hourly-scroll::-webkit-scrollbar {
-    display: none;
-  }
-
-  .forecast-arrow {
-    border: 1px solid
-      rgba(255, 255, 255, 0.08);
-
-    border-radius: 12px;
-
-    background: rgba(
-      255,
-      255,
-      255,
-      0.025
-    );
-
-    color: #dfdfdf;
-
-    cursor: pointer;
-
-    font-size: 1.1rem;
-
-    transition:
-      background 0.2s ease,
-      border-color 0.2s ease,
-      opacity 0.2s ease;
-  }
-
-  .forecast-arrow:hover:not(:disabled) {
-    background:
-      rgba(164, 118, 255, 0.1);
-
-    border-color:
-      rgba(164, 118, 255, 0.45);
-  }
-
-  .forecast-arrow:disabled {
-    cursor: not-allowed;
-    opacity: 0.25;
-  }
-
-  .hour-card {
-    min-width: 120px;
-
-    padding: 16px 12px;
-
-    border: 1px solid
-      rgba(255, 255, 255, 0.07);
-
-    border-radius: 15px;
-
-    background: rgba(
-      255,
-      255,
-      255,
-      0.025
-    );
-
+  .hero-stat {
     display: flex;
 
     flex-direction: column;
+
+    gap: 8px;
+  }
+
+
+  .hero-stat span {
+    color: var(--dim);
+
+    font-size: 0.5rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+  }
+
+
+  .hero-stat strong {
+    font-size: 1.25rem;
+  }
+
+
+  /* ========================================================= */
+  /* QUICK DATA */
+  /* ========================================================= */
+
+  .quick-data {
+    margin-top: 42px;
+  }
+
+
+  .quick-data-heading {
+    display: flex;
 
     align-items: center;
-
-    gap: 9px;
-  }
-
-  .hour-card.current {
-    border-color:
-      rgba(164, 118, 255, 0.5);
-
-    background:
-      rgba(164, 118, 255, 0.08);
-  }
-
-  .hour-time {
-    color: rgba(
-      223,
-      223,
-      223,
-      0.5
-    );
-
-    font-size: 0.62rem;
-
-    font-weight: 700;
-  }
-
-  .hour-icon {
-    font-size: 1.7rem;
-  }
-
-  .hour-temperature {
-    font-size: 1.2rem;
-  }
-
-  .hour-rain {
-    color: rgba(
-      164,
-      118,
-      255,
-      0.9
-    );
-
-    font-size: 0.58rem;
-  }
-
-  .daily-container {
-    border: 1px solid
-      rgba(255, 255, 255, 0.07);
-
-    border-radius: 18px;
-
-    overflow: hidden;
-  }
-
-  .daily-row {
-    min-height: 100px;
-
-    padding: 13px 18px;
-
-    display: grid;
-
-    grid-template-columns:
-      70px
-      50px
-      1fr
-      auto;
 
     gap: 15px;
 
-    align-items: center;
-
-    border-bottom: 1px solid
-      rgba(255, 255, 255, 0.06);
-
-    background: rgba(
-      255,
-      255,
-      255,
-      0.02
-    );
+    margin-bottom: 14px;
   }
 
-  .daily-row:last-child {
-    border-bottom: 0;
+
+  .data-line {
+    height: 1px;
+
+    flex: 1;
+
+    background:
+      var(--border);
   }
 
-  .daily-day {
-    font-size: 0.72rem;
-    font-weight: 700;
-  }
 
-  .daily-icon {
-    font-size: 1.8rem;
-  }
-
-  .daily-condition {
-    display: flex;
-    flex-direction: column;
-
-    gap: 5px;
-  }
-
-  .daily-condition strong {
-    font-size: 0.78rem;
-  }
-
-  .daily-condition span {
-    color: rgba(
-      164,
-      118,
-      255,
-      0.8
-    );
-
-    font-size: 0.62rem;
-  }
-
-  .daily-temperatures {
-    display: flex;
-
-    gap: 12px;
-
-    align-items: center;
-  }
-
-  .daily-temperatures strong {
-    font-size: 1rem;
-  }
-
-  .daily-temperatures span {
-    color: rgba(
-      223,
-      223,
-      223,
-      0.35
-    );
-
-    font-size: 0.85rem;
-  }
-
-  .details-grid {
+  .metrics-grid {
     display: grid;
 
     grid-template-columns:
@@ -1906,76 +2261,443 @@ const defaultLocation = "Alcoi";
     gap: 10px;
   }
 
-  .detail-card {
-    min-height: 125px;
 
-    padding: 22px;
+  .metric-card {
+    min-height: 105px;
 
-    border: 1px solid
-      rgba(255, 255, 255, 0.07);
-
-    border-radius: 16px;
-
-    background: rgba(
-      255,
-      255,
-      255,
-      0.025
-    );
+    padding: 20px;
 
     display: flex;
 
     align-items: center;
 
     gap: 15px;
+
+    border:
+      1px solid var(--border);
+
+    border-radius: 12px;
+
+    background:
+      rgba(255, 255, 255, 0.022);
+
+    transition:
+      border-color 0.2s ease,
+      background 0.2s ease;
   }
 
-  .detail-icon {
-    font-size: 1.7rem;
+
+  .metric-card:hover {
+    border-color:
+      rgba(66, 165, 255, 0.3);
+
+    background:
+      rgba(22, 135, 255, 0.045);
   }
 
-  .detail-card div {
+
+  .metric-icon {
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 9px;
+
+    background:
+      var(--blue-soft);
+
+    color:
+      var(--blue-bright);
+
+    font-size: 1.1rem;
+  }
+
+
+  .metric-card div {
     display: flex;
 
     flex-direction: column;
 
-    gap: 7px;
+    gap: 6px;
   }
 
-  .detail-card strong {
-    font-size: 1rem;
+
+  .metric-card div span {
+    color: var(--dim);
+
+    font-size: 0.5rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
   }
 
-  .sun-card {
-    min-height: 120px;
 
-    padding: 25px;
+  .metric-card strong {
+    font-size: 0.85rem;
+  }
 
-    border: 1px solid
-      rgba(255, 255, 255, 0.07);
 
-    border-radius: 18px;
+  /* ========================================================= */
+  /* FORECAST SECTIONS */
+  /* ========================================================= */
 
-    background: rgba(
-      255,
-      255,
-      255,
-      0.025
-    );
+  .forecast-section,
+  .sun-section {
+    margin-top: 65px;
+
+    scroll-margin-top: 100px;
+  }
+
+
+  .forecast-heading {
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 17px;
+  }
+
+
+  .forecast-heading h2 {
+    margin: 6px 0 0;
+
+    font-size: 1.5rem;
+
+    letter-spacing: -0.045em;
+  }
+
+
+  .forecast-controls {
+    display: flex;
+
+    gap: 5px;
+  }
+
+
+  .forecast-arrow {
+    width: 36px;
+    height: 36px;
+
+    display: grid;
+    place-items: center;
+
+    border:
+      1px solid var(--border);
+
+    border-radius: 8px;
+
+    background:
+      rgba(255, 255, 255, 0.025);
+
+    color: var(--white);
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    transition:
+      border-color 0.2s ease,
+      background 0.2s ease,
+      color 0.2s ease;
+  }
+
+
+  .forecast-arrow:hover {
+    border-color:
+      var(--blue-border);
+
+    background:
+      var(--blue-soft);
+
+    color:
+      var(--blue-bright);
+  }
+
+
+  /* ========================================================= */
+  /* HOURLY */
+  /* ========================================================= */
+
+  .hourly-frame {
+    padding: 1px;
+
+    overflow: hidden;
+
+    border:
+      1px solid var(--border);
+
+    border-radius: 14px;
+
+    background:
+      rgba(255, 255, 255, 0.02);
+  }
+
+
+  .hourly-container {
+    display: flex;
+
+    gap: 1px;
+
+    overflow-x: auto;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+      var(--blue)
+      transparent;
+  }
+
+
+  .hour-card {
+    min-width: 115px;
+
+    min-height: 170px;
+
+    padding: 20px 12px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    border-right:
+      1px solid var(--border);
+
+    background:
+      rgba(255, 255, 255, 0.012);
+  }
+
+
+  .hour-card.current {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(22, 135, 255, 0.15),
+        rgba(22, 135, 255, 0.035)
+      );
+
+    box-shadow:
+      inset 0 2px 0
+      var(--blue);
+  }
+
+
+  .hour-time {
+    color: var(--muted);
+
+    font-size: 0.55rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+  }
+
+
+  .hour-card.current .hour-time {
+    color:
+      var(--blue-bright);
+  }
+
+
+  .hour-icon {
+    color:
+      var(--blue-bright);
+
+    font-size: 2rem;
+
+    line-height: 1;
+  }
+
+
+  .hour-temperature {
+    font-size: 1.15rem;
+  }
+
+
+  .hour-rain {
+    color:
+      rgba(66, 165, 255, 0.85);
+
+    font-size: 0.52rem;
+  }
+
+
+  /* ========================================================= */
+  /* DAILY */
+  /* ========================================================= */
+
+  .daily-container {
+    overflow: hidden;
+
+    border:
+      1px solid var(--border);
+
+    border-radius: 14px;
+  }
+
+
+  .daily-row {
+    min-height: 86px;
+
+    padding:
+      14px 22px;
 
     display: grid;
 
     grid-template-columns:
-      auto
+      100px
+      55px
       1fr
       auto;
 
-    gap: 25px;
-
     align-items: center;
+
+    gap: 18px;
+
+    border-bottom:
+      1px solid var(--border);
+
+    background:
+      rgba(255, 255, 255, 0.018);
   }
 
-  .sun-card > div:not(.sun-line) {
+
+  .daily-row:last-child {
+    border-bottom: 0;
+  }
+
+
+  .daily-row.today {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(22, 135, 255, 0.11),
+        rgba(22, 135, 255, 0.025)
+      );
+  }
+
+
+  .daily-day {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+  }
+
+
+  .daily-day strong {
+    font-size: 0.72rem;
+  }
+
+
+  .daily-day span {
+    color: var(--dim);
+
+    font-size: 0.5rem;
+  }
+
+
+  .daily-icon {
+    color:
+      var(--blue-bright);
+
+    font-size: 1.7rem;
+
+    line-height: 1;
+  }
+
+
+  .daily-condition {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+  }
+
+
+  .daily-condition strong {
+    font-size: 0.7rem;
+  }
+
+
+  .daily-condition span {
+    color:
+      rgba(66, 165, 255, 0.75);
+
+    font-size: 0.52rem;
+  }
+
+
+  .daily-temperature {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+  }
+
+
+  .daily-temperature strong {
+    font-size: 1rem;
+  }
+
+
+  .daily-temperature span {
+    color: var(--dim);
+
+    font-size: 0.8rem;
+  }
+
+
+  /* ========================================================= */
+  /* SUN */
+  /* ========================================================= */
+
+  .sun-card {
+    min-height: 130px;
+
+    padding: 25px;
+
+    display: grid;
+
+    grid-template-columns:
+      110px
+      1fr
+      110px;
+
+    align-items: center;
+
+    gap: 30px;
+
+    border:
+      1px solid var(--border);
+
+    border-radius: 14px;
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(22, 135, 255, 0.06),
+        rgba(255, 255, 255, 0.015)
+      );
+  }
+
+
+  .sun-time {
     display: flex;
 
     flex-direction: column;
@@ -1983,171 +2705,428 @@ const defaultLocation = "Alcoi";
     gap: 7px;
   }
 
-  .sun-line {
-    height: 1px;
 
-    background: linear-gradient(
-      90deg,
-      rgba(164, 118, 255, 0.15),
-      rgba(164, 118, 255, 0.8),
-      rgba(164, 118, 255, 0.15)
-    );
-
-    position: relative;
+  .sun-time.right {
+    align-items: flex-end;
   }
 
-  .sun-ball {
+
+  .sun-time span {
+    color: var(--dim);
+
+    font-size: 0.5rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+  }
+
+
+  .sun-time strong {
+    font-size: 1rem;
+  }
+
+
+  .sun-trajectory {
+    position: relative;
+
+    height: 65px;
+
+    display: flex;
+
+    align-items: center;
+  }
+
+
+  .sun-trajectory-line {
+    width: 100%;
+
+    height: 1px;
+
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        var(--blue),
+        transparent
+      );
+  }
+
+
+  .sun-position {
     position: absolute;
-
-    width: 14px;
-    height: 14px;
-
-    border-radius: 50%;
-
-    background: #a476ff;
-
-    box-shadow:
-      0 0 18px
-      rgba(164, 118, 255, 0.8);
 
     left: 50%;
     top: 50%;
 
+    width: 14px;
+    height: 14px;
+
     transform:
       translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+      var(--blue-bright);
+
+    box-shadow:
+      0 0 25px
+      rgba(66, 165, 255, 0.9);
   }
 
+
+  /* ========================================================= */
+  /* FOOTER */
+  /* ========================================================= */
+
   .weather-footer {
-    margin-top: 65px;
+    margin-top: 75px;
 
     padding-top: 25px;
 
-    border-top: 1px solid
-      rgba(255, 255, 255, 0.07);
-
     display: flex;
 
-    justify-content: center;
+    justify-content: space-between;
 
-    gap: 10px;
+    align-items: center;
 
-    color: rgba(
-      223,
-      223,
-      223,
-      0.3
-    );
+    gap: 20px;
 
-    font-size: 0.62rem;
+    border-top:
+      1px solid var(--border);
   }
 
-  @media (max-width: 850px) {
-    .hero-weather {
+
+  .footer-brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+  }
+
+
+  .footer-mark {
+    width: 28px;
+    height: 28px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 7px;
+
+    background:
+      var(--blue-soft);
+
+    color:
+      var(--blue-bright);
+
+    font-size: 0.5rem;
+
+    font-weight: 900;
+  }
+
+
+  .footer-brand div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+  }
+
+
+  .footer-brand strong {
+    font-size: 0.55rem;
+
+    letter-spacing: 0.1em;
+  }
+
+
+  .footer-brand span {
+    color: var(--dim);
+
+    font-size: 0.48rem;
+  }
+
+
+  .footer-location {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 4px;
+  }
+
+
+  .footer-location span {
+    color: var(--dim);
+
+    font-size: 0.48rem;
+
+    letter-spacing: 0.12em;
+  }
+
+
+  .footer-location strong {
+    color: var(--blue-bright);
+
+    font-size: 0.6rem;
+  }
+
+
+  /* ========================================================= */
+  /* TABLET */
+  /* ========================================================= */
+
+  @media (max-width: 900px) {
+
+    .current-weather-card {
       grid-template-columns: 1fr;
     }
 
-    .hero-side {
-      display: grid;
 
-      grid-template-columns:
-        repeat(3, 1fr);
+    .current-right {
+      padding-left: 0;
+
+      padding-top: 25px;
+
+      border-left: 0;
+
+      border-top:
+        1px solid var(--border);
     }
 
-    .details-grid {
+
+    .metrics-grid {
       grid-template-columns:
         repeat(2, 1fr);
     }
+
   }
 
+
+  /* ========================================================= */
+  /* MOBILE */
+  /* ========================================================= */
+
   @media (max-width: 650px) {
-    .header-inner,
-    .weather-container {
-      width: min(
-        100% - 20px,
-        1200px
-      );
+
+    .content-width,
+    .header-inner {
+      width:
+        calc(100% - 24px);
     }
 
-    .header-status {
+
+    .weather-header {
+      position: relative;
+    }
+
+
+    .header-inner {
+      min-height: 68px;
+
+      gap: 10px;
+    }
+
+
+    .brand-text {
       display: none;
     }
+
+
+    .main-nav {
+      margin-left: auto;
+    }
+
+
+    .nav-item {
+      padding:
+        7px 9px;
+
+      font-size: 0.58rem;
+    }
+
+
+    .portfolio-link {
+      display: none;
+    }
+
+
+    .location-bar-inner {
+      min-height: 48px;
+    }
+
+
+    .locations-section {
+      padding-top: 30px;
+    }
+
 
     .location-tabs {
       grid-template-columns: 1fr;
     }
 
-    .location-heading {
+
+    .location-tab {
+      min-height: 67px;
+    }
+
+
+    .weather-main {
+      padding-top: 42px;
+    }
+
+
+    .weather-heading {
       align-items: flex-start;
 
       flex-direction: column;
     }
 
-    .last-updated {
+
+    .updated-block {
       align-items: flex-start;
     }
 
-    .hero-main {
-      padding: 30px 20px;
+
+    .current-weather-card {
+      margin-top: 28px;
+
+      padding: 28px 20px;
+    }
+
+
+    .current-left {
+      align-items: flex-start;
 
       flex-direction: column;
 
-      align-items: flex-start;
+      gap: 20px;
     }
 
-    .weather-icon-container {
-      width: 75px;
-      height: 75px;
 
-      flex-basis: 75px;
-    }
+    .weather-condition-icon {
+      width: 70px;
+      height: 70px;
 
-    .weather-icon {
+      flex-basis: 70px;
+
       font-size: 4rem;
     }
 
-    .hero-description {
+
+    .current-temperature {
+      font-size:
+        clamp(5rem, 23vw, 7rem);
+    }
+
+
+    .current-condition {
       margin-left: 0;
     }
 
-    .hero-side {
-      grid-template-columns: 1fr;
 
-      gap: 18px;
+    .current-right {
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 15px;
     }
+
+
+    .hero-stat strong {
+      font-size: 1rem;
+    }
+
+
+    .metrics-grid {
+      grid-template-columns: 1fr;
+    }
+
+
+    .forecast-section,
+    .sun-section {
+      margin-top: 50px;
+    }
+
+
+    .forecast-heading h2 {
+      font-size: 1.3rem;
+    }
+
+
+    .hour-card {
+      min-width: 100px;
+    }
+
 
     .daily-row {
       grid-template-columns:
-        55px
-        38px
+        65px
+        40px
         1fr;
+
+      gap: 10px;
+
+      padding:
+        14px;
     }
 
-    .daily-temperatures {
+
+    .daily-temperature {
       grid-column: 3;
 
       justify-content: flex-start;
     }
 
-    .details-grid {
-      grid-template-columns: 1fr;
-    }
 
     .sun-card {
       grid-template-columns: 1fr;
 
+      gap: 20px;
+
       text-align: center;
     }
 
-    .sun-card > div:not(.sun-line) {
+
+    .sun-time,
+    .sun-time.right {
       align-items: center;
     }
 
-    .sun-line {
-      width: 100%;
+
+    .sun-trajectory {
+      order: 2;
     }
 
-    .weather-footer {
-      flex-wrap: wrap;
+
+    .sun-time:first-child {
+      order: 1;
     }
+
+
+    .sun-time.right {
+      order: 3;
+    }
+
+
+    .weather-footer {
+      align-items: flex-start;
+
+      flex-direction: column;
+    }
+
+
+    .footer-location {
+      align-items: flex-start;
+    }
+
   }
+
 </style>
+```
