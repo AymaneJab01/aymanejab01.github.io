@@ -1,13 +1,36 @@
 ---
-const movie = {
-  title: "Avengers: Infinity War",
-  year: "2018",
-  rating: "9",
-  review:
-    "A very solid movie in general and one of the best superheroes movie",
-  genre: "Superhero",
-  director: "Anthony Russo & Joe Russo",
-};
+const movies = [
+  {
+    title: "Avengers: Infinity War",
+    year: "2018",
+    rating: "9",
+    review:
+      "A very solid movie in general and one of the best superheroes movie",
+    genre: "Superhero",
+    director: "Anthony Russo & Joe Russo",
+    image: "/avgInf.jpg",
+  },
+  {
+    title: "The Social Network",
+    year: "2010",
+    rating: "4.5",
+    review:
+      "It was a simple movie with nothing astounding",
+    genre: "Drama",
+    director: "David Fincher",
+    image: "/socialnet.jpeg",
+  },
+  {
+    title: "Kimetsu no Yaiba: Infinity Castle",
+    year: "2025",
+    rating: "9.5",
+    review:
+      "Amazing animation and soundtrack and the movie tells a story worth listening to",
+    genre: "Anime / Action",
+    director: "Haruo Sotozaki",
+    image: "kny.jpeg",
+  },
+];
 ---
 
 <!doctype html>
@@ -20,11 +43,11 @@ const movie = {
       content="width=device-width, initial-scale=1.0"
     />
 
-    <title>{movie.title} — Movie Ranking</title>
+    <title>Movie Ranking — Projects</title>
 
     <meta
       name="description"
-      content="Movie ranking project featuring Avengers Infinity War."
+      content="Movie ranking project featuring personal movie ratings and reviews."
     />
   </head>
 
@@ -114,138 +137,57 @@ const movie = {
           </div>
 
 
-          <!-- Movie information -->
-          <div
-            class="grid gap-12
-            lg:grid-cols-[280px_1fr]"
-          >
-
-            <!-- ================================================= -->
-            <!-- POSTER -->
-            <!-- ================================================= -->
+          <!-- Page title -->
+          <div class="max-w-4xl">
 
             <div
-              class="mx-auto w-full max-w-[280px]
-              overflow-hidden rounded-xl
-              border border-[var(--white-icon-tr)]
-              bg-black/20
-              shadow-2xl"
+              class="mb-5 flex items-center gap-3"
             >
-              <img
-                src="/avgInf.jpg"
-                alt="Avengers Infinity War poster"
-                class="block w-full h-auto"
-              />
+              <span
+                class="h-2 w-2 rounded-full
+                bg-[var(--sec)]
+                shadow-[0_0_12px_var(--sec)]"
+              ></span>
+
+              <span
+                class="font-mono text-xs
+                uppercase tracking-[0.2em]
+                text-[var(--sec)]"
+              >
+                Movie Ranking
+              </span>
             </div>
 
-
-            <!-- ================================================= -->
-            <!-- MOVIE INFO -->
-            <!-- ================================================= -->
-
-            <div
-              class="flex flex-col justify-center"
+            <h1
+              class="text-4xl md:text-6xl
+              lg:text-7xl
+              font-medium
+              tracking-tight
+              text-[var(--white)]"
             >
+              Movies I've watched
+              <span class="text-[var(--sec)]">.</span>
+            </h1>
 
-              <!-- Label -->
-              <div
-                class="mb-5 flex items-center gap-3"
-              >
-                <span
-                  class="h-2 w-2 rounded-full
-                  bg-[var(--sec)]
-                  shadow-[0_0_12px_var(--sec)]"
-                ></span>
-
-                <span
-                  class="font-mono text-xs
-                  uppercase tracking-[0.2em]
-                  text-[var(--sec)]"
-                >
-                  Movie Ranking
-                </span>
-              </div>
-
-
-              <!-- Title -->
-              <h1
-                class="max-w-4xl
-                text-4xl md:text-6xl
-                lg:text-7xl
-                font-medium
-                tracking-tight
-                text-[var(--white)]"
-              >
-                {movie.title}
-                <span class="text-[var(--sec)]">.</span>
-              </h1>
-
-
-              <!-- Metadata -->
-              <div
-                class="mt-6 flex flex-wrap
-                items-center gap-x-5 gap-y-3
-                text-sm text-[var(--white-icon)]"
-              >
-                <span>{movie.year}</span>
-
-                <span class="opacity-30">/</span>
-
-                <span>{movie.genre}</span>
-
-                <span class="opacity-30">/</span>
-
-                <span>{movie.director}</span>
-              </div>
-
-
-              <!-- Rating -->
-              <div
-                class="mt-10 flex items-end gap-4"
-              >
-                <span
-                  class="font-mono text-6xl
-                  md:text-7xl
-                  font-medium
-                  text-[var(--sec)]"
-                >
-                  {movie.rating}
-                </span>
-
-                <span
-                  class="mb-2 font-mono text-xl
-                  text-[var(--white-icon)]"
-                >
-                  / 10
-                </span>
-              </div>
-
-
-              <!-- Review -->
-              <blockquote
-                class="mt-8 max-w-3xl
-                border-l-2 border-[var(--sec)]
-                pl-5"
-              >
-                <p
-                  class="text-lg md:text-xl
-                  leading-relaxed
-                  text-[var(--white-icon)]"
-                >
-                  "{movie.review}"
-                </p>
-              </blockquote>
-
-            </div>
+            <p
+              class="mt-6 max-w-2xl
+              text-lg md:text-xl
+              leading-relaxed
+              text-[var(--white-icon)]"
+            >
+              A personal collection of movies,
+              ratings and reviews.
+            </p>
 
           </div>
+
         </div>
       </section>
 
 
 
       <!-- ======================================================= -->
-      <!-- PROJECT DESCRIPTION -->
+      <!-- MOVIES -->
       <!-- ======================================================= -->
 
       <section>
@@ -254,379 +196,310 @@ const movie = {
           px-6 py-16 md:py-24"
         >
 
-          <div
-            class="grid gap-12
-            lg:grid-cols-[220px_1fr]"
-          >
+          <div class="space-y-20">
 
-            <!-- ================================================= -->
-            <!-- SIDEBAR -->
-            <!-- ================================================= -->
+            {movies.map((movie, index) => (
 
-            <aside class="hidden lg:block">
-              <div class="sticky top-28">
-
-                <p
-                  class="mb-4 font-mono text-xs
-                  uppercase tracking-[0.2em]
-                  text-[var(--white-icon)]"
-                >
-                  On this page
-                </p>
-
-                <nav
-                  class="space-y-3
-                  border-l border-[var(--white-icon-tr)]
-                  pl-4"
-                >
-
-                  <a
-                    href="#overview"
-                    class="block text-sm
-                    text-[var(--sec)]"
-                  >
-                    Overview
-                  </a>
-
-                  <a
-                    href="#review"
-                    class="block text-sm
-                    text-[var(--white-icon)]
-                    transition-colors
-                    hover:text-[var(--white)]"
-                  >
-                    Review
-                  </a>
-
-                  <a
-                    href="#details"
-                    class="block text-sm
-                    text-[var(--white-icon)]
-                    transition-colors
-                    hover:text-[var(--white)]"
-                  >
-                    Details
-                  </a>
-
-                </nav>
-
-              </div>
-            </aside>
-
-
-
-            <!-- ================================================= -->
-            <!-- CONTENT -->
-            <!-- ================================================= -->
-
-            <div class="max-w-3xl">
-
-              <!-- ================================================= -->
-              <!-- OVERVIEW -->
-              <!-- ================================================= -->
-
-              <section
-                id="overview"
-                class="scroll-mt-28"
+              <article
+                class="border-b
+                border-[var(--white-icon-tr)]
+                pb-20 last:border-b-0"
               >
 
-                <p
-                  class="mb-4 font-mono text-xs
-                  uppercase tracking-[0.2em]
-                  text-[var(--sec)]"
-                >
-                  01 — Overview
-                </p>
-
-                <h2
-                  class="text-3xl md:text-4xl
-                  font-medium tracking-tight"
-                >
-                  Movie Ranking
-                </h2>
-
-                <p
-                  class="mt-6 text-base md:text-lg
-                  leading-8
-                  text-[var(--white-icon)]"
-                >
-                  This project is a movie ranking page designed
-                  to present films in a clean and developer-oriented
-                  interface. Each movie can have its own cover,
-                  rating and personal review.
-                </p>
-
-                <p
-                  class="mt-5 text-base md:text-lg
-                  leading-8
-                  text-[var(--white-icon)]"
-                >
-                  The goal is to combine a simple movie database
-                  concept with a modern interface that fits naturally
-                  inside my software developer portfolio.
-                </p>
-
-              </section>
-
-
-
-              <!-- ================================================= -->
-              <!-- DIVIDER -->
-              <!-- ================================================= -->
-
-              <div
-                class="my-16 h-px
-                bg-[var(--white-icon-tr)]"
-              ></div>
-
-
-
-              <!-- ================================================= -->
-              <!-- REVIEW -->
-              <!-- ================================================= -->
-
-              <section
-                id="review"
-                class="scroll-mt-28"
-              >
-
-                <p
-                  class="mb-4 font-mono text-xs
-                  uppercase tracking-[0.2em]
-                  text-[var(--sec)]"
-                >
-                  02 — Review
-                </p>
-
-                <h2
-                  class="text-3xl md:text-4xl
-                  font-medium tracking-tight"
-                >
-                  My rating
-                </h2>
-
+                <!-- ================================================= -->
+                <!-- MOVIE -->
+                <!-- ================================================= -->
 
                 <div
-                  class="mt-8 rounded-xl
-                  border border-[var(--white-icon-tr)]
-                  bg-[#141414]/50
-                  backdrop-blur-sm
-                  p-6 md:p-8"
+                  class="grid gap-12
+                  lg:grid-cols-[280px_1fr]"
                 >
 
+                  <!-- ================================================= -->
+                  <!-- POSTER -->
+                  <!-- ================================================= -->
+
                   <div
-                    class="flex items-center
-                    justify-between gap-5"
+                    class="mx-auto w-full max-w-[280px]
+                    overflow-hidden rounded-xl
+                    border border-[var(--white-icon-tr)]
+                    bg-black/20
+                    shadow-2xl
+                    aspect-[2/3]"
                   >
 
-                    <span
-                      class="text-lg
-                      text-[var(--white)]"
-                    >
-                      Overall rating
-                    </span>
+                    {movie.image ? (
+                      <img
+                        src={movie.image}
+                        alt={`${movie.title} poster`}
+                        class="block w-full h-full
+                        object-cover"
+                      />
+                    ) : (
+                      <div
+                        class="flex h-full w-full
+                        items-center justify-center
+                        bg-[#141414]/70
+                        p-6 text-center"
+                      >
+                        <div>
 
-                    <span
-                      class="font-mono text-2xl
-                      text-[var(--sec)]"
-                    >
-                      9/10
-                    </span>
+                          <span
+                            class="font-mono text-xs
+                            uppercase tracking-[0.2em]
+                            text-[var(--sec)]"
+                          >
+                            Poster
+                          </span>
+
+                          <p
+                            class="mt-3 text-sm
+                            text-[var(--white-icon)]"
+                          >
+                            Image coming soon
+                          </p>
+
+                        </div>
+                      </div>
+                    )}
 
                   </div>
 
 
+                  <!-- ================================================= -->
+                  <!-- MOVIE INFO -->
+                  <!-- ================================================= -->
+
                   <div
-                    class="mt-6 h-px
-                    bg-[var(--white-icon-tr)]"
-                  ></div>
-
-
-                  <p
-                    class="mt-6 text-lg
-                    leading-8
-                    text-[var(--white-icon)]"
-                  >
-                    {movie.review}
-                  </p>
-
-                </div>
-
-              </section>
-
-
-
-              <!-- ================================================= -->
-              <!-- DIVIDER -->
-              <!-- ================================================= -->
-
-              <div
-                class="my-16 h-px
-                bg-[var(--white-icon-tr)]"
-              ></div>
-
-
-
-              <!-- ================================================= -->
-              <!-- DETAILS -->
-              <!-- ================================================= -->
-
-              <section
-                id="details"
-                class="scroll-mt-28"
-              >
-
-                <p
-                  class="mb-4 font-mono text-xs
-                  uppercase tracking-[0.2em]
-                  text-[var(--sec)]"
-                >
-                  03 — Details
-                </p>
-
-                <h2
-                  class="text-3xl md:text-4xl
-                  font-medium tracking-tight"
-                >
-                  Movie information
-                </h2>
-
-
-                <div
-                  class="mt-8
-                  overflow-hidden rounded-xl
-                  border border-[var(--white-icon-tr)]
-                  bg-black/10
-                  backdrop-blur-sm"
-                >
-
-                  <!-- Title -->
-                  <div
-                    class="grid grid-cols-[120px_1fr]
-                    border-b
-                    border-[var(--white-icon-tr)]"
+                    class="flex flex-col justify-center"
                   >
 
+                    <!-- Movie number -->
                     <div
-                      class="bg-[#141414]/40
-                      p-4 font-mono text-sm
-                      text-[var(--white-icon)]"
+                      class="mb-5 flex items-center gap-3"
                     >
-                      Title
+
+                      <span
+                        class="font-mono text-xs
+                        tracking-[0.2em]
+                        text-[var(--sec)]"
+                      >
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+
+                      <span
+                        class="h-px w-12
+                        bg-[var(--sec)]
+                        opacity-40"
+                      ></span>
+
+                      <span
+                        class="text-xs uppercase
+                        tracking-widest
+                        text-[var(--white-icon)]"
+                      >
+                        Movie
+                      </span>
+
                     </div>
 
-                    <div
-                      class="p-4 text-sm
+
+                    <!-- Title -->
+                    <h2
+                      class="max-w-4xl
+                      text-4xl md:text-5xl
+                      lg:text-6xl
+                      font-medium
+                      tracking-tight
                       text-[var(--white)]"
                     >
                       {movie.title}
+                      <span class="text-[var(--sec)]">.</span>
+                    </h2>
+
+
+                    <!-- Metadata -->
+                    <div
+                      class="mt-6 flex flex-wrap
+                      items-center gap-x-5 gap-y-3
+                      text-sm
+                      text-[var(--white-icon)]"
+                    >
+
+                      <span>{movie.year}</span>
+
+                      <span class="opacity-30">/</span>
+
+                      <span>{movie.genre}</span>
+
+                      <span class="opacity-30">/</span>
+
+                      <span>{movie.director}</span>
+
                     </div>
+
+
+                    <!-- Rating -->
+                    <div
+                      class="mt-10 flex items-end gap-4"
+                    >
+
+                      <span
+                        class="font-mono text-6xl
+                        md:text-7xl
+                        font-medium
+                        text-[var(--sec)]"
+                      >
+                        {movie.rating}
+                      </span>
+
+                      <span
+                        class="mb-2 font-mono text-xl
+                        text-[var(--white-icon)]"
+                      >
+                        / 10
+                      </span>
+
+                    </div>
+
+
+                    <!-- Review -->
+                    <blockquote
+                      class="mt-8 max-w-3xl
+                      border-l-2
+                      border-[var(--sec)]
+                      pl-5"
+                    >
+
+                      <p
+                        class="text-lg md:text-xl
+                        leading-relaxed
+                        text-[var(--white-icon)]"
+                      >
+                        "{movie.review}"
+                      </p>
+
+                    </blockquote>
 
                   </div>
 
+                </div>
 
-                  <!-- Year -->
-                  <div
-                    class="grid grid-cols-[120px_1fr]
-                    border-b
-                    border-[var(--white-icon-tr)]"
-                  >
 
-                    <div
-                      class="bg-[#141414]/40
-                      p-4 font-mono text-sm
+
+                <!-- ================================================= -->
+                <!-- DETAILS -->
+                <!-- ================================================= -->
+
+                <div
+                  class="mt-16 grid gap-12
+                  lg:grid-cols-[220px_1fr]"
+                >
+
+                  <!-- Sidebar -->
+                  <aside class="hidden lg:block">
+
+                    <p
+                      class="mb-4 font-mono text-xs
+                      uppercase tracking-[0.2em]
                       text-[var(--white-icon)]"
                     >
-                      Year
-                    </div>
+                      Movie
+                    </p>
 
                     <div
-                      class="p-4 text-sm
-                      text-[var(--white)]"
+                      class="border-l
+                      border-[var(--white-icon-tr)]
+                      pl-4"
                     >
-                      {movie.year}
+
+                      <span
+                        class="text-sm
+                        text-[var(--sec)]"
+                      >
+                        {String(index + 1).padStart(2, "0")} —
+                        {movie.title}
+                      </span>
+
                     </div>
 
-                  </div>
+                  </aside>
 
 
-                  <!-- Genre -->
-                  <div
-                    class="grid grid-cols-[120px_1fr]
-                    border-b
-                    border-[var(--white-icon-tr)]"
-                  >
+                  <!-- Content -->
+                  <div class="max-w-3xl">
 
-                    <div
-                      class="bg-[#141414]/40
-                      p-4 font-mono text-sm
-                      text-[var(--white-icon)]"
-                    >
-                      Genre
-                    </div>
-
-                    <div
-                      class="p-4 text-sm
-                      text-[var(--white)]"
-                    >
-                      {movie.genre}
-                    </div>
-
-                  </div>
-
-
-                  <!-- Director -->
-                  <div
-                    class="grid grid-cols-[120px_1fr]
-                    border-b
-                    border-[var(--white-icon-tr)]"
-                  >
-
-                    <div
-                      class="bg-[#141414]/40
-                      p-4 font-mono text-sm
-                      text-[var(--white-icon)]"
-                    >
-                      Director
-                    </div>
-
-                    <div
-                      class="p-4 text-sm
-                      text-[var(--white)]"
-                    >
-                      {movie.director}
-                    </div>
-
-                  </div>
-
-
-                  <!-- Rating -->
-                  <div
-                    class="grid grid-cols-[120px_1fr]"
-                  >
-
-                    <div
-                      class="bg-[#141414]/40
-                      p-4 font-mono text-sm
-                      text-[var(--white-icon)]"
-                    >
-                      Rating
-                    </div>
-
-                    <div
-                      class="p-4 font-mono text-sm
+                    <p
+                      class="mb-4 font-mono text-xs
+                      uppercase tracking-[0.2em]
                       text-[var(--sec)]"
                     >
-                      {movie.rating}/10
+                      Review
+                    </p>
+
+                    <h3
+                      class="text-3xl md:text-4xl
+                      font-medium
+                      tracking-tight"
+                    >
+                      My rating
+                    </h3>
+
+
+                    <div
+                      class="mt-8 rounded-xl
+                      border
+                      border-[var(--white-icon-tr)]
+                      bg-[#141414]/50
+                      backdrop-blur-sm
+                      p-6 md:p-8"
+                    >
+
+                      <div
+                        class="flex items-center
+                        justify-between gap-5"
+                      >
+
+                        <span
+                          class="text-lg
+                          text-[var(--white)]"
+                        >
+                          Overall rating
+                        </span>
+
+                        <span
+                          class="font-mono text-2xl
+                          text-[var(--sec)]"
+                        >
+                          {movie.rating}/10
+                        </span>
+
+                      </div>
+
+
+                      <div
+                        class="mt-6 h-px
+                        bg-[var(--white-icon-tr)]"
+                      ></div>
+
+
+                      <p
+                        class="mt-6 text-lg
+                        leading-8
+                        text-[var(--white-icon)]"
+                      >
+                        {movie.review}
+                      </p>
+
                     </div>
 
                   </div>
 
                 </div>
 
-              </section>
+              </article>
 
-            </div>
+            ))}
 
           </div>
 
@@ -642,7 +515,8 @@ const movie = {
     <!-- ========================================================= -->
 
     <footer
-      class="border-t border-[var(--white-icon-tr)]"
+      class="border-t
+      border-[var(--white-icon-tr)]"
     >
 
       <div
