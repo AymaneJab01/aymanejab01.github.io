@@ -1,92 +1,89 @@
 ---
-
 interface Props {
-title: string;
+  title: string;
 }
 
-## const { title } = Astro.props;
+const { title } = Astro.props;
+---
 
 <!doctype html>
-
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
 
-```
-<title>{title} | Software Developer</title>
+    <title>{title} | Software Developer</title>
 
-<meta
-  name="description"
-  content="Aymane Jabrane - Software Developer building interactive and seamless digital experiences."
-/>
+    <meta
+      name="description"
+      content="Aymane Jabrane - Software Developer building interactive and seamless digital experiences."
+    />
 
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
-/>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
 
-<link rel="icon" type="image/png" href="/icon.png" />
+    <link rel="icon" type="image/png" href="/icon.png" />
 
-<link
-  rel="canonical"
-  href="https://aymanejab01.github.io/"
-/>
+    <link
+      rel="canonical"
+      href="https://aymanejab01.github.io/"
+    />
 
-<link
-  rel="preload"
-  href="/fonts/montserrat-latin-wght-normal.woff2"
-  as="font"
-  type="font/woff2"
-  crossorigin="anonymous"
-/>
+    <link
+      rel="preload"
+      href="/fonts/montserrat-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
 
-<meta
-  property="og:title"
-  content="Aymane Jabrane | Software Developer"
-/>
+    <meta
+      property="og:title"
+      content="Aymane Jabrane | Software Developer"
+    />
 
-<meta
-  property="og:description"
-  content="Portfolio of Aymane Jabrane, Software Developer interested in frontend development, machine learning, hardware, software, and computer architecture."
-/>
+    <meta
+      property="og:description"
+      content="Portfolio of Aymane Jabrane, Software Developer interested in frontend development, machine learning, hardware, software, and computer architecture."
+    />
 
-<meta
-  property="og:image"
-  content="https://aymanejab01.github.io/aj2.png"
-/>
+    <meta
+      property="og:image"
+      content="https://aymanejab01.github.io/aj2.png"
+    />
 
-<meta
-  property="og:url"
-  content="https://aymanejab01.github.io"
-/>
+    <meta
+      property="og:url"
+      content="https://aymanejab01.github.io"
+    />
 
-<meta property="og:type" content="website" />
+    <meta property="og:type" content="website" />
 
-<meta
-  property="og:site_name"
-  content="Aymane Jabrane Portfolio"
-/>
+    <meta
+      property="og:site_name"
+      content="Aymane Jabrane Portfolio"
+    />
 
-<script is:inline type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Aymane Jabrane",
-    "url": "https://aymanejab01.github.io",
-    "image": "https://aymanejab01.github.io/og.image.png",
-    "sameAs": [
-      "https://github.com/AymaneJab01",
-      "https://www.linkedin.com/in/aymane-jabrane-73025726a/"
-    ],
-    "jobTitle": "Software Developer",
-    "description": "Software Developer interested in frontend development, machine learning, hardware, software, and computer architecture."
-  }
-</script>
-```
-
+    <!-- Structured Data (JSON-LD) -->
+    <script is:inline type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Aymane Jabrane",
+        "url": "https://aymanejab01.github.io",
+        "image": "https://aymanejab01.github.io/og.image.png",
+        "sameAs": [
+          "https://github.com/AymaneJab01",
+          "https://www.linkedin.com/in/aymane-jabrane-73025726a/"
+        ],
+        "jobTitle": "Software Developer",
+        "description": "Software Developer interested in frontend development, machine learning, hardware, software, and computer architecture."
+      }
+    </script>
   </head>
 
-  <body>
+  <body class="bg-[var(--background)] sm:px-28 lg:px-20 px-9">
     <slot />
   </body>
 </html>
@@ -107,35 +104,17 @@ title: string;
     --white: #dfdfdf;
     --white-icon: #f3f3f398;
     --white-icon-tr: #f3f3f310;
-    --container: #151515;
   }
 
-  html {
-    background: var(--background);
-    color: var(--white);
-    scroll-behavior: smooth;
-  }
-
-  body {
-    min-height: 100vh;
-    margin: 0;
-    padding: 0 36px;
-    background: var(--background);
-    color: var(--white);
-    overflow-x: hidden;
-  }
-
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
+  * {
     font-family:
       "Montserrat Variable",
       -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
       system-ui,
       sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
   }
 
   *::selection {
@@ -143,9 +122,10 @@ title: string;
     color: var(--background);
   }
 
+  /* Scrollbar */
+
   ::-webkit-scrollbar {
     width: 15px;
-    height: 15px;
   }
 
   ::-webkit-scrollbar-track {
@@ -155,7 +135,6 @@ title: string;
 
   ::-webkit-scrollbar-thumb {
     background: var(--background);
-    border: 3px solid var(--container);
     border-radius: 10px;
   }
 
@@ -163,40 +142,10 @@ title: string;
     background: var(--sec);
   }
 
+  /* Firefox scrollbar */
+
   * {
     scrollbar-width: thin;
     scrollbar-color: var(--sec) var(--background);
-  }
-
-  :focus-visible {
-    outline: 2px solid var(--sec);
-    outline-offset: 4px;
-  }
-
-  @media (min-width: 640px) {
-    body {
-      padding-left: 112px;
-      padding-right: 112px;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    body {
-      padding-left: 80px;
-      padding-right: 80px;
-    }
-  }
-
-  @media (max-width: 639px) {
-    body {
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
   }
 </style>
