@@ -407,7 +407,7 @@ import Layout from "../../layouts/Layout.astro";
 <!-- WEATHER LOGIC -->
 <!-- ============================================================= -->
 
-<script lang="ts">
+<script>
   interface WeatherCurrent {
     temperature_2m: number;
     relative_humidity_2m: number;
@@ -429,14 +429,7 @@ import Layout from "../../layouts/Layout.astro";
     daily: WeatherDaily;
   }
 
-  interface WeatherParticle {
-    x: number;
-    y: number;
-    vx: number;
-    vy: number;
-    size: number;
-    opacity: number;
-  }
+ }
 
 
   /* ============================================================ */
@@ -1060,7 +1053,7 @@ import Layout from "../../layouts/Layout.astro";
 <!-- ELECTRIC BLUE CANVAS -->
 <!-- ============================================================= -->
 
-<script lang="ts">
+<script>
   interface Particle {
     x: number;
     y: number;
