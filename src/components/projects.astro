@@ -5,276 +5,411 @@
   id="projects"
   class="text-[var(--white)] py-24 md:py-36"
 >
-  <div class="max-w-5xl mx-auto px-6">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <!-- ========================================================= -->
+    <!-- SECTION HEADER -->
+    <!-- ========================================================= -->
+
+    <div class="mb-16 md:mb-20">
+      <div class="flex items-center gap-3 mb-5">
+        <span
+          class="h-2 w-2 rounded-full bg-[var(--sec)]
+          shadow-[0_0_12px_var(--sec)]"
+        ></span>
+
+        <span
+          class="text-sm tracking-[0.25em] uppercase
+          text-[var(--sec)] shiny-sec"
+        >
+          Projects
+        </span>
+      </div>
+
+      <h2
+        class="text-4xl md:text-6xl font-medium tracking-tight
+        text-[var(--white)]"
+      >
+        Things I've built<span class="text-[var(--sec)]">.</span>
+      </h2>
+
+      <p
+        class="mt-5 max-w-2xl text-lg
+        text-[var(--white-icon)] leading-relaxed"
+      >
+        A collection of projects, experiments and ideas that
+        represent what I'm building and learning as a software developer.
+      </p>
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- PROJECT 01 — TERMINAL -->
+    <!-- ========================================================= -->
+
     <div
-      class="relative overflow-hidden rounded-2xl border border-[var(--white-icon-tr)]
-      bg-[#1414149c] px-8 py-16 md:px-16 md:py-24
-      text-center backdrop-blur-sm"
+      class="group relative mb-10 overflow-hidden rounded-2xl
+      border border-[var(--white-icon-tr)]
+      bg-[#1414149c] backdrop-blur-sm
+      transition-all duration-500
+      hover:border-[var(--sec)]/40
+      hover:shadow-[0_0_40px_rgba(0,255,150,0.06)]"
     >
-      <!-- Subtle green glow -->
+
+      <!-- subtle glow -->
       <div
-        class="absolute -top-24 left-1/2 h-48 w-48 -translate-x-1/2
-        rounded-full bg-[var(--sec)] opacity-10 blur-3xl"
+        class="pointer-events-none absolute -right-32 -top-32
+        h-64 w-64 rounded-full
+        bg-[var(--sec)] opacity-[0.04] blur-3xl
+        transition-opacity duration-500
+        group-hover:opacity-[0.08]"
       ></div>
 
-      <div class="relative">
+      <a
+        href="/#terminal"
+        class="relative block p-7 md:p-10"
+      >
 
-        <!-- Status indicator -->
-        <div class="mb-6 flex items-center justify-center gap-2">
-          <span
-            class="h-2 w-2 rounded-full bg-[var(--sec)]
-            shadow-[0_0_12px_var(--sec)] animate-pulse"
-          ></span>
+        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
 
-          <span
-            class="text-sm tracking-widest uppercase text-[var(--sec)] shiny-sec"
-          >
-            Projects
-          </span>
-        </div>
+          <!-- Left -->
+          <div class="flex-1">
 
-        <!-- Main title -->
-        <h2
-          class="text-3xl md:text-5xl font-medium tracking-tight
-          text-[var(--white)]"
-        >
-          Selected projects<span class="text-[var(--sec)]">.</span>
-        </h2>
-
-        <p
-          class="mt-4 text-lg md:text-xl text-[var(--white-icon)]
-          max-w-xl mx-auto leading-relaxed"
-        >
-          A selection of projects I'm building and continuously improving.
-        </p>
-
-        <!-- ===================================================== -->
-        <!-- PROJECTS -->
-        <!-- ===================================================== -->
-
-        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-
-          <!-- =================================================== -->
-          <!-- PROJECT 01 — TERMINAL -->
-          <!-- =================================================== -->
-
-          <a
-            href="/#terminal"
-            class="group relative overflow-hidden rounded-2xl
-            border border-[var(--white-icon-tr)]
-            bg-[#0d0d0d]/70 p-6
-            transition-all duration-300
-            hover:-translate-y-1
-            hover:border-[var(--sec)]
-            hover:shadow-[0_0_30px_rgba(0,255,140,0.08)]"
-          >
-            <div
-              class="absolute -top-16 -right-16 h-32 w-32
-              rounded-full bg-[var(--sec)]
-              opacity-5 blur-3xl
-              transition-opacity duration-300
-              group-hover:opacity-15"
-            ></div>
-
-            <div class="relative">
-
-              <div class="flex items-center justify-between">
-                <span
-                  class="text-xs tracking-widest uppercase
-                  text-[var(--white-icon)]"
-                >
-                  Project 01
-                </span>
-
-                <span
-                  class="text-[var(--sec)]
-                  transition-transform duration-300
-                  group-hover:translate-x-1"
-                >
-                  ↗
-                </span>
-              </div>
-
-              <h3
-                class="mt-6 text-2xl font-medium
-                text-[var(--white)]"
+            <!-- Project number -->
+            <div class="mb-5 flex items-center gap-3">
+              <span
+                class="font-mono text-xs tracking-[0.2em]
+                text-[var(--sec)]"
               >
-                Interactive Terminal<span class="text-[var(--sec)]">.</span>
-              </h3>
+                PROJECT 01
+              </span>
 
-              <p
-                class="mt-3 text-sm leading-relaxed
+              <span
+                class="h-px w-12 bg-[var(--sec)] opacity-40"
+              ></span>
+
+              <span
+                class="text-xs uppercase tracking-widest
                 text-[var(--white-icon)]"
               >
-                An interactive terminal integrated into my portfolio,
-                showcasing my skills, experience, projects, and background.
-              </p>
+                Interactive
+              </span>
+            </div>
 
-              <p
-                class="mt-3 text-sm leading-relaxed
+            <!-- Title -->
+            <h3
+              class="text-2xl md:text-4xl font-medium
+              tracking-tight text-[var(--white)]
+              transition-colors duration-300
+              group-hover:text-[var(--sec)]"
+            >
+              Developer Terminal
+              <span class="text-[var(--sec)]">.</span>
+            </h3>
+
+            <!-- Description -->
+            <p
+              class="mt-4 max-w-2xl text-base md:text-lg
+              leading-relaxed text-[var(--white-icon)]"
+            >
+              An interactive terminal built directly into my portfolio,
+              designed to provide a developer-style way of exploring
+              my work, skills and information.
+            </p>
+
+            <p
+              class="mt-3 max-w-2xl text-sm
+              leading-relaxed text-[var(--white-icon)]
+              opacity-70"
+            >
+              This terminal will keep evolving day after day as new
+              commands, features and ideas are added.
+            </p>
+
+            <!-- Tags -->
+            <div class="mt-7 flex flex-wrap gap-2">
+
+              <span
+                class="rounded-full border border-[var(--white-icon-tr)]
+                px-3 py-1 text-xs font-mono
                 text-[var(--white-icon)]"
               >
-                The terminal will keep evolving day after day as new
-                commands, features, and information are added.
-              </p>
+                Astro
+              </span>
 
-              <div
-                class="mt-6 flex items-center gap-2
-                text-xs text-[var(--sec)]"
+              <span
+                class="rounded-full border border-[var(--white-icon-tr)]
+                px-3 py-1 text-xs font-mono
+                text-[var(--white-icon)]"
               >
-                <span
-                  class="h-2 w-2 rounded-full bg-[var(--sec)]
-                  shadow-[0_0_10px_var(--sec)]"
-                ></span>
+                TypeScript
+              </span>
 
-                Continuously evolving
-              </div>
+              <span
+                class="rounded-full border border-[var(--white-icon-tr)]
+                px-3 py-1 text-xs font-mono
+                text-[var(--white-icon)]"
+              >
+                Interactive UI
+              </span>
 
             </div>
-          </a>
+
+          </div>
 
 
-          <!-- =================================================== -->
-          <!-- PROJECT 02 — MOVIE RANKING -->
-          <!-- =================================================== -->
-
-          <a
-            href="/movie-ranking"
-            class="group relative overflow-hidden rounded-2xl
-            border border-[var(--white-icon-tr)]
-            bg-[#0d0d0d]/70 p-6
-            transition-all duration-300
-            hover:-translate-y-1
-            hover:border-[var(--sec)]
-            hover:shadow-[0_0_30px_rgba(0,255,140,0.08)]"
+          <!-- Right / CTA -->
+          <div
+            class="flex md:flex-col items-center md:items-end
+            justify-between gap-5 md:min-w-[150px]"
           >
 
             <div
-              class="absolute -top-16 -right-16 h-32 w-32
-              rounded-full bg-[var(--sec)]
-              opacity-5 blur-3xl
-              transition-opacity duration-300
-              group-hover:opacity-15"
+              class="font-mono text-xs
+              text-[var(--white-icon)] opacity-60"
+            >
+              01 / 02
+            </div>
+
+            <div
+              class="flex items-center gap-2
+              text-sm text-[var(--sec)]
+              transition-transform duration-300
+              group-hover:translate-x-1"
+            >
+              <span>Open terminal</span>
+
+              <span class="text-lg">
+                →
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </a>
+    </div>
+
+
+
+    <!-- ========================================================= -->
+    <!-- PROJECT 02 — MOVIE RANKING -->
+    <!-- ========================================================= -->
+
+    <div
+      class="group relative overflow-hidden rounded-2xl
+      border border-[var(--white-icon-tr)]
+      bg-[#1414149c] backdrop-blur-sm
+      transition-all duration-500
+      hover:border-[var(--sec)]/40
+      hover:shadow-[0_0_40px_rgba(0,255,150,0.06)]"
+    >
+
+      <!-- subtle glow -->
+      <div
+        class="pointer-events-none absolute -left-32 -bottom-32
+        h-64 w-64 rounded-full
+        bg-[var(--sec)] opacity-[0.035] blur-3xl
+        transition-opacity duration-500
+        group-hover:opacity-[0.07]"
+      ></div>
+
+      <a
+        href="/projects/movie-ranking"
+        class="relative block p-7 md:p-10"
+      >
+
+        <div class="flex flex-col md:flex-row gap-8">
+
+          <!-- Movie image -->
+          <div
+            class="relative w-full md:w-52
+            aspect-[2/3] flex-shrink-0
+            overflow-hidden rounded-xl
+            border border-[var(--white-icon-tr)]
+            bg-black"
+          >
+
+            <img
+              src="public/svg/avg-inf.png"
+              alt="Avengers Infinity War movie poster"
+              class="h-full w-full object-cover
+              transition-transform duration-700
+              group-hover:scale-105"
+            />
+
+            <!-- image overlay -->
+            <div
+              class="absolute inset-0
+              bg-gradient-to-t from-black/60
+              via-transparent to-transparent"
             ></div>
 
-            <div class="relative">
+          </div>
 
-              <div class="flex items-center justify-between">
+
+          <!-- Content -->
+          <div class="flex flex-1 flex-col justify-between">
+
+            <div>
+
+              <!-- Project number -->
+              <div class="mb-5 flex items-center gap-3">
+
                 <span
-                  class="text-xs tracking-widest uppercase
+                  class="font-mono text-xs tracking-[0.2em]
+                  text-[var(--sec)]"
+                >
+                  PROJECT 02
+                </span>
+
+                <span
+                  class="h-px w-12 bg-[var(--sec)] opacity-40"
+                ></span>
+
+                <span
+                  class="text-xs uppercase tracking-widest
                   text-[var(--white-icon)]"
                 >
-                  Project 02
+                  Web App
                 </span>
 
-                <span
-                  class="text-[var(--sec)]
-                  transition-transform duration-300
-                  group-hover:translate-x-1"
-                >
-                  ↗
-                </span>
               </div>
 
-              <!-- Movie image -->
 
-              <div
-                class="mt-6 overflow-hidden rounded-xl
-                border border-[var(--white-icon-tr)]"
+              <!-- Title -->
+              <h3
+                class="text-2xl md:text-4xl font-medium
+                tracking-tight text-[var(--white)]
+                transition-colors duration-300
+                group-hover:text-[var(--sec)]"
               >
-                <img
-                  src="/svg/avg-inf.png"
-                  alt="Avengers Infinity War"
-                  class="block w-full aspect-video
-                  object-cover
-                  transition-transform duration-500
-                  group-hover:scale-105"
-                />
-              </div>
+                Movie Ranking
+                <span class="text-[var(--sec)]">.</span>
+              </h3>
 
-              <!-- Movie information -->
 
-              <div class="mt-6">
+              <!-- Description -->
+              <p
+                class="mt-4 max-w-2xl text-base md:text-lg
+                leading-relaxed text-[var(--white-icon)]"
+              >
+                A movie ranking interface where films can be explored
+                through their covers, ratings and personal reviews.
+              </p>
 
-                <div
-                  class="flex items-start justify-between gap-4"
-                >
-                  <h3
-                    class="text-2xl font-medium
-                    text-[var(--white)]"
-                  >
-                    Movie Ranking<span class="text-[var(--sec)]">.</span>
-                  </h3>
 
-                  <span
-                    class="shrink-0 text-lg font-semibold
-                    text-[var(--sec)]"
-                  >
-                    9/10
-                  </span>
-                </div>
+              <!-- Movie preview -->
+              <div
+                class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4"
+              >
 
-                <p
-                  class="mt-3 text-sm leading-relaxed
-                  text-[var(--white-icon)]"
-                >
-                  A movie ranking page where movies are displayed
-                  with their cover, rating, and personal review.
-                </p>
-
-                <div
-                  class="mt-5 border-l-2 border-[var(--sec)]
-                  pl-4"
-                >
+                <div>
                   <p
-                    class="text-sm font-medium
+                    class="text-xs uppercase tracking-widest
+                    text-[var(--white-icon)] opacity-60"
+                  >
+                    Featured movie
+                  </p>
+
+                  <p
+                    class="mt-1 text-lg font-medium
                     text-[var(--white)]"
                   >
                     Avengers: Infinity War
                   </p>
+                </div>
+
+
+                <div
+                  class="h-8 w-px bg-[var(--white-icon-tr)]
+                  hidden sm:block"
+                ></div>
+
+
+                <div>
+                  <p
+                    class="text-xs uppercase tracking-widest
+                    text-[var(--white-icon)] opacity-60"
+                  >
+                    Rating
+                  </p>
 
                   <p
-                    class="mt-1 text-sm italic
-                    leading-relaxed
-                    text-[var(--white-icon)]"
+                    class="mt-1 font-mono text-lg
+                    text-[var(--sec)]"
                   >
-                    A very solid movie in general and one of the
-                    best superheroes movie.
+                    9<span class="text-[var(--white-icon)]">/10</span>
                   </p>
                 </div>
 
               </div>
 
-              <div
-                class="mt-6 flex items-center justify-between
-                text-xs"
-              >
-                <span class="text-[var(--white-icon)]">
-                  Movie collection
+            </div>
+
+
+            <!-- Bottom -->
+            <div
+              class="mt-8 flex flex-col sm:flex-row
+              sm:items-center sm:justify-between gap-5"
+            >
+
+              <!-- Tags -->
+              <div class="flex flex-wrap gap-2">
+
+                <span
+                  class="rounded-full
+                  border border-[var(--white-icon-tr)]
+                  px-3 py-1 text-xs font-mono
+                  text-[var(--white-icon)]"
+                >
+                  Astro
                 </span>
 
                 <span
-                  class="text-[var(--sec)]
-                  transition-transform duration-300
-                  group-hover:translate-x-1"
+                  class="rounded-full
+                  border border-[var(--white-icon-tr)]
+                  px-3 py-1 text-xs font-mono
+                  text-[var(--white-icon)]"
                 >
-                  View project →
+                  UI
+                </span>
+
+                <span
+                  class="rounded-full
+                  border border-[var(--white-icon-tr)]
+                  px-3 py-1 text-xs font-mono
+                  text-[var(--white-icon)]"
+                >
+                  Movies
+                </span>
+
+              </div>
+
+
+              <!-- CTA -->
+              <div
+                class="flex items-center gap-2
+                text-sm text-[var(--sec)]
+                transition-transform duration-300
+                group-hover:translate-x-1"
+              >
+                <span>View project</span>
+
+                <span class="text-lg">
+                  →
                 </span>
               </div>
 
             </div>
-          </a>
+
+          </div>
 
         </div>
 
-        <!-- Decorative line -->
-
-        <div
-          class="mx-auto mt-12 h-px w-24
-          bg-[var(--sec)] opacity-60"
-        ></div>
-
-      </div>
+      </a>
     </div>
+
   </div>
 </section>
