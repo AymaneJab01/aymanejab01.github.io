@@ -22,6 +22,7 @@ const commands = [
   "about",
   "skills",
   "projects",
+  "movie",
   "notes",
   "education",
   "contact",
@@ -54,6 +55,7 @@ export default function Terminal() {
           content: "",
         },
       ]);
+
       return;
     }
 
@@ -86,6 +88,10 @@ export default function Terminal() {
           {
             type: "output",
             content: "  projects    → Jump to my projects",
+          },
+          {
+            type: "output",
+            content: "  movie       → Open movie ranking",
           },
           {
             type: "output",
@@ -178,6 +184,19 @@ export default function Terminal() {
             .getElementById("projects")
             ?.scrollIntoView({ behavior: "smooth" });
         }, 150);
+        break;
+
+      case "movie":
+        addLines([
+          {
+            type: "success",
+            content: "Opening Movie Ranking...",
+          },
+        ]);
+
+        setTimeout(() => {
+          window.location.href = "/projects/movie-ranking";
+        }, 250);
         break;
 
       case "notes":
@@ -303,7 +322,9 @@ export default function Terminal() {
     setInput("");
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ) => {
     if (event.key === "ArrowUp") {
       event.preventDefault();
 
@@ -422,14 +443,19 @@ export default function Terminal() {
                 <span className="terminal-prompt">
                   aymane@portfolio
                 </span>
+
                 <span className="terminal-path">~</span>
+
                 <span className="terminal-symbol">%</span>
+
                 <span className="terminal-command-text">
                   {line.content}
                 </span>
               </div>
             ) : (
-              <div className="terminal-output">{line.content}</div>
+              <div className="terminal-output">
+                {line.content}
+              </div>
             )}
           </div>
         ))}
