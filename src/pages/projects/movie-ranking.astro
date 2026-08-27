@@ -20,9 +20,7 @@ const movie = {
       content="width=device-width, initial-scale=1.0"
     />
 
-    <title>
-      {movie.title} — Movie Ranking
-    </title>
+    <title>{movie.title} — Movie Ranking</title>
 
     <meta
       name="description"
@@ -31,8 +29,7 @@ const movie = {
   </head>
 
   <body
-    class="min-h-screen bg-[#0a0a0a]
-    text-[var(--white)]"
+    class="min-h-screen bg-transparent text-[var(--white)]"
   >
 
     <!-- ========================================================= -->
@@ -42,9 +39,8 @@ const movie = {
     <header
       class="sticky top-0 z-50
       border-b border-[var(--white-icon-tr)]
-      bg-[#0a0a0a]/85 backdrop-blur-xl"
+      bg-transparent backdrop-blur-xl"
     >
-
       <div
         class="mx-auto flex max-w-7xl
         items-center justify-between
@@ -59,7 +55,6 @@ const movie = {
           transition-colors duration-300
           hover:text-[var(--white)]"
         >
-
           <span
             class="transition-transform duration-300
             group-hover:-translate-x-1"
@@ -67,12 +62,8 @@ const movie = {
             ←
           </span>
 
-          <span>
-            Projects
-          </span>
-
+          <span>Projects</span>
         </a>
-
 
         <!-- Project identifier -->
         <div
@@ -84,9 +75,7 @@ const movie = {
         </div>
 
       </div>
-
     </header>
-
 
 
     <!-- ========================================================= -->
@@ -102,7 +91,6 @@ const movie = {
       <section
         class="border-b border-[var(--white-icon-tr)]"
       >
-
         <div
           class="mx-auto max-w-7xl
           px-6 py-16 md:py-24"
@@ -114,10 +102,7 @@ const movie = {
             font-mono text-xs
             text-[var(--white-icon)]"
           >
-
-            <span>
-              projects
-            </span>
+            <span>projects</span>
 
             <span class="opacity-40">
               /
@@ -126,34 +111,38 @@ const movie = {
             <span class="text-[var(--sec)]">
               movie-ranking
             </span>
-
           </div>
 
 
+          <!-- Movie information -->
           <div
             class="grid gap-12
             lg:grid-cols-[280px_1fr]"
           >
 
-            <!-- Poster -->
+            <!-- ================================================= -->
+            <!-- POSTER -->
+            <!-- ================================================= -->
+
             <div
               class="mx-auto w-full max-w-[280px]
               overflow-hidden rounded-xl
               border border-[var(--white-icon-tr)]
-              bg-black
+              bg-black/20
               shadow-2xl"
             >
-
               <img
                 src="/public/avgInf.jpg"
                 alt="Avengers Infinity War poster"
                 class="block w-full h-auto"
               />
-
             </div>
 
 
-            <!-- Information -->
+            <!-- ================================================= -->
+            <!-- MOVIE INFO -->
+            <!-- ================================================= -->
+
             <div
               class="flex flex-col justify-center"
             >
@@ -162,7 +151,6 @@ const movie = {
               <div
                 class="mb-5 flex items-center gap-3"
               >
-
                 <span
                   class="h-2 w-2 rounded-full
                   bg-[var(--sec)]
@@ -176,7 +164,6 @@ const movie = {
                 >
                   Movie Ranking
                 </span>
-
               </div>
 
 
@@ -200,27 +187,15 @@ const movie = {
                 items-center gap-x-5 gap-y-3
                 text-sm text-[var(--white-icon)]"
               >
+                <span>{movie.year}</span>
 
-                <span>
-                  {movie.year}
-                </span>
+                <span class="opacity-30">/</span>
 
-                <span class="opacity-30">
-                  /
-                </span>
+                <span>{movie.genre}</span>
 
-                <span>
-                  {movie.genre}
-                </span>
+                <span class="opacity-30">/</span>
 
-                <span class="opacity-30">
-                  /
-                </span>
-
-                <span>
-                  {movie.director}
-                </span>
-
+                <span>{movie.director}</span>
               </div>
 
 
@@ -228,7 +203,6 @@ const movie = {
               <div
                 class="mt-10 flex items-end gap-4"
               >
-
                 <span
                   class="font-mono text-6xl
                   md:text-7xl
@@ -244,7 +218,6 @@ const movie = {
                 >
                   / 10
                 </span>
-
               </div>
 
 
@@ -254,7 +227,6 @@ const movie = {
                 border-l-2 border-[var(--sec)]
                 pl-5"
               >
-
                 <p
                   class="text-lg md:text-xl
                   leading-relaxed
@@ -262,15 +234,12 @@ const movie = {
                 >
                   "{movie.review}"
                 </p>
-
               </blockquote>
 
             </div>
 
           </div>
-
         </div>
-
       </section>
 
 
@@ -280,7 +249,6 @@ const movie = {
       <!-- ======================================================= -->
 
       <section>
-
         <div
           class="mx-auto max-w-7xl
           px-6 py-16 md:py-24"
@@ -291,14 +259,12 @@ const movie = {
             lg:grid-cols-[220px_1fr]"
           >
 
-            <!-- Sidebar -->
-            <aside
-              class="hidden lg:block"
-            >
+            <!-- ================================================= -->
+            <!-- SIDEBAR -->
+            <!-- ================================================= -->
 
-              <div
-                class="sticky top-28"
-              >
+            <aside class="hidden lg:block">
+              <div class="sticky top-28">
 
                 <p
                   class="mb-4 font-mono text-xs
@@ -345,16 +311,20 @@ const movie = {
                 </nav>
 
               </div>
-
             </aside>
 
 
-            <!-- Content -->
-            <div
-              class="max-w-3xl"
-            >
 
-              <!-- Overview -->
+            <!-- ================================================= -->
+            <!-- CONTENT -->
+            <!-- ================================================= -->
+
+            <div class="max-w-3xl">
+
+              <!-- ================================================= -->
+              <!-- OVERVIEW -->
+              <!-- ================================================= -->
+
               <section
                 id="overview"
                 class="scroll-mt-28"
@@ -400,7 +370,10 @@ const movie = {
 
 
 
-              <!-- Divider -->
+              <!-- ================================================= -->
+              <!-- DIVIDER -->
+              <!-- ================================================= -->
+
               <div
                 class="my-16 h-px
                 bg-[var(--white-icon-tr)]"
@@ -408,7 +381,10 @@ const movie = {
 
 
 
-              <!-- Review -->
+              <!-- ================================================= -->
+              <!-- REVIEW -->
+              <!-- ================================================= -->
+
               <section
                 id="review"
                 class="scroll-mt-28"
@@ -429,10 +405,12 @@ const movie = {
                   My rating
                 </h2>
 
+
                 <div
                   class="mt-8 rounded-xl
                   border border-[var(--white-icon-tr)]
-                  bg-[#1414149c]
+                  bg-[#141414]/50
+                  backdrop-blur-sm
                   p-6 md:p-8"
                 >
 
@@ -457,10 +435,12 @@ const movie = {
 
                   </div>
 
+
                   <div
                     class="mt-6 h-px
                     bg-[var(--white-icon-tr)]"
                   ></div>
+
 
                   <p
                     class="mt-6 text-lg
@@ -476,7 +456,10 @@ const movie = {
 
 
 
-              <!-- Divider -->
+              <!-- ================================================= -->
+              <!-- DIVIDER -->
+              <!-- ================================================= -->
+
               <div
                 class="my-16 h-px
                 bg-[var(--white-icon-tr)]"
@@ -484,7 +467,10 @@ const movie = {
 
 
 
-              <!-- Details -->
+              <!-- ================================================= -->
+              <!-- DETAILS -->
+              <!-- ================================================= -->
+
               <section
                 id="details"
                 class="scroll-mt-28"
@@ -509,9 +495,12 @@ const movie = {
                 <div
                   class="mt-8
                   overflow-hidden rounded-xl
-                  border border-[var(--white-icon-tr)]"
+                  border border-[var(--white-icon-tr)]
+                  bg-black/10
+                  backdrop-blur-sm"
                 >
 
+                  <!-- Title -->
                   <div
                     class="grid grid-cols-[120px_1fr]
                     border-b
@@ -519,7 +508,7 @@ const movie = {
                   >
 
                     <div
-                      class="bg-[#141414]
+                      class="bg-[#141414]/40
                       p-4 font-mono text-sm
                       text-[var(--white-icon)]"
                     >
@@ -536,6 +525,7 @@ const movie = {
                   </div>
 
 
+                  <!-- Year -->
                   <div
                     class="grid grid-cols-[120px_1fr]
                     border-b
@@ -543,7 +533,7 @@ const movie = {
                   >
 
                     <div
-                      class="bg-[#141414]
+                      class="bg-[#141414]/40
                       p-4 font-mono text-sm
                       text-[var(--white-icon)]"
                     >
@@ -560,6 +550,7 @@ const movie = {
                   </div>
 
 
+                  <!-- Genre -->
                   <div
                     class="grid grid-cols-[120px_1fr]
                     border-b
@@ -567,7 +558,7 @@ const movie = {
                   >
 
                     <div
-                      class="bg-[#141414]
+                      class="bg-[#141414]/40
                       p-4 font-mono text-sm
                       text-[var(--white-icon)]"
                     >
@@ -584,12 +575,38 @@ const movie = {
                   </div>
 
 
+                  <!-- Director -->
+                  <div
+                    class="grid grid-cols-[120px_1fr]
+                    border-b
+                    border-[var(--white-icon-tr)]"
+                  >
+
+                    <div
+                      class="bg-[#141414]/40
+                      p-4 font-mono text-sm
+                      text-[var(--white-icon)]"
+                    >
+                      Director
+                    </div>
+
+                    <div
+                      class="p-4 text-sm
+                      text-[var(--white)]"
+                    >
+                      {movie.director}
+                    </div>
+
+                  </div>
+
+
+                  <!-- Rating -->
                   <div
                     class="grid grid-cols-[120px_1fr]"
                   >
 
                     <div
-                      class="bg-[#141414]
+                      class="bg-[#141414]/40
                       p-4 font-mono text-sm
                       text-[var(--white-icon)]"
                     >
@@ -614,7 +631,6 @@ const movie = {
           </div>
 
         </div>
-
       </section>
 
     </main>
