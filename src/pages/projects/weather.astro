@@ -118,7 +118,7 @@ longitude: -0.3763,
 
 
   <!-- ===================================================== -->
-  <!-- MAIN -->
+  <!-- MAIN CONTENT -->
   <!-- ===================================================== -->
 
   <div class="weather-container">
@@ -174,11 +174,11 @@ longitude: -0.3763,
         </span>
 
         <h1 id="location-name">
-          Alcoi
+          {defaultLocation}
         </h1>
 
         <p id="location-region">
-          Alicante, España
+          {locations[defaultLocation].region}
         </p>
 
       </div>
@@ -202,8 +202,12 @@ longitude: -0.3763,
 
       <div class="current-main">
 
-        <div class="weather-symbol" id="weather-icon">
-          ☀️
+        <div
+          class="weather-symbol"
+          id="weather-icon"
+          aria-hidden="true"
+        >
+          ☀
         </div>
 
         <div class="temperature-block">
@@ -311,7 +315,6 @@ longitude: -0.3763,
 
       </div>
 
-
       <div
         class="hourly-container"
         id="hourly-container"
@@ -337,7 +340,6 @@ longitude: -0.3763,
         </div>
 
       </div>
-
 
       <div
         class="daily-container"
@@ -365,23 +367,19 @@ longitude: -0.3763,
 
       </div>
 
-
       <div class="details-grid">
 
         <article class="detail-card">
-
           <span class="detail-icon">◌</span>
 
           <div>
             <span>Humidity</span>
             <strong id="humidity">—%</strong>
           </div>
-
         </article>
 
 
         <article class="detail-card">
-
           <span class="detail-icon">↝</span>
 
           <div>
@@ -390,12 +388,10 @@ longitude: -0.3763,
               — km/h
             </strong>
           </div>
-
         </article>
 
 
         <article class="detail-card">
-
           <span class="detail-icon">°</span>
 
           <div>
@@ -404,12 +400,10 @@ longitude: -0.3763,
               —°C
             </strong>
           </div>
-
         </article>
 
 
         <article class="detail-card">
-
           <span class="detail-icon">◉</span>
 
           <div>
@@ -418,12 +412,10 @@ longitude: -0.3763,
               — hPa
             </strong>
           </div>
-
         </article>
 
 
         <article class="detail-card">
-
           <span class="detail-icon">◎</span>
 
           <div>
@@ -432,12 +424,10 @@ longitude: -0.3763,
               — km
             </strong>
           </div>
-
         </article>
 
 
         <article class="detail-card">
-
           <span class="detail-icon">⌁</span>
 
           <div>
@@ -446,7 +436,6 @@ longitude: -0.3763,
               —%
             </strong>
           </div>
-
         </article>
 
       </div>
@@ -472,7 +461,6 @@ longitude: -0.3763,
 
       </div>
 
-
       <div class="sun-card">
 
         <div class="sun-time">
@@ -481,11 +469,8 @@ longitude: -0.3763,
         </div>
 
         <div class="sun-track">
-
           <div class="sun-track-line"></div>
-
           <span class="sun-orb"></span>
-
         </div>
 
         <div class="sun-time sun-time-right">
@@ -512,7 +497,7 @@ longitude: -0.3763,
       <span class="footer-divider">/</span>
 
       <div id="footer-location">
-        Alcoi
+        {defaultLocation}
       </div>
 
     </footer>
@@ -533,7 +518,7 @@ longitude: -0.3763,
     longitude: number;
   };
 
-  type WeatherCurrent = {
+  type WeatherCurrentData = {
     temperature_2m: number;
     apparent_temperature: number;
     relative_humidity_2m: number;
@@ -543,14 +528,14 @@ longitude: -0.3763,
     weather_code: number;
   };
 
-  type WeatherHourly = {
+  type WeatherHourlyData = {
     time: string[];
     temperature_2m: number[];
     precipitation_probability: number[];
     weather_code: number[];
   };
 
-  type WeatherDaily = {
+  type WeatherDailyData = {
     time: string[];
     weather_code: number[];
     temperature_2m_max: number[];
@@ -560,13 +545,13 @@ longitude: -0.3763,
     sunset: string[];
   };
 
-  type WeatherResponse = {
-    current: WeatherCurrent;
-    hourly: WeatherHourly;
-    daily: WeatherDaily;
+  type WeatherApiResponse = {
+    current: WeatherCurrentData;
+    hourly: WeatherHourlyData;
+    daily: WeatherDailyData;
   };
 
-  const locations: Record<string, LocationData> = {
+  const clientLocations: Record<string, LocationData> = {
     Alcoi: {
       name: "Alcoi",
       region: "Alicante, España",
@@ -590,14 +575,16 @@ longitude: -0.3763,
   };
 
   let selectedLocation = "Alcoi";
-  let weatherData: WeatherResponse | null = null;
+  let weatherData: WeatherApiResponse | null = null;
   let hourlyStartIndex = 0;
+
 
   function getElement<T extends HTMLElement>(
     id: string,
   ): T | null {
     return document.getElementById(id) as T | null;
   }
+
 
   function updateElement(
     id: string,
@@ -610,39 +597,55 @@ longitude: -0.3763,
     }
   }
 
+
   function getWeatherIcon(
     code: number,
     isNight = false,
   ): string {
     if (isNight) {
       if (code === 0) return "☾";
-      if (code >= 1 && code <= 3) return "☁";
+
+      if (code >= 1 && code <= 3) {
+        return "☁";
+      }
     }
 
     if (code === 0) return "☀";
-
     if (code === 1) return "◐";
-
     if (code === 2) return "◒";
-
     if (code === 3) return "☁";
 
-    if (code === 45 || code === 48) return "≋";
+    if (code === 45 || code === 48) {
+      return "≋";
+    }
 
-    if (code >= 51 && code <= 57) return "☂";
+    if (code >= 51 && code <= 57) {
+      return "☂";
+    }
 
-    if (code >= 61 && code <= 67) return "☂";
+    if (code >= 61 && code <= 67) {
+      return "☂";
+    }
 
-    if (code >= 71 && code <= 77) return "❄";
+    if (code >= 71 && code <= 77) {
+      return "❄";
+    }
 
-    if (code >= 80 && code <= 82) return "☂";
+    if (code >= 80 && code <= 82) {
+      return "☂";
+    }
 
-    if (code >= 85 && code <= 86) return "❄";
+    if (code >= 85 && code <= 86) {
+      return "❄";
+    }
 
-    if (code >= 95 && code <= 99) return "ϟ";
+    if (code >= 95 && code <= 99) {
+      return "ϟ";
+    }
 
     return "☀";
   }
+
 
   function getWeatherDescription(
     code: number,
@@ -683,15 +686,22 @@ longitude: -0.3763,
     return "Unknown conditions";
   }
 
-  function formatHour(value: string): string {
+
+  function formatHour(
+    value: string,
+  ): string {
     const date = new Date(value);
 
-    return date.toLocaleTimeString("en-GB", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false,
-    });
+    return date.toLocaleTimeString(
+      "en-GB",
+      {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      },
+    );
   }
+
 
   function formatDay(
     value: string,
@@ -713,6 +723,7 @@ longitude: -0.3763,
     );
   }
 
+
   function formatDateTime(): string {
     return new Date().toLocaleTimeString(
       "en-GB",
@@ -723,6 +734,7 @@ longitude: -0.3763,
       },
     );
   }
+
 
   function getIsNight(
     time: string,
@@ -736,11 +748,14 @@ longitude: -0.3763,
     return current < rise || current > set;
   }
 
+
   function renderCurrent(
-    data: WeatherResponse,
+    data: WeatherApiResponse,
   ): void {
     const location =
-      locations[selectedLocation];
+      clientLocations[selectedLocation];
+
+    if (!location) return;
 
     const current = data.current;
 
@@ -755,6 +770,7 @@ longitude: -0.3763,
       sunrise,
       sunset,
     );
+
 
     updateElement(
       "location-name",
@@ -771,6 +787,7 @@ longitude: -0.3763,
       location.name,
     );
 
+
     updateElement(
       "temperature",
       `${Math.round(current.temperature_2m)}°`,
@@ -786,12 +803,14 @@ longitude: -0.3763,
       `${Math.round(current.apparent_temperature)}°C`,
     );
 
+
     updateElement(
       "description",
       getWeatherDescription(
         current.weather_code,
       ),
     );
+
 
     updateElement(
       "weather-icon",
@@ -801,70 +820,86 @@ longitude: -0.3763,
       ),
     );
 
+
+    const humidity =
+      Math.round(
+        current.relative_humidity_2m,
+      );
+
     updateElement(
       "humidity",
-      `${Math.round(
-        current.relative_humidity_2m,
-      )}%`,
+      `${humidity}%`,
     );
 
     updateElement(
       "hero-humidity",
-      `${Math.round(
-        current.relative_humidity_2m,
-      )}%`,
+      `${humidity}%`,
     );
+
+
+    const wind =
+      Math.round(
+        current.wind_speed_10m,
+      );
 
     updateElement(
       "wind",
-      `${Math.round(
-        current.wind_speed_10m,
-      )} km/h`,
+      `${wind} km/h`,
     );
 
     updateElement(
       "wind-detail",
-      `${Math.round(
-        current.wind_speed_10m,
-      )} km/h`,
+      `${wind} km/h`,
     );
+
+
+    const pressure =
+      Math.round(
+        current.surface_pressure,
+      );
 
     updateElement(
       "pressure",
-      `${Math.round(
-        current.surface_pressure,
-      )} hPa`,
+      `${pressure} hPa`,
     );
 
     updateElement(
       "pressure-detail",
-      `${Math.round(
-        current.surface_pressure,
-      )} hPa`,
+      `${pressure} hPa`,
     );
+
 
     const visibilityKm =
       current.visibility / 1000;
 
+    const visibility =
+      Math.round(visibilityKm);
+
     updateElement(
       "visibility",
-      `${Math.round(visibilityKm)} km`,
+      `${visibility} km`,
     );
 
     updateElement(
       "visibility-card",
-      `${Math.round(visibilityKm)} km`,
+      `${visibility} km`,
     );
 
     updateElement(
       "visibility-detail",
-      `${Math.round(visibilityKm)} km`,
+      `${visibility} km`,
     );
+
+
+    const rain =
+      data.daily
+        .precipitation_probability_max[0] ?? 0;
 
     updateElement(
       "rain-detail",
-      `${data.daily.precipitation_probability_max[0] ?? 0}%`,
+      `${rain}%`,
     );
+
 
     updateElement(
       "sunrise",
@@ -876,14 +911,16 @@ longitude: -0.3763,
       formatHour(sunset),
     );
 
+
     updateElement(
       "last-updated",
       formatDateTime(),
     );
   }
 
+
   function createHourlyCard(
-    data: WeatherResponse,
+    data: WeatherApiResponse,
     index: number,
     isFirst: boolean,
   ): HTMLElement {
@@ -895,6 +932,7 @@ longitude: -0.3763,
         ? "hour-card current"
         : "hour-card";
 
+
     const time =
       data.hourly.time[index];
 
@@ -902,10 +940,12 @@ longitude: -0.3763,
       data.hourly.temperature_2m[index] ?? 0;
 
     const rain =
-      data.hourly.precipitation_probability[index] ?? 0;
+      data.hourly
+        .precipitation_probability[index] ?? 0;
 
     const code =
       data.hourly.weather_code[index] ?? 0;
+
 
     item.innerHTML = `
       <span class="hour-time">
@@ -928,8 +968,9 @@ longitude: -0.3763,
     return item;
   }
 
+
   function renderHourly(
-    data: WeatherResponse,
+    data: WeatherApiResponse,
     startIndex?: number,
   ): void {
     const container =
@@ -939,9 +980,10 @@ longitude: -0.3763,
 
     if (!container) return;
 
-    const now = new Date();
 
     if (startIndex === undefined) {
+      const now = new Date();
+
       startIndex =
         data.hourly.time.findIndex(
           (time) =>
@@ -955,12 +997,15 @@ longitude: -0.3763,
       hourlyStartIndex = startIndex;
     }
 
+
     const endIndex = Math.min(
       startIndex + 12,
       data.hourly.time.length,
     );
 
+
     container.innerHTML = "";
+
 
     for (
       let i = startIndex;
@@ -977,8 +1022,9 @@ longitude: -0.3763,
     }
   }
 
+
   function renderDaily(
-    data: WeatherResponse,
+    data: WeatherApiResponse,
   ): void {
     const container =
       getElement<HTMLDivElement>(
@@ -987,12 +1033,15 @@ longitude: -0.3763,
 
     if (!container) return;
 
+
     container.innerHTML = "";
+
 
     const days = Math.min(
       data.daily.time.length,
       7,
     );
+
 
     for (
       let i = 0;
@@ -1009,24 +1058,38 @@ longitude: -0.3763,
         data.daily.temperature_2m_min[i] ?? 0;
 
       const rain =
-        data.daily.precipitation_probability_max[i] ?? 0;
+        data.daily
+          .precipitation_probability_max[i] ?? 0;
+
 
       const row =
         document.createElement("article");
 
-      row.className = "daily-row";
+      row.className =
+        "daily-row";
+
+
+      const dayLabel =
+        formatDay(
+          data.daily.time[i],
+          i,
+        );
+
+
+      const dateLabel =
+        i === 0
+          ? "Today"
+          : data.daily.time[i];
+
 
       row.innerHTML = `
         <div class="daily-day">
           <strong>
-            ${formatDay(
-              data.daily.time[i],
-              i,
-            )}
+            ${dayLabel}
           </strong>
 
           <span>
-            ${i === 0 ? "Today" : data.daily.time[i]}
+            ${dateLabel}
           </span>
         </div>
 
@@ -1055,9 +1118,11 @@ longitude: -0.3763,
         </div>
       `;
 
+
       container.appendChild(row);
     }
   }
+
 
   function setLoadingState(): void {
     updateElement(
@@ -1070,6 +1135,7 @@ longitude: -0.3763,
       "Loading weather...",
     );
   }
+
 
   function setErrorState(
     message: string,
@@ -1090,9 +1156,10 @@ longitude: -0.3763,
     );
   }
 
+
   async function fetchWeather(
     location: LocationData,
-  ): Promise<WeatherResponse> {
+  ): Promise<WeatherApiResponse> {
     const url =
       "https://api.open-meteo.com/v1/forecast" +
       `?latitude=${location.latitude}` +
@@ -1103,8 +1170,10 @@ longitude: -0.3763,
       "&timezone=auto" +
       "&forecast_days=7";
 
+
     const response =
       await fetch(url);
+
 
     if (!response.ok) {
       throw new Error(
@@ -1112,20 +1181,31 @@ longitude: -0.3763,
       );
     }
 
-    return (await response.json()) as WeatherResponse;
+
+    return (
+      await response.json()
+    ) as WeatherApiResponse;
   }
+
 
   async function loadWeather(
     locationName: string,
   ): Promise<void> {
     const location =
-      locations[locationName];
+      clientLocations[locationName];
 
     if (!location) return;
 
-    selectedLocation = locationName;
+
+    selectedLocation =
+      locationName;
+
+
+    hourlyStartIndex = 0;
+
 
     setLoadingState();
+
 
     document
       .querySelectorAll<HTMLButtonElement>(
@@ -1139,24 +1219,39 @@ longitude: -0.3763,
         );
       });
 
+
     try {
       const response =
         await fetchWeather(location);
 
-      weatherData = response;
 
-      renderCurrent(response);
+      weatherData =
+        response;
 
-      renderHourly(response);
 
-      renderDaily(response);
+      renderCurrent(
+        response,
+      );
+
+      renderHourly(
+        response,
+      );
+
+      renderDaily(
+        response,
+      );
+
 
       updateElement(
         "header-status",
         "Live data",
       );
+
     } catch (error) {
-      console.error(error);
+      console.error(
+        "Weather loading error:",
+        error,
+      );
 
       setErrorState(
         "Unable to load weather data.",
@@ -1174,17 +1269,22 @@ longitude: -0.3763,
       ".location-tab",
     )
     .forEach((button) => {
+
       button.addEventListener(
         "click",
         () => {
+
           const locationName =
             button.dataset.location;
 
           if (!locationName) return;
 
-          loadWeather(locationName);
+          loadWeather(
+            locationName,
+          );
         },
       );
+
     });
 
 
@@ -1197,12 +1297,16 @@ longitude: -0.3763,
   )?.addEventListener(
     "click",
     () => {
+
       if (!weatherData) return;
 
-      hourlyStartIndex = Math.max(
-        0,
-        hourlyStartIndex - 6,
-      );
+
+      hourlyStartIndex =
+        Math.max(
+          0,
+          hourlyStartIndex - 6,
+        );
+
 
       renderHourly(
         weatherData,
@@ -1217,18 +1321,23 @@ longitude: -0.3763,
   )?.addEventListener(
     "click",
     () => {
+
       if (!weatherData) return;
 
-      const maxStart = Math.max(
-        0,
-        weatherData.hourly.time.length -
-          12,
-      );
 
-      hourlyStartIndex = Math.min(
-        maxStart,
-        hourlyStartIndex + 6,
-      );
+      const maxStart =
+        Math.max(
+          0,
+          weatherData.hourly.time.length - 12,
+        );
+
+
+      hourlyStartIndex =
+        Math.min(
+          maxStart,
+          hourlyStartIndex + 6,
+        );
+
 
       renderHourly(
         weatherData,
@@ -1242,12 +1351,14 @@ longitude: -0.3763,
   /* INITIAL LOAD */
   /* ========================================================= */
 
-  loadWeather("Alcoi");
+  loadWeather(
+    "Alcoi",
+  );
 </script>
 
 <style>
   /* ========================================================= */
-  /* VARIABLES */
+  /* GLOBAL */
   /* ========================================================= */
 
   :global(html) {
@@ -1259,6 +1370,14 @@ longitude: -0.3763,
     margin: 0;
     background: #080a0d;
     color: #f4f7fb;
+    font-family:
+      Inter,
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
   }
 
   :global(*) {
@@ -1272,6 +1391,7 @@ longitude: -0.3763,
 
   .weather-page {
     min-height: 100vh;
+
     background:
       radial-gradient(
         circle at 50% -10%,
@@ -1304,11 +1424,13 @@ longitude: -0.3763,
     backdrop-filter: blur(20px);
   }
 
+
   .header-inner {
-    width: min(
-      calc(100% - 40px),
-      1200px
-    );
+    width:
+      min(
+        calc(100% - 40px),
+        1200px
+      );
 
     min-height: 72px;
 
@@ -1321,17 +1443,20 @@ longitude: -0.3763,
     gap: 20px;
   }
 
+
   .back-link {
     display: inline-flex;
     align-items: center;
+
     gap: 9px;
 
-    color: rgba(
-      244,
-      247,
-      251,
-      0.65
-    );
+    color:
+      rgba(
+        244,
+        247,
+        251,
+        0.65
+      );
 
     text-decoration: none;
 
@@ -1345,17 +1470,21 @@ longitude: -0.3763,
       color 0.2s ease;
   }
 
+
   .back-link:hover {
     color: #3da9ff;
   }
+
 
   .back-arrow {
     font-size: 1rem;
   }
 
+
   .brand {
     display: flex;
     align-items: center;
+
     gap: 10px;
 
     font-size: 0.72rem;
@@ -1363,6 +1492,7 @@ longitude: -0.3763,
 
     letter-spacing: 0.2em;
   }
+
 
   .brand-mark {
     width: 26px;
@@ -1385,20 +1515,24 @@ longitude: -0.3763,
       rgba(61, 169, 255, 0.12);
   }
 
+
   .header-live {
     display: flex;
     align-items: center;
+
     gap: 8px;
 
-    color: rgba(
-      244,
-      247,
-      251,
-      0.42
-    );
+    color:
+      rgba(
+        244,
+        247,
+        251,
+        0.42
+      );
 
     font-size: 0.66rem;
   }
+
 
   .live-dot {
     width: 6px;
@@ -1419,10 +1553,11 @@ longitude: -0.3763,
   /* ========================================================= */
 
   .weather-container {
-    width: min(
-      calc(100% - 40px),
-      1200px
-    );
+    width:
+      min(
+        calc(100% - 40px),
+        1200px
+      );
 
     margin-inline: auto;
 
@@ -1438,22 +1573,25 @@ longitude: -0.3763,
   .location-selector-heading {
     display: flex;
     align-items: center;
+
     gap: 12px;
 
     margin-bottom: 12px;
 
-    color: rgba(
-      244,
-      247,
-      251,
-      0.3
-    );
+    color:
+      rgba(
+        244,
+        247,
+        251,
+        0.3
+      );
 
     font-size: 0.58rem;
     font-weight: 800;
 
     letter-spacing: 0.18em;
   }
+
 
   .location-selector-line {
     height: 1px;
@@ -1463,13 +1601,16 @@ longitude: -0.3763,
       rgba(255, 255, 255, 0.06);
   }
 
+
   .location-tabs {
     display: grid;
+
     grid-template-columns:
       repeat(3, 1fr);
 
     gap: 8px;
   }
+
 
   .location-tab {
     min-height: 72px;
@@ -1478,6 +1619,7 @@ longitude: -0.3763,
 
     display: flex;
     flex-direction: column;
+
     justify-content: center;
     align-items: flex-start;
 
@@ -1503,6 +1645,7 @@ longitude: -0.3763,
       transform 0.2s ease;
   }
 
+
   .location-tab:hover {
     border-color:
       rgba(61, 169, 255, 0.4);
@@ -1510,8 +1653,10 @@ longitude: -0.3763,
     background:
       rgba(61, 169, 255, 0.045);
 
-    transform: translateY(-1px);
+    transform:
+      translateY(-1px);
   }
+
 
   .location-tab.active {
     border-color:
@@ -1528,18 +1673,21 @@ longitude: -0.3763,
       inset 3px 0 0 #3da9ff;
   }
 
+
   .location-tab-name {
     font-size: 0.88rem;
     font-weight: 700;
   }
 
+
   .location-tab-region {
-    color: rgba(
-      244,
-      247,
-      251,
-      0.36
-    );
+    color:
+      rgba(
+        244,
+        247,
+        251,
+        0.36
+      );
 
     font-size: 0.62rem;
   }
@@ -1554,10 +1702,12 @@ longitude: -0.3763,
 
     display: flex;
     align-items: flex-end;
+
     justify-content: space-between;
 
     gap: 30px;
   }
+
 
   .section-kicker {
     display: block;
@@ -1572,14 +1722,16 @@ longitude: -0.3763,
     letter-spacing: 0.18em;
   }
 
+
   .location-title-block h1 {
     margin: 0;
 
-    font-size: clamp(
-      3rem,
-      8vw,
-      5.8rem
-    );
+    font-size:
+      clamp(
+        3rem,
+        8vw,
+        5.8rem
+      );
 
     line-height: 0.9;
 
@@ -1588,40 +1740,47 @@ longitude: -0.3763,
     font-weight: 700;
   }
 
+
   .location-title-block p {
     margin: 14px 0 0;
 
-    color: rgba(
-      244,
-      247,
-      251,
-      0.42
-    );
+    color:
+      rgba(
+        244,
+        247,
+        251,
+        0.42
+      );
 
     font-size: 0.78rem;
   }
 
+
   .update-block {
     display: flex;
     flex-direction: column;
+
     align-items: flex-end;
 
     gap: 5px;
   }
 
+
   .update-block span {
-    color: rgba(
-      244,
-      247,
-      251,
-      0.3
-    );
+    color:
+      rgba(
+        244,
+        247,
+        251,
+        0.3
+      );
 
     font-size: 0.55rem;
     font-weight: 800;
 
     letter-spacing: 0.14em;
   }
+
 
   .update-block strong {
     color: #f4f7fb;
@@ -1656,6 +1815,7 @@ longitude: -0.3763,
       rgba(0, 0, 0, 0.25);
   }
 
+
   .current-main {
     min-height: 310px;
 
@@ -1664,12 +1824,15 @@ longitude: -0.3763,
     display: grid;
 
     grid-template-columns:
-      120px 240px 1fr;
+      120px
+      240px
+      1fr;
 
     align-items: center;
 
     gap: 30px;
   }
+
 
   .weather-symbol {
     width: 120px;
@@ -1697,12 +1860,14 @@ longitude: -0.3763,
       rgba(61, 169, 255, 0.45);
   }
 
+
   .temperature {
-    font-size: clamp(
-      5rem,
-      10vw,
-      8rem
-    );
+    font-size:
+      clamp(
+        5rem,
+        10vw,
+        8rem
+      );
 
     font-weight: 700;
 
@@ -1711,22 +1876,26 @@ longitude: -0.3763,
     letter-spacing: -0.09em;
   }
 
+
   .feels-like {
     margin-top: 18px;
 
-    color: rgba(
-      244,
-      247,
-      251,
-      0.4
-    );
+    color:
+      rgba(
+        244,
+        247,
+        251,
+        0.4
+      );
 
     font-size: 0.72rem;
   }
 
+
   .feels-like strong {
     color: #f4f7fb;
   }
+
 
   .condition-block {
     padding-left: 30px;
@@ -1734,6 +1903,7 @@ longitude: -0.3763,
     border-left: 1px solid
       rgba(255, 255, 255, 0.08);
   }
+
 
   .condition-block h2 {
     margin: 0;
@@ -1745,6 +1915,7 @@ longitude: -0.3763,
     letter-spacing: -0.03em;
   }
 
+
   .condition-meta {
     margin-top: 17px;
 
@@ -1753,20 +1924,24 @@ longitude: -0.3763,
 
     gap: 12px;
 
-    color: rgba(
-      244,
-      247,
-      251,
-      0.4
-    );
+    color:
+      rgba(
+        244,
+        247,
+        251,
+        0.4
+      );
 
     font-size: 0.66rem;
   }
 
+
   .condition-meta strong {
     color: #f4f7fb;
+
     margin-left: 4px;
   }
+
 
   .meta-divider {
     width: 3px;
@@ -1776,6 +1951,7 @@ longitude: -0.3763,
 
     background: #3da9ff;
   }
+
 
   .current-metrics {
     min-height: 88px;
@@ -1796,6 +1972,7 @@ longitude: -0.3763,
       rgba(0, 0, 0, 0.12);
   }
 
+
   .current-metric {
     display: flex;
     flex-direction: column;
@@ -1805,28 +1982,33 @@ longitude: -0.3763,
     padding-right: 25px;
   }
 
+
   .current-metric:not(:last-child) {
     border-right: 1px solid
       rgba(255, 255, 255, 0.07);
   }
 
+
   .current-metric:not(:first-child) {
     padding-left: 25px;
   }
 
+
   .current-metric span {
-    color: rgba(
-      244,
-      247,
-      251,
-      0.3
-    );
+    color:
+      rgba(
+        244,
+        247,
+        251,
+        0.3
+      );
 
     font-size: 0.55rem;
     font-weight: 800;
 
     letter-spacing: 0.14em;
   }
+
 
   .current-metric strong {
     font-size: 0.85rem;
@@ -1841,15 +2023,18 @@ longitude: -0.3763,
     margin-top: 62px;
   }
 
+
   .section-heading {
     margin-bottom: 18px;
 
     display: flex;
     align-items: flex-end;
+
     justify-content: space-between;
 
     gap: 20px;
   }
+
 
   .section-heading h2 {
     margin: 0;
@@ -1859,10 +2044,12 @@ longitude: -0.3763,
     letter-spacing: -0.045em;
   }
 
+
   .section-navigation {
     display: flex;
     gap: 7px;
   }
+
 
   .nav-button {
     width: 38px;
@@ -1885,6 +2072,7 @@ longitude: -0.3763,
       border-color 0.2s ease;
   }
 
+
   .nav-button:hover {
     background:
       rgba(61, 169, 255, 0.09);
@@ -1902,7 +2090,10 @@ longitude: -0.3763,
     display: grid;
 
     grid-template-columns:
-      repeat(12, minmax(95px, 1fr));
+      repeat(
+        12,
+        minmax(95px, 1fr)
+      );
 
     gap: 7px;
 
@@ -1915,6 +2106,7 @@ longitude: -0.3763,
 
     padding-bottom: 8px;
   }
+
 
   .hour-card {
     min-height: 155px;
@@ -1930,17 +2122,16 @@ longitude: -0.3763,
       rgba(255, 255, 255, 0.025);
 
     display: flex;
-
     flex-direction: column;
 
     align-items: center;
-
     justify-content: center;
 
     gap: 11px;
 
     text-align: center;
   }
+
 
   .hour-card.current {
     border-color:
@@ -1957,13 +2148,15 @@ longitude: -0.3763,
       inset 0 2px 0 #3da9ff;
   }
 
+
   .hour-time {
-    color: rgba(
-      244,
-      247,
-      251,
-      0.45
-    );
+    color:
+      rgba(
+        244,
+        247,
+        251,
+        0.45
+      );
 
     font-size: 0.57rem;
     font-weight: 800;
@@ -1971,10 +2164,11 @@ longitude: -0.3763,
     letter-spacing: 0.08em;
   }
 
-  .hour-card.current
-    .hour-time {
+
+  .hour-card.current .hour-time {
     color: #3da9ff;
   }
+
 
   .hour-icon {
     color: #3da9ff;
@@ -1984,17 +2178,20 @@ longitude: -0.3763,
     line-height: 1;
   }
 
+
   .hour-temperature {
     font-size: 1.25rem;
   }
 
+
   .hour-rain {
-    color: rgba(
-      61,
-      169,
-      255,
-      0.85
-    );
+    color:
+      rgba(
+        61,
+        169,
+        255,
+        0.85
+      );
 
     font-size: 0.55rem;
   }
@@ -2012,6 +2209,7 @@ longitude: -0.3763,
 
     border-radius: 12px;
   }
+
 
   .daily-row {
     min-height: 86px;
@@ -2040,35 +2238,43 @@ longitude: -0.3763,
       background 0.2s ease;
   }
 
+
   .daily-row:last-child {
     border-bottom: 0;
   }
+
 
   .daily-row:hover {
     background:
       rgba(61, 169, 255, 0.04);
   }
 
+
   .daily-day {
     display: flex;
     flex-direction: column;
+
     gap: 4px;
   }
+
 
   .daily-day strong {
     font-size: 0.76rem;
   }
 
+
   .daily-day span {
-    color: rgba(
-      244,
-      247,
-      251,
-      0.28
-    );
+    color:
+      rgba(
+        244,
+        247,
+        251,
+        0.28
+      );
 
     font-size: 0.55rem;
   }
+
 
   .daily-icon {
     color: #3da9ff;
@@ -2078,47 +2284,57 @@ longitude: -0.3763,
     text-align: center;
   }
 
+
   .daily-condition {
     display: flex;
     flex-direction: column;
+
     gap: 5px;
   }
+
 
   .daily-condition strong {
     font-size: 0.75rem;
     font-weight: 600;
   }
 
+
   .daily-condition span {
-    color: rgba(
-      61,
-      169,
-      255,
-      0.75
-    );
+    color:
+      rgba(
+        61,
+        169,
+        255,
+        0.75
+      );
 
     font-size: 0.58rem;
   }
 
+
   .daily-temperatures {
     display: flex;
+
     justify-content: flex-end;
     align-items: center;
 
     gap: 13px;
   }
 
+
   .daily-temperatures strong {
     font-size: 1rem;
   }
 
+
   .daily-temperatures span {
-    color: rgba(
-      244,
-      247,
-      251,
-      0.3
-    );
+    color:
+      rgba(
+        244,
+        247,
+        251,
+        0.3
+      );
 
     font-size: 0.82rem;
   }
@@ -2136,6 +2352,7 @@ longitude: -0.3763,
 
     gap: 8px;
   }
+
 
   .detail-card {
     min-height: 110px;
@@ -2160,6 +2377,7 @@ longitude: -0.3763,
       background 0.2s ease;
   }
 
+
   .detail-card:hover {
     border-color:
       rgba(61, 169, 255, 0.35);
@@ -2167,6 +2385,7 @@ longitude: -0.3763,
     background:
       rgba(61, 169, 255, 0.035);
   }
+
 
   .detail-icon {
     width: 40px;
@@ -2187,6 +2406,7 @@ longitude: -0.3763,
     font-size: 1.2rem;
   }
 
+
   .detail-card div {
     display: flex;
     flex-direction: column;
@@ -2194,19 +2414,22 @@ longitude: -0.3763,
     gap: 6px;
   }
 
+
   .detail-card div span {
-    color: rgba(
-      244,
-      247,
-      251,
-      0.32
-    );
+    color:
+      rgba(
+        244,
+        247,
+        251,
+        0.32
+      );
 
     font-size: 0.58rem;
     font-weight: 700;
 
     letter-spacing: 0.08em;
   }
+
 
   .detail-card strong {
     font-size: 0.92rem;
@@ -2242,6 +2465,7 @@ longitude: -0.3763,
       rgba(255, 255, 255, 0.025);
   }
 
+
   .sun-time {
     display: flex;
     flex-direction: column;
@@ -2249,13 +2473,15 @@ longitude: -0.3763,
     gap: 7px;
   }
 
+
   .sun-time span {
-    color: rgba(
-      244,
-      247,
-      251,
-      0.3
-    );
+    color:
+      rgba(
+        244,
+        247,
+        251,
+        0.3
+      );
 
     font-size: 0.55rem;
     font-weight: 800;
@@ -2263,13 +2489,16 @@ longitude: -0.3763,
     letter-spacing: 0.13em;
   }
 
+
   .sun-time strong {
     font-size: 1rem;
   }
 
+
   .sun-time-right {
     text-align: right;
   }
+
 
   .sun-track {
     position: relative;
@@ -2279,6 +2508,7 @@ longitude: -0.3763,
     display: flex;
     align-items: center;
   }
+
 
   .sun-track-line {
     width: 100%;
@@ -2292,6 +2522,7 @@ longitude: -0.3763,
         transparent
       );
   }
+
 
   .sun-orb {
     position: absolute;
@@ -2325,6 +2556,7 @@ longitude: -0.3763,
     padding-top: 25px;
 
     display: flex;
+
     justify-content: center;
     align-items: center;
 
@@ -2333,24 +2565,28 @@ longitude: -0.3763,
     border-top: 1px solid
       rgba(255, 255, 255, 0.06);
 
-    color: rgba(
-      244,
-      247,
-      251,
-      0.25
-    );
+    color:
+      rgba(
+        244,
+        247,
+        251,
+        0.25
+      );
 
     font-size: 0.6rem;
   }
 
+
   .weather-footer strong {
-    color: rgba(
-      244,
-      247,
-      251,
-      0.45
-    );
+    color:
+      rgba(
+        244,
+        247,
+        251,
+        0.45
+      );
   }
+
 
   .footer-divider {
     color: #3da9ff;
@@ -2365,10 +2601,13 @@ longitude: -0.3763,
 
     .current-main {
       grid-template-columns:
-        100px 190px 1fr;
+        100px
+        190px
+        1fr;
 
       padding: 35px 28px;
     }
+
 
     .weather-symbol {
       width: 100px;
@@ -2377,14 +2616,19 @@ longitude: -0.3763,
       font-size: 4.2rem;
     }
 
+
     .details-grid {
       grid-template-columns:
         repeat(2, 1fr);
     }
 
+
     .daily-row {
       grid-template-columns:
-        90px 50px 1fr 90px;
+        90px
+        50px
+        1fr
+        90px;
     }
   }
 
@@ -2397,31 +2641,38 @@ longitude: -0.3763,
 
     .header-inner,
     .weather-container {
-      width: min(
-        calc(100% - 24px),
-        1200px
-      );
+      width:
+        min(
+          calc(100% - 24px),
+          1200px
+        );
     }
+
 
     .header-inner {
       min-height: 62px;
     }
 
+
     .brand {
       font-size: 0.62rem;
     }
+
 
     .header-live {
       display: none;
     }
 
+
     .location-tabs {
       grid-template-columns: 1fr;
     }
 
+
     .location-tab {
       min-height: 62px;
     }
+
 
     .location-heading {
       margin-top: 35px;
@@ -2431,13 +2682,16 @@ longitude: -0.3763,
       flex-direction: column;
     }
 
+
     .update-block {
       align-items: flex-start;
     }
 
+
     .current-weather-card {
       margin-top: 28px;
     }
+
 
     .current-main {
       min-height: auto;
@@ -2445,13 +2699,13 @@ longitude: -0.3763,
       padding: 30px 22px;
 
       display: flex;
-
       flex-direction: column;
 
       align-items: flex-start;
 
       gap: 22px;
     }
+
 
     .weather-symbol {
       width: 72px;
@@ -2460,9 +2714,11 @@ longitude: -0.3763,
       font-size: 3.3rem;
     }
 
+
     .temperature {
       font-size: 5.2rem;
     }
+
 
     .condition-block {
       width: 100%;
@@ -2476,6 +2732,7 @@ longitude: -0.3763,
         rgba(255, 255, 255, 0.07);
     }
 
+
     .current-metrics {
       padding: 0 22px;
 
@@ -2484,25 +2741,31 @@ longitude: -0.3763,
       min-height: auto;
     }
 
+
     .current-metric {
       padding: 17px 0 !important;
 
       border-right: 0 !important;
+
       border-bottom: 1px solid
         rgba(255, 255, 255, 0.06);
     }
+
 
     .current-metric:last-child {
       border-bottom: 0;
     }
 
+
     .weather-section {
       margin-top: 48px;
     }
 
+
     .section-heading h2 {
       font-size: 1.35rem;
     }
+
 
     .hourly-container {
       grid-template-columns:
@@ -2512,14 +2775,18 @@ longitude: -0.3763,
         );
     }
 
+
     .daily-row {
       grid-template-columns:
-        65px 40px 1fr;
+        65px
+        40px
+        1fr;
 
       gap: 10px;
 
       padding: 13px 14px;
     }
+
 
     .daily-temperatures {
       grid-column: 3;
@@ -2529,19 +2796,25 @@ longitude: -0.3763,
       margin-top: -2px;
     }
 
+
     .daily-condition {
       min-width: 0;
     }
 
+
     .daily-condition strong {
       white-space: nowrap;
+
       overflow: hidden;
+
       text-overflow: ellipsis;
     }
+
 
     .details-grid {
       grid-template-columns: 1fr;
     }
+
 
     .sun-card {
       grid-template-columns: 1fr;
@@ -2551,17 +2824,21 @@ longitude: -0.3763,
       text-align: center;
     }
 
+
     .sun-time {
       align-items: center;
     }
+
 
     .sun-time-right {
       text-align: center;
     }
 
+
     .sun-track {
       height: 45px;
     }
+
 
     .weather-footer {
       flex-wrap: wrap;
