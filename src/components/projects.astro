@@ -7,39 +7,6 @@ latitude: number;
 longitude: number;
 }
 
-interface WeatherCurrent {
-temperature_2m: number;
-apparent_temperature: number;
-relative_humidity_2m: number;
-wind_speed_10m: number;
-surface_pressure: number;
-visibility: number;
-weather_code: number;
-}
-
-interface WeatherHourly {
-time: string[];
-temperature_2m: number[];
-precipitation_probability: number[];
-weather_code: number[];
-}
-
-interface WeatherDaily {
-time: string[];
-weather_code: number[];
-temperature_2m_max: number[];
-temperature_2m_min: number[];
-precipitation_probability_max: number[];
-sunrise: string[];
-sunset: string[];
-}
-
-interface WeatherResponse {
-current: WeatherCurrent;
-hourly: WeatherHourly;
-daily: WeatherDaily;
-}
-
 const locations: Record<string, WeatherLocation> = {
 Alcoi: {
 name: "Alcoi",
@@ -84,11 +51,7 @@ longitude: -0.3763,
   content="Interactive weather dashboard for Alcoi, Torrevieja and Valencia."
 />
 
-<link
-  rel="icon"
-  type="image/png"
-  href="/icon.png"
-/>
+<link rel="icon" type="image/png" href="/icon.png" />
 ```
 
   </head>
@@ -350,7 +313,6 @@ longitude: -0.3763,
           TODAY
         </div>
 
-
         <div class="side-metric">
 
           <span>
@@ -363,9 +325,7 @@ longitude: -0.3763,
 
         </div>
 
-
         <div class="side-divider"></div>
-
 
         <div class="side-metric">
 
@@ -379,9 +339,7 @@ longitude: -0.3763,
 
         </div>
 
-
         <div class="side-divider"></div>
-
 
         <div class="side-metric">
 
@@ -438,12 +396,10 @@ longitude: -0.3763,
           ←
         </button>
 
-
         <div
           class="hourly-scroll"
           id="hourly-container"
         ></div>
-
 
         <button
           class="forecast-arrow"
@@ -798,7 +754,7 @@ longitude: -0.3763,
   };
 
 
-  const locations: Record<string, LocationData> = {
+  const weatherLocations: Record<string, LocationData> = {
     Alcoi: {
       name: "Alcoi",
       region: "Alicante, España",
@@ -996,10 +952,6 @@ longitude: -0.3763,
 
     const date = new Date(value);
 
-    if (Number.isNaN(date.getTime())) {
-      return "—";
-    }
-
     return date.toLocaleTimeString(
       "en-GB",
       {
@@ -1023,10 +975,6 @@ longitude: -0.3763,
     const date = new Date(
       `${value}T12:00:00`,
     );
-
-    if (Number.isNaN(date.getTime())) {
-      return value;
-    }
 
     return date.toLocaleDateString(
       "en-GB",
@@ -1065,14 +1013,6 @@ longitude: -0.3763,
     const set =
       new Date(sunset).getTime();
 
-    if (
-      Number.isNaN(current) ||
-      Number.isNaN(rise) ||
-      Number.isNaN(set)
-    ) {
-      return false;
-    }
-
     return (
       current < rise ||
       current > set
@@ -1099,7 +1039,7 @@ longitude: -0.3763,
   ): void {
 
     const location =
-      locations[selectedLocation];
+      weatherLocations[selectedLocation];
 
     const current =
       data.current;
@@ -1251,8 +1191,7 @@ longitude: -0.3763,
 
 
     const rainProbability =
-      data.daily
-        .precipitation_probability_max[0] ?? 0;
+      data.daily.precipitation_probability_max[0] ?? 0;
 
 
     updateElement(
@@ -1298,8 +1237,7 @@ longitude: -0.3763,
       data.hourly.temperature_2m[index] ?? 0;
 
     const rain =
-      data.hourly
-        .precipitation_probability[index] ?? 0;
+      data.hourly.precipitation_probability[index] ?? 0;
 
     const code =
       data.hourly.weather_code[index] ?? 0;
@@ -1395,7 +1333,6 @@ longitude: -0.3763,
         "hourly-prev",
       );
 
-
     const nextButton =
       getElement<HTMLButtonElement>(
         "hourly-next",
@@ -1480,8 +1417,7 @@ longitude: -0.3763,
         data.daily.temperature_2m_min[i] ?? 0;
 
       const rain =
-        data.daily
-          .precipitation_probability_max[i] ?? 0;
+        data.daily.precipitation_probability_max[i] ?? 0;
 
 
       const row =
@@ -1540,18 +1476,6 @@ longitude: -0.3763,
       "description",
       "Loading weather...",
     );
-
-
-    updateElement(
-      "temperature",
-      "—°",
-    );
-
-
-    updateElement(
-      "feels-like",
-      "—°",
-    );
   }
 
 
@@ -1582,15 +1506,22 @@ longitude: -0.3763,
     location: LocationData,
   ): Promise<WeatherData> {
 
+    const params = new URLSearchParams({
+      latitude: String(location.latitude),
+      longitude: String(location.longitude),
+      current:
+        "temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m,surface_pressure,visibility,weather_code",
+      hourly:
+        "temperature_2m,precipitation_probability,weather_code",
+      daily:
+        "weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset",
+      timezone: "auto",
+      forecast_days: "7",
+    });
+
+
     const url =
-      "https://api.open-meteo.com/v1/forecast" +
-      `?latitude=${location.latitude}` +
-      `&longitude=${location.longitude}` +
-      "&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m,surface_pressure,visibility,weather_code" +
-      "&hourly=temperature_2m,precipitation_probability,weather_code" +
-      "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset" +
-      "&timezone=auto" +
-      "&forecast_days=7";
+      `https://api.open-meteo.com/v1/forecast?${params.toString()}`;
 
 
     const response =
@@ -1616,7 +1547,7 @@ longitude: -0.3763,
   ): Promise<void> {
 
     const location =
-      locations[locationName];
+      weatherLocations[locationName];
 
 
     if (!location) {
@@ -1664,33 +1595,21 @@ longitude: -0.3763,
 
 
       const now =
-        new Date();
+        Date.now();
 
 
-      let foundIndex =
+      const foundIndex =
         response.hourly.time.findIndex(
-          (time) => {
-            const parsedTime =
-              new Date(time).getTime();
-
-            return (
-              !Number.isNaN(parsedTime) &&
-              parsedTime >= now.getTime()
-            );
-          },
+          (time) =>
+            new Date(time).getTime() >=
+            now,
         );
 
 
-      if (foundIndex < 0) {
-        foundIndex =
-          response.hourly.time.length > 0
-            ? response.hourly.time.length - 1
-            : 0;
-      }
-
-
       currentHourIndex =
-        foundIndex;
+        foundIndex >= 0
+          ? foundIndex
+          : 0;
 
 
       hourlyStartIndex =
@@ -3338,11 +3257,6 @@ longitude: -0.3763,
     }
 
 
-    .side-divider {
-      display: none;
-    }
-
-
     .details-grid {
       grid-template-columns:
         repeat(2, 1fr);
@@ -3505,6 +3419,8 @@ longitude: -0.3763,
 
     .hero-side {
       grid-template-columns: 1fr;
+
+      gap: 15px;
     }
 
 
@@ -3620,3 +3536,4 @@ longitude: -0.3763,
   }
 
 </style>
+
