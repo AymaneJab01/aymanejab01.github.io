@@ -84,7 +84,11 @@ longitude: -0.3763,
   content="Interactive weather dashboard for Alcoi, Torrevieja and Valencia."
 />
 
-<link rel="icon" type="image/png" href="/icon.png" />
+<link
+  rel="icon"
+  type="image/png"
+  href="/icon.png"
+/>
 ```
 
   </head>
@@ -139,6 +143,7 @@ longitude: -0.3763,
     <section class="location-selector">
 
       <div class="selector-heading">
+
         <div>
           <p class="eyebrow">
             YOUR LOCATIONS
@@ -153,7 +158,9 @@ longitude: -0.3763,
           <span></span>
           Live
         </div>
+
       </div>
+
 
       <nav
         class="location-tabs"
@@ -214,6 +221,7 @@ longitude: -0.3763,
 
       </div>
 
+
       <div class="last-updated">
 
         <span>
@@ -253,9 +261,7 @@ longitude: -0.3763,
 
             <div>
 
-              <p
-                class="condition-label"
-              >
+              <p class="condition-label">
                 RIGHT NOW
               </p>
 
@@ -303,6 +309,7 @@ longitude: -0.3763,
 
           </div>
 
+
           <div class="hero-stat">
 
             <span>
@@ -314,6 +321,7 @@ longitude: -0.3763,
             </strong>
 
           </div>
+
 
           <div class="hero-stat">
 
@@ -342,6 +350,7 @@ longitude: -0.3763,
           TODAY
         </div>
 
+
         <div class="side-metric">
 
           <span>
@@ -354,7 +363,9 @@ longitude: -0.3763,
 
         </div>
 
+
         <div class="side-divider"></div>
+
 
         <div class="side-metric">
 
@@ -362,13 +373,15 @@ longitude: -0.3763,
             FEELS LIKE
           </span>
 
-          <strong id="feels-detail">
+          <strong id="feels-detail-side">
             —°C
           </strong>
 
         </div>
 
+
         <div class="side-divider"></div>
+
 
         <div class="side-metric">
 
@@ -376,7 +389,7 @@ longitude: -0.3763,
             RAIN CHANCE
           </span>
 
-          <strong id="rain-detail">
+          <strong id="rain-detail-side">
             —%
           </strong>
 
@@ -425,10 +438,12 @@ longitude: -0.3763,
           ←
         </button>
 
+
         <div
           class="hourly-scroll"
           id="hourly-container"
         ></div>
+
 
         <button
           class="forecast-arrow"
@@ -716,6 +731,7 @@ longitude: -0.3763,
 
       </div>
 
+
       <div class="footer-source">
 
         <span>
@@ -841,6 +857,7 @@ longitude: -0.3763,
         return "☁️";
       }
     }
+
 
     if (code === 0) return "☀️";
     if (code === 1) return "🌤️";
@@ -979,6 +996,10 @@ longitude: -0.3763,
 
     const date = new Date(value);
 
+    if (Number.isNaN(date.getTime())) {
+      return "—";
+    }
+
     return date.toLocaleTimeString(
       "en-GB",
       {
@@ -1002,6 +1023,10 @@ longitude: -0.3763,
     const date = new Date(
       `${value}T12:00:00`,
     );
+
+    if (Number.isNaN(date.getTime())) {
+      return value;
+    }
 
     return date.toLocaleDateString(
       "en-GB",
@@ -1039,6 +1064,14 @@ longitude: -0.3763,
 
     const set =
       new Date(sunset).getTime();
+
+    if (
+      Number.isNaN(current) ||
+      Number.isNaN(rise) ||
+      Number.isNaN(set)
+    ) {
+      return false;
+    }
 
     return (
       current < rise ||
@@ -1210,9 +1243,27 @@ longitude: -0.3763,
 
 
     updateElement(
+      "feels-detail-side",
+      `${Math.round(
+        current.apparent_temperature,
+      )}°C`,
+    );
+
+
+    const rainProbability =
+      data.daily
+        .precipitation_probability_max[0] ?? 0;
+
+
+    updateElement(
       "rain-detail",
-      `${data.daily
-        .precipitation_probability_max[0] ?? 0}%`,
+      `${rainProbability}%`,
+    );
+
+
+    updateElement(
+      "rain-detail-side",
+      `${rainProbability}%`,
     );
 
 
@@ -1489,6 +1540,18 @@ longitude: -0.3763,
       "description",
       "Loading weather...",
     );
+
+
+    updateElement(
+      "temperature",
+      "—°",
+    );
+
+
+    updateElement(
+      "feels-like",
+      "—°",
+    );
   }
 
 
@@ -1564,7 +1627,6 @@ longitude: -0.3763,
     selectedLocation =
       locationName;
 
-
     weatherData = null;
 
     hourlyStartIndex = 0;
@@ -1605,18 +1667,30 @@ longitude: -0.3763,
         new Date();
 
 
-      const foundIndex =
+      let foundIndex =
         response.hourly.time.findIndex(
-          (time) =>
-            new Date(time).getTime() >=
-            now.getTime(),
+          (time) => {
+            const parsedTime =
+              new Date(time).getTime();
+
+            return (
+              !Number.isNaN(parsedTime) &&
+              parsedTime >= now.getTime()
+            );
+          },
         );
 
 
+      if (foundIndex < 0) {
+        foundIndex =
+          response.hourly.time.length > 0
+            ? response.hourly.time.length - 1
+            : 0;
+      }
+
+
       currentHourIndex =
-        foundIndex >= 0
-          ? foundIndex
-          : 0;
+        foundIndex;
 
 
       hourlyStartIndex =
@@ -3431,8 +3505,6 @@ longitude: -0.3763,
 
     .hero-side {
       grid-template-columns: 1fr;
-
-      gap: 15px;
     }
 
 
