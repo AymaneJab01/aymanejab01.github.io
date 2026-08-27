@@ -56,49 +56,158 @@ const movies = [
   >
 
     <!-- ========================================================= -->
-    <!-- TOP NAVIGATION -->
+    <!-- DOCUMENTATION STYLE NAVIGATION -->
     <!-- ========================================================= -->
 
     <header
       class="sticky top-0 z-50
       border-b border-[var(--white-icon-tr)]
-      bg-transparent backdrop-blur-xl"
+      bg-[#0b0b0bcc]
+      backdrop-blur-xl"
     >
+
       <div
-        class="mx-auto flex max-w-7xl
-        items-center justify-between
-        px-6 py-4"
+        class="mx-auto max-w-7xl
+        px-4 md:px-6"
       >
 
-        <!-- Back -->
-        <a
-          href="/#projects"
-          class="group flex items-center gap-3
-          text-sm text-[var(--white-icon)]
-          transition-colors duration-300
-          hover:text-[var(--white)]"
-        >
-          <span
-            class="transition-transform duration-300
-            group-hover:-translate-x-1"
-          >
-            ←
-          </span>
-
-          <span>Projects</span>
-        </a>
-
-        <!-- Project identifier -->
         <div
-          class="font-mono text-xs
-          tracking-[0.2em]
-          text-[var(--white-icon)]"
+          class="flex h-16 items-center
+          justify-between gap-6"
         >
-          PROJECT 02
+
+          <!-- LEFT -->
+
+          <div
+            class="flex items-center gap-5
+            min-w-0"
+          >
+
+            <a
+              href="/#projects"
+              class="group flex items-center gap-2
+              text-sm text-[var(--white-icon)]
+              transition-colors duration-300
+              hover:text-[var(--white)]"
+            >
+
+              <span
+                class="text-lg
+                transition-transform duration-300
+                group-hover:-translate-x-1"
+              >
+                ←
+              </span>
+
+              <span class="hidden sm:inline">
+                Projects
+              </span>
+
+            </a>
+
+
+            <span
+              class="hidden sm:block
+              h-5 w-px
+              bg-[var(--white-icon-tr)]"
+            ></span>
+
+
+            <div
+              class="flex items-center gap-2
+              min-w-0"
+            >
+
+              <span
+                class="h-2 w-2 rounded-full
+                bg-[var(--sec)]
+                shadow-[0_0_10px_var(--sec)]"
+              ></span>
+
+              <span
+                class="truncate text-sm
+                font-medium text-[var(--white)]"
+              >
+                Movie Ranking
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- CENTER NAVIGATION -->
+
+          <nav
+            class="hidden md:flex items-center
+            gap-1 rounded-lg
+            border border-[var(--white-icon-tr)]
+            bg-[#141414]/60
+            p-1"
+          >
+
+            <a
+              href="#movies"
+              class="rounded-md px-3 py-1.5
+              text-xs
+              text-[var(--sec)]
+              transition-colors
+              hover:bg-white/[0.04]"
+            >
+              Movies
+            </a>
+
+            <a
+              href="#ratings"
+              class="rounded-md px-3 py-1.5
+              text-xs
+              text-[var(--white-icon)]
+              transition-colors
+              hover:bg-white/[0.04]
+              hover:text-[var(--white)]"
+            >
+              Ratings
+            </a>
+
+            <a
+              href="#details"
+              class="rounded-md px-3 py-1.5
+              text-xs
+              text-[var(--white-icon)]
+              transition-colors
+              hover:bg-white/[0.04]
+              hover:text-[var(--white)]"
+            >
+              Details
+            </a>
+
+          </nav>
+
+
+          <!-- RIGHT -->
+
+          <div
+            class="flex items-center gap-3"
+          >
+
+            <span
+              class="hidden sm:block
+              font-mono text-[10px]
+              tracking-[0.2em]
+              text-[var(--white-icon)]
+              opacity-50"
+            >
+              PROJECT 02
+            </span>
+
+          </div>
+
         </div>
 
       </div>
+
     </header>
+
 
 
     <!-- ========================================================= -->
@@ -112,20 +221,26 @@ const movies = [
       <!-- ======================================================= -->
 
       <section
-        class="border-b border-[var(--white-icon-tr)]"
+        class="border-b
+        border-[var(--white-icon-tr)]"
       >
+
         <div
           class="mx-auto max-w-7xl
           px-6 py-16 md:py-24"
         >
 
           <!-- Breadcrumb -->
+
           <div
             class="mb-10 flex items-center gap-2
             font-mono text-xs
             text-[var(--white-icon)]"
           >
-            <span>projects</span>
+
+            <span>
+              projects
+            </span>
 
             <span class="opacity-40">
               /
@@ -134,15 +249,18 @@ const movies = [
             <span class="text-[var(--sec)]">
               movie-ranking
             </span>
+
           </div>
 
 
           <!-- Page title -->
+
           <div class="max-w-4xl">
 
             <div
               class="mb-5 flex items-center gap-3"
             >
+
               <span
                 class="h-2 w-2 rounded-full
                 bg-[var(--sec)]
@@ -156,7 +274,9 @@ const movies = [
               >
                 Movie Ranking
               </span>
+
             </div>
+
 
             <h1
               class="text-4xl md:text-6xl
@@ -168,6 +288,7 @@ const movies = [
               Movies I've watched
               <span class="text-[var(--sec)]">.</span>
             </h1>
+
 
             <p
               class="mt-6 max-w-2xl
@@ -182,6 +303,7 @@ const movies = [
           </div>
 
         </div>
+
       </section>
 
 
@@ -190,7 +312,8 @@ const movies = [
       <!-- MOVIES -->
       <!-- ======================================================= -->
 
-      <section>
+      <section id="movies">
+
         <div
           class="mx-auto max-w-7xl
           px-6 py-16 md:py-24"
@@ -220,7 +343,8 @@ const movies = [
                   <!-- ================================================= -->
 
                   <div
-                    class="mx-auto w-full max-w-[280px]
+                    class="group/poster
+                    mx-auto w-full max-w-[280px]
                     overflow-hidden rounded-xl
                     border border-[var(--white-icon-tr)]
                     bg-black/20
@@ -229,19 +353,26 @@ const movies = [
                   >
 
                     {movie.image ? (
+
                       <img
                         src={movie.image}
                         alt={`${movie.title} poster`}
                         class="block w-full h-full
-                        object-cover"
+                        object-cover
+                        transition-transform
+                        duration-700
+                        group-hover/poster:scale-105"
                       />
+
                     ) : (
+
                       <div
                         class="flex h-full w-full
                         items-center justify-center
                         bg-[#141414]/70
                         p-6 text-center"
                       >
+
                         <div>
 
                           <span
@@ -260,10 +391,13 @@ const movies = [
                           </p>
 
                         </div>
+
                       </div>
+
                     )}
 
                   </div>
+
 
 
                   <!-- ================================================= -->
@@ -271,10 +405,12 @@ const movies = [
                   <!-- ================================================= -->
 
                   <div
-                    class="flex flex-col justify-center"
+                    class="flex flex-col
+                    justify-center"
                   >
 
                     <!-- Movie number -->
+
                     <div
                       class="mb-5 flex items-center gap-3"
                     >
@@ -304,7 +440,9 @@ const movies = [
                     </div>
 
 
+
                     <!-- Title -->
+
                     <h2
                       class="max-w-4xl
                       text-4xl md:text-5xl
@@ -313,12 +451,21 @@ const movies = [
                       tracking-tight
                       text-[var(--white)]"
                     >
+
                       {movie.title}
-                      <span class="text-[var(--sec)]">.</span>
+
+                      <span
+                        class="text-[var(--sec)]"
+                      >
+                        .
+                      </span>
+
                     </h2>
 
 
+
                     <!-- Metadata -->
+
                     <div
                       class="mt-6 flex flex-wrap
                       items-center gap-x-5 gap-y-3
@@ -326,20 +473,32 @@ const movies = [
                       text-[var(--white-icon)]"
                     >
 
-                      <span>{movie.year}</span>
+                      <span>
+                        {movie.year}
+                      </span>
 
-                      <span class="opacity-30">/</span>
+                      <span class="opacity-30">
+                        /
+                      </span>
 
-                      <span>{movie.genre}</span>
+                      <span>
+                        {movie.genre}
+                      </span>
 
-                      <span class="opacity-30">/</span>
+                      <span class="opacity-30">
+                        /
+                      </span>
 
-                      <span>{movie.director}</span>
+                      <span>
+                        {movie.director}
+                      </span>
 
                     </div>
 
 
+
                     <!-- Rating -->
+
                     <div
                       class="mt-10 flex items-end gap-4"
                     >
@@ -363,7 +522,9 @@ const movies = [
                     </div>
 
 
+
                     <!-- Review -->
+
                     <blockquote
                       class="mt-8 max-w-3xl
                       border-l-2
@@ -392,12 +553,16 @@ const movies = [
                 <!-- ================================================= -->
 
                 <div
+                  id="ratings"
                   class="mt-16 grid gap-12
                   lg:grid-cols-[220px_1fr]"
                 >
 
                   <!-- Sidebar -->
-                  <aside class="hidden lg:block">
+
+                  <aside
+                    class="hidden lg:block"
+                  >
 
                     <p
                       class="mb-4 font-mono text-xs
@@ -426,7 +591,9 @@ const movies = [
                   </aside>
 
 
+
                   <!-- Content -->
+
                   <div class="max-w-3xl">
 
                     <p
@@ -437,6 +604,7 @@ const movies = [
                       Review
                     </p>
 
+
                     <h3
                       class="text-3xl md:text-4xl
                       font-medium
@@ -446,50 +614,378 @@ const movies = [
                     </h3>
 
 
+
+                    <!-- ================================================= -->
+                    <!-- MODERN RATING CARD -->
+                    <!-- ================================================= -->
+
                     <div
-                      class="mt-8 rounded-xl
-                      border
-                      border-[var(--white-icon-tr)]
-                      bg-[#141414]/50
-                      backdrop-blur-sm
-                      p-6 md:p-8"
+                      class="group/rating
+                      relative mt-8
+                      overflow-hidden rounded-xl
+                      border border-[var(--white-icon-tr)]
+                      bg-[#101010]/70
+                      backdrop-blur-xl
+                      transition-all duration-500
+                      hover:border-[var(--sec)]/30
+                      hover:shadow-[0_0_35px_rgba(0,255,150,0.04)]"
                     >
 
+                      <!-- Glow -->
+
                       <div
-                        class="flex items-center
-                        justify-between gap-5"
+                        class="pointer-events-none
+                        absolute -right-24 -top-24
+                        h-48 w-48
+                        rounded-full
+                        bg-[var(--sec)]
+                        opacity-[0.035]
+                        blur-3xl
+                        transition-opacity
+                        duration-500
+                        group-hover/rating:opacity-[0.07]"
+                      ></div>
+
+
+                      <div
+                        class="relative
+                        p-6 md:p-8"
                       >
 
-                        <span
-                          class="text-lg
+                        <!-- Header -->
+
+                        <div
+                          class="flex flex-col
+                          gap-6"
+                        >
+
+                          <div
+                            class="flex items-center
+                            justify-between gap-6"
+                          >
+
+                            <div>
+
+                              <p
+                                class="font-mono text-[10px]
+                                uppercase
+                                tracking-[0.2em]
+                                text-[var(--white-icon)]
+                                opacity-60"
+                              >
+                                Personal rating
+                              </p>
+
+                              <p
+                                class="mt-2 text-xl
+                                font-medium
+                                text-[var(--white)]"
+                              >
+                                Overall experience
+                              </p>
+
+                            </div>
+
+
+                            <div
+                              class="flex items-baseline
+                              gap-1"
+                            >
+
+                              <span
+                                class="font-mono text-4xl
+                                font-medium
+                                text-[var(--sec)]"
+                              >
+                                {movie.rating}
+                              </span>
+
+                              <span
+                                class="font-mono text-sm
+                                text-[var(--white-icon)]"
+                              >
+                                /10
+                              </span>
+
+                            </div>
+
+                          </div>
+
+
+
+                          <!-- Rating bar -->
+
+                          <div>
+
+                            <div
+                              class="h-1.5 w-full
+                              overflow-hidden rounded-full
+                              bg-[var(--white-icon-tr)]"
+                            >
+
+                              <div
+                                class="h-full rounded-full
+                                bg-[var(--sec)]
+                                shadow-[0_0_12px_var(--sec)]"
+                                style={`width: ${(Number(movie.rating) / 10) * 100}%;`}
+                              ></div>
+
+                            </div>
+
+
+                            <div
+                              class="mt-2 flex
+                              justify-between
+                              font-mono text-[10px]
+                              text-[var(--white-icon)]
+                              opacity-50"
+                            >
+
+                              <span>
+                                0
+                              </span>
+
+                              <span>
+                                5
+                              </span>
+
+                              <span>
+                                10
+                              </span>
+
+                            </div>
+
+                          </div>
+
+
+
+                          <!-- Review -->
+
+                          <div
+                            class="rounded-lg
+                            border
+                            border-[var(--white-icon-tr)]
+                            bg-black/20
+                            p-5"
+                          >
+
+                            <div
+                              class="mb-3 flex
+                              items-center gap-2"
+                            >
+
+                              <span
+                                class="h-1.5 w-1.5
+                                rounded-full
+                                bg-[var(--sec)]"
+                              ></span>
+
+                              <span
+                                class="font-mono text-[10px]
+                                uppercase
+                                tracking-[0.18em]
+                                text-[var(--white-icon)]
+                                opacity-60"
+                              >
+                                Review
+                              </span>
+
+                            </div>
+
+
+                            <p
+                              class="text-base md:text-lg
+                              leading-8
+                              text-[var(--white-icon)]"
+                            >
+                              {movie.review}
+                            </p>
+
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+
+                <!-- ================================================= -->
+                <!-- DETAILS INFORMATION -->
+                <!-- ================================================= -->
+
+                <div
+                  id="details"
+                  class="mt-16 grid gap-12
+                  lg:grid-cols-[220px_1fr]"
+                >
+
+                  <aside
+                    class="hidden lg:block"
+                  >
+
+                    <p
+                      class="mb-4 font-mono text-xs
+                      uppercase tracking-[0.2em]
+                      text-[var(--white-icon)]"
+                    >
+                      Details
+                    </p>
+
+                  </aside>
+
+
+                  <div class="max-w-3xl">
+
+                    <div
+                      class="overflow-hidden
+                      rounded-xl
+                      border
+                      border-[var(--white-icon-tr)]
+                      bg-black/10
+                      backdrop-blur-sm"
+                    >
+
+                      <!-- Title -->
+
+                      <div
+                        class="grid
+                        grid-cols-[120px_1fr]
+                        border-b
+                        border-[var(--white-icon-tr)]"
+                      >
+
+                        <div
+                          class="bg-[#141414]/40
+                          p-4 font-mono text-sm
+                          text-[var(--white-icon)]"
+                        >
+                          Title
+                        </div>
+
+                        <div
+                          class="p-4 text-sm
                           text-[var(--white)]"
                         >
-                          Overall rating
-                        </span>
-
-                        <span
-                          class="font-mono text-2xl
-                          text-[var(--sec)]"
-                        >
-                          {movie.rating}/10
-                        </span>
+                          {movie.title}
+                        </div>
 
                       </div>
 
 
+
+                      <!-- Year -->
+
                       <div
-                        class="mt-6 h-px
-                        bg-[var(--white-icon-tr)]"
-                      ></div>
-
-
-                      <p
-                        class="mt-6 text-lg
-                        leading-8
-                        text-[var(--white-icon)]"
+                        class="grid
+                        grid-cols-[120px_1fr]
+                        border-b
+                        border-[var(--white-icon-tr)]"
                       >
-                        {movie.review}
-                      </p>
+
+                        <div
+                          class="bg-[#141414]/40
+                          p-4 font-mono text-sm
+                          text-[var(--white-icon)]"
+                        >
+                          Year
+                        </div>
+
+                        <div
+                          class="p-4 text-sm
+                          text-[var(--white)]"
+                        >
+                          {movie.year}
+                        </div>
+
+                      </div>
+
+
+
+                      <!-- Genre -->
+
+                      <div
+                        class="grid
+                        grid-cols-[120px_1fr]
+                        border-b
+                        border-[var(--white-icon-tr)]"
+                      >
+
+                        <div
+                          class="bg-[#141414]/40
+                          p-4 font-mono text-sm
+                          text-[var(--white-icon)]"
+                        >
+                          Genre
+                        </div>
+
+                        <div
+                          class="p-4 text-sm
+                          text-[var(--white)]"
+                        >
+                          {movie.genre}
+                        </div>
+
+                      </div>
+
+
+
+                      <!-- Director -->
+
+                      <div
+                        class="grid
+                        grid-cols-[120px_1fr]
+                        border-b
+                        border-[var(--white-icon-tr)]"
+                      >
+
+                        <div
+                          class="bg-[#141414]/40
+                          p-4 font-mono text-sm
+                          text-[var(--white-icon)]"
+                        >
+                          Director
+                        </div>
+
+                        <div
+                          class="p-4 text-sm
+                          text-[var(--white)]"
+                        >
+                          {movie.director}
+                        </div>
+
+                      </div>
+
+
+
+                      <!-- Rating -->
+
+                      <div
+                        class="grid
+                        grid-cols-[120px_1fr]"
+                      >
+
+                        <div
+                          class="bg-[#141414]/40
+                          p-4 font-mono text-sm
+                          text-[var(--white-icon)]"
+                        >
+                          Rating
+                        </div>
+
+                        <div
+                          class="p-4 font-mono text-sm
+                          text-[var(--sec)]"
+                        >
+                          {movie.rating}/10
+                        </div>
+
+                      </div>
 
                     </div>
 
@@ -504,6 +1000,7 @@ const movies = [
           </div>
 
         </div>
+
       </section>
 
     </main>
@@ -533,6 +1030,7 @@ const movies = [
         >
           PROJECT 02 / MOVIE RANKING
         </span>
+
 
         <a
           href="/#projects"
