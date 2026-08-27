@@ -3,97 +3,664 @@ import LetterGlitch from "../React/LetterGlitch.tsx";
 import LogoWall from "../components/logoWall.astro";
 import SkillsList from "../React/SkillsList.tsx";
 ---
-\<section
-&#x20; id="home"
-&#x20; class="relative overflow-hidden bg-transparent text-[var(--white)]"
-\>
-&#x20; \<!-- ========================================================= -->
-&#x20; \<!-- BACKGROUND -->
-&#x20; \<!-- ========================================================= -->
-  \<div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-&#x20;   \<div class="liquid-scene" aria-hidden="true">
-&#x20;     \<div class="liquid-capsule capsule-1">\</div>
-&#x20;     \<div class="liquid-capsule capsule-2">\</div>
-&#x20;     \<div class="liquid-capsule capsule-3">\</div>
-&#x20;     \<div class="liquid-capsule capsule-4">\</div>
-&#x20;     \<div class="liquid-capsule capsule-5">\</div>
-&#x20;     \<div class="liquid-capsule capsule-6">\</div>
-&#x20;     \<div class="liquid-capsule capsule-7">\</div>
-&#x20;     \<div class="liquid-capsule capsule-8">\</div>
-&#x20;   \</div>
 
-```
-<div class="hero-ambient"></div>
-
-<div class="absolute inset-0 hero-grid opacity-[0.08]"></div>
-
-<div class="absolute inset-0 noise-layer opacity-[0.018]"></div>
-
-<div class="hero-vignette"></div>
-```
-
-  \</div>
-  \<div class="mx-auto max-w-7xl px-5 sm\:px-8 lg\:px-10">
-
-```
-<!-- ========================================================= -->
-<!-- HERO -->
-<!-- ========================================================= -->
-
-<div
-  class="relative grid min-h-[780px] items-center gap-16 py-20 sm:py-24 lg:grid-cols-[1.08fr_.92fr] lg:gap-20 lg:py-28"
+<section
+  id="home"
+  class="relative overflow-hidden bg-transparent text-[var(--white)]"
 >
+  <!-- ========================================================= -->
+  <!-- BACKGROUND -->
+  <!-- ========================================================= -->
 
-  <!-- LEFT -->
-  <div class="relative z-10 min-w-0">
+  <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+    <div class="liquid-scene" aria-hidden="true">
+      <div class="liquid-capsule capsule-1"></div>
+      <div class="liquid-capsule capsule-2"></div>
+      <div class="liquid-capsule capsule-3"></div>
+      <div class="liquid-capsule capsule-4"></div>
+      <div class="liquid-capsule capsule-5"></div>
+      <div class="liquid-capsule capsule-6"></div>
+      <div class="liquid-capsule capsule-7"></div>
+      <div class="liquid-capsule capsule-8"></div>
+    </div>
+
+    <div class="hero-ambient"></div>
+
+    <div class="absolute inset-0 hero-grid opacity-[0.08]"></div>
+
+    <div class="absolute inset-0 noise-layer opacity-[0.018]"></div>
+
+    <div class="hero-vignette"></div>
+  </div>
+
+  <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+
+    <!-- ========================================================= -->
+    <!-- HERO -->
+    <!-- ========================================================= -->
 
     <div
-      class="status-badge mb-8 inline-flex items-center gap-2.5 rounded-full px-3.5 py-2"
+      class="relative grid min-h-[780px] items-center gap-16 py-20 sm:py-24 lg:grid-cols-[1.08fr_.92fr] lg:gap-20 lg:py-28"
     >
-      <span class="relative flex h-2 w-2 shrink-0">
-        <span
-          class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-50"
-        ></span>
 
-        <span
-          class="relative inline-flex h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(74,222,128,.8)]"
-        ></span>
-      </span>
+      <!-- LEFT -->
+      <div class="relative z-10 min-w-0">
 
-      <span>Open to opportunities</span>
+        <div
+          class="status-badge mb-8 inline-flex items-center gap-2.5 rounded-full px-3.5 py-2"
+        >
+          <span class="relative flex h-2 w-2 shrink-0">
+            <span
+              class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-50"
+            ></span>
+
+            <span
+              class="relative inline-flex h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(74,222,128,.8)]"
+            ></span>
+          </span>
+
+          <span>Open to opportunities</span>
+        </div>
+
+        <div class="mb-5">
+          <p
+            class="text-xs font-medium uppercase tracking-[0.22em] text-white/45 sm:text-sm"
+          >
+            Hi, I'm
+            <span class="name-glow"> Aymane Jabrane</span>
+          </p>
+        </div>
+
+        <h1
+          class="hero-title max-w-5xl text-[3.8rem] font-semibold leading-[0.88] tracking-[-0.065em] sm:text-7xl lg:text-[6.6rem]"
+        >
+          Software
+          <span class="block title-muted">Developer.</span>
+        </h1>
+
+        <p
+          class="mt-8 max-w-xl text-base leading-[1.75] text-white/55 sm:text-lg lg:text-xl"
+        >
+          Building a
+          <span class="shiny-sec font-medium"> computer science </span>
+          journey through code, systems and creative ideas.
+        </p>
+
+        <div class="mt-9 flex flex-wrap items-center gap-3">
+
+          <a
+            href="#projects"
+            class="primary-button group inline-flex items-center gap-2.5 rounded-xl px-5 py-3.5 text-sm font-medium"
+          >
+            <span>View my work</span>
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              class="size-4 transition-transform duration-300 group-hover:translate-x-1"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M3 10a.75.75 0 0 1 .75-.75h10.69l-3.22-3.22a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H3.75A.75.75 0 0 1 3 10Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </a>
+
+          <div class="flex items-center gap-2">
+
+            <!-- GitHub -->
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/AymaneJab01"
+              aria-label="GitHub"
+              class="social-link"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-5"
+              >
+                <path
+                  d="M12.001 2C6.47598 2 2.00098 6.475 2.00098 12C2.00098 16.425 4.86348 20.1625 8.83848 21.4875C9.33848 21.575 9.52598 21.275 9.52598 21.0125C9.52598 20.775 9.51348 19.9875 9.51348 19.15C7.00098 19.6125 6.35098 18.5375 6.15098 17.975C6.03848 17.6875 5.55098 16.8 5.12598 16.5625C4.77598 16.375 4.27598 15.9125 5.11348 15.9C5.90098 15.8875 6.46348 16.625 6.65098 16.925C7.55098 18.4375 8.98848 18.0125 9.56348 17.75C9.65098 17.1 9.91348 16.6625 10.201 16.4125C7.97598 16.1625 5.65098 15.3 5.65098 11.475C5.65098 10.3875 6.03848 9.4875 6.67598 8.7875C6.57598 8.5375 6.22598 7.5125 6.77598 6.1375C6.77598 6.1375 7.61348 5.875 9.52598 7.1625C10.326 6.9375 11.176 6.825 12.026 6.825C12.876 6.825 13.726 6.9375 14.526 7.1625C16.4385 5.8625 17.276 6.1375 17.276 6.1375C17.826 7.5125 17.476 8.5375 17.376 8.7875C18.0135 9.4875 18.401 10.375 18.401 11.475C18.401 15.3125 16.0635 16.1625 13.8385 16.4125C14.201 16.725 14.5135 17.325 14.5135 18.2625C14.5135 19.6 14.501 20.675 14.501 21.0125C14.501 21.275 14.6885 21.5875 15.1885 21.4875C19.259 20.1133 21.9999 16.2963 22.001 12C22.001 6.475 17.526 2 12.001 2Z"
+                />
+              </svg>
+            </a>
+
+            <!-- LinkedIn -->
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.linkedin.com/in/aymane-jabrane-73025726a/"
+              aria-label="LinkedIn"
+              class="social-link"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-5"
+              >
+                <path
+                  d="M18.3362 18.339H15.6707V14.1622C15.6707 13.1662 15.6505 11.8845 14.2817 11.8845C12.892 11.8845 12.6797 12.9683 12.6797 14.0887V18.339H10.0142V9.75H12.5747V10.9207H12.6092C12.967 10.2457 13.837 9.53325 15.1367 9.53325C17.8375 9.53325 18.337 11.3108 18.337 13.6245V18.339H18.3362ZM7.00373 8.57475C6.14573 8.57475 5.45648 7.88025 5.45648 7.026C5.45648 6.1725 6.14648 5.47875 7.00373 5.47875C7.85873 5.47875 8.55173 6.1725 8.55173 7.026C8.55173 7.88025 7.85798 8.57475 7.00373 8.57475ZM8.34023 18.339H5.66723V9.75H8.34023V18.339ZM19.6697 3H4.32923C3.59498 3 3.00098 3.5805 3.00098 4.29675V19.7033C3.00098 20.4202 3.59498 21 4.32923 21H19.6675C20.401 21 21.001 20.4202 21.001 19.7033V4.29675C21.001 3.5805 20.401 3 19.6675 3Z"
+                />
+              </svg>
+            </a>
+
+            <!-- Email -->
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=aymanejabranesm@gmail.com&su=Hey%20Jabrane!"
+              aria-label="Email Me"
+              class="social-link"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-5"
+              >
+                <path
+                  d="m18.73 5.41l-1.28 1L12 10.46L6.55 6.37l-1.28-1A2 2 0 0 0 2 7.05v11.59A1.36 1.36 0 0 0 3.36 20h3.19v-7.72L12 16.37l5.45-4.09V20h3.19A1.36 1.36 0 0 0 22 18.64V7.05a2 2 0 0 0-3.27-1.64"
+                />
+              </svg>
+            </a>
+
+          </div>
+        </div>
+
+        <div
+          class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-white/30"
+        >
+          <span class="inline-flex items-center gap-2">
+            <span class="h-1.5 w-1.5 rounded-full bg-emerald-400/70"></span>
+            Computer Science
+          </span>
+
+          <span class="hidden h-3 w-px bg-white/10 sm:block"></span>
+
+          <span>Software · Systems · Code</span>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="relative flex justify-center lg:justify-end">
+
+        <div class="glitch-glow"></div>
+
+        <div
+          class="absolute h-[390px] w-[390px] rounded-full border border-white/[0.035] sm:h-[470px] sm:w-[470px]"
+        ></div>
+
+        <div
+          class="absolute h-[320px] w-[320px] rounded-full border border-emerald-400/[0.035] sm:h-[400px] sm:w-[400px]"
+        ></div>
+
+        <div
+          class="glitch-card relative aspect-square w-full max-w-[340px] overflow-hidden rounded-[2rem] p-2 sm:max-w-[420px]"
+        >
+          <div
+            class="absolute left-[15%] right-[15%] top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"
+          ></div>
+
+          <div class="relative h-full w-full overflow-hidden rounded-[1.65rem]">
+            <LetterGlitch
+              client:load
+              glitchColors={["#270d6d", "#1f0b81", "#241a38"]}
+              glitchSpeed={33}
+              centerVignette={false}
+              outerVignette={true}
+              smooth={true}
+            />
+
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent"
+            ></div>
+          </div>
+
+          <div
+            class="absolute bottom-5 left-5 flex items-center gap-2 rounded-lg border border-white/10 bg-black/50 px-3 py-2 font-mono text-[10px] text-white/50 backdrop-blur-xl"
+          >
+            <span
+              class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(74,222,128,.8)]"
+            ></span>
+
+            {"< build />"}
+          </div>
+
+          <div
+            class="absolute right-5 top-5 font-mono text-[9px] uppercase tracking-[0.2em] text-white/25"
+          >
+            01 / 01
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="mb-5">
-      <p
-        class="text-xs font-medium uppercase tracking-[0.22em] text-white/45 sm:text-sm"
-      >
-        Hi, I'm
-        <span class="name-glow"> Aymane Jabrane</span>
+    <!-- ========================================================= -->
+    <!-- TECH STRIP -->
+    <!-- ========================================================= -->
+
+    <div class="section-line">
+      <div class="py-10 sm:py-12">
+
+        <div class="mb-8 flex items-center justify-between gap-4">
+          <p class="section-eyebrow">
+            Technologies
+          </p>
+
+          <span
+            class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/20"
+          >
+            Tools I work with
+          </span>
+        </div>
+
+        <LogoWall />
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- SKILLS -->
+    <!-- ========================================================= -->
+
+    <div class="section-block">
+      <div class="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
+
+        <div>
+          <p class="section-eyebrow mb-4">
+            Skills & tools
+          </p>
+
+          <h2 class="section-title">
+            Turning ideas into
+            <span>working software.</span>
+          </h2>
+
+          <p class="section-description">
+            A collection of technologies, tools and concepts I've been
+            exploring throughout my development journey.
+          </p>
+
+          <div class="mt-8 hidden lg:block">
+            <div class="skill-line">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skills-panel">
+          <SkillsList client:load />
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- NOTES -->
+    <!-- ========================================================= -->
+
+    <div
+      id="notes"
+      class="section-block border-t border-white/[0.06]"
+    >
+
+      <div class="max-w-2xl">
+        <p class="section-eyebrow mb-4 text-emerald-400/80">
+          Things I've studied & explored
+        </p>
+
+        <h2 class="section-title">
+          Notes, ideas &
+          <span>things I've learned.</span>
+        </h2>
+
+        <p class="section-description">
+          A collection of notes and concepts I've been studying along
+          my computer science journey.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+        <!-- Note 01 -->
+        <a
+          href="https://app.notion.com/p/Tablas-Hash-Vista-Practica-3a762e0580cb80de84eee02fade92863?source=copy_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="note-card"
+        >
+          <div>
+            <div class="note-number">01</div>
+
+            <span class="note-label">
+              Hash Tables
+            </span>
+
+            <h3>
+              Tablas Hash — Vista Práctica
+            </h3>
+          </div>
+
+          <div class="note-footer">
+            <span>Open note</span>
+            <span class="note-arrow">↗</span>
+          </div>
+        </a>
+
+        <!-- Note 02 -->
+        <a
+          href="https://app.notion.com/p/Computer-from-hardware-perspective-3a362e0580cb80cfbfa5f1228d060bcc?source=copy_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="note-card"
+        >
+          <div>
+            <div class="note-number">02</div>
+
+            <span class="note-label">
+              Computer Science
+            </span>
+
+            <h3>
+              Computer from a Hardware Perspective
+            </h3>
+          </div>
+
+          <div class="note-footer">
+            <span>Open note</span>
+            <span class="note-arrow">↗</span>
+          </div>
+        </a>
+
+        <!-- Note 03 -->
+        <a
+          href="https://app.notion.com/p/Tablas-Hash-Definiciones-3a662e0580cb80089dd9c287f8864a93?source=copy_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="note-card"
+        >
+          <div>
+            <div class="note-number">03</div>
+
+            <span class="note-label">
+              Data Structures
+            </span>
+
+            <h3>
+              Tablas Hash — Definiciones
+            </h3>
+          </div>
+
+          <div class="note-footer">
+            <span>Open note</span>
+            <span class="note-arrow">↗</span>
+          </div>
+        </a>
+
+        <!-- Note 04 -->
+        <a
+          href="https://app.notion.com/p/Git-Github-3a562e0580cb801089e5d47fbbaa221f?source=copy_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="note-card"
+        >
+          <div>
+            <div class="note-number">04</div>
+
+            <span class="note-label">
+              Development
+            </span>
+
+            <h3>
+              Git & GitHub
+            </h3>
+          </div>
+
+          <div class="note-footer">
+            <span>Open note</span>
+            <span class="note-arrow">↗</span>
+          </div>
+        </a>
+
+        <!-- Note 05 -->
+        <a
+          href="https://app.notion.com/p/Syst-me-Signaux-Analogue-vs-Digitale-3b062e0580cb80d3ba80cb3e8232dee1?source=copy_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="note-card"
+        >
+          <div>
+            <div class="note-number">05</div>
+
+            <span class="note-label">
+              Systems
+            </span>
+
+            <h3>
+              Système — Signaux Analogues vs Digitaux
+            </h3>
+          </div>
+
+          <div class="note-footer">
+            <span>Open note</span>
+            <span class="note-arrow">↗</span>
+          </div>
+        </a>
+
+        <!-- Note 06 -->
+        <a
+          href="https://app.notion.com/p/Java-3a262e0580cb8037bee0c0e9aa4b480c?source=copy_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="note-card"
+        >
+          <div>
+            <div class="note-number">06</div>
+
+            <span class="note-label">
+              Programming
+            </span>
+
+            <h3>
+              Java
+            </h3>
+          </div>
+
+          <div class="note-footer">
+            <span>Open note</span>
+            <span class="note-arrow">↗</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- TERMINAL -->
+    <!-- ========================================================= -->
+
+    <div
+      id="terminal"
+      class="section-block border-t border-white/[0.06]"
+    >
+
+      <div class="mx-auto max-w-5xl">
+
+        <div class="mb-10 text-center">
+          <p class="section-eyebrow mb-4 text-emerald-400/80">
+            Interactive
+          </p>
+
+          <h2 class="section-title mx-auto">
+            Explore through
+            <span>the terminal.</span>
+          </h2>
+
+          <p class="section-description mx-auto">
+            Type a command below to explore my skills, projects,
+            contact information and more.
+          </p>
+        </div>
+
+        <!-- Terminal window -->
+        <div class="terminal-shell">
+
+          <!-- Terminal top bar -->
+          <div class="terminal-header">
+
+            <div class="terminal-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <div class="terminal-title">
+              aymane@portfolio:~
+            </div>
+
+            <div class="terminal-header-status">
+              <span></span>
+              online
+            </div>
+
+          </div>
+
+          <!-- Terminal body -->
+          <div
+            id="portfolio-terminal"
+            class="terminal-body"
+            tabindex="0"
+            aria-label="Interactive portfolio terminal"
+          >
+
+            <div
+              id="terminal-output"
+              class="terminal-output"
+            >
+
+              <div class="terminal-line terminal-system">
+                <span class="terminal-prompt">›</span>
+                <span>
+                  Initializing portfolio terminal...
+                </span>
+              </div>
+
+              <div class="terminal-line terminal-success">
+                <span class="terminal-prompt">✓</span>
+                <span>
+                  Connection established.
+                </span>
+              </div>
+
+              <div class="terminal-line terminal-muted">
+                <span class="terminal-prompt">›</span>
+                <span>
+                  Type <strong>help</strong> to see available commands.
+                </span>
+              </div>
+
+              <div class="terminal-spacer"></div>
+
+            </div>
+
+            <!-- Input line -->
+            <form
+              id="terminal-form"
+              class="terminal-input-row"
+              autocomplete="off"
+            >
+              <span class="terminal-prompt-main">
+                <span class="terminal-user">aymane</span>
+                <span class="terminal-at">@</span>
+                <span class="terminal-host">portfolio</span>
+                <span class="terminal-colon">:</span>
+                <span class="terminal-path">~</span>
+                <span class="terminal-symbol">$</span>
+              </span>
+
+              <input
+                id="terminal-input"
+                class="terminal-input"
+                type="text"
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+                aria-label="Terminal command"
+                placeholder="type a command..."
+              />
+            </form>
+
+          </div>
+
+          <!-- Bottom status -->
+          <div class="terminal-footer">
+
+            <div>
+              <span class="terminal-key">↑</span>
+              <span class="terminal-key">↓</span>
+              history
+            </div>
+
+            <div>
+              <span class="terminal-key">Enter</span>
+              execute
+            </div>
+
+            <div class="terminal-footer-right">
+              <span class="terminal-live-dot"></span>
+              interactive
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- CTA -->
+    <!-- ========================================================= -->
+
+    <div
+      class="relative overflow-hidden border-t border-white/[0.06] py-24 text-center sm:py-32"
+    >
+
+      <div
+        class="absolute left-1/2 top-1/2 -z-10 h-[280px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/[0.045] blur-[120px]"
+      ></div>
+
+      <p class="section-eyebrow mb-5">
+        Have an idea?
       </p>
-    </div>
 
-    <h1
-      class="hero-title max-w-5xl text-[3.8rem] font-semibold leading-[0.88] tracking-[-0.065em] sm:text-7xl lg:text-[6.6rem]"
-    >
-      Software
-      <span class="block title-muted">Developer.</span>
-    </h1>
+      <h2
+        class="mx-auto max-w-3xl text-4xl font-semibold leading-[0.95] tracking-[-0.055em] text-white sm:text-6xl"
+      >
+        Let's build
+        <span class="shiny-sec">
+          something together.
+        </span>
+      </h2>
 
-    <p
-      class="mt-8 max-w-xl text-base leading-[1.75] text-white/55 sm:text-lg lg:text-xl"
-    >
-      Building a
-      <span class="shiny-sec font-medium"> computer science </span>
-      journey through code, systems and creative ideas.
-    </p>
-
-    <div class="mt-9 flex flex-wrap items-center gap-3">
+      <p
+        class="mx-auto mt-6 max-w-lg text-base leading-[1.7] text-white/40 sm:text-lg"
+      >
+        Whether it's a project, an idea or simply a conversation,
+        I'd love to hear from you.
+      </p>
 
       <a
-        href="#projects"
-        class="primary-button group inline-flex items-center gap-2.5 rounded-xl px-5 py-3.5 text-sm font-medium"
+        href="#contact"
+        class="talk-button group mt-9 inline-flex items-center gap-2.5 rounded-xl px-6 py-3.5 text-sm font-medium"
       >
-        <span>View my work</span>
+        <span>Let's talk</span>
 
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -109,2732 +676,2146 @@ import SkillsList from "../React/SkillsList.tsx";
         </svg>
       </a>
 
-      <div class="flex items-center gap-2">
-
-        <!-- GitHub -->
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/AymaneJab01"
-          aria-label="GitHub"
-          class="social-link"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            class="size-5"
-          >
-            <path
-              d="M12.001 2C6.47598 2 2.00098 6.475 2.00098 12C2.00098 16.425 4.86348 20.1625 8.83848 21.4875C9.33848 21.575 9.52598 21.275 9.52598 21.0125C9.52598 20.775 9.51348 19.9875 9.51348 19.15C7.00098 19.6125 6.35098 18.5375 6.15098 17.975C6.03848 17.6875 5.55098 16.8 5.12598 16.5625C4.77598 16.375 4.27598 15.9125 5.11348 15.9C5.90098 15.8875 6.46348 16.625 6.65098 16.925C7.55098 18.4375 8.98848 18.0125 9.56348 17.75C9.65098 17.1 9.91348 16.6625 10.201 16.4125C7.97598 16.1625 5.65098 15.3 5.65098 11.475C5.65098 10.3875 6.03848 9.4875 6.67598 8.7875C6.57598 8.5375 6.22598 7.5125 6.77598 6.1375C6.77598 6.1375 7.61348 5.875 9.52598 7.1625C10.326 6.9375 11.176 6.825 12.026 6.825C12.876 6.825 13.726 6.9375 14.526 7.1625C16.4385 5.8625 17.276 6.1375 17.276 6.1375C17.826 7.5125 17.476 8.5375 17.376 8.7875C18.0135 9.4875 18.401 10.375 18.401 11.475C18.401 15.3125 16.0635 16.1625 13.8385 16.4125C14.201 16.725 14.5135 17.325 14.5135 18.2625C14.5135 19.6 14.501 20.675 14.501 21.0125C14.501 21.275 14.6885 21.5875 15.1885 21.4875C19.259 20.1133 21.9999 16.2963 22.001 12C22.001 6.475 17.526 2 12.001 2Z"
-            />
-          </svg>
-        </a>
-
-        <!-- LinkedIn -->
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.linkedin.com/in/aymane-jabrane-73025726a/"
-          aria-label="LinkedIn"
-          class="social-link"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            class="size-5"
-          >
-            <path
-              d="M18.3362 18.339H15.6707V14.1622C15.6707 13.1662 15.6505 11.8845 14.2817 11.8845C12.892 11.8845 12.6797 12.9683 12.6797 14.0887V18.339H10.0142V9.75H12.5747V10.9207H12.6092C12.967 10.2457 13.837 9.53325 15.1367 9.53325C17.8375 9.53325 18.337 11.3108 18.337 13.6245V18.339H18.3362ZM7.00373 8.57475C6.14573 8.57475 5.45648 7.88025 5.45648 7.026C5.45648 6.1725 6.14648 5.47875 7.00373 5.47875C7.85873 5.47875 8.55173 6.1725 8.55173 7.026C8.55173 7.88025 7.85798 8.57475 7.00373 8.57475ZM8.34023 18.339H5.66723V9.75H8.34023V18.339ZM19.6697 3H4.32923C3.59498 3 3.00098 3.5805 3.00098 4.29675V19.7033C3.00098 20.4202 3.59498 21 4.32923 21H19.6675C20.401 21 21.001 20.4202 21.001 19.7033V4.29675C21.001 3.5805 20.401 3 19.6675 3Z"
-            />
-          </svg>
-        </a>
-
-        <!-- Email -->
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://mail.google.com/mail/?view=cm&fs=1&to=aymanejabranesm@gmail.com&su=Hey%20Jabrane!"
-          aria-label="Email Me"
-          class="social-link"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            class="size-5"
-          >
-            <path
-              d="m18.73 5.41l-1.28 1L12 10.46L6.55 6.37l-1.28-1A2 2 0 0 0 2 7.05v11.59A1.36 1.36 0 0 0 3.36 20h3.19v-7.72L12 16.37l5.45-4.09V20h3.19A1.36 1.36 0 0 0 22 18.64V7.05a2 2 0 0 0-3.27-1.64"
-            />
-          </svg>
-        </a>
-
-      </div>
     </div>
 
-    <div
-      class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-white/30"
-    >
-      <span class="inline-flex items-center gap-2">
-        <span class="h-1.5 w-1.5 rounded-full bg-emerald-400/70"></span>
-        Computer Science
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- TERMINAL SCRIPT -->
+<!-- ============================================================= -->
+
+<script>
+  const terminalInput =
+    document.querySelector("#terminal-input") as HTMLInputElement | null;
+
+  const terminalOutput =
+    document.querySelector("#terminal-output") as HTMLDivElement | null;
+
+  const terminalForm =
+    document.querySelector("#terminal-form") as HTMLFormElement | null;
+
+  const terminalWindow =
+    document.querySelector("#portfolio-terminal") as HTMLDivElement | null;
+
+  type TerminalCommand = () => string;
+
+  const history: string[] = [];
+  let historyIndex: number = -1;
+
+  const escapeHTML = (value: string): string => {
+    return value
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  };
+
+  const addCommand = (command: string): void => {
+    if (!terminalOutput) return;
+
+    const line = document.createElement("div");
+
+    line.className = "terminal-command-line";
+
+    line.innerHTML = `
+      <span class="terminal-prompt-main">
+        <span class="terminal-user">aymane</span>
+        <span class="terminal-at">@</span>
+        <span class="terminal-host">portfolio</span>
+        <span class="terminal-colon">:</span>
+        <span class="terminal-path">~</span>
+        <span class="terminal-symbol">$</span>
       </span>
 
-      <span class="hidden h-3 w-px bg-white/10 sm:block"></span>
-
-      <span>Software · Systems · Code</span>
-    </div>
-  </div>
-
-  <!-- RIGHT -->
-  <div class="relative flex justify-center lg:justify-end">
-
-    <div class="glitch-glow"></div>
-
-    <div
-      class="absolute h-[390px] w-[390px] rounded-full border border-white/[0.035] sm:h-[470px] sm:w-[470px]"
-    ></div>
-
-    <div
-      class="absolute h-[320px] w-[320px] rounded-full border border-emerald-400/[0.035] sm:h-[400px] sm:w-[400px]"
-    ></div>
-
-    <div
-      class="glitch-card relative aspect-square w-full max-w-[340px] overflow-hidden rounded-[2rem] p-2 sm:max-w-[420px]"
-    >
-      <div
-        class="absolute left-[15%] right-[15%] top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"
-      ></div>
-
-      <div class="relative h-full w-full overflow-hidden rounded-[1.65rem]">
-        <LetterGlitch
-          client:load
-          glitchColors={["#270d6d", "#1f0b81", "#241a38"]}
-          glitchSpeed={33}
-          centerVignette={false}
-          outerVignette={true}
-          smooth={true}
-        />
-
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent"
-        ></div>
-      </div>
-
-      <div
-        class="absolute bottom-5 left-5 flex items-center gap-2 rounded-lg border border-white/10 bg-black/50 px-3 py-2 font-mono text-[10px] text-white/50 backdrop-blur-xl"
-      >
-        <span
-          class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(74,222,128,.8)]"
-        ></span>
-
-        {"< build />"}
-      </div>
-
-      <div
-        class="absolute right-5 top-5 font-mono text-[9px] uppercase tracking-[0.2em] text-white/25"
-      >
-        01 / 01
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ========================================================= -->
-<!-- TECH STRIP -->
-<!-- ========================================================= -->
-
-<div class="section-line">
-  <div class="py-10 sm:py-12">
-
-    <div class="mb-8 flex items-center justify-between gap-4">
-      <p class="section-eyebrow">
-        Technologies
-      </p>
-
-      <span
-        class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/20"
-      >
-        Tools I work with
+      <span class="terminal-command-text">
+        ${escapeHTML(command)}
       </span>
-    </div>
+    `;
 
-    <LogoWall />
-  </div>
-</div>
+    terminalOutput.appendChild(line);
+  };
 
-<!-- ========================================================= -->
-<!-- SKILLS -->
-<!-- ========================================================= -->
+  const addResponse = (html: string): void => {
+    if (!terminalOutput) return;
 
-<div class="section-block">
-  <div class="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
+    const response = document.createElement("div");
 
-    <div>
-      <p class="section-eyebrow mb-4">
-        Skills & tools
-      </p>
+    response.className = "terminal-response";
+    response.innerHTML = html;
 
-      <h2 class="section-title">
-        Turning ideas into
-        <span>working software.</span>
-      </h2>
+    terminalOutput.appendChild(response);
 
-      <p class="section-description">
-        A collection of technologies, tools and concepts I've been
-        exploring throughout my development journey.
-      </p>
+    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+  };
 
-      <div class="mt-8 hidden lg:block">
-        <div class="skill-line">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    </div>
+  const commands: Record<string, TerminalCommand> = {
+    help: (): string => `
+      <div class="terminal-help">
 
-    <div class="skills-panel">
-      <SkillsList client:load />
-    </div>
-
-  </div>
-</div>
-
-<!-- ========================================================= -->
-<!-- NOTES -->
-<!-- ========================================================= -->
-
-<div
-  id="notes"
-  class="section-block border-t border-white/[0.06]"
->
-
-  <div class="max-w-2xl">
-    <p class="section-eyebrow mb-4 text-emerald-400/80">
-      Things I've studied & explored
-    </p>
-
-    <h2 class="section-title">
-      Notes, ideas &
-      <span>things I've learned.</span>
-    </h2>
-
-    <p class="section-description">
-      A collection of notes and concepts I've been studying along
-      my computer science journey.
-    </p>
-  </div>
-
-  <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-
-    <!-- Note 01 -->
-    <a
-      href="https://app.notion.com/p/Tablas-Hash-Vista-Practica-3a762e0580cb80de84eee02fade92863?source=copy_link"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="note-card"
-    >
-      <div>
-        <div class="note-number">01</div>
-
-        <span class="note-label">
-          Hash Tables
-        </span>
-
-        <h3>
-          Tablas Hash — Vista Práctica
-        </h3>
-      </div>
-
-      <div class="note-footer">
-        <span>Open note</span>
-        <span class="note-arrow">↗</span>
-      </div>
-    </a>
-
-    <!-- Note 02 -->
-    <a
-      href="https://app.notion.com/p/Computer-from-hardware-perspective-3a362e0580cb80cfbfa5f1228d060bcc?source=copy_link"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="note-card"
-    >
-      <div>
-        <div class="note-number">02</div>
-
-        <span class="note-label">
-          Computer Science
-        </span>
-
-        <h3>
-          Computer from a Hardware Perspective
-        </h3>
-      </div>
-
-      <div class="note-footer">
-        <span>Open note</span>
-        <span class="note-arrow">↗</span>
-      </div>
-    </a>
-
-    <!-- Note 03 -->
-    <a
-      href="https://app.notion.com/p/Tablas-Hash-Definiciones-3a662e0580cb80089dd9c287f8864a93?source=copy_link"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="note-card"
-    >
-      <div>
-        <div class="note-number">03</div>
-
-        <span class="note-label">
-          Data Structures
-        </span>
-
-        <h3>
-          Tablas Hash — Definiciones
-        </h3>
-      </div>
-
-      <div class="note-footer">
-        <span>Open note</span>
-        <span class="note-arrow">↗</span>
-      </div>
-    </a>
-
-    <!-- Note 04 -->
-    <a
-      href="https://app.notion.com/p/Git-Github-3a562e0580cb801089e5d47fbbaa221f?source=copy_link"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="note-card"
-    >
-      <div>
-        <div class="note-number">04</div>
-
-        <span class="note-label">
-          Development
-        </span>
-
-        <h3>
-          Git & GitHub
-        </h3>
-      </div>
-
-      <div class="note-footer">
-        <span>Open note</span>
-        <span class="note-arrow">↗</span>
-      </div>
-    </a>
-
-    <!-- Note 05 -->
-    <a
-      href="https://app.notion.com/p/Syst-me-Signaux-Analogue-vs-Digitale-3b062e0580cb80d3ba80cb3e8232dee1?source=copy_link"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="note-card"
-    >
-      <div>
-        <div class="note-number">05</div>
-
-        <span class="note-label">
-          Systems
-        </span>
-
-        <h3>
-          Système — Signaux Analogues vs Digitaux
-        </h3>
-      </div>
-
-      <div class="note-footer">
-        <span>Open note</span>
-        <span class="note-arrow">↗</span>
-      </div>
-    </a>
-
-    <!-- Note 06 -->
-    <a
-      href="https://app.notion.com/p/Java-3a262e0580cb8037bee0c0e9aa4b480c?source=copy_link"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="note-card"
-    >
-      <div>
-        <div class="note-number">06</div>
-
-        <span class="note-label">
-          Programming
-        </span>
-
-        <h3>
-          Java
-        </h3>
-      </div>
-
-      <div class="note-footer">
-        <span>Open note</span>
-        <span class="note-arrow">↗</span>
-      </div>
-    </a>
-
-  </div>
-</div>
-
-<!-- ========================================================= -->
-<!-- TERMINAL -->
-<!-- ========================================================= -->
-
-<div
-  id="terminal"
-  class="section-block border-t border-white/[0.06]"
->
-
-  <div class="mx-auto max-w-5xl">
-
-    <div class="mb-10 text-center">
-      <p class="section-eyebrow mb-4 text-emerald-400/80">
-        Interactive
-      </p>
-
-      <h2 class="section-title mx-auto">
-        Explore through
-        <span>the terminal.</span>
-      </h2>
-
-      <p class="section-description mx-auto">
-        Type a command below to explore my skills, projects,
-        contact information and more.
-      </p>
-    </div>
-
-    <!-- Terminal window -->
-    <div class="terminal-shell">
-
-      <!-- Terminal top bar -->
-      <div class="terminal-header">
-
-        <div class="terminal-dots">
-          <span></span>
-          <span></span>
-          <span></span>
+        <div class="terminal-response-title">
+          Available commands
         </div>
 
-        <div class="terminal-title">
-          aymane@portfolio:~
-        </div>
+        <div class="terminal-command-grid">
 
-        <div class="terminal-header-status">
-          <span></span>
-          online
-        </div>
+          <div>
+            <span class="terminal-command-name">
+              whoami
+            </span>
 
-      </div>
-
-      <!-- Terminal body -->
-      <div
-        id="portfolio-terminal"
-        class="terminal-body"
-        tabindex="0"
-        aria-label="Interactive portfolio terminal"
-      >
-
-        <div
-          id="terminal-output"
-          class="terminal-output"
-        >
-
-          <div class="terminal-line terminal-system">
-            <span class="terminal-prompt">›</span>
-            <span>
-              Initializing portfolio terminal...
+            <span class="terminal-command-description">
+              — about me
             </span>
           </div>
 
-          <div class="terminal-line terminal-success">
-            <span class="terminal-prompt">✓</span>
-            <span>
-              Connection established.
+          <div>
+            <span class="terminal-command-name">
+              skills
+            </span>
+
+            <span class="terminal-command-description">
+              — technologies & tools
             </span>
           </div>
 
-          <div class="terminal-line terminal-muted">
-            <span class="terminal-prompt">›</span>
-            <span>
-              Type <strong>help</strong> to see available commands.
+          <div>
+            <span class="terminal-command-name">
+              projects
+            </span>
+
+            <span class="terminal-command-description">
+              — view my projects
             </span>
           </div>
 
-          <div class="terminal-spacer"></div>
+          <div>
+            <span class="terminal-command-name">
+              contact
+            </span>
+
+            <span class="terminal-command-description">
+              — contact information
+            </span>
+          </div>
+
+          <div>
+            <span class="terminal-command-name">
+              status
+            </span>
+
+            <span class="terminal-command-description">
+              — current status
+            </span>
+          </div>
+
+          <div>
+            <span class="terminal-command-name">
+              date
+            </span>
+
+            <span class="terminal-command-description">
+              — current date
+            </span>
+          </div>
+
+          <div>
+            <span class="terminal-command-name">
+              open github
+            </span>
+
+            <span class="terminal-command-description">
+              — GitHub profile
+            </span>
+          </div>
+
+          <div>
+            <span class="terminal-command-name">
+              open linkedin
+            </span>
+
+            <span class="terminal-command-description">
+              — LinkedIn profile
+            </span>
+          </div>
+
+          <div>
+            <span class="terminal-command-name">
+              open email
+            </span>
+
+            <span class="terminal-command-description">
+              — email me
+            </span>
+          </div>
+
+          <div>
+            <span class="terminal-command-name">
+              clear
+            </span>
+
+            <span class="terminal-command-description">
+              — clear terminal
+            </span>
+          </div>
+
+        </div>
+      </div>
+    `,
+
+    whoami: (): string => `
+      <div class="terminal-info-block">
+
+        <div class="terminal-response-title">
+          Aymane Jabrane
+        </div>
+
+        <div class="terminal-terminal-text">
+          Software Developer · Computer Science
+        </div>
+
+        <div class="terminal-terminal-text">
+          Interested in software, systems, programming
+          and building things with code.
+        </div>
+
+      </div>
+    `,
+
+    skills: (): string => `
+      <div class="terminal-info-block">
+
+        <div class="terminal-response-title">
+          Core skills
+        </div>
+
+        <div class="terminal-list">
+
+          <div>
+            <span>01</span>
+            Programming
+          </div>
+
+          <div>
+            <span>02</span>
+            Data Structures & Algorithms
+          </div>
+
+          <div>
+            <span>03</span>
+            Computer Architecture
+          </div>
+
+          <div>
+            <span>04</span>
+            Operating Systems
+          </div>
+
+          <div>
+            <span>05</span>
+            Networking
+          </div>
+
+          <div>
+            <span>06</span>
+            Git & GitHub
+          </div>
+
+          <div>
+            <span>07</span>
+            Web Development
+          </div>
+
+          <div>
+            <span>08</span>
+            Flutter & Dart
+          </div>
+
+        </div>
+      </div>
+    `,
+
+    projects: (): string => `
+      <div class="terminal-info-block">
+
+        <div class="terminal-response-title">
+          Projects
+        </div>
+
+        <div class="terminal-list">
+
+          <div>
+            <span>01</span>
+            Portfolio — Astro / React / Tailwind
+          </div>
+
+          <div>
+            <span>02</span>
+            Flutter applications
+          </div>
+
+          <div>
+            <span>03</span>
+            Computer Science projects
+          </div>
+
+          <div>
+            <span>04</span>
+            Algorithms & data structures
+          </div>
 
         </div>
 
-        <!-- Input line -->
-        <form
-          id="terminal-form"
-          class="terminal-input-row"
-          autocomplete="off"
-        >
-          <span class="terminal-prompt-main">
-            <span class="terminal-user">aymane</span>
-            <span class="terminal-at">@</span>
-            <span class="terminal-host">portfolio</span>
-            <span class="terminal-colon">:</span>
-            <span class="terminal-path">~</span>
-            <span class="terminal-symbol">$</span>
+        <div class="terminal-terminal-text terminal-small-gap">
+          Use <strong>View my work</strong> above to explore
+          the portfolio.
+        </div>
+
+      </div>
+    `,
+
+    contact: (): string => `
+      <div class="terminal-info-block">
+
+        <div class="terminal-response-title">
+          Contact
+        </div>
+
+        <div class="terminal-terminal-text">
+          Email:
+          <span class="terminal-highlight">
+            aymanejabranesm@gmail.com
           </span>
+        </div>
 
-          <input
-            id="terminal-input"
-            class="terminal-input"
-            type="text"
-            autocomplete="off"
-            autocapitalize="off"
-            spellcheck="false"
-            aria-label="Terminal command"
-            placeholder="type a command..."
-          />
-        </form>
+        <div class="terminal-terminal-text">
+          GitHub:
+          <span class="terminal-highlight">
+            github.com/AymaneJab01
+          </span>
+        </div>
+
+        <div class="terminal-terminal-text">
+          LinkedIn:
+          <span class="terminal-highlight">
+            Aymane Jabrane
+          </span>
+        </div>
 
       </div>
+    `,
 
-      <!-- Bottom status -->
-      <div class="terminal-footer">
+    status: (): string => `
+      <div class="terminal-info-block">
 
-        <div>
-          <span class="terminal-key">↑</span>
-          <span class="terminal-key">↓</span>
-          history
+        <div class="terminal-response-title">
+          System status
         </div>
 
-        <div>
-          <span class="terminal-key">Enter</span>
-          execute
-        </div>
-
-        <div class="terminal-footer-right">
+        <div class="terminal-status-row">
           <span class="terminal-live-dot"></span>
-          interactive
+          Portfolio operational
+        </div>
+
+        <div class="terminal-status-row">
+          <span class="terminal-live-dot"></span>
+          Open to opportunities
+        </div>
+
+        <div class="terminal-status-row">
+          <span class="terminal-live-dot"></span>
+          Available for interesting projects
         </div>
 
       </div>
+    `,
+
+    date: (): string => {
+      return `
+        <div class="terminal-info-block">
+
+          <div class="terminal-response-title">
+            Current date
+          </div>
+
+          <div class="terminal-terminal-text">
+            ${new Date().toLocaleString()}
+          </div>
+
+        </div>
+      `;
+    },
+
+    "open github": (): string => {
+      window.open(
+        "https://github.com/AymaneJab01",
+        "_blank",
+        "noopener,noreferrer"
+      );
+
+      return `
+        <div class="terminal-success-response">
+          ✓ Opening GitHub...
+        </div>
+      `;
+    },
+
+    "open linkedin": (): string => {
+      window.open(
+        "https://www.linkedin.com/in/aymane-jabrane-73025726a/",
+        "_blank",
+        "noopener,noreferrer"
+      );
+
+      return `
+        <div class="terminal-success-response">
+          ✓ Opening LinkedIn...
+        </div>
+      `;
+    },
+
+    "open email": (): string => {
+      window.open(
+        "https://mail.google.com/mail/?view=cm&fs=1&to=aymanejabranesm@gmail.com&su=Hey%20Jabrane!",
+        "_blank",
+        "noopener,noreferrer"
+      );
+
+      return `
+        <div class="terminal-success-response">
+          ✓ Opening email...
+        </div>
+      `;
+    },
+  };
+
+  const executeCommand = (rawCommand: string): void => {
+    const command = rawCommand.trim().toLowerCase();
+
+    if (!command) return;
+
+    if (command === "clear") {
+      if (terminalOutput) {
+        terminalOutput.innerHTML = "";
+      }
+
+      return;
+    }
+
+    addCommand(command);
+
+    if (command in commands) {
+      addResponse(commands[command]());
+    } else {
+      addResponse(`
+        <div class="terminal-error">
+          command not found:
+          <span>${escapeHTML(command)}</span>
+        </div>
+
+        <div class="terminal-terminal-text">
+          Type <strong>help</strong> to see available commands.
+        </div>
+      `);
+    }
+  };
+
+  if (terminalForm && terminalInput) {
+    terminalForm.addEventListener(
+      "submit",
+      (event: SubmitEvent) => {
+        event.preventDefault();
+
+        const command = terminalInput.value.trim();
+
+        if (!command) {
+          terminalInput.focus();
+          return;
+        }
+
+        history.push(command);
+
+        historyIndex = history.length;
+
+        executeCommand(command);
+
+        terminalInput.value = "";
+
+        terminalInput.focus();
+      }
+    );
+
+    terminalInput.addEventListener(
+      "keydown",
+      (event: KeyboardEvent) => {
+
+        if (event.key === "ArrowUp") {
+          event.preventDefault();
+
+          if (history.length === 0) return;
+
+          if (historyIndex > 0) {
+            historyIndex--;
+          }
+
+          terminalInput.value =
+            history[historyIndex] ?? "";
+
+          return;
+        }
+
+        if (event.key === "ArrowDown") {
+          event.preventDefault();
+
+          if (history.length === 0) return;
+
+          if (historyIndex < history.length - 1) {
+            historyIndex++;
+
+            terminalInput.value =
+              history[historyIndex] ?? "";
+          } else {
+            historyIndex = history.length;
+            terminalInput.value = "";
+          }
+
+          return;
+        }
+
+        if (event.key === "Escape") {
+          terminalInput.value = "";
+          historyIndex = history.length;
+        }
+      }
+    );
+  }
+
+  if (terminalWindow) {
+    terminalWindow.addEventListener("click", () => {
+      terminalInput?.focus();
+    });
+
+    terminalWindow.addEventListener(
+      "keydown",
+      (event: KeyboardEvent) => {
+        if (
+          event.key === "/" &&
+          document.activeElement !== terminalInput
+        ) {
+          event.preventDefault();
+          terminalInput?.focus();
+        }
+      }
+    );
+  }
+</script>
+
+<style is:global>
+
+  /* ============================================================= */
+  /* BACKGROUND */
+  /* ============================================================= */
+
+  .hero-grid {
+    background-image:
+      linear-gradient(
+        rgba(255, 255, 255, 0.025) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.025) 1px,
+        transparent 1px
+      );
+
+    background-size: 52px 52px;
+
+    mask-image:
+      radial-gradient(
+        ellipse 70% 60% at 50% 25%,
+        black 0%,
+        transparent 75%
+      );
+  }
+
+  .noise-layer {
+    background-image:
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+  }
+
+  /* ============================================================= */
+  /* PREMIUM LIQUID GLASS BACKGROUND */
+  /* ============================================================= */
+
+  .liquid-scene {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: clamp(10px, 1.25vw, 22px);
+    padding: 4vh 7vw;
+
+    opacity: 0.58;
+
+    transform: translateZ(0);
+
+    filter: saturate(1.08);
+
+    mask-image:
+      radial-gradient(
+        ellipse 78% 82% at 50% 42%,
+        black 35%,
+        rgba(0, 0, 0, 0.86) 63%,
+        transparent 100%
+      );
+
+    -webkit-mask-image:
+      radial-gradient(
+        ellipse 78% 82% at 50% 42%,
+        black 35%,
+        rgba(0, 0, 0, 0.86) 63%,
+        transparent 100%
+      );
+  }
+
+  .liquid-capsule {
+    position: relative;
+
+    width: clamp(46px, 7vw, 118px);
+    height: 76%;
+
+    flex: 0 1 clamp(46px, 7vw, 118px);
+
+    border-radius: 999px;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    background:
+      linear-gradient(
+        180deg,
+        #d8b4fe 0%,
+        #a978f5 13%,
+        #7049e9 28%,
+        #3d36d9 43%,
+        #3146e2 54%,
+        #5b8eea 68%,
+        #8bd8d0 82%,
+        #b8edcf 94%,
+        #d9f5df 100%
+      );
+
+    border: 1px solid rgba(255, 255, 255, 0.16);
+
+    box-shadow:
+      inset 7px 0 18px rgba(255, 255, 255, 0.08),
+      inset -9px 0 22px rgba(21, 17, 74, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.34),
+      0 24px 55px rgba(42, 29, 123, 0.14),
+      0 0 35px rgba(86, 73, 226, 0.09);
+
+    opacity: 0.88;
+
+    transform-origin: center;
+
+    animation:
+      capsuleFloat
+      13s
+      cubic-bezier(0.45, 0.05, 0.55, 0.95)
+      infinite;
+  }
+
+  .liquid-capsule::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    border-radius: inherit;
+
+    background:
+      radial-gradient(
+        ellipse 70% 23% at 50% 16%,
+        rgba(255, 255, 255, 0.27),
+        transparent 72%
+      ),
+      radial-gradient(
+        ellipse 95% 28% at 50% 77%,
+        rgba(184, 250, 222, 0.2),
+        transparent 72%
+      );
+
+    mix-blend-mode: screen;
+
+    opacity: 0.9;
+  }
+
+  .liquid-capsule::after {
+    content: "";
+
+    position: absolute;
+
+    top: 2%;
+    left: 8%;
+
+    width: 24%;
+    height: 94%;
+
+    border-radius: 999px;
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.08) 24%,
+        rgba(255, 255, 255, 0.015) 58%,
+        transparent 100%
+      );
+
+    filter: blur(5px);
+
+    opacity: 0.75;
+  }
+
+  .capsule-1 {
+    height: 92%;
+    margin-top: -4%;
+    animation-delay: -1s;
+  }
+
+  .capsule-2 {
+    height: 72%;
+    margin-top: 8%;
+    animation-delay: -5s;
+  }
+
+  .capsule-3 {
+    height: 86%;
+    margin-top: -1%;
+    animation-delay: -9s;
+  }
+
+  .capsule-4 {
+    height: 64%;
+    margin-top: 13%;
+    animation-delay: -3s;
+  }
+
+  .capsule-5 {
+    height: 95%;
+    margin-top: -5%;
+    animation-delay: -7s;
+  }
+
+  .capsule-6 {
+    height: 78%;
+    margin-top: 6%;
+    animation-delay: -11s;
+  }
+
+  .capsule-7 {
+    height: 89%;
+    margin-top: -2%;
+    animation-delay: -4s;
+  }
+
+  .capsule-8 {
+    height: 68%;
+    margin-top: 11%;
+    animation-delay: -8s;
+  }
+
+  .hero-ambient {
+    position: absolute;
+
+    left: 50%;
+    top: 42%;
+
+    width: min(1000px, 92vw);
+    height: 680px;
+
+    transform: translate(-50%, -50%);
+
+    background:
+      radial-gradient(
+        ellipse at 50% 48%,
+        rgba(92, 72, 235, 0.16) 0%,
+        rgba(67, 92, 230, 0.1) 28%,
+        rgba(92, 208, 188, 0.055) 49%,
+        transparent 73%
+      );
+
+    filter: blur(55px);
+
+    opacity: 0.9;
+  }
+
+  .hero-vignette {
+    position: absolute;
+    inset: 0;
+
+    background:
+      linear-gradient(
+        90deg,
+        rgba(5, 6, 12, 0.48) 0%,
+        transparent 26%,
+        transparent 72%,
+        rgba(5, 6, 12, 0.48) 100%
+      ),
+      radial-gradient(
+        ellipse 72% 72% at 50% 45%,
+        transparent 38%,
+        rgba(5, 6, 12, 0.32) 100%
+      );
+  }
+
+  @keyframes capsuleFloat {
+    0%,
+    100% {
+      transform:
+        translate3d(0, -8px, 0)
+        scaleY(0.985);
+    }
+
+    50% {
+      transform:
+        translate3d(0, 13px, 0)
+        scaleY(1.015);
+    }
+  }
+
+  /* ============================================================= */
+  /* STATUS */
+  /* ============================================================= */
+
+  .status-badge {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.055),
+        rgba(255, 255, 255, 0.018)
+      );
+
+    color: rgba(255, 255, 255, 0.55);
+
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.04),
+      0 10px 30px rgba(0, 0, 0, 0.08);
+
+    backdrop-filter: blur(18px);
+  }
+
+  /* ============================================================= */
+  /* NAME */
+  /* ============================================================= */
+
+  .name-glow {
+    color: #86efac;
+
+    text-shadow:
+      0 0 8px rgba(74, 222, 128, 0.35),
+      0 0 22px rgba(74, 222, 128, 0.14);
+
+    transition:
+      color 300ms ease,
+      text-shadow 300ms ease;
+  }
+
+  .name-glow:hover {
+    color: #bbf7d0;
+
+    text-shadow:
+      0 0 10px rgba(74, 222, 128, 0.65),
+      0 0 28px rgba(74, 222, 128, 0.3);
+  }
+
+  /* ============================================================= */
+  /* HERO TITLE */
+  /* ============================================================= */
+
+  .hero-title {
+    text-wrap: balance;
+  }
+
+  .title-muted {
+    color: rgba(255, 255, 255, 0.42);
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.58),
+        rgba(255, 255, 255, 0.24)
+      );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* ============================================================= */
+  /* SHINY TEXT */
+  /* ============================================================= */
+
+  .shiny-sec {
+    background:
+      linear-gradient(
+        110deg,
+        #7667ff 0%,
+        #a99cff 25%,
+        #ffffff 50%,
+        #6251ff 75%,
+        #7667ff 100%
+      );
+
+    background-size: 250% 100%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    animation: shine 5s ease-in-out infinite;
+  }
+
+  @keyframes shine {
+    0%,
+    100% {
+      background-position: 100% 50%;
+    }
+
+    50% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* ============================================================= */
+  /* BUTTONS */
+  /* ============================================================= */
+
+  .primary-button {
+    color: #09090b;
+
+    background:
+      linear-gradient(
+        135deg,
+        #ffffff,
+        #e9e9eb
+      );
+
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+    transition:
+      transform 300ms ease,
+      box-shadow 300ms ease;
+  }
+
+  .primary-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+      0 15px 35px rgba(0, 0, 0, 0.25),
+      0 0 30px rgba(255, 255, 255, 0.08);
+  }
+
+  .social-link {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 13px;
+
+    color: rgba(255, 255, 255, 0.48);
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.045),
+        rgba(255, 255, 255, 0.015)
+      );
+
+    backdrop-filter: blur(14px);
+
+    transition:
+      color 300ms ease,
+      background 300ms ease,
+      border-color 300ms ease,
+      transform 300ms ease,
+      box-shadow 300ms ease;
+  }
+
+  .social-link:hover {
+    color: white;
+
+    border-color: rgba(74, 222, 128, 0.25);
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(74, 222, 128, 0.08),
+        rgba(255, 255, 255, 0.025)
+      );
+
+    box-shadow:
+      0 0 20px rgba(74, 222, 128, 0.06);
+
+    transform: translateY(-3px);
+  }
+
+  /* ============================================================= */
+  /* GLITCH CARD */
+  /* ============================================================= */
+
+  .glitch-glow {
+    position: absolute;
+
+    width: 270px;
+    height: 270px;
+
+    border-radius: 999px;
+
+    background:
+      radial-gradient(
+        circle,
+        rgba(88, 58, 220, 0.22),
+        rgba(74, 222, 128, 0.025) 55%,
+        transparent 72%
+      );
+
+    filter: blur(45px);
+
+    animation:
+      pulseGlow
+      6s
+      ease-in-out
+      infinite;
+  }
+
+  .glitch-card {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.065),
+        rgba(255, 255, 255, 0.018)
+      );
+
+    box-shadow:
+      0 35px 80px rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+    backdrop-filter: blur(20px);
+
+    transition:
+      transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      border-color 400ms ease;
+  }
+
+  .glitch-card:hover {
+    transform:
+      translateY(-6px)
+      rotate(0.35deg);
+
+    border-color: rgba(255, 255, 255, 0.16);
+  }
+
+  @keyframes pulseGlow {
+    0%,
+    100% {
+      opacity: 0.65;
+      transform: scale(0.95);
+    }
+
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  /* ============================================================= */
+  /* SECTION */
+  /* ============================================================= */
+
+  .section-line {
+    border-top: 1px solid rgba(255, 255, 255, 0.055);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+  }
+
+  .section-block {
+    padding-top: 6.5rem;
+    padding-bottom: 6.5rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 500;
+
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+
+    line-height: 1;
+
+    color: rgba(255, 255, 255, 0.32);
+  }
+
+  .section-title {
+    max-width: 650px;
+
+    font-size: 2.25rem;
+    font-weight: 600;
+
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+
+    color: white;
+  }
+
+  .section-title span {
+    display: block;
+    color: rgba(255, 255, 255, 0.34);
+  }
+
+  .section-description {
+    max-width: 550px;
+
+    margin-top: 1.35rem;
+
+    font-size: 1rem;
+    line-height: 1.75;
+
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  /* ============================================================= */
+  /* SKILLS */
+  /* ============================================================= */
+
+  .skills-panel {
+    position: relative;
+
+    padding: 1.5rem;
+
+    border: 1px solid rgba(255, 255, 255, 0.065);
+    border-radius: 24px;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.035),
+        rgba(255, 255, 255, 0.012)
+      );
+
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.035),
+      0 25px 60px rgba(0, 0, 0, 0.12);
+  }
+
+  .skill-line {
+    display: flex;
+    align-items: center;
+
+    gap: 0.45rem;
+  }
+
+  .skill-line span {
+    display: block;
+
+    height: 3px;
+
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .skill-line span:nth-child(1) {
+    width: 42px;
+    background: rgba(74, 222, 128, 0.5);
+  }
+
+  .skill-line span:nth-child(2) {
+    width: 18px;
+  }
+
+  .skill-line span:nth-child(3) {
+    width: 8px;
+  }
+
+  /* ============================================================= */
+  /* NOTE CARDS */
+  /* ============================================================= */
+
+  .note-card {
+    position: relative;
+
+    display: flex;
+
+    min-height: 230px;
+
+    flex-direction: column;
+    justify-content: space-between;
+
+    overflow: hidden;
+
+    padding: 24px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 20px;
+
+    color: white;
+
+    background:
+      radial-gradient(
+        circle at 100% 0%,
+        rgba(74, 222, 128, 0.055),
+        transparent 35%
+      ),
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.045),
+        rgba(255, 255, 255, 0.012)
+      );
+
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+    transition:
+      transform 400ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      border-color 300ms ease,
+      box-shadow 400ms ease,
+      background 400ms ease;
+  }
+
+  .note-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 1px;
+
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        rgba(74, 222, 128, 0.35),
+        transparent
+      );
+
+    opacity: 0;
+
+    transition: opacity 300ms ease;
+  }
+
+  .note-card:hover {
+    transform: translateY(-6px);
+
+    border-color: rgba(74, 222, 128, 0.2);
+
+    background:
+      radial-gradient(
+        circle at 100% 0%,
+        rgba(74, 222, 128, 0.1),
+        transparent 40%
+      ),
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.055),
+        rgba(255, 255, 255, 0.018)
+      );
+
+    box-shadow:
+      0 25px 60px rgba(0, 0, 0, 0.22),
+      0 0 35px rgba(74, 222, 128, 0.035);
+  }
+
+  .note-card:hover::before {
+    opacity: 1;
+  }
+
+  .note-number {
+    margin-bottom: 2.5rem;
+
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      monospace;
+
+    font-size: 0.65rem;
+
+    letter-spacing: 0.16em;
+
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  .note-label {
+    display: block;
+
+    font-size: 0.65rem;
+    font-weight: 500;
+
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+
+    color: rgba(74, 222, 128, 0.7);
+  }
 
-    </div>
-  </div>
-</div>
-
-<!-- ========================================================= -->
-<!-- CTA -->
-<!-- ========================================================= -->
-
-<div
-  class="relative overflow-hidden border-t border-white/[0.06] py-24 text-center sm:py-32"
->
-
-  <div
-    class="absolute left-1/2 top-1/2 -z-10 h-[280px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/[0.045] blur-[120px]"
-  ></div>
-
-  <p class="section-eyebrow mb-5">
-    Have an idea?
-  </p>
-
-  <h2
-    class="mx-auto max-w-3xl text-4xl font-semibold leading-[0.95] tracking-[-0.055em] text-white sm:text-6xl"
-  >
-    Let's build
-    <span class="shiny-sec">
-      something together.
-    </span>
-  </h2>
-
-  <p
-    class="mx-auto mt-6 max-w-lg text-base leading-[1.7] text-white/40 sm:text-lg"
-  >
-    Whether it's a project, an idea or simply a conversation,
-    I'd love to hear from you.
-  </p>
-
-  <a
-    href="#contact"
-    class="talk-button group mt-9 inline-flex items-center gap-2.5 rounded-xl px-6 py-3.5 text-sm font-medium"
-  >
-    <span>Let's talk</span>
-
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 20 20"
-      fill="currentColor"
-      class="size-4 transition-transform duration-300 group-hover:translate-x-1"
-    >
-      <path
-        fill-rule="evenodd"
-        d="M3 10a.75.75 0 0 1 .75-.75h10.69l-3.22-3.22a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H3.75A.75.75 0 0 1 3 10Z"
-        clip-rule="evenodd"
-      />
-    </svg>
-  </a>
-
-</div>
-```
-
-  \</div>
-\</section>
-\<!-- ============================================================= -->
-\<!-- TERMINAL SCRIPT -->
-\<!-- ============================================================= -->
-\<script>
-&#x20; const terminalInput =
-&#x20;   document.querySelector("#terminal-input") as HTMLInputElement | null;
-
-&#x20; const terminalOutput =
-&#x20;   document.querySelector("#terminal-output") as HTMLDivElement | null;
-
-&#x20; const terminalForm =
-&#x20;   document.querySelector("#terminal-form") as HTMLFormElement | null;
-
-&#x20; const terminalWindow =
-&#x20;   document.querySelector("#portfolio-terminal") as HTMLDivElement | null;
-
-&#x20; type TerminalCommand = () => string;
-
-&#x20; const history: string[] = [];
-&#x20; let historyIndex: number = -1;
-
-&#x20; const escapeHTML = (value: string): string => {
-&#x20;   return value
-&#x20;     .replace(/&/g, "&amp;")
-&#x20;     .replace(/\</g, "&lt;")
-&#x20;     .replace(/>/g, "&gt;")
-&#x20;     .replace(/"/g, "&quot;")
-&#x20;     .replace(/'/g, "&#039;");
-&#x20; };
-
-&#x20; const addCommand = (command: string): void => {
-&#x20;   if (!terminalOutput) return;
-
-&#x20;   const line = document.createElement("div");
-
-&#x20;   line.className = "terminal-command-line";
-
-&#x20;   line.innerHTML = \`
-&#x20;     \<span class="terminal-prompt-main">
-&#x20;       \<span class="terminal-user">aymane\</span>
-&#x20;       \<span class="terminal-at">@\</span>
-&#x20;       \<span class="terminal-host">portfolio\</span>
-&#x20;       \<span class="terminal-colon">:\</span>
-&#x20;       \<span class="terminal-path">\~\</span>
-&#x20;       \<span class="terminal-symbol">$\</span>
-&#x20;     \</span>
-
-&#x20;     \<span class="terminal-command-text">
-&#x20;       ${escapeHTML(command)}
-&#x20;     \</span>
-&#x20;   \`;
-
-&#x20;   terminalOutput.appendChild(line);
-&#x20; };
-
-&#x20; const addResponse = (html: string): void => {
-&#x20;   if (!terminalOutput) return;
-
-&#x20;   const response = document.createElement("div");
-
-&#x20;   response.className = "terminal-response";
-&#x20;   response.innerHTML = html;
-
-&#x20;   terminalOutput.appendChild(response);
-
-&#x20;   terminalOutput.scrollTop = terminalOutput.scrollHeight;
-&#x20; };
-
-&#x20; const commands: Record\<string, TerminalCommand> = {
-&#x20;   help: (): string => \`
-&#x20;     \<div class="terminal-help">
-
-&#x20;       \<div class="terminal-response-title">
-&#x20;         Available commands
-&#x20;       \</div>
-
-&#x20;       \<div class="terminal-command-grid">
-
-&#x20;         \<div>
-&#x20;           \<span class="terminal-command-name">
-&#x20;             whoami
-&#x20;           \</span>
-
-&#x20;           \<span class="terminal-command-description">
-&#x20;             — about me
-&#x20;           \</span>
-&#x20;         \</div>
-
-&#x20;         \<div>
-&#x20;           \<span class="terminal-command-name">
-&#x20;             skills
-&#x20;           \</span>
-
-&#x20;           \<span class="terminal-command-description">
-&#x20;             — technologies & tools
-&#x20;           \</span>
-&#x20;         \</div>
-
-&#x20;         \<div>
-&#x20;           \<span class="terminal-command-name">
-&#x20;             projects
-&#x20;           \</span>
-
-&#x20;           \<span class="terminal-command-description">
-&#x20;             — view my projects
-&#x20;           \</span>
-&#x20;         \</div>
-
-&#x20;         \<div>
-&#x20;           \<span class="terminal-command-name">
-&#x20;             movie
-&#x20;           \</span>
-
-&#x20;           \<span class="terminal-command-description">
-&#x20;             — open movie ranking
-&#x20;           \</span>
-&#x20;         \</div>
-
-&#x20;         \<div>
-&#x20;           \<span class="terminal-command-name">
-&#x20;             contact
-&#x20;           \</span>
-
-&#x20;           \<span class="terminal-command-description">
-&#x20;             — contact information
-&#x20;           \</span>
-&#x20;         \</div>
-
-&#x20;         \<div>
-&#x20;           \<span class="terminal-command-name">
-&#x20;             status
-&#x20;           \</span>
-
-&#x20;           \<span class="terminal-command-description">
-&#x20;             — current status
-&#x20;           \</span>
-&#x20;         \</div>
-
-&#x20;         \<div>
-&#x20;           \<span class="terminal-command-name">
-&#x20;             date
-&#x20;           \</span>
-
-&#x20;           \<span class="terminal-command-description">
-&#x20;             — current date
-&#x20;           \</span>
-&#x20;         \</div>
-
-&#x20;         \<div>
-&#x20;           \<span class="terminal-command-name">
-&#x20;             open github
-&#x20;           \</span>
-
-&#x20;           \<span class="terminal-command-description">
-&#x20;             — GitHub profile
-&#x20;           \</span>
-&#x20;         \</div>
-
-&#x20;         \<div>
-&#x20;           \<span class="terminal-command-name">
-&#x20;             open linkedin
-&#x20;           \</span>
-
-&#x20;           \<span class="terminal-command-description">
-&#x20;             — LinkedIn profile
-&#x20;           \</span>
-&#x20;         \</div>
-
-&#x20;         \<div>
-&#x20;           \<span class="terminal-command-name">
-&#x20;             open email
-&#x20;           \</span>
-
-&#x20;           \<span class="terminal-command-description">
-&#x20;             — email me
-&#x20;           \</span>
-&#x20;         \</div>
-
-&#x20;         \<div>
-&#x20;           \<span class="terminal-command-name">
-&#x20;             clear
-&#x20;           \</span>
-
-&#x20;           \<span class="terminal-command-description">
-&#x20;             — clear terminal
-&#x20;           \</span>
-&#x20;         \</div>
-
-&#x20;       \</div>
-&#x20;     \</div>
-&#x20;   \`,
-
-&#x20;   whoami: (): string => \`
-&#x20;     \<div class="terminal-info-block">
-
-&#x20;       \<div class="terminal-response-title">
-&#x20;         Aymane Jabrane
-&#x20;       \</div>
-
-&#x20;       \<div class="terminal-terminal-text">
-&#x20;         Software Developer · Computer Science
-&#x20;       \</div>
-
-&#x20;       \<div class="terminal-terminal-text">
-&#x20;         Interested in software, systems, programming
-&#x20;         and building things with code.
-&#x20;       \</div>
-
-&#x20;     \</div>
-&#x20;   \`,
-
-&#x20;   skills: (): string => \`
-&#x20;     \<div class="terminal-info-block">
-
-&#x20;       \<div class="terminal-response-title">
-&#x20;         Core skills
-&#x20;       \</div>
-
-&#x20;       \<div class="terminal-list">
-
-&#x20;         \<div>
-&#x20;           \<span>01\</span>
-&#x20;           Programming
-&#x20;         \</div>
-
-&#x20;         \<div>
-&#x20;           \<span>02\</span>
-&#x20;           Data Structures & Algorithms
-&#x20;         \</div>
-
-&#x20;         \<div>
-&#x20;           \<span>03\</span>
-&#x20;           Computer Architecture
-&#x20;         \</div>
-
-&#x20;         \<div>
-&#x20;           \<span>04\</span>
-&#x20;           Operating Systems
-&#x20;         \</div>
-
-&#x20;         \<div>
-&#x20;           \<span>05\</span>
-&#x20;           Networking
-&#x20;         \</div>
-
-&#x20;         \<div>
-&#x20;           \<span>06\</span>
-&#x20;           Git & GitHub
-&#x20;         \</div>
-
-&#x20;         \<div>
-&#x20;           \<span>07\</span>
-&#x20;           Web Development
-&#x20;         \</div>
-
-&#x20;         \<div>
-&#x20;           \<span>08\</span>
-&#x20;           Flutter & Dart
-&#x20;         \</div>
-
-&#x20;       \</div>
-&#x20;     \</div>
-&#x20;   \`,
-
-&#x20;   projects: (): string => \`
-&#x20;     \<div class="terminal-info-block">
-
-&#x20;       \<div class="terminal-response-title">
-&#x20;         Projects
-&#x20;       \</div>
-
-&#x20;       \<div class="terminal-list">
-
-&#x20;         \<div>
-&#x20;           \<span>01\</span>
-&#x20;           Portfolio — Astro / React / Tailwind
-&#x20;         \</div>
-
-&#x20;         \<div>
-&#x20;           \<span>02\</span>
-&#x20;           Flutter applications
-&#x20;         \</div>
-
-&#x20;         \<div>
-&#x20;           \<span>03\</span>
-&#x20;           Computer Science projects
-&#x20;         \</div>
-
-&#x20;         \<div>
-&#x20;           \<span>04\</span>
-&#x20;           Algorithms & data structures
-&#x20;         \</div>
-
-&#x20;       \</div>
-
-&#x20;       \<div class="terminal-terminal-text terminal-small-gap">
-&#x20;         Use \<strong>View my work\</strong> above to explore
-&#x20;         the portfolio.
-&#x20;       \</div>
-
-&#x20;     \</div>
-&#x20;   \`,
-
-&#x20;   movie: (): string => {
-&#x20;     window.location.href = "/projects/movie-ranking";
-
-&#x20;     return \`
-&#x20;       \<div class="terminal-success-response">
-&#x20;         ✓ Opening Movie Ranking...
-&#x20;       \</div>
-&#x20;     \`;
-&#x20;   },
-
-&#x20;   contact: (): string => \`
-&#x20;     \<div class="terminal-info-block">
-
-&#x20;       \<div class="terminal-response-title">
-&#x20;         Contact
-&#x20;       \</div>
-
-&#x20;       \<div class="terminal-terminal-text">
-&#x20;         Email:
-&#x20;         \<span class="terminal-highlight">
-&#x20;           aymanejabranesm\@gmail.com
-&#x20;         \</span>
-&#x20;       \</div>
-
-&#x20;       \<div class="terminal-terminal-text">
-&#x20;         GitHub:
-&#x20;         \<span class="terminal-highlight">
-&#x20;           github.com/AymaneJab01
-&#x20;         \</span>
-&#x20;       \</div>
-
-&#x20;       \<div class="terminal-terminal-text">
-&#x20;         LinkedIn:
-&#x20;         \<span class="terminal-highlight">
-&#x20;           Aymane Jabrane
-&#x20;         \</span>
-&#x20;       \</div>
-
-&#x20;     \</div>
-&#x20;   \`,
-
-&#x20;   status: (): string => \`
-&#x20;     \<div class="terminal-info-block">
-
-&#x20;       \<div class="terminal-response-title">
-&#x20;         System status
-&#x20;       \</div>
-
-&#x20;       \<div class="terminal-status-row">
-&#x20;         \<span class="terminal-live-dot">\</span>
-&#x20;         Portfolio operational
-&#x20;       \</div>
-
-&#x20;       \<div class="terminal-status-row">
-&#x20;         \<span class="terminal-live-dot">\</span>
-&#x20;         Open to opportunities
-&#x20;       \</div>
-
-&#x20;       \<div class="terminal-status-row">
-&#x20;         \<span class="terminal-live-dot">\</span>
-&#x20;         Available for interesting projects
-&#x20;       \</div>
-
-&#x20;     \</div>
-&#x20;   \`,
-
-&#x20;   date: (): string => {
-&#x20;     return \`
-&#x20;       \<div class="terminal-info-block">
-
-&#x20;         \<div class="terminal-response-title">
-&#x20;           Current date
-&#x20;         \</div>
-
-&#x20;         \<div class="terminal-terminal-text">
-&#x20;           ${new Date().toLocaleString()}
-&#x20;         \</div>
-
-&#x20;       \</div>
-&#x20;     \`;
-&#x20;   },
-
-&#x20;   "open github": (): string => {
-&#x20;     window\.open(
-&#x20;       "https\://github.com/AymaneJab01",
-&#x20;       "\_blank",
-&#x20;       "noopener,noreferrer"
-&#x20;     );
-
-&#x20;     return \`
-&#x20;       \<div class="terminal-success-response">
-&#x20;         ✓ Opening GitHub...
-&#x20;       \</div>
-&#x20;     \`;
-&#x20;   },
-
-&#x20;   "open linkedin": (): string => {
-&#x20;     window\.open(
-&#x20;       "https\://www\.linkedin.com/in/aymane-jabrane-73025726a/",
-&#x20;       "\_blank",
-&#x20;       "noopener,noreferrer"
-&#x20;     );
-
-&#x20;     return \`
-&#x20;       \<div class="terminal-success-response">
-&#x20;         ✓ Opening LinkedIn...
-&#x20;       \</div>
-&#x20;     \`;
-&#x20;   },
-
-&#x20;   "open email": (): string => {
-&#x20;     window\.open(
-&#x20;       "https\://mail.google.com/mail/?view=cm&fs=1&to=aymanejabranesm\@gmail.com&su=Hey%20Jabrane!",
-&#x20;       "\_blank",
-&#x20;       "noopener,noreferrer"
-&#x20;     );
-
-&#x20;     return \`
-&#x20;       \<div class="terminal-success-response">
-&#x20;         ✓ Opening email...
-&#x20;       \</div>
-&#x20;     \`;
-&#x20;   },
-&#x20; };
-
-&#x20; const executeCommand = (rawCommand: string): void => {
-&#x20;   const command = rawCommand.trim().toLowerCase();
-
-&#x20;   if (!command) return;
-
-&#x20;   if (command === "clear") {
-&#x20;     if (terminalOutput) {
-&#x20;       terminalOutput.innerHTML = "";
-&#x20;     }
-
-&#x20;     return;
-&#x20;   }
-
-&#x20;   addCommand(command);
-
-&#x20;   if (command in commands) {
-&#x20;     addResponse(commands[command]\());
-&#x20;   } else {
-&#x20;     addResponse(\`
-&#x20;       \<div class="terminal-error">
-&#x20;         command not found:
-&#x20;         \<span>${escapeHTML(command)}\</span>
-&#x20;       \</div>
-
-&#x20;       \<div class="terminal-terminal-text">
-&#x20;         Type \<strong>help\</strong> to see available commands.
-&#x20;       \</div>
-&#x20;     \`);
-&#x20;   }
-&#x20; };
-
-&#x20; if (terminalForm && terminalInput) {
-&#x20;   terminalForm.addEventListener(
-&#x20;     "submit",
-&#x20;     (event: SubmitEvent) => {
-&#x20;       event.preventDefault();
-
-&#x20;       const command = terminalInput.value.trim();
-
-&#x20;       if (!command) {
-&#x20;         terminalInput.focus();
-&#x20;         return;
-&#x20;       }
-
-&#x20;       history.push(command);
-
-&#x20;       historyIndex = history.length;
-
-&#x20;       executeCommand(command);
-
-&#x20;       terminalInput.value = "";
-
-&#x20;       terminalInput.focus();
-&#x20;     }
-&#x20;   );
-
-&#x20;   terminalInput.addEventListener(
-&#x20;     "keydown",
-&#x20;     (event: KeyboardEvent) => {
-
-&#x20;       if (event.key === "ArrowUp") {
-&#x20;         event.preventDefault();
-
-&#x20;         if (history.length === 0) return;
-
-&#x20;         if (historyIndex > 0) {
-&#x20;           historyIndex--;
-&#x20;         }
-
-&#x20;         terminalInput.value =
-&#x20;           history[historyIndex] ?? "";
-
-&#x20;         return;
-&#x20;       }
-
-&#x20;       if (event.key === "ArrowDown") {
-&#x20;         event.preventDefault();
-
-&#x20;         if (history.length === 0) return;
-
-&#x20;         if (historyIndex < history.length - 1) {
-&#x20;           historyIndex++;
-
-&#x20;           terminalInput.value =
-&#x20;             history[historyIndex] ?? "";
-&#x20;         } else {
-&#x20;           historyIndex = history.length;
-&#x20;           terminalInput.value = "";
-&#x20;         }
-
-&#x20;         return;
-&#x20;       }
-
-&#x20;       if (event.key === "Escape") {
-&#x20;         terminalInput.value = "";
-&#x20;         historyIndex = history.length;
-&#x20;       }
-&#x20;     }
-&#x20;   );
-&#x20; }
-
-&#x20; if (terminalWindow) {
-&#x20;   terminalWindow\.addEventListener("click", () => {
-&#x20;     terminalInput?.focus();
-&#x20;   });
-
-&#x20;   terminalWindow\.addEventListener(
-&#x20;     "keydown",
-&#x20;     (event: KeyboardEvent) => {
-&#x20;       if (
-&#x20;         event.key === "/" &&
-&#x20;         document.activeElement !== terminalInput
-&#x20;       ) {
-&#x20;         event.preventDefault();
-&#x20;         terminalInput?.focus();
-&#x20;       }
-&#x20;     }
-&#x20;   );
-&#x20; }
-\</script>
-\<style is\:global>
-
-&#x20; /\* ============================================================= \*/
-&#x20; /\* BACKGROUND \*/
-&#x20; /\* ============================================================= \*/
-
-&#x20; .hero-grid {
-&#x20;   background-image:
-&#x20;     linear-gradient(
-&#x20;       rgba(255, 255, 255, 0.025) 1px,
-&#x20;       transparent 1px
-&#x20;     ),
-&#x20;     linear-gradient(
-&#x20;       90deg,
-&#x20;       rgba(255, 255, 255, 0.025) 1px,
-&#x20;       transparent 1px
-&#x20;     );
-
-&#x20;   background-size: 52px 52px;
-
-&#x20;   mask-image:
-&#x20;     radial-gradient(
-&#x20;       ellipse 70% 60% at 50% 25%,
-&#x20;       black 0%,
-&#x20;       transparent 75%
-&#x20;     );
-&#x20; }
-
-&#x20; .noise-layer {
-&#x20;   background-image:
-&#x20;     url("data\:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http\://www\.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
-&#x20; }
-
-&#x20; /\* ============================================================= \*/
-&#x20; /\* PREMIUM LIQUID GLASS BACKGROUND \*/
-&#x20; /\* ============================================================= \*/
-
-&#x20; .liquid-scene {
-&#x20;   position: absolute;
-&#x20;   inset: 0;
-
-&#x20;   display: flex;
-&#x20;   align-items: center;
-&#x20;   justify-content: center;
-
-&#x20;   gap: clamp(10px, 1.25vw, 22px);
-&#x20;   padding: 4vh 7vw;
-
-&#x20;   opacity: 0.58;
-
-&#x20;   transform: translateZ(0);
-
-&#x20;   filter: saturate(1.08);
-
-&#x20;   mask-image:
-&#x20;     radial-gradient(
-&#x20;       ellipse 78% 82% at 50% 42%,
-&#x20;       black 35%,
-&#x20;       rgba(0, 0, 0, 0.86) 63%,
-&#x20;       transparent 100%
-&#x20;     );
-
-&#x20;   -webkit-mask-image:
-&#x20;     radial-gradient(
-&#x20;       ellipse 78% 82% at 50% 42%,
-&#x20;       black 35%,
-&#x20;       rgba(0, 0, 0, 0.86) 63%,
-&#x20;       transparent 100%
-&#x20;     );
-&#x20; }
-
-&#x20; .liquid-capsule {
-&#x20;   position: relative;
-
-&#x20;   width: clamp(46px, 7vw, 118px);
-&#x20;   height: 76%;
-
-&#x20;   flex: 0 1 clamp(46px, 7vw, 118px);
-
-&#x20;   border-radius: 999px;
-
-&#x20;   overflow: hidden;
-
-&#x20;   isolation: isolate;
-
-&#x20;   background:
-&#x20;     linear-gradient(
-&#x20;       180deg,
-&#x20;       \#d8b4fe 0%,
-&#x20;       \#a978f5 13%,
-&#x20;       \#7049e9 28%,
-&#x20;       \#3d36d9 43%,
-&#x20;       \#3146e2 54%,
-&#x20;       \#5b8eea 68%,
-&#x20;       \#8bd8d0 82%,
-&#x20;       \#b8edcf 94%,
-&#x20;       \#d9f5df 100%
-&#x20;     );
-
-&#x20;   border: 1px solid rgba(255, 255, 255, 0.16);
-
-&#x20;   box-shadow:
-&#x20;     inset 7px 0 18px rgba(255, 255, 255, 0.08),
-&#x20;     inset -9px 0 22px rgba(21, 17, 74, 0.16),
-&#x20;     inset 0 1px 0 rgba(255, 255, 255, 0.34),
-&#x20;     0 24px 55px rgba(42, 29, 123, 0.14),
-&#x20;     0 0 35px rgba(86, 73, 226, 0.09);
-
-&#x20;   opacity: 0.88;
-
-&#x20;   transform-origin: center;
-
-&#x20;   animation:
-&#x20;     capsuleFloat
-&#x20;     13s
-&#x20;     cubic-bezier(0.45, 0.05, 0.55, 0.95)
-&#x20;     infinite;
-&#x20; }
-
-&#x20; .liquid-capsule::before {
-&#x20;   content: "";
-
-&#x20;   position: absolute;
-&#x20;   inset: 0;
-
-&#x20;   border-radius: inherit;
-
-&#x20;   background:
-&#x20;     radial-gradient(
-&#x20;       ellipse 70% 23% at 50% 16%,
-&#x20;       rgba(255, 255, 255, 0.27),
-&#x20;       transparent 72%
-&#x20;     ),
-&#x20;     radial-gradient(
-&#x20;       ellipse 95% 28% at 50% 77%,
-&#x20;       rgba(184, 250, 222, 0.2),
-&#x20;       transparent 72%
-&#x20;     );
-
-&#x20;   mix-blend-mode: screen;
-
-&#x20;   opacity: 0.9;
-&#x20; }
-
-&#x20; .liquid-capsule::after {
-&#x20;   content: "";
-
-&#x20;   position: absolute;
-
-&#x20;   top: 2%;
-&#x20;   left: 8%;
-
-&#x20;   width: 24%;
-&#x20;   height: 94%;
-
-&#x20;   border-radius: 999px;
-
-&#x20;   background:
-&#x20;     linear-gradient(
-&#x20;       180deg,
-&#x20;       rgba(255, 255, 255, 0.3),
-&#x20;       rgba(255, 255, 255, 0.08) 24%,
-&#x20;       rgba(255, 255, 255, 0.015) 58%,
-&#x20;       transparent 100%
-&#x20;     );
-
-&#x20;   filter: blur(5px);
-
-&#x20;   opacity: 0.75;
-&#x20; }
-
-&#x20; .capsule-1 {
-&#x20;   height: 92%;
-&#x20;   margin-top: -4%;
-&#x20;   animation-delay: -1s;
-&#x20; }
-
-&#x20; .capsule-2 {
-&#x20;   height: 72%;
-&#x20;   margin-top: 8%;
-&#x20;   animation-delay: -5s;
-&#x20; }
-
-&#x20; .capsule-3 {
-&#x20;   height: 86%;
-&#x20;   margin-top: -1%;
-&#x20;   animation-delay: -9s;
-&#x20; }
-
-&#x20; .capsule-4 {
-&#x20;   height: 64%;
-&#x20;   margin-top: 13%;
-&#x20;   animation-delay: -3s;
-&#x20; }
-
-&#x20; .capsule-5 {
-&#x20;   height: 95%;
-&#x20;   margin-top: -5%;
-&#x20;   animation-delay: -7s;
-&#x20; }
-
-&#x20; .capsule-6 {
-&#x20;   height: 78%;
-&#x20;   margin-top: 6%;
-&#x20;   animation-delay: -11s;
-&#x20; }
-
-&#x20; .capsule-7 {
-&#x20;   height: 89%;
-&#x20;   margin-top: -2%;
-&#x20;   animation-delay: -4s;
-&#x20; }
-
-&#x20; .capsule-8 {
-&#x20;   height: 68%;
-&#x20;   margin-top: 11%;
-&#x20;   animation-delay: -8s;
-&#x20; }
-
-&#x20; .hero-ambient {
-&#x20;   position: absolute;
-
-&#x20;   left: 50%;
-&#x20;   top: 42%;
-
-&#x20;   width: min(1000px, 92vw);
-&#x20;   height: 680px;
-
-&#x20;   transform: translate(-50%, -50%);
-
-&#x20;   background:
-&#x20;     radial-gradient(
-&#x20;       ellipse at 50% 48%,
-&#x20;       rgba(92, 72, 235, 0.16) 0%,
-&#x20;       rgba(67, 92, 230, 0.1) 28%,
-&#x20;       rgba(92, 208, 188, 0.055) 49%,
-&#x20;       transparent 73%
-&#x20;     );
-
-&#x20;   filter: blur(55px);
-
-&#x20;   opacity: 0.9;
-&#x20; }
-
-&#x20; .hero-vignette {
-&#x20;   position: absolute;
-&#x20;   inset: 0;
-
-&#x20;   background:
-&#x20;     linear-gradient(
-&#x20;       90deg,
-&#x20;       rgba(5, 6, 12, 0.48) 0%,
-&#x20;       transparent 26%,
-&#x20;       transparent 72%,
-&#x20;       rgba(5, 6, 12, 0.48) 100%
-&#x20;     ),
-&#x20;     radial-gradient(
-&#x20;       ellipse 72% 72% at 50% 45%,
-&#x20;       transparent 38%,
-&#x20;       rgba(5, 6, 12, 0.32) 100%
-&#x20;     );
-&#x20; }
-
-&#x20; @keyframes capsuleFloat {
-&#x20;   0%,
-&#x20;   100% {
-&#x20;     transform:
-&#x20;       translate3d(0, -8px, 0)
-&#x20;       scaleY(0.985);
-&#x20;   }
-
-&#x20;   50% {
-&#x20;     transform:
-&#x20;       translate3d(0, 13px, 0)
-&#x20;       scaleY(1.015);
-&#x20;   }
-&#x20; }
-
-&#x20; /\* ============================================================= \*/
-&#x20; /\* STATUS \*/
-&#x20; /\* ============================================================= \*/
-
-&#x20; .status-badge {
-&#x20;   border: 1px solid rgba(255, 255, 255, 0.08);
-
-&#x20;   background:
-&#x20;     linear-gradient(
-&#x20;       135deg,
-&#x20;       rgba(255, 255, 255, 0.055),
-&#x20;       rgba(255, 255, 255, 0.018)
-&#x20;     );
-
-&#x20;   color: rgba(255, 255, 255, 0.55);
-
-&#x20;   box-shadow:
-&#x20;     inset 0 1px 0 rgba(255, 255, 255, 0.04),
-&#x20;     0 10px 30px rgba(0, 0, 0, 0.08);
-
-&#x20;   backdrop-filter: blur(18px);
-&#x20; }
-
-&#x20; /\* ============================================================= \*/
-&#x20; /\* NAME \*/
-&#x20; /\* ============================================================= \*/
-
-&#x20; .name-glow {
-&#x20;   color: #86efac;
-
-&#x20;   text-shadow:
-&#x20;     0 0 8px rgba(74, 222, 128, 0.35),
-&#x20;     0 0 22px rgba(74, 222, 128, 0.14);
-
-&#x20;   transition:
-&#x20;     color 300ms ease,
-&#x20;     text-shadow 300ms ease;
-&#x20; }
-
-&#x20; .name-glow\:hover {
-&#x20;   color: #bbf7d0;
-
-&#x20;   text-shadow:
-&#x20;     0 0 10px rgba(74, 222, 128, 0.65),
-&#x20;     0 0 28px rgba(74, 222, 128, 0.3);
-&#x20; }
-
-&#x20; /\* ============================================================= \*/
-&#x20; /\* HERO TITLE \*/
-&#x20; /\* ============================================================= \*/
-
-&#x20; .hero-title {
-&#x20;   text-wrap: balance;
-&#x20; }
-
-&#x20; .title-muted {
-&#x20;   color: rgba(255, 255, 255, 0.42);
-
-&#x20;   background:
-&#x20;     linear-gradient(
-&#x20;       180deg,
-&#x20;       rgba(255, 255, 255, 0.58),
-&#x20;       rgba(255, 255, 255, 0.24)
-&#x20;     );
-
-&#x20;   -webkit-background-clip: text;
-&#x20;   background-clip: text;
-
-&#x20;   -webkit-text-fill-color: transparent;
-&#x20; }
-
-&#x20; /\* ============================================================= \*/
-&#x20; /\* SHINY TEXT \*/
-&#x20; /\* ============================================================= \*/
-
-&#x20; .shiny-sec {
-&#x20;   background:
-&#x20;     linear-gradient(
-&#x20;       110deg,
-&#x20;       \#7667ff 0%,
-&#x20;       \#a99cff 25%,
-&#x20;       \#ffffff 50%,
-&#x20;       \#6251ff 75%,
-&#x20;       \#7667ff 100%
-&#x20;     );
-
-&#x20;   background-size: 250% 100%;
-
-&#x20;   -webkit-background-clip: text;
-&#x20;   background-clip: text;
-
-&#x20;   color: transparent;
-
-&#x20;   animation: shine 5s ease-in-out infinite;
-&#x20; }
-
-&#x20; @keyframes shine {
-&#x20;   0%,
-&#x20;   100% {
-&#x20;     background-position: 100% 50%;
-&#x20;   }
-
-&#x20;   50% {
-&#x20;     background-position: 0% 50%;
-&#x20;   }
-&#x20; }
-
-&#x20; /\* ============================================================= \*/
-&#x20; /\* BUTTONS \*/
-&#x20; /\* ============================================================= \*/
-
-&#x20; .primary-button {
-&#x20;   color: #09090b;
-
-&#x20;   background:
-&#x20;     linear-gradient(
-&#x20;       135deg,
-&#x20;       \#ffffff,
-&#x20;       \#e9e9eb
-&#x20;     );
-
-&#x20;   box-shadow:
-&#x20;     0 10px 30px rgba(0, 0, 0, 0.2),
-&#x20;     inset 0 1px 0 rgba(255, 255, 255, 0.8);
-
-&#x20;   transition:
-&#x20;     transform 300ms ease,
-&#x20;     box-shadow 300ms ease;
-&#x20; }
-
-&#x20; .primary-button\:hover {
-&#x20;   transform: translateY(-2px);
-
-&#x20;   box-shadow:
-&#x20;     0 15px 35px rgba(0, 0, 0, 0.25),
-&#x20;     0 0 30px rgba(255, 255, 255, 0.08);
-&#x20; }
-
-&#x20; .social-link {
-&#x20;   display: inline-flex;
-
-&#x20;   align-items: center;
-&#x20;   justify-content: center;
-
-&#x20;   width: 46px;
-&#x20;   height: 46px;
-
-&#x20;   border: 1px solid rgba(255, 255, 255, 0.08);
-&#x20;   border-radius: 13px;
-
-&#x20;   color: rgba(255, 255, 255, 0.48);
-
-&#x20;   background:
-&#x20;     linear-gradient(
-&#x20;       135deg,
-&#x20;       rgba(255, 255, 255, 0.045),
-&#x20;       rgba(255, 255, 255, 0.015)
-&#x20;     );
-
-&#x20;   backdrop-filter: blur(14px);
-
-&#x20;   transition:
-&#x20;     color 300ms ease,
-&#x20;     background 300ms ease,
-&#x20;     border-color 300ms ease,
-&#x20;     transform 300ms ease,
-&#x20;     box-shadow 300ms ease;
-&#x20; }
-
-&#x20; .social-link\:hover {
-&#x20;   color: white;
-
-&#x20;   border-color: rgba(74, 222, 128, 0.25);
-
-&#x20;   background:
-&#x20;     linear-gradient(
-&#x20;       135deg,
-&#x20;       rgba(74, 222, 128, 0.08),
-&#x20;       rgba(255, 255, 255, 0.025)
-&#x20;     );
-
-&#x20;   box-shadow:
-&#x20;     0 0 20px rgba(74, 222, 128, 0.06);
-
-&#x20;   transform: translateY(-3px);
-&#x20; }
-
-&#x20; /\* ============================================================= \*/
-&#x20; /\* GLITCH CARD \*/
-&#x20; /\* ============================================================= \*/
-
-&#x20; .glitch-glow {
-&#x20;   position: absolute;
-
-&#x20;   width: 270px;
-&#x20;   height: 270px;
-
-&#x20;   border-radius: 999px;
-
-&#x20;   background:
-&#x20;     radial-gradient(
-&#x20;       circle,
-&#x20;       rgba(88, 58, 220, 0.22),
-&#x20;       rgba(74, 222, 128, 0.025) 55%,
-&#x20;       transparent 72%
-&#x20;     );
-
-&#x20;   filter: blur(45px);
-
-&#x20;   animation:
-&#x20;     pulseGlow
-&#x20;     6s
-&#x20;     ease-in-out
-&#x20;     infinite;
-&#x20; }
-
-&#x20; .glitch-card {
-&#x20;   border: 1px solid rgba(255, 255, 255, 0.1);
-
-&#x20;   background:
-&#x20;     linear-gradient(
-&#x20;       145deg,
-&#x20;       rgba(255, 255, 255, 0.065),
-&#x20;       rgba(255, 255, 255, 0.018)
-&#x20;     );
-
-&#x20;   box-shadow:
-&#x20;     0 35px 80px rgba(0, 0, 0, 0.35),
-&#x20;     inset 0 1px 0 rgba(255, 255, 255, 0.06);
-
-&#x20;   backdrop-filter: blur(20px);
-
-&#x20;   transition:
-&#x20;     transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1),
-&#x20;     border-color 400ms ease;
-&#x20; }
-
-&#x20; .glitch-card\:hover {
-&#x20;   transform:
-&#x20;     translateY(-6px)
-&#x20;     rotate(0.35deg);
-
-&#x20;   border-color: rgba(255, 255, 255, 0.16);
-&#x20; }
-
-&#x20; @keyframes pulseGlow {
-&#x20;   0%,
-&#x20;   100% {
-&#x20;     opacity: 0.65;
-&#x20;     transform: scale(0.95);
-&#x20;   }
-
-&#x20;   50% {
-&#x20;     opacity: 1;
-&#x20;     transform: scale(1.05);
-&#x20;   }
-&#x20; }
-
-&#x20; /\* ============================================================= \*/
-&#x20; /\* SECTION \*/
-&#x20; /\* ============================================================= \*/
-
-&#x20; .section-line {
-&#x20;   border-top: 1px solid rgba(255, 255, 255, 0.055);
-&#x20;   border-bottom: 1px solid rgba(255, 255, 255, 0.055);
-&#x20; }
-
-&#x20; .section-block {
-&#x20;   padding-top: 6.5rem;
-&#x20;   padding-bottom: 6.5rem;
-&#x20; }
-
-&#x20; .section-eyebrow {
-&#x20;   font-size: 0.7rem;
-&#x20;   font-weight: 500;
-
-&#x20;   text-transform: uppercase;
-&#x20;   letter-spacing: 0.22em;
-
-&#x20;   line-height: 1;
-
-&#x20;   color: rgba(255, 255, 255, 0.32);
-&#x20; }
-
-&#x20; .section-title {
-&#x20;   max-width: 650px;
-
-&#x20;   font-size: 2.25rem;
-&#x20;   font-weight: 600;
-
-&#x20;   line-height: 1.02;
-&#x20;   letter-spacing: -0.045em;
-
-&#x20;   color: white;
-&#x20; }
-
-&#x20; .section-title span {
-&#x20;   display: block;
-&#x20;   color: rgba(255, 255, 255, 0.34);
-&#x20; }
-
-&#x20; .section-description {
-&#x20;   max-width: 550px;
-
-&#x20;   margin-top: 1.35rem;
-
-&#x20;   font-size: 1rem;
-&#x20;   line-height: 1.75;
-
-&#x20;   color: rgba(255, 255, 255, 0.4);
-&#x20; }
-
-&#x20; /\* ============================================================= \*/
-&#x20; /\* SKILLS \*/
-&#x20; /\* ============================================================= \*/
-
-&#x20; .skills-panel {
-&#x20;   position: relative;
-
-&#x20;   padding: 1.5rem;
-
-&#x20;   border: 1px solid rgba(255, 255, 255, 0.065);
-&#x20;   border-radius: 24px;
-
-&#x20;   background:
-&#x20;     linear-gradient(
-&#x20;       145deg,
-&#x20;       rgba(255, 255, 255, 0.035),
-&#x20;       rgba(255, 255, 255, 0.012)
-&#x20;     );
-
-&#x20;   box-shadow:
-&#x20;     inset 0 1px 0 rgba(255, 255, 255, 0.035),
-&#x20;     0 25px 60px rgba(0, 0, 0, 0.12);
-&#x20; }
-
-&#x20; .skill-line {
-&#x20;   display: flex;
-&#x20;   align-items: center;
-
-&#x20;   gap: 0.45rem;
-&#x20; }
-
-&#x20; .skill-line span {
-&#x20;   display: block;
-
-&#x20;   height: 3px;
-
-&#x20;   border-radius: 999px;
-
-&#x20;   background: rgba(255, 255, 255, 0.1);
-&#x20; }
-
-&#x20; .skill-line span\:nth-child(1) {
-&#x20;   width: 42px;
-&#x20;   background: rgba(74, 222, 128, 0.5);
-&#x20; }
-
-&#x20; .skill-line span\:nth-child(2) {
-&#x20;   width: 18px;
-&#x20; }
-
-&#x20; .skill-line span\:nth-child(3) {
-&#x20;   width: 8px;
-&#x20; }
-
-&#x20; /\* ============================================================= \*/
-&#x20; /\* NOTE CARDS \*/
-&#x20; /\* ============================================================= \*/
-
-&#x20; .note-card {
-&#x20;   position: relative;
-
-&#x20;   display: flex;
-
-&#x20;   min-height: 230px;
-
-&#x20;   flex-direction: column;
-&#x20;   justify-content: space-between;
-
-&#x20;   overflow: hidden;
-
-&#x20;   padding: 24px;
-
-&#x20;   border: 1px solid rgba(255, 255, 255, 0.07);
-&#x20;   border-radius: 20px;
-
-&#x20;   color: white;
-
-&#x20;   background:
-&#x20;     radial-gradient(
-&#x20;       circle at 100% 0%,
-&#x20;       rgba(74, 222, 128, 0.055),
-&#x20;       transparent 35%
-&#x20;     ),
-&#x20;     linear-gradient(
-&#x20;       145deg,
-&#x20;       rgba(255, 255, 255, 0.045),
-&#x20;       rgba(255, 255, 255, 0.012)
-&#x20;     );
-
-&#x20;   box-shadow:
-&#x20;     inset 0 1px 0 rgba(255, 255, 255, 0.035);
-
-&#x20;   transition:
-&#x20;     transform 400ms cubic-bezier(0.2, 0.8, 0.2, 1),
-&#x20;     border-color 300ms ease,
-&#x20;     box-shadow 400ms ease,
-&#x20;     background 400ms ease;
-&#x20; }
-
-&#x20; .note-card::before {
-&#x20;   content: "";
-
-&#x20;   position: absolute;
-
-&#x20;   left: 0;
-&#x20;   top: 0;
-
-&#x20;   width: 100%;
-&#x20;   height: 1px;
-
-&#x20;   background:
-&#x20;     linear-gradient(
-&#x20;       90deg,
-&#x20;       transparent,
-&#x20;       rgba(74, 222, 128, 0.35),
-&#x20;       transparent
-&#x20;     );
-
-&#x20;   opacity: 0;
-
-&#x20;   transition: opacity 300ms ease;
-&#x20; }
-
-&#x20; .note-card\:hover {
-&#x20;   transform: translateY(-6px);
-
-&#x20;   border-color: rgba(74, 222, 128, 0.2);
-
-&#x20;   background:
-&#x20;     radial-gradient(
-&#x20;       circle at 100% 0%,
-&#x20;       rgba(74, 222, 128, 0.1),
-&#x20;       transparent 40%
-&#x20;     ),
-&#x20;     linear-gradient(
-&#x20;       145deg,
-&#x20;       rgba(255, 255, 255, 0.055),
-&#x20;       rgba(255, 255, 255, 0.018)
-&#x20;     );
-
-&#x20;   box-shadow:
-&#x20;     0 25px 60px rgba(0, 0, 0, 0.22),
-&#x20;     0 0 35px rgba(74, 222, 128, 0.035);
-&#x20; }
-
-&#x20; .note-card\:hover::before {
-&#x20;   opacity: 1;
-&#x20; }
-
-&#x20; .note-number {
-&#x20;   margin-bottom: 2.5rem;
-
-&#x20;   font-family:
-&#x20;     ui-monospace,
-&#x20;     SFMono-Regular,
-&#x20;     Menlo,
-&#x20;     monospace;
-
-&#x20;   font-size: 0.65rem;
-
-&#x20;   letter-spacing: 0.16em;
-
-&#x20;   color: rgba(255, 255, 255, 0.2);
-&#x20; }
-
-&#x20; .note-label {
-&#x20;   display: block;
-
-&#x20;   font-size: 0.65rem;
-&#x20;   font-weight: 500;
-
-&#x20;   text-transform: uppercase;
-&#x20;   letter-spacing: 0.16em;
-
-&#x20;   color: rgba(74, 222, 128, 0.7);
-&#x20; }
-
-&#x20; .note-card h3 {
-&#x20;   max-width: 90%;
-
-&#x20;   margin-top: 0.75rem;
-
-&#x20;   font-size: 1.05rem;
-&#x20;   font-weight: 500;
-
-&#x20;   line-height: 1.35;
-&#x20;   letter-spacing: -0.015em;
-
-&#x20;   color: rgba(255, 255, 255, 0.84);
-&#x20; }
-
-&#x20; .note-footer {
-&#x20;   display: flex;
-
-&#x20;   align-items: center;
-&#x20;   justify-content: space-between;
-
-&#x20;   margin-top: 2rem;
-
-&#x20;   font-size: 0.68rem;
-
-&#x20;   text-transform: uppercase;
-&#x20;   letter-spacing: 0.12em;
-
-&#x20;   color: rgba(255, 255, 255, 0.25);
-&#x20; }
-
-&#x20; .note-arrow {
-&#x20;   font-size: 1.1rem;
-
-&#x20;   color: rgba(255, 255, 255, 0.3);
-
-&#x20;   transition:
-&#x20;     color 300ms ease,
-&#x20;     transform 300ms ease;
-&#x20; }
-
-&#x20; .note-card\:hover .note-arrow {
-&#x20;   color: #86efac;
-
-&#x20;   transform:
-&#x20;     translate(3px, -3px);
-&#x20; }
-
-&#x20; /\* ============================================================= \*/
-&#x20; /\* TERMINAL \*/
-&#x20; /\* ============================================================= \*/
-
-&#x20; .terminal-shell {
-&#x20;   position: relative;
-
-&#x20;   overflow: hidden;
-
-&#x20;   border: 1px solid rgba(255, 255, 255, 0.09);
-&#x20;   border-radius: 22px;
-
-&#x20;   background:
-&#x20;     linear-gradient(
-&#x20;       145deg,
-&#x20;       rgba(255, 255, 255, 0.045),
-&#x20;       rgba(255, 255, 255, 0.012)
-&#x20;     );
-
-&#x20;   box-shadow:
-&#x20;     0 35px 80px rgba(0, 0, 0, 0.25),
-&#x20;     inset 0 1px 0 rgba(255, 255, 255, 0.045);
-
-&#x20;   backdrop-filter: blur(24px);
-
-&#x20;   transition:
-&#x20;     border-color 400ms ease,
-&#x20;     box-shadow 400ms ease;
-&#x20; }
-
-&#x20; .terminal-shell\:hover {
-&#x20;   border-color: rgba(74, 222, 128, 0.16);
-
-&#x20;   box-shadow:
-&#x20;     0 35px 80px rgba(0, 0, 0, 0.3),
-&#x20;     0 0 60px rgba(74, 222, 128, 0.035),
-&#x20;     inset 0 1px 0 rgba(255, 255, 255, 0.055);
-&#x20; }
-
-&#x20; .terminal-header {
-&#x20;   position: relative;
-
-&#x20;   display: flex;
-
-&#x20;   align-items: center;
-&#x20;   justify-content: center;
-
-&#x20;   height: 52px;
-
-&#x20;   border-bottom: 1px solid rgba(255, 255, 255, 0.065);
-
-&#x20;   background:
-&#x20;     linear-gradient(
-&#x20;       180deg,
-&#x20;       rgba(255, 255, 255, 0.035),
-&#x20;       rgba(255, 255, 255, 0.012)
-&#x20;     );
-&#x20; }
-
-&#x20; .terminal-dots {
-&#x20;   position: absolute;
-
-&#x20;   left: 18px;
-
-&#x20;   display: flex;
-
-&#x20;   align-items: center;
-
-&#x20;   gap: 7px;
-&#x20; }
-
-&#x20; .terminal-dots span {
-&#x20;   width: 8px;
-&#x20;   height: 8px;
-
-&#x20;   border-radius: 999px;
-
-&#x20;   background: rgba(255, 255, 255, 0.18);
-
-&#x20;   box-shadow:
-&#x20;     0 0 8px rgba(255, 255, 255, 0.03);
-&#x20; }
-
-&#x20; .terminal-dots span\:nth-child(1) {
-&#x20;   background: rgba(255, 255, 255, 0.25);
-&#x20; }
-
-&#x20; .terminal-dots span\:nth-child(2) {
-&#x20;   background: rgba(255, 255, 255, 0.16);
-&#x20; }
-
-&#x20; .terminal-dots span\:nth-child(3) {
-&#x20;   background: rgba(74, 222, 128, 0.5);
-
-&#x20;   box-shadow:
-&#x20;     0 0 8px rgba(74, 222, 128, 0.25);
-&#x20; }
-
-&#x20; .terminal-title {
-&#x20;   font-family:
-&#x20;     ui-monospace,
-&#x20;     SFMono-Regular,
-&#x20;     Menlo,
-&#x20;     Monaco,
-&#x20;     Consolas,
-&#x20;     monospace;
-
-&#x20;   font-size: 10px;
-
-&#x20;   letter-spacing: 0.08em;
-
-&#x20;   color: rgba(255, 255, 255, 0.3);
-&#x20; }
-
-&#x20; .terminal-header-status {
-&#x20;   position: absolute;
-
-&#x20;   right: 18px;
-
-&#x20;   display: flex;
-
-&#x20;   align-items: center;
-
-&#x20;   gap: 7px;
-
-&#x20;   font-family:
-&#x20;     ui-monospace,
-&#x20;     SFMono-Regular,
-&#x20;     Menlo,
-&#x20;     Monaco,
-&#x20;     Consolas,
-&#x20;     monospace;
-
-&#x20;   font-size: 9px;
-
-&#x20;   text-transform: uppercase;
-&#x20;   letter-spacing: 0.12em;
-
-&#x20;   color: rgba(255, 255, 255, 0.22);
-&#x20; }
-
-&#x20; .terminal-header-status span {
-&#x20;   width: 5px;
-&#x20;   height: 5px;
-
-&#x20;   border-radius: 999px;
-
-&#x20;   background: #4ade80;
-
-&#x20;   box-shadow:
-&#x20;     0 0 9px rgba(74, 222, 128, 0.65);
-
-&#x20;   animation:
-&#x20;     terminalPulse
-&#x20;     2s
-&#x20;     ease-in-out
-&#x20;     infinite;
-&#x20; }
-
-&#x20; .terminal-body {
-&#x20;   position: relative;
-
-&#x20;   min-height: 410px;
-&#x20;   max-height: 510px;
-
-&#x20;   overflow-y: auto;
-
-&#x20;   padding: 24px;
-
-&#x20;   font-family:
-&#x20;     ui-monospace,
-&#x20;     SFMono-Regular,
-&#x20;     Menlo,
-&#x20;     Monaco,
-&#x20;     Consolas,
-&#x20;     monospace;
-
-&#x20;   font-size: 12px;
-&#x20;   line-height: 1.7;
-
-&#x20;   background:
-&#x20;     radial-gradient(
-&#x20;       ellipse at 50% 0%,
-&#x20;       rgba(74, 222, 128, 0.025),
-&#x20;       transparent 55%
-&#x20;     ),
-&#x20;     rgba(3, 5, 8, 0.72);
-
-&#x20;   scrollbar-width: thin;
-
-&#x20;   scrollbar-color:
-&#x20;     rgba(74, 222, 128, 0.16)
-&#x20;     transparent;
-&#x20; }
-
-&#x20; .terminal-body::before {
-&#x20;   content: "";
-
-&#x20;   position: absolute;
+  .note-card h3 {
+    max-width: 90%;
+
+    margin-top: 0.75rem;
+
+    font-size: 1.05rem;
+    font-weight: 500;
+
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+
+    color: rgba(255, 255, 255, 0.84);
+  }
 
-&#x20;   inset: 0;
-
-&#x20;   pointer-events: none;
+  .note-footer {
+    display: flex;
 
-&#x20;   background:
-&#x20;     repeating-linear-gradient(
-&#x20;       0deg,
-&#x20;       transparent,
-&#x20;       transparent 3px,
-&#x20;       rgba(255, 255, 255, 0.006) 4px
-&#x20;     );
+    align-items: center;
+    justify-content: space-between;
 
-&#x20;   opacity: 0.5;
-&#x20; }
+    margin-top: 2rem;
 
-&#x20; .terminal-output {
-&#x20;   position: relative;
+    font-size: 0.68rem;
 
-&#x20;   z-index: 1;
-&#x20; }
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
 
-&#x20; .terminal-line {
-&#x20;   display: flex;
+    color: rgba(255, 255, 255, 0.25);
+  }
 
-&#x20;   align-items: flex-start;
+  .note-arrow {
+    font-size: 1.1rem;
 
-&#x20;   gap: 10px;
+    color: rgba(255, 255, 255, 0.3);
 
-&#x20;   margin-bottom: 5px;
+    transition:
+      color 300ms ease,
+      transform 300ms ease;
+  }
 
-&#x20;   color: rgba(255, 255, 255, 0.48);
-&#x20; }
+  .note-card:hover .note-arrow {
+    color: #86efac;
 
-&#x20; .terminal-prompt {
-&#x20;   flex-shrink: 0;
+    transform:
+      translate(3px, -3px);
+  }
 
-&#x20;   color: #4ade80;
+  /* ============================================================= */
+  /* TERMINAL */
+  /* ============================================================= */
 
-&#x20;   text-shadow:
-&#x20;     0 0 10px rgba(74, 222, 128, 0.4);
-&#x20; }
+  .terminal-shell {
+    position: relative;
 
-&#x20; .terminal-system {
-&#x20;   color: rgba(255, 255, 255, 0.42);
-&#x20; }
+    overflow: hidden;
 
-&#x20; .terminal-success {
-&#x20;   color: rgba(134, 239, 172, 0.65);
-&#x20; }
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 22px;
 
-&#x20; .terminal-muted {
-&#x20;   color: rgba(255, 255, 255, 0.28);
-&#x20; }
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.045),
+        rgba(255, 255, 255, 0.012)
+      );
 
-&#x20; .terminal-muted strong {
-&#x20;   color: rgba(255, 255, 255, 0.65);
+    box-shadow:
+      0 35px 80px rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.045);
 
-&#x20;   font-weight: 500;
-&#x20; }
+    backdrop-filter: blur(24px);
 
-&#x20; .terminal-spacer {
-&#x20;   height: 17px;
-&#x20; }
+    transition:
+      border-color 400ms ease,
+      box-shadow 400ms ease;
+  }
 
-&#x20; .terminal-command-line {
-&#x20;   position: relative;
+  .terminal-shell:hover {
+    border-color: rgba(74, 222, 128, 0.16);
 
-&#x20;   display: flex;
+    box-shadow:
+      0 35px 80px rgba(0, 0, 0, 0.3),
+      0 0 60px rgba(74, 222, 128, 0.035),
+      inset 0 1px 0 rgba(255, 255, 255, 0.055);
+  }
 
-&#x20;   align-items: baseline;
+  .terminal-header {
+    position: relative;
 
-&#x20;   flex-wrap: wrap;
+    display: flex;
 
-&#x20;   gap: 7px;
+    align-items: center;
+    justify-content: center;
 
-&#x20;   margin-top: 13px;
-&#x20;   margin-bottom: 6px;
+    height: 52px;
 
-&#x20;   color: rgba(255, 255, 255, 0.8);
-&#x20; }
+    border-bottom: 1px solid rgba(255, 255, 255, 0.065);
 
-&#x20; .terminal-command-text {
-&#x20;   color: rgba(255, 255, 255, 0.75);
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.035),
+        rgba(255, 255, 255, 0.012)
+      );
+  }
 
-&#x20;   word-break: break-word;
-&#x20; }
+  .terminal-dots {
+    position: absolute;
 
-&#x20; .terminal-response {
-&#x20;   margin-left: 24px;
-&#x20;   margin-bottom: 12px;
+    left: 18px;
 
-&#x20;   color: rgba(255, 255, 255, 0.38);
-&#x20; }
+    display: flex;
 
-&#x20; .terminal-response-title {
-&#x20;   margin-bottom: 8px;
+    align-items: center;
 
-&#x20;   color: rgba(255, 255, 255, 0.72);
+    gap: 7px;
+  }
 
-&#x20;   font-weight: 500;
-&#x20; }
+  .terminal-dots span {
+    width: 8px;
+    height: 8px;
 
-&#x20; .terminal-terminal-text {
-&#x20;   max-width: 720px;
+    border-radius: 999px;
 
-&#x20;   color: rgba(255, 255, 255, 0.38);
-&#x20; }
+    background: rgba(255, 255, 255, 0.18);
 
-&#x20; .terminal-small-gap {
-&#x20;   margin-top: 10px;
-&#x20; }
+    box-shadow:
+      0 0 8px rgba(255, 255, 255, 0.03);
+  }
 
-&#x20; .terminal-highlight {
-&#x20;   color: #86efac;
+  .terminal-dots span:nth-child(1) {
+    background: rgba(255, 255, 255, 0.25);
+  }
 
-&#x20;   text-shadow:
-&#x20;     0 0 12px rgba(74, 222, 128, 0.15);
-&#x20; }
+  .terminal-dots span:nth-child(2) {
+    background: rgba(255, 255, 255, 0.16);
+  }
 
-&#x20; .terminal-success-response {
-&#x20;   color: #86efac;
+  .terminal-dots span:nth-child(3) {
+    background: rgba(74, 222, 128, 0.5);
 
-&#x20;   text-shadow:
-&#x20;     0 0 12px rgba(74, 222, 128, 0.18);
-&#x20; }
+    box-shadow:
+      0 0 8px rgba(74, 222, 128, 0.25);
+  }
 
-&#x20; .terminal-error {
-&#x20;   color: #fca5a5;
-&#x20; }
+  .terminal-title {
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
 
-&#x20; .terminal-error span {
-&#x20;   color: #fecaca;
-&#x20; }
+    font-size: 10px;
 
-&#x20; .terminal-help {
-&#x20;   padding: 2px 0;
-&#x20; }
+    letter-spacing: 0.08em;
 
-&#x20; .terminal-command-grid {
-&#x20;   display: grid;
+    color: rgba(255, 255, 255, 0.3);
+  }
 
-&#x20;   grid-template-columns:
-&#x20;     repeat(2, minmax(0, 1fr));
+  .terminal-header-status {
+    position: absolute;
 
-&#x20;   gap:
-&#x20;     7px 35px;
+    right: 18px;
 
-&#x20;   margin-top: 12px;
-&#x20; }
+    display: flex;
 
-&#x20; .terminal-command-grid > div {
-&#x20;   min-width: 0;
-&#x20; }
+    align-items: center;
 
-&#x20; .terminal-command-name {
-&#x20;   color: #86efac;
+    gap: 7px;
 
-&#x20;   text-shadow:
-&#x20;     0 0 10px rgba(74, 222, 128, 0.12);
-&#x20; }
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
 
-&#x20; .terminal-command-description {
-&#x20;   color: rgba(255, 255, 255, 0.25);
-&#x20; }
+    font-size: 9px;
 
-&#x20; .terminal-list {
-&#x20;   display: flex;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
 
-&#x20;   flex-direction: column;
+    color: rgba(255, 255, 255, 0.22);
+  }
 
-&#x20;   gap: 5px;
+  .terminal-header-status span {
+    width: 5px;
+    height: 5px;
 
-&#x20;   margin-top: 8px;
-&#x20; }
+    border-radius: 999px;
 
-&#x20; .terminal-list div {
-&#x20;   color: rgba(255, 255, 255, 0.42);
-&#x20; }
+    background: #4ade80;
 
-&#x20; .terminal-list span {
-&#x20;   display: inline-block;
+    box-shadow:
+      0 0 9px rgba(74, 222, 128, 0.65);
 
-&#x20;   min-width: 25px;
+    animation:
+      terminalPulse
+      2s
+      ease-in-out
+      infinite;
+  }
 
-&#x20;   color: rgba(134, 239, 172, 0.55);
-&#x20; }
+  .terminal-body {
+    position: relative;
 
-&#x20; .terminal-status-row {
-&#x20;   display: flex;
+    min-height: 410px;
+    max-height: 510px;
 
-&#x20;   align-items: center;
+    overflow-y: auto;
 
-&#x20;   gap: 8px;
+    padding: 24px;
 
-&#x20;   margin-top: 5px;
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
 
-&#x20;   color: rgba(255, 255, 255, 0.4);
-&#x20; }
+    font-size: 12px;
+    line-height: 1.7;
 
-&#x20; .terminal-live-dot {
-&#x20;   display: inline-block;
+    background:
+      radial-gradient(
+        ellipse at 50% 0%,
+        rgba(74, 222, 128, 0.025),
+        transparent 55%
+      ),
+      rgba(3, 5, 8, 0.72);
 
-&#x20;   width: 5px;
-&#x20;   height: 5px;
+    scrollbar-width: thin;
 
-&#x20;   flex-shrink: 0;
+    scrollbar-color:
+      rgba(74, 222, 128, 0.16)
+      transparent;
+  }
 
-&#x20;   border-radius: 999px;
+  .terminal-body::before {
+    content: "";
 
-&#x20;   background: #4ade80;
+    position: absolute;
 
-&#x20;   box-shadow:
-&#x20;     0 0 8px rgba(74, 222, 128, 0.65);
-&#x20; }
+    inset: 0;
 
-&#x20; .terminal-input-row {
-&#x20;   position: relative;
+    pointer-events: none;
 
-&#x20;   z-index: 2;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(255, 255, 255, 0.006) 4px
+      );
 
-&#x20;   display: flex;
+    opacity: 0.5;
+  }
 
-&#x20;   align-items: center;
+  .terminal-output {
+    position: relative;
 
-&#x20;   gap: 8px;
+    z-index: 1;
+  }
 
-&#x20;   margin-top: 14px;
-&#x20; }
+  .terminal-line {
+    display: flex;
 
-&#x20; .terminal-prompt-main {
-&#x20;   display: inline-flex;
+    align-items: flex-start;
 
-&#x20;   align-items: baseline;
+    gap: 10px;
 
-&#x20;   flex-shrink: 0;
+    margin-bottom: 5px;
 
-&#x20;   font-family:
-&#x20;     ui-monospace,
-&#x20;     SFMono-Regular,
-&#x20;     Menlo,
-&#x20;     Monaco,
-&#x20;     Consolas,
-&#x20;     monospace;
+    color: rgba(255, 255, 255, 0.48);
+  }
 
-&#x20;   white-space: nowrap;
-&#x20; }
+  .terminal-prompt {
+    flex-shrink: 0;
 
-&#x20; .terminal-user {
-&#x20;   color: #86efac;
-&#x20; }
+    color: #4ade80;
 
-&#x20; .terminal-at {
-&#x20;   color: rgba(255, 255, 255, 0.2);
-&#x20; }
+    text-shadow:
+      0 0 10px rgba(74, 222, 128, 0.4);
+  }
 
-&#x20; .terminal-host {
-&#x20;   color: rgba(255, 255, 255, 0.45);
-&#x20; }
+  .terminal-system {
+    color: rgba(255, 255, 255, 0.42);
+  }
 
-&#x20; .terminal-colon,
-&#x20; .terminal-path {
-&#x20;   color: rgba(255, 255, 255, 0.25);
-&#x20; }
+  .terminal-success {
+    color: rgba(134, 239, 172, 0.65);
+  }
 
-&#x20; .terminal-symbol {
-&#x20;   margin-left: 5px;
+  .terminal-muted {
+    color: rgba(255, 255, 255, 0.28);
+  }
 
-&#x20;   color: rgba(134, 239, 172, 0.7);
-&#x20; }
+  .terminal-muted strong {
+    color: rgba(255, 255, 255, 0.65);
 
-&#x20; .terminal-input {
-&#x20;   min-width: 0;
+    font-weight: 500;
+  }
 
-&#x20;   width: 100%;
+  .terminal-spacer {
+    height: 17px;
+  }
 
-&#x20;   padding: 0;
+  .terminal-command-line {
+    position: relative;
 
-&#x20;   border: 0;
+    display: flex;
 
-&#x20;   outline: 0;
+    align-items: baseline;
 
-&#x20;   background: transparent;
+    flex-wrap: wrap;
 
-&#x20;   color: rgba(255, 255, 255, 0.82);
+    gap: 7px;
 
-&#x20;   font-family:
-&#x20;     ui-monospace,
-&#x20;     SFMono-Regular,
-&#x20;     Menlo,
-&#x20;     Monaco,
-&#x20;     Consolas,
-&#x20;     monospace;
+    margin-top: 13px;
+    margin-bottom: 6px;
 
-&#x20;   font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+  }
 
-&#x20;   caret-color: #4ade80;
-&#x20; }
+  .terminal-command-text {
+    color: rgba(255, 255, 255, 0.75);
 
-&#x20; .terminal-input::placeholder {
-&#x20;   color: rgba(255, 255, 255, 0.13);
-&#x20; }
+    word-break: break-word;
+  }
 
-&#x20; .terminal-input\:focus {
-&#x20;   outline: none;
-&#x20; }
+  .terminal-response {
+    margin-left: 24px;
+    margin-bottom: 12px;
 
-&#x20; .terminal-footer {
-&#x20;   display: flex;
+    color: rgba(255, 255, 255, 0.38);
+  }
 
-&#x20;   align-items: center;
+  .terminal-response-title {
+    margin-bottom: 8px;
 
-&#x20;   gap: 18px;
+    color: rgba(255, 255, 255, 0.72);
 
-&#x20;   min-height: 38px;
+    font-weight: 500;
+  }
 
-&#x20;   padding:
-&#x20;     0
-&#x20;     18px;
+  .terminal-terminal-text {
+    max-width: 720px;
 
-&#x20;   border-top: 1px solid rgba(255, 255, 255, 0.055);
+    color: rgba(255, 255, 255, 0.38);
+  }
 
-&#x20;   font-family:
-&#x20;     ui-monospace,
-&#x20;     SFMono-Regular,
-&#x20;     Menlo,
-&#x20;     Monaco,
-&#x20;     Consolas,
-&#x20;     monospace;
+  .terminal-small-gap {
+    margin-top: 10px;
+  }
 
-&#x20;   font-size: 9px;
+  .terminal-highlight {
+    color: #86efac;
 
-&#x20;   text-transform: uppercase;
+    text-shadow:
+      0 0 12px rgba(74, 222, 128, 0.15);
+  }
 
-&#x20;   letter-spacing: 0.1em;
+  .terminal-success-response {
+    color: #86efac;
 
-&#x20;   color: rgba(255, 255, 255, 0.18);
+    text-shadow:
+      0 0 12px rgba(74, 222, 128, 0.18);
+  }
 
-&#x20;   background:
-&#x20;     rgba(255, 255, 255, 0.012);
-&#x20; }
+  .terminal-error {
+    color: #fca5a5;
+  }
 
-&#x20; .terminal-footer-right {
-&#x20;   margin-left: auto;
+  .terminal-error span {
+    color: #fecaca;
+  }
 
-&#x20;   display: flex;
+  .terminal-help {
+    padding: 2px 0;
+  }
 
-&#x20;   align-items: center;
+  .terminal-command-grid {
+    display: grid;
 
-&#x20;   gap: 7px;
-&#x20; }
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
 
-&#x20; .terminal-key {
-&#x20;   display: inline-flex;
+    gap:
+      7px 35px;
 
-&#x20;   align-items: center;
-&#x20;   justify-content: center;
+    margin-top: 12px;
+  }
 
-&#x20;   min-width: 18px;
-&#x20;   height: 17px;
+  .terminal-command-grid > div {
+    min-width: 0;
+  }
 
-&#x20;   margin-right: 3px;
+  .terminal-command-name {
+    color: #86efac;
 
-&#x20;   padding: 0 4px;
+    text-shadow:
+      0 0 10px rgba(74, 222, 128, 0.12);
+  }
 
-&#x20;   border:
-&#x20;     1px solid
-&#x20;     rgba(255, 255, 255, 0.08);
+  .terminal-command-description {
+    color: rgba(255, 255, 255, 0.25);
+  }
 
-&#x20;   border-radius: 4px;
+  .terminal-list {
+    display: flex;
 
-&#x20;   color: rgba(255, 255, 255, 0.3);
+    flex-direction: column;
 
-&#x20;   background:
-&#x20;     rgba(255, 255, 255, 0.025);
-&#x20; }
+    gap: 5px;
 
-&#x20; @keyframes terminalPulse {
-&#x20;   0%,
-&#x20;   100% {
-&#x20;     opacity: 0.55;
-&#x20;   }
+    margin-top: 8px;
+  }
 
-&#x20;   50% {
-&#x20;     opacity: 1;
-&#x20;   }
-&#x20; }
+  .terminal-list div {
+    color: rgba(255, 255, 255, 0.42);
+  }
 
-&#x20; /\* ============================================================= \*/
-&#x20; /\* TALK BUTTON \*/
-&#x20; /\* ============================================================= \*/
+  .terminal-list span {
+    display: inline-block;
 
-&#x20; .talk-button {
-&#x20;   color: #bbf7d0;
+    min-width: 25px;
 
-&#x20;   border: 1px solid rgba(74, 222, 128, 0.25);
+    color: rgba(134, 239, 172, 0.55);
+  }
 
-&#x20;   background:
-&#x20;     linear-gradient(
-&#x20;       135deg,
-&#x20;       rgba(74, 222, 128, 0.13),
-&#x20;       rgba(74, 222, 128, 0.035)
-&#x20;     );
+  .terminal-status-row {
+    display: flex;
 
-&#x20;   box-shadow:
-&#x20;     0 0 25px rgba(74, 222, 128, 0.07),
-&#x20;     inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    align-items: center;
 
-&#x20;   transition:
-&#x20;     transform 300ms ease,
-&#x20;     border-color 300ms ease,
-&#x20;     background 300ms ease,
-&#x20;     box-shadow 300ms ease;
-&#x20; }
+    gap: 8px;
 
-&#x20; .talk-button\:hover {
-&#x20;   transform: translateY(-3px);
+    margin-top: 5px;
 
-&#x20;   border-color: rgba(74, 222, 128, 0.55);
+    color: rgba(255, 255, 255, 0.4);
+  }
 
-&#x20;   background:
-&#x20;     linear-gradient(
-&#x20;       135deg,
-&#x20;       rgba(74, 222, 128, 0.2),
-&#x20;       rgba(74, 222, 128, 0.06)
-&#x20;     );
+  .terminal-live-dot {
+    display: inline-block;
 
-&#x20;   box-shadow:
-&#x20;     0 0 15px rgba(74, 222, 128, 0.16),
-&#x20;     0 0 45px rgba(74, 222, 128, 0.08);
-&#x20; }
+    width: 5px;
+    height: 5px;
 
-&#x20; /\* ============================================================= \*/
-&#x20; /\* MOBILE \*/
-&#x20; /\* ============================================================= \*/
+    flex-shrink: 0;
 
-&#x20; @media (max-width: 640px) {
+    border-radius: 999px;
 
-&#x20;   .liquid-scene {
-&#x20;     gap: 7px;
+    background: #4ade80;
 
-&#x20;     padding: 7vh 4vw;
+    box-shadow:
+      0 0 8px rgba(74, 222, 128, 0.65);
+  }
 
-&#x20;     opacity: 0.42;
+  .terminal-input-row {
+    position: relative;
 
-&#x20;     mask-image:
-&#x20;       radial-gradient(
-&#x20;         ellipse 105% 75% at 50% 40%,
-&#x20;         black 25%,
-&#x20;         transparent 88%
-&#x20;       );
+    z-index: 2;
 
-&#x20;     -webkit-mask-image:
-&#x20;       radial-gradient(
-&#x20;         ellipse 105% 75% at 50% 40%,
-&#x20;         black 25%,
-&#x20;         transparent 88%
-&#x20;       );
-&#x20;   }
+    display: flex;
 
-&#x20;   .liquid-capsule {
-&#x20;     width: clamp(31px, 9vw, 52px);
+    align-items: center;
 
-&#x20;     flex-basis: clamp(31px, 9vw, 52px);
-&#x20;   }
+    gap: 8px;
 
-&#x20;   .liquid-capsule\:nth-child(2),
-&#x20;   .liquid-capsule\:nth-child(6) {
-&#x20;     display: none;
-&#x20;   }
+    margin-top: 14px;
+  }
 
-&#x20;   .hero-ambient {
-&#x20;     width: 120vw;
+  .terminal-prompt-main {
+    display: inline-flex;
 
-&#x20;     height: 58vh;
+    align-items: baseline;
 
-&#x20;     filter: blur(45px);
-&#x20;   }
+    flex-shrink: 0;
 
-&#x20;   .hero-grid {
-&#x20;     background-size: 34px 34px;
-&#x20;   }
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
 
-&#x20;   .section-block {
-&#x20;     padding-top: 4.5rem;
-&#x20;     padding-bottom: 4.5rem;
-&#x20;   }
+    white-space: nowrap;
+  }
 
-&#x20;   .section-title {
-&#x20;     font-size: 2rem;
-&#x20;   }
+  .terminal-user {
+    color: #86efac;
+  }
 
-&#x20;   .section-description {
-&#x20;     font-size: 0.95rem;
-&#x20;   }
+  .terminal-at {
+    color: rgba(255, 255, 255, 0.2);
+  }
 
-&#x20;   .glitch-card\:hover {
-&#x20;     transform: none;
-&#x20;   }
+  .terminal-host {
+    color: rgba(255, 255, 255, 0.45);
+  }
 
-&#x20;   .note-card {
-&#x20;     min-height: 205px;
+  .terminal-colon,
+  .terminal-path {
+    color: rgba(255, 255, 255, 0.25);
+  }
 
-&#x20;     padding: 20px;
-&#x20;   }
+  .terminal-symbol {
+    margin-left: 5px;
 
-&#x20;   .note-number {
-&#x20;     margin-bottom: 2rem;
-&#x20;   }
+    color: rgba(134, 239, 172, 0.7);
+  }
 
-&#x20;   .shiny-sec {
-&#x20;     white-space: normal;
-&#x20;   }
+  .terminal-input {
+    min-width: 0;
 
-&#x20;   /\* Terminal mobile \*/
+    width: 100%;
 
-&#x20;   .terminal-body {
-&#x20;     min-height: 390px;
+    padding: 0;
 
-&#x20;     padding: 18px;
+    border: 0;
 
-&#x20;     font-size: 11px;
-&#x20;   }
+    outline: 0;
 
-&#x20;   .terminal-header-status {
-&#x20;     display: none;
-&#x20;   }
+    background: transparent;
 
-&#x20;   .terminal-title {
-&#x20;     font-size: 9px;
-&#x20;   }
+    color: rgba(255, 255, 255, 0.82);
 
-&#x20;   .terminal-command-grid {
-&#x20;     grid-template-columns: 1fr;
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
 
-&#x20;     gap: 6px;
-&#x20;   }
+    font-size: 12px;
 
-&#x20;   .terminal-response {
-&#x20;     margin-left: 0;
-&#x20;   }
+    caret-color: #4ade80;
+  }
 
-&#x20;   .terminal-input-row {
-&#x20;     align-items: flex-start;
+  .terminal-input::placeholder {
+    color: rgba(255, 255, 255, 0.13);
+  }
 
-&#x20;     flex-direction: column;
+  .terminal-input:focus {
+    outline: none;
+  }
 
-&#x20;     gap: 4px;
-&#x20;   }
+  .terminal-footer {
+    display: flex;
 
-&#x20;   .terminal-input {
-&#x20;     width: 100%;
+    align-items: center;
 
-&#x20;     padding-left: 0;
-&#x20;   }
+    gap: 18px;
 
-&#x20;   .terminal-footer {
-&#x20;     gap: 8px;
+    min-height: 38px;
 
-&#x20;     padding: 0 12px;
+    padding:
+      0
+      18px;
 
-&#x20;     font-size: 8px;
-&#x20;   }
+    border-top: 1px solid rgba(255, 255, 255, 0.055);
 
-&#x20;   .terminal-footer-right {
-&#x20;     display: none;
-&#x20;   }
-&#x20; }
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
 
-&#x20; /\* ============================================================= \*/
-&#x20; /\* REDUCED MOTION \*/
-&#x20; /\* ============================================================= \*/
+    font-size: 9px;
 
-&#x20; @media (prefers-reduced-motion: reduce) {
+    text-transform: uppercase;
 
-&#x20;   .shiny-sec,
-&#x20;   .glitch-glow,
-&#x20;   .liquid-scene,
-&#x20;   .liquid-capsule,
-&#x20;   .terminal-header-status span {
-&#x20;     animation: none;
-&#x20;   }
+    letter-spacing: 0.1em;
 
-&#x20;   .social-link,
-&#x20;   .primary-button,
-&#x20;   .note-card,
-&#x20;   .note-arrow,
-&#x20;   .talk-button,
-&#x20;   .glitch-card,
-&#x20;   .terminal-shell {
-&#x20;     transition: none;
-&#x20;   }
-&#x20; }
+    color: rgba(255, 255, 255, 0.18);
 
-\</style>
+    background:
+      rgba(255, 255, 255, 0.012);
+  }
+
+  .terminal-footer-right {
+    margin-left: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+  }
+
+  .terminal-key {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 18px;
+    height: 17px;
+
+    margin-right: 3px;
+
+    padding: 0 4px;
+
+    border:
+      1px solid
+      rgba(255, 255, 255, 0.08);
+
+    border-radius: 4px;
+
+    color: rgba(255, 255, 255, 0.3);
+
+    background:
+      rgba(255, 255, 255, 0.025);
+  }
+
+  @keyframes terminalPulse {
+    0%,
+    100% {
+      opacity: 0.55;
+    }
+
+    50% {
+      opacity: 1;
+    }
+  }
+
+  /* ============================================================= */
+  /* TALK BUTTON */
+  /* ============================================================= */
+
+  .talk-button {
+    color: #bbf7d0;
+
+    border: 1px solid rgba(74, 222, 128, 0.25);
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(74, 222, 128, 0.13),
+        rgba(74, 222, 128, 0.035)
+      );
+
+    box-shadow:
+      0 0 25px rgba(74, 222, 128, 0.07),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+    transition:
+      transform 300ms ease,
+      border-color 300ms ease,
+      background 300ms ease,
+      box-shadow 300ms ease;
+  }
+
+  .talk-button:hover {
+    transform: translateY(-3px);
+
+    border-color: rgba(74, 222, 128, 0.55);
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(74, 222, 128, 0.2),
+        rgba(74, 222, 128, 0.06)
+      );
+
+    box-shadow:
+      0 0 15px rgba(74, 222, 128, 0.16),
+      0 0 45px rgba(74, 222, 128, 0.08);
+  }
+
+  /* ============================================================= */
+  /* MOBILE */
+  /* ============================================================= */
+
+  @media (max-width: 640px) {
+
+    .liquid-scene {
+      gap: 7px;
+
+      padding: 7vh 4vw;
+
+      opacity: 0.42;
+
+      mask-image:
+        radial-gradient(
+          ellipse 105% 75% at 50% 40%,
+          black 25%,
+          transparent 88%
+        );
+
+      -webkit-mask-image:
+        radial-gradient(
+          ellipse 105% 75% at 50% 40%,
+          black 25%,
+          transparent 88%
+        );
+    }
+
+    .liquid-capsule {
+      width: clamp(31px, 9vw, 52px);
+
+      flex-basis: clamp(31px, 9vw, 52px);
+    }
+
+    .liquid-capsule:nth-child(2),
+    .liquid-capsule:nth-child(6) {
+      display: none;
+    }
+
+    .hero-ambient {
+      width: 120vw;
+
+      height: 58vh;
+
+      filter: blur(45px);
+    }
+
+    .hero-grid {
+      background-size: 34px 34px;
+    }
+
+    .section-block {
+      padding-top: 4.5rem;
+      padding-bottom: 4.5rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .section-description {
+      font-size: 0.95rem;
+    }
+
+    .glitch-card:hover {
+      transform: none;
+    }
+
+    .note-card {
+      min-height: 205px;
+
+      padding: 20px;
+    }
+
+    .note-number {
+      margin-bottom: 2rem;
+    }
+
+    .shiny-sec {
+      white-space: normal;
+    }
+
+    /* Terminal mobile */
+
+    .terminal-body {
+      min-height: 390px;
+
+      padding: 18px;
+
+      font-size: 11px;
+    }
+
+    .terminal-header-status {
+      display: none;
+    }
+
+    .terminal-title {
+      font-size: 9px;
+    }
+
+    .terminal-command-grid {
+      grid-template-columns: 1fr;
+
+      gap: 6px;
+    }
+
+    .terminal-response {
+      margin-left: 0;
+    }
+
+    .terminal-input-row {
+      align-items: flex-start;
+
+      flex-direction: column;
+
+      gap: 4px;
+    }
+
+    .terminal-input {
+      width: 100%;
+
+      padding-left: 0;
+    }
+
+    .terminal-footer {
+      gap: 8px;
+
+      padding: 0 12px;
+
+      font-size: 8px;
+    }
+
+    .terminal-footer-right {
+      display: none;
+    }
+  }
+
+  /* ============================================================= */
+  /* REDUCED MOTION */
+  /* ============================================================= */
+
+  @media (prefers-reduced-motion: reduce) {
+
+    .shiny-sec,
+    .glitch-glow,
+    .liquid-scene,
+    .liquid-capsule,
+    .terminal-header-status span {
+      animation: none;
+    }
+
+    .social-link,
+    .primary-button,
+    .note-card,
+    .note-arrow,
+    .talk-button,
+    .glitch-card,
+    .terminal-shell {
+      transition: none;
+    }
+  }
+
+</style>
