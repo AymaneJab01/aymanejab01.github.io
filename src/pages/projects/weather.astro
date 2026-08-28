@@ -2568,7 +2568,7 @@ import Layout from "../../layouts/Layout.astro";
 <!-- STYLES -->
 <!-- ============================================================= -->
 
-<style>
+<style is:global>
   /* ============================================================ */
   /* VARIABLES */
   /* ============================================================ */
@@ -3197,7 +3197,7 @@ import Layout from "../../layouts/Layout.astro";
   /* WEATHER ICON SYSTEM */
   /* ============================================================ */
 
-  :global(.weather-icon-svg) {
+  .weather-icon-svg {
     display: block;
     width: 34px !important;
     height: 34px !important;
@@ -3210,31 +3210,31 @@ import Layout from "../../layouts/Layout.astro";
     overflow: visible;
   }
 
-  :global(.icon-sun) {
+  .icon-sun {
     color: #f2ad00;
   }
 
-  :global(.icon-partly) {
+  .icon-partly {
     color: #a8bdc9;
   }
 
-  :global(.icon-cloud) {
+  .icon-cloud {
     color: #9eb5c2;
   }
 
-  :global(.icon-night) {
+  .icon-night {
     color: #9eb5c2;
   }
 
-  :global(.icon-rain) {
+  .icon-rain {
     color: #6da5c4;
   }
 
-  :global(.icon-snow) {
+  .icon-snow {
     color: #8fb4c8;
   }
 
-  :global(.icon-storm) {
+  .icon-storm {
     color: #738fa7;
   }
 
@@ -3250,7 +3250,7 @@ import Layout from "../../layouts/Layout.astro";
     overflow: visible;
   }
 
-  :global(.hero-icon .weather-icon-svg) {
+  .hero-icon .weather-icon-svg {
     width: 58px !important;
     height: 58px !important;
     min-width: 58px;
@@ -3260,13 +3260,13 @@ import Layout from "../../layouts/Layout.astro";
     flex: 0 0 58px;
   }
 
-  :global(.hero-icon .icon-sun),
-  :global(.hero-icon .icon-partly),
-  :global(.hero-icon .icon-cloud),
-  :global(.hero-icon .icon-night),
-  :global(.hero-icon .icon-rain),
-  :global(.hero-icon .icon-snow),
-  :global(.hero-icon .icon-storm) {
+  .hero-icon .icon-sun,
+  .hero-icon .icon-partly,
+  .hero-icon .icon-cloud,
+  .hero-icon .icon-night,
+  .hero-icon .icon-rain,
+  .hero-icon .icon-snow,
+  .hero-icon .icon-storm {
     color: var(--white);
   }
 
@@ -3710,7 +3710,7 @@ import Layout from "../../layouts/Layout.astro";
 
   /* COMPACT HOURLY ICON — natural weather colours, no tinted circle */
 
-  :global(.hourly-condition-icon) {
+  .hourly-condition-icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3728,7 +3728,7 @@ import Layout from "../../layouts/Layout.astro";
     background: transparent;
   }
 
-  :global(.hourly-condition-icon .weather-icon-svg) {
+  .hourly-condition-icon .weather-icon-svg {
     width: 28px !important;
     height: 28px !important;
     min-width: 28px;
@@ -4017,7 +4017,7 @@ import Layout from "../../layouts/Layout.astro";
 
   /* FIXED 10-DAY ICON CONTAINER */
 
-  :global(.forecast-condition > i) {
+  .forecast-condition > i {
     display: flex;
 
     align-items: center;
@@ -4054,7 +4054,7 @@ import Layout from "../../layouts/Layout.astro";
   }
 
 
-  :global(.forecast-condition > i .weather-icon-svg) {
+  .forecast-condition > i .weather-icon-svg {
     width: 27px !important;
     height: 27px !important;
 
@@ -4778,7 +4778,7 @@ import Layout from "../../layouts/Layout.astro";
     }
 
 
-    :global(.hourly-condition-icon) {
+    .hourly-condition-icon {
       width: 26px;
       height: 26px;
       min-width: 26px;
@@ -4788,7 +4788,7 @@ import Layout from "../../layouts/Layout.astro";
       flex-basis: 26px;
     }
 
-    :global(.hourly-condition-icon .weather-icon-svg) {
+    .hourly-condition-icon .weather-icon-svg {
       width: 24px !important;
       height: 24px !important;
       min-width: 24px;
@@ -4824,7 +4824,7 @@ import Layout from "../../layouts/Layout.astro";
     }
 
 
-    :global(.forecast-condition > i) {
+    .forecast-condition > i {
       width: 38px;
       height: 38px;
 
@@ -4838,7 +4838,7 @@ import Layout from "../../layouts/Layout.astro";
     }
 
 
-    :global(.forecast-condition > i .weather-icon-svg) {
+    .forecast-condition > i .weather-icon-svg {
       width: 25px !important;
       height: 25px !important;
 
