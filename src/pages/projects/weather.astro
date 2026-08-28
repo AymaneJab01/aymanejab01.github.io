@@ -731,13 +731,13 @@ import Layout from "../../layouts/Layout.astro";
           <span class="forecast-condition"><i aria-hidden="true">${getWeatherIcon(code)}</i><span><strong>${getWeatherDescription(code)}</strong><small>${rain ? `${Math.round(rain)}% chance of rain` : "Dry conditions expected"}</small></span></span>
           <span class="forecast-rain"><strong>${Math.round(rain)}%</strong><small>${amount.toFixed(1)} mm</small></span>
           <span class="forecast-temperature"><strong>${Math.round(low)}\u00B0</strong><span class="temperature-track"><i style="left:${start}%; width:${width}%"></i></span><b>${Math.round(high)}\u00B0</b></span>
-          <span class="forecast-chevron" aria-hidden="true">ÃƒÆ’Ã‚Â¢Ãƒâ€¦Ã¢â‚¬â„¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾</span>
+          <span class="forecast-chevron" aria-hidden="true">&darr;</span>
         </button>
         <div class="forecast-details">
-          <span><small>Precipitation</small><strong>${amount.toFixed(1)} mm ÃƒÆ’Ã¢â‚¬Å¡&middot; ${daily.precipitation_hours[index] ?? 0}h</strong></span>
+          <span><small>Precipitation</small><strong>${amount.toFixed(1)} mm &middot; ${daily.precipitation_hours[index] ?? 0}h</strong></span>
           <span><small>Wind / gusts</small><strong>${Math.round(daily.wind_speed_10m_max[index] ?? 0)} / ${Math.round(daily.wind_gusts_10m_max[index] ?? 0)} km/h</strong></span>
-          <span><small>UV index</small><strong>${Math.round(daily.uv_index_max[index] ?? 0)} ÃƒÆ’Ã¢â‚¬Å¡&middot; ${uvLabel(daily.uv_index_max[index])}</strong></span>
-          <span><small>Daylight</small><strong>${daily.sunrise[index] ? formatTime(daily.sunrise[index]) : "--"} ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ ${daily.sunset[index] ? formatTime(daily.sunset[index]) : "--"}</strong></span>
+          <span><small>UV index</small><strong>${Math.round(daily.uv_index_max[index] ?? 0)} &middot; ${uvLabel(daily.uv_index_max[index])}</strong></span>
+          <span><small>Daylight</small><strong>${daily.sunrise[index] ? formatTime(daily.sunrise[index]) : "--"} &ndash; ${daily.sunset[index] ? formatTime(daily.sunset[index]) : "--"}</strong></span>
         </div>`;
       const summary = item.querySelector<HTMLButtonElement>(".forecast-summary");
       summary?.addEventListener("click", () => {
@@ -2008,7 +2008,7 @@ import Layout from "../../layouts/Layout.astro";
     color: var(--electric-blue);
     background: rgba(255,255,255,.4);
     box-shadow: inset 0 1px rgba(255,255,255,.9);
-    content: "✦";
+    content: "âœ¦";
   }
 
   .forecast-summary:hover,
@@ -2060,3 +2060,4 @@ import Layout from "../../layouts/Layout.astro";
   }
 
 </style>
+
