@@ -4621,8 +4621,8 @@ import Layout from "../../layouts/Layout.astro";
         none;
     }
   }
-  /* ============================================================ */
-/* WEATHER ICON */
+/* ============================================================ */
+/* WEATHER ICON — FIXED SIZES */
 /* ============================================================ */
 
 .weather-icon-svg {
@@ -4634,6 +4634,7 @@ import Layout from "../../layouts/Layout.astro";
   flex: 0 0 auto;
 }
 
+/* Hero icon */
 .hero-icon .weather-icon-svg {
   width: 52px;
   height: 52px;
@@ -4641,11 +4642,31 @@ import Layout from "../../layouts/Layout.astro";
   max-height: 52px;
 }
 
+/* Hourly icons */
+.hourly-condition-icon {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  min-height: 42px;
+  flex: 0 0 42px;
+  overflow: hidden;
+}
+
 .hourly-condition-icon .weather-icon-svg {
   width: 26px;
   height: 26px;
   max-width: 26px;
   max-height: 26px;
+}
+
+/* 10-day forecast icons */
+.forecast-condition > i {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  min-height: 42px;
+  flex: 0 0 42px;
+  overflow: hidden;
 }
 
 .forecast-condition > i .weather-icon-svg {
