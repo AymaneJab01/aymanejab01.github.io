@@ -102,7 +102,7 @@ import Layout from "../../layouts/Layout.astro";
             <circle cx="6" cy="6" r="2" stroke="currentColor" stroke-width="1"/>
           </svg>
           <span id="meta-location">Alcoi, Alicante, Spain</span>
-          <span class="meta-divider">Ã‚Â·</span>
+          <span class="meta-divider">&middot;</span>
           <span>As of <span id="meta-time">--</span></span>
         </p>
 
@@ -118,12 +118,12 @@ import Layout from "../../layouts/Layout.astro";
             <div class="hero-temp-block">
               <div class="hero-temp-row">
                 <span id="hero-temp" class="hero-temp">--</span>
-                <span class="hero-unit">Ã‚Â°</span>
+                <span class="hero-unit">&deg;</span>
               </div>
             </div>
 
             <div class="hero-condition">
-              <div class="hero-icon" id="hero-icon" aria-hidden="true">Ã¢â‚¬â€</div>
+              <div class="hero-icon" id="hero-icon" aria-hidden="true">--</div>
               <p id="hero-description" class="hero-description">
                 Loading weather...
               </p>
@@ -346,7 +346,7 @@ import Layout from "../../layouts/Layout.astro";
             href="/#projects"
             class="back-link"
           >
-            <span>Ã¢â€ Â</span>
+            <span aria-hidden="true">&larr;</span>
             <span>Back to projects</span>
           </a>
         </div>
@@ -474,15 +474,14 @@ import Layout from "../../layouts/Layout.astro";
   /* ============================================================ */
 
   function getWeatherIcon(code: number): string {
-    if (code === 0) return "Ã¢Ëœâ‚¬";
-    if (code <= 3) return "Ã¢â€”Â";
-    if (code <= 48) return "Ã¢â€°â€¹";
-    if (code <= 67) return "Ã¢Ë†Â¿";
-    if (code <= 77) return "Ã¢Ââ€ž";
-    if (code <= 86) return "Ã¢â€”â€™";
-    return "ÃÅ¸";
+    if (code === 0) return "\\u2600";
+    if (code <= 3) return "\\u26C5";
+    if (code <= 48) return "\\u2248";
+    if (code <= 67) return "\\u2602";
+    if (code <= 77) return "\\u2744";
+    if (code <= 86) return "\\u2601";
+    return "\\u26A1";
   }
-
 
   /* ============================================================ */
   /* API URL */
@@ -619,15 +618,15 @@ import Layout from "../../layouts/Layout.astro";
     }
 
     if (heroFeels) {
-      heroFeels.textContent = `${Math.round(current.apparent_temperature)}Ã‚Â°`;
+      heroFeels.textContent = `${Math.round(current.apparent_temperature)}\u00B0`;
     }
 
     if (heroHigh && high !== undefined) {
-      heroHigh.textContent = `${Math.round(high)}Ã‚Â°`;
+      heroHigh.textContent = `${Math.round(high)}\u00B0`;
     }
 
     if (heroLow && low !== undefined) {
-      heroLow.textContent = `${Math.round(low)}Ã‚Â°`;
+      heroLow.textContent = `${Math.round(low)}\u00B0`;
     }
 
     if (heroRain) {
@@ -646,7 +645,7 @@ import Layout from "../../layouts/Layout.astro";
           : "";
 
       outlookText.textContent =
-        `Expect ${description} in ${city} today, with a high near ${Math.round(high)}Ã‚Â° and a low around ${Math.round(low)}Ã‚Â°.${rainText}`;
+        `Expect ${description} in ${city} today, with a high near ${Math.round(high)}\u00B0 and a low around ${Math.round(low)}\u00B0.${rainText}`;
     }
   }
 
@@ -693,7 +692,7 @@ import Layout from "../../layouts/Layout.astro";
 
       const tempLabel = document.createElement("span");
       tempLabel.className = "hourly-temp";
-      tempLabel.textContent = `${Math.round(temp)}Ã‚Â°`;
+      tempLabel.textContent = `${Math.round(temp)}\u00B0`;
 
       item.append(label, icon, rainLabel, tempLabel);
       hourlyStrip.appendChild(item);
@@ -731,14 +730,14 @@ import Layout from "../../layouts/Layout.astro";
           <span class="forecast-date"><strong>${index === 0 ? "Today" : formatDay(date)}</strong><small>${formatShortDate(date)}</small></span>
           <span class="forecast-condition"><i aria-hidden="true">${getWeatherIcon(code)}</i><span><strong>${getWeatherDescription(code)}</strong><small>${rain ? `${Math.round(rain)}% chance of rain` : "Dry conditions expected"}</small></span></span>
           <span class="forecast-rain"><strong>${Math.round(rain)}%</strong><small>${amount.toFixed(1)} mm</small></span>
-          <span class="forecast-temperature"><strong>${Math.round(low)}Â°</strong><span class="temperature-track"><i style="left:${start}%; width:${width}%"></i></span><b>${Math.round(high)}Â°</b></span>
-          <span class="forecast-chevron" aria-hidden="true">âŒ„</span>
+          <span class="forecast-temperature"><strong>${Math.round(low)}\u00B0</strong><span class="temperature-track"><i style="left:${start}%; width:${width}%"></i></span><b>${Math.round(high)}\u00B0</b></span>
+          <span class="forecast-chevron" aria-hidden="true">ÃƒÆ’Ã‚Â¢Ãƒâ€¦Ã¢â‚¬â„¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾</span>
         </button>
         <div class="forecast-details">
-          <span><small>Precipitation</small><strong>${amount.toFixed(1)} mm Â· ${daily.precipitation_hours[index] ?? 0}h</strong></span>
+          <span><small>Precipitation</small><strong>${amount.toFixed(1)} mm ÃƒÆ’Ã¢â‚¬Å¡&middot; ${daily.precipitation_hours[index] ?? 0}h</strong></span>
           <span><small>Wind / gusts</small><strong>${Math.round(daily.wind_speed_10m_max[index] ?? 0)} / ${Math.round(daily.wind_gusts_10m_max[index] ?? 0)} km/h</strong></span>
-          <span><small>UV index</small><strong>${Math.round(daily.uv_index_max[index] ?? 0)} Â· ${uvLabel(daily.uv_index_max[index])}</strong></span>
-          <span><small>Daylight</small><strong>${daily.sunrise[index] ? formatTime(daily.sunrise[index]) : "--"} â€“ ${daily.sunset[index] ? formatTime(daily.sunset[index]) : "--"}</strong></span>
+          <span><small>UV index</small><strong>${Math.round(daily.uv_index_max[index] ?? 0)} ÃƒÆ’Ã¢â‚¬Å¡&middot; ${uvLabel(daily.uv_index_max[index])}</strong></span>
+          <span><small>Daylight</small><strong>${daily.sunrise[index] ? formatTime(daily.sunrise[index]) : "--"} ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ ${daily.sunset[index] ? formatTime(daily.sunset[index]) : "--"}</strong></span>
         </div>`;
       const summary = item.querySelector<HTMLButtonElement>(".forecast-summary");
       summary?.addEventListener("click", () => {
@@ -1915,5 +1914,149 @@ import Layout from "../../layouts/Layout.astro";
     }
   }
 
-</style>
 
+  /* Glass / liquid visual system */
+  .weather-page {
+    --glass: rgba(255, 255, 255, 0.54);
+    --glass-strong: rgba(255, 255, 255, 0.7);
+    --glass-line: rgba(255, 255, 255, 0.74);
+    --glass-shadow: 0 24px 60px rgba(29, 77, 130, 0.14);
+    background:
+      radial-gradient(circle at 8% 12%, rgba(130, 214, 255, 0.48), transparent 28%),
+      radial-gradient(circle at 92% 18%, rgba(160, 181, 255, 0.34), transparent 32%),
+      radial-gradient(circle at 48% 92%, rgba(117, 232, 221, 0.25), transparent 36%),
+      linear-gradient(145deg, #e9f7ff 0%, #e9efff 49%, #f8f7ff 100%);
+  }
+
+  .weather-atmosphere {
+    background:
+      radial-gradient(circle at 20% 0%, rgba(255,255,255,.76), transparent 26%),
+      radial-gradient(circle at 83% 25%, rgba(255,255,255,.45), transparent 24%);
+    animation: liquid-drift 16s ease-in-out infinite alternate;
+  }
+
+  .top-bar,
+  .hourly-strip,
+  .forecast-container,
+  .documentation-grid,
+  .api-box,
+  .technology-list span,
+  .outlook-section {
+    border-color: var(--glass-line);
+    background: var(--glass);
+    box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,.88);
+    backdrop-filter: blur(22px) saturate(145%);
+    -webkit-backdrop-filter: blur(22px) saturate(145%);
+  }
+
+  .top-bar { background: rgba(255,255,255,.58); }
+  .location-menu { border-color: var(--glass-line); background: rgba(250,253,255,.86); backdrop-filter: blur(20px); }
+
+  .hero {
+    isolation: isolate;
+    border: 1px solid rgba(255,255,255,.58);
+    background:
+      radial-gradient(circle at 20% 15%, rgba(255,255,255,.42), transparent 25%),
+      linear-gradient(132deg, rgba(19,65,162,.94), rgba(12,132,237,.88) 55%, rgba(85,184,255,.84));
+    box-shadow: 0 30px 75px rgba(17, 87, 177, .3), inset 0 1px rgba(255,255,255,.55);
+  }
+
+  .hero::before,
+  .hero::after {
+    position: absolute;
+    z-index: -1;
+    content: "";
+    border-radius: 50%;
+    filter: blur(2px);
+    pointer-events: none;
+  }
+
+  .hero::before {
+    width: 340px;
+    height: 340px;
+    right: -88px;
+    bottom: -205px;
+    background: rgba(255,255,255,.2);
+    animation: liquid-float 9s ease-in-out infinite;
+  }
+
+  .hero::after {
+    width: 160px;
+    height: 160px;
+    top: -85px;
+    left: 45%;
+    background: rgba(174,234,255,.25);
+    animation: liquid-float 12s ease-in-out -4s infinite reverse;
+  }
+
+  .outlook-section {
+    display: grid;
+    grid-template-columns: 46px 1fr;
+    gap: 16px;
+    padding: 21px 24px;
+    border: 1px solid var(--glass-line);
+    border-radius: 22px;
+  }
+
+  .outlook-section::before {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 1px solid rgba(255,255,255,.88);
+    border-radius: 14px;
+    color: var(--electric-blue);
+    background: rgba(255,255,255,.4);
+    box-shadow: inset 0 1px rgba(255,255,255,.9);
+    content: "✦";
+  }
+
+  .forecast-summary:hover,
+  .forecast-item.is-open .forecast-summary {
+    background: linear-gradient(100deg, rgba(255,255,255,.65), rgba(226,243,255,.28));
+  }
+
+  .forecast-condition > i,
+  .hourly-item.now {
+    border-color: rgba(255,255,255,.85);
+    background: rgba(255,255,255,.36);
+    box-shadow: inset 0 1px rgba(255,255,255,.9);
+  }
+
+  .forecast-item,
+  .hourly-item,
+  .documentation-card,
+  .api-box {
+    transition: transform .28s ease, box-shadow .28s ease, background .28s ease;
+  }
+
+  .forecast-item:hover,
+  .hourly-item:hover,
+  .documentation-card:hover,
+  .api-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 36px rgba(28,82,140,.13), inset 0 1px rgba(255,255,255,.9);
+  }
+
+  @keyframes liquid-drift {
+    from { transform: translate3d(-1%, -1%, 0) scale(1); }
+    to { transform: translate3d(1%, 2%, 0) scale(1.04); }
+  }
+
+  @keyframes liquid-float {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(-18px, -22px, 0) scale(1.08); }
+  }
+
+  @media (max-width: 650px) {
+    .outlook-section { grid-template-columns: 38px 1fr; padding: 18px; }
+    .outlook-section::before { width: 36px; height: 36px; border-radius:12px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .weather-atmosphere,
+    .hero::before,
+    .hero::after { animation: none; }
+  }
+
+</style>
