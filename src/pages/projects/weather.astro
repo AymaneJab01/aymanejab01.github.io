@@ -555,6 +555,7 @@ import Layout from "../../layouts/Layout.astro";
     apparent_temperature: number;
     weather_code: number;
     wind_speed_10m: number;
+    is_day?: number;
     precipitation?: number;
     rain?: number;
     showers?: number;
@@ -586,6 +587,7 @@ import Layout from "../../layouts/Layout.astro";
     relative_humidity_2m: number[];
     wind_speed_10m: number[];
     wind_direction_10m: number[];
+    is_day?: number[];
   }
 
   interface WeatherResponse {
@@ -668,20 +670,25 @@ import Layout from "../../layouts/Layout.astro";
   /* WEATHER ICON */
   /* ============================================================ */
 
-  function getWeatherIcon(code: number): string {
+  function getWeatherIcon(code: number, isDay = true): string {
     const common =
-      'class="weather-icon-svg" viewBox="0 0 48 48" fill="none" aria-hidden="true"';
+      'viewBox="0 0 48 48" fill="none" aria-hidden="true"';
 
     if (code === 0) {
+      if (!isDay) {
+        return `
+          <svg ${common} class="weather-icon-svg icon-night">
+            <path
+              d="M31.5 7.5a15 15 0 1 0 9 27.8A16 16 0 0 1 31.5 7.5Z"
+              fill="currentColor"
+            />
+          </svg>
+        `;
+      }
+
       return `
-        <svg ${common}>
-          <circle
-            cx="24"
-            cy="24"
-            r="8"
-            stroke="currentColor"
-            stroke-width="3"
-          />
+        <svg ${common} class="weather-icon-svg icon-sun">
+          <circle cx="24" cy="24" r="8" fill="currentColor" />
           <path
             d="M24 4v6m0 28v6M4 24h6m28 0h6M10 10l4 4m20 20 4 4m0-28-4 4M14 34l-4 4"
             stroke="currentColor"
@@ -693,46 +700,40 @@ import Layout from "../../layouts/Layout.astro";
     }
 
     if (code === 1 || code === 2) {
+      const sun = isDay
+        ? `
+            <circle cx="17" cy="16" r="6.5" fill="currentColor" />
+            <path
+              d="M17 5v3m0 16v3M6 16h3m16 0h3M9.2 8.2l2.2 2.2m11.2 11.2 2.2 2.2m0-15.4-2.2 2.2M11.4 27.4l-2.2 2.2"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          `
+        : `
+            <path
+              d="M19.5 8.5a11.5 11.5 0 1 0 7.2 20.9A13 13 0 0 1 19.5 8.5Z"
+              fill="currentColor"
+            />
+          `;
+
       return `
-        <svg ${common}>
-          <circle
-            cx="17"
-            cy="16"
-            r="6"
-            stroke="currentColor"
-            stroke-width="3"
-          />
+        <svg ${common} class="weather-icon-svg icon-partly">
+          ${sun}
           <path
-            d="M14 35h22a7 7 0 0 0 0-14 10 10 0 0 0-19-2A8 8 0 0 0 14 35Z"
-            stroke="currentColor"
-            stroke-width="3"
-            stroke-linejoin="round"
+            d="M14 36h21a7 7 0 0 0 0-14 10 10 0 0 0-18.7-2.8A8.5 8.5 0 0 0 14 36Z"
+            fill="currentColor"
           />
         </svg>
       `;
     }
 
-    if (code === 3) {
+    if (code === 3 || code === 45 || code === 48) {
       return `
-        <svg ${common}>
+        <svg ${common} class="weather-icon-svg icon-cloud">
           <path
-            d="M10 17h28M7 24h34M11 31h26"
-            stroke="currentColor"
-            stroke-width="3"
-            stroke-linecap="round"
-          />
-        </svg>
-      `;
-    }
-
-    if (code === 45 || code === 48) {
-      return `
-        <svg ${common}>
-          <path
-            d="M8 17h32M5 24h28M10 31h30"
-            stroke="currentColor"
-            stroke-width="3"
-            stroke-linecap="round"
+            d="M11 35h25a7.5 7.5 0 0 0 0-15 10.5 10.5 0 0 0-20.2-2.4A8.5 8.5 0 0 0 11 35Z"
+            fill="currentColor"
           />
         </svg>
       `;
@@ -743,17 +744,15 @@ import Layout from "../../layouts/Layout.astro";
       (code >= 80 && code <= 82)
     ) {
       return `
-        <svg ${common}>
+        <svg ${common} class="weather-icon-svg icon-rain">
           <path
-            d="M12 27h24a7 7 0 0 0 0-14 10 10 0 0 0-19-2A8 8 0 0 0 12 27Z"
-            stroke="currentColor"
-            stroke-width="3"
-            stroke-linejoin="round"
+            d="M11 27h25a7.5 7.5 0 0 0 0-15 10.5 10.5 0 0 0-20.2-2.4A8.5 8.5 0 0 0 11 27Z"
+            fill="currentColor"
           />
           <path
-            d="m16 34-2 6m11-6-2 6m10-6-2 6"
+            d="M15 33l-2 6m10-6-2 6m10-6-2 6"
             stroke="currentColor"
-            stroke-width="3"
+            stroke-width="2.5"
             stroke-linecap="round"
           />
         </svg>
@@ -765,52 +764,36 @@ import Layout from "../../layouts/Layout.astro";
       (code >= 85 && code <= 86)
     ) {
       return `
-        <svg ${common}>
+        <svg ${common} class="weather-icon-svg icon-snow">
           <path
-            d="M12 27h24a7 7 0 0 0 0-14 10 10 0 0 0-19-2A8 8 0 0 0 12 27Z"
-            stroke="currentColor"
-            stroke-width="3"
-            stroke-linejoin="round"
+            d="M11 27h25a7.5 7.5 0 0 0 0-15 10.5 10.5 0 0 0-20.2-2.4A8.5 8.5 0 0 0 11 27Z"
+            fill="currentColor"
           />
-          <path
-            d="M17 34v5m8-5v5m8-5v5"
-            stroke="currentColor"
-            stroke-width="3"
-            stroke-linecap="round"
-          />
+          <circle cx="15" cy="36" r="2" fill="currentColor" />
+          <circle cx="24" cy="36" r="2" fill="currentColor" />
+          <circle cx="33" cy="36" r="2" fill="currentColor" />
         </svg>
       `;
     }
 
     if (code >= 95) {
       return `
-        <svg ${common}>
+        <svg ${common} class="weather-icon-svg icon-storm">
           <path
-            d="M12 27h24a7 7 0 0 0 0-14 10 10 0 0 0-19-2A8 8 0 0 0 12 27Z"
-            stroke="currentColor"
-            stroke-width="3"
-            stroke-linejoin="round"
+            d="M11 27h25a7.5 7.5 0 0 0 0-15 10.5 10.5 0 0 0-20.2-2.4A8.5 8.5 0 0 0 11 27Z"
+            fill="currentColor"
           />
           <path
-            d="m26 28-5 9h6l-4 8"
-            stroke="currentColor"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            d="m25 27-7 11h7l-3 7 10-13h-7l4-5Z"
+            fill="currentColor"
           />
         </svg>
       `;
     }
 
     return `
-      <svg ${common}>
-        <circle
-          cx="24"
-          cy="24"
-          r="8"
-          stroke="currentColor"
-          stroke-width="3"
-        />
+      <svg ${common} class="weather-icon-svg icon-cloud">
+        <circle cx="24" cy="24" r="9" fill="currentColor" />
       </svg>
     `;
   }
@@ -858,10 +841,10 @@ import Layout from "../../layouts/Layout.astro";
       longitude,
 
       current:
-        "temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,precipitation,rain,showers,snowfall",
+        "temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,is_day,precipitation,rain,showers,snowfall",
 
       hourly:
-        "temperature_2m,weather_code,precipitation,precipitation_probability,relative_humidity_2m,wind_speed_10m,wind_direction_10m",
+        "temperature_2m,weather_code,precipitation,precipitation_probability,relative_humidity_2m,wind_speed_10m,wind_direction_10m,is_day",
 
       daily:
         "weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,precipitation_hours,wind_speed_10m_max,wind_gusts_10m_max,uv_index_max,sunrise,sunset",
@@ -1127,7 +1110,8 @@ import Layout from "../../layouts/Layout.astro";
     if (heroIcon) {
       heroIcon.innerHTML =
         getWeatherIcon(
-          current.weather_code
+          current.weather_code,
+          current.is_day !== 0
         );
     }
 
@@ -1213,12 +1197,22 @@ import Layout from "../../layouts/Layout.astro";
      */
     const currentTime = data.current.time;
 
-    let startIndex = hourly.time.findIndex(
-      (time) => time >= currentTime
-    );
+    /*
+     * Start at the current hourly observation, not the next hour.
+     * This keeps the first row aligned with Open-Meteo's current timestamp.
+     */
+    let startIndex = -1;
+
+    for (let index = hourly.time.length - 1; index >= 0; index -= 1) {
+      const time = hourly.time[index];
+      if (time !== undefined && time <= currentTime) {
+        startIndex = index;
+        break;
+      }
+    }
 
     if (startIndex === -1) {
-      startIndex = Math.max(0, hourly.time.length - 24);
+      startIndex = 0;
     }
 
     const endIndex = Math.min(
@@ -1273,11 +1267,25 @@ import Layout from "../../layouts/Layout.astro";
 
       const icon = document.createElement("span");
       icon.className = "hourly-condition-icon";
-      icon.innerHTML = getWeatherIcon(code);
+      icon.innerHTML = getWeatherIcon(
+        code,
+        hourly.is_day?.[index] !== 0
+      );
 
       const conditionText = document.createElement("span");
-      conditionText.textContent = getWeatherDescription(code);
+      conditionText.className = "hourly-condition-text";
 
+      const conditionName = document.createElement("strong");
+      conditionName.textContent = getWeatherDescription(code);
+
+      const probability = document.createElement("small");
+      probability.className = "hourly-probability";
+      probability.textContent =
+        precipitationProbability !== undefined
+          ? `${Math.round(precipitationProbability)}%`
+          : "";
+
+      conditionText.append(conditionName, probability);
       conditionCell.append(icon, conditionText);
 
       const temperatureCell = document.createElement("div");
@@ -1287,14 +1295,12 @@ import Layout from "../../layouts/Layout.astro";
       const precipitationCell = document.createElement("div");
       precipitationCell.className = "hourly-precip-cell";
       precipitationCell.textContent =
-        precipitationProbability !== undefined
-          ? `${Math.round(precipitationProbability)}%`
-          : precipitationAmount !== undefined
-            ? `${precipitationAmount.toFixed(1)} mm`
-            : "--";
+        precipitationAmount !== undefined
+          ? `${precipitationAmount.toFixed(1)} mm`
+          : "--";
       precipitationCell.title =
         precipitationProbability !== undefined
-          ? "Probability of precipitation"
+          ? `${Math.round(precipitationProbability)}% chance of precipitation`
           : "Precipitation amount";
 
       const humidityCell = document.createElement("div");
@@ -2699,7 +2705,7 @@ import Layout from "../../layouts/Layout.astro";
 
   .weather-wrapper {
     width: 100%;
-    max-width: 1150px;
+    max-width: 1080px;
 
     margin: 0 auto;
 
@@ -2960,7 +2966,8 @@ import Layout from "../../layouts/Layout.astro";
   .top-nav {
     display: flex;
 
-    gap: 22px;
+    gap: 18px;
+    align-items: center;
   }
 
 
@@ -3187,107 +3194,88 @@ import Layout from "../../layouts/Layout.astro";
 
 
   /* ============================================================ */
-  /* STABLE WEATHER ICON SYSTEM */
+  /* WEATHER ICON SYSTEM */
   /* ============================================================ */
 
   :global(.weather-icon-svg) {
     display: block;
-
-    width: 28px !important;
-    height: 28px !important;
-
-    min-width: 28px;
-    min-height: 28px;
-
-    max-width: 28px !important;
-    max-height: 28px !important;
-
-    flex: 0 0 28px;
-
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px;
+    min-height: 34px;
+    max-width: 34px !important;
+    max-height: 34px !important;
+    flex: 0 0 34px;
     box-sizing: border-box;
-
     overflow: visible;
   }
 
+  :global(.icon-sun) {
+    color: #f2ad00;
+  }
 
-  /* HERO ICON */
+  :global(.icon-partly) {
+    color: #a8bdc9;
+  }
+
+  :global(.icon-cloud) {
+    color: #9eb5c2;
+  }
+
+  :global(.icon-night) {
+    color: #9eb5c2;
+  }
+
+  :global(.icon-rain) {
+    color: #6da5c4;
+  }
+
+  :global(.icon-snow) {
+    color: #8fb4c8;
+  }
+
+  :global(.icon-storm) {
+    color: #738fa7;
+  }
 
   .hero-icon {
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     width: 64px;
     height: 64px;
-
     min-width: 64px;
     min-height: 64px;
-
-    color:
-      var(--white);
-
-    overflow: hidden;
+    color: var(--white);
+    overflow: visible;
   }
-
 
   :global(.hero-icon .weather-icon-svg) {
-    width: 52px !important;
-    height: 52px !important;
-
-    min-width: 52px;
-    min-height: 52px;
-
-    max-width: 52px !important;
-    max-height: 52px !important;
-
-    flex: 0 0 52px;
+    width: 58px !important;
+    height: 58px !important;
+    min-width: 58px;
+    min-height: 58px;
+    max-width: 58px !important;
+    max-height: 58px !important;
+    flex: 0 0 58px;
   }
 
+  :global(.hero-icon .icon-sun),
+  :global(.hero-icon .icon-partly),
+  :global(.hero-icon .icon-cloud),
+  :global(.hero-icon .icon-night),
+  :global(.hero-icon .icon-rain),
+  :global(.hero-icon .icon-snow),
+  :global(.hero-icon .icon-storm) {
+    color: var(--white);
+  }
 
   .hero-description {
     max-width: 220px;
-
     margin: 0;
-
-    color:
-      var(--white);
-
+    color: var(--white);
     font-size: 18px;
-
     font-weight: 600;
-  }
-
-
-  .hero-stats-row {
-    display: flex;
-
-    flex-wrap: wrap;
-
-    align-items: center;
-
-    gap: 10px;
-
-    margin-top: 18px;
-
-    color:
-      rgba(255, 255, 255, 0.9);
-
-    font-size: 16px;
-  }
-
-
-  .hero-stats-row strong {
-    color:
-      var(--white);
-
-    font-weight: 700;
-  }
-
-
-  .stat-divider {
-    color:
-      rgba(255, 255, 255, 0.45);
   }
 
 
@@ -3600,7 +3588,7 @@ import Layout from "../../layouts/Layout.astro";
 
 
   .hourly-table {
-    min-width: 790px;
+    min-width: 760px;
   }
 
 
@@ -3608,16 +3596,16 @@ import Layout from "../../layouts/Layout.astro";
     display: grid;
 
     grid-template-columns:
+      78px
+      minmax(220px, 1.7fr)
       100px
-      minmax(230px, 1.5fr)
-      120px
+      105px
       100px
-      100px
-      150px;
+      120px;
 
     align-items: center;
 
-    min-height: 70px;
+    min-height: 72px;
 
     border-bottom:
       1px solid
@@ -3665,8 +3653,8 @@ import Layout from "../../layouts/Layout.astro";
     background:
       linear-gradient(
         90deg,
-        rgba(0, 113, 240, 0.075),
-        rgba(255, 255, 255, 0.25)
+        rgba(0, 113, 240, 0.07),
+        rgba(255, 255, 255, 0.15)
       );
   }
 
@@ -3746,54 +3734,57 @@ import Layout from "../../layouts/Layout.astro";
   }
 
 
-  /* FIXED HOURLY ICON */
+  /* COMPACT HOURLY ICON */
 
   :global(.hourly-condition-icon) {
     display: flex;
-
     align-items: center;
     justify-content: center;
-
-    width: 42px;
-    height: 42px;
-
-    min-width: 42px;
-    min-height: 42px;
-
-    max-width: 42px;
-    max-height: 42px;
-
-    flex: 0 0 42px;
-
-    overflow: hidden;
-
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    flex: 0 0 40px;
+    overflow: visible;
     box-sizing: border-box;
-
-    border:
-      1px solid
-      rgba(0, 113, 240, 0.15);
-
-    border-radius: 13px;
-
-    color:
-      var(--electric-blue);
-
-    background:
-      rgba(0, 113, 240, 0.06);
+    border: 0;
+    border-radius: 0;
+    color: var(--electric-blue);
+    background: transparent;
   }
 
-
   :global(.hourly-condition-icon .weather-icon-svg) {
-    width: 26px !important;
-    height: 26px !important;
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px;
+    min-height: 34px;
+    max-width: 34px !important;
+    max-height: 34px !important;
+    flex: 0 0 34px;
+  }
 
-    min-width: 26px;
-    min-height: 26px;
+  .hourly-condition-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+  }
 
-    max-width: 26px !important;
-    max-height: 26px !important;
+  .hourly-condition-text strong {
+    overflow: hidden;
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
-    flex: 0 0 26px;
+  .hourly-probability {
+    color: var(--ink-muted);
+    font-size: 11px;
+    line-height: 1;
   }
 
 
@@ -3808,12 +3799,9 @@ import Layout from "../../layouts/Layout.astro";
 
 
   .hourly-precip-cell {
-    color:
-      var(--electric-blue);
-
+    color: var(--ink);
     font-size: 14px;
-
-    font-weight: 600;
+    font-weight: 500;
   }
 
 
@@ -4814,6 +4802,26 @@ import Layout from "../../layouts/Layout.astro";
         1fr;
     }
 
+
+    :global(.hourly-condition-icon) {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      min-height: 36px;
+      max-width: 36px;
+      max-height: 36px;
+      flex-basis: 36px;
+    }
+
+    :global(.hourly-condition-icon .weather-icon-svg) {
+      width: 30px !important;
+      height: 30px !important;
+      min-width: 30px;
+      min-height: 30px;
+      max-width: 30px !important;
+      max-height: 30px !important;
+      flex-basis: 30px;
+    }
 
     .forecast-summary {
       grid-template-columns:
