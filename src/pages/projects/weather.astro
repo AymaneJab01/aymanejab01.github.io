@@ -2060,6 +2060,12 @@ import Layout from "../../layouts/Layout.astro";
 
 
       function resize(): void {
+        // Keep the DOM nullability check inside the function so TypeScript
+        // knows the canvas is non-null whenever its dimensions are changed.
+        if (!canvas) {
+          return;
+        }
+
         const pixelRatio =
           getPixelRatio();
 
