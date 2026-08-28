@@ -4277,4 +4277,161 @@ import Layout from "../../layouts/Layout.astro";
   max-width: 27px;
   max-height: 27px;
 }
+/* ============================================================ */
+/* WEATHER ICONS — STABLE SVG SIZING                           */
+/* ============================================================ */
+
+/*
+ * Important:
+ * The SVG itself has fixed dimensions and every container
+ * controls the visual size independently.
+ */
+
+.weather-icon-svg {
+  display: block;
+
+  width: 28px !important;
+  height: 28px !important;
+
+  min-width: 28px;
+  min-height: 28px;
+
+  max-width: 28px !important;
+  max-height: 28px !important;
+
+  flex: 0 0 28px;
+
+  overflow: visible;
+
+  box-sizing: border-box;
+}
+
+
+/* ------------------------------------------------------------ */
+/* HERO                                                         */
+/* ------------------------------------------------------------ */
+
+.hero-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 64px;
+  height: 64px;
+
+  min-width: 64px;
+  min-height: 64px;
+
+  color: var(--white);
+
+  overflow: hidden;
+}
+
+.hero-icon .weather-icon-svg {
+  width: 52px !important;
+  height: 52px !important;
+
+  min-width: 52px;
+  min-height: 52px;
+
+  max-width: 52px !important;
+  max-height: 52px !important;
+
+  flex: 0 0 52px;
+}
+
+
+/* ------------------------------------------------------------ */
+/* HOURLY                                                       */
+/* ------------------------------------------------------------ */
+
+.hourly-condition-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  min-width: 42px;
+  min-height: 42px;
+
+  max-width: 42px;
+  max-height: 42px;
+
+  flex: 0 0 42px;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+}
+
+.hourly-condition-icon .weather-icon-svg {
+  width: 26px !important;
+  height: 26px !important;
+
+  min-width: 26px;
+  min-height: 26px;
+
+  max-width: 26px !important;
+  max-height: 26px !important;
+
+  flex: 0 0 26px;
+}
+
+
+/* ------------------------------------------------------------ */
+/* 10-DAY FORECAST                                              */
+/* ------------------------------------------------------------ */
+
+.forecast-condition > i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  min-width: 42px;
+  min-height: 42px;
+
+  max-width: 42px;
+  max-height: 42px;
+
+  flex: 0 0 42px;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+
+  font-style: normal;
+}
+
+.forecast-condition > i .weather-icon-svg {
+  width: 27px !important;
+  height: 27px !important;
+
+  min-width: 27px;
+  min-height: 27px;
+
+  max-width: 27px !important;
+  max-height: 27px !important;
+
+  flex: 0 0 27px;
+}
+
+
+/* ------------------------------------------------------------ */
+/* PREVENT GLOBAL IMAGE/SVG RULES FROM OVERRIDING THESE ICONS   */
+/* ------------------------------------------------------------ */
+
+.hourly-condition-cell svg,
+.forecast-condition svg,
+.hero-icon svg {
+  display: block;
+
+  box-sizing: border-box;
+
+  overflow: visible;
+}
 </style>
