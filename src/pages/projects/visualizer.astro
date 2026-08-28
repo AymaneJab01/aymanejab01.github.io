@@ -1,0 +1,974 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout
+  title="Algorithm Visualizer"
+  description="An interactive visualizer for sorting algorithms, hash table collision resolution, and pathfinding — built to explore data structures and algorithms hands-on."
+>
+  <section class="viz-page text-[var(--white)] py-24 md:py-36">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <!-- ===================================================== -->
+      <!-- BACK LINK -->
+      <!-- ===================================================== -->
+      <a
+        href="/projects"
+        class="inline-flex items-center gap-2 text-sm text-[var(--white-icon)]
+        hover:text-[var(--sec)] transition-colors duration-300 mb-14"
+      >
+        <span class="text-lg">&larr;</span>
+        <span>Back to projects</span>
+      </a>
+
+      <!-- ===================================================== -->
+      <!-- HERO -->
+      <!-- ===================================================== -->
+      <div class="mb-16 md:mb-20">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="h-2 w-2 rounded-full bg-[var(--sec)] shadow-[0_0_12px_var(--sec)]"></span>
+          <span class="text-sm tracking-[0.25em] uppercase text-[var(--sec)] shiny-sec">
+            Project 04 &middot; CS Fundamentals
+          </span>
+        </div>
+
+        <h1 class="text-4xl md:text-6xl font-medium tracking-tight text-[var(--white)]">
+          Algorithms, visualized<span class="text-[var(--sec)]">.</span>
+        </h1>
+
+        <p class="mt-5 max-w-2xl text-lg text-[var(--white-icon)] leading-relaxed">
+          Three small tools for watching data structures think: sorting algorithms
+          step through comparisons and swaps, a hash table resolves collisions
+          with live chaining, and a grid searches for the shortest path node by node.
+        </p>
+
+        <div class="mt-7 flex flex-wrap gap-2">
+          <span class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]">Astro</span>
+          <span class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]">TypeScript</span>
+          <span class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]">Data Structures &amp; Algorithms</span>
+        </div>
+      </div>
+
+      <!-- ===================================================== -->
+      <!-- SORTING VISUALIZER -->
+      <!-- ===================================================== -->
+      <div class="viz-card mb-10">
+        <div class="viz-card-header">
+          <div class="flex items-center gap-3">
+            <span class="font-mono text-xs tracking-[0.2em] text-[var(--sec)]">01</span>
+            <span class="h-px w-12 bg-[var(--sec)] opacity-40"></span>
+            <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]">Sorting</span>
+          </div>
+          <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4">
+            Sorting algorithms
+          </h2>
+          <p class="mt-2 text-base text-[var(--white-icon)] leading-relaxed max-w-2xl">
+            Watch bubble sort, selection sort, insertion sort, merge sort, and quicksort
+            step through the same array. Bars in <span class="text-[var(--sec)]">green</span> are
+            being compared, <span class="text-[#f59e0b]">amber</span> means a swap just happened.
+          </p>
+        </div>
+
+        <div class="mt-6 flex flex-wrap items-center gap-2">
+          <select id="sort-algo" class="viz-select">
+            <option value="bubble">Bubble Sort</option>
+            <option value="selection">Selection Sort</option>
+            <option value="insertion">Insertion Sort</option>
+            <option value="merge">Merge Sort</option>
+            <option value="quick" selected>Quick Sort</option>
+          </select>
+
+          <button id="sort-run" class="viz-btn viz-btn-primary">Run</button>
+          <button id="sort-shuffle" class="viz-btn">Shuffle</button>
+
+          <label class="flex items-center gap-2 text-xs text-[var(--white-icon)] ml-auto">
+            Speed
+            <input id="sort-speed" type="range" min="1" max="100" value="60" class="viz-range" />
+          </label>
+        </div>
+
+        <div id="sort-stage" class="viz-bars mt-6" aria-label="Sorting visualization"></div>
+
+        <div class="mt-4 flex flex-wrap gap-6 font-mono text-xs text-[var(--white-icon)]">
+          <span>Comparisons: <span id="sort-comparisons" class="text-[var(--sec)]">0</span></span>
+          <span>Swaps: <span id="sort-swaps" class="text-[var(--sec)]">0</span></span>
+          <span id="sort-status" class="text-[var(--white-icon)] opacity-70">Idle</span>
+        </div>
+      </div>
+
+      <!-- ===================================================== -->
+      <!-- HASH TABLE VISUALIZER -->
+      <!-- ===================================================== -->
+      <div class="viz-card mb-10">
+        <div class="viz-card-header">
+          <div class="flex items-center gap-3">
+            <span class="font-mono text-xs tracking-[0.2em] text-[var(--sec)]">02</span>
+            <span class="h-px w-12 bg-[var(--sec)] opacity-40"></span>
+            <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]">Hash Table</span>
+          </div>
+          <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4">
+            Hash table &middot; collision resolution
+          </h2>
+          <p class="mt-2 text-base text-[var(--white-icon)] leading-relaxed max-w-2xl">
+            Insert a key and watch it get hashed into one of 8 buckets. When two keys
+            land in the same bucket, they chain together with a linked list — the
+            classic separate-chaining approach.
+          </p>
+        </div>
+
+        <div class="mt-6 flex flex-wrap items-center gap-2">
+          <input id="hash-key" type="text" placeholder="key" class="viz-input" maxlength="12" />
+          <input id="hash-value" type="text" placeholder="value" class="viz-input" maxlength="12" />
+          <button id="hash-insert" class="viz-btn viz-btn-primary">Insert</button>
+          <button id="hash-random" class="viz-btn">Random key</button>
+          <button id="hash-clear" class="viz-btn">Clear</button>
+        </div>
+
+        <div id="hash-formula" class="mt-4 font-mono text-xs text-[var(--white-icon)] opacity-80"></div>
+
+        <div id="hash-buckets" class="viz-buckets mt-4" aria-label="Hash table buckets"></div>
+
+        <div class="mt-4 font-mono text-xs text-[var(--white-icon)]">
+          Load factor: <span id="hash-load" class="text-[var(--sec)]">0.00</span>
+        </div>
+      </div>
+
+      <!-- ===================================================== -->
+      <!-- PATHFINDING VISUALIZER -->
+      <!-- ===================================================== -->
+      <div class="viz-card">
+        <div class="viz-card-header">
+          <div class="flex items-center gap-3">
+            <span class="font-mono text-xs tracking-[0.2em] text-[var(--sec)]">03</span>
+            <span class="h-px w-12 bg-[var(--sec)] opacity-40"></span>
+            <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]">Pathfinding</span>
+          </div>
+          <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4">
+            Pathfinding &middot; Dijkstra &amp; A*
+          </h2>
+          <p class="mt-2 text-base text-[var(--white-icon)] leading-relaxed max-w-2xl">
+            Click and drag to draw walls. Choose an algorithm and run it —
+            <span class="text-[var(--sec)]">visited</span> cells light up in the order
+            the algorithm explored them, then the shortest path traces through in amber.
+          </p>
+        </div>
+
+        <div class="mt-6 flex flex-wrap items-center gap-2">
+          <select id="path-algo" class="viz-select">
+            <option value="dijkstra">Dijkstra</option>
+            <option value="astar" selected>A*</option>
+            <option value="bfs">Breadth-First Search</option>
+          </select>
+          <button id="path-run" class="viz-btn viz-btn-primary">Run</button>
+          <button id="path-walls" class="viz-btn">Random walls</button>
+          <button id="path-clear" class="viz-btn">Clear</button>
+          <span class="text-xs text-[var(--white-icon)] opacity-70 ml-auto">
+            Click: wall &middot; Drag: start / end
+          </span>
+        </div>
+
+        <div id="path-grid" class="viz-grid mt-6" aria-label="Pathfinding grid"></div>
+
+        <div class="mt-4 flex flex-wrap gap-6 font-mono text-xs text-[var(--white-icon)]">
+          <span>Visited: <span id="path-visited" class="text-[var(--sec)]">0</span></span>
+          <span>Path length: <span id="path-length" class="text-[var(--sec)]">&mdash;</span></span>
+          <span id="path-status" class="opacity-70">Idle</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .viz-page :global(.shiny-sec) {
+    background: linear-gradient(90deg, var(--sec), #6ee7b7, var(--sec));
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .viz-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 1px solid var(--white-icon-tr);
+    background: #1414149c;
+    backdrop-filter: blur(6px);
+    padding: 1.75rem;
+    transition: border-color 0.4s ease;
+  }
+
+  .viz-card:hover {
+    border-color: rgba(21, 128, 61, 0.4);
+  }
+
+  @media (min-width: 768px) {
+    .viz-card { padding: 2.5rem; }
+  }
+
+  .viz-card-header { max-width: 48rem; }
+
+  /* Buttons / inputs */
+  .viz-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid var(--white-icon-tr);
+    color: var(--white-icon);
+    font-size: 0.8rem;
+    font-family: monospace;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .viz-btn:hover {
+    border-color: var(--sec);
+    color: var(--white);
+  }
+  .viz-btn-primary {
+    border-color: var(--sec);
+    color: var(--sec);
+  }
+  .viz-btn-primary:hover {
+    background: rgba(21, 128, 61, 0.12);
+  }
+  .viz-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .viz-select, .viz-input {
+    padding: 0.5rem 0.85rem;
+    border-radius: 9999px;
+    border: 1px solid var(--white-icon-tr);
+    background: #10101080;
+    color: var(--white);
+    font-size: 0.8rem;
+    font-family: monospace;
+    outline: none;
+  }
+  .viz-select:focus, .viz-input:focus {
+    border-color: var(--sec);
+  }
+  .viz-input { width: 7rem; }
+
+  .viz-range {
+    accent-color: var(--sec);
+    width: 6rem;
+  }
+
+  /* Sorting bars */
+  .viz-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 220px;
+    border-radius: 0.75rem;
+    border: 1px solid var(--white-icon-tr);
+    background: #10101080;
+    padding: 1rem;
+  }
+  .viz-bar {
+    flex: 1;
+    background: var(--white-icon);
+    opacity: 0.5;
+    border-radius: 2px 2px 0 0;
+    transition: height 0.05s linear, background-color 0.1s ease, opacity 0.1s ease;
+  }
+  .viz-bar.compare { background: var(--sec); opacity: 1; }
+  .viz-bar.swap { background: #f59e0b; opacity: 1; }
+  .viz-bar.sorted { background: var(--sec); opacity: 0.85; }
+
+  /* Hash buckets */
+  .viz-buckets {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  @media (min-width: 640px) {
+    .viz-buckets { grid-template-columns: repeat(4, 1fr); }
+  }
+  .viz-bucket {
+    border: 1px solid var(--white-icon-tr);
+    border-radius: 0.75rem;
+    background: #10101080;
+    padding: 0.75rem;
+    min-height: 4.5rem;
+  }
+  .viz-bucket-idx {
+    font-family: monospace;
+    font-size: 0.7rem;
+    color: var(--white-icon);
+    opacity: 0.6;
+  }
+  .viz-bucket-chain {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-top: 0.4rem;
+  }
+  .viz-node {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: monospace;
+    font-size: 0.72rem;
+    color: var(--white);
+    background: rgba(21, 128, 61, 0.12);
+    border: 1px solid rgba(21, 128, 61, 0.4);
+    border-radius: 0.4rem;
+    padding: 0.2rem 0.5rem;
+    animation: viz-pop 0.3s ease;
+  }
+  .viz-node.collision { border-color: #f59e0b; background: rgba(245, 158, 11, 0.12); }
+  .viz-node-arrow { color: var(--white-icon); opacity: 0.5; }
+
+  @keyframes viz-pop {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  /* Pathfinding grid */
+  .viz-grid {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    gap: 2px;
+    border: 1px solid var(--white-icon-tr);
+    border-radius: 0.75rem;
+    background: #10101080;
+    padding: 0.5rem;
+    user-select: none;
+  }
+  .viz-cell {
+    aspect-ratio: 1 / 1;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.04);
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+  }
+  .viz-cell.wall { background: var(--white-icon-tr); }
+  .viz-cell.start { background: var(--sec); }
+  .viz-cell.end { background: #ef4444; }
+  .viz-cell.visited { background: rgba(21, 128, 61, 0.35); }
+  .viz-cell.path { background: #f59e0b; }
+</style>
+
+<script>
+  /* ================================================================= */
+  /* SHARED HELPERS                                                     */
+  /* ================================================================= */
+  function sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  /* ================================================================= */
+  /* SORTING VISUALIZER                                                 */
+  /* ================================================================= */
+  (function sortingModule() {
+    const stage = document.getElementById("sort-stage");
+    const algoSelect = document.getElementById("sort-algo") as HTMLSelectElement;
+    const runBtn = document.getElementById("sort-run") as HTMLButtonElement;
+    const shuffleBtn = document.getElementById("sort-shuffle") as HTMLButtonElement;
+    const speedInput = document.getElementById("sort-speed") as HTMLInputElement;
+    const comparisonsEl = document.getElementById("sort-comparisons");
+    const swapsEl = document.getElementById("sort-swaps");
+    const statusEl = document.getElementById("sort-status");
+
+    if (!stage || !algoSelect || !runBtn || !shuffleBtn || !speedInput || !comparisonsEl || !swapsEl || !statusEl) return;
+
+    const BAR_COUNT = 40;
+    let values: number[] = [];
+    let bars: HTMLDivElement[] = [];
+    let running = false;
+    let comparisons = 0;
+    let swaps = 0;
+
+    function delayMs() {
+      const speed = Number(speedInput.value);
+      return 210 - speed * 2;
+    }
+
+    function randomArray() {
+      values = Array.from({ length: BAR_COUNT }, () => Math.floor(Math.random() * 90) + 10);
+    }
+
+    function render() {
+      stage!.innerHTML = "";
+      bars = values.map((v) => {
+        const bar = document.createElement("div");
+        bar.className = "viz-bar";
+        bar.style.height = `${v}%`;
+        stage!.appendChild(bar);
+        return bar;
+      });
+    }
+
+    function setCounts(c: number, s: number) {
+      comparisons = c;
+      swaps = s;
+      comparisonsEl!.textContent = String(comparisons);
+      swapsEl!.textContent = String(swaps);
+    }
+
+    function clearMarks() {
+      bars.forEach((b) => b.classList.remove("compare", "swap"));
+    }
+
+    async function mark(indices: number[], cls: "compare" | "swap") {
+      clearMarks();
+      indices.forEach((i) => bars[i]?.classList.add(cls));
+      await sleep(delayMs());
+    }
+
+    function markSorted(i: number) {
+      bars[i]?.classList.remove("compare", "swap");
+      bars[i]?.classList.add("sorted");
+    }
+
+    function updateBar(i: number) {
+      bars[i].style.height = `${values[i]}%`;
+    }
+
+    /* ---- Generators yield step markers so the runner can animate them ---- */
+
+    async function bubbleSort() {
+      let c = 0, s = 0;
+      const n = values.length;
+      for (let i = 0; i < n - 1; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
+          c++; setCounts(c, s);
+          await mark([j, j + 1], "compare");
+          if (values[j] > values[j + 1]) {
+            [values[j], values[j + 1]] = [values[j + 1], values[j]];
+            updateBar(j); updateBar(j + 1);
+            s++; setCounts(c, s);
+            await mark([j, j + 1], "swap");
+          }
+        }
+        markSorted(n - i - 1);
+      }
+      markSorted(0);
+    }
+
+    async function selectionSort() {
+      let c = 0, s = 0;
+      const n = values.length;
+      for (let i = 0; i < n; i++) {
+        let minIdx = i;
+        for (let j = i + 1; j < n; j++) {
+          c++; setCounts(c, s);
+          await mark([minIdx, j], "compare");
+          if (values[j] < values[minIdx]) minIdx = j;
+        }
+        if (minIdx !== i) {
+          [values[i], values[minIdx]] = [values[minIdx], values[i]];
+          updateBar(i); updateBar(minIdx);
+          s++; setCounts(c, s);
+          await mark([i, minIdx], "swap");
+        }
+        markSorted(i);
+      }
+    }
+
+    async function insertionSort() {
+      let c = 0, s = 0;
+      const n = values.length;
+      for (let i = 1; i < n; i++) {
+        let j = i;
+        while (j > 0) {
+          c++; setCounts(c, s);
+          await mark([j - 1, j], "compare");
+          if (values[j - 1] > values[j]) {
+            [values[j - 1], values[j]] = [values[j], values[j - 1]];
+            updateBar(j - 1); updateBar(j);
+            s++; setCounts(c, s);
+            await mark([j - 1, j], "swap");
+            j--;
+          } else {
+            break;
+          }
+        }
+      }
+      for (let i = 0; i < n; i++) markSorted(i);
+    }
+
+    async function mergeSort() {
+      let c = 0, s = 0;
+
+      async function merge(lo: number, mid: number, hi: number) {
+        const left = values.slice(lo, mid + 1);
+        const right = values.slice(mid + 1, hi + 1);
+        let i = 0, j = 0, k = lo;
+        while (i < left.length && j < right.length) {
+          c++; setCounts(c, s);
+          await mark([lo + i, mid + 1 + j], "compare");
+          if (left[i] <= right[j]) {
+            values[k] = left[i]; i++;
+          } else {
+            values[k] = right[j]; j++;
+          }
+          updateBar(k);
+          s++; setCounts(c, s);
+          k++;
+        }
+        while (i < left.length) { values[k] = left[i]; updateBar(k); i++; k++; }
+        while (j < right.length) { values[k] = right[j]; updateBar(k); j++; k++; }
+      }
+
+      async function sort(lo: number, hi: number) {
+        if (lo >= hi) return;
+        const mid = Math.floor((lo + hi) / 2);
+        await sort(lo, mid);
+        await sort(mid + 1, hi);
+        await merge(lo, mid, hi);
+      }
+
+      await sort(0, values.length - 1);
+      for (let i = 0; i < values.length; i++) markSorted(i);
+    }
+
+    async function quickSort() {
+      let c = 0, s = 0;
+
+      async function partition(lo: number, hi: number) {
+        const pivot = values[hi];
+        let i = lo - 1;
+        for (let j = lo; j < hi; j++) {
+          c++; setCounts(c, s);
+          await mark([j, hi], "compare");
+          if (values[j] < pivot) {
+            i++;
+            [values[i], values[j]] = [values[j], values[i]];
+            updateBar(i); updateBar(j);
+            s++; setCounts(c, s);
+            await mark([i, j], "swap");
+          }
+        }
+        [values[i + 1], values[hi]] = [values[hi], values[i + 1]];
+        updateBar(i + 1); updateBar(hi);
+        s++; setCounts(c, s);
+        await mark([i + 1, hi], "swap");
+        return i + 1;
+      }
+
+      async function sort(lo: number, hi: number) {
+        if (lo >= hi) {
+          if (lo >= 0 && lo < values.length) markSorted(lo);
+          return;
+        }
+        const p = await partition(lo, hi);
+        markSorted(p);
+        await sort(lo, p - 1);
+        await sort(p + 1, hi);
+      }
+
+      await sort(0, values.length - 1);
+    }
+
+    const algorithms: Record<string, () => Promise<void>> = {
+      bubble: bubbleSort,
+      selection: selectionSort,
+      insertion: insertionSort,
+      merge: mergeSort,
+      quick: quickSort,
+    };
+
+    function setControlsDisabled(disabled: boolean) {
+      runBtn.disabled = disabled;
+      shuffleBtn.disabled = disabled;
+      algoSelect.disabled = disabled;
+    }
+
+    async function run() {
+      if (running) return;
+      running = true;
+      setControlsDisabled(true);
+      statusEl!.textContent = "Sorting\u2026";
+      setCounts(0, 0);
+      bars.forEach((b) => b.classList.remove("sorted"));
+
+      const algo = algorithms[algoSelect.value];
+      await algo();
+
+      clearMarks();
+      statusEl!.textContent = "Sorted";
+      setControlsDisabled(false);
+      running = false;
+    }
+
+    function reset() {
+      if (running) return;
+      randomArray();
+      render();
+      setCounts(0, 0);
+      statusEl!.textContent = "Idle";
+    }
+
+    runBtn.addEventListener("click", run);
+    shuffleBtn.addEventListener("click", reset);
+
+    reset();
+  })();
+
+  /* ================================================================= */
+  /* HASH TABLE VISUALIZER                                              */
+  /* ================================================================= */
+  (function hashModule() {
+    const bucketsEl = document.getElementById("hash-buckets");
+    const keyInput = document.getElementById("hash-key") as HTMLInputElement;
+    const valueInput = document.getElementById("hash-value") as HTMLInputElement;
+    const insertBtn = document.getElementById("hash-insert") as HTMLButtonElement;
+    const randomBtn = document.getElementById("hash-random") as HTMLButtonElement;
+    const clearBtn = document.getElementById("hash-clear") as HTMLButtonElement;
+    const formulaEl = document.getElementById("hash-formula");
+    const loadEl = document.getElementById("hash-load");
+
+    if (!bucketsEl || !keyInput || !valueInput || !insertBtn || !randomBtn || !clearBtn || !formulaEl || !loadEl) return;
+
+    const BUCKET_COUNT = 8;
+    let table: { key: string; value: string }[][] = Array.from({ length: BUCKET_COUNT }, () => []);
+    let itemCount = 0;
+
+    function hash(key: string) {
+      let h = 0;
+      for (let i = 0; i < key.length; i++) {
+        h = (h * 31 + key.charCodeAt(i)) >>> 0;
+      }
+      return h % BUCKET_COUNT;
+    }
+
+    function render(justInsertedBucket: number | null) {
+      bucketsEl!.innerHTML = "";
+      table.forEach((chain, idx) => {
+        const bucket = document.createElement("div");
+        bucket.className = "viz-bucket";
+
+        const label = document.createElement("div");
+        label.className = "viz-bucket-idx";
+        label.textContent = `bucket ${idx}`;
+        bucket.appendChild(label);
+
+        const chainEl = document.createElement("div");
+        chainEl.className = "viz-bucket-chain";
+
+        chain.forEach((item, i) => {
+          const node = document.createElement("div");
+          node.className = "viz-node" + (chain.length > 1 ? " collision" : "");
+          node.textContent = `${item.key}: ${item.value}`;
+          chainEl.appendChild(node);
+          if (i < chain.length - 1) {
+            const arrow = document.createElement("div");
+            arrow.className = "viz-node-arrow";
+            arrow.textContent = "\u2193";
+            chainEl.appendChild(arrow);
+          }
+        });
+
+        bucket.appendChild(chainEl);
+        bucketsEl!.appendChild(bucket);
+      });
+
+      loadEl!.textContent = (itemCount / BUCKET_COUNT).toFixed(2);
+    }
+
+    function insert(key: string, value: string) {
+      if (!key) return;
+      const idx = hash(key);
+      formulaEl!.textContent = `hash("${key}") = ${idx}  →  bucket ${idx}${table[idx].length ? " (collision, chaining onto existing entry)" : ""}`;
+
+      const existing = table[idx].find((item) => item.key === key);
+      if (existing) {
+        existing.value = value || existing.value;
+      } else {
+        table[idx].push({ key, value: value || "\u2014" });
+        itemCount++;
+      }
+      render(idx);
+    }
+
+    function randomKey() {
+      const words = ["cat", "dog", "sun", "moon", "byte", "node", "leaf", "edge", "heap", "core", "wire", "loop"];
+      return words[Math.floor(Math.random() * words.length)] + Math.floor(Math.random() * 100);
+    }
+
+    insertBtn.addEventListener("click", () => {
+      insert(keyInput.value.trim(), valueInput.value.trim());
+      keyInput.value = "";
+      valueInput.value = "";
+      keyInput.focus();
+    });
+
+    keyInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") insertBtn.click();
+    });
+    valueInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") insertBtn.click();
+    });
+
+    randomBtn.addEventListener("click", () => {
+      insert(randomKey(), Math.floor(Math.random() * 1000).toString());
+    });
+
+    clearBtn.addEventListener("click", () => {
+      table = Array.from({ length: BUCKET_COUNT }, () => []);
+      itemCount = 0;
+      formulaEl!.textContent = "";
+      render(null);
+    });
+
+    render(null);
+  })();
+
+  /* ================================================================= */
+  /* PATHFINDING VISUALIZER                                             */
+  /* ================================================================= */
+  (function pathModule() {
+    const gridEl = document.getElementById("path-grid");
+    const algoSelect = document.getElementById("path-algo") as HTMLSelectElement;
+    const runBtn = document.getElementById("path-run") as HTMLButtonElement;
+    const wallsBtn = document.getElementById("path-walls") as HTMLButtonElement;
+    const clearBtn = document.getElementById("path-clear") as HTMLButtonElement;
+    const visitedEl = document.getElementById("path-visited");
+    const lengthEl = document.getElementById("path-length");
+    const statusEl = document.getElementById("path-status");
+
+    if (!gridEl || !algoSelect || !runBtn || !wallsBtn || !clearBtn || !visitedEl || !lengthEl || !statusEl) return;
+
+    const COLS = 24;
+    const ROWS = 12;
+
+    type CellState = "empty" | "wall" | "start" | "end" | "visited" | "path";
+
+    let grid: CellState[][] = [];
+    let cellEls: HTMLDivElement[][] = [];
+    let start = { r: 5, c: 3 };
+    let end = { r: 5, c: 20 };
+    let dragging: "start" | "end" | "wall" | "erase" | null = null;
+    let running = false;
+
+    function emptyGrid(): CellState[][] {
+      return Array.from({ length: ROWS }, () => Array.from({ length: COLS }, () => "empty" as CellState));
+    }
+
+    function buildGrid() {
+      grid = emptyGrid();
+      grid[start.r][start.c] = "start";
+      grid[end.r][end.c] = "end";
+    }
+
+    function cellClassFor(state: CellState) {
+      return { empty: "", wall: "wall", start: "start", end: "end", visited: "visited", path: "path" }[state];
+    }
+
+    function render() {
+      gridEl!.innerHTML = "";
+      cellEls = [];
+      for (let r = 0; r < ROWS; r++) {
+        const row: HTMLDivElement[] = [];
+        for (let c = 0; c < COLS; c++) {
+          const cell = document.createElement("div");
+          cell.className = "viz-cell " + cellClassFor(grid[r][c]);
+          cell.addEventListener("mousedown", () => handleCellDown(r, c));
+          cell.addEventListener("mouseenter", () => handleCellEnter(r, c));
+          gridEl!.appendChild(cell);
+          row.push(cell);
+        }
+        cellEls.push(row);
+      }
+    }
+
+    function setCell(r: number, c: number, state: CellState) {
+      grid[r][c] = state;
+      cellEls[r][c].className = "viz-cell " + cellClassFor(state);
+    }
+
+    function handleCellDown(r: number, c: number) {
+      if (running) return;
+      if (grid[r][c] === "start") { dragging = "start"; return; }
+      if (grid[r][c] === "end") { dragging = "end"; return; }
+      dragging = grid[r][c] === "wall" ? "erase" : "wall";
+      toggleWall(r, c);
+    }
+
+    function handleCellEnter(r: number, c: number) {
+      if (running || !dragging) return;
+      if (dragging === "start") {
+        if (grid[r][c] === "end" || grid[r][c] === "wall") return;
+        setCell(start.r, start.c, "empty");
+        start = { r, c };
+        setCell(r, c, "start");
+      } else if (dragging === "end") {
+        if (grid[r][c] === "start" || grid[r][c] === "wall") return;
+        setCell(end.r, end.c, "empty");
+        end = { r, c };
+        setCell(r, c, "end");
+      } else {
+        toggleWall(r, c, dragging === "wall");
+      }
+    }
+
+    function toggleWall(r: number, c: number, forceWall?: boolean) {
+      if (grid[r][c] === "start" || grid[r][c] === "end") return;
+      const makeWall = forceWall !== undefined ? forceWall : grid[r][c] !== "wall";
+      setCell(r, c, makeWall ? "wall" : "empty");
+    }
+
+    document.addEventListener("mouseup", () => { dragging = null; });
+
+    function neighbors(r: number, c: number) {
+      const deltas = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+      const out: { r: number; c: number }[] = [];
+      for (const [dr, dc] of deltas) {
+        const nr = r + dr, nc = c + dc;
+        if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS && grid[nr][nc] !== "wall") {
+          out.push({ r: nr, c: nc });
+        }
+      }
+      return out;
+    }
+
+    function key(r: number, c: number) { return `${r},${c}`; }
+
+    function heuristic(r: number, c: number) {
+      return Math.abs(r - end.r) + Math.abs(c - end.c);
+    }
+
+    async function runSearch(mode: "bfs" | "dijkstra" | "astar") {
+      const visitedOrder: { r: number; c: number }[] = [];
+      const cameFrom = new Map<string, { r: number; c: number }>();
+      const visited = new Set<string>();
+      const dist = new Map<string, number>();
+      dist.set(key(start.r, start.c), 0);
+
+      let found = false;
+
+      if (mode === "bfs") {
+        const queue: { r: number; c: number }[] = [start];
+        visited.add(key(start.r, start.c));
+        while (queue.length) {
+          const cur = queue.shift()!;
+          if (cur.r !== start.r || cur.c !== start.c) visitedOrder.push(cur);
+          if (cur.r === end.r && cur.c === end.c) { found = true; break; }
+          for (const n of neighbors(cur.r, cur.c)) {
+            const nk = key(n.r, n.c);
+            if (!visited.has(nk)) {
+              visited.add(nk);
+              cameFrom.set(nk, cur);
+              queue.push(n);
+            }
+          }
+        }
+      } else {
+        // Dijkstra and A* share a priority-queue-ish loop (linear scan for simplicity)
+        const open: { r: number; c: number; f: number }[] = [{ r: start.r, c: start.c, f: 0 }];
+        const closed = new Set<string>();
+        while (open.length) {
+          open.sort((a, b) => a.f - b.f);
+          const cur = open.shift()!;
+          const ck = key(cur.r, cur.c);
+          if (closed.has(ck)) continue;
+          closed.add(ck);
+          if (cur.r !== start.r || cur.c !== start.c) visitedOrder.push(cur);
+          if (cur.r === end.r && cur.c === end.c) { found = true; break; }
+
+          for (const n of neighbors(cur.r, cur.c)) {
+            const nk = key(n.r, n.c);
+            const tentative = (dist.get(ck) ?? 0) + 1;
+            if (tentative < (dist.get(nk) ?? Infinity)) {
+              dist.set(nk, tentative);
+              cameFrom.set(nk, cur);
+              const f = mode === "astar" ? tentative + heuristic(n.r, n.c) : tentative;
+              open.push({ r: n.r, c: n.c, f });
+            }
+          }
+        }
+      }
+
+      // Animate visited cells
+      for (const cell of visitedOrder) {
+        if (grid[cell.r][cell.c] === "empty") setCell(cell.r, cell.c, "visited");
+        visitedEl!.textContent = String(visitedOrder.indexOf(cell) + 1);
+        await sleep(8);
+      }
+
+      if (!found) {
+        statusEl!.textContent = "No path found";
+        lengthEl!.textContent = "\u2014";
+        return;
+      }
+
+      // Reconstruct path
+      const path: { r: number; c: number }[] = [];
+      let cur = { r: end.r, c: end.c };
+      while (cur.r !== start.r || cur.c !== start.c) {
+        path.push(cur);
+        const prev = cameFrom.get(key(cur.r, cur.c));
+        if (!prev) break;
+        cur = prev;
+      }
+      path.reverse();
+
+      for (const cell of path) {
+        if (grid[cell.r][cell.c] !== "end") setCell(cell.r, cell.c, "path");
+        await sleep(20);
+      }
+
+      lengthEl!.textContent = String(path.length);
+      statusEl!.textContent = "Path found";
+    }
+
+    async function run() {
+      if (running) return;
+      running = true;
+      runBtn.disabled = true;
+      statusEl!.textContent = "Searching\u2026";
+      visitedEl!.textContent = "0";
+      lengthEl!.textContent = "\u2014";
+
+      for (let r = 0; r < ROWS; r++) {
+        for (let c = 0; c < COLS; c++) {
+          if (grid[r][c] === "visited" || grid[r][c] === "path") setCell(r, c, "empty");
+        }
+      }
+
+      const mode = algoSelect.value as "bfs" | "dijkstra" | "astar";
+      await runSearch(mode);
+
+      running = false;
+      runBtn.disabled = false;
+    }
+
+    function randomWalls() {
+      if (running) return;
+      buildGrid();
+      for (let r = 0; r < ROWS; r++) {
+        for (let c = 0; c < COLS; c++) {
+          if (grid[r][c] === "empty" && Math.random() < 0.28) {
+            grid[r][c] = "wall";
+          }
+        }
+      }
+      render();
+      statusEl!.textContent = "Idle";
+      visitedEl!.textContent = "0";
+      lengthEl!.textContent = "\u2014";
+    }
+
+    function clear() {
+      if (running) return;
+      buildGrid();
+      render();
+      statusEl!.textContent = "Idle";
+      visitedEl!.textContent = "0";
+      lengthEl!.textContent = "\u2014";
+    }
+
+    runBtn.addEventListener("click", run);
+    wallsBtn.addEventListener("click", randomWalls);
+    clearBtn.addEventListener("click", clear);
+
+    buildGrid();
+    render();
+  })();
+</script>
