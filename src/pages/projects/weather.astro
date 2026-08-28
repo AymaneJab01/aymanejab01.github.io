@@ -474,13 +474,13 @@ import Layout from "../../layouts/Layout.astro";
   /* ============================================================ */
 
   function getWeatherIcon(code: number): string {
-    if (code === 0) return "\\u2600";
-    if (code <= 3) return "\\u26C5";
-    if (code <= 48) return "\\u2248";
-    if (code <= 67) return "\\u2602";
-    if (code <= 77) return "\\u2744";
-    if (code <= 86) return "\\u2601";
-    return "\\u26A1";
+    if (code === 0) return "\u2600";
+    if (code <= 3) return "\u26C5";
+    if (code <= 48) return "\u2248";
+    if (code <= 67) return "\u2602";
+    if (code <= 77) return "\u2744";
+    if (code <= 86) return "\u2601";
+    return "\u26A1";
   }
 
   /* ============================================================ */
@@ -2008,7 +2008,7 @@ import Layout from "../../layouts/Layout.astro";
     color: var(--electric-blue);
     background: rgba(255,255,255,.4);
     box-shadow: inset 0 1px rgba(255,255,255,.9);
-    content: "âœ¦";
+    content: "Ã¢Å“Â¦";
   }
 
   .forecast-summary:hover,
@@ -2060,4 +2060,3 @@ import Layout from "../../layouts/Layout.astro";
   }
 
 </style>
-
