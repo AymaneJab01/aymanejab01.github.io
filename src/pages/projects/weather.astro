@@ -193,13 +193,9 @@ import Layout from "../../layouts/Layout.astro";
           <div class="hero-top">
             <div class="hero-temp-block">
               <div class="hero-temp-row">
-                <span id="hero-temp" class="hero-temp">
-                  --
-                </span>
+                <span id="hero-temp" class="hero-temp">--</span>
 
-                <span class="hero-unit">
-                  &deg;
-                </span>
+                <span class="hero-unit">&deg;</span>
               </div>
             </div>
 
@@ -603,88 +599,60 @@ import Layout from "../../layouts/Layout.astro";
     switch (code) {
       case 0:
         return "Clear sky";
-
       case 1:
         return "Mainly clear";
-
       case 2:
         return "Partly cloudy";
-
       case 3:
         return "Overcast";
-
       case 45:
         return "Fog";
-
       case 48:
         return "Rime fog";
-
       case 51:
         return "Light drizzle";
-
       case 53:
         return "Moderate drizzle";
-
       case 55:
         return "Dense drizzle";
-
       case 56:
         return "Light freezing drizzle";
-
       case 57:
         return "Dense freezing drizzle";
-
       case 61:
         return "Light rain";
-
       case 63:
         return "Moderate rain";
-
       case 65:
         return "Heavy rain";
-
       case 66:
         return "Light freezing rain";
-
       case 67:
         return "Heavy freezing rain";
-
       case 71:
         return "Light snow";
-
       case 73:
         return "Moderate snow";
-
       case 75:
         return "Heavy snow";
-
       case 77:
         return "Snow grains";
-
       case 80:
         return "Light rain showers";
-
       case 81:
         return "Moderate rain showers";
-
       case 82:
         return "Heavy rain showers";
-
       case 85:
         return "Light snow showers";
-
       case 86:
         return "Heavy snow showers";
-
       case 95:
         return "Thunderstorm";
-
       case 96:
         return "Thunderstorm with hail";
-
       case 99:
         return "Thunderstorm with heavy hail";
-
       default:
         return "Unknown conditions";
     }
@@ -859,8 +827,11 @@ import Layout from "../../layouts/Layout.astro";
       "NW"
     ];
 
+    const normalized =
+      ((degrees % 360) + 360) % 360;
+
     const index =
-      Math.round(degrees / 45) % directions.length;
+      Math.round(normalized / 45) % directions.length;
 
     return directions[index] ?? "N";
   }
@@ -1015,10 +986,14 @@ import Layout from "../../layouts/Layout.astro";
     document.getElementById("hourly-table-body");
 
   const hourlyPrev =
-    document.getElementById("hourly-prev") as HTMLButtonElement | null;
+    document.getElementById(
+      "hourly-prev"
+    ) as HTMLButtonElement | null;
 
   const hourlyNext =
-    document.getElementById("hourly-next") as HTMLButtonElement | null;
+    document.getElementById(
+      "hourly-next"
+    ) as HTMLButtonElement | null;
 
   const forecastContainer =
     document.getElementById(
@@ -1036,7 +1011,9 @@ import Layout from "../../layouts/Layout.astro";
     );
 
   const locationMenu =
-    document.getElementById("location-menu");
+    document.getElementById(
+      "location-menu"
+    );
 
   const locationOptions =
     document.querySelectorAll<HTMLButtonElement>(
@@ -1078,7 +1055,8 @@ import Layout from "../../layouts/Layout.astro";
     }
 
     if (brandLocation) {
-      brandLocation.textContent = city;
+      brandLocation.textContent =
+        city;
     }
 
     if (metaTime) {
@@ -1114,7 +1092,9 @@ import Layout from "../../layouts/Layout.astro";
 
     if (heroFeels) {
       heroFeels.textContent =
-        `${Math.round(current.apparent_temperature)}°`;
+        `${Math.round(
+          current.apparent_temperature
+        )}°`;
     }
 
     if (heroHigh && high !== undefined) {
@@ -1180,7 +1160,9 @@ import Layout from "../../layouts/Layout.astro";
     const hourly = data.hourly;
 
     const now =
-      new Date(data.current.time).getTime();
+      new Date(
+        data.current.time
+      ).getTime();
 
     let startIndex =
       hourly.time.findIndex(
@@ -1304,7 +1286,9 @@ import Layout from "../../layouts/Layout.astro";
         "hourly-temperature-cell";
 
       temperatureCell.textContent =
-        `${Math.round(temperature)}°`;
+        `${Math.round(
+          temperature
+        )}°`;
 
 
       const precipitationCell =
@@ -1315,7 +1299,9 @@ import Layout from "../../layouts/Layout.astro";
 
       precipitationCell.textContent =
         precipitation !== undefined
-          ? `${Math.round(precipitation)}%`
+          ? `${Math.round(
+              precipitation
+            )}%`
           : "--";
 
 
@@ -1327,7 +1313,9 @@ import Layout from "../../layouts/Layout.astro";
 
       humidityCell.textContent =
         humidity !== undefined
-          ? `${Math.round(humidity)}%`
+          ? `${Math.round(
+              humidity
+            )}%`
           : "--";
 
 
@@ -1355,12 +1343,26 @@ import Layout from "../../layouts/Layout.astro";
         const windText =
           document.createElement("span");
 
-        windText.innerHTML =
-          `<strong>${Math.round(
+        const windStrong =
+          document.createElement("strong");
+
+        windStrong.textContent =
+          `${Math.round(
             wind
-          )} km/h</strong><small>${degreesToDirection(
+          )} km/h`;
+
+        const windSmall =
+          document.createElement("small");
+
+        windSmall.textContent =
+          degreesToDirection(
             windDirection
-          )}</small>`;
+          );
+
+        windText.append(
+          windStrong,
+          windSmall
+        );
 
         windCell.append(
           arrow,
@@ -1396,15 +1398,35 @@ import Layout from "../../layouts/Layout.astro";
 
     const daily = data.daily;
 
-    const rangeMin =
-      Math.min(
-        ...daily.temperature_2m_min
+    const validMins =
+      daily.temperature_2m_min.filter(
+        (value) =>
+          typeof value === "number" &&
+          Number.isFinite(value)
       );
 
-    const rangeMax =
-      Math.max(
-        ...daily.temperature_2m_max
+    const validMaxs =
+      daily.temperature_2m_max.filter(
+        (value) =>
+          typeof value === "number" &&
+          Number.isFinite(value)
       );
+
+    if (
+      validMins.length === 0 ||
+      validMaxs.length === 0
+    ) {
+      forecastContainer.innerHTML =
+        '<div class="forecast-loading">Forecast data unavailable.</div>';
+
+      return;
+    }
+
+    const rangeMin =
+      Math.min(...validMins);
+
+    const rangeMax =
+      Math.max(...validMaxs);
 
     const range =
       Math.max(
@@ -1442,13 +1464,25 @@ import Layout from "../../layouts/Layout.astro";
           0;
 
         const start =
-          ((low - rangeMin) / range) *
-          100;
+          Math.max(
+            0,
+            Math.min(
+              100,
+              ((low - rangeMin) /
+                range) *
+                100
+            )
+          );
 
         const width =
           Math.max(
-            ((high - low) / range) * 100,
-            8
+            8,
+            Math.min(
+              100 - start,
+              ((high - low) /
+                range) *
+                100
+            )
           );
 
         const item =
@@ -1457,169 +1491,169 @@ import Layout from "../../layouts/Layout.astro";
         item.className =
           "forecast-item";
 
-        item.innerHTML = `
-          <button
-            class="forecast-summary"
-            type="button"
-            aria-expanded="false"
+        const summary =
+          document.createElement("button");
+
+        summary.type = "button";
+        summary.className =
+          "forecast-summary";
+        summary.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        summary.innerHTML = `
+          <span class="forecast-date">
+            <strong>
+              ${
+                index === 0
+                  ? "Today"
+                  : formatDay(date)
+              }
+            </strong>
+
+            <small>
+              ${formatShortDate(date)}
+            </small>
+          </span>
+
+          <span class="forecast-condition">
+            <i aria-hidden="true">
+              ${getWeatherIcon(code)}
+            </i>
+
+            <span>
+              <strong>
+                ${getWeatherDescription(code)}
+              </strong>
+
+              <small>
+                ${
+                  rain > 0
+                    ? `${Math.round(
+                        rain
+                      )}% chance of rain`
+                    : "Dry conditions expected"
+                }
+              </small>
+            </span>
+          </span>
+
+          <span class="forecast-rain">
+            <strong>
+              ${Math.round(rain)}%
+            </strong>
+
+            <small>
+              ${amount.toFixed(1)} mm
+            </small>
+          </span>
+
+          <span class="forecast-temperature">
+            <strong>
+              ${Math.round(low)}°
+            </strong>
+
+            <span class="temperature-track">
+              <i
+                style="
+                  left:${start}%;
+                  width:${width}%;
+                "
+              ></i>
+            </span>
+
+            <b>
+              ${Math.round(high)}°
+            </b>
+          </span>
+
+          <span
+            class="forecast-chevron"
+            aria-hidden="true"
           >
-            <span class="forecast-date">
-              <strong>
-                ${
-                  index === 0
-                    ? "Today"
-                    : formatDay(date)
-                }
-              </strong>
-
-              <small>
-                ${formatShortDate(date)}
-              </small>
-            </span>
-
-            <span class="forecast-condition">
-              <i aria-hidden="true">
-                ${getWeatherIcon(code)}
-              </i>
-
-              <span>
-                <strong>
-                  ${getWeatherDescription(code)}
-                </strong>
-
-                <small>
-                  ${
-                    rain
-                      ? `${Math.round(
-                          rain
-                        )}% chance of rain`
-                      : "Dry conditions expected"
-                  }
-                </small>
-              </span>
-            </span>
-
-            <span class="forecast-rain">
-              <strong>
-                ${Math.round(rain)}%
-              </strong>
-
-              <small>
-                ${amount.toFixed(1)} mm
-              </small>
-            </span>
-
-            <span class="forecast-temperature">
-              <strong>
-                ${Math.round(low)}°
-              </strong>
-
-              <span class="temperature-track">
-                <i
-                  style="
-                    left:${start}%;
-                    width:${width}%;
-                  "
-                ></i>
-              </span>
-
-              <b>
-                ${Math.round(high)}°
-              </b>
-            </span>
-
-            <span
-              class="forecast-chevron"
-              aria-hidden="true"
-            >
-              ↓
-            </span>
-          </button>
-
-          <div class="forecast-details">
-            <span>
-              <small>Precipitation</small>
-
-              <strong>
-                ${amount.toFixed(1)} mm
-                &middot;
-                ${
-                  daily.precipitation_hours[index] ??
-                  0
-                }h
-              </strong>
-            </span>
-
-            <span>
-              <small>Wind / gusts</small>
-
-              <strong>
-                ${
-                  Math.round(
-                    daily.wind_speed_10m_max[index] ??
-                    0
-                  )
-                }
-                /
-                ${
-                  Math.round(
-                    daily.wind_gusts_10m_max[index] ??
-                    0
-                  )
-                }
-                km/h
-              </strong>
-            </span>
-
-            <span>
-              <small>UV index</small>
-
-              <strong>
-                ${
-                  Math.round(
-                    daily.uv_index_max[index] ??
-                    0
-                  )
-                }
-                &middot;
-                ${uvLabel(
-                  daily.uv_index_max[index]
-                )}
-              </strong>
-            </span>
-
-            <span>
-              <small>Daylight</small>
-
-              <strong>
-                ${
-                  daily.sunrise[index]
-                    ? formatTime(
-                        daily.sunrise[index]
-                      )
-                    : "--"
-                }
-
-                &ndash;
-
-                ${
-                  daily.sunset[index]
-                    ? formatTime(
-                        daily.sunset[index]
-                      )
-                    : "--"
-                }
-              </strong>
-            </span>
-          </div>
+            ↓
+          </span>
         `;
 
-        const summary =
-          item.querySelector<HTMLButtonElement>(
-            ".forecast-summary"
-          );
+        const details =
+          document.createElement("div");
 
-        summary?.addEventListener(
+        details.className =
+          "forecast-details";
+
+        details.innerHTML = `
+          <span>
+            <small>Precipitation</small>
+
+            <strong>
+              ${amount.toFixed(1)} mm
+              &middot;
+              ${
+                daily.precipitation_hours[index] ??
+                0
+              }h
+            </strong>
+          </span>
+
+          <span>
+            <small>Wind / gusts</small>
+
+            <strong>
+              ${Math.round(
+                daily.wind_speed_10m_max[index] ??
+                0
+              )}
+              /
+              ${Math.round(
+                daily.wind_gusts_10m_max[index] ??
+                0
+              )}
+              km/h
+            </strong>
+          </span>
+
+          <span>
+            <small>UV index</small>
+
+            <strong>
+              ${Math.round(
+                daily.uv_index_max[index] ??
+                0
+              )}
+              &middot;
+              ${uvLabel(
+                daily.uv_index_max[index]
+              )}
+            </strong>
+          </span>
+
+          <span>
+            <small>Daylight</small>
+
+            <strong>
+              ${
+                daily.sunrise[index]
+                  ? formatTime(
+                      daily.sunrise[index]
+                    )
+                  : "--"
+              }
+
+              &ndash;
+
+              ${
+                daily.sunset[index]
+                  ? formatTime(
+                      daily.sunset[index]
+                    )
+                  : "--"
+              }
+            </strong>
+          </span>
+        `;
+
+        summary.addEventListener(
           "click",
           () => {
             const isOpen =
@@ -1634,7 +1668,14 @@ import Layout from "../../layouts/Layout.astro";
           }
         );
 
-        forecastContainer.appendChild(item);
+        item.append(
+          summary,
+          details
+        );
+
+        forecastContainer.appendChild(
+          item
+        );
       }
     );
   }
@@ -2000,6 +2041,12 @@ import Layout from "../../layouts/Layout.astro";
 
       let animationFrame = 0;
 
+      const getPixelRatio = (): number =>
+        Math.min(
+          window.devicePixelRatio || 1,
+          2
+        );
+
 
       function getParticleCount(): number {
         return window.innerWidth < 768
@@ -2012,30 +2059,63 @@ import Layout from "../../layouts/Layout.astro";
         getParticleCount();
 
 
-      function resize() {
-  if (!canvas) return;
+      function resize(): void {
+        const pixelRatio =
+          getPixelRatio();
 
-  canvas.width = Math.floor(window.innerWidth * devicePixelRatio);
-  canvas.height = Math.floor(window.innerHeight * devicePixelRatio);
+        width =
+          window.innerWidth;
 
-  canvas.style.width = `${window.innerWidth}px`;
-  canvas.style.height = `${window.innerHeight}px`;
-}
+        height =
+          window.innerHeight;
+
+        canvas.width =
+          Math.floor(
+            width * pixelRatio
+          );
+
+        canvas.height =
+          Math.floor(
+            height * pixelRatio
+          );
+
+        canvas.style.width =
+          `${width}px`;
+
+        canvas.style.height =
+          `${height}px`;
+
+        context.setTransform(
+          pixelRatio,
+          0,
+          0,
+          pixelRatio,
+          0,
+          0
+        );
+
+        particleCount =
+          getParticleCount();
+      }
 
 
       function createParticle(): Particle {
         return {
           x: Math.random() * width,
           y: Math.random() * height,
+
           vx:
             (Math.random() - 0.5) *
             0.08,
+
           vy:
             (Math.random() - 0.5) *
             0.08,
+
           size:
             Math.random() * 1.3 +
             0.4,
+
           opacity:
             Math.random() * 0.28 +
             0.08
@@ -2429,6 +2509,13 @@ import Layout from "../../layouts/Layout.astro";
             animate
           );
       } else {
+        context.clearRect(
+          0,
+          0,
+          width,
+          height
+        );
+
         drawGrid();
         drawConnections();
         drawParticles();
@@ -2493,7 +2580,9 @@ import Layout from "../../layouts/Layout.astro";
       0 24px 60px rgba(29, 77, 130, 0.14);
 
     position: relative;
+
     min-height: 100vh;
+
     overflow: hidden;
 
     color: var(--ink);
@@ -2532,13 +2621,19 @@ import Layout from "../../layouts/Layout.astro";
 
   .sr-only {
     position: absolute;
+
     width: 1px;
     height: 1px;
+
     padding: 0;
     margin: -1px;
+
     overflow: hidden;
+
     clip: rect(0, 0, 0, 0);
+
     white-space: nowrap;
+
     border: 0;
   }
 
@@ -2549,6 +2644,7 @@ import Layout from "../../layouts/Layout.astro";
 
   .weather-background {
     position: fixed;
+
     inset: 0;
 
     z-index: 0;
@@ -2562,6 +2658,7 @@ import Layout from "../../layouts/Layout.astro";
 
   .weather-atmosphere {
     position: fixed;
+
     inset: 0;
 
     z-index: 1;
@@ -2587,6 +2684,7 @@ import Layout from "../../layouts/Layout.astro";
 
   .weather-content {
     position: relative;
+
     z-index: 2;
   }
 
@@ -2608,7 +2706,9 @@ import Layout from "../../layouts/Layout.astro";
 
   .top-bar {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     flex-wrap: wrap;
@@ -2642,6 +2742,7 @@ import Layout from "../../layouts/Layout.astro";
 
   .brand {
     display: flex;
+
     align-items: center;
 
     gap: 8px;
@@ -2649,6 +2750,7 @@ import Layout from "../../layouts/Layout.astro";
     color: var(--ink);
 
     font-size: 12px;
+
     font-weight: 700;
 
     letter-spacing: 0.14em;
@@ -2658,6 +2760,8 @@ import Layout from "../../layouts/Layout.astro";
   .brand-dot {
     width: 8px;
     height: 8px;
+
+    flex: 0 0 8px;
 
     border-radius: 50%;
 
@@ -2699,6 +2803,7 @@ import Layout from "../../layouts/Layout.astro";
 
   .location-toggle {
     display: flex;
+
     align-items: center;
 
     gap: 8px;
@@ -2720,6 +2825,7 @@ import Layout from "../../layouts/Layout.astro";
     font-family: inherit;
 
     font-size: 14px;
+
     font-weight: 600;
 
     cursor: pointer;
@@ -2731,7 +2837,8 @@ import Layout from "../../layouts/Layout.astro";
 
 
   .location-toggle:hover {
-    transform: translateY(-1px);
+    transform:
+      translateY(-1px);
 
     box-shadow:
       0 8px 20px
@@ -2778,13 +2885,16 @@ import Layout from "../../layouts/Layout.astro";
     border-radius: 16px;
 
     background:
-      rgba(250, 253, 255, 0.92);
+      rgba(250, 253, 255, 0.94);
 
     box-shadow:
       0 20px 50px
       rgba(29, 77, 130, 0.18);
 
     backdrop-filter:
+      blur(20px);
+
+    -webkit-backdrop-filter:
       blur(20px);
   }
 
@@ -2856,6 +2966,7 @@ import Layout from "../../layouts/Layout.astro";
       var(--ink-muted);
 
     font-size: 14px;
+
     font-weight: 500;
 
     text-decoration: none;
@@ -2887,6 +2998,7 @@ import Layout from "../../layouts/Layout.astro";
 
   .location-meta {
     display: flex;
+
     align-items: center;
 
     flex-wrap: wrap;
@@ -3066,6 +3178,32 @@ import Layout from "../../layouts/Layout.astro";
   }
 
 
+  /* ============================================================ */
+  /* STABLE WEATHER ICON SYSTEM */
+  /* ============================================================ */
+
+  .weather-icon-svg {
+    display: block;
+
+    width: 28px !important;
+    height: 28px !important;
+
+    min-width: 28px;
+    min-height: 28px;
+
+    max-width: 28px !important;
+    max-height: 28px !important;
+
+    flex: 0 0 28px;
+
+    box-sizing: border-box;
+
+    overflow: visible;
+  }
+
+
+  /* HERO ICON */
+
   .hero-icon {
     display: flex;
 
@@ -3075,8 +3213,27 @@ import Layout from "../../layouts/Layout.astro";
     width: 64px;
     height: 64px;
 
+    min-width: 64px;
+    min-height: 64px;
+
     color:
       var(--white);
+
+    overflow: hidden;
+  }
+
+
+  .hero-icon .weather-icon-svg {
+    width: 52px !important;
+    height: 52px !important;
+
+    min-width: 52px;
+    min-height: 52px;
+
+    max-width: 52px !important;
+    max-height: 52px !important;
+
+    flex: 0 0 52px;
   }
 
 
@@ -3089,6 +3246,7 @@ import Layout from "../../layouts/Layout.astro";
       var(--white);
 
     font-size: 18px;
+
     font-weight: 600;
   }
 
@@ -3198,6 +3356,7 @@ import Layout from "../../layouts/Layout.astro";
       var(--ink);
 
     font-size: 20px;
+
     font-weight: 700;
   }
 
@@ -3218,7 +3377,7 @@ import Layout from "../../layouts/Layout.astro";
 
 
   /* ============================================================ */
-  /* SECTION */
+  /* SECTIONS */
   /* ============================================================ */
 
   .section-divider {
@@ -3240,10 +3399,50 @@ import Layout from "../../layouts/Layout.astro";
       var(--electric-blue);
 
     font-size: 11px;
+
     font-weight: 700;
 
     letter-spacing:
       0.2em;
+  }
+
+
+  .weather-section {
+    scroll-margin-top: 90px;
+  }
+
+
+  .section-heading h2 {
+    margin:
+      10px 0 0;
+
+    color:
+      var(--ink);
+
+    font-size:
+      clamp(1.8rem, 3.6vw, 2.5rem);
+
+    font-weight: 500;
+
+    line-height: 1.15;
+
+    letter-spacing:
+      -0.03em;
+  }
+
+
+  .section-heading p {
+    max-width: 720px;
+
+    margin:
+      10px 0 0;
+
+    color:
+      var(--ink-soft);
+
+    font-size: 14px;
+
+    line-height: 1.7;
   }
 
 
@@ -3385,6 +3584,7 @@ import Layout from "../../layouts/Layout.astro";
     overflow-x: auto;
 
     scrollbar-width: thin;
+
     scrollbar-color:
       rgba(0, 113, 240, 0.25)
       transparent;
@@ -3440,6 +3640,7 @@ import Layout from "../../layouts/Layout.astro";
       rgba(245, 249, 255, 0.7);
 
     font-size: 12px;
+
     font-weight: 600;
   }
 
@@ -3532,20 +3733,33 @@ import Layout from "../../layouts/Layout.astro";
     white-space: nowrap;
 
     font-size: 14px;
+
     font-weight: 500;
   }
 
 
+  /* FIXED HOURLY ICON */
+
   .hourly-condition-icon {
-    display: grid;
+    display: flex;
 
-    place-items: center;
-
-    flex:
-      0 0 42px;
+    align-items: center;
+    justify-content: center;
 
     width: 42px;
     height: 42px;
+
+    min-width: 42px;
+    min-height: 42px;
+
+    max-width: 42px;
+    max-height: 42px;
+
+    flex: 0 0 42px;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
 
     border:
       1px solid
@@ -3561,11 +3775,27 @@ import Layout from "../../layouts/Layout.astro";
   }
 
 
+  .hourly-condition-icon
+    .weather-icon-svg {
+    width: 26px !important;
+    height: 26px !important;
+
+    min-width: 26px;
+    min-height: 26px;
+
+    max-width: 26px !important;
+    max-height: 26px !important;
+
+    flex: 0 0 26px;
+  }
+
+
   .hourly-temperature-cell {
     color:
       var(--ink);
 
     font-size: 17px;
+
     font-weight: 700;
   }
 
@@ -3575,6 +3805,7 @@ import Layout from "../../layouts/Layout.astro";
       var(--electric-blue);
 
     font-size: 14px;
+
     font-weight: 600;
   }
 
@@ -3632,6 +3863,8 @@ import Layout from "../../layouts/Layout.astro";
     width: 27px;
     height: 27px;
 
+    flex: 0 0 27px;
+
     border-radius: 50%;
 
     color:
@@ -3641,13 +3874,11 @@ import Layout from "../../layouts/Layout.astro";
       rgba(0, 113, 240, 0.07);
 
     font-size: 16px;
-
-    transition:
-      transform 0.2s ease;
   }
 
 
-  .hourly-loading {
+  .hourly-loading,
+  .forecast-loading {
     padding:
       45px 20px;
 
@@ -3668,11 +3899,454 @@ import Layout from "../../layouts/Layout.astro";
   }
 
 
-  
+  /* ============================================================ */
+  /* 10 DAY FORECAST */
+  /* ============================================================ */
+
+  .forecast-section {
+    margin-top: 76px;
+  }
+
+
+  .forecast-container {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 36px;
+  }
+
+
+  .forecast-item {
+    overflow: hidden;
+
+    border:
+      1px solid
+      rgba(255, 255, 255, 0.82);
+
+    border-radius: 18px;
+
+    background:
+      rgba(255, 255, 255, 0.66);
+
+    box-shadow:
+      0 12px 35px
+      rgba(29, 77, 130, 0.08),
+      inset 0 1px
+      rgba(255, 255, 255, 0.92);
+
+    backdrop-filter:
+      blur(18px);
+
+    -webkit-backdrop-filter:
+      blur(18px);
+
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+
+  .forecast-item:hover {
+    border-color:
+      rgba(0, 113, 240, 0.18);
+
+    box-shadow:
+      0 16px 40px
+      rgba(29, 77, 130, 0.11),
+      inset 0 1px
+      rgba(255, 255, 255, 0.95);
+  }
+
+
+  .forecast-summary {
+    display: grid;
+
+    grid-template-columns:
+      100px
+      minmax(230px, 1.4fr)
+      80px
+      minmax(180px, 1fr)
+      22px;
+
+    align-items: center;
+
+    width: 100%;
+
+    min-height: 82px;
+
+    gap: 18px;
+
+    padding:
+      14px 20px;
+
+    border: 0;
+
+    color:
+      var(--ink);
+
+    background:
+      transparent;
+
+    font-family: inherit;
+
+    text-align: left;
+
+    cursor: pointer;
+  }
+
+
+  .forecast-summary:focus-visible {
+    outline:
+      2px solid var(--electric-blue);
+
+    outline-offset:
+      -3px;
+  }
+
+
+  .forecast-date {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+  }
+
+
+  .forecast-date strong {
+    color:
+      var(--ink);
+
+    font-size: 14px;
+
+    font-weight: 700;
+  }
+
+
+  .forecast-date small {
+    color:
+      var(--ink-muted);
+
+    font-size: 11px;
+  }
+
+
+  .forecast-condition {
+    display: flex;
+
+    align-items: center;
+
+    min-width: 0;
+
+    gap: 12px;
+  }
+
+
+  /* FIXED 10-DAY ICON CONTAINER */
+
+  .forecast-condition > i {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    min-width: 42px;
+    min-height: 42px;
+
+    max-width: 42px;
+    max-height: 42px;
+
+    flex: 0 0 42px;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+
+    border:
+      1px solid
+      rgba(0, 113, 240, 0.14);
+
+    border-radius: 13px;
+
+    color:
+      var(--electric-blue);
+
+    background:
+      rgba(0, 113, 240, 0.055);
+
+    font-style: normal;
+  }
+
+
+  .forecast-condition
+    > i
+    .weather-icon-svg {
+    width: 27px !important;
+    height: 27px !important;
+
+    min-width: 27px;
+    min-height: 27px;
+
+    max-width: 27px !important;
+    max-height: 27px !important;
+
+    flex: 0 0 27px;
+  }
+
+
+  .forecast-condition > span {
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+
+    gap: 4px;
+  }
+
+
+  .forecast-condition strong {
+    overflow: hidden;
+
+    color:
+      var(--ink);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+  }
+
+
+  .forecast-condition small {
+    overflow: hidden;
+
+    color:
+      var(--ink-muted);
+
+    font-size: 10px;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+  }
+
+
+  .forecast-rain {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    text-align: center;
+  }
+
+
+  .forecast-rain strong {
+    color:
+      var(--electric-blue);
+
+    font-size: 14px;
+  }
+
+
+  .forecast-rain small {
+    color:
+      var(--ink-muted);
+
+    font-size: 10px;
+  }
+
+
+  .forecast-temperature {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 0;
+  }
+
+
+  .forecast-temperature strong,
+  .forecast-temperature b {
+    flex: 0 0 auto;
+
+    color:
+      var(--ink);
+
+    font-size: 14px;
+
+    font-weight: 700;
+  }
+
+
+  .temperature-track {
+    position: relative;
+
+    display: block;
+
+    flex: 1;
+
+    height: 6px;
+
+    min-width: 45px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background:
+      rgba(13, 20, 32, 0.08);
+  }
+
+
+  .temperature-track i {
+    position: absolute;
+
+    top: 0;
+
+    height: 100%;
+
+    min-width: 8px;
+
+    border-radius: 999px;
+
+    background:
+      linear-gradient(
+        90deg,
+        var(--electric-blue-deep),
+        var(--electric-blue-bright)
+      );
+  }
+
+
+  .forecast-chevron {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 22px;
+    height: 22px;
+
+    color:
+      var(--ink-muted);
+
+    font-size: 16px;
+
+    transition:
+      transform 0.25s ease,
+      color 0.25s ease;
+  }
+
+
+  .forecast-item.is-open
+    .forecast-chevron {
+    color:
+      var(--electric-blue);
+
+    transform:
+      rotate(180deg);
+  }
+
+
+  .forecast-details {
+    display: grid;
+
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    border-top:
+      1px solid transparent;
+
+    opacity: 0;
+
+    transition:
+      max-height 0.3s ease,
+      opacity 0.25s ease,
+      border-color 0.25s ease;
+  }
+
+
+  .forecast-item.is-open
+    .forecast-details {
+    max-height: 180px;
+
+    border-top-color:
+      rgba(13, 20, 32, 0.07);
+
+    opacity: 1;
+  }
+
+
+  .forecast-details > span {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    min-width: 0;
+
+    padding:
+      18px 20px;
+  }
+
+
+  .forecast-details > span + span {
+    border-left:
+      1px solid
+      rgba(13, 20, 32, 0.06);
+  }
+
+
+  .forecast-details small {
+    color:
+      var(--ink-muted);
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing:
+      0.08em;
+  }
+
+
+  .forecast-details strong {
+    color:
+      var(--ink);
+
+    font-size: 12px;
+
+    font-weight: 600;
+  }
+
 
   /* ============================================================ */
   /* DOCUMENTATION */
   /* ============================================================ */
+
+  .documentation-section {
+    margin-top: 76px;
+  }
+
 
   .documentation-grid {
     display: grid;
@@ -3741,7 +4415,8 @@ import Layout from "../../layouts/Layout.astro";
 
 
   .documentation-card h3 {
-    margin-top: 16px;
+    margin:
+      16px 0 0;
 
     color:
       var(--ink);
@@ -3753,7 +4428,8 @@ import Layout from "../../layouts/Layout.astro";
 
 
   .documentation-card p {
-    margin-top: 10px;
+    margin:
+      10px 0 0;
 
     color:
       var(--ink-soft);
@@ -3838,8 +4514,7 @@ import Layout from "../../layouts/Layout.astro";
     padding: 22px;
 
     border:
-      1px solid
-      var(--glass-line);
+      1px solid var(--glass-line);
 
     border-radius: 16px;
 
@@ -3850,6 +4525,9 @@ import Layout from "../../layouts/Layout.astro";
       var(--glass-shadow);
 
     backdrop-filter:
+      blur(20px);
+
+    -webkit-backdrop-filter:
       blur(20px);
   }
 
@@ -3865,6 +4543,7 @@ import Layout from "../../layouts/Layout.astro";
       var(--ink-muted);
 
     font-size: 10px;
+
     font-weight: 600;
 
     letter-spacing:
@@ -3875,6 +4554,8 @@ import Layout from "../../layouts/Layout.astro";
   .api-dot {
     width: 7px;
     height: 7px;
+
+    flex: 0 0 7px;
 
     border-radius: 50%;
 
@@ -3919,8 +4600,7 @@ import Layout from "../../layouts/Layout.astro";
     padding-top: 28px;
 
     border-top:
-      1px solid
-      var(--border);
+      1px solid var(--border);
   }
 
 
@@ -4012,17 +4692,19 @@ import Layout from "../../layouts/Layout.astro";
       display: none;
     }
 
+
     .hourly-header {
       align-items: flex-start;
     }
 
+
     .forecast-summary {
       grid-template-columns:
-        80px
-        minmax(170px, 1fr)
-        70px
+        82px
         minmax(160px, 1fr)
-        20px;
+        65px
+        minmax(150px, 1fr)
+        22px;
 
       gap: 12px;
     }
@@ -4104,7 +4786,8 @@ import Layout from "../../layouts/Layout.astro";
 
 
     .hourly-section,
-    .weather-section {
+    .forecast-section,
+    .documentation-section {
       margin-top: 70px;
     }
 
@@ -4125,6 +4808,95 @@ import Layout from "../../layouts/Layout.astro";
       grid-template-columns:
         1fr;
     }
+
+
+    .forecast-summary {
+      grid-template-columns:
+        78px
+        minmax(0, 1fr)
+        20px;
+
+      gap: 12px;
+
+      min-height: 76px;
+
+      padding:
+        12px 15px;
+    }
+
+
+    .forecast-rain {
+      display: none;
+    }
+
+
+    .forecast-temperature {
+      grid-column:
+        2 / -1;
+    }
+
+
+    .forecast-condition
+      > i {
+      width: 38px;
+      height: 38px;
+
+      min-width: 38px;
+      min-height: 38px;
+
+      max-width: 38px;
+      max-height: 38px;
+
+      flex-basis: 38px;
+    }
+
+
+    .forecast-condition
+      > i
+      .weather-icon-svg {
+      width: 25px !important;
+      height: 25px !important;
+
+      min-width: 25px;
+      min-height: 25px;
+
+      max-width: 25px !important;
+      max-height: 25px !important;
+
+      flex-basis: 25px;
+    }
+
+
+    .forecast-condition small {
+      display: none;
+    }
+
+
+    .forecast-details {
+      grid-template-columns:
+        1fr 1fr;
+    }
+
+
+    .forecast-details > span {
+      padding:
+        14px 16px;
+    }
+
+
+    .forecast-details > span:nth-child(3) {
+      border-left: 0;
+      border-top:
+        1px solid
+        rgba(13, 20, 32, 0.06);
+    }
+
+
+    .forecast-details > span:nth-child(4) {
+      border-top:
+        1px solid
+        rgba(13, 20, 32, 0.06);
+    }
   }
 
 
@@ -4140,39 +4912,52 @@ import Layout from "../../layouts/Layout.astro";
     }
 
 
-    .forecast-summary {
-      grid-template-columns:
-        72px
-        minmax(0, 1fr)
-        55px
-        20px;
-
-      gap: 10px;
-
-      padding:
-        16px;
+    .location-meta {
+      font-size: 12px;
     }
 
 
-    .forecast-rain {
-      display: none;
+    .forecast-summary {
+      grid-template-columns:
+        70px
+        minmax(0, 1fr)
+        20px;
+
+      gap: 9px;
+
+      padding:
+        12px;
+      }
+
+
+    .forecast-date strong {
+      font-size: 12px;
+    }
+
+
+    .forecast-condition {
+      gap: 8px;
+    }
+
+
+    .forecast-condition strong {
+      font-size: 12px;
     }
 
 
     .forecast-temperature {
-      grid-column:
-        2 / -1;
-
-      justify-content:
-        flex-start;
-
-      padding-left:
-        0;
+      gap: 7px;
     }
 
 
-    .forecast-condition small {
-      display: none;
+    .forecast-temperature strong,
+    .forecast-temperature b {
+      font-size: 13px;
+    }
+
+
+    .temperature-track {
+      min-width: 35px;
     }
 
 
@@ -4185,11 +4970,16 @@ import Layout from "../../layouts/Layout.astro";
     .forecast-details > span {
       padding:
         14px 16px;
+
+      border-left: 0 !important;
+      border-top: 0 !important;
     }
 
 
-    .location-meta {
-      font-size: 12px;
+    .forecast-details > span + span {
+      border-top:
+        1px solid
+        rgba(13, 20, 32, 0.06) !important;
     }
   }
 
@@ -4216,6 +5006,8 @@ import Layout from "../../layouts/Layout.astro";
     .location-option,
     .top-nav-link,
     .forecast-item,
+    .forecast-details,
+    .forecast-chevron,
     .documentation-card,
     .back-link,
     .hourly-nav {
@@ -4223,215 +5015,4 @@ import Layout from "../../layouts/Layout.astro";
         none;
     }
   }
-/* ============================================================ */
-/* WEATHER ICON — FIXED SIZES */
-/* ============================================================ */
-
-.weather-icon-svg {
-  display: block;
-  width: 28px;
-  height: 28px;
-  max-width: 28px;
-  max-height: 28px;
-  flex: 0 0 auto;
-}
-
-/* Hero icon */
-.hero-icon .weather-icon-svg {
-  width: 52px;
-  height: 52px;
-  max-width: 52px;
-  max-height: 52px;
-}
-
-/* Hourly icons */
-.hourly-condition-icon {
-  width: 42px;
-  height: 42px;
-  min-width: 42px;
-  min-height: 42px;
-  flex: 0 0 42px;
-  overflow: hidden;
-}
-
-.hourly-condition-icon .weather-icon-svg {
-  width: 26px;
-  height: 26px;
-  max-width: 26px;
-  max-height: 26px;
-}
-
-/* 10-day forecast icons */
-.forecast-condition > i {
-  width: 42px;
-  height: 42px;
-  min-width: 42px;
-  min-height: 42px;
-  flex: 0 0 42px;
-  overflow: hidden;
-}
-
-.forecast-condition > i .weather-icon-svg {
-  width: 27px;
-  height: 27px;
-  max-width: 27px;
-  max-height: 27px;
-}
-/* ============================================================ */
-/* WEATHER ICONS — STABLE SVG SIZING                           */
-/* ============================================================ */
-
-/*
- * Important:
- * The SVG itself has fixed dimensions and every container
- * controls the visual size independently.
- */
-
-.weather-icon-svg {
-  display: block;
-
-  width: 28px !important;
-  height: 28px !important;
-
-  min-width: 28px;
-  min-height: 28px;
-
-  max-width: 28px !important;
-  max-height: 28px !important;
-
-  flex: 0 0 28px;
-
-  overflow: visible;
-
-  box-sizing: border-box;
-}
-
-
-/* ------------------------------------------------------------ */
-/* HERO                                                         */
-/* ------------------------------------------------------------ */
-
-.hero-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 64px;
-  height: 64px;
-
-  min-width: 64px;
-  min-height: 64px;
-
-  color: var(--white);
-
-  overflow: hidden;
-}
-
-.hero-icon .weather-icon-svg {
-  width: 52px !important;
-  height: 52px !important;
-
-  min-width: 52px;
-  min-height: 52px;
-
-  max-width: 52px !important;
-  max-height: 52px !important;
-
-  flex: 0 0 52px;
-}
-
-
-/* ------------------------------------------------------------ */
-/* HOURLY                                                       */
-/* ------------------------------------------------------------ */
-
-.hourly-condition-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 42px;
-  height: 42px;
-
-  min-width: 42px;
-  min-height: 42px;
-
-  max-width: 42px;
-  max-height: 42px;
-
-  flex: 0 0 42px;
-
-  overflow: hidden;
-
-  box-sizing: border-box;
-}
-
-.hourly-condition-icon .weather-icon-svg {
-  width: 26px !important;
-  height: 26px !important;
-
-  min-width: 26px;
-  min-height: 26px;
-
-  max-width: 26px !important;
-  max-height: 26px !important;
-
-  flex: 0 0 26px;
-}
-
-
-/* ------------------------------------------------------------ */
-/* 10-DAY FORECAST                                              */
-/* ------------------------------------------------------------ */
-
-.forecast-condition > i {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 42px;
-  height: 42px;
-
-  min-width: 42px;
-  min-height: 42px;
-
-  max-width: 42px;
-  max-height: 42px;
-
-  flex: 0 0 42px;
-
-  overflow: hidden;
-
-  box-sizing: border-box;
-
-  font-style: normal;
-}
-
-.forecast-condition > i .weather-icon-svg {
-  width: 27px !important;
-  height: 27px !important;
-
-  min-width: 27px;
-  min-height: 27px;
-
-  max-width: 27px !important;
-  max-height: 27px !important;
-
-  flex: 0 0 27px;
-}
-
-
-/* ------------------------------------------------------------ */
-/* PREVENT GLOBAL IMAGE/SVG RULES FROM OVERRIDING THESE ICONS   */
-/* ------------------------------------------------------------ */
-
-.hourly-condition-cell svg,
-.forecast-condition svg,
-.hero-icon svg {
-  display: block;
-
-  box-sizing: border-box;
-
-  overflow: visible;
-}
 </style>
