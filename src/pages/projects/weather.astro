@@ -4621,61 +4621,37 @@ import Layout from "../../layouts/Layout.astro";
         none;
     }
   }
-  /* =========================================================
-   FORECAST WEATHER ICONS
-   Keep hourly + 10-day icons compact and proportional
-   ========================================================= */
+  /* ============================================================ */
+/* WEATHER ICON */
+/* ============================================================ */
 
-.hourly-forecast img,
-.hourly-forecast svg,
-.hourly-card img,
-.hourly-card svg,
-.ten-day-forecast img,
-.ten-day-forecast svg,
-.daily-forecast img,
-.daily-forecast svg,
-.forecast-icon img,
-.forecast-icon svg {
-  width: 42px !important;
-  height: 42px !important;
-  max-width: 42px !important;
-  max-height: 42px !important;
-  object-fit: contain;
-  flex-shrink: 0;
+.weather-icon-svg {
+  display: block;
+  width: 28px;
+  height: 28px;
+  max-width: 28px;
+  max-height: 28px;
+  flex: 0 0 auto;
 }
 
-/* Hourly cards — slightly smaller */
-.hourly-forecast .forecast-icon,
-.hourly-card .forecast-icon {
-  width: 42px !important;
-  height: 42px !important;
+.hero-icon .weather-icon-svg {
+  width: 52px;
+  height: 52px;
+  max-width: 52px;
+  max-height: 52px;
 }
 
-/* 10-day cards — compact icon */
-.ten-day-forecast .forecast-icon,
-.daily-forecast .forecast-icon {
-  width: 40px !important;
-  height: 40px !important;
+.hourly-condition-icon .weather-icon-svg {
+  width: 26px;
+  height: 26px;
+  max-width: 26px;
+  max-height: 26px;
 }
 
-/* Prevent SVG/icon containers from stretching */
-.hourly-forecast .forecast-icon *,
-.hourly-card .forecast-icon *,
-.ten-day-forecast .forecast-icon *,
-.daily-forecast .forecast-icon * {
-  max-width: 100%;
-  max-height: 100%;
-}
-.hourly-forecast .weather-icon,
-.hourly-card .weather-icon,
-.ten-day-forecast .weather-icon,
-.daily-forecast .weather-icon {
-  font-size: 2rem !important;
-  line-height: 1 !important;
-  width: 42px !important;
-  height: 42px !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.forecast-condition > i .weather-icon-svg {
+  width: 27px;
+  height: 27px;
+  max-width: 27px;
+  max-height: 27px;
 }
 </style>
