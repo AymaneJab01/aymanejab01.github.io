@@ -2012,43 +2012,15 @@ import Layout from "../../layouts/Layout.astro";
         getParticleCount();
 
 
-      function resize(): void {
-        const ratio =
-          Math.min(
-            window.devicePixelRatio || 1,
-            2
-          );
+      function resizeCanvas() {
+  if (!canvas) return;
 
-        width =
-          window.innerWidth;
+  canvas.width = Math.floor(window.innerWidth * devicePixelRatio);
+  canvas.height = Math.floor(window.innerHeight * devicePixelRatio);
 
-        height =
-          window.innerHeight;
-
-        canvas.width =
-          width * ratio;
-
-        canvas.height =
-          height * ratio;
-
-        canvas.style.width =
-          `${width}px`;
-
-        canvas.style.height =
-          `${height}px`;
-
-        context.setTransform(
-          ratio,
-          0,
-          0,
-          ratio,
-          0,
-          0
-        );
-
-        particleCount =
-          getParticleCount();
-      }
+  canvas.style.width = `${window.innerWidth}px`;
+  canvas.style.height = `${window.innerHeight}px`;
+}
 
 
       function createParticle(): Particle {
