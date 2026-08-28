@@ -555,6 +555,10 @@ import Layout from "../../layouts/Layout.astro";
     apparent_temperature: number;
     weather_code: number;
     wind_speed_10m: number;
+    precipitation?: number;
+    rain?: number;
+    showers?: number;
+    snowfall?: number;
     time: string;
   }
 
@@ -577,6 +581,7 @@ import Layout from "../../layouts/Layout.astro";
     time: string[];
     temperature_2m: number[];
     weather_code: number[];
+    precipitation?: number[];
     precipitation_probability: number[];
     relative_humidity_2m: number[];
     wind_speed_10m: number[];
@@ -853,15 +858,15 @@ import Layout from "../../layouts/Layout.astro";
       longitude,
 
       current:
-        "temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m",
+        "temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,precipitation,rain,showers,snowfall",
 
       hourly:
-        "temperature_2m,weather_code,precipitation_probability,relative_humidity_2m,wind_speed_10m,wind_direction_10m",
+        "temperature_2m,weather_code,precipitation,precipitation_probability,relative_humidity_2m,wind_speed_10m,wind_direction_10m",
 
       daily:
         "weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,precipitation_hours,wind_speed_10m_max,wind_gusts_10m_max,uv_index_max,sunrise,sunset",
 
-      timezone: "Europe/Madrid",
+      timezone: "auto",
 
       forecast_days: "10"
     });
@@ -874,42 +879,67 @@ import Layout from "../../layouts/Layout.astro";
   /* FORMAT HELPERS */
   /* ============================================================ */
 
+  function parseLocalDateTime(value: string): {
+    year: number;
+    month: number;
+    day: number;
+    hour: number;
+    minute: number;
+  } | null {
+    const match = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/.exec(value);
+
+    if (!match) return null;
+
+    const [, year, month, day, hour, minute] = match;
+
+    return {
+      year: Number(year),
+      month: Number(month),
+      day: Number(day),
+      hour: Number(hour),
+      minute: Number(minute)
+    };
+  }
+
+
   function formatTime(value: string): string {
-    const date = new Date(value);
+    const parts = parseLocalDateTime(value);
 
-    if (Number.isNaN(date.getTime())) {
-      return "--";
-    }
+    if (!parts) return "--";
 
-    return date.toLocaleTimeString("en-US", {
-      hour: "numeric",
-      minute: "2-digit"
-    });
+    const hour12 = parts.hour % 12 || 12;
+    const suffix = parts.hour >= 12 ? "PM" : "AM";
+
+    return `${hour12}:${String(parts.minute).padStart(2, "0")} ${suffix}`;
   }
 
 
   function formatHour(value: string): string {
-    const date = new Date(value);
+    const parts = parseLocalDateTime(value);
 
-    if (Number.isNaN(date.getTime())) {
-      return "--";
-    }
+    if (!parts) return "--";
 
-    return date
-      .toLocaleTimeString("en-US", {
-        hour: "numeric"
-      })
-      .replace(" ", "")
-      .toLowerCase();
+    const hour12 = parts.hour % 12 || 12;
+    const suffix = parts.hour >= 12 ? "PM" : "AM";
+
+    return `${hour12}${suffix}`;
   }
 
 
   function formatDay(value: string): string {
-    const date = new Date(`${value}T12:00:00`);
+    const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
 
-    if (Number.isNaN(date.getTime())) {
-      return "--";
-    }
+    if (!match) return "--";
+
+    const [, year, month, day] = match;
+    const date = new Date(
+      Number(year),
+      Number(month) - 1,
+      Number(day),
+      12,
+      0,
+      0
+    );
 
     return date.toLocaleDateString("en-GB", {
       weekday: "short"
@@ -918,11 +948,19 @@ import Layout from "../../layouts/Layout.astro";
 
 
   function formatShortDate(value: string): string {
-    const date = new Date(`${value}T12:00:00`);
+    const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
 
-    if (Number.isNaN(date.getTime())) {
-      return "--";
-    }
+    if (!match) return "--";
+
+    const [, year, month, day] = match;
+    const date = new Date(
+      Number(year),
+      Number(month) - 1,
+      Number(day),
+      12,
+      0,
+      0
+    );
 
     return date.toLocaleDateString("en-GB", {
       day: "numeric",
@@ -1024,6 +1062,9 @@ import Layout from "../../layouts/Layout.astro";
     document.querySelectorAll<HTMLAnchorElement>(
       "[data-nav-link]"
     );
+
+  let weatherRequestId = 0;
+  let activeWeatherController: AbortController | null = null;
 
 
   /* ============================================================ */
@@ -1159,54 +1200,46 @@ import Layout from "../../layouts/Layout.astro";
 
     const hourly = data.hourly;
 
-    const now =
-      new Date(
-        data.current.time
-      ).getTime();
-
-    let startIndex =
-      hourly.time.findIndex(
-        (time) =>
-          new Date(time).getTime() >= now
-      );
-
-    if (startIndex === -1) {
-      startIndex = 0;
+    if (!Array.isArray(hourly.time) || hourly.time.length === 0) {
+      hourlyTableBody.innerHTML =
+        '<div class="hourly-loading">Hourly forecast data unavailable.</div>';
+      return;
     }
 
-    const endIndex =
-      Math.min(
-        startIndex + 24,
-        hourly.time.length
-      );
+    /*
+     * Open-Meteo returns local timestamps when a timezone is requested.
+     * Compare the ISO local strings directly instead of passing them through
+     * Date(), which can shift the hour when the browser uses another timezone.
+     */
+    const currentTime = data.current.time;
+
+    let startIndex = hourly.time.findIndex(
+      (time) => time >= currentTime
+    );
+
+    if (startIndex === -1) {
+      startIndex = Math.max(0, hourly.time.length - 24);
+    }
+
+    const endIndex = Math.min(
+      startIndex + 24,
+      hourly.time.length
+    );
 
     hourlyTableBody.innerHTML = "";
 
-    for (
-      let index = startIndex;
-      index < endIndex;
-      index += 1
-    ) {
-      const time =
-        hourly.time[index];
+    let renderedRows = 0;
 
-      const temperature =
-        hourly.temperature_2m[index];
-
-      const code =
-        hourly.weather_code[index];
-
-      const precipitation =
+    for (let index = startIndex; index < endIndex; index += 1) {
+      const time = hourly.time[index];
+      const temperature = hourly.temperature_2m[index];
+      const code = hourly.weather_code[index];
+      const precipitationProbability =
         hourly.precipitation_probability[index];
-
-      const humidity =
-        hourly.relative_humidity_2m[index];
-
-      const wind =
-        hourly.wind_speed_10m[index];
-
-      const windDirection =
-        hourly.wind_direction_10m[index];
+      const precipitationAmount = hourly.precipitation?.[index];
+      const humidity = hourly.relative_humidity_2m[index];
+      const wind = hourly.wind_speed_10m[index];
+      const windDirection = hourly.wind_direction_10m[index];
 
       if (
         time === undefined ||
@@ -1216,162 +1249,84 @@ import Layout from "../../layouts/Layout.astro";
         continue;
       }
 
-      const row =
-        document.createElement("div");
-
+      const row = document.createElement("div");
       row.className =
         index === startIndex
           ? "hourly-row hourly-now"
           : "hourly-row";
 
-      const timeCell =
-        document.createElement("div");
+      const timeCell = document.createElement("div");
+      timeCell.className = "hourly-time-cell";
 
-      timeCell.className =
-        "hourly-time-cell";
-
-      const timeLabel =
-        document.createElement("strong");
-
+      const timeLabel = document.createElement("strong");
       timeLabel.textContent =
-        index === startIndex
-          ? "Now"
-          : formatHour(time);
+        index === startIndex ? "Now" : formatHour(time);
 
-      const fullTime =
-        document.createElement("small");
-
+      const fullTime = document.createElement("small");
       fullTime.textContent =
-        index === startIndex
-          ? formatHour(time)
-          : "";
+        index === startIndex ? formatTime(time) : "";
 
-      timeCell.append(
-        timeLabel,
-        fullTime
-      );
+      timeCell.append(timeLabel, fullTime);
 
+      const conditionCell = document.createElement("div");
+      conditionCell.className = "hourly-condition-cell";
 
-      const conditionCell =
-        document.createElement("div");
+      const icon = document.createElement("span");
+      icon.className = "hourly-condition-icon";
+      icon.innerHTML = getWeatherIcon(code);
 
-      conditionCell.className =
-        "hourly-condition-cell";
+      const conditionText = document.createElement("span");
+      conditionText.textContent = getWeatherDescription(code);
 
-      const icon =
-        document.createElement("span");
+      conditionCell.append(icon, conditionText);
 
-      icon.className =
-        "hourly-condition-icon";
+      const temperatureCell = document.createElement("div");
+      temperatureCell.className = "hourly-temperature-cell";
+      temperatureCell.textContent = `${Math.round(temperature)}°`;
 
-      icon.innerHTML =
-        getWeatherIcon(code);
-
-      const conditionText =
-        document.createElement("span");
-
-      conditionText.textContent =
-        getWeatherDescription(code);
-
-      conditionCell.append(
-        icon,
-        conditionText
-      );
-
-
-      const temperatureCell =
-        document.createElement("div");
-
-      temperatureCell.className =
-        "hourly-temperature-cell";
-
-      temperatureCell.textContent =
-        `${Math.round(
-          temperature
-        )}°`;
-
-
-      const precipitationCell =
-        document.createElement("div");
-
-      precipitationCell.className =
-        "hourly-precip-cell";
-
+      const precipitationCell = document.createElement("div");
+      precipitationCell.className = "hourly-precip-cell";
       precipitationCell.textContent =
-        precipitation !== undefined
-          ? `${Math.round(
-              precipitation
-            )}%`
-          : "--";
+        precipitationProbability !== undefined
+          ? `${Math.round(precipitationProbability)}%`
+          : precipitationAmount !== undefined
+            ? `${precipitationAmount.toFixed(1)} mm`
+            : "--";
+      precipitationCell.title =
+        precipitationProbability !== undefined
+          ? "Probability of precipitation"
+          : "Precipitation amount";
 
-
-      const humidityCell =
-        document.createElement("div");
-
-      humidityCell.className =
-        "hourly-humidity-cell";
-
+      const humidityCell = document.createElement("div");
+      humidityCell.className = "hourly-humidity-cell";
       humidityCell.textContent =
         humidity !== undefined
-          ? `${Math.round(
-              humidity
-            )}%`
+          ? `${Math.round(humidity)}%`
           : "--";
 
+      const windCell = document.createElement("div");
+      windCell.className = "hourly-wind-cell";
 
-      const windCell =
-        document.createElement("div");
-
-      windCell.className =
-        "hourly-wind-cell";
-
-      if (
-        wind !== undefined &&
-        windDirection !== undefined
-      ) {
-        const arrow =
-          document.createElement("span");
-
-        arrow.className =
-          "wind-arrow";
-
-        arrow.style.transform =
-          `rotate(${windDirection}deg)`;
-
+      if (wind !== undefined && windDirection !== undefined) {
+        const arrow = document.createElement("span");
+        arrow.className = "wind-arrow";
+        arrow.style.transform = `rotate(${windDirection}deg)`;
         arrow.textContent = "→";
 
-        const windText =
-          document.createElement("span");
+        const windText = document.createElement("span");
+        const windStrong = document.createElement("strong");
+        windStrong.textContent = `${Math.round(wind)} km/h`;
 
-        const windStrong =
-          document.createElement("strong");
+        const windSmall = document.createElement("small");
+        windSmall.textContent = degreesToDirection(windDirection);
 
-        windStrong.textContent =
-          `${Math.round(
-            wind
-          )} km/h`;
-
-        const windSmall =
-          document.createElement("small");
-
-        windSmall.textContent =
-          degreesToDirection(
-            windDirection
-          );
-
-        windText.append(
-          windStrong,
-          windSmall
-        );
-
-        windCell.append(
-          arrow,
-          windText
-        );
+        windText.append(windStrong, windSmall);
+        windCell.append(arrow, windText);
+      } else if (wind !== undefined) {
+        windCell.textContent = `${Math.round(wind)} km/h`;
       } else {
         windCell.textContent = "--";
       }
-
 
       row.append(
         timeCell,
@@ -1383,6 +1338,12 @@ import Layout from "../../layouts/Layout.astro";
       );
 
       hourlyTableBody.appendChild(row);
+      renderedRows += 1;
+    }
+
+    if (renderedRows === 0) {
+      hourlyTableBody.innerHTML =
+        '<div class="hourly-loading">Hourly forecast data unavailable.</div>';
     }
   }
 
@@ -1685,15 +1646,36 @@ import Layout from "../../layouts/Layout.astro";
   /* LOAD CITY */
   /* ============================================================ */
 
+  function isWeatherResponse(value: unknown): value is WeatherResponse {
+    if (!value || typeof value !== "object") return false;
+
+    const response = value as Partial<WeatherResponse>;
+
+    return Boolean(
+      response.current &&
+        response.daily &&
+        response.hourly &&
+        Array.isArray(response.daily.time) &&
+        Array.isArray(response.hourly.time) &&
+        typeof response.current.time === "string"
+    );
+  }
+
+
   async function loadCity(
     latitude: string,
     longitude: string,
     city: string,
     region: string
   ): Promise<void> {
+    const requestId = ++weatherRequestId;
+
+    activeWeatherController?.abort();
+    const controller = new AbortController();
+    activeWeatherController = controller;
+
     if (heroDescription) {
-      heroDescription.textContent =
-        "Loading weather...";
+      heroDescription.textContent = "Loading weather...";
     }
 
     if (forecastContainer) {
@@ -1707,61 +1689,82 @@ import Layout from "../../layouts/Layout.astro";
     }
 
     try {
-      const response =
-        await fetch(
-          buildWeatherUrl(
-            latitude,
-            longitude
-          )
-        );
+      const response = await fetch(
+        buildWeatherUrl(latitude, longitude),
+        {
+          signal: controller.signal,
+          headers: { Accept: "application/json" },
+          cache: "no-store"
+        }
+      );
 
       if (!response.ok) {
-        throw new Error(
-          `Weather request failed: ${response.status}`
-        );
+        let reason = `HTTP ${response.status}`;
+
+        try {
+          const errorBody = (await response.json()) as {
+            reason?: string;
+          };
+          if (errorBody.reason) reason = errorBody.reason;
+        } catch {
+          // Keep the HTTP status when the API response is not JSON.
+        }
+
+        throw new Error(`Weather request failed: ${reason}`);
       }
 
-      const data =
-        (await response.json()) as WeatherResponse;
+      const rawData: unknown = await response.json();
 
-      renderHero(
-        city,
-        region,
-        data
-      );
+      if (!isWeatherResponse(rawData)) {
+        throw new Error("The weather API returned an incomplete response.");
+      }
 
+      if (requestId !== weatherRequestId) return;
+
+      const data = rawData;
+
+      renderHero(city, region, data);
       renderHourly(data);
-
       renderForecast(data);
     } catch (error) {
-      console.error(
-        "Weather error:",
-        error
-      );
+      if (controller.signal.aborted || requestId !== weatherRequestId) {
+        return;
+      }
+
+      console.error("Weather error:", error);
 
       if (heroDescription) {
-        heroDescription.textContent =
-          "Unable to load weather";
+        heroDescription.textContent = "Unable to load weather";
       }
 
       if (heroTemp) {
-        heroTemp.textContent =
-          "--";
+        heroTemp.textContent = "--";
       }
+
+      if (heroFeels) heroFeels.textContent = "--";
+      if (heroHigh) heroHigh.textContent = "--";
+      if (heroLow) heroLow.textContent = "--";
+      if (heroRain) heroRain.textContent = "--";
+      if (heroPrecip) heroPrecip.textContent = "--";
+      if (heroIcon) heroIcon.innerHTML = getWeatherIcon(3);
 
       if (outlookText) {
         outlookText.textContent =
-          "Unable to load today's outlook right now.";
+          "Unable to load today's outlook right now. Please try again.";
       }
 
       if (forecastContainer) {
         forecastContainer.innerHTML =
-          '<div class="forecast-loading">Unable to load forecast.</div>';
+          '<div class="forecast-loading">Unable to load forecast. Please try again.</div>';
       }
 
       if (hourlyTableBody) {
         hourlyTableBody.innerHTML =
-          '<div class="hourly-loading">Unable to load hourly forecast.</div>';
+          '<div class="hourly-loading">Unable to load hourly forecast. Please try again.</div>';
+      }
+    } finally {
+      if (requestId === weatherRequestId) {
+        activeWeatherController = null;
       }
     }
   }
