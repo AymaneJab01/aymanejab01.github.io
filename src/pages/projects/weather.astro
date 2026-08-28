@@ -4621,4 +4621,49 @@ import Layout from "../../layouts/Layout.astro";
         none;
     }
   }
+  /* =========================================================
+   FORECAST WEATHER ICONS
+   Keep hourly + 10-day icons compact and proportional
+   ========================================================= */
+
+.hourly-forecast img,
+.hourly-forecast svg,
+.hourly-card img,
+.hourly-card svg,
+.ten-day-forecast img,
+.ten-day-forecast svg,
+.daily-forecast img,
+.daily-forecast svg,
+.forecast-icon img,
+.forecast-icon svg {
+  width: 42px !important;
+  height: 42px !important;
+  max-width: 42px !important;
+  max-height: 42px !important;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Hourly cards — slightly smaller */
+.hourly-forecast .forecast-icon,
+.hourly-card .forecast-icon {
+  width: 42px !important;
+  height: 42px !important;
+}
+
+/* 10-day cards — compact icon */
+.ten-day-forecast .forecast-icon,
+.daily-forecast .forecast-icon {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+/* Prevent SVG/icon containers from stretching */
+.hourly-forecast .forecast-icon *,
+.hourly-card .forecast-icon *,
+.ten-day-forecast .forecast-icon *,
+.daily-forecast .forecast-icon * {
+  max-width: 100%;
+  max-height: 100%;
+}
 </style>
