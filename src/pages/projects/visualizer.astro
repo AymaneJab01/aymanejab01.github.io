@@ -1,395 +1,391 @@
 ---
-import Layout from "../../layouts/Layout.astro";
----
+
+## import Layout from "../../layouts/Layout.astro";
 
 <Layout title="Algorithm Visualizer">
   <main class="algorithm-page">
     <div class="page-grid"></div>
 
-    <div class="container">
-      <!-- BACK -->
-      <a href="/projects" class="back-link">
-        <span>←</span>
-        <span>Back to projects</span>
-      </a>
-
-      <!-- HERO -->
-      <header class="hero">
-        <div class="eyebrow">
-          <span class="status-dot"></span>
-          <span>PROJECT 04</span>
-          <span class="separator">/</span>
-          <span>COMPUTER SCIENCE</span>
-        </div>
-
-        <h1>
-          Algorithms,
-          <span>visualized.</span>
-        </h1>
-
-        <p class="hero-description">
-          Interactive visualizations for sorting algorithms, hash tables,
-          and pathfinding. Built to make data structures and algorithms
-          easier to understand by watching them execute step by step.
-        </p>
-
-        <div class="tech-row">
-          <span>ASTRO</span>
-          <span>TYPESCRIPT</span>
-          <span>ALGORITHMS</span>
-          <span>DATA STRUCTURES</span>
-        </div>
-      </header>
-
-      <!-- SECTION INDEX -->
-      <nav class="section-index" aria-label="Visualizer sections">
-        <a href="#sorting">
-          <span>01</span>
-          <span>Sorting</span>
-        </a>
-
-        <a href="#hash-table">
-          <span>02</span>
-          <span>Hash table</span>
-        </a>
-
-        <a href="#pathfinding">
-          <span>03</span>
-          <span>Pathfinding</span>
-        </a>
-      </nav>
-
-      <!-- SORTING -->
-      <section class="demo-section" id="sorting">
-        <div class="section-heading">
-          <div class="section-number">01</div>
-
-          <div>
-            <div class="section-label">SORTING ALGORITHMS</div>
-
-            <h2>Watch algorithms sort data.</h2>
-
-            <p>
-              Compare five classic sorting algorithms and observe their
-              comparisons and swaps in real time.
-            </p>
-          </div>
-        </div>
-
-        <div class="demo-card">
-          <div class="demo-toolbar">
-            <div class="control-group">
-              <label for="sort-algo">Algorithm</label>
-
-              <select id="sort-algo">
-                <option value="bubble">Bubble Sort</option>
-                <option value="selection">Selection Sort</option>
-                <option value="insertion">Insertion Sort</option>
-                <option value="merge">Merge Sort</option>
-                <option value="quick" selected>Quick Sort</option>
-              </select>
-            </div>
-
-            <div class="toolbar-actions">
-              <button id="sort-run" class="button primary" type="button">
-                Run algorithm
-              </button>
-
-              <button id="sort-shuffle" class="button" type="button">
-                Shuffle
-              </button>
-            </div>
-
-            <div class="speed-control">
-              <label for="sort-speed">Speed</label>
-
-              <input
-                id="sort-speed"
-                type="range"
-                min="1"
-                max="100"
-                value="65"
-              />
-            </div>
-          </div>
-
-          <div class="visual-stage sorting-stage">
-            <div
-              id="sort-stage"
-              class="bars"
-              aria-label="Sorting visualization"
-            ></div>
-          </div>
-
-          <div class="metrics">
-            <div>
-              <span>Comparisons</span>
-              <strong id="sort-comparisons">0</strong>
-            </div>
-
-            <div>
-              <span>Swaps</span>
-              <strong id="sort-swaps">0</strong>
-            </div>
-
-            <div>
-              <span>Status</span>
-              <strong id="sort-status">Ready</strong>
-            </div>
-          </div>
-
-          <div class="legend">
-            <span>
-              <i class="legend-dot compare"></i>
-              Comparing
-            </span>
-
-            <span>
-              <i class="legend-dot swap"></i>
-              Swapping
-            </span>
-
-            <span>
-              <i class="legend-dot sorted"></i>
-              Sorted
-            </span>
-          </div>
-        </div>
-      </section>
-
-      <!-- HASH TABLE -->
-      <section class="demo-section" id="hash-table">
-        <div class="section-heading">
-          <div class="section-number">02</div>
-
-          <div>
-            <div class="section-label">HASH TABLE</div>
-
-            <h2>See collision resolution.</h2>
-
-            <p>
-              Insert key-value pairs into an eight-bucket hash table and
-              watch separate chaining resolve collisions.
-            </p>
-          </div>
-        </div>
-
-        <div class="demo-card">
-          <div class="demo-toolbar hash-toolbar">
-            <div class="control-group">
-              <label for="hash-key">Key</label>
-
-              <input
-                id="hash-key"
-                class="text-input"
-                type="text"
-                placeholder="user"
-                maxlength="16"
-              />
-            </div>
-
-            <div class="control-group">
-              <label for="hash-value">Value</label>
-
-              <input
-                id="hash-value"
-                class="text-input"
-                type="text"
-                placeholder="Aymane"
-                maxlength="16"
-              />
-            </div>
-
-            <div class="toolbar-actions">
-              <button id="hash-insert" class="button primary" type="button">
-                Insert
-              </button>
-
-              <button id="hash-random" class="button" type="button">
-                Random
-              </button>
-
-              <button id="hash-clear" class="button" type="button">
-                Clear
-              </button>
-            </div>
-          </div>
-
-          <div id="hash-formula" class="formula">
-            Ready for insertion.
-          </div>
-
-          <div
-            id="hash-buckets"
-            class="hash-grid"
-            aria-label="Hash table buckets"
-          ></div>
-
-          <div class="hash-footer">
-            <span>Load factor</span>
-            <strong id="hash-load">0.00</strong>
-          </div>
-        </div>
-      </section>
-
-      <!-- PATHFINDING -->
-      <section class="demo-section" id="pathfinding">
-        <div class="section-heading">
-          <div class="section-number">03</div>
-
-          <div>
-            <div class="section-label">PATHFINDING</div>
-
-            <h2>Find the shortest path.</h2>
-
-            <p>
-              Draw walls on the grid and compare BFS, Dijkstra, and A*
-              while watching the search happen cell by cell.
-            </p>
-          </div>
-        </div>
-
-        <div class="demo-card">
-          <div class="demo-toolbar">
-            <div class="control-group">
-              <label for="path-algo">Algorithm</label>
-
-              <select id="path-algo">
-                <option value="bfs">Breadth-First Search</option>
-                <option value="dijkstra">Dijkstra</option>
-                <option value="astar" selected>A*</option>
-              </select>
-            </div>
-
-            <div class="toolbar-actions">
-              <button id="path-run" class="button primary" type="button">
-                Find path
-              </button>
-
-              <button id="path-walls" class="button" type="button">
-                Random walls
-              </button>
-
-              <button id="path-clear" class="button" type="button">
-                Clear
-              </button>
-            </div>
-
-            <div class="path-help">
-              Click / drag to draw walls
-            </div>
-          </div>
-
-          <div class="visual-stage path-stage">
-            <div
-              id="path-grid"
-              class="path-grid"
-              aria-label="Pathfinding grid"
-            ></div>
-          </div>
-
-          <div class="metrics">
-            <div>
-              <span>Visited</span>
-              <strong id="path-visited">0</strong>
-            </div>
-
-            <div>
-              <span>Path length</span>
-              <strong id="path-length">—</strong>
-            </div>
-
-            <div>
-              <span>Status</span>
-              <strong id="path-status">Ready</strong>
-            </div>
-          </div>
-
-          <div class="legend">
-            <span>
-              <i class="legend-dot start"></i>
-              Start
-            </span>
-
-            <span>
-              <i class="legend-dot wall"></i>
-              Wall
-            </span>
-
-            <span>
-              <i class="legend-dot visited"></i>
-              Visited
-            </span>
-
-            <span>
-              <i class="legend-dot path"></i>
-              Shortest path
-            </span>
-          </div>
-        </div>
-      </section>
-
-      <!-- DOCUMENTATION -->
-      <section class="documentation">
-        <div class="section-heading">
-          <div class="section-number">04</div>
-
-          <div>
-            <div class="section-label">DOCUMENTATION</div>
-
-            <h2>Built as an interactive reference.</h2>
-
-            <p>
-              Each visualization exposes the underlying algorithm rather
-              than hiding it behind a static animation.
-            </p>
-          </div>
-        </div>
-
-        <div class="documentation-grid">
-          <article>
-            <span>01</span>
-            <h3>Sorting</h3>
-            <p>
-              Bubble, selection, insertion, merge, and quick sort with
-              live comparison and swap counters.
-            </p>
-          </article>
-
-          <article>
-            <span>02</span>
-            <h3>Hashing</h3>
-            <p>
-              A simple hash function demonstrates bucket selection and
-              separate chaining.
-            </p>
-          </article>
-
-          <article>
-            <span>03</span>
-            <h3>Pathfinding</h3>
-            <p>
-              BFS, Dijkstra, and A* explore the same weighted-free grid
-              using different search strategies.
-            </p>
-          </article>
-
-          <article>
-            <span>04</span>
-            <h3>Client-side</h3>
-            <p>
-              Everything runs directly in the browser using TypeScript,
-              DOM APIs, and CSS.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <footer class="page-footer">
-        <span>ALGORITHM VISUALIZER</span>
-        <a href="/projects">← Projects</a>
-      </footer>
+```
+<div class="container">
+  <a href="/projects" class="back-link">
+    <span>←</span>
+    <span>Back to projects</span>
+  </a>
+
+  <header class="hero">
+    <div class="eyebrow">
+      <span class="status-dot"></span>
+      <span>PROJECT 04</span>
+      <span class="separator">/</span>
+      <span>COMPUTER SCIENCE</span>
     </div>
+
+    <h1>
+      Algorithms,
+      <span>visualized.</span>
+    </h1>
+
+    <p class="hero-description">
+      Interactive visualizations for sorting algorithms, hash tables,
+      and pathfinding. Built to make data structures and algorithms
+      easier to understand by watching them execute step by step.
+    </p>
+
+    <div class="tech-row">
+      <span>ASTRO</span>
+      <span>TYPESCRIPT</span>
+      <span>ALGORITHMS</span>
+      <span>DATA STRUCTURES</span>
+    </div>
+  </header>
+
+  <nav class="section-index" aria-label="Visualizer sections">
+    <a href="#sorting">
+      <span>01</span>
+      <span>Sorting</span>
+    </a>
+
+    <a href="#hash-table">
+      <span>02</span>
+      <span>Hash table</span>
+    </a>
+
+    <a href="#pathfinding">
+      <span>03</span>
+      <span>Pathfinding</span>
+    </a>
+  </nav>
+
+  <section class="demo-section" id="sorting">
+    <div class="section-heading">
+      <div class="section-number">01</div>
+
+      <div>
+        <div class="section-label">SORTING ALGORITHMS</div>
+
+        <h2>Watch algorithms sort data.</h2>
+
+        <p>
+          Compare five classic sorting algorithms and observe their
+          comparisons and swaps in real time.
+        </p>
+      </div>
+    </div>
+
+    <div class="demo-card">
+      <div class="demo-toolbar">
+        <div class="control-group">
+          <label for="sort-algo">Algorithm</label>
+
+          <select id="sort-algo">
+            <option value="bubble">Bubble Sort</option>
+            <option value="selection">Selection Sort</option>
+            <option value="insertion">Insertion Sort</option>
+            <option value="merge">Merge Sort</option>
+            <option value="quick" selected>Quick Sort</option>
+          </select>
+        </div>
+
+        <div class="toolbar-actions">
+          <button id="sort-run" class="button primary">
+            Run algorithm
+          </button>
+
+          <button id="sort-shuffle" class="button">
+            Shuffle
+          </button>
+        </div>
+
+        <div class="speed-control">
+          <label for="sort-speed">Speed</label>
+
+          <input
+            id="sort-speed"
+            type="range"
+            min="1"
+            max="100"
+            value="65"
+          />
+        </div>
+      </div>
+
+      <div class="visual-stage sorting-stage">
+        <div
+          id="sort-stage"
+          class="bars"
+          aria-label="Sorting visualization"
+        ></div>
+      </div>
+
+      <div class="metrics">
+        <div>
+          <span>Comparisons</span>
+          <strong id="sort-comparisons">0</strong>
+        </div>
+
+        <div>
+          <span>Swaps</span>
+          <strong id="sort-swaps">0</strong>
+        </div>
+
+        <div>
+          <span>Status</span>
+          <strong id="sort-status">Ready</strong>
+        </div>
+      </div>
+
+      <div class="legend">
+        <span>
+          <i class="legend-dot compare"></i>
+          Comparing
+        </span>
+
+        <span>
+          <i class="legend-dot swap"></i>
+          Swapping
+        </span>
+
+        <span>
+          <i class="legend-dot sorted"></i>
+          Sorted
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section class="demo-section" id="hash-table">
+    <div class="section-heading">
+      <div class="section-number">02</div>
+
+      <div>
+        <div class="section-label">HASH TABLE</div>
+
+        <h2>See collision resolution.</h2>
+
+        <p>
+          Insert key-value pairs into an eight-bucket hash table and
+          watch separate chaining resolve collisions.
+        </p>
+      </div>
+    </div>
+
+    <div class="demo-card">
+      <div class="demo-toolbar hash-toolbar">
+        <div class="control-group">
+          <label for="hash-key">Key</label>
+
+          <input
+            id="hash-key"
+            class="text-input"
+            type="text"
+            placeholder="user"
+            maxlength="16"
+          />
+        </div>
+
+        <div class="control-group">
+          <label for="hash-value">Value</label>
+
+          <input
+            id="hash-value"
+            class="text-input"
+            type="text"
+            placeholder="Aymane"
+            maxlength="16"
+          />
+        </div>
+
+        <div class="toolbar-actions">
+          <button id="hash-insert" class="button primary">
+            Insert
+          </button>
+
+          <button id="hash-random" class="button">
+            Random
+          </button>
+
+          <button id="hash-clear" class="button">
+            Clear
+          </button>
+        </div>
+      </div>
+
+      <div id="hash-formula" class="formula">
+        Ready for insertion.
+      </div>
+
+      <div
+        id="hash-buckets"
+        class="hash-grid"
+        aria-label="Hash table buckets"
+      ></div>
+
+      <div class="hash-footer">
+        <span>Load factor</span>
+        <strong id="hash-load">0.00</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="demo-section" id="pathfinding">
+    <div class="section-heading">
+      <div class="section-number">03</div>
+
+      <div>
+        <div class="section-label">PATHFINDING</div>
+
+        <h2>Find the shortest path.</h2>
+
+        <p>
+          Draw walls on the grid and compare BFS, Dijkstra, and A*
+          while watching the search happen cell by cell.
+        </p>
+      </div>
+    </div>
+
+    <div class="demo-card">
+      <div class="demo-toolbar">
+        <div class="control-group">
+          <label for="path-algo">Algorithm</label>
+
+          <select id="path-algo">
+            <option value="bfs">Breadth-First Search</option>
+            <option value="dijkstra">Dijkstra</option>
+            <option value="astar" selected>A*</option>
+          </select>
+        </div>
+
+        <div class="toolbar-actions">
+          <button id="path-run" class="button primary">
+            Find path
+          </button>
+
+          <button id="path-walls" class="button">
+            Random walls
+          </button>
+
+          <button id="path-clear" class="button">
+            Clear
+          </button>
+        </div>
+
+        <div class="path-help">
+          Click / drag to draw walls
+        </div>
+      </div>
+
+      <div class="visual-stage path-stage">
+        <div
+          id="path-grid"
+          class="path-grid"
+          aria-label="Pathfinding grid"
+        ></div>
+      </div>
+
+      <div class="metrics">
+        <div>
+          <span>Visited</span>
+          <strong id="path-visited">0</strong>
+        </div>
+
+        <div>
+          <span>Path length</span>
+          <strong id="path-length">—</strong>
+        </div>
+
+        <div>
+          <span>Status</span>
+          <strong id="path-status">Ready</strong>
+        </div>
+      </div>
+
+      <div class="legend">
+        <span>
+          <i class="legend-dot start"></i>
+          Start
+        </span>
+
+        <span>
+          <i class="legend-dot wall"></i>
+          Wall
+        </span>
+
+        <span>
+          <i class="legend-dot visited"></i>
+          Visited
+        </span>
+
+        <span>
+          <i class="legend-dot path"></i>
+          Shortest path
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section class="documentation">
+    <div class="section-heading">
+      <div class="section-number">04</div>
+
+      <div>
+        <div class="section-label">DOCUMENTATION</div>
+
+        <h2>Built as an interactive reference.</h2>
+
+        <p>
+          Each visualization exposes the underlying algorithm rather
+          than hiding it behind a static animation.
+        </p>
+      </div>
+    </div>
+
+    <div class="documentation-grid">
+      <article>
+        <span>01</span>
+        <h3>Sorting</h3>
+        <p>
+          Bubble, selection, insertion, merge, and quick sort with
+          live comparison and swap counters.
+        </p>
+      </article>
+
+      <article>
+        <span>02</span>
+        <h3>Hashing</h3>
+        <p>
+          A simple hash function demonstrates bucket selection and
+          separate chaining.
+        </p>
+      </article>
+
+      <article>
+        <span>03</span>
+        <h3>Pathfinding</h3>
+        <p>
+          BFS, Dijkstra, and A* explore the same weighted-free grid
+          using different search strategies.
+        </p>
+      </article>
+
+      <article>
+        <span>04</span>
+        <h3>Client-side</h3>
+        <p>
+          Everything runs directly in the browser using TypeScript,
+          DOM APIs, and CSS.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    <span>ALGORITHM VISUALIZER</span>
+    <a href="/projects">← Projects</a>
+  </footer>
+</div>
+```
+
   </main>
 </Layout>
 
@@ -913,6 +909,7 @@ import Layout from "../../layouts/Layout.astro";
 
   .viz-bar {
     flex: 1;
+
     min-width: 2px;
 
     border-radius: 2px 2px 0 0;
@@ -942,6 +939,7 @@ import Layout from "../../layouts/Layout.astro";
   .metrics {
     display: flex;
     flex-wrap: wrap;
+
     border-top: 1px solid rgba(255, 255, 255, 0.07);
   }
 
@@ -1011,12 +1009,12 @@ import Layout from "../../layouts/Layout.astro";
   }
 
   .legend-dot {
-    display: inline-block;
-
     width: 7px;
     height: 7px;
 
     border-radius: 2px;
+
+    display: inline-block;
   }
 
   .legend-dot.compare {
@@ -1075,6 +1073,7 @@ import Layout from "../../layouts/Layout.astro";
     grid-template-columns: repeat(4, minmax(0, 1fr));
 
     gap: 0.6rem;
+
     padding: 1rem;
   }
 
@@ -1138,7 +1137,9 @@ import Layout from "../../layouts/Layout.astro";
 
   .hash-arrow {
     text-align: center;
+
     color: rgba(255, 255, 255, 0.2);
+
     font-size: 0.7rem;
   }
 
@@ -1210,26 +1211,31 @@ import Layout from "../../layouts/Layout.astro";
 
   .path-cell.start {
     background: var(--green);
+
     box-shadow: 0 0 14px rgba(74, 222, 128, 0.4);
   }
 
   .path-cell.end {
     background: var(--red);
+
     box-shadow: 0 0 14px rgba(251, 113, 133, 0.35);
   }
 
   .path-cell.visited {
     background: rgba(56, 189, 248, 0.35);
+
     animation: visited-in 120ms ease;
   }
 
   .path-cell.path {
     background: var(--amber);
+
     box-shadow: 0 0 10px rgba(245, 158, 11, 0.25);
   }
 
   .path-help {
     margin-left: auto;
+
     align-self: center;
 
     color: rgba(255, 255, 255, 0.25);
@@ -1443,52 +1449,46 @@ import Layout from "../../layouts/Layout.astro";
 </style>
 
 <script>
-  const sleep = (ms: number) =>
-    new Promise<void>((resolve) => setTimeout(resolve, ms));
+  const sleep = (ms: number): Promise<void> =>
+    new Promise((resolve) => setTimeout(resolve, ms));
 
   /* ================================================================
      SORTING VISUALIZER
      ================================================================ */
 
   (() => {
-    const stage = document.getElementById("sort-stage");
-    const algorithm = document.getElementById(
-      "sort-algo"
-    ) as HTMLSelectElement | null;
-
-    const runButton = document.getElementById(
-      "sort-run"
-    ) as HTMLButtonElement | null;
-
-    const shuffleButton = document.getElementById(
-      "sort-shuffle"
-    ) as HTMLButtonElement | null;
-
-    const speed = document.getElementById(
-      "sort-speed"
-    ) as HTMLInputElement | null;
-
+    const stageElement = document.getElementById("sort-stage");
+    const algorithmElement = document.getElementById("sort-algo");
+    const runButtonElement = document.getElementById("sort-run");
+    const shuffleButtonElement =
+      document.getElementById("sort-shuffle");
+    const speedElement = document.getElementById("sort-speed");
     const comparisonsElement =
       document.getElementById("sort-comparisons");
-
-    const swapsElement =
-      document.getElementById("sort-swaps");
-
-    const statusElement =
-      document.getElementById("sort-status");
+    const swapsElement = document.getElementById("sort-swaps");
+    const statusElement = document.getElementById("sort-status");
 
     if (
-      !stage ||
-      !algorithm ||
-      !runButton ||
-      !shuffleButton ||
-      !speed ||
-      !comparisonsElement ||
-      !swapsElement ||
-      !statusElement
+      !(stageElement instanceof HTMLDivElement) ||
+      !(algorithmElement instanceof HTMLSelectElement) ||
+      !(runButtonElement instanceof HTMLButtonElement) ||
+      !(shuffleButtonElement instanceof HTMLButtonElement) ||
+      !(speedElement instanceof HTMLInputElement) ||
+      !(comparisonsElement instanceof HTMLElement) ||
+      !(swapsElement instanceof HTMLElement) ||
+      !(statusElement instanceof HTMLElement)
     ) {
       return;
     }
+
+    const stage = stageElement;
+    const algorithm = algorithmElement;
+    const runButton = runButtonElement;
+    const shuffleButton = shuffleButtonElement;
+    const speed = speedElement;
+    const comparisonsOutput = comparisonsElement;
+    const swapsOutput = swapsElement;
+    const statusOutput = statusElement;
 
     const COUNT = 42;
 
@@ -1499,17 +1499,17 @@ import Layout from "../../layouts/Layout.astro";
     let comparisons = 0;
     let swaps = 0;
 
-    const delay = () =>
+    const delay = (): number =>
       Math.max(8, 220 - Number(speed.value) * 2);
 
-    function createArray() {
+    function createArray(): void {
       values = Array.from(
         { length: COUNT },
         () => Math.floor(Math.random() * 88) + 8
       );
     }
 
-    function render() {
+    function render(): void {
       stage.innerHTML = "";
 
       bars = values.map((value) => {
@@ -1524,21 +1524,18 @@ import Layout from "../../layouts/Layout.astro";
       });
     }
 
-    function updateMetrics() {
-      comparisonsElement.textContent =
-        String(comparisons);
-
-      swapsElement.textContent =
-        String(swaps);
+    function updateMetrics(): void {
+      comparisonsOutput.textContent = String(comparisons);
+      swapsOutput.textContent = String(swaps);
     }
 
-    function clearMarks() {
+    function clearMarks(): void {
       bars.forEach((bar) => {
         bar.classList.remove("compare", "swap");
       });
     }
 
-    function updateBar(index: number) {
+    function updateBar(index: number): void {
       const bar = bars[index];
 
       if (bar) {
@@ -1549,7 +1546,7 @@ import Layout from "../../layouts/Layout.astro";
     async function highlight(
       indices: number[],
       className: "compare" | "swap"
-    ) {
+    ): Promise<void> {
       clearMarks();
 
       indices.forEach((index) => {
@@ -1559,32 +1556,18 @@ import Layout from "../../layouts/Layout.astro";
       await sleep(delay());
     }
 
-    async function bubbleSort() {
-      for (
-        let i = 0;
-        i <= values.length - 2;
-        i++
-      ) {
+    async function bubbleSort(): Promise<void> {
+      for (let i = 0; i < values.length - 1; i++) {
         let changed = false;
 
-        for (
-          let j = 0;
-          j <= values.length - i - 2;
-          j++
-        ) {
+        for (let j = 0; j < values.length - i - 1; j++) {
           comparisons++;
           updateMetrics();
 
-          await highlight(
-            [j, j + 1],
-            "compare"
-          );
+          await highlight([j, j + 1], "compare");
 
           if (values[j] > values[j + 1]) {
-            [
-              values[j],
-              values[j + 1],
-            ] = [
+            [values[j], values[j + 1]] = [
               values[j + 1],
               values[j],
             ];
@@ -1596,16 +1579,11 @@ import Layout from "../../layouts/Layout.astro";
             updateBar(j + 1);
             updateMetrics();
 
-            await highlight(
-              [j, j + 1],
-              "swap"
-            );
+            await highlight([j, j + 1], "swap");
           }
         }
 
-        bars[
-          values.length - i - 1
-        ]?.classList.add("sorted");
+        bars[values.length - i - 1]?.classList.add("sorted");
 
         if (!changed) {
           break;
@@ -1613,40 +1591,23 @@ import Layout from "../../layouts/Layout.astro";
       }
     }
 
-    async function selectionSort() {
-      for (
-        let i = 0;
-        i <= values.length - 1;
-        i++
-      ) {
+    async function selectionSort(): Promise<void> {
+      for (let i = 0; i < values.length; i++) {
         let minimum = i;
 
-        for (
-          let j = i + 1;
-          j <= values.length - 1;
-          j++
-        ) {
+        for (let j = i + 1; j < values.length; j++) {
           comparisons++;
           updateMetrics();
 
-          await highlight(
-            [minimum, j],
-            "compare"
-          );
+          await highlight([minimum, j], "compare");
 
-          if (
-            values[j] <
-            values[minimum]
-          ) {
+          if (values[j] < values[minimum]) {
             minimum = j;
           }
         }
 
         if (minimum !== i) {
-          [
-            values[i],
-            values[minimum],
-          ] = [
+          [values[i], values[minimum]] = [
             values[minimum],
             values[i],
           ];
@@ -1657,44 +1618,28 @@ import Layout from "../../layouts/Layout.astro";
           updateBar(minimum);
           updateMetrics();
 
-          await highlight(
-            [i, minimum],
-            "swap"
-          );
+          await highlight([i, minimum], "swap");
         }
 
         bars[i]?.classList.add("sorted");
       }
     }
 
-    async function insertionSort() {
-      for (
-        let i = 1;
-        i <= values.length - 1;
-        i++
-      ) {
+    async function insertionSort(): Promise<void> {
+      for (let i = 1; i < values.length; i++) {
         let j = i;
 
         while (j > 0) {
           comparisons++;
           updateMetrics();
 
-          await highlight(
-            [j - 1, j],
-            "compare"
-          );
+          await highlight([j - 1, j], "compare");
 
-          if (
-            values[j - 1] <=
-            values[j]
-          ) {
+          if (values[j - 1] <= values[j]) {
             break;
           }
 
-          [
-            values[j - 1],
-            values[j],
-          ] = [
+          [values[j - 1], values[j]] = [
             values[j],
             values[j - 1],
           ];
@@ -1705,67 +1650,44 @@ import Layout from "../../layouts/Layout.astro";
           updateBar(j);
           updateMetrics();
 
-          await highlight(
-            [j - 1, j],
-            "swap"
-          );
+          await highlight([j - 1, j], "swap");
 
           j--;
         }
       }
 
-      bars.forEach((bar) =>
-        bar.classList.add("sorted")
-      );
+      bars.forEach((bar) => {
+        bar.classList.add("sorted");
+      });
     }
 
-    async function mergeSort() {
+    async function mergeSort(): Promise<void> {
       async function merge(
         left: number,
         middle: number,
         right: number
-      ) {
-        const first =
-          values.slice(
-            left,
-            middle + 1
-          );
-
-        const second =
-          values.slice(
-            middle + 1,
-            right + 1
-          );
+      ): Promise<void> {
+        const first = values.slice(left, middle + 1);
+        const second = values.slice(middle + 1, right + 1);
 
         let i = 0;
         let j = 0;
         let position = left;
 
-        while (
-          i <= first.length - 1 &&
-          j <= second.length - 1
-        ) {
+        while (i < first.length && j < second.length) {
           comparisons++;
           updateMetrics();
 
           await highlight(
-            [
-              left + i,
-              middle + 1 + j,
-            ],
+            [left + i, middle + 1 + j],
             "compare"
           );
 
-          if (
-            first[i] <=
-            second[j]
-          ) {
-            values[position] =
-              first[i];
+          if (first[i] <= second[j]) {
+            values[position] = first[i];
             i++;
           } else {
-            values[position] =
-              second[j];
+            values[position] = second[j];
             j++;
           }
 
@@ -1777,11 +1699,8 @@ import Layout from "../../layouts/Layout.astro";
           position++;
         }
 
-        while (
-          i <= first.length - 1
-        ) {
-          values[position] =
-            first[i];
+        while (i < first.length) {
+          values[position] = first[i];
 
           updateBar(position);
 
@@ -1789,11 +1708,8 @@ import Layout from "../../layouts/Layout.astro";
           position++;
         }
 
-        while (
-          j <= second.length - 1
-        ) {
-          values[position] =
-            second[j];
+        while (j < second.length) {
+          values[position] = second[j];
 
           updateBar(position);
 
@@ -1807,74 +1723,41 @@ import Layout from "../../layouts/Layout.astro";
       async function sort(
         left: number,
         right: number
-      ) {
+      ): Promise<void> {
         if (left >= right) {
           return;
         }
 
-        const middle =
-          Math.floor(
-            (left + right) / 2
-          );
+        const middle = Math.floor((left + right) / 2);
 
-        await sort(
-          left,
-          middle
-        );
-
-        await sort(
-          middle + 1,
-          right
-        );
-
-        await merge(
-          left,
-          middle,
-          right
-        );
+        await sort(left, middle);
+        await sort(middle + 1, right);
+        await merge(left, middle, right);
       }
 
-      await sort(
-        0,
-        values.length - 1
-      );
+      await sort(0, values.length - 1);
 
-      bars.forEach((bar) =>
-        bar.classList.add("sorted")
-      );
+      bars.forEach((bar) => {
+        bar.classList.add("sorted");
+      });
     }
 
-    async function quickSort() {
+    async function quickSort(): Promise<void> {
       async function partition(
         left: number,
         right: number
-      ) {
-        const pivot =
-          values[right];
-
+      ): Promise<number> {
+        const pivot = values[right];
         let index = left;
 
-        for (
-          let i = left;
-          i <= right - 1;
-          i++
-        ) {
+        for (let i = left; i < right; i++) {
           comparisons++;
           updateMetrics();
 
-          await highlight(
-            [i, right],
-            "compare"
-          );
+          await highlight([i, right], "compare");
 
-          if (
-            values[i] <
-            pivot
-          ) {
-            [
-              values[index],
-              values[i],
-            ] = [
+          if (values[i] < pivot) {
+            [values[index], values[i]] = [
               values[i],
               values[index],
             ];
@@ -1885,19 +1768,13 @@ import Layout from "../../layouts/Layout.astro";
             updateBar(i);
             updateMetrics();
 
-            await highlight(
-              [index, i],
-              "swap"
-            );
+            await highlight([index, i], "swap");
 
             index++;
           }
         }
 
-        [
-          values[index],
-          values[right],
-        ] = [
+        [values[index], values[right]] = [
           values[right],
           values[index],
         ];
@@ -1908,14 +1785,9 @@ import Layout from "../../layouts/Layout.astro";
         updateBar(right);
         updateMetrics();
 
-        await highlight(
-          [index, right],
-          "swap"
-        );
+        await highlight([index, right], "swap");
 
-        bars[index]?.classList.add(
-          "sorted"
-        );
+        bars[index]?.classList.add("sorted");
 
         return index;
       }
@@ -1923,39 +1795,25 @@ import Layout from "../../layouts/Layout.astro";
       async function sort(
         left: number,
         right: number
-      ) {
+      ): Promise<void> {
         if (left >= right) {
           return;
         }
 
-        const pivot =
-          await partition(
-            left,
-            right
-          );
+        const pivot = await partition(left, right);
 
-        await sort(
-          left,
-          pivot - 1
-        );
-
-        await sort(
-          pivot + 1,
-          right
-        );
+        await sort(left, pivot - 1);
+        await sort(pivot + 1, right);
       }
 
-      await sort(
-        0,
-        values.length - 1
-      );
+      await sort(0, values.length - 1);
 
-      bars.forEach((bar) =>
-        bar.classList.add("sorted")
-      );
+      bars.forEach((bar) => {
+        bar.classList.add("sorted");
+      });
     }
 
-    async function run() {
+    async function run(): Promise<void> {
       if (running) {
         return;
       }
@@ -1972,30 +1830,20 @@ import Layout from "../../layouts/Layout.astro";
       updateMetrics();
 
       bars.forEach((bar) => {
-        bar.classList.remove(
-          "sorted"
-        );
+        bar.classList.remove("sorted");
       });
 
-      statusElement.textContent =
-        "Running";
+      statusOutput.textContent = "Running";
 
-      const selected =
-        algorithm.value;
+      const selected = algorithm.value;
 
       if (selected === "bubble") {
         await bubbleSort();
-      } else if (
-        selected === "selection"
-      ) {
+      } else if (selected === "selection") {
         await selectionSort();
-      } else if (
-        selected === "insertion"
-      ) {
+      } else if (selected === "insertion") {
         await insertionSort();
-      } else if (
-        selected === "merge"
-      ) {
+      } else if (selected === "merge") {
         await mergeSort();
       } else {
         await quickSort();
@@ -2003,12 +1851,11 @@ import Layout from "../../layouts/Layout.astro";
 
       clearMarks();
 
-      bars.forEach((bar) =>
-        bar.classList.add("sorted")
-      );
+      bars.forEach((bar) => {
+        bar.classList.add("sorted");
+      });
 
-      statusElement.textContent =
-        "Complete";
+      statusOutput.textContent = "Complete";
 
       running = false;
 
@@ -2017,7 +1864,7 @@ import Layout from "../../layouts/Layout.astro";
       algorithm.disabled = false;
     }
 
-    function shuffle() {
+    function shuffle(): void {
       if (running) {
         return;
       }
@@ -2030,19 +1877,14 @@ import Layout from "../../layouts/Layout.astro";
 
       updateMetrics();
 
-      statusElement.textContent =
-        "Ready";
+      statusOutput.textContent = "Ready";
     }
 
-    runButton.addEventListener(
-      "click",
-      run
-    );
+    runButton.addEventListener("click", () => {
+      void run();
+    });
 
-    shuffleButton.addEventListener(
-      "click",
-      shuffle
-    );
+    shuffleButton.addEventListener("click", shuffle);
 
     shuffle();
   })();
@@ -2052,58 +1894,36 @@ import Layout from "../../layouts/Layout.astro";
      ================================================================ */
 
   (() => {
-    const bucketsElement =
-      document.getElementById(
-        "hash-buckets"
-      );
-
-    const keyInput =
-      document.getElementById(
-        "hash-key"
-      ) as HTMLInputElement | null;
-
-    const valueInput =
-      document.getElementById(
-        "hash-value"
-      ) as HTMLInputElement | null;
-
-    const insertButton =
-      document.getElementById(
-        "hash-insert"
-      ) as HTMLButtonElement | null;
-
-    const randomButton =
-      document.getElementById(
-        "hash-random"
-      ) as HTMLButtonElement | null;
-
-    const clearButton =
-      document.getElementById(
-        "hash-clear"
-      ) as HTMLButtonElement | null;
-
-    const formula =
-      document.getElementById(
-        "hash-formula"
-      );
-
-    const load =
-      document.getElementById(
-        "hash-load"
-      );
+    const bucketsElement = document.getElementById("hash-buckets");
+    const keyElement = document.getElementById("hash-key");
+    const valueElement = document.getElementById("hash-value");
+    const insertElement = document.getElementById("hash-insert");
+    const randomElement = document.getElementById("hash-random");
+    const clearElement = document.getElementById("hash-clear");
+    const formulaElement = document.getElementById("hash-formula");
+    const loadElement = document.getElementById("hash-load");
 
     if (
-      !bucketsElement ||
-      !keyInput ||
-      !valueInput ||
-      !insertButton ||
-      !randomButton ||
-      !clearButton ||
-      !formula ||
-      !load
+      !(bucketsElement instanceof HTMLDivElement) ||
+      !(keyElement instanceof HTMLInputElement) ||
+      !(valueElement instanceof HTMLInputElement) ||
+      !(insertElement instanceof HTMLButtonElement) ||
+      !(randomElement instanceof HTMLButtonElement) ||
+      !(clearElement instanceof HTMLButtonElement) ||
+      !(formulaElement instanceof HTMLElement) ||
+      !(loadElement instanceof HTMLElement)
     ) {
       return;
     }
+
+    const buckets = bucketsElement;
+    const keyInput = keyElement;
+    const valueInput = valueElement;
+    const insertButton = insertElement;
+    const randomButton = randomElement;
+    const clearButton = clearElement;
+    const formula = formulaElement;
+    const load = loadElement;
 
     const BUCKETS = 8;
 
@@ -2112,136 +1932,78 @@ import Layout from "../../layouts/Layout.astro";
       value: string;
     };
 
-    let table: Entry[][] =
-      Array.from(
-        { length: BUCKETS },
-        () => []
-      );
+    let table: Entry[][] = Array.from(
+      { length: BUCKETS },
+      () => []
+    );
 
-    function hash(key: string) {
+    function hash(key: string): number {
       let value = 0;
 
-      for (
-        let i = 0;
-        i <= key.length - 1;
-        i++
-      ) {
+      for (let i = 0; i < key.length; i++) {
         value =
-          (
-            value * 31 +
-            key.charCodeAt(i)
-          ) >>> 0;
+          (value * 31 + key.charCodeAt(i)) >>> 0;
       }
 
       return value % BUCKETS;
     }
 
-    function render() {
-      bucketsElement.innerHTML =
-        "";
+    function render(): void {
+      buckets.innerHTML = "";
 
       let count = 0;
 
-      table.forEach(
-        (chain, index) => {
-          count += chain.length;
+      table.forEach((chain, index) => {
+        count += chain.length;
 
-          const bucket =
-            document.createElement(
-              "div"
-            );
+        const bucket = document.createElement("div");
+        bucket.className = "hash-bucket";
 
-          bucket.className =
-            "hash-bucket";
+        const label = document.createElement("div");
+        label.className = "hash-index";
+        label.textContent = `bucket ${index}`;
 
-          const label =
-            document.createElement(
-              "div"
-            );
+        bucket.appendChild(label);
 
-          label.className =
-            "hash-index";
+        const chainElement =
+          document.createElement("div");
 
-          label.textContent =
-            `bucket ${index}`;
+        chainElement.className = "hash-chain";
 
-          bucket.appendChild(label);
+        chain.forEach((entry, entryIndex) => {
+          const node = document.createElement("div");
 
-          const chainElement =
-            document.createElement(
-              "div"
-            );
+          node.className =
+            "hash-node" +
+            (chain.length > 1 ? " collision" : "");
 
-          chainElement.className =
-            "hash-chain";
+          node.textContent =
+            `${entry.key} → ${entry.value}`;
 
-          chain.forEach(
-            (
-              entry,
-              entryIndex
-            ) => {
-              const node =
-                document.createElement(
-                  "div"
-                );
+          chainElement.appendChild(node);
 
-              node.className =
-                "hash-node" +
-                (
-                  chain.length > 1
-                    ? " collision"
-                    : ""
-                );
+          if (entryIndex < chain.length - 1) {
+            const arrow = document.createElement("div");
 
-              node.textContent =
-                `${entry.key} → ${entry.value}`;
+            arrow.className = "hash-arrow";
+            arrow.textContent = "↓";
 
-              chainElement.appendChild(
-                node
-              );
+            chainElement.appendChild(arrow);
+          }
+        });
 
-              if (
-                entryIndex <
-                chain.length - 1
-              ) {
-                const arrow =
-                  document.createElement(
-                    "div"
-                  );
-
-                arrow.className =
-                  "hash-arrow";
-
-                arrow.textContent =
-                  "↓";
-
-                chainElement.appendChild(
-                  arrow
-                );
-              }
-            }
-          );
-
-          bucket.appendChild(
-            chainElement
-          );
-
-          bucketsElement.appendChild(
-            bucket
-          );
-        }
-      );
+        bucket.appendChild(chainElement);
+        buckets.appendChild(bucket);
+      });
 
       load.textContent =
-        (
-          count / BUCKETS
-        ).toFixed(2);
+        (count / BUCKETS).toFixed(2);
     }
 
     function insert(
       key: string,
       value: string
-    ) {
+    ): void {
       if (!key) {
         return;
       }
@@ -2249,16 +2011,12 @@ import Layout from "../../layouts/Layout.astro";
       const index = hash(key);
       const chain = table[index];
 
-      const existing =
-        chain.find(
-          (entry) =>
-            entry.key === key
-        );
+      const existing = chain.find(
+        (entry) => entry.key === key
+      );
 
       if (existing) {
-        existing.value =
-          value ||
-          existing.value;
+        existing.value = value || existing.value;
       } else {
         chain.push({
           key,
@@ -2268,16 +2026,14 @@ import Layout from "../../layouts/Layout.astro";
 
       formula.textContent =
         `hash("${key}") → ${index} / bucket ${index}` +
-        (
-          chain.length > 1
-            ? " / collision → chaining"
-            : ""
-        );
+        (chain.length > 1
+          ? " / collision → chaining"
+          : "");
 
       render();
     }
 
-    function randomKey() {
+    function randomKey(): string {
       const words = [
         "node",
         "heap",
@@ -2294,84 +2050,57 @@ import Layout from "../../layouts/Layout.astro";
       return (
         words[
           Math.floor(
-            Math.random() *
-              words.length
+            Math.random() * words.length
           )
         ] +
-        Math.floor(
-          Math.random() * 100
-        )
+        Math.floor(Math.random() * 100)
       );
     }
 
-    insertButton.addEventListener(
-      "click",
-      () => {
-        insert(
-          keyInput.value.trim(),
-          valueInput.value.trim()
-        );
+    insertButton.addEventListener("click", () => {
+      insert(
+        keyInput.value.trim(),
+        valueInput.value.trim()
+      );
 
-        keyInput.value = "";
-        valueInput.value = "";
+      keyInput.value = "";
+      valueInput.value = "";
 
-        keyInput.focus();
+      keyInput.focus();
+    });
+
+    keyInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        insertButton.click();
       }
-    );
+    });
 
-    keyInput.addEventListener(
-      "keydown",
-      (event) => {
-        if (
-          event.key ===
-          "Enter"
-        ) {
-          insertButton.click();
-        }
+    valueInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        insertButton.click();
       }
-    );
+    });
 
-    valueInput.addEventListener(
-      "keydown",
-      (event) => {
-        if (
-          event.key ===
-          "Enter"
-        ) {
-          insertButton.click();
-        }
-      }
-    );
+    randomButton.addEventListener("click", () => {
+      insert(
+        randomKey(),
+        String(
+          Math.floor(Math.random() * 1000)
+        )
+      );
+    });
 
-    randomButton.addEventListener(
-      "click",
-      () => {
-        insert(
-          randomKey(),
-          String(
-            Math.floor(
-              Math.random() *
-                1000
-            )
-          )
-        );
-      }
-    );
+    clearButton.addEventListener("click", () => {
+      table = Array.from(
+        { length: BUCKETS },
+        () => []
+      );
 
-    clearButton.addEventListener(
-      "click",
-      () => {
-        table = Array.from(
-          { length: BUCKETS },
-          () => []
-        );
+      formula.textContent =
+        "Ready for insertion.";
 
-        formula.textContent =
-          "Ready for insertion.";
-
-        render();
-      }
-    );
+      render();
+    });
 
     render();
   })();
@@ -2381,58 +2110,36 @@ import Layout from "../../layouts/Layout.astro";
      ================================================================ */
 
   (() => {
-    const gridElement =
-      document.getElementById(
-        "path-grid"
-      );
-
-    const algorithm =
-      document.getElementById(
-        "path-algo"
-      ) as HTMLSelectElement | null;
-
-    const runButton =
-      document.getElementById(
-        "path-run"
-      ) as HTMLButtonElement | null;
-
-    const wallsButton =
-      document.getElementById(
-        "path-walls"
-      ) as HTMLButtonElement | null;
-
-    const clearButton =
-      document.getElementById(
-        "path-clear"
-      ) as HTMLButtonElement | null;
-
-    const visitedElement =
-      document.getElementById(
-        "path-visited"
-      );
-
-    const lengthElement =
-      document.getElementById(
-        "path-length"
-      );
-
-    const statusElement =
-      document.getElementById(
-        "path-status"
-      );
+    const gridElement = document.getElementById("path-grid");
+    const algorithmElement = document.getElementById("path-algo");
+    const runElement = document.getElementById("path-run");
+    const wallsElement = document.getElementById("path-walls");
+    const clearElement = document.getElementById("path-clear");
+    const visitedElement = document.getElementById("path-visited");
+    const lengthElement = document.getElementById("path-length");
+    const statusElement = document.getElementById("path-status");
 
     if (
-      !gridElement ||
-      !algorithm ||
-      !runButton ||
-      !wallsButton ||
-      !clearButton ||
-      !visitedElement ||
-      !lengthElement ||
-      !statusElement
+      !(gridElement instanceof HTMLDivElement) ||
+      !(algorithmElement instanceof HTMLSelectElement) ||
+      !(runElement instanceof HTMLButtonElement) ||
+      !(wallsElement instanceof HTMLButtonElement) ||
+      !(clearElement instanceof HTMLButtonElement) ||
+      !(visitedElement instanceof HTMLElement) ||
+      !(lengthElement instanceof HTMLElement) ||
+      !(statusElement instanceof HTMLElement)
     ) {
       return;
     }
+
+    const gridContainer = gridElement;
+    const algorithm = algorithmElement;
+    const runButton = runElement;
+    const wallsButton = wallsElement;
+    const clearButton = clearElement;
+    const visitedOutput = visitedElement;
+    const lengthOutput = lengthElement;
+    const statusOutput = statusElement;
 
     const ROWS = 14;
     const COLS = 28;
@@ -2449,6 +2156,12 @@ import Layout from "../../layouts/Layout.astro";
       | "end"
       | "visited"
       | "path";
+
+    type SearchResult = {
+      found: boolean;
+      order: Point[];
+      cameFrom: Map<string, Point>;
+    };
 
     let grid: Cell[][] = [];
     let cells: HTMLDivElement[][] = [];
@@ -2472,7 +2185,7 @@ import Layout from "../../layouts/Layout.astro";
       | "end"
       | null = null;
 
-    function createGrid() {
+    function createGrid(): void {
       grid = Array.from(
         { length: ROWS },
         () =>
@@ -2482,60 +2195,29 @@ import Layout from "../../layouts/Layout.astro";
           )
       );
 
-      grid[start.r][start.c] =
-        "start";
-
-      grid[end.r][end.c] =
-        "end";
+      grid[start.r][start.c] = "start";
+      grid[end.r][end.c] = "end";
     }
 
-    function className(
-      cell: Cell
-    ) {
+    function cellClass(cell: Cell): string {
       return cell === "empty"
         ? "path-cell"
         : `path-cell ${cell}`;
     }
 
-    function render() {
-      gridElement.innerHTML =
-        "";
-
+    function render(): void {
+      gridContainer.innerHTML = "";
       cells = [];
 
-      /*
-       * IMPORTANT:
-       * Avoid expressions such as:
-       *
-       * c < COLS
-       *
-       * in this Astro script.
-       *
-       * Astro's parser can interpret the "<"
-       * token as markup in this context.
-       */
-      for (
-        let r = 0;
-        r <= ROWS - 1;
-        r++
-      ) {
-        const row: HTMLDivElement[] =
-          [];
+      for (let r = 0; r < ROWS; r++) {
+        const row: HTMLDivElement[] = [];
 
-        for (
-          let c = 0;
-          c <= COLS - 1;
-          c++
-        ) {
+        for (let c = 0; c < COLS; c++) {
           const element =
-            document.createElement(
-              "div"
-            );
+            document.createElement("div");
 
           element.className =
-            className(
-              grid[r][c]
-            );
+            cellClass(grid[r][c]);
 
           element.addEventListener(
             "mousedown",
@@ -2552,9 +2234,7 @@ import Layout from "../../layouts/Layout.astro";
             }
           );
 
-          gridElement.appendChild(
-            element
-          );
+          gridContainer.appendChild(element);
 
           row.push(element);
         }
@@ -2567,28 +2247,26 @@ import Layout from "../../layouts/Layout.astro";
       r: number,
       c: number,
       state: Cell
-    ) {
+    ): void {
       grid[r][c] = state;
 
-      const element =
-        cells[r]?.[c];
+      const element = cells[r]?.[c];
 
       if (element) {
         element.className =
-          className(state);
+          cellClass(state);
       }
     }
 
     function handleDown(
       r: number,
       c: number
-    ) {
+    ): void {
       if (running) {
         return;
       }
 
-      const state =
-        grid[r][c];
+      const state = grid[r][c];
 
       if (state === "start") {
         dragMode = "start";
@@ -2611,41 +2289,22 @@ import Layout from "../../layouts/Layout.astro";
     function handleEnter(
       r: number,
       c: number
-    ) {
-      if (
-        running ||
-        !dragMode
-      ) {
+    ): void {
+      if (running || !dragMode) {
         return;
       }
 
-      if (
-        dragMode === "wall"
-      ) {
-        toggleWall(
-          r,
-          c,
-          true
-        );
-
+      if (dragMode === "wall") {
+        toggleWall(r, c, true);
         return;
       }
 
-      if (
-        dragMode === "erase"
-      ) {
-        toggleWall(
-          r,
-          c,
-          false
-        );
-
+      if (dragMode === "erase") {
+        toggleWall(r, c, false);
         return;
       }
 
-      if (
-        dragMode === "start"
-      ) {
+      if (dragMode === "start") {
         if (
           grid[r][c] === "wall" ||
           grid[r][c] === "end"
@@ -2661,18 +2320,12 @@ import Layout from "../../layouts/Layout.astro";
 
         start = { r, c };
 
-        setCell(
-          r,
-          c,
-          "start"
-        );
+        setCell(r, c, "start");
 
         return;
       }
 
-      if (
-        dragMode === "end"
-      ) {
+      if (dragMode === "end") {
         if (
           grid[r][c] === "wall" ||
           grid[r][c] === "start"
@@ -2688,11 +2341,7 @@ import Layout from "../../layouts/Layout.astro";
 
         end = { r, c };
 
-        setCell(
-          r,
-          c,
-          "end"
-        );
+        setCell(r, c, "end");
       }
     }
 
@@ -2700,7 +2349,7 @@ import Layout from "../../layouts/Layout.astro";
       r: number,
       c: number,
       force?: boolean
-    ) {
+    ): void {
       if (
         grid[r][c] === "start" ||
         grid[r][c] === "end"
@@ -2710,8 +2359,7 @@ import Layout from "../../layouts/Layout.astro";
 
       const shouldWall =
         force === undefined
-          ? grid[r][c] !==
-            "wall"
+          ? grid[r][c] !== "wall"
           : force;
 
       setCell(
@@ -2730,55 +2378,37 @@ import Layout from "../../layouts/Layout.astro";
       }
     );
 
-    function key(
-      point: Point
-    ) {
+    function pointKey(point: Point): string {
       return `${point.r},${point.c}`;
     }
 
     function neighbors(
       point: Point
-    ) {
-      const directions: Point[] =
-        [
-          { r: -1, c: 0 },
-          { r: 1, c: 0 },
-          { r: 0, c: -1 },
-          { r: 0, c: 1 },
-        ];
+    ): Point[] {
+      const directions: Point[] = [
+        { r: -1, c: 0 },
+        { r: 1, c: 0 },
+        { r: 0, c: -1 },
+        { r: 0, c: 1 },
+      ];
 
-      const result: Point[] =
-        [];
+      const result: Point[] = [];
 
-      for (
-        const direction of
-        directions
-      ) {
+      for (const direction of directions) {
         const r =
-          point.r +
-          direction.r;
+          point.r + direction.r;
 
         const c =
-          point.c +
-          direction.c;
+          point.c + direction.c;
 
-        /*
-         * Use <= ROWS - 1 and
-         * <= COLS - 1 instead of
-         * < ROWS and < COLS.
-         */
         if (
           r >= 0 &&
-          r <= ROWS - 1 &&
+          r < ROWS &&
           c >= 0 &&
-          c <= COLS - 1 &&
-          grid[r][c] !==
-            "wall"
+          c < COLS &&
+          grid[r][c] !== "wall"
         ) {
-          result.push({
-            r,
-            c,
-          });
+          result.push({ r, c });
         }
       }
 
@@ -2787,50 +2417,47 @@ import Layout from "../../layouts/Layout.astro";
 
     function heuristic(
       point: Point
-    ) {
+    ): number {
       return (
-        Math.abs(
-          point.r - end.r
-        ) +
-        Math.abs(
-          point.c - end.c
-        )
+        Math.abs(point.r - end.r) +
+        Math.abs(point.c - end.c)
       );
     }
 
-    async function bfs() {
-      const queue: Point[] =
-        [start];
+    function bfs(): SearchResult {
+      const queue: Point[] = [start];
 
       const visited =
         new Set<string>([
-          key(start),
+          pointKey(start),
         ]);
 
       const cameFrom =
         new Map<string, Point>();
 
-      const order: Point[] =
-        [];
+      const order: Point[] = [];
 
-      while (
-        queue.length > 0
-      ) {
+      while (queue.length > 0) {
         const current =
-          queue.shift()!;
+          queue.shift();
+
+        if (!current) {
+          break;
+        }
+
+        const currentKey =
+          pointKey(current);
 
         if (
-          key(current) !==
-          key(start)
+          currentKey !==
+          pointKey(start)
         ) {
-          order.push(
-            current
-          );
+          order.push(current);
         }
 
         if (
-          key(current) ===
-          key(end)
+          currentKey ===
+          pointKey(end)
         ) {
           return {
             found: true,
@@ -2840,23 +2467,16 @@ import Layout from "../../layouts/Layout.astro";
         }
 
         for (
-          const next of
-          neighbors(current)
+          const next of neighbors(current)
         ) {
           const nextKey =
-            key(next);
+            pointKey(next);
 
-          if (
-            visited.has(
-              nextKey
-            )
-          ) {
+          if (visited.has(nextKey)) {
             continue;
           }
 
-          visited.add(
-            nextKey
-          );
+          visited.add(nextKey);
 
           cameFrom.set(
             nextKey,
@@ -2874,11 +2494,9 @@ import Layout from "../../layouts/Layout.astro";
       };
     }
 
-    async function weighted(
-      mode:
-        | "dijkstra"
-        | "astar"
-    ) {
+    function weighted(
+      mode: "dijkstra" | "astar"
+    ): SearchResult {
       const open: {
         point: Point;
         priority: number;
@@ -2890,70 +2508,56 @@ import Layout from "../../layouts/Layout.astro";
       ];
 
       const distances =
-        new Map<
-          string,
-          number
-        >();
+        new Map<string, number>();
 
       distances.set(
-        key(start),
+        pointKey(start),
         0
       );
 
       const cameFrom =
-        new Map<
-          string,
-          Point
-        >();
+        new Map<string, Point>();
 
       const closed =
         new Set<string>();
 
-      const order: Point[] =
-        [];
+      const order: Point[] = [];
 
-      while (
-        open.length > 0
-      ) {
+      while (open.length > 0) {
         open.sort(
           (a, b) =>
-            a.priority -
-            b.priority
+            a.priority - b.priority
         );
 
         const currentEntry =
-          open.shift()!;
+          open.shift();
+
+        if (!currentEntry) {
+          break;
+        }
 
         const current =
           currentEntry.point;
 
         const currentKey =
-          key(current);
+          pointKey(current);
 
-        if (
-          closed.has(
-            currentKey
-          )
-        ) {
+        if (closed.has(currentKey)) {
           continue;
         }
 
-        closed.add(
-          currentKey
-        );
+        closed.add(currentKey);
 
         if (
           currentKey !==
-          key(start)
+          pointKey(start)
         ) {
-          order.push(
-            current
-          );
+          order.push(current);
         }
 
         if (
           currentKey ===
-          key(end)
+          pointKey(end)
         ) {
           return {
             found: true,
@@ -2968,32 +2572,24 @@ import Layout from "../../layouts/Layout.astro";
           ) ?? Infinity;
 
         for (
-          const next of
-          neighbors(current)
+          const next of neighbors(current)
         ) {
           const nextKey =
-            key(next);
+            pointKey(next);
 
-          if (
-            closed.has(
-              nextKey
-            )
-          ) {
+          if (closed.has(nextKey)) {
             continue;
           }
 
           const newCost =
-            currentDistance +
-            1;
+            currentDistance + 1;
 
-          if (
-            newCost <
-            (
-              distances.get(
-                nextKey
-              ) ?? Infinity
-            )
-          ) {
+          const oldCost =
+            distances.get(
+              nextKey
+            ) ?? Infinity;
+
+          if (newCost < oldCost) {
             distances.set(
               nextKey,
               newCost
@@ -3007,9 +2603,7 @@ import Layout from "../../layouts/Layout.astro";
             const priority =
               mode === "astar"
                 ? newCost +
-                  heuristic(
-                    next
-                  )
+                  heuristic(next)
                 : newCost;
 
             open.push({
@@ -3029,14 +2623,13 @@ import Layout from "../../layouts/Layout.astro";
 
     async function animateSearch(
       order: Point[]
-    ) {
+    ): Promise<void> {
       for (
         let i = 0;
-        i <= order.length - 1;
+        i < order.length;
         i++
       ) {
-        const point =
-          order[i];
+        const point = order[i];
 
         if (
           grid[point.r][point.c] ===
@@ -3049,7 +2642,7 @@ import Layout from "../../layouts/Layout.astro";
           );
         }
 
-        visitedElement.textContent =
+        visitedOutput.textContent =
           String(i + 1);
 
         await sleep(7);
@@ -3057,23 +2650,21 @@ import Layout from "../../layouts/Layout.astro";
     }
 
     function reconstruct(
-      cameFrom:
-        Map<string, Point>
-    ) {
-      const path: Point[] =
-        [];
+      cameFrom: Map<string, Point>
+    ): Point[] {
+      const path: Point[] = [];
 
       let current = end;
 
       while (
-        key(current) !==
-        key(start)
+        pointKey(current) !==
+        pointKey(start)
       ) {
         path.push(current);
 
         const previous =
           cameFrom.get(
-            key(current)
+            pointKey(current)
           );
 
         if (!previous) {
@@ -3088,47 +2679,20 @@ import Layout from "../../layouts/Layout.astro";
       return path;
     }
 
-    async function run() {
-      if (running) {
-        return;
-      }
-
-      running = true;
-
-      runButton.disabled = true;
-      wallsButton.disabled = true;
-      clearButton.disabled = true;
-      algorithm.disabled = true;
-
-      statusElement.textContent =
-        "Searching";
-
-      visitedElement.textContent =
-        "0";
-
-      lengthElement.textContent =
-        "—";
-
-      /*
-       * Clear previous search state.
-       * Again, no "< ROWS" / "< COLS"
-       * expressions are used.
-       */
+    function resetSearchMarks(): void {
       for (
         let r = 0;
-        r <= ROWS - 1;
+        r < ROWS;
         r++
       ) {
         for (
           let c = 0;
-          c <= COLS - 1;
+          c < COLS;
           c++
         ) {
           if (
-            grid[r][c] ===
-              "visited" ||
-            grid[r][c] ===
-              "path"
+            grid[r][c] === "visited" ||
+            grid[r][c] === "path"
           ) {
             setCell(
               r,
@@ -3139,15 +2703,56 @@ import Layout from "../../layouts/Layout.astro";
         }
       }
 
+      setCell(
+        start.r,
+        start.c,
+        "start"
+      );
+
+      setCell(
+        end.r,
+        end.c,
+        "end"
+      );
+    }
+
+    function setControls(
+      enabled: boolean
+    ): void {
+      runButton.disabled = !enabled;
+      wallsButton.disabled = !enabled;
+      clearButton.disabled = !enabled;
+      algorithm.disabled = !enabled;
+    }
+
+    async function run(): Promise<void> {
+      if (running) {
+        return;
+      }
+
+      running = true;
+
+      setControls(false);
+
+      statusOutput.textContent =
+        "Searching";
+
+      visitedOutput.textContent =
+        "0";
+
+      lengthOutput.textContent =
+        "—";
+
+      resetSearchMarks();
+
       const selected =
         algorithm.value;
 
       const result =
         selected === "bfs"
-          ? await bfs()
-          : await weighted(
-              selected ===
-                "astar"
+          ? bfs()
+          : weighted(
+              selected === "astar"
                 ? "astar"
                 : "dijkstra"
             );
@@ -3157,15 +2762,12 @@ import Layout from "../../layouts/Layout.astro";
       );
 
       if (!result.found) {
-        statusElement.textContent =
+        statusOutput.textContent =
           "No path found";
 
         running = false;
 
-        runButton.disabled = false;
-        wallsButton.disabled = false;
-        clearButton.disabled = false;
-        algorithm.disabled = false;
+        setControls(true);
 
         return;
       }
@@ -3175,12 +2777,10 @@ import Layout from "../../layouts/Layout.astro";
           result.cameFrom
         );
 
-      for (
-        const point of path
-      ) {
+      for (const point of path) {
         if (
-          key(point) !==
-          key(end)
+          pointKey(point) !==
+          pointKey(end)
         ) {
           setCell(
             point.r,
@@ -3192,21 +2792,18 @@ import Layout from "../../layouts/Layout.astro";
         await sleep(18);
       }
 
-      lengthElement.textContent =
+      lengthOutput.textContent =
         String(path.length);
 
-      statusElement.textContent =
+      statusOutput.textContent =
         "Path found";
 
       running = false;
 
-      runButton.disabled = false;
-      wallsButton.disabled = false;
-      clearButton.disabled = false;
-      algorithm.disabled = false;
+      setControls(true);
     }
 
-    function randomWalls() {
+    function randomWalls(): void {
       if (running) {
         return;
       }
@@ -3215,39 +2812,42 @@ import Layout from "../../layouts/Layout.astro";
 
       for (
         let r = 0;
-        r <= ROWS - 1;
+        r < ROWS;
         r++
       ) {
         for (
           let c = 0;
-          c <= COLS - 1;
+          c < COLS;
           c++
         ) {
           if (
-            grid[r][c] ===
-              "empty" &&
-            Math.random() <
-              0.25
+            grid[r][c] === "empty" &&
+            Math.random() < 0.25
           ) {
-            grid[r][c] =
-              "wall";
+            grid[r][c] = "wall";
           }
         }
       }
 
+      grid[start.r][start.c] =
+        "start";
+
+      grid[end.r][end.c] =
+        "end";
+
       render();
 
-      visitedElement.textContent =
+      visitedOutput.textContent =
         "0";
 
-      lengthElement.textContent =
+      lengthOutput.textContent =
         "—";
 
-      statusElement.textContent =
+      statusOutput.textContent =
         "Ready";
     }
 
-    function clear() {
+    function clear(): void {
       if (running) {
         return;
       }
@@ -3255,19 +2855,21 @@ import Layout from "../../layouts/Layout.astro";
       createGrid();
       render();
 
-      visitedElement.textContent =
+      visitedOutput.textContent =
         "0";
 
-      lengthElement.textContent =
+      lengthOutput.textContent =
         "—";
 
-      statusElement.textContent =
+      statusOutput.textContent =
         "Ready";
     }
 
     runButton.addEventListener(
       "click",
-      run
+      () => {
+        void run();
+      }
     );
 
     wallsButton.addEventListener(
