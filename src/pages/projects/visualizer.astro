@@ -1,400 +1,395 @@
+```astro
 ---
-
-## import Layout from "../../layouts/Layout.astro";
+import Layout from "../../layouts/Layout.astro";
+---
 
 <Layout title="Algorithm Visualizer">
   <main class="algorithm-page">
     <div class="page-grid"></div>
 
-```
-<div class="container">
-  <!-- BACK -->
-  <a href="/projects" class="back-link">
-    <span>←</span>
-    <span>Back to projects</span>
-  </a>
+    <div class="container">
+      <!-- BACK -->
+      <a href="/projects" class="back-link">
+        <span>←</span>
+        <span>Back to projects</span>
+      </a>
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="eyebrow">
-      <span class="status-dot"></span>
-      <span>PROJECT 04</span>
-      <span class="separator">/</span>
-      <span>COMPUTER SCIENCE</span>
-    </div>
+      <!-- HERO -->
+      <header class="hero">
+        <div class="eyebrow">
+          <span class="status-dot"></span>
+          <span>PROJECT 04</span>
+          <span class="separator">/</span>
+          <span>COMPUTER SCIENCE</span>
+        </div>
 
-    <h1>
-      Algorithms,
-      <span>visualized.</span>
-    </h1>
+        <h1>
+          Algorithms,
+          <span>visualized.</span>
+        </h1>
 
-    <p class="hero-description">
-      Interactive visualizations for sorting algorithms, hash tables,
-      and pathfinding. Built to make data structures and algorithms
-      easier to understand by watching them execute step by step.
-    </p>
-
-    <div class="tech-row">
-      <span>ASTRO</span>
-      <span>TYPESCRIPT</span>
-      <span>ALGORITHMS</span>
-      <span>DATA STRUCTURES</span>
-    </div>
-  </header>
-
-  <!-- SECTION INDEX -->
-  <nav class="section-index" aria-label="Visualizer sections">
-    <a href="#sorting">
-      <span>01</span>
-      <span>Sorting</span>
-    </a>
-
-    <a href="#hash-table">
-      <span>02</span>
-      <span>Hash table</span>
-    </a>
-
-    <a href="#pathfinding">
-      <span>03</span>
-      <span>Pathfinding</span>
-    </a>
-  </nav>
-
-  <!-- ========================================================= -->
-  <!-- SORTING -->
-  <!-- ========================================================= -->
-
-  <section class="demo-section" id="sorting">
-    <div class="section-heading">
-      <div class="section-number">01</div>
-
-      <div>
-        <div class="section-label">SORTING ALGORITHMS</div>
-
-        <h2>Watch algorithms sort data.</h2>
-
-        <p>
-          Compare five classic sorting algorithms and observe their
-          comparisons and swaps in real time.
+        <p class="hero-description">
+          Interactive visualizations for sorting algorithms, hash tables,
+          and pathfinding. Built to make data structures and algorithms
+          easier to understand by watching them execute step by step.
         </p>
-      </div>
+
+        <div class="tech-row">
+          <span>ASTRO</span>
+          <span>TYPESCRIPT</span>
+          <span>ALGORITHMS</span>
+          <span>DATA STRUCTURES</span>
+        </div>
+      </header>
+
+      <!-- SECTION INDEX -->
+      <nav class="section-index" aria-label="Visualizer sections">
+        <a href="#sorting">
+          <span>01</span>
+          <span>Sorting</span>
+        </a>
+
+        <a href="#hash-table">
+          <span>02</span>
+          <span>Hash table</span>
+        </a>
+
+        <a href="#pathfinding">
+          <span>03</span>
+          <span>Pathfinding</span>
+        </a>
+      </nav>
+
+      <!-- SORTING -->
+      <section class="demo-section" id="sorting">
+        <div class="section-heading">
+          <div class="section-number">01</div>
+
+          <div>
+            <div class="section-label">SORTING ALGORITHMS</div>
+
+            <h2>Watch algorithms sort data.</h2>
+
+            <p>
+              Compare five classic sorting algorithms and observe their
+              comparisons and swaps in real time.
+            </p>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-toolbar">
+            <div class="control-group">
+              <label for="sort-algo">Algorithm</label>
+
+              <select id="sort-algo">
+                <option value="bubble">Bubble Sort</option>
+                <option value="selection">Selection Sort</option>
+                <option value="insertion">Insertion Sort</option>
+                <option value="merge">Merge Sort</option>
+                <option value="quick" selected>Quick Sort</option>
+              </select>
+            </div>
+
+            <div class="toolbar-actions">
+              <button id="sort-run" class="button primary">
+                Run algorithm
+              </button>
+
+              <button id="sort-shuffle" class="button">
+                Shuffle
+              </button>
+            </div>
+
+            <div class="speed-control">
+              <label for="sort-speed">Speed</label>
+              <input
+                id="sort-speed"
+                type="range"
+                min="1"
+                max="100"
+                value="65"
+              />
+            </div>
+          </div>
+
+          <div class="visual-stage sorting-stage">
+            <div
+              id="sort-stage"
+              class="bars"
+              aria-label="Sorting visualization"
+            ></div>
+          </div>
+
+          <div class="metrics">
+            <div>
+              <span>Comparisons</span>
+              <strong id="sort-comparisons">0</strong>
+            </div>
+
+            <div>
+              <span>Swaps</span>
+              <strong id="sort-swaps">0</strong>
+            </div>
+
+            <div>
+              <span>Status</span>
+              <strong id="sort-status">Ready</strong>
+            </div>
+          </div>
+
+          <div class="legend">
+            <span>
+              <i class="legend-dot compare"></i>
+              Comparing
+            </span>
+
+            <span>
+              <i class="legend-dot swap"></i>
+              Swapping
+            </span>
+
+            <span>
+              <i class="legend-dot sorted"></i>
+              Sorted
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- HASH TABLE -->
+      <section class="demo-section" id="hash-table">
+        <div class="section-heading">
+          <div class="section-number">02</div>
+
+          <div>
+            <div class="section-label">HASH TABLE</div>
+
+            <h2>See collision resolution.</h2>
+
+            <p>
+              Insert key-value pairs into an eight-bucket hash table and
+              watch separate chaining resolve collisions.
+            </p>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-toolbar hash-toolbar">
+            <div class="control-group">
+              <label for="hash-key">Key</label>
+
+              <input
+                id="hash-key"
+                class="text-input"
+                type="text"
+                placeholder="user"
+                maxlength="16"
+              />
+            </div>
+
+            <div class="control-group">
+              <label for="hash-value">Value</label>
+
+              <input
+                id="hash-value"
+                class="text-input"
+                type="text"
+                placeholder="Aymane"
+                maxlength="16"
+              />
+            </div>
+
+            <div class="toolbar-actions">
+              <button id="hash-insert" class="button primary">
+                Insert
+              </button>
+
+              <button id="hash-random" class="button">
+                Random
+              </button>
+
+              <button id="hash-clear" class="button">
+                Clear
+              </button>
+            </div>
+          </div>
+
+          <div id="hash-formula" class="formula">
+            Ready for insertion.
+          </div>
+
+          <div
+            id="hash-buckets"
+            class="hash-grid"
+            aria-label="Hash table buckets"
+          ></div>
+
+          <div class="hash-footer">
+            <span>Load factor</span>
+            <strong id="hash-load">0.00</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- PATHFINDING -->
+      <section class="demo-section" id="pathfinding">
+        <div class="section-heading">
+          <div class="section-number">03</div>
+
+          <div>
+            <div class="section-label">PATHFINDING</div>
+
+            <h2>Find the shortest path.</h2>
+
+            <p>
+              Draw walls on the grid and compare BFS, Dijkstra, and A*
+              while watching the search happen cell by cell.
+            </p>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-toolbar">
+            <div class="control-group">
+              <label for="path-algo">Algorithm</label>
+
+              <select id="path-algo">
+                <option value="bfs">Breadth-First Search</option>
+                <option value="dijkstra">Dijkstra</option>
+                <option value="astar" selected>A*</option>
+              </select>
+            </div>
+
+            <div class="toolbar-actions">
+              <button id="path-run" class="button primary">
+                Find path
+              </button>
+
+              <button id="path-walls" class="button">
+                Random walls
+              </button>
+
+              <button id="path-clear" class="button">
+                Clear
+              </button>
+            </div>
+
+            <div class="path-help">
+              Click / drag to draw walls
+            </div>
+          </div>
+
+          <div class="visual-stage path-stage">
+            <div
+              id="path-grid"
+              class="path-grid"
+              aria-label="Pathfinding grid"
+            ></div>
+          </div>
+
+          <div class="metrics">
+            <div>
+              <span>Visited</span>
+              <strong id="path-visited">0</strong>
+            </div>
+
+            <div>
+              <span>Path length</span>
+              <strong id="path-length">—</strong>
+            </div>
+
+            <div>
+              <span>Status</span>
+              <strong id="path-status">Ready</strong>
+            </div>
+          </div>
+
+          <div class="legend">
+            <span>
+              <i class="legend-dot start"></i>
+              Start
+            </span>
+
+            <span>
+              <i class="legend-dot wall"></i>
+              Wall
+            </span>
+
+            <span>
+              <i class="legend-dot visited"></i>
+              Visited
+            </span>
+
+            <span>
+              <i class="legend-dot path"></i>
+              Shortest path
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- DOCUMENTATION -->
+      <section class="documentation">
+        <div class="section-heading">
+          <div class="section-number">04</div>
+
+          <div>
+            <div class="section-label">DOCUMENTATION</div>
+
+            <h2>Built as an interactive reference.</h2>
+
+            <p>
+              Each visualization exposes the underlying algorithm rather
+              than hiding it behind a static animation.
+            </p>
+          </div>
+        </div>
+
+        <div class="documentation-grid">
+          <article>
+            <span>01</span>
+            <h3>Sorting</h3>
+            <p>
+              Bubble, selection, insertion, merge, and quick sort with
+              live comparison and swap counters.
+            </p>
+          </article>
+
+          <article>
+            <span>02</span>
+            <h3>Hashing</h3>
+            <p>
+              A simple hash function demonstrates bucket selection and
+              separate chaining.
+            </p>
+          </article>
+
+          <article>
+            <span>03</span>
+            <h3>Pathfinding</h3>
+            <p>
+              BFS, Dijkstra, and A* explore the same weighted-free grid
+              using different search strategies.
+            </p>
+          </article>
+
+          <article>
+            <span>04</span>
+            <h3>Client-side</h3>
+            <p>
+              Everything runs directly in the browser using TypeScript,
+              DOM APIs, and CSS.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        <span>ALGORITHM VISUALIZER</span>
+        <a href="/projects">← Projects</a>
+      </footer>
     </div>
-
-    <div class="demo-card">
-      <div class="demo-toolbar">
-        <div class="control-group">
-          <label for="sort-algo">Algorithm</label>
-
-          <select id="sort-algo">
-            <option value="bubble">Bubble Sort</option>
-            <option value="selection">Selection Sort</option>
-            <option value="insertion">Insertion Sort</option>
-            <option value="merge">Merge Sort</option>
-            <option value="quick" selected>Quick Sort</option>
-          </select>
-        </div>
-
-        <div class="toolbar-actions">
-          <button id="sort-run" class="button primary">
-            Run algorithm
-          </button>
-
-          <button id="sort-shuffle" class="button">
-            Shuffle
-          </button>
-        </div>
-
-        <div class="speed-control">
-          <label for="sort-speed">Speed</label>
-          <input
-            id="sort-speed"
-            type="range"
-            min="1"
-            max="100"
-            value="65"
-          />
-        </div>
-      </div>
-
-      <div class="visual-stage sorting-stage">
-        <div id="sort-stage" class="bars" aria-label="Sorting visualization"></div>
-      </div>
-
-      <div class="metrics">
-        <div>
-          <span>Comparisons</span>
-          <strong id="sort-comparisons">0</strong>
-        </div>
-
-        <div>
-          <span>Swaps</span>
-          <strong id="sort-swaps">0</strong>
-        </div>
-
-        <div>
-          <span>Status</span>
-          <strong id="sort-status">Ready</strong>
-        </div>
-      </div>
-
-      <div class="legend">
-        <span>
-          <i class="legend-dot compare"></i>
-          Comparing
-        </span>
-
-        <span>
-          <i class="legend-dot swap"></i>
-          Swapping
-        </span>
-
-        <span>
-          <i class="legend-dot sorted"></i>
-          Sorted
-        </span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================= -->
-  <!-- HASH TABLE -->
-  <!-- ========================================================= -->
-
-  <section class="demo-section" id="hash-table">
-    <div class="section-heading">
-      <div class="section-number">02</div>
-
-      <div>
-        <div class="section-label">HASH TABLE</div>
-
-        <h2>See collision resolution.</h2>
-
-        <p>
-          Insert key-value pairs into an eight-bucket hash table and
-          watch separate chaining resolve collisions.
-        </p>
-      </div>
-    </div>
-
-    <div class="demo-card">
-      <div class="demo-toolbar hash-toolbar">
-        <div class="control-group">
-          <label for="hash-key">Key</label>
-          <input
-            id="hash-key"
-            class="text-input"
-            type="text"
-            placeholder="user"
-            maxlength="16"
-          />
-        </div>
-
-        <div class="control-group">
-          <label for="hash-value">Value</label>
-          <input
-            id="hash-value"
-            class="text-input"
-            type="text"
-            placeholder="Aymane"
-            maxlength="16"
-          />
-        </div>
-
-        <div class="toolbar-actions">
-          <button id="hash-insert" class="button primary">
-            Insert
-          </button>
-
-          <button id="hash-random" class="button">
-            Random
-          </button>
-
-          <button id="hash-clear" class="button">
-            Clear
-          </button>
-        </div>
-      </div>
-
-      <div id="hash-formula" class="formula">
-        Ready for insertion.
-      </div>
-
-      <div
-        id="hash-buckets"
-        class="hash-grid"
-        aria-label="Hash table buckets"
-      ></div>
-
-      <div class="hash-footer">
-        <span>Load factor</span>
-        <strong id="hash-load">0.00</strong>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================= -->
-  <!-- PATHFINDING -->
-  <!-- ========================================================= -->
-
-  <section class="demo-section" id="pathfinding">
-    <div class="section-heading">
-      <div class="section-number">03</div>
-
-      <div>
-        <div class="section-label">PATHFINDING</div>
-
-        <h2>Find the shortest path.</h2>
-
-        <p>
-          Draw walls on the grid and compare BFS, Dijkstra, and A*
-          while watching the search happen cell by cell.
-        </p>
-      </div>
-    </div>
-
-    <div class="demo-card">
-      <div class="demo-toolbar">
-        <div class="control-group">
-          <label for="path-algo">Algorithm</label>
-
-          <select id="path-algo">
-            <option value="bfs">Breadth-First Search</option>
-            <option value="dijkstra">Dijkstra</option>
-            <option value="astar" selected>A*</option>
-          </select>
-        </div>
-
-        <div class="toolbar-actions">
-          <button id="path-run" class="button primary">
-            Find path
-          </button>
-
-          <button id="path-walls" class="button">
-            Random walls
-          </button>
-
-          <button id="path-clear" class="button">
-            Clear
-          </button>
-        </div>
-
-        <div class="path-help">
-          Click / drag to draw walls
-        </div>
-      </div>
-
-      <div class="visual-stage path-stage">
-        <div
-          id="path-grid"
-          class="path-grid"
-          aria-label="Pathfinding grid"
-        ></div>
-      </div>
-
-      <div class="metrics">
-        <div>
-          <span>Visited</span>
-          <strong id="path-visited">0</strong>
-        </div>
-
-        <div>
-          <span>Path length</span>
-          <strong id="path-length">—</strong>
-        </div>
-
-        <div>
-          <span>Status</span>
-          <strong id="path-status">Ready</strong>
-        </div>
-      </div>
-
-      <div class="legend">
-        <span>
-          <i class="legend-dot start"></i>
-          Start
-        </span>
-
-        <span>
-          <i class="legend-dot wall"></i>
-          Wall
-        </span>
-
-        <span>
-          <i class="legend-dot visited"></i>
-          Visited
-        </span>
-
-        <span>
-          <i class="legend-dot path"></i>
-          Shortest path
-        </span>
-      </div>
-    </div>
-  </section>
-
-  <!-- DOCUMENTATION -->
-  <section class="documentation">
-    <div class="section-heading">
-      <div class="section-number">04</div>
-
-      <div>
-        <div class="section-label">DOCUMENTATION</div>
-
-        <h2>Built as an interactive reference.</h2>
-
-        <p>
-          Each visualization exposes the underlying algorithm rather
-          than hiding it behind a static animation.
-        </p>
-      </div>
-    </div>
-
-    <div class="documentation-grid">
-      <article>
-        <span>01</span>
-        <h3>Sorting</h3>
-        <p>
-          Bubble, selection, insertion, merge, and quick sort with
-          live comparison and swap counters.
-        </p>
-      </article>
-
-      <article>
-        <span>02</span>
-        <h3>Hashing</h3>
-        <p>
-          A simple hash function demonstrates bucket selection and
-          separate chaining.
-        </p>
-      </article>
-
-      <article>
-        <span>03</span>
-        <h3>Pathfinding</h3>
-        <p>
-          BFS, Dijkstra, and A* explore the same weighted-free grid
-          using different search strategies.
-        </p>
-      </article>
-
-      <article>
-        <span>04</span>
-        <h3>Client-side</h3>
-        <p>
-          Everything runs directly in the browser using TypeScript,
-          DOM APIs, and CSS.
-        </p>
-      </article>
-    </div>
-  </section>
-
-  <footer class="page-footer">
-    <span>ALGORITHM VISUALIZER</span>
-    <a href="/projects">← Projects</a>
-  </footer>
-</div>
-```
-
   </main>
 </Layout>
 
@@ -881,13 +876,11 @@
 
   .speed-control input {
     width: 110px;
-
     accent-color: var(--blue);
   }
 
   .visual-stage {
     position: relative;
-
     padding: 1rem;
   }
 
@@ -920,7 +913,6 @@
 
   .viz-bar {
     flex: 1;
-
     min-width: 2px;
 
     border-radius: 2px 2px 0 0;
@@ -950,7 +942,6 @@
   .metrics {
     display: flex;
     flex-wrap: wrap;
-
     border-top: 1px solid rgba(255, 255, 255, 0.07);
   }
 
@@ -993,10 +984,6 @@
     font-weight: 400;
   }
 
-  .metrics strong:not(:last-child) {
-    color: var(--blue);
-  }
-
   .legend {
     display: flex;
     flex-wrap: wrap;
@@ -1024,12 +1011,12 @@
   }
 
   .legend-dot {
+    display: inline-block;
+
     width: 7px;
     height: 7px;
 
     border-radius: 2px;
-
-    display: inline-block;
   }
 
   .legend-dot.compare {
@@ -1226,31 +1213,26 @@
 
   .path-cell.start {
     background: var(--green);
-
     box-shadow: 0 0 14px rgba(74, 222, 128, 0.4);
   }
 
   .path-cell.end {
     background: var(--red);
-
     box-shadow: 0 0 14px rgba(251, 113, 133, 0.35);
   }
 
   .path-cell.visited {
     background: rgba(56, 189, 248, 0.35);
-
     animation: visited-in 120ms ease;
   }
 
   .path-cell.path {
     background: var(--amber);
-
     box-shadow: 0 0 10px rgba(245, 158, 11, 0.25);
   }
 
   .path-help {
     margin-left: auto;
-
     align-self: center;
 
     color: rgba(255, 255, 255, 0.25);
@@ -1995,9 +1977,9 @@
       }
 
       formula.textContent =
-        `hash("${key}") → ${index}  /  bucket ${index}` +
+        `hash("${key}") → ${index} / bucket ${index}` +
         (chain.length > 1
-          ? "  /  collision → chaining"
+          ? " / collision → chaining"
           : "");
 
       render();
@@ -2060,8 +2042,7 @@
         () => []
       );
 
-      formula.textContent =
-        "Ready for insertion.";
+      formula.textContent = "Ready for insertion.";
 
       render();
     });
@@ -2634,10 +2615,12 @@
     }
 
     runButton.addEventListener("click", run);
+
     wallsButton.addEventListener(
       "click",
       randomWalls
     );
+
     clearButton.addEventListener(
       "click",
       clear
@@ -2647,3 +2630,4 @@
     render();
   })();
 </script>
+```
