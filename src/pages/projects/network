@@ -1,0 +1,675 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout
+  title="Network Protocol Simulator"
+  description="An interactive simulator for the TCP three-way handshake, TCP vs UDP packet loss and retransmission, and framed client-server messaging — built to visualize how the transport layer actually works."
+>
+  <section class="net-page text-[var(--white)] py-24 md:py-36">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <!-- ===================================================== -->
+      <!-- BACK LINK -->
+      <!-- ===================================================== -->
+      <a
+        href="/projects"
+        class="inline-flex items-center gap-2 text-sm text-[var(--white-icon)]
+        hover:text-[var(--sec)] transition-colors duration-300 mb-14"
+      >
+        <span class="text-lg">&larr;</span>
+        <span>Back to projects</span>
+      </a>
+
+      <!-- ===================================================== -->
+      <!-- HERO -->
+      <!-- ===================================================== -->
+      <div class="mb-16 md:mb-20">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="h-2 w-2 rounded-full bg-[var(--sec)] shadow-[0_0_12px_var(--sec)]"></span>
+          <span class="text-sm tracking-[0.25em] uppercase text-[var(--sec)] shiny-sec">
+            Project 05 &middot; Networking
+          </span>
+        </div>
+
+        <h1 class="text-4xl md:text-6xl font-medium tracking-tight text-[var(--white)]">
+          The transport layer, made visible<span class="text-[var(--sec)]">.</span>
+        </h1>
+
+        <p class="mt-5 max-w-2xl text-lg text-[var(--white-icon)] leading-relaxed">
+          Three simulations of what's actually happening under a socket connection:
+          the TCP handshake, how TCP and UDP behave differently when packets get lost,
+          and how a stream of bytes gets framed into discrete messages.
+        </p>
+
+        <p class="mt-3 max-w-2xl text-sm text-[var(--white-icon)] leading-relaxed opacity-70">
+          Note: this page is a client-side simulation, not a live socket server &mdash;
+          a static site can't open raw TCP/UDP connections in the browser. Everything
+          below models real protocol behavior, timing, and packet loss in software.
+        </p>
+
+        <div class="mt-7 flex flex-wrap gap-2">
+          <span class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]">Astro</span>
+          <span class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]">TypeScript</span>
+          <span class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]">Networking</span>
+        </div>
+      </div>
+
+      <!-- ===================================================== -->
+      <!-- TCP HANDSHAKE -->
+      <!-- ===================================================== -->
+      <div class="net-card mb-10">
+        <div class="net-card-header">
+          <div class="flex items-center gap-3">
+            <span class="font-mono text-xs tracking-[0.2em] text-[var(--sec)]">01</span>
+            <span class="h-px w-12 bg-[var(--sec)] opacity-40"></span>
+            <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]">TCP</span>
+          </div>
+          <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4">
+            Three-way handshake
+          </h2>
+          <p class="mt-2 text-base text-[var(--white-icon)] leading-relaxed max-w-2xl">
+            SYN, SYN-ACK, ACK &mdash; the exchange that opens every TCP connection, with
+            sequence and acknowledgment numbers tracked step by step. Run it again to
+            see the four-way close (FIN / ACK / FIN / ACK).
+          </p>
+        </div>
+
+        <div class="mt-6 flex flex-wrap items-center gap-2">
+          <button id="tcp-connect" class="net-btn net-btn-primary">Open connection</button>
+          <button id="tcp-close" class="net-btn" disabled>Close connection</button>
+          <span id="tcp-state" class="net-pill ml-auto">CLOSED</span>
+        </div>
+
+        <div class="net-lane mt-6">
+          <div class="net-lane-col">
+            <div class="net-node">Client</div>
+          </div>
+          <div id="tcp-wire" class="net-lane-wire"></div>
+          <div class="net-lane-col">
+            <div class="net-node">Server</div>
+          </div>
+        </div>
+
+        <div id="tcp-log" class="net-log mt-4"></div>
+      </div>
+
+      <!-- ===================================================== -->
+      <!-- TCP vs UDP PACKET LOSS -->
+      <!-- ===================================================== -->
+      <div class="net-card mb-10">
+        <div class="net-card-header">
+          <div class="flex items-center gap-3">
+            <span class="font-mono text-xs tracking-[0.2em] text-[var(--sec)]">02</span>
+            <span class="h-px w-12 bg-[var(--sec)] opacity-40"></span>
+            <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]">TCP vs UDP</span>
+          </div>
+          <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4">
+            Packet loss &amp; retransmission
+          </h2>
+          <p class="mt-2 text-base text-[var(--white-icon)] leading-relaxed max-w-2xl">
+            Send the same burst of packets over a lossy link with both protocols.
+            TCP notices the gap and retransmits; UDP just moves on &mdash; which is
+            exactly why one is used for file transfer and the other for live video.
+          </p>
+        </div>
+
+        <div class="mt-6 flex flex-wrap items-center gap-2">
+          <button id="loss-run" class="net-btn net-btn-primary">Send 10 packets</button>
+          <label class="flex items-center gap-2 text-xs text-[var(--white-icon)] ml-auto">
+            Loss rate
+            <input id="loss-rate" type="range" min="0" max="60" value="25" class="net-range" />
+            <span id="loss-rate-value" class="font-mono text-[var(--sec)]">25%</span>
+          </label>
+        </div>
+
+        <div class="net-split mt-6">
+          <div class="net-split-col">
+            <div class="net-split-label">TCP</div>
+            <div id="tcp-track" class="net-track"></div>
+            <div class="net-split-stats font-mono text-xs text-[var(--white-icon)]">
+              Delivered: <span id="tcp-delivered" class="text-[var(--sec)]">0</span> / 10
+              &middot; Retransmits: <span id="tcp-retrans" class="text-[#f59e0b]">0</span>
+            </div>
+          </div>
+          <div class="net-split-col">
+            <div class="net-split-label">UDP</div>
+            <div id="udp-track" class="net-track"></div>
+            <div class="net-split-stats font-mono text-xs text-[var(--white-icon)]">
+              Delivered: <span id="udp-delivered" class="text-[var(--sec)]">0</span> / 10
+              &middot; Dropped: <span id="udp-dropped" class="text-[#ef4444]">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================================================== -->
+      <!-- FRAMED CHAT -->
+      <!-- ===================================================== -->
+      <div class="net-card">
+        <div class="net-card-header">
+          <div class="flex items-center gap-3">
+            <span class="font-mono text-xs tracking-[0.2em] text-[var(--sec)]">03</span>
+            <span class="h-px w-12 bg-[var(--sec)] opacity-40"></span>
+            <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]">Framing</span>
+          </div>
+          <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4">
+            Framed client &ndash; server chat
+          </h2>
+          <p class="mt-2 text-base text-[var(--white-icon)] leading-relaxed max-w-2xl">
+            TCP delivers a raw byte stream with no message boundaries, so applications
+            frame their own messages. Type below and watch each message get wrapped
+            with a length-prefix header before it's "sent" across the wire and
+            unframed on the other side.
+          </p>
+        </div>
+
+        <div class="mt-6 flex flex-wrap items-center gap-2">
+          <input id="chat-input" type="text" placeholder="type a message" class="net-input flex-1 min-w-[200px]" maxlength="60" />
+          <button id="chat-send" class="net-btn net-btn-primary">Send</button>
+        </div>
+
+        <div id="chat-frame-preview" class="mt-4 font-mono text-xs text-[var(--white-icon)] opacity-80"></div>
+
+        <div id="chat-log" class="net-chat mt-4"></div>
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .net-page :global(.shiny-sec) {
+    background: linear-gradient(90deg, var(--sec), #6ee7b7, var(--sec));
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .net-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 1px solid var(--white-icon-tr);
+    background: #1414149c;
+    backdrop-filter: blur(6px);
+    padding: 1.75rem;
+    transition: border-color 0.4s ease;
+  }
+  .net-card:hover { border-color: rgba(21, 128, 61, 0.4); }
+  @media (min-width: 768px) { .net-card { padding: 2.5rem; } }
+  .net-card-header { max-width: 48rem; }
+
+  .net-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid var(--white-icon-tr);
+    color: var(--white-icon);
+    font-size: 0.8rem;
+    font-family: monospace;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .net-btn:hover { border-color: var(--sec); color: var(--white); }
+  .net-btn-primary { border-color: var(--sec); color: var(--sec); }
+  .net-btn-primary:hover { background: rgba(21, 128, 61, 0.12); }
+  .net-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .net-input {
+    padding: 0.5rem 0.85rem;
+    border-radius: 9999px;
+    border: 1px solid var(--white-icon-tr);
+    background: #10101080;
+    color: var(--white);
+    font-size: 0.8rem;
+    font-family: monospace;
+    outline: none;
+  }
+  .net-input:focus { border-color: var(--sec); }
+
+  .net-range { accent-color: var(--sec); width: 6rem; }
+
+  .net-pill {
+    padding: 0.3rem 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid var(--white-icon-tr);
+    font-family: monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--white-icon);
+  }
+  .net-pill.open { border-color: var(--sec); color: var(--sec); }
+  .net-pill.closing { border-color: #f59e0b; color: #f59e0b; }
+
+  /* Handshake lane */
+  .net-lane {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: start;
+    gap: 1rem;
+    border: 1px solid var(--white-icon-tr);
+    border-radius: 0.75rem;
+    background: #10101080;
+    padding: 1.5rem 1rem;
+    min-height: 180px;
+  }
+  .net-lane-col { display: flex; justify-content: center; }
+  .net-node {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--white-icon-tr);
+    background: rgba(255,255,255,0.03);
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--white);
+  }
+  .net-lane-wire {
+    position: relative;
+    width: 180px;
+    min-height: 150px;
+  }
+  @media (min-width: 640px) { .net-lane-wire { width: 260px; } }
+
+  .net-packet {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    padding: 0.25rem 0.6rem;
+    border-radius: 9999px;
+    font-family: monospace;
+    font-size: 0.68rem;
+    white-space: nowrap;
+    background: rgba(21, 128, 61, 0.15);
+    border: 1px solid var(--sec);
+    color: var(--sec);
+    opacity: 0;
+  }
+  .net-packet.fin { background: rgba(245, 158, 11, 0.15); border-color: #f59e0b; color: #f59e0b; }
+
+  .net-log {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--white-icon);
+    max-height: 160px;
+    overflow-y: auto;
+  }
+  .net-log-line { opacity: 0; animation: net-fade-in 0.3s ease forwards; }
+  .net-log-line .tag { color: var(--sec); }
+  .net-log-line .tag.fin { color: #f59e0b; }
+
+  @keyframes net-fade-in {
+    from { opacity: 0; transform: translateY(-2px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Packet loss split view */
+  .net-split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 768px) { .net-split { grid-template-columns: 1fr 1fr; } }
+  .net-split-label {
+    font-family: monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--white-icon);
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+  }
+  .net-track {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    min-height: 3rem;
+    border: 1px solid var(--white-icon-tr);
+    border-radius: 0.6rem;
+    background: #10101080;
+    padding: 0.6rem;
+  }
+  .net-split-stats { margin-top: 0.5rem; }
+
+  .net-packet-chip {
+    width: 1.7rem;
+    height: 1.7rem;
+    border-radius: 0.35rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    font-size: 0.65rem;
+    border: 1px solid var(--white-icon-tr);
+    color: var(--white-icon);
+    background: rgba(255,255,255,0.03);
+    transition: all 0.25s ease;
+  }
+  .net-packet-chip.delivered { border-color: var(--sec); color: var(--sec); background: rgba(21,128,61,0.12); }
+  .net-packet-chip.lost { border-color: #ef4444; color: #ef4444; background: rgba(239,68,68,0.12); text-decoration: line-through; }
+  .net-packet-chip.retrans { border-color: #f59e0b; color: #f59e0b; background: rgba(245,158,11,0.12); }
+
+  /* Chat */
+  .net-chat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 260px;
+    overflow-y: auto;
+    border: 1px solid var(--white-icon-tr);
+    border-radius: 0.75rem;
+    background: #10101080;
+    padding: 1rem;
+  }
+  .net-chat-empty { font-size: 0.8rem; color: var(--white-icon); opacity: 0.5; font-family: monospace; }
+  .net-chat-msg {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    animation: net-fade-in 0.3s ease;
+  }
+  .net-chat-frame {
+    align-self: flex-start;
+    font-family: monospace;
+    font-size: 0.65rem;
+    color: var(--white-icon);
+    opacity: 0.6;
+  }
+  .net-chat-bubble {
+    align-self: flex-start;
+    max-width: 80%;
+    padding: 0.5rem 0.85rem;
+    border-radius: 0.6rem;
+    border: 1px solid rgba(21, 128, 61, 0.4);
+    background: rgba(21, 128, 61, 0.1);
+    color: var(--white);
+    font-size: 0.85rem;
+  }
+</style>
+
+<script>
+  function sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  /* ================================================================= */
+  /* TCP HANDSHAKE                                                      */
+  /* ================================================================= */
+  (function handshakeModule() {
+    const connectBtn = document.getElementById("tcp-connect") as HTMLButtonElement;
+    const closeBtn = document.getElementById("tcp-close") as HTMLButtonElement;
+    const stateEl = document.getElementById("tcp-state");
+    const wireEl = document.getElementById("tcp-wire");
+    const logEl = document.getElementById("tcp-log");
+
+    if (!connectBtn || !closeBtn || !stateEl || !wireEl || !logEl) return;
+
+    let seqClient = Math.floor(Math.random() * 1000) + 1000;
+    let seqServer = Math.floor(Math.random() * 1000) + 5000;
+    let open = false;
+
+    function setState(text: string, cls?: "open" | "closing") {
+      stateEl!.textContent = text;
+      stateEl!.className = "net-pill ml-auto" + (cls ? ` ${cls}` : "");
+    }
+
+    function log(html: string) {
+      const line = document.createElement("div");
+      line.className = "net-log-line";
+      line.innerHTML = html;
+      logEl!.appendChild(line);
+      logEl!.scrollTop = logEl!.scrollHeight;
+    }
+
+    async function sendPacket(label: string, fromLeft: boolean, cls = "") {
+      const packet = document.createElement("div");
+      packet.className = "net-packet" + (cls ? ` ${cls}` : "");
+      packet.textContent = label;
+      wireEl!.appendChild(packet);
+
+      const width = wireEl!.clientWidth;
+      const startX = fromLeft ? 0 : width;
+      const endX = fromLeft ? width : 0;
+      const y = 20 + Math.random() * 100;
+
+      packet.style.top = `${y}px`;
+      packet.style.left = `${startX}px`;
+      packet.style.opacity = "1";
+
+      await sleep(30);
+      packet.style.transition = "left 0.6s ease, opacity 0.3s ease";
+      packet.style.left = `${endX}px`;
+
+      await sleep(650);
+      packet.style.opacity = "0";
+      await sleep(300);
+      packet.remove();
+    }
+
+    async function handshake() {
+      connectBtn.disabled = true;
+      wireEl!.innerHTML = "";
+      logEl!.innerHTML = "";
+      setState("CONNECTING");
+
+      log(`<span class="tag">SYN</span> client &rarr; server &nbsp; seq=${seqClient}`);
+      await sendPacket(`SYN seq=${seqClient}`, true);
+
+      log(`<span class="tag">SYN-ACK</span> server &rarr; client &nbsp; seq=${seqServer} ack=${seqClient + 1}`);
+      await sendPacket(`SYN-ACK seq=${seqServer} ack=${seqClient + 1}`, false);
+
+      log(`<span class="tag">ACK</span> client &rarr; server &nbsp; ack=${seqServer + 1}`);
+      await sendPacket(`ACK ack=${seqServer + 1}`, true);
+
+      setState("ESTABLISHED", "open");
+      log(`<span class="tag">Connection established.</span> Both sides can now send data.`);
+
+      open = true;
+      connectBtn.disabled = true;
+      closeBtn.disabled = false;
+    }
+
+    async function teardown() {
+      closeBtn.disabled = true;
+      setState("CLOSING", "closing");
+
+      log(`<span class="tag fin">FIN</span> client &rarr; server`);
+      await sendPacket("FIN", true, "fin");
+
+      log(`<span class="tag fin">ACK</span> server &rarr; client`);
+      await sendPacket("ACK", false, "fin");
+
+      log(`<span class="tag fin">FIN</span> server &rarr; client`);
+      await sendPacket("FIN", false, "fin");
+
+      log(`<span class="tag fin">ACK</span> client &rarr; server`);
+      await sendPacket("ACK", true, "fin");
+
+      setState("CLOSED");
+      log(`<span class="tag">Connection closed.</span>`);
+
+      open = false;
+      seqClient = Math.floor(Math.random() * 1000) + 1000;
+      seqServer = Math.floor(Math.random() * 1000) + 5000;
+      connectBtn.disabled = false;
+    }
+
+    connectBtn.addEventListener("click", () => { void handshake(); });
+    closeBtn.addEventListener("click", () => { void teardown(); });
+  })();
+
+  /* ================================================================= */
+  /* TCP vs UDP PACKET LOSS                                             */
+  /* ================================================================= */
+  (function lossModule() {
+    const runBtn = document.getElementById("loss-run") as HTMLButtonElement;
+    const rateInput = document.getElementById("loss-rate") as HTMLInputElement;
+    const rateValue = document.getElementById("loss-rate-value");
+    const tcpTrack = document.getElementById("tcp-track");
+    const udpTrack = document.getElementById("udp-track");
+    const tcpDelivered = document.getElementById("tcp-delivered");
+    const tcpRetrans = document.getElementById("tcp-retrans");
+    const udpDelivered = document.getElementById("udp-delivered");
+    const udpDropped = document.getElementById("udp-dropped");
+
+    if (!runBtn || !rateInput || !rateValue || !tcpTrack || !udpTrack || !tcpDelivered || !tcpRetrans || !udpDelivered || !udpDropped) return;
+
+    const PACKET_COUNT = 10;
+    let running = false;
+
+    rateInput.addEventListener("input", () => {
+      rateValue!.textContent = `${rateInput.value}%`;
+    });
+
+    function chip(label: string, cls: string) {
+      const el = document.createElement("div");
+      el.className = `net-packet-chip ${cls}`;
+      el.textContent = label;
+      return el;
+    }
+
+    async function run() {
+      if (running) return;
+      running = true;
+      runBtn.disabled = true;
+
+      tcpTrack!.innerHTML = "";
+      udpTrack!.innerHTML = "";
+      tcpDelivered!.textContent = "0";
+      tcpRetrans!.textContent = "0";
+      udpDelivered!.textContent = "0";
+      udpDropped!.textContent = "0";
+
+      const lossRate = Number(rateInput.value) / 100;
+      let tcpDeliveredCount = 0;
+      let tcpRetransCount = 0;
+      let udpDeliveredCount = 0;
+      let udpDroppedCount = 0;
+
+      // UDP: fire and forget, dropped packets are just gone
+      for (let i = 1; i <= PACKET_COUNT; i++) {
+        const lost = Math.random() < lossRate;
+        const el = chip(String(i), "");
+        udpTrack!.appendChild(el);
+        await sleep(60);
+        if (lost) {
+          el.classList.add("lost");
+          udpDroppedCount++;
+          udpDropped!.textContent = String(udpDroppedCount);
+        } else {
+          el.classList.add("delivered");
+          udpDeliveredCount++;
+          udpDelivered!.textContent = String(udpDeliveredCount);
+        }
+      }
+
+      // TCP: every packet eventually delivered via retransmission
+      for (let i = 1; i <= PACKET_COUNT; i++) {
+        let attempt = 0;
+        let delivered = false;
+        let el = chip(String(i), "");
+        tcpTrack!.appendChild(el);
+
+        while (!delivered) {
+          attempt++;
+          await sleep(70);
+          const lost = Math.random() < lossRate;
+          if (lost) {
+            el.classList.add("lost");
+            tcpRetransCount++;
+            tcpRetrans!.textContent = String(tcpRetransCount);
+            await sleep(90);
+            el = chip(`${i}\u2019`, "retrans");
+            tcpTrack!.appendChild(el);
+          } else {
+            el.classList.add("delivered");
+            delivered = true;
+            tcpDeliveredCount++;
+            tcpDelivered!.textContent = String(tcpDeliveredCount);
+          }
+        }
+      }
+
+      running = false;
+      runBtn.disabled = false;
+    }
+
+    runBtn.addEventListener("click", () => { void run(); });
+  })();
+
+  /* ================================================================= */
+  /* FRAMED CHAT                                                        */
+  /* ================================================================= */
+  (function chatModule() {
+    const input = document.getElementById("chat-input") as HTMLInputElement;
+    const sendBtn = document.getElementById("chat-send") as HTMLButtonElement;
+    const preview = document.getElementById("chat-frame-preview");
+    const log = document.getElementById("chat-log");
+
+    if (!input || !sendBtn || !preview || !log) return;
+
+    function updatePreview() {
+      const text = input.value;
+      if (!text) {
+        preview!.textContent = "";
+        return;
+      }
+      const len = new TextEncoder().encode(text).length;
+      const lenHex = len.toString(16).padStart(4, "0");
+      preview!.textContent = `frame: [4-byte length prefix: 0x${lenHex} (${len})] + [payload: "${text}"]`;
+    }
+
+    function renderEmpty() {
+      log!.innerHTML = `<div class="net-chat-empty">No messages yet &mdash; send one to see it framed and delivered.</div>`;
+    }
+
+    async function send() {
+      const text = input.value.trim();
+      if (!text) return;
+
+      const emptyState = log!.querySelector(".net-chat-empty");
+      if (emptyState) emptyState.remove();
+
+      const len = new TextEncoder().encode(text).length;
+      const lenHex = len.toString(16).padStart(4, "0");
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "net-chat-msg";
+
+      const frameLine = document.createElement("div");
+      frameLine.className = "net-chat-frame";
+      frameLine.textContent = `sending frame \u2014 length=0x${lenHex} (${len} bytes) \u2192 unframing on receipt\u2026`;
+      wrapper.appendChild(frameLine);
+
+      log!.appendChild(wrapper);
+      log!.scrollTop = log!.scrollHeight;
+
+      input.value = "";
+      preview!.textContent = "";
+      sendBtn.disabled = true;
+
+      await sleep(500);
+
+      const bubble = document.createElement("div");
+      bubble.className = "net-chat-bubble";
+      bubble.textContent = text;
+      wrapper.appendChild(bubble);
+      log!.scrollTop = log!.scrollHeight;
+
+      sendBtn.disabled = false;
+      input.focus();
+    }
+
+    input.addEventListener("input", updatePreview);
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") send();
+    });
+    sendBtn.addEventListener("click", () => { void send(); });
+
+    renderEmpty();
+  })();
+</script>
