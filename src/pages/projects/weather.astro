@@ -362,7 +362,7 @@ import Layout from "../../layouts/Layout.astro";
                   <div>Time</div>
                   <div>Sky condition</div>
                   <div>Temperature</div>
-                  <div>Precip</div>
+                  <div>Precip amount</div>
                   <div>Humidity</div>
                   <div>Wind</div>
                 </div>
@@ -3443,7 +3443,7 @@ import Layout from "../../layouts/Layout.astro";
 
 
   /* ============================================================ */
-  /* HOURLY */
+  /* HOURLY (weather.com style: clean white table) */
   /* ============================================================ */
 
   .hourly-section {
@@ -3513,7 +3513,7 @@ import Layout from "../../layouts/Layout.astro";
 
     border:
       1px solid
-      rgba(13, 20, 32, 0.1);
+      rgba(13, 20, 32, 0.14);
 
     border-radius: 50%;
 
@@ -3521,11 +3521,9 @@ import Layout from "../../layouts/Layout.astro";
       var(--ink-soft);
 
     background:
-      rgba(255, 255, 255, 0.72);
+      #ffffff;
 
-    box-shadow:
-      0 8px 20px
-      rgba(29, 77, 130, 0.08);
+    box-shadow: none;
 
     cursor: pointer;
 
@@ -3541,36 +3539,26 @@ import Layout from "../../layouts/Layout.astro";
       var(--electric-blue);
 
     border-color:
-      rgba(0, 113, 240, 0.28);
+      rgba(0, 113, 240, 0.35);
 
     transform:
       translateY(-1px);
   }
 
 
+  /* Plain white card, no glass/blur — matches weather.com's flat table look */
   .hourly-card {
     overflow: hidden;
 
     border:
-      1px solid
-      rgba(255, 255, 255, 0.8);
+      1px solid rgba(13, 20, 32, 0.1);
 
-    border-radius: 24px;
+    border-radius: 10px;
 
-    background:
-      rgba(255, 255, 255, 0.68);
+    background: #ffffff;
 
     box-shadow:
-      0 24px 60px
-      rgba(29, 77, 130, 0.12),
-      inset 0 1px
-      rgba(255, 255, 255, 0.95);
-
-    backdrop-filter:
-      blur(20px) saturate(140%);
-
-    -webkit-backdrop-filter:
-      blur(20px) saturate(140%);
+      0 1px 3px rgba(13, 20, 32, 0.06);
   }
 
 
@@ -3582,7 +3570,7 @@ import Layout from "../../layouts/Layout.astro";
     scrollbar-width: thin;
 
     scrollbar-color:
-      rgba(0, 113, 240, 0.25)
+      rgba(13, 20, 32, 0.2)
       transparent;
   }
 
@@ -3605,11 +3593,11 @@ import Layout from "../../layouts/Layout.astro";
 
     align-items: center;
 
-    min-height: 72px;
+    min-height: 64px;
 
     border-bottom:
       1px solid
-      rgba(13, 20, 32, 0.08);
+      rgba(13, 20, 32, 0.1);
 
     column-gap: 16px;
 
@@ -3617,7 +3605,7 @@ import Layout from "../../layouts/Layout.astro";
       0 22px;
 
     transition:
-      background 0.2s ease;
+      background 0.15s ease;
   }
 
 
@@ -3627,51 +3615,35 @@ import Layout from "../../layouts/Layout.astro";
 
 
   .hourly-head {
-    min-height: 54px;
+    min-height: 48px;
 
     color:
       rgba(13, 20, 32, 0.55);
 
-    background:
-      rgba(245, 249, 255, 0.7);
+    background: #ffffff;
+
+    border-bottom:
+      1px solid
+      rgba(13, 20, 32, 0.12);
 
     font-size: 12px;
 
     font-weight: 600;
+
+    text-transform: none;
   }
 
 
   .hourly-row:not(.hourly-head):hover {
     background:
-      rgba(255, 255, 255, 0.62);
+      rgba(13, 20, 32, 0.025);
   }
 
 
+  /* "Now" row: plain white, just bold text — no tinted background,
+     matching weather.com's understated current-hour styling */
   .hourly-now {
-    position: relative;
-
-    background:
-      linear-gradient(
-        90deg,
-        rgba(0, 113, 240, 0.07),
-        rgba(255, 255, 255, 0.15)
-      );
-  }
-
-
-  .hourly-now::before {
-    position: absolute;
-
-    left: 0;
-    top: 0;
-    bottom: 0;
-
-    width: 3px;
-
-    content: "";
-
-    background:
-      var(--electric-blue);
+    background: #ffffff;
   }
 
 
@@ -3689,6 +3661,8 @@ import Layout from "../../layouts/Layout.astro";
       var(--ink);
 
     font-size: 15px;
+
+    font-weight: 700;
   }
 
 
@@ -3703,7 +3677,7 @@ import Layout from "../../layouts/Layout.astro";
   .hourly-now
     .hourly-time-cell strong {
     color:
-      var(--electric-blue);
+      var(--ink);
   }
 
 
@@ -3734,41 +3708,40 @@ import Layout from "../../layouts/Layout.astro";
   }
 
 
-  /* COMPACT HOURLY ICON */
+  /* COMPACT HOURLY ICON — natural weather colours, no tinted circle */
 
   :global(.hourly-condition-icon) {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    min-height: 40px;
-    max-width: 40px;
-    max-height: 40px;
-    flex: 0 0 40px;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+    max-width: 30px;
+    max-height: 30px;
+    flex: 0 0 30px;
     overflow: visible;
     box-sizing: border-box;
     border: 0;
     border-radius: 0;
-    color: var(--electric-blue);
     background: transparent;
   }
 
   :global(.hourly-condition-icon .weather-icon-svg) {
-    width: 34px !important;
-    height: 34px !important;
-    min-width: 34px;
-    min-height: 34px;
-    max-width: 34px !important;
-    max-height: 34px !important;
-    flex: 0 0 34px;
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px;
+    min-height: 28px;
+    max-width: 28px !important;
+    max-height: 28px !important;
+    flex: 0 0 28px;
   }
 
   .hourly-condition-text {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 2px;
     min-width: 0;
   }
 
@@ -3776,14 +3749,15 @@ import Layout from "../../layouts/Layout.astro";
     overflow: hidden;
     color: var(--ink);
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
   .hourly-probability {
-    color: var(--ink-muted);
+    color: var(--electric-blue);
     font-size: 11px;
+    font-weight: 600;
     line-height: 1;
   }
 
@@ -3799,7 +3773,7 @@ import Layout from "../../layouts/Layout.astro";
 
 
   .hourly-precip-cell {
-    color: var(--ink);
+    color: var(--ink-soft);
     font-size: 14px;
     font-weight: 500;
   }
@@ -3839,6 +3813,8 @@ import Layout from "../../layouts/Layout.astro";
       var(--ink);
 
     font-size: 13px;
+
+    font-weight: 600;
   }
 
 
@@ -3855,20 +3831,19 @@ import Layout from "../../layouts/Layout.astro";
 
     place-items: center;
 
-    width: 27px;
-    height: 27px;
+    width: 22px;
+    height: 22px;
 
-    flex: 0 0 27px;
+    flex: 0 0 22px;
 
     border-radius: 50%;
 
     color:
-      var(--electric-blue);
+      var(--ink-soft);
 
-    background:
-      rgba(0, 113, 240, 0.07);
+    background: transparent;
 
-    font-size: 16px;
+    font-size: 15px;
   }
 
 
@@ -4804,23 +4779,23 @@ import Layout from "../../layouts/Layout.astro";
 
 
     :global(.hourly-condition-icon) {
-      width: 36px;
-      height: 36px;
-      min-width: 36px;
-      min-height: 36px;
-      max-width: 36px;
-      max-height: 36px;
-      flex-basis: 36px;
+      width: 26px;
+      height: 26px;
+      min-width: 26px;
+      min-height: 26px;
+      max-width: 26px;
+      max-height: 26px;
+      flex-basis: 26px;
     }
 
     :global(.hourly-condition-icon .weather-icon-svg) {
-      width: 30px !important;
-      height: 30px !important;
-      min-width: 30px;
-      min-height: 30px;
-      max-width: 30px !important;
-      max-height: 30px !important;
-      flex-basis: 30px;
+      width: 24px !important;
+      height: 24px !important;
+      min-width: 24px;
+      min-height: 24px;
+      max-width: 24px !important;
+      max-height: 24px !important;
+      flex-basis: 24px;
     }
 
     .forecast-summary {
