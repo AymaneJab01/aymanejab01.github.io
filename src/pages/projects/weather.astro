@@ -2020,13 +2020,16 @@ import Layout from "../../layouts/Layout.astro";
       "weather-background"
     ) as HTMLCanvasElement | null;
 
-  if (canvas) {
+  if (!canvas) {
+    console.warn("Weather background canvas was not found.");
+  } else {
     const maybeContext =
       canvas.getContext("2d");
 
-    if (maybeContext) {
-      const context =
-        maybeContext;
+    if (!maybeContext) {
+      console.warn("2D canvas context is not available.");
+    } else {
+      const context = maybeContext;
 
       const particles: Particle[] = [];
 
@@ -2060,12 +2063,6 @@ import Layout from "../../layouts/Layout.astro";
 
 
       function resize(): void {
-        // Keep the DOM nullability check inside the function so TypeScript
-        // knows the canvas is non-null whenever its dimensions are changed.
-        if (!canvas) {
-          return;
-        }
-
         const pixelRatio =
           getPixelRatio();
 
@@ -3188,7 +3185,7 @@ import Layout from "../../layouts/Layout.astro";
   /* STABLE WEATHER ICON SYSTEM */
   /* ============================================================ */
 
-  .weather-icon-svg {
+  :global(.weather-icon-svg) {
     display: block;
 
     width: 28px !important;
@@ -3229,7 +3226,7 @@ import Layout from "../../layouts/Layout.astro";
   }
 
 
-  .hero-icon .weather-icon-svg {
+  :global(.hero-icon .weather-icon-svg) {
     width: 52px !important;
     height: 52px !important;
 
@@ -3746,7 +3743,7 @@ import Layout from "../../layouts/Layout.astro";
 
   /* FIXED HOURLY ICON */
 
-  .hourly-condition-icon {
+  :global(.hourly-condition-icon) {
     display: flex;
 
     align-items: center;
@@ -3781,8 +3778,7 @@ import Layout from "../../layouts/Layout.astro";
   }
 
 
-  .hourly-condition-icon
-    .weather-icon-svg {
+  :global(.hourly-condition-icon .weather-icon-svg) {
     width: 26px !important;
     height: 26px !important;
 
@@ -4053,7 +4049,7 @@ import Layout from "../../layouts/Layout.astro";
 
   /* FIXED 10-DAY ICON CONTAINER */
 
-  .forecast-condition > i {
+  :global(.forecast-condition > i) {
     display: flex;
 
     align-items: center;
@@ -4090,9 +4086,7 @@ import Layout from "../../layouts/Layout.astro";
   }
 
 
-  .forecast-condition
-    > i
-    .weather-icon-svg {
+  :global(.forecast-condition > i .weather-icon-svg) {
     width: 27px !important;
     height: 27px !important;
 
@@ -4842,8 +4836,7 @@ import Layout from "../../layouts/Layout.astro";
     }
 
 
-    .forecast-condition
-      > i {
+    :global(.forecast-condition > i) {
       width: 38px;
       height: 38px;
 
@@ -4857,9 +4850,7 @@ import Layout from "../../layouts/Layout.astro";
     }
 
 
-    .forecast-condition
-      > i
-      .weather-icon-svg {
+    :global(.forecast-condition > i .weather-icon-svg) {
       width: 25px !important;
       height: 25px !important;
 
