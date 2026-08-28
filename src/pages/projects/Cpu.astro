@@ -1,0 +1,638 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="CPU Simulator">
+  <section class="cpu-page text-[var(--white)] py-24 md:py-36">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <!-- ===================================================== -->
+      <!-- BACK LINK -->
+      <!-- ===================================================== -->
+      <a
+        href="/projects"
+        class="inline-flex items-center gap-2 text-sm text-[var(--white-icon)]
+        hover:text-[var(--sec)] transition-colors duration-300 mb-14"
+      >
+        <span class="text-lg">&larr;</span>
+        <span>Back to projects</span>
+      </a>
+
+      <!-- ===================================================== -->
+      <!-- HERO -->
+      <!-- ===================================================== -->
+      <div class="mb-16 md:mb-20">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="h-2 w-2 rounded-full bg-[var(--sec)] shadow-[0_0_12px_var(--sec)]"></span>
+          <span class="text-sm tracking-[0.25em] uppercase text-[var(--sec)] shiny-sec">
+            Project 06 &middot; Computer Architecture
+          </span>
+        </div>
+
+        <h1 class="text-4xl md:text-6xl font-medium tracking-tight text-[var(--white)]">
+          Fetch. Decode. Execute<span class="text-[var(--sec)]">.</span>
+        </h1>
+
+        <p class="mt-5 max-w-2xl text-lg text-[var(--white-icon)] leading-relaxed">
+          A tiny 8-register CPU with its own instruction set, stepping through the
+          fetch-decode-execute cycle one instruction at a time. Write a short
+          program, hit run, and watch the program counter, registers, and memory
+          change in real time.
+        </p>
+
+        <div class="mt-7 flex flex-wrap gap-2">
+          <span class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]">Astro</span>
+          <span class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]">TypeScript</span>
+          <span class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]">Computer Architecture</span>
+        </div>
+      </div>
+
+      <!-- ===================================================== -->
+      <!-- CPU SIMULATOR -->
+      <!-- ===================================================== -->
+      <div class="cpu-card">
+        <div class="cpu-card-header">
+          <div class="flex items-center gap-3">
+            <span class="font-mono text-xs tracking-[0.2em] text-[var(--sec)]">01</span>
+            <span class="h-px w-12 bg-[var(--sec)] opacity-40"></span>
+            <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]">Simulator</span>
+          </div>
+          <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4">
+            A tiny CPU
+          </h2>
+          <p class="mt-2 text-base text-[var(--white-icon)] leading-relaxed max-w-2xl">
+            Eight general-purpose registers (R0&ndash;R7), 32 memory cells, and a
+            handful of instructions: <code class="cpu-code">MOV</code>,
+            <code class="cpu-code">ADD</code>, <code class="cpu-code">SUB</code>,
+            <code class="cpu-code">LOAD</code>, <code class="cpu-code">STORE</code>,
+            <code class="cpu-code">CMP</code>, <code class="cpu-code">JMP</code>,
+            <code class="cpu-code">JZ</code>, and <code class="cpu-code">HALT</code>.
+          </p>
+        </div>
+
+        <div class="cpu-layout mt-6">
+
+          <!-- Program editor -->
+          <div class="cpu-panel">
+            <div class="cpu-panel-title">Program</div>
+            <textarea id="cpu-program" class="cpu-editor" spellcheck="false"></textarea>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <select id="cpu-example" class="cpu-select">
+                <option value="sum">Sum 1..5</option>
+                <option value="loop">Countdown loop</option>
+                <option value="fib">Fibonacci (first 6)</option>
+              </select>
+              <button id="cpu-load-example" class="cpu-btn">Load example</button>
+            </div>
+          </div>
+
+          <!-- Registers + controls -->
+          <div class="cpu-panel">
+            <div class="cpu-panel-title">Registers</div>
+            <div id="cpu-registers" class="cpu-registers"></div>
+
+            <div class="cpu-panel-title mt-5">Cycle</div>
+            <div id="cpu-cycle" class="cpu-cycle">
+              <span class="cpu-cycle-step" data-step="fetch">Fetch</span>
+              <span class="cpu-cycle-arrow">&rarr;</span>
+              <span class="cpu-cycle-step" data-step="decode">Decode</span>
+              <span class="cpu-cycle-arrow">&rarr;</span>
+              <span class="cpu-cycle-step" data-step="execute">Execute</span>
+            </div>
+
+            <div class="mt-5 flex flex-wrap gap-2">
+              <button id="cpu-assemble" class="cpu-btn cpu-btn-primary">Assemble</button>
+              <button id="cpu-step" class="cpu-btn" disabled>Step</button>
+              <button id="cpu-run" class="cpu-btn" disabled>Run</button>
+              <button id="cpu-reset" class="cpu-btn">Reset</button>
+            </div>
+
+            <div class="mt-4 font-mono text-xs text-[var(--white-icon)]">
+              PC: <span id="cpu-pc" class="text-[var(--sec)]">0</span>
+              &nbsp;&middot;&nbsp;
+              <span id="cpu-status">Idle</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Memory -->
+        <div class="mt-6">
+          <div class="cpu-panel-title">Memory</div>
+          <div id="cpu-memory" class="cpu-memory mt-2"></div>
+        </div>
+
+        <!-- Console -->
+        <div class="mt-6">
+          <div class="cpu-panel-title">Console</div>
+          <div id="cpu-console" class="cpu-console mt-2"></div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .cpu-page :global(.shiny-sec) {
+    background: linear-gradient(90deg, var(--sec), #6ee7b7, var(--sec));
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .cpu-code {
+    font-family: monospace;
+    font-size: 0.85em;
+    color: var(--sec);
+    background: rgba(21, 128, 61, 0.12);
+    padding: 0.1em 0.4em;
+    border-radius: 0.3em;
+  }
+
+  .cpu-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 1px solid var(--white-icon-tr);
+    background: #1414149c;
+    backdrop-filter: blur(6px);
+    padding: 1.75rem;
+  }
+  @media (min-width: 768px) { .cpu-card { padding: 2.5rem; } }
+  .cpu-card-header { max-width: 48rem; }
+
+  .cpu-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 900px) {
+    .cpu-layout { grid-template-columns: 1.1fr 1fr; }
+  }
+
+  .cpu-panel {
+    border: 1px solid var(--white-icon-tr);
+    border-radius: 0.75rem;
+    background: #10101080;
+    padding: 1.25rem;
+  }
+
+  .cpu-panel-title {
+    font-family: monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white-icon);
+    opacity: 0.7;
+    margin-bottom: 0.6rem;
+  }
+
+  .cpu-editor {
+    width: 100%;
+    min-height: 220px;
+    resize: vertical;
+    background: #0a0a0a80;
+    border: 1px solid var(--white-icon-tr);
+    border-radius: 0.5rem;
+    color: var(--white);
+    font-family: monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    padding: 0.85rem;
+    outline: none;
+  }
+  .cpu-editor:focus { border-color: var(--sec); }
+
+  .cpu-select, .cpu-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid var(--white-icon-tr);
+    color: var(--white-icon);
+    font-size: 0.8rem;
+    font-family: monospace;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .cpu-select { background: #0a0a0a80; color: var(--white); }
+  .cpu-btn:hover { border-color: var(--sec); color: var(--white); }
+  .cpu-btn-primary { border-color: var(--sec); color: var(--sec); }
+  .cpu-btn-primary:hover { background: rgba(21, 128, 61, 0.12); }
+  .cpu-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .cpu-registers {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+  }
+  .cpu-register {
+    border: 1px solid var(--white-icon-tr);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    text-align: center;
+    background: rgba(255,255,255,0.02);
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+  .cpu-register.active { border-color: var(--sec); background: rgba(21, 128, 61, 0.1); }
+  .cpu-register-label {
+    font-family: monospace;
+    font-size: 0.65rem;
+    color: var(--white-icon);
+    opacity: 0.6;
+  }
+  .cpu-register-value {
+    font-family: monospace;
+    font-size: 1rem;
+    color: var(--white);
+    margin-top: 0.15rem;
+  }
+
+  .cpu-cycle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .cpu-cycle-step {
+    padding: 0.35rem 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid var(--white-icon-tr);
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--white-icon);
+    transition: all 0.2s ease;
+  }
+  .cpu-cycle-step.active {
+    border-color: var(--sec);
+    color: var(--sec);
+    background: rgba(21, 128, 61, 0.12);
+  }
+  .cpu-cycle-arrow { color: var(--white-icon); opacity: 0.4; font-size: 0.8rem; }
+
+  .cpu-memory {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 0.4rem;
+  }
+  @media (max-width: 640px) {
+    .cpu-memory { grid-template-columns: repeat(4, 1fr); }
+  }
+  .cpu-cell {
+    border: 1px solid var(--white-icon-tr);
+    border-radius: 0.4rem;
+    padding: 0.4rem;
+    text-align: center;
+    background: rgba(255,255,255,0.02);
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+  .cpu-cell.active { border-color: #f59e0b; background: rgba(245, 158, 11, 0.1); }
+  .cpu-cell-addr { font-family: monospace; font-size: 0.6rem; color: var(--white-icon); opacity: 0.5; }
+  .cpu-cell-value { font-family: monospace; font-size: 0.85rem; color: var(--white); }
+
+  .cpu-console {
+    border: 1px solid var(--white-icon-tr);
+    border-radius: 0.6rem;
+    background: #10101080;
+    padding: 0.85rem;
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--white-icon);
+    min-height: 3rem;
+    max-height: 180px;
+    overflow-y: auto;
+  }
+  .cpu-console-line { opacity: 0; animation: cpu-fade-in 0.25s ease forwards; }
+  .cpu-console-line.err { color: #ef4444; }
+  .cpu-console-line.out { color: var(--sec); }
+
+  @keyframes cpu-fade-in {
+    from { opacity: 0; transform: translateY(-2px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<script>
+  function sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  (function cpuModule() {
+    const programEl = document.getElementById("cpu-program") as HTMLTextAreaElement;
+    const exampleSelect = document.getElementById("cpu-example") as HTMLSelectElement;
+    const loadExampleBtn = document.getElementById("cpu-load-example") as HTMLButtonElement;
+    const registersEl = document.getElementById("cpu-registers");
+    const cycleEl = document.getElementById("cpu-cycle");
+    const assembleBtn = document.getElementById("cpu-assemble") as HTMLButtonElement;
+    const stepBtn = document.getElementById("cpu-step") as HTMLButtonElement;
+    const runBtn = document.getElementById("cpu-run") as HTMLButtonElement;
+    const resetBtn = document.getElementById("cpu-reset") as HTMLButtonElement;
+    const pcEl = document.getElementById("cpu-pc");
+    const statusEl = document.getElementById("cpu-status");
+    const memoryEl = document.getElementById("cpu-memory");
+    const consoleEl = document.getElementById("cpu-console");
+
+    if (!programEl || !exampleSelect || !loadExampleBtn || !registersEl || !cycleEl ||
+        !assembleBtn || !stepBtn || !runBtn || !resetBtn || !pcEl || !statusEl ||
+        !memoryEl || !consoleEl) return;
+
+    const REG_COUNT = 8;
+    const MEM_SIZE = 32;
+
+    type Instruction = { op: string; args: string[]; raw: string };
+
+    let registers = new Array(REG_COUNT).fill(0);
+    let memory = new Array(MEM_SIZE).fill(0);
+    let program: Instruction[] = [];
+    let pc = 0;
+    let zeroFlag = false;
+    let halted = true;
+    let running = false;
+
+    const examples: Record<string, string> = {
+      sum: [
+        "MOV R0, 0    ; sum",
+        "MOV R1, 1    ; counter",
+        "MOV R2, 5    ; limit",
+        "LOOP:",
+        "CMP R1, R2",
+        "JZ END",
+        "ADD R0, R1",
+        "ADD R1, 1",
+        "JMP LOOP",
+        "END:",
+        "ADD R0, R2   ; include the limit itself",
+        "STORE R0, 0",
+        "HALT",
+      ].join("\n"),
+      loop: [
+        "MOV R0, 5",
+        "LOOP:",
+        "STORE R0, R0",
+        "SUB R0, 1",
+        "CMP R0, 0",
+        "JZ END",
+        "JMP LOOP",
+        "END:",
+        "HALT",
+      ].join("\n"),
+      fib: [
+        "MOV R0, 0    ; fib(0)",
+        "MOV R1, 1    ; fib(1)",
+        "MOV R2, 0    ; index",
+        "STORE R0, R2",
+        "LOOP:",
+        "ADD R2, 1",
+        "CMP R2, 6",
+        "JZ END",
+        "MOV R3, R1",
+        "ADD R1, R0",
+        "MOV R0, R3",
+        "STORE R1, R2",
+        "JMP LOOP",
+        "END:",
+        "HALT",
+      ].join("\n"),
+    };
+
+    function log(text: string, cls = "") {
+      const line = document.createElement("div");
+      line.className = "cpu-console-line" + (cls ? ` ${cls}` : "");
+      line.textContent = text;
+      consoleEl!.appendChild(line);
+      consoleEl!.scrollTop = consoleEl!.scrollHeight;
+    }
+
+    function renderRegisters(activeIdx: number | null) {
+      registersEl!.innerHTML = "";
+      registers.forEach((val, i) => {
+        const cell = document.createElement("div");
+        cell.className = "cpu-register" + (i === activeIdx ? " active" : "");
+        cell.innerHTML = `<div class="cpu-register-label">R${i}</div><div class="cpu-register-value">${val}</div>`;
+        registersEl!.appendChild(cell);
+      });
+    }
+
+    function renderMemory(activeAddr: number | null) {
+      memoryEl!.innerHTML = "";
+      memory.forEach((val, i) => {
+        const cell = document.createElement("div");
+        cell.className = "cpu-cell" + (i === activeAddr ? " active" : "");
+        cell.innerHTML = `<div class="cpu-cell-addr">${i}</div><div class="cpu-cell-value">${val}</div>`;
+        memoryEl!.appendChild(cell);
+      });
+    }
+
+    function setCycleStep(step: "fetch" | "decode" | "execute" | null) {
+      cycleEl!.querySelectorAll(".cpu-cycle-step").forEach((el) => {
+        el.classList.toggle("active", el.getAttribute("data-step") === step);
+      });
+    }
+
+    function resolveOperand(token: string): number {
+      token = token.trim();
+      if (token.startsWith("R") && !isNaN(Number(token.slice(1)))) {
+        return registers[Number(token.slice(1))];
+      }
+      return Number(token);
+    }
+
+    function regIndex(token: string): number {
+      return Number(token.trim().slice(1));
+    }
+
+    function assemble(source: string): { ok: boolean; error?: string } {
+      const rawLines = source.split("\n").map((l) => l.split(";")[0].trim()).filter(Boolean);
+      const labels: Record<string, number> = {};
+      const instructions: Instruction[] = [];
+
+      rawLines.forEach((line) => {
+        if (line.endsWith(":")) {
+          labels[line.slice(0, -1).trim()] = instructions.length;
+        } else {
+          const [op, ...rest] = line.split(/\s+/);
+          const args = rest.join(" ").split(",").map((a) => a.trim()).filter(Boolean);
+          instructions.push({ op: op.toUpperCase(), args, raw: line });
+        }
+      });
+
+      // Resolve label references stored as strings; validated at execute time.
+      (instructions as any).labels = labels;
+      program = instructions;
+      return { ok: true };
+    }
+
+    function resetMachine(keepProgram: boolean) {
+      registers = new Array(REG_COUNT).fill(0);
+      memory = new Array(MEM_SIZE).fill(0);
+      pc = 0;
+      zeroFlag = false;
+      halted = !keepProgram ? true : halted;
+      if (!keepProgram) program = [];
+      renderRegisters(null);
+      renderMemory(null);
+      setCycleStep(null);
+      pcEl!.textContent = "0";
+      statusEl!.textContent = keepProgram ? "Assembled" : "Idle";
+    }
+
+    function labelsOf(prog: Instruction[]): Record<string, number> {
+      return (prog as any).labels || {};
+    }
+
+    async function step(): Promise<boolean> {
+      if (halted || pc >= program.length) {
+        halted = true;
+        statusEl!.textContent = "Halted";
+        stepBtn.disabled = true;
+        runBtn.disabled = true;
+        return false;
+      }
+
+      setCycleStep("fetch");
+      pcEl!.textContent = String(pc);
+      await sleep(150);
+
+      const instr = program[pc];
+      setCycleStep("decode");
+      log(`[${pc}] ${instr.raw}`);
+      await sleep(150);
+
+      setCycleStep("execute");
+
+      const labels = labelsOf(program);
+      let nextPc = pc + 1;
+
+      try {
+        switch (instr.op) {
+          case "MOV": {
+            const dest = regIndex(instr.args[0]);
+            registers[dest] = resolveOperand(instr.args[1]);
+            renderRegisters(dest);
+            break;
+          }
+          case "ADD": {
+            const dest = regIndex(instr.args[0]);
+            registers[dest] += resolveOperand(instr.args[1]);
+            renderRegisters(dest);
+            break;
+          }
+          case "SUB": {
+            const dest = regIndex(instr.args[0]);
+            registers[dest] -= resolveOperand(instr.args[1]);
+            renderRegisters(dest);
+            break;
+          }
+          case "LOAD": {
+            const dest = regIndex(instr.args[0]);
+            const addr = resolveOperand(instr.args[1]);
+            registers[dest] = memory[addr] ?? 0;
+            renderRegisters(dest);
+            renderMemory(addr);
+            break;
+          }
+          case "STORE": {
+            const val = resolveOperand(instr.args[0]);
+            const addr = resolveOperand(instr.args[1]);
+            if (addr >= 0 && addr < MEM_SIZE) memory[addr] = val;
+            renderMemory(addr);
+            log(`  memory[${addr}] = ${val}`, "out");
+            break;
+          }
+          case "CMP": {
+            const a = resolveOperand(instr.args[0]);
+            const b = resolveOperand(instr.args[1]);
+            zeroFlag = a === b;
+            break;
+          }
+          case "JMP": {
+            const target = labels[instr.args[0]];
+            if (target === undefined) throw new Error(`unknown label ${instr.args[0]}`);
+            nextPc = target;
+            break;
+          }
+          case "JZ": {
+            if (zeroFlag) {
+              const target = labels[instr.args[0]];
+              if (target === undefined) throw new Error(`unknown label ${instr.args[0]}`);
+              nextPc = target;
+            }
+            break;
+          }
+          case "HALT": {
+            halted = true;
+            break;
+          }
+          default:
+            throw new Error(`unknown instruction ${instr.op}`);
+        }
+      } catch (e) {
+        log(`error: ${(e as Error).message}`, "err");
+        halted = true;
+        statusEl!.textContent = "Error";
+        stepBtn.disabled = true;
+        runBtn.disabled = true;
+        return false;
+      }
+
+      await sleep(150);
+      pc = nextPc;
+
+      if (halted) {
+        statusEl!.textContent = "Halted";
+        log("Program halted.", "out");
+        stepBtn.disabled = true;
+        runBtn.disabled = true;
+        return false;
+      }
+
+      statusEl!.textContent = "Running";
+      return true;
+    }
+
+    assembleBtn.addEventListener("click", () => {
+      resetMachine(false);
+      const result = assemble(programEl.value);
+      if (result.ok) {
+        halted = false;
+        pc = 0;
+        stepBtn.disabled = false;
+        runBtn.disabled = false;
+        consoleEl!.innerHTML = "";
+        log(`Assembled ${program.length} instructions.`);
+        renderRegisters(null);
+        renderMemory(null);
+        statusEl!.textContent = "Ready";
+      }
+    });
+
+    stepBtn.addEventListener("click", () => { void step(); });
+
+    runBtn.addEventListener("click", async () => {
+      if (running) return;
+      running = true;
+      stepBtn.disabled = true;
+      let alive = true;
+      while (alive && !halted) {
+        alive = await step();
+      }
+      running = false;
+    });
+
+    resetBtn.addEventListener("click", () => {
+      resetMachine(false);
+      consoleEl!.innerHTML = "";
+      stepBtn.disabled = true;
+      runBtn.disabled = true;
+    });
+
+    loadExampleBtn.addEventListener("click", () => {
+      programEl.value = examples[exampleSelect.value];
+    });
+
+    programEl.value = examples.sum;
+    resetMachine(false);
+  })();
+</script>

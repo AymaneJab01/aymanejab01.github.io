@@ -1,0 +1,436 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Expense Splitter">
+  <section class="ex-page text-[var(--white)] py-24 md:py-36">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <!-- ===================================================== -->
+      <!-- BACK LINK -->
+      <!-- ===================================================== -->
+      <a
+        href="/projects"
+        class="inline-flex items-center gap-2 text-sm text-[var(--white-icon)]
+        hover:text-[var(--sec)] transition-colors duration-300 mb-14"
+      >
+        <span class="text-lg">&larr;</span>
+        <span>Back to projects</span>
+      </a>
+
+      <!-- ===================================================== -->
+      <!-- HERO -->
+      <!-- ===================================================== -->
+      <div class="mb-16 md:mb-20">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="h-2 w-2 rounded-full bg-[var(--sec)] shadow-[0_0_12px_var(--sec)]"></span>
+          <span class="text-sm tracking-[0.25em] uppercase text-[var(--sec)] shiny-sec">
+            Project 07 &middot; Mobile
+          </span>
+        </div>
+
+        <h1 class="text-4xl md:text-6xl font-medium tracking-tight text-[var(--white)]">
+          Splitting the bill, fairly<span class="text-[var(--sec)]">.</span>
+        </h1>
+
+        <p class="mt-5 max-w-2xl text-lg text-[var(--white-icon)] leading-relaxed">
+          Add people, add expenses, and see who owes who &mdash; settled down to
+          the smallest number of transfers. Designed as a Flutter mobile app;
+          this page is a web preview of the same state model and logic.
+        </p>
+
+        <p class="mt-3 max-w-2xl text-sm text-[var(--white-icon)] leading-relaxed opacity-70">
+          The real target is Flutter &amp; Dart on iOS/Android with local storage.
+          This demo runs the same balance-settling logic in the browser so you can
+          try it right here.
+        </p>
+
+        <div class="mt-7 flex flex-wrap gap-2">
+          <span class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]">Flutter &amp; Dart</span>
+          <span class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]">Local State</span>
+          <span class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]">Mobile</span>
+        </div>
+      </div>
+
+      <!-- ===================================================== -->
+      <!-- SPLITTER -->
+      <!-- ===================================================== -->
+      <div class="ex-card">
+        <div class="ex-card-header">
+          <div class="flex items-center gap-3">
+            <span class="font-mono text-xs tracking-[0.2em] text-[var(--sec)]">01</span>
+            <span class="h-px w-12 bg-[var(--sec)] opacity-40"></span>
+            <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]">Demo</span>
+          </div>
+          <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4">
+            Expense splitter
+          </h2>
+          <p class="mt-2 text-base text-[var(--white-icon)] leading-relaxed max-w-2xl">
+            Add a few people, log what everyone paid, and the settlement panel
+            works out the minimum number of transfers to balance everything.
+          </p>
+        </div>
+
+        <div class="ex-layout mt-6">
+
+          <!-- People -->
+          <div class="ex-panel">
+            <div class="ex-panel-title">People</div>
+            <div class="mt-3 flex gap-2">
+              <input id="ex-person-name" type="text" placeholder="name" class="ex-input flex-1" maxlength="18" />
+              <button id="ex-add-person" class="ex-btn ex-btn-primary">Add</button>
+            </div>
+            <div id="ex-people-list" class="ex-people mt-3"></div>
+          </div>
+
+          <!-- Add expense -->
+          <div class="ex-panel">
+            <div class="ex-panel-title">New expense</div>
+            <div class="mt-3 flex flex-col gap-2">
+              <input id="ex-expense-desc" type="text" placeholder="what was it for" class="ex-input" maxlength="30" />
+              <div class="flex gap-2">
+                <input id="ex-expense-amount" type="number" min="0" step="0.01" placeholder="amount" class="ex-input flex-1" />
+                <select id="ex-expense-payer" class="ex-select flex-1"></select>
+              </div>
+              <button id="ex-add-expense" class="ex-btn ex-btn-primary self-start">Add expense</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Expenses list -->
+        <div class="mt-6">
+          <div class="ex-panel-title">Expenses</div>
+          <div id="ex-expenses-list" class="ex-expenses mt-2"></div>
+        </div>
+
+        <!-- Settlement -->
+        <div class="mt-6">
+          <div class="ex-panel-title">Settlement &mdash; who pays who</div>
+          <div id="ex-settlement" class="ex-settlement mt-2"></div>
+        </div>
+
+        <div class="mt-6">
+          <button id="ex-reset" class="ex-btn">Reset demo</button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .ex-page :global(.shiny-sec) {
+    background: linear-gradient(90deg, var(--sec), #6ee7b7, var(--sec));
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .ex-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 1px solid var(--white-icon-tr);
+    background: #1414149c;
+    backdrop-filter: blur(6px);
+    padding: 1.75rem;
+  }
+  @media (min-width: 768px) { .ex-card { padding: 2.5rem; } }
+  .ex-card-header { max-width: 48rem; }
+
+  .ex-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 800px) {
+    .ex-layout { grid-template-columns: 1fr 1.2fr; }
+  }
+
+  .ex-panel {
+    border: 1px solid var(--white-icon-tr);
+    border-radius: 0.75rem;
+    background: #10101080;
+    padding: 1.25rem;
+  }
+
+  .ex-panel-title {
+    font-family: monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white-icon);
+    opacity: 0.7;
+  }
+
+  .ex-input, .ex-select {
+    padding: 0.5rem 0.85rem;
+    border-radius: 9999px;
+    border: 1px solid var(--white-icon-tr);
+    background: #0a0a0a80;
+    color: var(--white);
+    font-size: 0.85rem;
+    outline: none;
+  }
+  .ex-input:focus, .ex-select:focus { border-color: var(--sec); }
+
+  .ex-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid var(--white-icon-tr);
+    color: var(--white-icon);
+    font-size: 0.8rem;
+    font-family: monospace;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .ex-btn:hover { border-color: var(--sec); color: var(--white); }
+  .ex-btn-primary { border-color: var(--sec); color: var(--sec); }
+  .ex-btn-primary:hover { background: rgba(21, 128, 61, 0.12); }
+
+  .ex-people {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .ex-person-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 9999px;
+    border: 1px solid var(--white-icon-tr);
+    background: rgba(255,255,255,0.03);
+    font-size: 0.8rem;
+    color: var(--white);
+  }
+  .ex-person-remove {
+    cursor: pointer;
+    color: var(--white-icon);
+    opacity: 0.6;
+    font-size: 0.75rem;
+  }
+  .ex-person-remove:hover { color: #ef4444; opacity: 1; }
+  .ex-empty { font-size: 0.8rem; color: var(--white-icon); opacity: 0.5; font-family: monospace; }
+
+  .ex-expenses {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 220px;
+    overflow-y: auto;
+  }
+  .ex-expense-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border: 1px solid var(--white-icon-tr);
+    border-radius: 0.6rem;
+    background: #10101080;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.85rem;
+  }
+  .ex-expense-desc { color: var(--white); }
+  .ex-expense-meta { font-family: monospace; font-size: 0.75rem; color: var(--white-icon); opacity: 0.7; }
+  .ex-expense-amount { font-family: monospace; color: var(--sec); }
+
+  .ex-settlement {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .ex-settlement-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    border: 1px solid rgba(21, 128, 61, 0.4);
+    background: rgba(21, 128, 61, 0.08);
+    border-radius: 0.6rem;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.85rem;
+    color: var(--white);
+  }
+  .ex-settlement-amount { font-family: monospace; color: var(--sec); margin-left: auto; }
+</style>
+
+<script>
+  (function expenseModule() {
+    const personNameInput = document.getElementById("ex-person-name") as HTMLInputElement;
+    const addPersonBtn = document.getElementById("ex-add-person") as HTMLButtonElement;
+    const peopleListEl = document.getElementById("ex-people-list");
+
+    const descInput = document.getElementById("ex-expense-desc") as HTMLInputElement;
+    const amountInput = document.getElementById("ex-expense-amount") as HTMLInputElement;
+    const payerSelect = document.getElementById("ex-expense-payer") as HTMLSelectElement;
+    const addExpenseBtn = document.getElementById("ex-add-expense") as HTMLButtonElement;
+    const expensesListEl = document.getElementById("ex-expenses-list");
+
+    const settlementEl = document.getElementById("ex-settlement");
+    const resetBtn = document.getElementById("ex-reset") as HTMLButtonElement;
+
+    if (!personNameInput || !addPersonBtn || !peopleListEl || !descInput || !amountInput ||
+        !payerSelect || !addExpenseBtn || !expensesListEl || !settlementEl || !resetBtn) return;
+
+    type Person = { id: number; name: string };
+    type Expense = { id: number; desc: string; amount: number; payerId: number };
+
+    let people: Person[] = [];
+    let expenses: Expense[] = [];
+    let nextPersonId = 1;
+    let nextExpenseId = 1;
+
+    function fmt(n: number) {
+      return n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function renderPeople() {
+      if (people.length === 0) {
+        peopleListEl!.innerHTML = `<div class="ex-empty">No one added yet.</div>`;
+      } else {
+        peopleListEl!.innerHTML = "";
+        people.forEach((p) => {
+          const chip = document.createElement("div");
+          chip.className = "ex-person-chip";
+          chip.innerHTML = `<span>${p.name}</span><span class="ex-person-remove" data-id="${p.id}">&times;</span>`;
+          peopleListEl!.appendChild(chip);
+        });
+        peopleListEl!.querySelectorAll(".ex-person-remove").forEach((el) => {
+          el.addEventListener("click", () => {
+            const id = Number((el as HTMLElement).dataset.id);
+            people = people.filter((p) => p.id !== id);
+            expenses = expenses.filter((e) => e.payerId !== id);
+            renderAll();
+          });
+        });
+      }
+
+      payerSelect.innerHTML = people.map((p) => `<option value="${p.id}">${p.name}</option>`).join("");
+    }
+
+    function renderExpenses() {
+      if (expenses.length === 0) {
+        expensesListEl!.innerHTML = `<div class="ex-empty">No expenses logged yet.</div>`;
+        return;
+      }
+      expensesListEl!.innerHTML = "";
+      expenses.forEach((e) => {
+        const payer = people.find((p) => p.id === e.payerId);
+        const row = document.createElement("div");
+        row.className = "ex-expense-row";
+        row.innerHTML = `
+          <div>
+            <div class="ex-expense-desc">${e.desc}</div>
+            <div class="ex-expense-meta">paid by ${payer ? payer.name : "someone removed"}</div>
+          </div>
+          <div class="ex-expense-amount">$${fmt(e.amount)}</div>
+        `;
+        expensesListEl!.appendChild(row);
+      });
+    }
+
+    function renderSettlement() {
+      if (people.length === 0 || expenses.length === 0) {
+        settlementEl!.innerHTML = `<div class="ex-empty">Add people and expenses to see the settlement.</div>`;
+        return;
+      }
+
+      const total = expenses.reduce((sum, e) => sum + e.amount, 0);
+      const share = total / people.length;
+
+      const balances = people.map((p) => {
+        const paid = expenses.filter((e) => e.payerId === p.id).reduce((sum, e) => sum + e.amount, 0);
+        return { id: p.id, name: p.name, balance: paid - share };
+      });
+
+      const creditors = balances.filter((b) => b.balance > 0.005).sort((a, b) => b.balance - a.balance);
+      const debtors = balances.filter((b) => b.balance < -0.005).sort((a, b) => a.balance - b.balance);
+
+      const transfers: { from: string; to: string; amount: number }[] = [];
+      let ci = 0, di = 0;
+      const credLeft = creditors.map((c) => c.balance);
+      const debtLeft = debtors.map((d) => -d.balance);
+
+      while (ci < creditors.length && di < debtors.length) {
+        const amount = Math.min(credLeft[ci], debtLeft[di]);
+        if (amount > 0.005) {
+          transfers.push({ from: debtors[di].name, to: creditors[ci].name, amount });
+        }
+        credLeft[ci] -= amount;
+        debtLeft[di] -= amount;
+        if (credLeft[ci] <= 0.005) ci++;
+        if (debtLeft[di] <= 0.005) di++;
+      }
+
+      if (transfers.length === 0) {
+        settlementEl!.innerHTML = `<div class="ex-empty">Everyone's even &mdash; no transfers needed.</div>`;
+        return;
+      }
+
+      settlementEl!.innerHTML = "";
+      transfers.forEach((t) => {
+        const row = document.createElement("div");
+        row.className = "ex-settlement-row";
+        row.innerHTML = `<span>${t.from} &rarr; ${t.to}</span><span class="ex-settlement-amount">$${fmt(t.amount)}</span>`;
+        settlementEl!.appendChild(row);
+      });
+    }
+
+    function renderAll() {
+      renderPeople();
+      renderExpenses();
+      renderSettlement();
+    }
+
+    addPersonBtn.addEventListener("click", () => {
+      const name = personNameInput.value.trim();
+      if (!name) return;
+      people.push({ id: nextPersonId++, name });
+      personNameInput.value = "";
+      renderAll();
+      personNameInput.focus();
+    });
+    personNameInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") addPersonBtn.click();
+    });
+
+    addExpenseBtn.addEventListener("click", () => {
+      const desc = descInput.value.trim();
+      const amount = Number(amountInput.value);
+      const payerId = Number(payerSelect.value);
+      if (!desc || !amount || amount <= 0 || !payerId) return;
+      expenses.push({ id: nextExpenseId++, desc, amount, payerId });
+      descInput.value = "";
+      amountInput.value = "";
+      renderAll();
+      descInput.focus();
+    });
+
+    resetBtn.addEventListener("click", () => {
+      people = [];
+      expenses = [];
+      nextPersonId = 1;
+      nextExpenseId = 1;
+      renderAll();
+    });
+
+    // Seed with a small example so the demo isn't empty on load.
+    people = [
+      { id: 1, name: "Alex" },
+      { id: 2, name: "Sam" },
+      { id: 3, name: "Jo" },
+    ];
+    nextPersonId = 4;
+    expenses = [
+      { id: 1, desc: "Dinner", amount: 60, payerId: 1 },
+      { id: 2, desc: "Taxi", amount: 18, payerId: 2 },
+    ];
+    nextExpenseId = 3;
+
+    renderAll();
+  })();
+</script>

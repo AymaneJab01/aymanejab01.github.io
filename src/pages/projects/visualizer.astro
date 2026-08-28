@@ -2,10 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 ---
 
-<Layout
-  title="Algorithm Visualizer"
-  description="An interactive visualizer for sorting algorithms, hash table collision resolution, and pathfinding — built to explore data structures and algorithms hands-on."
->
+<Layout title="Algorithm Visualizer">
   <section class="viz-page text-[var(--white)] py-24 md:py-36">
     <div class="max-w-6xl mx-auto px-6">
 
@@ -638,7 +635,7 @@ import Layout from "../../layouts/Layout.astro";
       return h % BUCKET_COUNT;
     }
 
-    function render(justInsertedBucket: number | null) {
+    function render() {
       bucketsEl!.innerHTML = "";
       table.forEach((chain, idx) => {
         const bucket = document.createElement("div");
@@ -684,7 +681,7 @@ import Layout from "../../layouts/Layout.astro";
         table[idx].push({ key, value: value || "\u2014" });
         itemCount++;
       }
-      render(idx);
+      render();
     }
 
     function randomKey() {
@@ -714,10 +711,10 @@ import Layout from "../../layouts/Layout.astro";
       table = Array.from({ length: BUCKET_COUNT }, () => []);
       itemCount = 0;
       formulaEl!.textContent = "";
-      render(null);
+      render();
     });
 
-    render(null);
+    render();
   })();
 
   /* ================================================================= */
