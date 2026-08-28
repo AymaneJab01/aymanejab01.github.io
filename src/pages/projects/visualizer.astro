@@ -1,4 +1,3 @@
-```astro
 ---
 import Layout from "../../layouts/Layout.astro";
 ---
@@ -92,17 +91,18 @@ import Layout from "../../layouts/Layout.astro";
             </div>
 
             <div class="toolbar-actions">
-              <button id="sort-run" class="button primary">
+              <button id="sort-run" class="button primary" type="button">
                 Run algorithm
               </button>
 
-              <button id="sort-shuffle" class="button">
+              <button id="sort-shuffle" class="button" type="button">
                 Shuffle
               </button>
             </div>
 
             <div class="speed-control">
               <label for="sort-speed">Speed</label>
+
               <input
                 id="sort-speed"
                 type="range"
@@ -201,15 +201,15 @@ import Layout from "../../layouts/Layout.astro";
             </div>
 
             <div class="toolbar-actions">
-              <button id="hash-insert" class="button primary">
+              <button id="hash-insert" class="button primary" type="button">
                 Insert
               </button>
 
-              <button id="hash-random" class="button">
+              <button id="hash-random" class="button" type="button">
                 Random
               </button>
 
-              <button id="hash-clear" class="button">
+              <button id="hash-clear" class="button" type="button">
                 Clear
               </button>
             </div>
@@ -262,15 +262,15 @@ import Layout from "../../layouts/Layout.astro";
             </div>
 
             <div class="toolbar-actions">
-              <button id="path-run" class="button primary">
+              <button id="path-run" class="button primary" type="button">
                 Find path
               </button>
 
-              <button id="path-walls" class="button">
+              <button id="path-walls" class="button" type="button">
                 Random walls
               </button>
 
-              <button id="path-clear" class="button">
+              <button id="path-clear" class="button" type="button">
                 Clear
               </button>
             </div>
@@ -1075,7 +1075,6 @@ import Layout from "../../layouts/Layout.astro";
     grid-template-columns: repeat(4, minmax(0, 1fr));
 
     gap: 0.6rem;
-
     padding: 1rem;
   }
 
@@ -1139,9 +1138,7 @@ import Layout from "../../layouts/Layout.astro";
 
   .hash-arrow {
     text-align: center;
-
     color: rgba(255, 255, 255, 0.2);
-
     font-size: 0.7rem;
   }
 
@@ -1458,20 +1455,27 @@ import Layout from "../../layouts/Layout.astro";
     const algorithm = document.getElementById(
       "sort-algo"
     ) as HTMLSelectElement | null;
+
     const runButton = document.getElementById(
       "sort-run"
     ) as HTMLButtonElement | null;
+
     const shuffleButton = document.getElementById(
       "sort-shuffle"
     ) as HTMLButtonElement | null;
+
     const speed = document.getElementById(
       "sort-speed"
     ) as HTMLInputElement | null;
-    const comparisonsElement = document.getElementById(
-      "sort-comparisons"
-    );
-    const swapsElement = document.getElementById("sort-swaps");
-    const statusElement = document.getElementById("sort-status");
+
+    const comparisonsElement =
+      document.getElementById("sort-comparisons");
+
+    const swapsElement =
+      document.getElementById("sort-swaps");
+
+    const statusElement =
+      document.getElementById("sort-status");
 
     if (
       !stage ||
@@ -1521,8 +1525,11 @@ import Layout from "../../layouts/Layout.astro";
     }
 
     function updateMetrics() {
-      comparisonsElement.textContent = String(comparisons);
-      swapsElement.textContent = String(swaps);
+      comparisonsElement.textContent =
+        String(comparisons);
+
+      swapsElement.textContent =
+        String(swaps);
     }
 
     function clearMarks() {
@@ -1553,17 +1560,31 @@ import Layout from "../../layouts/Layout.astro";
     }
 
     async function bubbleSort() {
-      for (let i = 0; i < values.length - 1; i++) {
+      for (
+        let i = 0;
+        i <= values.length - 2;
+        i++
+      ) {
         let changed = false;
 
-        for (let j = 0; j < values.length - i - 1; j++) {
+        for (
+          let j = 0;
+          j <= values.length - i - 2;
+          j++
+        ) {
           comparisons++;
           updateMetrics();
 
-          await highlight([j, j + 1], "compare");
+          await highlight(
+            [j, j + 1],
+            "compare"
+          );
 
           if (values[j] > values[j + 1]) {
-            [values[j], values[j + 1]] = [
+            [
+              values[j],
+              values[j + 1],
+            ] = [
               values[j + 1],
               values[j],
             ];
@@ -1575,33 +1596,57 @@ import Layout from "../../layouts/Layout.astro";
             updateBar(j + 1);
             updateMetrics();
 
-            await highlight([j, j + 1], "swap");
+            await highlight(
+              [j, j + 1],
+              "swap"
+            );
           }
         }
 
-        bars[values.length - i - 1]?.classList.add("sorted");
+        bars[
+          values.length - i - 1
+        ]?.classList.add("sorted");
 
-        if (!changed) break;
+        if (!changed) {
+          break;
+        }
       }
     }
 
     async function selectionSort() {
-      for (let i = 0; i < values.length; i++) {
+      for (
+        let i = 0;
+        i <= values.length - 1;
+        i++
+      ) {
         let minimum = i;
 
-        for (let j = i + 1; j < values.length; j++) {
+        for (
+          let j = i + 1;
+          j <= values.length - 1;
+          j++
+        ) {
           comparisons++;
           updateMetrics();
 
-          await highlight([minimum, j], "compare");
+          await highlight(
+            [minimum, j],
+            "compare"
+          );
 
-          if (values[j] < values[minimum]) {
+          if (
+            values[j] <
+            values[minimum]
+          ) {
             minimum = j;
           }
         }
 
         if (minimum !== i) {
-          [values[i], values[minimum]] = [
+          [
+            values[i],
+            values[minimum],
+          ] = [
             values[minimum],
             values[i],
           ];
@@ -1612,7 +1657,10 @@ import Layout from "../../layouts/Layout.astro";
           updateBar(minimum);
           updateMetrics();
 
-          await highlight([i, minimum], "swap");
+          await highlight(
+            [i, minimum],
+            "swap"
+          );
         }
 
         bars[i]?.classList.add("sorted");
@@ -1620,18 +1668,33 @@ import Layout from "../../layouts/Layout.astro";
     }
 
     async function insertionSort() {
-      for (let i = 1; i < values.length; i++) {
+      for (
+        let i = 1;
+        i <= values.length - 1;
+        i++
+      ) {
         let j = i;
 
         while (j > 0) {
           comparisons++;
           updateMetrics();
 
-          await highlight([j - 1, j], "compare");
+          await highlight(
+            [j - 1, j],
+            "compare"
+          );
 
-          if (values[j - 1] <= values[j]) break;
+          if (
+            values[j - 1] <=
+            values[j]
+          ) {
+            break;
+          }
 
-          [values[j - 1], values[j]] = [
+          [
+            values[j - 1],
+            values[j],
+          ] = [
             values[j],
             values[j - 1],
           ];
@@ -1642,38 +1705,67 @@ import Layout from "../../layouts/Layout.astro";
           updateBar(j);
           updateMetrics();
 
-          await highlight([j - 1, j], "swap");
+          await highlight(
+            [j - 1, j],
+            "swap"
+          );
 
           j--;
         }
       }
 
-      bars.forEach((bar) => bar.classList.add("sorted"));
+      bars.forEach((bar) =>
+        bar.classList.add("sorted")
+      );
     }
 
     async function mergeSort() {
-      async function merge(left: number, middle: number, right: number) {
-        const first = values.slice(left, middle + 1);
-        const second = values.slice(middle + 1, right + 1);
+      async function merge(
+        left: number,
+        middle: number,
+        right: number
+      ) {
+        const first =
+          values.slice(
+            left,
+            middle + 1
+          );
+
+        const second =
+          values.slice(
+            middle + 1,
+            right + 1
+          );
 
         let i = 0;
         let j = 0;
         let position = left;
 
-        while (i < first.length && j < second.length) {
+        while (
+          i <= first.length - 1 &&
+          j <= second.length - 1
+        ) {
           comparisons++;
           updateMetrics();
 
           await highlight(
-            [left + i, middle + 1 + j],
+            [
+              left + i,
+              middle + 1 + j,
+            ],
             "compare"
           );
 
-          if (first[i] <= second[j]) {
-            values[position] = first[i];
+          if (
+            first[i] <=
+            second[j]
+          ) {
+            values[position] =
+              first[i];
             i++;
           } else {
-            values[position] = second[j];
+            values[position] =
+              second[j];
             j++;
           }
 
@@ -1685,16 +1777,26 @@ import Layout from "../../layouts/Layout.astro";
           position++;
         }
 
-        while (i < first.length) {
-          values[position] = first[i];
+        while (
+          i <= first.length - 1
+        ) {
+          values[position] =
+            first[i];
+
           updateBar(position);
+
           i++;
           position++;
         }
 
-        while (j < second.length) {
-          values[position] = second[j];
+        while (
+          j <= second.length - 1
+        ) {
+          values[position] =
+            second[j];
+
           updateBar(position);
+
           j++;
           position++;
         }
@@ -1702,34 +1804,77 @@ import Layout from "../../layouts/Layout.astro";
         await sleep(delay());
       }
 
-      async function sort(left: number, right: number) {
-        if (left >= right) return;
+      async function sort(
+        left: number,
+        right: number
+      ) {
+        if (left >= right) {
+          return;
+        }
 
-        const middle = Math.floor((left + right) / 2);
+        const middle =
+          Math.floor(
+            (left + right) / 2
+          );
 
-        await sort(left, middle);
-        await sort(middle + 1, right);
-        await merge(left, middle, right);
+        await sort(
+          left,
+          middle
+        );
+
+        await sort(
+          middle + 1,
+          right
+        );
+
+        await merge(
+          left,
+          middle,
+          right
+        );
       }
 
-      await sort(0, values.length - 1);
+      await sort(
+        0,
+        values.length - 1
+      );
 
-      bars.forEach((bar) => bar.classList.add("sorted"));
+      bars.forEach((bar) =>
+        bar.classList.add("sorted")
+      );
     }
 
     async function quickSort() {
-      async function partition(left: number, right: number) {
-        const pivot = values[right];
+      async function partition(
+        left: number,
+        right: number
+      ) {
+        const pivot =
+          values[right];
+
         let index = left;
 
-        for (let i = left; i < right; i++) {
+        for (
+          let i = left;
+          i <= right - 1;
+          i++
+        ) {
           comparisons++;
           updateMetrics();
 
-          await highlight([i, right], "compare");
+          await highlight(
+            [i, right],
+            "compare"
+          );
 
-          if (values[i] < pivot) {
-            [values[index], values[i]] = [
+          if (
+            values[i] <
+            pivot
+          ) {
+            [
+              values[index],
+              values[i],
+            ] = [
               values[i],
               values[index],
             ];
@@ -1740,13 +1885,19 @@ import Layout from "../../layouts/Layout.astro";
             updateBar(i);
             updateMetrics();
 
-            await highlight([index, i], "swap");
+            await highlight(
+              [index, i],
+              "swap"
+            );
 
             index++;
           }
         }
 
-        [values[index], values[right]] = [
+        [
+          values[index],
+          values[right],
+        ] = [
           values[right],
           values[index],
         ];
@@ -1757,29 +1908,57 @@ import Layout from "../../layouts/Layout.astro";
         updateBar(right);
         updateMetrics();
 
-        await highlight([index, right], "swap");
+        await highlight(
+          [index, right],
+          "swap"
+        );
 
-        bars[index]?.classList.add("sorted");
+        bars[index]?.classList.add(
+          "sorted"
+        );
 
         return index;
       }
 
-      async function sort(left: number, right: number) {
-        if (left >= right) return;
+      async function sort(
+        left: number,
+        right: number
+      ) {
+        if (left >= right) {
+          return;
+        }
 
-        const pivot = await partition(left, right);
+        const pivot =
+          await partition(
+            left,
+            right
+          );
 
-        await sort(left, pivot - 1);
-        await sort(pivot + 1, right);
+        await sort(
+          left,
+          pivot - 1
+        );
+
+        await sort(
+          pivot + 1,
+          right
+        );
       }
 
-      await sort(0, values.length - 1);
+      await sort(
+        0,
+        values.length - 1
+      );
 
-      bars.forEach((bar) => bar.classList.add("sorted"));
+      bars.forEach((bar) =>
+        bar.classList.add("sorted")
+      );
     }
 
     async function run() {
-      if (running) return;
+      if (running) {
+        return;
+      }
 
       running = true;
 
@@ -1793,20 +1972,30 @@ import Layout from "../../layouts/Layout.astro";
       updateMetrics();
 
       bars.forEach((bar) => {
-        bar.classList.remove("sorted");
+        bar.classList.remove(
+          "sorted"
+        );
       });
 
-      statusElement.textContent = "Running";
+      statusElement.textContent =
+        "Running";
 
-      const selected = algorithm.value;
+      const selected =
+        algorithm.value;
 
       if (selected === "bubble") {
         await bubbleSort();
-      } else if (selected === "selection") {
+      } else if (
+        selected === "selection"
+      ) {
         await selectionSort();
-      } else if (selected === "insertion") {
+      } else if (
+        selected === "insertion"
+      ) {
         await insertionSort();
-      } else if (selected === "merge") {
+      } else if (
+        selected === "merge"
+      ) {
         await mergeSort();
       } else {
         await quickSort();
@@ -1814,11 +2003,12 @@ import Layout from "../../layouts/Layout.astro";
 
       clearMarks();
 
-      bars.forEach((bar) => {
-        bar.classList.add("sorted");
-      });
+      bars.forEach((bar) =>
+        bar.classList.add("sorted")
+      );
 
-      statusElement.textContent = "Complete";
+      statusElement.textContent =
+        "Complete";
 
       running = false;
 
@@ -1828,7 +2018,9 @@ import Layout from "../../layouts/Layout.astro";
     }
 
     function shuffle() {
-      if (running) return;
+      if (running) {
+        return;
+      }
 
       createArray();
       render();
@@ -1838,11 +2030,19 @@ import Layout from "../../layouts/Layout.astro";
 
       updateMetrics();
 
-      statusElement.textContent = "Ready";
+      statusElement.textContent =
+        "Ready";
     }
 
-    runButton.addEventListener("click", run);
-    shuffleButton.addEventListener("click", shuffle);
+    runButton.addEventListener(
+      "click",
+      run
+    );
+
+    shuffleButton.addEventListener(
+      "click",
+      shuffle
+    );
 
     shuffle();
   })();
@@ -1852,24 +2052,45 @@ import Layout from "../../layouts/Layout.astro";
      ================================================================ */
 
   (() => {
-    const bucketsElement = document.getElementById("hash-buckets");
-    const keyInput = document.getElementById(
-      "hash-key"
-    ) as HTMLInputElement | null;
-    const valueInput = document.getElementById(
-      "hash-value"
-    ) as HTMLInputElement | null;
-    const insertButton = document.getElementById(
-      "hash-insert"
-    ) as HTMLButtonElement | null;
-    const randomButton = document.getElementById(
-      "hash-random"
-    ) as HTMLButtonElement | null;
-    const clearButton = document.getElementById(
-      "hash-clear"
-    ) as HTMLButtonElement | null;
-    const formula = document.getElementById("hash-formula");
-    const load = document.getElementById("hash-load");
+    const bucketsElement =
+      document.getElementById(
+        "hash-buckets"
+      );
+
+    const keyInput =
+      document.getElementById(
+        "hash-key"
+      ) as HTMLInputElement | null;
+
+    const valueInput =
+      document.getElementById(
+        "hash-value"
+      ) as HTMLInputElement | null;
+
+    const insertButton =
+      document.getElementById(
+        "hash-insert"
+      ) as HTMLButtonElement | null;
+
+    const randomButton =
+      document.getElementById(
+        "hash-random"
+      ) as HTMLButtonElement | null;
+
+    const clearButton =
+      document.getElementById(
+        "hash-clear"
+      ) as HTMLButtonElement | null;
+
+    const formula =
+      document.getElementById(
+        "hash-formula"
+      );
+
+    const load =
+      document.getElementById(
+        "hash-load"
+      );
 
     if (
       !bucketsElement ||
@@ -1891,84 +2112,153 @@ import Layout from "../../layouts/Layout.astro";
       value: string;
     };
 
-    let table: Entry[][] = Array.from(
-      { length: BUCKETS },
-      () => []
-    );
+    let table: Entry[][] =
+      Array.from(
+        { length: BUCKETS },
+        () => []
+      );
 
     function hash(key: string) {
       let value = 0;
 
-      for (let i = 0; i < key.length; i++) {
+      for (
+        let i = 0;
+        i <= key.length - 1;
+        i++
+      ) {
         value =
-          (value * 31 + key.charCodeAt(i)) >>> 0;
+          (
+            value * 31 +
+            key.charCodeAt(i)
+          ) >>> 0;
       }
 
       return value % BUCKETS;
     }
 
     function render() {
-      bucketsElement.innerHTML = "";
+      bucketsElement.innerHTML =
+        "";
 
       let count = 0;
 
-      table.forEach((chain, index) => {
-        count += chain.length;
+      table.forEach(
+        (chain, index) => {
+          count += chain.length;
 
-        const bucket = document.createElement("div");
-        bucket.className = "hash-bucket";
+          const bucket =
+            document.createElement(
+              "div"
+            );
 
-        const label = document.createElement("div");
-        label.className = "hash-index";
-        label.textContent = `bucket ${index}`;
+          bucket.className =
+            "hash-bucket";
 
-        bucket.appendChild(label);
+          const label =
+            document.createElement(
+              "div"
+            );
 
-        const chainElement = document.createElement("div");
-        chainElement.className = "hash-chain";
+          label.className =
+            "hash-index";
 
-        chain.forEach((entry, entryIndex) => {
-          const node = document.createElement("div");
+          label.textContent =
+            `bucket ${index}`;
 
-          node.className =
-            "hash-node" +
-            (chain.length > 1 ? " collision" : "");
+          bucket.appendChild(label);
 
-          node.textContent =
-            `${entry.key} → ${entry.value}`;
+          const chainElement =
+            document.createElement(
+              "div"
+            );
 
-          chainElement.appendChild(node);
+          chainElement.className =
+            "hash-chain";
 
-          if (entryIndex < chain.length - 1) {
-            const arrow = document.createElement("div");
+          chain.forEach(
+            (
+              entry,
+              entryIndex
+            ) => {
+              const node =
+                document.createElement(
+                  "div"
+                );
 
-            arrow.className = "hash-arrow";
-            arrow.textContent = "↓";
+              node.className =
+                "hash-node" +
+                (
+                  chain.length > 1
+                    ? " collision"
+                    : ""
+                );
 
-            chainElement.appendChild(arrow);
-          }
-        });
+              node.textContent =
+                `${entry.key} → ${entry.value}`;
 
-        bucket.appendChild(chainElement);
-        bucketsElement.appendChild(bucket);
-      });
+              chainElement.appendChild(
+                node
+              );
+
+              if (
+                entryIndex <
+                chain.length - 1
+              ) {
+                const arrow =
+                  document.createElement(
+                    "div"
+                  );
+
+                arrow.className =
+                  "hash-arrow";
+
+                arrow.textContent =
+                  "↓";
+
+                chainElement.appendChild(
+                  arrow
+                );
+              }
+            }
+          );
+
+          bucket.appendChild(
+            chainElement
+          );
+
+          bucketsElement.appendChild(
+            bucket
+          );
+        }
+      );
 
       load.textContent =
-        (count / BUCKETS).toFixed(2);
+        (
+          count / BUCKETS
+        ).toFixed(2);
     }
 
-    function insert(key: string, value: string) {
-      if (!key) return;
+    function insert(
+      key: string,
+      value: string
+    ) {
+      if (!key) {
+        return;
+      }
 
       const index = hash(key);
       const chain = table[index];
 
-      const existing = chain.find(
-        (entry) => entry.key === key
-      );
+      const existing =
+        chain.find(
+          (entry) =>
+            entry.key === key
+        );
 
       if (existing) {
-        existing.value = value || existing.value;
+        existing.value =
+          value ||
+          existing.value;
       } else {
         chain.push({
           key,
@@ -1978,9 +2268,11 @@ import Layout from "../../layouts/Layout.astro";
 
       formula.textContent =
         `hash("${key}") → ${index} / bucket ${index}` +
-        (chain.length > 1
-          ? " / collision → chaining"
-          : "");
+        (
+          chain.length > 1
+            ? " / collision → chaining"
+            : ""
+        );
 
       render();
     }
@@ -2000,52 +2292,86 @@ import Layout from "../../layouts/Layout.astro";
       ];
 
       return (
-        words[Math.floor(Math.random() * words.length)] +
-        Math.floor(Math.random() * 100)
+        words[
+          Math.floor(
+            Math.random() *
+              words.length
+          )
+        ] +
+        Math.floor(
+          Math.random() * 100
+        )
       );
     }
 
-    insertButton.addEventListener("click", () => {
-      insert(
-        keyInput.value.trim(),
-        valueInput.value.trim()
-      );
+    insertButton.addEventListener(
+      "click",
+      () => {
+        insert(
+          keyInput.value.trim(),
+          valueInput.value.trim()
+        );
 
-      keyInput.value = "";
-      valueInput.value = "";
+        keyInput.value = "";
+        valueInput.value = "";
 
-      keyInput.focus();
-    });
-
-    keyInput.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        insertButton.click();
+        keyInput.focus();
       }
-    });
+    );
 
-    valueInput.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        insertButton.click();
+    keyInput.addEventListener(
+      "keydown",
+      (event) => {
+        if (
+          event.key ===
+          "Enter"
+        ) {
+          insertButton.click();
+        }
       }
-    });
+    );
 
-    randomButton.addEventListener("click", () => {
-      insert(
-        randomKey(),
-        String(Math.floor(Math.random() * 1000))
-      );
-    });
+    valueInput.addEventListener(
+      "keydown",
+      (event) => {
+        if (
+          event.key ===
+          "Enter"
+        ) {
+          insertButton.click();
+        }
+      }
+    );
 
-    clearButton.addEventListener("click", () => {
-      table = Array.from(
-        { length: BUCKETS },
-        () => []
-      );
+    randomButton.addEventListener(
+      "click",
+      () => {
+        insert(
+          randomKey(),
+          String(
+            Math.floor(
+              Math.random() *
+                1000
+            )
+          )
+        );
+      }
+    );
 
-      formula.textContent = "Ready for insertion.";
+    clearButton.addEventListener(
+      "click",
+      () => {
+        table = Array.from(
+          { length: BUCKETS },
+          () => []
+        );
 
-      render();
-    });
+        formula.textContent =
+          "Ready for insertion.";
+
+        render();
+      }
+    );
 
     render();
   })();
@@ -2055,28 +2381,45 @@ import Layout from "../../layouts/Layout.astro";
      ================================================================ */
 
   (() => {
-    const gridElement = document.getElementById("path-grid");
-    const algorithm = document.getElementById(
-      "path-algo"
-    ) as HTMLSelectElement | null;
-    const runButton = document.getElementById(
-      "path-run"
-    ) as HTMLButtonElement | null;
-    const wallsButton = document.getElementById(
-      "path-walls"
-    ) as HTMLButtonElement | null;
-    const clearButton = document.getElementById(
-      "path-clear"
-    ) as HTMLButtonElement | null;
-    const visitedElement = document.getElementById(
-      "path-visited"
-    );
-    const lengthElement = document.getElementById(
-      "path-length"
-    );
-    const statusElement = document.getElementById(
-      "path-status"
-    );
+    const gridElement =
+      document.getElementById(
+        "path-grid"
+      );
+
+    const algorithm =
+      document.getElementById(
+        "path-algo"
+      ) as HTMLSelectElement | null;
+
+    const runButton =
+      document.getElementById(
+        "path-run"
+      ) as HTMLButtonElement | null;
+
+    const wallsButton =
+      document.getElementById(
+        "path-walls"
+      ) as HTMLButtonElement | null;
+
+    const clearButton =
+      document.getElementById(
+        "path-clear"
+      ) as HTMLButtonElement | null;
+
+    const visitedElement =
+      document.getElementById(
+        "path-visited"
+      );
+
+    const lengthElement =
+      document.getElementById(
+        "path-length"
+      );
+
+    const statusElement =
+      document.getElementById(
+        "path-status"
+      );
 
     if (
       !gridElement ||
@@ -2139,27 +2482,60 @@ import Layout from "../../layouts/Layout.astro";
           )
       );
 
-      grid[start.r][start.c] = "start";
-      grid[end.r][end.c] = "end";
+      grid[start.r][start.c] =
+        "start";
+
+      grid[end.r][end.c] =
+        "end";
     }
 
-    function className(cell: Cell) {
+    function className(
+      cell: Cell
+    ) {
       return cell === "empty"
         ? "path-cell"
         : `path-cell ${cell}`;
     }
 
     function render() {
-      gridElement.innerHTML = "";
+      gridElement.innerHTML =
+        "";
+
       cells = [];
 
-      for (let r = 0; r < ROWS; r++) {
-        const row: HTMLDivElement[] = [];
+      /*
+       * IMPORTANT:
+       * Avoid expressions such as:
+       *
+       * c < COLS
+       *
+       * in this Astro script.
+       *
+       * Astro's parser can interpret the "<"
+       * token as markup in this context.
+       */
+      for (
+        let r = 0;
+        r <= ROWS - 1;
+        r++
+      ) {
+        const row: HTMLDivElement[] =
+          [];
 
-        for (let c = 0; c < COLS; c++) {
-          const element = document.createElement("div");
+        for (
+          let c = 0;
+          c <= COLS - 1;
+          c++
+        ) {
+          const element =
+            document.createElement(
+              "div"
+            );
 
-          element.className = className(grid[r][c]);
+          element.className =
+            className(
+              grid[r][c]
+            );
 
           element.addEventListener(
             "mousedown",
@@ -2171,10 +2547,14 @@ import Layout from "../../layouts/Layout.astro";
 
           element.addEventListener(
             "mouseenter",
-            () => handleEnter(r, c)
+            () => {
+              handleEnter(r, c);
+            }
           );
 
-          gridElement.appendChild(element);
+          gridElement.appendChild(
+            element
+          );
 
           row.push(element);
         }
@@ -2183,20 +2563,32 @@ import Layout from "../../layouts/Layout.astro";
       }
     }
 
-    function setCell(r: number, c: number, state: Cell) {
+    function setCell(
+      r: number,
+      c: number,
+      state: Cell
+    ) {
       grid[r][c] = state;
 
-      const element = cells[r]?.[c];
+      const element =
+        cells[r]?.[c];
 
       if (element) {
-        element.className = className(state);
+        element.className =
+          className(state);
       }
     }
 
-    function handleDown(r: number, c: number) {
-      if (running) return;
+    function handleDown(
+      r: number,
+      c: number
+    ) {
+      if (running) {
+        return;
+      }
 
-      const state = grid[r][c];
+      const state =
+        grid[r][c];
 
       if (state === "start") {
         dragMode = "start";
@@ -2208,25 +2600,52 @@ import Layout from "../../layouts/Layout.astro";
         return;
       }
 
-      dragMode = state === "wall" ? "erase" : "wall";
+      dragMode =
+        state === "wall"
+          ? "erase"
+          : "wall";
 
       toggleWall(r, c);
     }
 
-    function handleEnter(r: number, c: number) {
-      if (running || !dragMode) return;
-
-      if (dragMode === "wall") {
-        toggleWall(r, c, true);
+    function handleEnter(
+      r: number,
+      c: number
+    ) {
+      if (
+        running ||
+        !dragMode
+      ) {
         return;
       }
 
-      if (dragMode === "erase") {
-        toggleWall(r, c, false);
+      if (
+        dragMode === "wall"
+      ) {
+        toggleWall(
+          r,
+          c,
+          true
+        );
+
         return;
       }
 
-      if (dragMode === "start") {
+      if (
+        dragMode === "erase"
+      ) {
+        toggleWall(
+          r,
+          c,
+          false
+        );
+
+        return;
+      }
+
+      if (
+        dragMode === "start"
+      ) {
         if (
           grid[r][c] === "wall" ||
           grid[r][c] === "end"
@@ -2234,16 +2653,26 @@ import Layout from "../../layouts/Layout.astro";
           return;
         }
 
-        setCell(start.r, start.c, "empty");
+        setCell(
+          start.r,
+          start.c,
+          "empty"
+        );
 
         start = { r, c };
 
-        setCell(r, c, "start");
+        setCell(
+          r,
+          c,
+          "start"
+        );
 
         return;
       }
 
-      if (dragMode === "end") {
+      if (
+        dragMode === "end"
+      ) {
         if (
           grid[r][c] === "wall" ||
           grid[r][c] === "start"
@@ -2251,11 +2680,19 @@ import Layout from "../../layouts/Layout.astro";
           return;
         }
 
-        setCell(end.r, end.c, "empty");
+        setCell(
+          end.r,
+          end.c,
+          "empty"
+        );
 
         end = { r, c };
 
-        setCell(r, c, "end");
+        setCell(
+          r,
+          c,
+          "end"
+        );
       }
     }
 
@@ -2273,75 +2710,128 @@ import Layout from "../../layouts/Layout.astro";
 
       const shouldWall =
         force === undefined
-          ? grid[r][c] !== "wall"
+          ? grid[r][c] !==
+            "wall"
           : force;
 
       setCell(
         r,
         c,
-        shouldWall ? "wall" : "empty"
+        shouldWall
+          ? "wall"
+          : "empty"
       );
     }
 
-    document.addEventListener("mouseup", () => {
-      dragMode = null;
-    });
+    document.addEventListener(
+      "mouseup",
+      () => {
+        dragMode = null;
+      }
+    );
 
-    function key(point: Point) {
+    function key(
+      point: Point
+    ) {
       return `${point.r},${point.c}`;
     }
 
-    function neighbors(point: Point) {
-      const directions: Point[] = [
-        { r: -1, c: 0 },
-        { r: 1, c: 0 },
-        { r: 0, c: -1 },
-        { r: 0, c: 1 },
-      ];
+    function neighbors(
+      point: Point
+    ) {
+      const directions: Point[] =
+        [
+          { r: -1, c: 0 },
+          { r: 1, c: 0 },
+          { r: 0, c: -1 },
+          { r: 0, c: 1 },
+        ];
 
-      const result: Point[] = [];
+      const result: Point[] =
+        [];
 
-      for (const direction of directions) {
-        const r = point.r + direction.r;
-        const c = point.c + direction.c;
+      for (
+        const direction of
+        directions
+      ) {
+        const r =
+          point.r +
+          direction.r;
 
+        const c =
+          point.c +
+          direction.c;
+
+        /*
+         * Use <= ROWS - 1 and
+         * <= COLS - 1 instead of
+         * < ROWS and < COLS.
+         */
         if (
           r >= 0 &&
-          r < ROWS &&
+          r <= ROWS - 1 &&
           c >= 0 &&
-          c < COLS &&
-          grid[r][c] !== "wall"
+          c <= COLS - 1 &&
+          grid[r][c] !==
+            "wall"
         ) {
-          result.push({ r, c });
+          result.push({
+            r,
+            c,
+          });
         }
       }
 
       return result;
     }
 
-    function heuristic(point: Point) {
+    function heuristic(
+      point: Point
+    ) {
       return (
-        Math.abs(point.r - end.r) +
-        Math.abs(point.c - end.c)
+        Math.abs(
+          point.r - end.r
+        ) +
+        Math.abs(
+          point.c - end.c
+        )
       );
     }
 
     async function bfs() {
-      const queue: Point[] = [start];
+      const queue: Point[] =
+        [start];
 
-      const visited = new Set<string>([key(start)]);
-      const cameFrom = new Map<string, Point>();
+      const visited =
+        new Set<string>([
+          key(start),
+        ]);
 
-      const order: Point[] = [];
+      const cameFrom =
+        new Map<string, Point>();
 
-      while (queue.length) {
-        const current = queue.shift()!;
+      const order: Point[] =
+        [];
 
-        if (key(current) !== key(start)) {
-          order.push(current);
+      while (
+        queue.length > 0
+      ) {
+        const current =
+          queue.shift()!;
+
+        if (
+          key(current) !==
+          key(start)
+        ) {
+          order.push(
+            current
+          );
         }
 
-        if (key(current) === key(end)) {
+        if (
+          key(current) ===
+          key(end)
+        ) {
           return {
             found: true,
             order,
@@ -2349,13 +2839,29 @@ import Layout from "../../layouts/Layout.astro";
           };
         }
 
-        for (const next of neighbors(current)) {
-          const nextKey = key(next);
+        for (
+          const next of
+          neighbors(current)
+        ) {
+          const nextKey =
+            key(next);
 
-          if (visited.has(nextKey)) continue;
+          if (
+            visited.has(
+              nextKey
+            )
+          ) {
+            continue;
+          }
 
-          visited.add(nextKey);
-          cameFrom.set(nextKey, current);
+          visited.add(
+            nextKey
+          );
+
+          cameFrom.set(
+            nextKey,
+            current
+          );
 
           queue.push(next);
         }
@@ -2369,7 +2875,9 @@ import Layout from "../../layouts/Layout.astro";
     }
 
     async function weighted(
-      mode: "dijkstra" | "astar"
+      mode:
+        | "dijkstra"
+        | "astar"
     ) {
       const open: {
         point: Point;
@@ -2381,34 +2889,72 @@ import Layout from "../../layouts/Layout.astro";
         },
       ];
 
-      const distances = new Map<string, number>();
+      const distances =
+        new Map<
+          string,
+          number
+        >();
 
-      distances.set(key(start), 0);
+      distances.set(
+        key(start),
+        0
+      );
 
-      const cameFrom = new Map<string, Point>();
-      const closed = new Set<string>();
+      const cameFrom =
+        new Map<
+          string,
+          Point
+        >();
 
-      const order: Point[] = [];
+      const closed =
+        new Set<string>();
 
-      while (open.length) {
+      const order: Point[] =
+        [];
+
+      while (
+        open.length > 0
+      ) {
         open.sort(
-          (a, b) => a.priority - b.priority
+          (a, b) =>
+            a.priority -
+            b.priority
         );
 
-        const currentEntry = open.shift()!;
-        const current = currentEntry.point;
+        const currentEntry =
+          open.shift()!;
 
-        const currentKey = key(current);
+        const current =
+          currentEntry.point;
 
-        if (closed.has(currentKey)) continue;
+        const currentKey =
+          key(current);
 
-        closed.add(currentKey);
-
-        if (currentKey !== key(start)) {
-          order.push(current);
+        if (
+          closed.has(
+            currentKey
+          )
+        ) {
+          continue;
         }
 
-        if (currentKey === key(end)) {
+        closed.add(
+          currentKey
+        );
+
+        if (
+          currentKey !==
+          key(start)
+        ) {
+          order.push(
+            current
+          );
+        }
+
+        if (
+          currentKey ===
+          key(end)
+        ) {
           return {
             found: true,
             order,
@@ -2417,25 +2963,53 @@ import Layout from "../../layouts/Layout.astro";
         }
 
         const currentDistance =
-          distances.get(currentKey) ?? Infinity;
+          distances.get(
+            currentKey
+          ) ?? Infinity;
 
-        for (const next of neighbors(current)) {
-          const nextKey = key(next);
+        for (
+          const next of
+          neighbors(current)
+        ) {
+          const nextKey =
+            key(next);
 
-          if (closed.has(nextKey)) continue;
+          if (
+            closed.has(
+              nextKey
+            )
+          ) {
+            continue;
+          }
 
-          const newCost = currentDistance + 1;
+          const newCost =
+            currentDistance +
+            1;
 
           if (
             newCost <
-            (distances.get(nextKey) ?? Infinity)
+            (
+              distances.get(
+                nextKey
+              ) ?? Infinity
+            )
           ) {
-            distances.set(nextKey, newCost);
-            cameFrom.set(nextKey, current);
+            distances.set(
+              nextKey,
+              newCost
+            );
+
+            cameFrom.set(
+              nextKey,
+              current
+            );
 
             const priority =
               mode === "astar"
-                ? newCost + heuristic(next)
+                ? newCost +
+                  heuristic(
+                    next
+                  )
                 : newCost;
 
             open.push({
@@ -2456,10 +3030,18 @@ import Layout from "../../layouts/Layout.astro";
     async function animateSearch(
       order: Point[]
     ) {
-      for (let i = 0; i < order.length; i++) {
-        const point = order[i];
+      for (
+        let i = 0;
+        i <= order.length - 1;
+        i++
+      ) {
+        const point =
+          order[i];
 
-        if (grid[point.r][point.c] === "empty") {
+        if (
+          grid[point.r][point.c] ===
+          "empty"
+        ) {
           setCell(
             point.r,
             point.c,
@@ -2467,24 +3049,32 @@ import Layout from "../../layouts/Layout.astro";
           );
         }
 
-        visitedElement.textContent = String(i + 1);
+        visitedElement.textContent =
+          String(i + 1);
 
         await sleep(7);
       }
     }
 
     function reconstruct(
-      cameFrom: Map<string, Point>
+      cameFrom:
+        Map<string, Point>
     ) {
-      const path: Point[] = [];
+      const path: Point[] =
+        [];
 
       let current = end;
 
-      while (key(current) !== key(start)) {
+      while (
+        key(current) !==
+        key(start)
+      ) {
         path.push(current);
 
         const previous =
-          cameFrom.get(key(current));
+          cameFrom.get(
+            key(current)
+          );
 
         if (!previous) {
           return [];
@@ -2499,7 +3089,9 @@ import Layout from "../../layouts/Layout.astro";
     }
 
     async function run() {
-      if (running) return;
+      if (running) {
+        return;
+      }
 
       running = true;
 
@@ -2508,33 +3100,61 @@ import Layout from "../../layouts/Layout.astro";
       clearButton.disabled = true;
       algorithm.disabled = true;
 
-      statusElement.textContent = "Searching";
-      visitedElement.textContent = "0";
-      lengthElement.textContent = "—";
+      statusElement.textContent =
+        "Searching";
 
-      for (let r = 0; r < ROWS; r++) {
-        for (let c = 0; c < COLS; c++) {
+      visitedElement.textContent =
+        "0";
+
+      lengthElement.textContent =
+        "—";
+
+      /*
+       * Clear previous search state.
+       * Again, no "< ROWS" / "< COLS"
+       * expressions are used.
+       */
+      for (
+        let r = 0;
+        r <= ROWS - 1;
+        r++
+      ) {
+        for (
+          let c = 0;
+          c <= COLS - 1;
+          c++
+        ) {
           if (
-            grid[r][c] === "visited" ||
-            grid[r][c] === "path"
+            grid[r][c] ===
+              "visited" ||
+            grid[r][c] ===
+              "path"
           ) {
-            setCell(r, c, "empty");
+            setCell(
+              r,
+              c,
+              "empty"
+            );
           }
         }
       }
 
-      const selected = algorithm.value;
+      const selected =
+        algorithm.value;
 
       const result =
         selected === "bfs"
           ? await bfs()
           : await weighted(
-              selected === "astar"
+              selected ===
+                "astar"
                 ? "astar"
                 : "dijkstra"
             );
 
-      await animateSearch(result.order);
+      await animateSearch(
+        result.order
+      );
 
       if (!result.found) {
         statusElement.textContent =
@@ -2550,12 +3170,18 @@ import Layout from "../../layouts/Layout.astro";
         return;
       }
 
-      const path = reconstruct(
-        result.cameFrom
-      );
+      const path =
+        reconstruct(
+          result.cameFrom
+        );
 
-      for (const point of path) {
-        if (key(point) !== key(end)) {
+      for (
+        const point of path
+      ) {
+        if (
+          key(point) !==
+          key(end)
+        ) {
           setCell(
             point.r,
             point.c,
@@ -2581,40 +3207,68 @@ import Layout from "../../layouts/Layout.astro";
     }
 
     function randomWalls() {
-      if (running) return;
+      if (running) {
+        return;
+      }
 
       createGrid();
 
-      for (let r = 0; r < ROWS; r++) {
-        for (let c = 0; c < COLS; c++) {
+      for (
+        let r = 0;
+        r <= ROWS - 1;
+        r++
+      ) {
+        for (
+          let c = 0;
+          c <= COLS - 1;
+          c++
+        ) {
           if (
-            grid[r][c] === "empty" &&
-            Math.random() < 0.25
+            grid[r][c] ===
+              "empty" &&
+            Math.random() <
+              0.25
           ) {
-            grid[r][c] = "wall";
+            grid[r][c] =
+              "wall";
           }
         }
       }
 
       render();
 
-      visitedElement.textContent = "0";
-      lengthElement.textContent = "—";
-      statusElement.textContent = "Ready";
+      visitedElement.textContent =
+        "0";
+
+      lengthElement.textContent =
+        "—";
+
+      statusElement.textContent =
+        "Ready";
     }
 
     function clear() {
-      if (running) return;
+      if (running) {
+        return;
+      }
 
       createGrid();
       render();
 
-      visitedElement.textContent = "0";
-      lengthElement.textContent = "—";
-      statusElement.textContent = "Ready";
+      visitedElement.textContent =
+        "0";
+
+      lengthElement.textContent =
+        "—";
+
+      statusElement.textContent =
+        "Ready";
     }
 
-    runButton.addEventListener("click", run);
+    runButton.addEventListener(
+      "click",
+      run
+    );
 
     wallsButton.addEventListener(
       "click",
@@ -2630,4 +3284,3 @@ import Layout from "../../layouts/Layout.astro";
     render();
   })();
 </script>
-```
