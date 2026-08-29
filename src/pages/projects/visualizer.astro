@@ -1099,6 +1099,13 @@ import Layout from "../../layouts/Layout.astro";
       return;
     }
 
+    // Re-bind to new consts: TS narrows `canvas`/`ctx` to non-null only
+    // within this scope, and that narrowing does not carry into nested
+    // function declarations below (resize/draw). Capturing the already-
+    // narrowed values here keeps the compiler happy without `!` asserts.
+    const canvasElement = canvas;
+    const context = ctx;
+
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
@@ -1112,10 +1119,10 @@ import Layout from "../../layouts/Layout.astro";
     let frame = 0;
 
     function resize(): void {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      cols = Math.ceil(canvas.width / cell) + 1;
-      rows = Math.ceil(canvas.height / cell) + 1;
+      canvasElement.width = window.innerWidth;
+      canvasElement.height = window.innerHeight;
+      cols = Math.ceil(canvasElement.width / cell) + 1;
+      rows = Math.ceil(canvasElement.height / cell) + 1;
     }
 
     function flow(x: number, y: number, t: number): number {
@@ -1129,9 +1136,9 @@ import Layout from "../../layouts/Layout.astro";
     }
 
     function draw(): void {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.font = `${cell}px "JetBrains Mono", monospace`;
-      ctx.textBaseline = "top";
+      context.clearRect(0, 0, canvasElement.width, canvasElement.height);
+      context.font = `${cell}px "JetBrains Mono", monospace`;
+      context.textBaseline = "top";
 
       for (let row = 0; row < rows; row++) {
         for (let col = 0; col < cols; col++) {
@@ -1145,8 +1152,8 @@ import Layout from "../../layouts/Layout.astro";
           const char = ramp[Math.floor(level * (ramp.length - 1))];
           const alpha = 0.03 + level * 0.15;
 
-          ctx.fillStyle = `rgba(143, 156, 92, ${alpha.toFixed(3)})`;
-          ctx.fillText(char, col * cell, row * cell);
+          context.fillStyle = `rgba(143, 156, 92, ${alpha.toFixed(3)})`;
+          context.fillText(char, col * cell, row * cell);
         }
       }
 
