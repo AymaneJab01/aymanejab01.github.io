@@ -3,319 +3,1197 @@ import Layout from "../../layouts/Layout.astro";
 ---
 
 <Layout title="CPU Simulator">
-  <section class="cpu-page text-[var(--white)] py-24 md:py-36">
-    <div class="max-w-6xl mx-auto px-6">
+  <main class="cpu-page">
+    <div class="ambient-grid" aria-hidden="true"></div>
+    <div class="scanline" aria-hidden="true"></div>
 
-      <!-- ===================================================== -->
-      <!-- BACK LINK -->
-      <!-- ===================================================== -->
-      <a
-        href="/projects"
-        class="inline-flex items-center gap-2 text-sm text-[var(--white-icon)]
-        hover:text-[var(--sec)] transition-colors duration-300 mb-14"
-      >
-        <span class="text-lg">&larr;</span>
-        <span>Back to projects</span>
-      </a>
+    <div class="cpu-shell">
+      <aside class="cpu-sidebar">
+        <a href="/projects" class="back-link">
+          <span class="back-arrow">←</span>
+          <span>Back to projects</span>
+        </a>
 
-      <!-- ===================================================== -->
-      <!-- HERO -->
-      <!-- ===================================================== -->
-      <div class="mb-16 md:mb-20">
-        <div class="flex items-center gap-3 mb-5">
-          <span class="h-2 w-2 rounded-full bg-[var(--sec)] shadow-[0_0_12px_var(--sec)]"></span>
-          <span class="text-sm tracking-[0.25em] uppercase text-[var(--sec)] shiny-sec">
-            Project 06 &middot; Computer Architecture
-          </span>
-        </div>
-
-        <h1 class="text-4xl md:text-6xl font-medium tracking-tight text-[var(--white)]">
-          Fetch. Decode. Execute<span class="text-[var(--sec)]">.</span>
-        </h1>
-
-        <p class="mt-5 max-w-2xl text-lg text-[var(--white-icon)] leading-relaxed">
-          A tiny 8-register CPU with its own instruction set, stepping through the
-          fetch-decode-execute cycle one instruction at a time. Write a short
-          program, hit run, and watch the program counter, registers, and memory
-          change in real time.
-        </p>
-
-        <div class="mt-7 flex flex-wrap gap-2">
-          <span class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]">Astro</span>
-          <span class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]">TypeScript</span>
-          <span class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]">Computer Architecture</span>
-        </div>
-      </div>
-
-      <!-- ===================================================== -->
-      <!-- CPU SIMULATOR -->
-      <!-- ===================================================== -->
-      <div class="cpu-card">
-        <div class="cpu-card-header">
-          <div class="flex items-center gap-3">
-            <span class="font-mono text-xs tracking-[0.2em] text-[var(--sec)]">01</span>
-            <span class="h-px w-12 bg-[var(--sec)] opacity-40"></span>
-            <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]">Simulator</span>
+        <div class="brand">
+          <span class="brand-mark"></span>
+          <div>
+            <div class="brand-name">cpu<span>_</span></div>
+            <div class="brand-sub">architecture / interactive lab</div>
           </div>
-          <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4">
-            A tiny CPU
-          </h2>
-          <p class="mt-2 text-base text-[var(--white-icon)] leading-relaxed max-w-2xl">
-            Eight general-purpose registers (R0&ndash;R7), 32 memory cells, and a
-            handful of instructions: <code class="cpu-code">MOV</code>,
-            <code class="cpu-code">ADD</code>, <code class="cpu-code">SUB</code>,
-            <code class="cpu-code">LOAD</code>, <code class="cpu-code">STORE</code>,
-            <code class="cpu-code">CMP</code>, <code class="cpu-code">JMP</code>,
-            <code class="cpu-code">JZ</code>, and <code class="cpu-code">HALT</code>.
+        </div>
+
+        <nav class="doc-nav" aria-label="CPU simulator sections">
+          <a href="#overview"><span>00</span><b>Overview</b></a>
+          <a href="#simulator"><span>01</span><b>Simulator</b></a>
+          <a href="#architecture"><span>02</span><b>Architecture</b></a>
+          <a href="#instructions"><span>03</span><b>Instruction set</b></a>
+          <a href="#concepts"><span>04</span><b>Key concepts</b></a>
+        </nav>
+
+        <div class="sidebar-status">
+          <div class="live-row">
+            <span class="live-dot"></span>
+            <span>SIMULATOR READY</span>
+          </div>
+          <div class="tech-row">
+            <span>ASTRO</span>
+            <span>TYPESCRIPT</span>
+            <span>CPU</span>
+          </div>
+        </div>
+      </aside>
+
+      <div class="cpu-content">
+        <header class="hero" id="overview">
+          <div class="eyebrow">
+            <span class="status-dot"></span>
+            <span>PROJECT 06</span>
+            <span class="separator">/</span>
+            <span>COMPUTER ARCHITECTURE</span>
+          </div>
+
+          <h1>
+            Fetch. Decode.
+            <span>Execute.</span>
+          </h1>
+
+          <p class="hero-description">
+            A tiny 8-register CPU you can program directly in the browser.
+            Write instructions, assemble them, then watch the program counter,
+            registers, memory and fetch-decode-execute cycle change in real time.
           </p>
-        </div>
 
-        <div class="cpu-layout mt-6">
+          <div class="hero-stats">
+            <div>
+              <strong>8</strong>
+              <span>REGISTERS</span>
+            </div>
+            <div>
+              <strong>32</strong>
+              <span>MEMORY CELLS</span>
+            </div>
+            <div>
+              <strong>9</strong>
+              <span>INSTRUCTIONS</span>
+            </div>
+            <div>
+              <strong>3</strong>
+              <span>CPU STAGES</span>
+            </div>
+          </div>
+        </header>
 
-          <!-- Program editor -->
-          <div class="cpu-panel">
-            <div class="cpu-panel-title">Program</div>
-            <textarea id="cpu-program" class="cpu-editor" spellcheck="false"></textarea>
-            <div class="mt-3 flex flex-wrap gap-2">
-              <select id="cpu-example" class="cpu-select">
-                <option value="sum">Sum 1..5</option>
-                <option value="loop">Countdown loop</option>
-                <option value="fib">Fibonacci (first 6)</option>
-              </select>
-              <button id="cpu-load-example" class="cpu-btn">Load example</button>
+        <section class="section" id="simulator">
+          <div class="section-heading">
+            <div class="section-number">01</div>
+            <div>
+              <div class="section-label">LIVE CPU SIMULATOR</div>
+              <h2>Build a program. Run the machine.</h2>
+              <p>
+                Edit the assembly-like program, assemble it, then step through
+                each instruction or let the CPU run automatically.
+              </p>
             </div>
           </div>
 
-          <!-- Registers + controls -->
-          <div class="cpu-panel">
-            <div class="cpu-panel-title">Registers</div>
-            <div id="cpu-registers" class="cpu-registers"></div>
-
-            <div class="cpu-panel-title mt-5">Cycle</div>
-            <div id="cpu-cycle" class="cpu-cycle">
-              <span class="cpu-cycle-step" data-step="fetch">Fetch</span>
-              <span class="cpu-cycle-arrow">&rarr;</span>
-              <span class="cpu-cycle-step" data-step="decode">Decode</span>
-              <span class="cpu-cycle-arrow">&rarr;</span>
-              <span class="cpu-cycle-step" data-step="execute">Execute</span>
+          <div class="simulator-card">
+            <div class="simulator-topbar">
+              <div>
+                <span class="terminal-dot"></span>
+                <span class="terminal-dot"></span>
+                <span class="terminal-dot"></span>
+              </div>
+              <span class="topbar-title">CPU / EMULATOR</span>
+              <span class="topbar-state"><i></i> LIVE</span>
             </div>
 
-            <div class="mt-5 flex flex-wrap gap-2">
-              <button id="cpu-assemble" class="cpu-btn cpu-btn-primary">Assemble</button>
-              <button id="cpu-step" class="cpu-btn" disabled>Step</button>
-              <button id="cpu-run" class="cpu-btn" disabled>Run</button>
-              <button id="cpu-reset" class="cpu-btn">Reset</button>
+            <div class="cpu-layout">
+              <div class="panel program-panel">
+                <div class="panel-heading">
+                  <div>
+                    <span class="panel-index">A</span>
+                    <span class="panel-title">Program</span>
+                  </div>
+                  <span class="panel-meta">ASSEMBLY</span>
+                </div>
+
+                <textarea
+                  id="cpu-program"
+                  class="cpu-editor"
+                  spellcheck="false"
+                  aria-label="CPU assembly program"
+                ></textarea>
+
+                <div class="editor-footer">
+                  <select id="cpu-example" class="cpu-select" aria-label="CPU example">
+                    <option value="sum">Sum 1..5</option>
+                    <option value="loop">Countdown loop</option>
+                    <option value="fib">Fibonacci (first 6)</option>
+                  </select>
+                  <button id="cpu-load-example" class="cpu-btn">Load example</button>
+                </div>
+
+                <div class="instruction-hint">
+                  <span>TIP</span>
+                  Use <code>;</code> for comments and labels such as <code>LOOP:</code>.
+                </div>
+              </div>
+
+              <div class="panel control-panel">
+                <div class="panel-heading">
+                  <div>
+                    <span class="panel-index">B</span>
+                    <span class="panel-title">Processor state</span>
+                  </div>
+                  <span class="panel-meta">8 × GPR</span>
+                </div>
+
+                <div id="cpu-registers" class="cpu-registers"></div>
+
+                <div class="cycle-block">
+                  <div class="mini-label">FETCH / DECODE / EXECUTE</div>
+                  <div id="cpu-cycle" class="cpu-cycle">
+                    <span class="cpu-cycle-step" data-step="fetch">Fetch</span>
+                    <span class="cpu-cycle-arrow">→</span>
+                    <span class="cpu-cycle-step" data-step="decode">Decode</span>
+                    <span class="cpu-cycle-arrow">→</span>
+                    <span class="cpu-cycle-step" data-step="execute">Execute</span>
+                  </div>
+                </div>
+
+                <div class="control-actions">
+                  <button id="cpu-assemble" class="cpu-btn cpu-btn-primary">Assemble</button>
+                  <button id="cpu-step" class="cpu-btn" disabled>Step</button>
+                  <button id="cpu-run" class="cpu-btn" disabled>Run</button>
+                  <button id="cpu-reset" class="cpu-btn">Reset</button>
+                </div>
+
+                <div class="machine-status">
+                  <div><span>PROGRAM COUNTER</span><strong id="cpu-pc">0</strong></div>
+                  <div><span>STATUS</span><strong id="cpu-status">Idle</strong></div>
+                </div>
+              </div>
             </div>
 
-            <div class="mt-4 font-mono text-xs text-[var(--white-icon)]">
-              PC: <span id="cpu-pc" class="text-[var(--sec)]">0</span>
-              &nbsp;&middot;&nbsp;
-              <span id="cpu-status">Idle</span>
+            <div class="wide-panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="panel-index">C</span>
+                  <span class="panel-title">Memory</span>
+                </div>
+                <span class="panel-meta">32 CELLS</span>
+              </div>
+              <div id="cpu-memory" class="cpu-memory"></div>
+            </div>
+
+            <div class="wide-panel console-panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="panel-index">D</span>
+                  <span class="panel-title">Execution console</span>
+                </div>
+                <span class="panel-meta">TRACE</span>
+              </div>
+              <div id="cpu-console" class="cpu-console"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="architecture">
+          <div class="section-heading">
+            <div class="section-number">02</div>
+            <div>
+              <div class="section-label">ARCHITECTURE</div>
+              <h2>What is inside this CPU?</h2>
+              <p>
+                The simulator reduces a processor to the essential pieces:
+                registers, memory, a program counter, flags and an instruction cycle.
+              </p>
             </div>
           </div>
 
-        </div>
+          <div class="architecture-grid">
+            <article class="architecture-card featured">
+              <span class="card-number">01</span>
+              <div class="architecture-icon">REG</div>
+              <h3>Registers</h3>
+              <p>
+                Eight general-purpose registers, R0 through R7, provide the
+                fastest storage available to the simulated CPU.
+              </p>
+              <div class="card-code">R0 · R1 · R2 · ... · R7</div>
+            </article>
 
-        <!-- Memory -->
-        <div class="mt-6">
-          <div class="cpu-panel-title">Memory</div>
-          <div id="cpu-memory" class="cpu-memory mt-2"></div>
-        </div>
+            <article class="architecture-card">
+              <span class="card-number">02</span>
+              <div class="architecture-icon">MEM</div>
+              <h3>Memory</h3>
+              <p>
+                Thirty-two addressable memory cells hold values that programs
+                can read with LOAD and write with STORE.
+              </p>
+              <div class="card-code">ADDRESS 00 — 31</div>
+            </article>
 
-        <!-- Console -->
-        <div class="mt-6">
-          <div class="cpu-panel-title">Console</div>
-          <div id="cpu-console" class="cpu-console mt-2"></div>
-        </div>
+            <article class="architecture-card">
+              <span class="card-number">03</span>
+              <div class="architecture-icon">PC</div>
+              <h3>Program counter</h3>
+              <p>
+                The PC identifies the next instruction. Sequential execution
+                increments it, while jumps replace it with a label target.
+              </p>
+              <div class="card-code">PC → instruction[PC]</div>
+            </article>
 
+            <article class="architecture-card">
+              <span class="card-number">04</span>
+              <div class="architecture-icon">ZF</div>
+              <h3>Zero flag</h3>
+              <p>
+                CMP updates the zero flag when two operands are equal. JZ uses
+                that flag to decide whether a branch should happen.
+              </p>
+              <div class="card-code">CMP → ZF → JZ</div>
+            </article>
+          </div>
+
+          <div class="pipeline">
+            <div class="pipeline-label">INSTRUCTION PIPELINE — CONCEPTUAL VIEW</div>
+            <div class="pipeline-track">
+              <div class="pipeline-step">
+                <span>01</span>
+                <strong>FETCH</strong>
+                <small>Read instruction at PC</small>
+              </div>
+              <div class="pipeline-connector"></div>
+              <div class="pipeline-step">
+                <span>02</span>
+                <strong>DECODE</strong>
+                <small>Identify operation + operands</small>
+              </div>
+              <div class="pipeline-connector"></div>
+              <div class="pipeline-step active">
+                <span>03</span>
+                <strong>EXECUTE</strong>
+                <small>Change CPU state</small>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="instructions">
+          <div class="section-heading">
+            <div class="section-number">03</div>
+            <div>
+              <div class="section-label">INSTRUCTION SET</div>
+              <h2>The CPU's vocabulary.</h2>
+              <p>
+                These nine operations are enough to demonstrate arithmetic,
+                memory access, comparisons, control flow and termination.
+              </p>
+            </div>
+          </div>
+
+          <div class="instruction-table">
+            <div class="instruction-row instruction-head">
+              <span>OPCODE</span>
+              <span>FORM</span>
+              <span>WHAT IT DOES</span>
+            </div>
+            <div class="instruction-row">
+              <code>MOV</code><span>R0, value</span><p>Copies an immediate value or another register into the destination.</p>
+            </div>
+            <div class="instruction-row">
+              <code>ADD</code><span>R0, value</span><p>Adds the operand to the destination register.</p>
+            </div>
+            <div class="instruction-row">
+              <code>SUB</code><span>R0, value</span><p>Subtracts the operand from the destination register.</p>
+            </div>
+            <div class="instruction-row">
+              <code>LOAD</code><span>R0, addr</span><p>Reads a value from memory into a register.</p>
+            </div>
+            <div class="instruction-row">
+              <code>STORE</code><span>value, addr</span><p>Writes a value into one of the 32 memory cells.</p>
+            </div>
+            <div class="instruction-row">
+              <code>CMP</code><span>R0, value</span><p>Compares two operands and updates the zero flag.</p>
+            </div>
+            <div class="instruction-row">
+              <code>JMP</code><span>LABEL</span><p>Unconditionally changes the program counter.</p>
+            </div>
+            <div class="instruction-row">
+              <code>JZ</code><span>LABEL</span><p>Jumps only when the zero flag is set.</p>
+            </div>
+            <div class="instruction-row">
+              <code>HALT</code><span>—</span><p>Stops execution and leaves the final machine state visible.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section documentation" id="concepts">
+          <div class="section-heading">
+            <div class="section-number">04</div>
+            <div>
+              <div class="section-label">REFERENCE</div>
+              <h2>Key CPU concepts, explained.</h2>
+              <p>
+                Use these notes alongside the simulator to connect the visual
+                state changes to the underlying computer architecture ideas.
+              </p>
+            </div>
+          </div>
+
+          <div class="doc-group">
+            <div class="doc-group-title"><span>01</span> The instruction cycle</div>
+
+            <details class="doc-item" open>
+              <summary>
+                <span class="doc-item-name">Fetch → Decode → Execute</span>
+                <span class="badge">core concept</span>
+                <span class="doc-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="doc-body">
+                <p>
+                  The CPU repeatedly obtains the next instruction, interprets
+                  what that instruction means, and performs the requested
+                  operation. This simulator makes those three phases visible
+                  during every step.
+                </p>
+                <ol>
+                  <li><strong>Fetch:</strong> use the PC to locate the next instruction.</li>
+                  <li><strong>Decode:</strong> identify the opcode and operands.</li>
+                  <li><strong>Execute:</strong> modify registers, memory, flags or control flow.</li>
+                </ol>
+              </div>
+            </details>
+
+            <details class="doc-item">
+              <summary>
+                <span class="doc-item-name">Program counter</span>
+                <span class="badge">PC</span>
+                <span class="doc-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="doc-body">
+                <p>
+                  The program counter stores the address or index of the next
+                  instruction to execute. Normally it advances sequentially;
+                  JMP and JZ replace it with a different instruction index.
+                </p>
+                <div class="formula-box">PC → instruction → PC + 1</div>
+              </div>
+            </details>
+
+            <details class="doc-item">
+              <summary>
+                <span class="doc-item-name">Registers vs memory</span>
+                <span class="badge">storage</span>
+                <span class="doc-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="doc-body">
+                <p>
+                  Registers are small, directly accessible storage locations
+                  inside the CPU. Memory is a larger addressable storage area.
+                  LOAD moves data from memory into a register; STORE writes it back.
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <div class="doc-group">
+            <div class="doc-group-title"><span>02</span> Control flow & flags</div>
+
+            <details class="doc-item">
+              <summary>
+                <span class="doc-item-name">CMP and the zero flag</span>
+                <span class="badge">branching</span>
+                <span class="doc-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="doc-body">
+                <p>
+                  CMP does not need to store a result in a general-purpose
+                  register. Instead, it records whether the two operands are
+                  equal in the zero flag. JZ can then use that condition to
+                  choose between continuing sequentially and jumping to a label.
+                </p>
+                <div class="formula-box">CMP A, B → ZF = (A === B) → JZ LABEL</div>
+              </div>
+            </details>
+
+            <details class="doc-item">
+              <summary>
+                <span class="doc-item-name">Loops</span>
+                <span class="badge">control flow</span>
+                <span class="doc-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="doc-body">
+                <p>
+                  A loop is created by combining a label, a state-changing
+                  instruction, a comparison and a conditional or unconditional
+                  jump. The countdown and sum examples demonstrate this pattern.
+                </p>
+                <ol>
+                  <li>Update a register representing the loop state.</li>
+                  <li>Compare it with a stopping condition.</li>
+                  <li>Use JZ to leave the loop or JMP to repeat it.</li>
+                </ol>
+              </div>
+            </details>
+          </div>
+
+          <div class="doc-group">
+            <div class="doc-group-title"><span>03</span> From simulator to real CPU</div>
+
+            <details class="doc-item">
+              <summary>
+                <span class="doc-item-name">What this model leaves out</span>
+                <span class="badge">perspective</span>
+                <span class="doc-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="doc-body">
+                <p>
+                  This is intentionally a teaching model. A real processor adds
+                  many more details: instruction encoding, control logic,
+                  caches, buses, pipelining, branch prediction, interrupts,
+                  privilege levels and physical hardware timing.
+                </p>
+                <p>
+                  The simplified machine is useful because the same fundamental
+                  ideas remain visible: instructions change state, the PC drives
+                  control flow, registers hold working data, and memory stores
+                  persistent values.
+                </p>
+              </div>
+            </details>
+
+            <details class="doc-item">
+              <summary>
+                <span class="doc-item-name">Why assembly matters</span>
+                <span class="badge">low level</span>
+                <span class="doc-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="doc-body">
+                <p>
+                  Assembly exposes operations close to the processor's
+                  instruction model. Instead of expressing a high-level loop
+                  directly, you explicitly manipulate registers, compare values,
+                  store data and change the program counter.
+                </p>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <footer class="page-footer">
+          <span>CPU SIMULATOR · COMPUTER ARCHITECTURE</span>
+          <a href="/projects">← Projects</a>
+        </footer>
       </div>
-
     </div>
-  </section>
+  </main>
 </Layout>
 
-<style>
-  .cpu-page :global(.shiny-sec) {
-    background: linear-gradient(90deg, var(--sec), #6ee7b7, var(--sec));
-    background-size: 200% 100%;
+<style is:global>
+  @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+  html { scroll-behavior: smooth; }
+
+  .cpu-page {
+    --bg: #070b0f;
+    --bg-soft: #0b1117;
+    --panel: rgba(12, 19, 26, 0.88);
+    --panel-2: rgba(8, 14, 20, 0.92);
+    --white: #edf6f5;
+    --muted: rgba(237, 246, 245, 0.58);
+    --faint: rgba(237, 246, 245, 0.31);
+    --line: rgba(101, 220, 198, 0.15);
+    --line-strong: rgba(101, 220, 198, 0.30);
+    --sec: #55e6c1;
+    --blue: #62a8ff;
+    --blue-soft: rgba(98, 168, 255, 0.10);
+    --green-soft: rgba(85, 230, 193, 0.09);
+    --amber: #f4bd62;
+    --red: #ff6f76;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    color: var(--white);
+    background:
+      radial-gradient(circle at 75% 4%, rgba(62, 130, 255, 0.09), transparent 28rem),
+      radial-gradient(circle at 20% 22%, rgba(55, 230, 193, 0.06), transparent 25rem),
+      var(--bg);
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  .ambient-grid {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .35;
+    background-image:
+      linear-gradient(rgba(85,230,193,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(85,230,193,.035) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: linear-gradient(to bottom, black, transparent 75%);
+  }
+
+  .scanline {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .035;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 3px,
+      rgba(255,255,255,.35) 4px
+    );
+  }
+
+  .cpu-shell {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    min-height: 100vh;
+  }
+
+  .cpu-sidebar {
+    width: 252px;
+    flex: 0 0 252px;
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2.15rem;
+    padding: 2rem 1.35rem;
+    border-right: 1px solid var(--line);
+    background: rgba(5, 10, 14, .74);
+    backdrop-filter: blur(16px);
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: .65rem;
+    width: fit-content;
+    color: var(--muted);
+    font-size: .68rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color .2s ease, transform .2s ease;
+  }
+
+  .back-link:hover { color: var(--sec); transform: translateX(-3px); }
+  .back-arrow { font-size: 1rem; }
+
+  .brand { display: flex; align-items: center; gap: .7rem; }
+  .brand-mark {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--sec);
+    box-shadow: 0 0 0 5px var(--green-soft), 0 0 22px rgba(85,230,193,.7);
+  }
+  .brand-name {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.12rem;
+    font-weight: 600;
+    letter-spacing: -.02em;
+  }
+  .brand-name span { color: var(--sec); }
+  .brand-sub {
+    margin-top: .18rem;
+    color: var(--faint);
+    font-size: .58rem;
+    letter-spacing: .05em;
+  }
+
+  .doc-nav { display: flex; flex-direction: column; gap: .18rem; }
+  .doc-nav a {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    align-items: center;
+    gap: .5rem;
+    padding: .65rem .55rem;
+    border-radius: 7px;
+    color: var(--muted);
+    font-size: .68rem;
+    text-decoration: none;
+    transition: background .18s ease, color .18s ease;
+  }
+  .doc-nav a span { color: var(--sec); opacity: .55; font-size: .6rem; }
+  .doc-nav a b { font-weight: 400; }
+  .doc-nav a:hover {
+    color: var(--white);
+    background: var(--green-soft);
+  }
+
+  .sidebar-status { margin-top: auto; }
+  .live-row {
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    margin-bottom: .8rem;
+    color: var(--sec);
+    font-size: .58rem;
+    letter-spacing: .1em;
+  }
+  .live-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--sec);
+    box-shadow: 0 0 10px rgba(85,230,193,.7);
+  }
+  .tech-row { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .tech-row span {
+    padding: .38rem .55rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--faint);
+    font-size: .53rem;
+    letter-spacing: .08em;
+  }
+
+  .cpu-content {
+    width: min(930px, calc(100% - 64px));
+    margin: 0 auto;
+    padding: 4.6rem 0 5rem;
+  }
+
+  .hero { max-width: 790px; margin-bottom: 5.5rem; scroll-margin-top: 2rem; }
+  .eyebrow {
+    display: flex; align-items: center; gap: .62rem;
+    margin-bottom: 1.35rem;
+    color: var(--faint);
+    font-size: .63rem;
+    letter-spacing: .15em;
+  }
+  .status-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--sec);
+    box-shadow: 0 0 0 4px var(--green-soft), 0 0 17px rgba(85,230,193,.55);
+  }
+  .separator { opacity: .3; }
+
+  .hero h1 {
+    margin: 0;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(3rem, 7vw, 5.6rem);
+    line-height: .93;
+    letter-spacing: -.055em;
+    font-weight: 600;
+  }
+  .hero h1 span {
+    display: block;
+    background: linear-gradient(100deg, var(--white) 25%, var(--sec) 72%, var(--blue));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
-
-  .cpu-code {
-    font-family: monospace;
-    font-size: 0.85em;
-    color: var(--sec);
-    background: rgba(21, 128, 61, 0.12);
-    padding: 0.1em 0.4em;
-    border-radius: 0.3em;
+  .hero-description {
+    max-width: 690px;
+    margin: 1.8rem 0 0;
+    color: var(--muted);
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.02rem;
+    line-height: 1.8;
   }
 
-  .cpu-card {
-    position: relative;
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 2.25rem;
+    border: 1px solid var(--line);
+    border-radius: 12px;
     overflow: hidden;
-    border-radius: 1rem;
-    border: 1px solid var(--white-icon-tr);
-    background: #1414149c;
-    backdrop-filter: blur(6px);
-    padding: 1.75rem;
+    background: rgba(8,14,20,.58);
   }
-  @media (min-width: 768px) { .cpu-card { padding: 2.5rem; } }
-  .cpu-card-header { max-width: 48rem; }
+  .hero-stats div {
+    padding: 1rem 1.1rem;
+    border-right: 1px solid var(--line);
+  }
+  .hero-stats div:last-child { border-right: 0; }
+  .hero-stats strong {
+    display: block;
+    color: var(--sec);
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+  .hero-stats span {
+    display: block;
+    margin-top: .3rem;
+    color: var(--faint);
+    font-size: .53rem;
+    letter-spacing: .08em;
+  }
+
+  .section {
+    margin-bottom: 6.5rem;
+    scroll-margin-top: 2rem;
+  }
+  .section-heading {
+    display: grid;
+    grid-template-columns: 44px minmax(0,1fr);
+    gap: 1.1rem;
+    margin-bottom: 1.8rem;
+  }
+  .section-number {
+    padding-top: .25rem;
+    color: var(--sec);
+    font-size: .65rem;
+    letter-spacing: .1em;
+  }
+  .section-label {
+    margin-bottom: .55rem;
+    color: var(--sec);
+    font-size: .61rem;
+    letter-spacing: .14em;
+  }
+  .section-heading h2 {
+    margin: 0;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(1.55rem, 3.3vw, 2.2rem);
+    line-height: 1.1;
+    letter-spacing: -.025em;
+    font-weight: 600;
+  }
+  .section-heading p {
+    max-width: 650px;
+    margin: .7rem 0 0;
+    color: var(--faint);
+    font-family: "Space Grotesk", sans-serif;
+    font-size: .88rem;
+    line-height: 1.7;
+  }
+
+  .simulator-card {
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    border-radius: 15px;
+    background: linear-gradient(180deg, rgba(13,22,29,.94), rgba(6,11,16,.95));
+    box-shadow: 0 28px 90px rgba(0,0,0,.35), inset 0 1px rgba(255,255,255,.025);
+  }
+  .simulator-topbar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    min-height: 42px;
+    padding: 0 .95rem;
+    border-bottom: 1px solid var(--line);
+    background: rgba(0,0,0,.2);
+  }
+  .terminal-dot {
+    display: inline-block;
+    width: 7px; height: 7px; margin-right: 4px;
+    border-radius: 50%;
+    background: rgba(237,246,245,.25);
+  }
+  .topbar-title { color: var(--faint); font-size: .55rem; letter-spacing: .12em; }
+  .topbar-state { justify-self: end; color: var(--sec); font-size: .53rem; letter-spacing: .1em; }
+  .topbar-state i {
+    display: inline-block; width: 5px; height: 5px; margin-right: 5px;
+    border-radius: 50%; background: var(--sec);
+  }
 
   .cpu-layout {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    grid-template-columns: 1.08fr .92fr;
+    gap: 1px;
+    background: var(--line);
   }
-  @media (min-width: 900px) {
-    .cpu-layout { grid-template-columns: 1.1fr 1fr; }
+  .panel, .wide-panel { background: var(--panel); padding: 1.25rem; }
+  .wide-panel { border-top: 1px solid var(--line); }
+  .panel-heading {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: .9rem;
   }
-
-  .cpu-panel {
-    border: 1px solid var(--white-icon-tr);
-    border-radius: 0.75rem;
-    background: #10101080;
-    padding: 1.25rem;
+  .panel-heading > div { display: flex; align-items: center; gap: .6rem; }
+  .panel-index {
+    display: inline-grid; place-items: center;
+    width: 22px; height: 22px; border-radius: 5px;
+    border: 1px solid var(--line-strong);
+    color: var(--sec); font-size: .57rem;
   }
-
-  .cpu-panel-title {
-    font-family: monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--white-icon);
-    opacity: 0.7;
-    margin-bottom: 0.6rem;
-  }
+  .panel-title { color: var(--white); font-size: .67rem; letter-spacing: .07em; text-transform: uppercase; }
+  .panel-meta { color: var(--faint); font-size: .52rem; letter-spacing: .08em; }
 
   .cpu-editor {
+    display: block;
     width: 100%;
-    min-height: 220px;
+    min-height: 290px;
     resize: vertical;
-    background: #0a0a0a80;
-    border: 1px solid var(--white-icon-tr);
-    border-radius: 0.5rem;
-    color: var(--white);
-    font-family: monospace;
-    font-size: 0.85rem;
-    line-height: 1.6;
-    padding: 0.85rem;
+    box-sizing: border-box;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 9px;
     outline: none;
+    color: #c9fff1;
+    background: #050a0e;
+    font: .76rem/1.75 "JetBrains Mono", monospace;
+    tab-size: 2;
+    caret-color: var(--sec);
+    transition: border-color .2s ease, box-shadow .2s ease;
   }
-  .cpu-editor:focus { border-color: var(--sec); }
+  .cpu-editor:focus {
+    border-color: var(--sec);
+    box-shadow: 0 0 0 3px var(--green-soft);
+  }
 
+  .editor-footer, .control-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .8rem; }
   .cpu-select, .cpu-btn {
-    padding: 0.5rem 1rem;
-    border-radius: 9999px;
-    border: 1px solid var(--white-icon-tr);
-    color: var(--white-icon);
-    font-size: 0.8rem;
-    font-family: monospace;
-    background: transparent;
+    min-height: 35px;
+    padding: .48rem .78rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 7px;
+    color: var(--muted);
+    background: rgba(255,255,255,.018);
+    font: .63rem "JetBrains Mono", monospace;
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: all .2s ease;
   }
-  .cpu-select { background: #0a0a0a80; color: var(--white); }
-  .cpu-btn:hover { border-color: var(--sec); color: var(--white); }
-  .cpu-btn-primary { border-color: var(--sec); color: var(--sec); }
-  .cpu-btn-primary:hover { background: rgba(21, 128, 61, 0.12); }
-  .cpu-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-
-  .cpu-registers {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.5rem;
-  }
-  .cpu-register {
-    border: 1px solid var(--white-icon-tr);
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    text-align: center;
-    background: rgba(255,255,255,0.02);
-    transition: border-color 0.2s ease, background-color 0.2s ease;
-  }
-  .cpu-register.active { border-color: var(--sec); background: rgba(21, 128, 61, 0.1); }
-  .cpu-register-label {
-    font-family: monospace;
-    font-size: 0.65rem;
-    color: var(--white-icon);
-    opacity: 0.6;
-  }
-  .cpu-register-value {
-    font-family: monospace;
-    font-size: 1rem;
+  .cpu-select { background: #081017; color: var(--white); }
+  .cpu-btn:hover:not(:disabled) {
     color: var(--white);
-    margin-top: 0.15rem;
+    border-color: var(--sec);
+    background: var(--green-soft);
+    transform: translateY(-1px);
+  }
+  .cpu-btn-primary { color: var(--sec); border-color: var(--sec); }
+  .cpu-btn:disabled { opacity: .3; cursor: not-allowed; }
+  .instruction-hint {
+    margin-top: .8rem;
+    color: var(--faint);
+    font-size: .56rem;
+    line-height: 1.6;
+  }
+  .instruction-hint span {
+    margin-right: .45rem;
+    color: var(--blue);
+    letter-spacing: .08em;
+  }
+  .instruction-hint code, .cpu-code {
+    color: var(--sec);
+    padding: .08rem .28rem;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--green-soft);
   }
 
-  .cpu-cycle {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
+  .cpu-registers { display: grid; grid-template-columns: repeat(4, 1fr); gap: .45rem; }
+  .cpu-register {
+    min-height: 56px;
+    padding: .5rem;
+    box-sizing: border-box;
+    text-align: center;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    background: rgba(255,255,255,.018);
+    transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
   }
+  .cpu-register.active {
+    border-color: var(--sec);
+    background: var(--green-soft);
+    box-shadow: 0 0 18px rgba(85,230,193,.08);
+  }
+  .cpu-register-label { color: var(--faint); font-size: .55rem; }
+  .cpu-register-value { margin-top: .18rem; color: var(--white); font-size: .88rem; }
+
+  .cycle-block { margin-top: 1.25rem; }
+  .mini-label { margin-bottom: .55rem; color: var(--faint); font-size: .51rem; letter-spacing: .1em; }
+  .cpu-cycle { display: flex; align-items: center; gap: .4rem; flex-wrap: wrap; }
   .cpu-cycle-step {
-    padding: 0.35rem 0.75rem;
-    border-radius: 9999px;
-    border: 1px solid var(--white-icon-tr);
-    font-family: monospace;
-    font-size: 0.75rem;
-    color: var(--white-icon);
-    transition: all 0.2s ease;
+    padding: .42rem .62rem;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    color: var(--muted);
+    font-size: .59rem;
+    transition: all .2s ease;
   }
   .cpu-cycle-step.active {
-    border-color: var(--sec);
     color: var(--sec);
-    background: rgba(21, 128, 61, 0.12);
+    border-color: var(--sec);
+    background: var(--green-soft);
+    box-shadow: 0 0 16px rgba(85,230,193,.08);
   }
-  .cpu-cycle-arrow { color: var(--white-icon); opacity: 0.4; font-size: 0.8rem; }
+  .cpu-cycle-arrow { color: var(--faint); font-size: .7rem; }
 
-  .cpu-memory {
+  .machine-status {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 0.4rem;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 1rem;
+    border-top: 1px solid var(--line);
   }
-  @media (max-width: 640px) {
-    .cpu-memory { grid-template-columns: repeat(4, 1fr); }
-  }
+  .machine-status div { padding-top: .75rem; }
+  .machine-status div + div { padding-left: 1rem; border-left: 1px solid var(--line); }
+  .machine-status span { display: block; color: var(--faint); font-size: .5rem; letter-spacing: .08em; }
+  .machine-status strong { display: block; margin-top: .25rem; color: var(--sec); font-size: .72rem; font-weight: 500; }
+
+  .cpu-memory { display: grid; grid-template-columns: repeat(8, 1fr); gap: .42rem; }
   .cpu-cell {
-    border: 1px solid var(--white-icon-tr);
-    border-radius: 0.4rem;
-    padding: 0.4rem;
+    min-width: 0;
+    padding: .45rem .2rem;
     text-align: center;
-    background: rgba(255,255,255,0.02);
-    transition: border-color 0.2s ease, background-color 0.2s ease;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: rgba(255,255,255,.015);
+    transition: border-color .2s ease, background .2s ease;
   }
-  .cpu-cell.active { border-color: #f59e0b; background: rgba(245, 158, 11, 0.1); }
-  .cpu-cell-addr { font-family: monospace; font-size: 0.6rem; color: var(--white-icon); opacity: 0.5; }
-  .cpu-cell-value { font-family: monospace; font-size: 0.85rem; color: var(--white); }
+  .cpu-cell.active { border-color: var(--amber); background: rgba(244,189,98,.09); }
+  .cpu-cell-addr { color: var(--faint); font-size: .48rem; }
+  .cpu-cell-value { margin-top: .18rem; color: var(--white); font-size: .7rem; }
 
   .cpu-console {
-    border: 1px solid var(--white-icon-tr);
-    border-radius: 0.6rem;
-    background: #10101080;
-    padding: 0.85rem;
-    font-family: monospace;
-    font-size: 0.8rem;
-    color: var(--white-icon);
-    min-height: 3rem;
-    max-height: 180px;
+    min-height: 72px;
+    max-height: 190px;
     overflow-y: auto;
+    padding: .8rem;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #050a0e;
+    color: var(--muted);
+    font: .62rem/1.7 "JetBrains Mono", monospace;
   }
-  .cpu-console-line { opacity: 0; animation: cpu-fade-in 0.25s ease forwards; }
-  .cpu-console-line.err { color: #ef4444; }
+  .cpu-console-line { animation: cpu-fade-in .25s ease forwards; }
+  .cpu-console-line.err { color: var(--red); }
   .cpu-console-line.out { color: var(--sec); }
+
+  .architecture-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    border-radius: 14px;
+    background: var(--line);
+  }
+  .architecture-card {
+    position: relative;
+    min-height: 205px;
+    padding: 1.35rem;
+    background: rgba(10,17,23,.94);
+    transition: background .25s ease, transform .25s ease;
+  }
+  .architecture-card:hover { background: #0d1820; }
+  .architecture-card.featured { background: linear-gradient(145deg, rgba(20,42,42,.9), rgba(9,17,23,.95)); }
+  .card-number { color: var(--sec); font-size: .55rem; letter-spacing: .1em; }
+  .architecture-icon {
+    margin-top: 2.4rem;
+    color: var(--blue);
+    font-size: .62rem;
+    letter-spacing: .15em;
+  }
+  .architecture-card h3 {
+    margin: .45rem 0 .5rem;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.05rem;
+  }
+  .architecture-card p { margin: 0; color: var(--muted); font: .78rem/1.7 "Space Grotesk", sans-serif; }
+  .card-code {
+    margin-top: 1rem;
+    color: var(--faint);
+    font-size: .54rem;
+  }
+
+  .pipeline {
+    margin-top: 1.1rem;
+    padding: 1.2rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    background: rgba(8,14,20,.72);
+  }
+  .pipeline-label { margin-bottom: 1rem; color: var(--faint); font-size: .55rem; letter-spacing: .1em; }
+  .pipeline-track { display: flex; align-items: stretch; }
+  .pipeline-step {
+    flex: 1;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,.012);
+  }
+  .pipeline-step.active { border-color: var(--sec); background: var(--green-soft); }
+  .pipeline-step span { color: var(--sec); font-size: .55rem; }
+  .pipeline-step strong { display: block; margin-top: .45rem; font-size: .68rem; }
+  .pipeline-step small { display: block; margin-top: .35rem; color: var(--faint); font-size: .54rem; line-height: 1.5; }
+  .pipeline-connector { width: 28px; align-self: center; height: 1px; background: var(--line-strong); }
+
+  .instruction-table {
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    background: var(--line);
+  }
+  .instruction-row {
+    display: grid;
+    grid-template-columns: 95px 150px 1fr;
+    gap: 1px;
+    align-items: center;
+    min-height: 52px;
+    padding: 0 1rem;
+    background: rgba(9,16,22,.96);
+    border-bottom: 1px solid var(--line);
+  }
+  .instruction-row:last-child { border-bottom: 0; }
+  .instruction-head {
+    min-height: 38px;
+    color: var(--faint);
+    background: rgba(0,0,0,.25);
+    font-size: .5rem;
+    letter-spacing: .1em;
+  }
+  .instruction-row code { color: var(--sec); font-size: .65rem; }
+  .instruction-row span { color: var(--blue); font-size: .57rem; }
+  .instruction-row p { margin: 0; color: var(--muted); font: .73rem/1.5 "Space Grotesk", sans-serif; }
+
+  .doc-group { margin-top: 2.25rem; }
+  .doc-group:first-of-type { margin-top: 0; }
+  .doc-group-title {
+    display: flex; align-items: baseline; gap: .65rem;
+    margin-bottom: .8rem;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .doc-group-title span { color: var(--sec); font: .6rem "JetBrains Mono", monospace; }
+
+  .doc-item {
+    border: 1px solid var(--line-strong);
+    border-radius: 9px;
+    background: rgba(9,16,22,.9);
+  }
+  .doc-item + .doc-item { margin-top: .5rem; }
+  .doc-item summary {
+    display: flex; align-items: center; gap: .65rem;
+    padding: .85rem 1rem;
+    cursor: pointer;
+    list-style: none;
+  }
+  .doc-item summary::-webkit-details-marker { display: none; }
+  .doc-item summary:hover { background: var(--green-soft); }
+  .doc-item-name {
+    color: var(--white);
+    font-family: "Space Grotesk", sans-serif;
+    font-size: .83rem;
+    font-weight: 600;
+  }
+  .badge {
+    padding: .2rem .5rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    color: var(--sec);
+    font-size: .5rem;
+    background: var(--green-soft);
+  }
+  .doc-toggle {
+    position: relative;
+    width: 14px; height: 14px; margin-left: auto;
+  }
+  .doc-toggle::before, .doc-toggle::after {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    background: var(--sec);
+    transform: translate(-50%,-50%);
+    transition: opacity .2s ease, transform .2s ease;
+  }
+  .doc-toggle::before { width: 14px; height: 1px; }
+  .doc-toggle::after { width: 1px; height: 14px; }
+  .doc-item[open] .doc-toggle::after { opacity: 0; transform: translate(-50%,-50%) rotate(90deg); }
+
+  .doc-body {
+    padding: 0 1.1rem 1.1rem;
+    border-top: 1px solid var(--line);
+  }
+  .doc-body p, .doc-body li {
+    color: var(--muted);
+    font: .8rem/1.75 "Space Grotesk", sans-serif;
+  }
+  .doc-body p { margin: .9rem 0 0; }
+  .doc-body ol { margin: .9rem 0 0; padding-left: 1.2rem; }
+  .doc-body li + li { margin-top: .25rem; }
+  .doc-body strong { color: var(--white); }
+  .formula-box {
+    margin-top: .9rem;
+    padding: .7rem .85rem;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    color: var(--sec);
+    background: var(--green-soft);
+    font-size: .62rem;
+  }
+
+  .page-footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1.7rem;
+    border-top: 1px solid var(--line);
+    color: var(--faint);
+    font-size: .55rem;
+    letter-spacing: .08em;
+  }
+  .page-footer a { color: var(--muted); text-decoration: none; }
+  .page-footer a:hover { color: var(--sec); }
 
   @keyframes cpu-fade-in {
     from { opacity: 0; transform: translateY(-2px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+  @media (max-width: 980px) {
+    .cpu-shell { display: block; }
+    .cpu-sidebar {
+      position: relative;
+      width: auto;
+      min-height: auto;
+      border-right: 0;
+      border-bottom: 1px solid var(--line);
+      padding: 1.25rem;
+      gap: 1.25rem;
+    }
+    .doc-nav { display: grid; grid-template-columns: repeat(5, 1fr); }
+    .sidebar-status { margin-top: 0; }
+    .cpu-content { width: min(930px, calc(100% - 32px)); }
+  }
+
+  @media (max-width: 760px) {
+    .cpu-content { padding-top: 3rem; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr); }
+    .hero-stats div:nth-child(2) { border-right: 0; }
+    .hero-stats div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    .cpu-layout { grid-template-columns: 1fr; }
+    .architecture-grid { grid-template-columns: 1fr; }
+    .pipeline-track { display: grid; grid-template-columns: 1fr; gap: .5rem; }
+    .pipeline-connector { width: 1px; height: 18px; margin-left: 1.2rem; }
+    .instruction-row { grid-template-columns: 75px 105px 1fr; }
+    .doc-nav { grid-template-columns: repeat(2, 1fr); }
+    .cpu-memory { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  @media (max-width: 520px) {
+    .cpu-content { width: min(100% - 22px, 930px); }
+    .hero h1 { font-size: clamp(2.65rem, 15vw, 4.1rem); }
+    .hero-description { font-size: .92rem; }
+    .section-heading { grid-template-columns: 32px minmax(0,1fr); gap: .7rem; }
+    .simulator-card { border-radius: 11px; }
+    .panel, .wide-panel { padding: .9rem; }
+    .cpu-editor { min-height: 245px; }
+    .cpu-registers { grid-template-columns: repeat(2, 1fr); }
+    .instruction-row { grid-template-columns: 68px 92px 1fr; padding: 0 .65rem; }
+    .instruction-row p { font-size: .65rem; }
+    .instruction-head { font-size: .43rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      scroll-behavior: auto !important;
+      animation-duration: .001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .001ms !important;
+    }
+  }
 </style>
 
 <script>
-  function sleep(ms: number) {
+function sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
