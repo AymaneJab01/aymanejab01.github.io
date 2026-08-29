@@ -3,138 +3,153 @@ import Layout from "../../layouts/Layout.astro";
 ---
 
 <Layout title="Network Protocol Simulator">
-  <section class="np-page py-24 md:py-36">
-    <div class="np-content max-w-6xl mx-auto px-6">
+  <section class="net-page text-[var(--white)] py-24 md:py-36">
+    <canvas id="net-bg" class="net-bg" aria-hidden="true"></canvas>
+
+    <div class="net-content max-w-6xl mx-auto px-6">
 
       <!-- ===================================================== -->
       <!-- BACK LINK -->
       <!-- ===================================================== -->
-      <a href="/projects" class="np-back">
-        <span class="np-back-arrow">&larr;</span>
+      <a
+        href="/projects"
+        class="inline-flex items-center gap-2 text-sm text-[var(--white-icon)]
+        hover:text-[var(--sec)] transition-colors duration-300 mb-10"
+      >
+        <span class="text-lg">&larr;</span>
         <span>Back to projects</span>
       </a>
 
       <!-- ===================================================== -->
       <!-- QUICK NAV -->
       <!-- ===================================================== -->
-      <nav class="np-quicknav" aria-label="Section navigation">
-        <a href="#overview"><span class="np-quicknav-num">00</span>Overview</a>
-        <a href="#handshake"><span class="np-quicknav-num">01</span>Handshake</a>
-        <a href="#loss"><span class="np-quicknav-num">02</span>Packet loss</a>
-        <a href="#framing"><span class="np-quicknav-num">03</span>Framing</a>
-        <a href="#reference"><span class="np-quicknav-num">04</span>Reference</a>
+      <nav class="net-quicknav mb-14" aria-label="Section navigation">
+        <a href="#overview"><span class="net-quicknav-num">00</span>Overview</a>
+        <a href="#handshake"><span class="net-quicknav-num">01</span>Handshake</a>
+        <a href="#loss"><span class="net-quicknav-num">02</span>Packet loss</a>
+        <a href="#framing"><span class="net-quicknav-num">03</span>Framing</a>
+        <a href="#reference"><span class="net-quicknav-num">04</span>Reference</a>
       </nav>
 
       <!-- ===================================================== -->
       <!-- HERO -->
       <!-- ===================================================== -->
-      <div id="overview" class="np-hero">
-        <p class="np-eyebrow">PROJECT 05 / NETWORKING</p>
+      <div id="overview" class="mb-16 md:mb-20">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="h-2 w-2 rounded-full bg-[var(--sec)] shadow-[0_0_12px_var(--sec)]"></span>
+          <span class="text-sm tracking-[0.25em] uppercase text-[var(--sec)] shiny-sec">
+            Project 05 &middot; Networking
+          </span>
+        </div>
 
-        <h1 class="np-h1">
-          The transport layer, made visible<span class="np-accent-dot">.</span>
+        <h1 class="text-4xl md:text-6xl font-medium tracking-tight text-[var(--white)]">
+          The transport layer, made visible<span class="text-[var(--sec)]">.</span>
         </h1>
 
-        <p class="np-lede">
+        <p class="mt-5 max-w-2xl text-lg text-[var(--white-icon)] leading-relaxed">
           Three simulations of what's actually happening under a socket connection:
           the TCP handshake, how TCP and UDP behave differently when packets get lost,
           and how a stream of bytes gets framed into discrete messages.
         </p>
 
-        <p class="np-note">
+        <p class="mt-3 max-w-2xl text-sm text-[var(--white-icon)] leading-relaxed opacity-70">
           Note: this page is a client-side simulation, not a live socket server &mdash;
           a static site can't open raw TCP/UDP connections in the browser. Everything
           below models real protocol behavior, timing, and packet loss in software.
         </p>
 
-        <div class="np-tags">
-          <span class="np-tag">ASTRO</span>
-          <span class="np-tag">TYPESCRIPT</span>
-          <span class="np-tag">NETWORKING</span>
+        <div class="mt-7 flex flex-wrap gap-2">
+          <span class="net-tag">Astro</span>
+          <span class="net-tag">TypeScript</span>
+          <span class="net-tag">Networking</span>
         </div>
       </div>
 
       <!-- ===================================================== -->
       <!-- TCP HANDSHAKE -->
       <!-- ===================================================== -->
-      <div id="handshake" class="np-block">
-        <div class="np-block-head">
-          <div class="np-block-kicker">
-            <span class="np-num">01</span>
-            <span class="np-kicker-line" aria-hidden="true"></span>
-            <span class="np-kicker-label">TCP</span>
+      <div id="handshake" class="net-card mb-10">
+        <div class="net-card-header">
+          <div class="flex items-center gap-3">
+            <span class="font-mono text-xs tracking-[0.2em] text-[var(--sec)]">01</span>
+            <span class="h-px w-12 bg-[var(--sec)] opacity-40"></span>
+            <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]">TCP</span>
           </div>
-          <h2 class="np-h2">Three-way handshake</h2>
-          <p class="np-block-desc">
+          <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4">
+            Three-way handshake
+          </h2>
+          <p class="mt-2 text-base text-[var(--white-icon)] leading-relaxed max-w-2xl">
             SYN, SYN-ACK, ACK &mdash; the exchange that opens every TCP connection, with
             sequence and acknowledgment numbers tracked step by step. Run it again to
             see the four-way close (FIN / ACK / FIN / ACK).
           </p>
         </div>
 
-        <div class="np-controls">
-          <button id="tcp-connect" class="np-btn np-btn-primary">Open connection</button>
-          <button id="tcp-close" class="np-btn" disabled>Close connection</button>
-          <span id="tcp-state" class="np-pill np-pill-status ml-auto">CLOSED</span>
+        <div class="mt-6 flex flex-wrap items-center gap-2">
+          <button id="tcp-connect" class="net-btn net-btn-primary">Open connection</button>
+          <button id="tcp-close" class="net-btn" disabled>Close connection</button>
+          <span id="tcp-state" class="net-pill ml-auto">CLOSED</span>
         </div>
 
-        <div class="np-lane">
-          <div class="np-lane-col">
-            <div class="np-node">Client</div>
+        <div class="net-lane mt-6">
+          <div class="net-lane-col">
+            <div class="net-node">Client</div>
           </div>
-          <div id="tcp-wire" class="np-lane-wire">
-            <div class="np-wire-line" aria-hidden="true"></div>
+          <div id="tcp-wire" class="net-lane-wire">
+            <div class="net-wire-line" aria-hidden="true"></div>
           </div>
-          <div class="np-lane-col">
-            <div class="np-node">Server</div>
+          <div class="net-lane-col">
+            <div class="net-node">Server</div>
           </div>
         </div>
 
-        <div id="tcp-log" class="np-log"></div>
+        <div id="tcp-log" class="net-log mt-4"></div>
       </div>
 
       <!-- ===================================================== -->
       <!-- TCP vs UDP PACKET LOSS -->
       <!-- ===================================================== -->
-      <div id="loss" class="np-block">
-        <div class="np-block-head">
-          <div class="np-block-kicker">
-            <span class="np-num">02</span>
-            <span class="np-kicker-line" aria-hidden="true"></span>
-            <span class="np-kicker-label">TCP vs UDP</span>
+      <div id="loss" class="net-card mb-10">
+        <div class="net-card-header">
+          <div class="flex items-center gap-3">
+            <span class="font-mono text-xs tracking-[0.2em] text-[var(--sec)]">02</span>
+            <span class="h-px w-12 bg-[var(--sec)] opacity-40"></span>
+            <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]">TCP vs UDP</span>
           </div>
-          <h2 class="np-h2">Packet loss &amp; retransmission</h2>
-          <p class="np-block-desc">
+          <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4">
+            Packet loss &amp; retransmission
+          </h2>
+          <p class="mt-2 text-base text-[var(--white-icon)] leading-relaxed max-w-2xl">
             Send the same burst of packets over a lossy link with both protocols.
             TCP notices the gap and retransmits; UDP just moves on &mdash; which is
             exactly why one is used for file transfer and the other for live video.
           </p>
         </div>
 
-        <div class="np-controls">
-          <button id="loss-run" class="np-btn np-btn-primary">Send 10 packets</button>
-          <label class="np-range-label ml-auto">
+        <div class="mt-6 flex flex-wrap items-center gap-2">
+          <button id="loss-run" class="net-btn net-btn-primary">Send 10 packets</button>
+          <label class="flex items-center gap-2 text-xs text-[var(--white-icon)] ml-auto">
             Loss rate
-            <input id="loss-rate" type="range" min="0" max="60" value="25" class="np-range" />
-            <span id="loss-rate-value" class="np-range-value">25%</span>
+            <input id="loss-rate" type="range" min="0" max="60" value="25" class="net-range" />
+            <span id="loss-rate-value" class="font-mono text-[var(--sec)]">25%</span>
           </label>
         </div>
 
-        <div class="np-split">
-          <div class="np-split-col">
-            <div class="np-split-label">TCP</div>
-            <div id="tcp-track" class="np-track"></div>
-            <div class="np-split-stats">
-              Delivered <b id="tcp-delivered" class="np-stat-ok">0</b> / 10
-              &middot; Retransmits <b id="tcp-retrans" class="np-stat-warn">0</b>
+        <div class="net-split mt-6">
+          <div class="net-split-col">
+            <div class="net-split-label">TCP</div>
+            <div id="tcp-track" class="net-track"></div>
+            <div class="net-split-stats font-mono text-xs text-[var(--white-icon)]">
+              Delivered: <span id="tcp-delivered" class="text-[var(--sec)]">0</span> / 10
+              &middot; Retransmits: <span id="tcp-retrans" class="text-[#f59e0b]">0</span>
             </div>
           </div>
-          <div class="np-split-col">
-            <div class="np-split-label">UDP</div>
-            <div id="udp-track" class="np-track"></div>
-            <div class="np-split-stats">
-              Delivered <b id="udp-delivered" class="np-stat-ok">0</b> / 10
-              &middot; Dropped <b id="udp-dropped" class="np-stat-bad">0</b>
+          <div class="net-split-col">
+            <div class="net-split-label">UDP</div>
+            <div id="udp-track" class="net-track"></div>
+            <div class="net-split-stats font-mono text-xs text-[var(--white-icon)]">
+              Delivered: <span id="udp-delivered" class="text-[var(--sec)]">0</span> / 10
+              &middot; Dropped: <span id="udp-dropped" class="text-[#ef4444]">0</span>
             </div>
           </div>
         </div>
@@ -143,15 +158,17 @@ import Layout from "../../layouts/Layout.astro";
       <!-- ===================================================== -->
       <!-- FRAMED CHAT -->
       <!-- ===================================================== -->
-      <div id="framing" class="np-block">
-        <div class="np-block-head">
-          <div class="np-block-kicker">
-            <span class="np-num">03</span>
-            <span class="np-kicker-line" aria-hidden="true"></span>
-            <span class="np-kicker-label">Framing</span>
+      <div id="framing" class="net-card mb-10">
+        <div class="net-card-header">
+          <div class="flex items-center gap-3">
+            <span class="font-mono text-xs tracking-[0.2em] text-[var(--sec)]">03</span>
+            <span class="h-px w-12 bg-[var(--sec)] opacity-40"></span>
+            <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]">Framing</span>
           </div>
-          <h2 class="np-h2">Framed client &ndash; server chat</h2>
-          <p class="np-block-desc">
+          <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4">
+            Framed client &ndash; server chat
+          </h2>
+          <p class="mt-2 text-base text-[var(--white-icon)] leading-relaxed max-w-2xl">
             TCP delivers a raw byte stream with no message boundaries, so applications
             frame their own messages. Type below and watch each message get wrapped
             with a length-prefix header before it's "sent" across the wire and
@@ -159,39 +176,41 @@ import Layout from "../../layouts/Layout.astro";
           </p>
         </div>
 
-        <div class="np-controls">
-          <input id="chat-input" type="text" placeholder="type a message" class="np-input flex-1 min-w-[200px]" maxlength="60" />
-          <button id="chat-send" class="np-btn np-btn-primary">Send</button>
+        <div class="mt-6 flex flex-wrap items-center gap-2">
+          <input id="chat-input" type="text" placeholder="type a message" class="net-input flex-1 min-w-[200px]" maxlength="60" />
+          <button id="chat-send" class="net-btn net-btn-primary">Send</button>
         </div>
 
-        <div id="chat-frame-preview" class="np-frame-preview"></div>
+        <div id="chat-frame-preview" class="mt-4 font-mono text-xs text-[var(--white-icon)] opacity-80"></div>
 
-        <div id="chat-log" class="np-chat"></div>
+        <div id="chat-log" class="net-chat mt-4"></div>
       </div>
 
       <!-- ===================================================== -->
       <!-- REFERENCE / DOCUMENTATION -->
       <!-- ===================================================== -->
-      <div id="reference" class="np-block np-reference">
-        <div class="np-block-head">
-          <div class="np-block-kicker">
-            <span class="np-num">04</span>
-            <span class="np-kicker-line" aria-hidden="true"></span>
-            <span class="np-kicker-label">Reference</span>
+      <div id="reference" class="net-card net-reference">
+        <div class="net-card-header">
+          <div class="flex items-center gap-3">
+            <span class="font-mono text-xs tracking-[0.2em] text-[var(--sec)]">04</span>
+            <span class="h-px w-12 bg-[var(--sec)] opacity-40"></span>
+            <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]">Reference</span>
           </div>
-          <h2 class="np-h2">How the transport layer actually works.</h2>
-          <p class="np-block-desc">
+          <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4">
+            How the transport layer actually works.
+          </h2>
+          <p class="mt-2 text-base text-[var(--white-icon)] leading-relaxed max-w-2xl">
             The simulations above show <em>that</em> something happens. This is the
             <em>why</em> &mdash; the concepts behind each demo, spelled out in plain terms.
           </p>
         </div>
 
         <!-- GROUP 01 -->
-        <div class="np-ref-group">
-          <p class="np-ref-group-label"><span class="np-num-inline">01</span>Transport layer basics</p>
+        <div class="net-ref-group">
+          <p class="net-ref-group-label"><span class="net-num-inline">01</span>Transport layer basics</p>
 
-          <div class="np-ref-entry">
-            <p class="np-ref-term">OSI &amp; TCP/IP layers <span class="np-ref-tag">concept</span></p>
+          <div class="net-ref-entry">
+            <p class="net-ref-term">OSI &amp; TCP/IP layers <span class="net-ref-tag">concept</span></p>
             <p>
               Networking is built in layers, each one only responsible for its own job.
               The application layer (HTTP, your chat protocol) hands data to the
@@ -201,11 +220,11 @@ import Layout from "../../layouts/Layout.astro";
               to get bytes from one machine to another, and focuses on what TCP and UDP
               do with them once they arrive.
             </p>
-            <p class="np-ref-meta">Application &middot; Transport &middot; Network &middot; Link</p>
+            <p class="net-ref-meta">Application &middot; Transport &middot; Network &middot; Link</p>
           </div>
 
-          <div class="np-ref-entry">
-            <p class="np-ref-term">Sockets &amp; ports <span class="np-ref-tag">concept</span></p>
+          <div class="net-ref-entry">
+            <p class="net-ref-term">Sockets &amp; ports <span class="net-ref-tag">concept</span></p>
             <p>
               An IP address gets a packet to the right machine; a port number gets it to
               the right process on that machine. A socket is the pairing of the two &mdash;
@@ -214,11 +233,11 @@ import Layout from "../../layouts/Layout.astro";
               thousands of simultaneous connections on the same port 443: each one is a
               distinct socket because the remote IP or port differs.
             </p>
-            <p class="np-ref-meta">Well-known ports 0&ndash;1023 &middot; ephemeral ports assigned per connection</p>
+            <p class="net-ref-meta">Well-known ports 0&ndash;1023 &middot; ephemeral ports assigned per connection</p>
           </div>
 
-          <div class="np-ref-entry">
-            <p class="np-ref-term">MTU &amp; packetization <span class="np-ref-tag">concept</span></p>
+          <div class="net-ref-entry">
+            <p class="net-ref-term">MTU &amp; packetization <span class="net-ref-tag">concept</span></p>
             <p>
               A network link can only carry so many bytes in one frame &mdash; the maximum
               transmission unit, typically 1500 bytes on Ethernet. Anything bigger than
@@ -231,11 +250,11 @@ import Layout from "../../layouts/Layout.astro";
         </div>
 
         <!-- GROUP 02 -->
-        <div class="np-ref-group">
-          <p class="np-ref-group-label"><span class="np-num-inline">02</span>Connection lifecycle</p>
+        <div class="net-ref-group">
+          <p class="net-ref-group-label"><span class="net-num-inline">02</span>Connection lifecycle</p>
 
-          <div class="np-ref-entry">
-            <p class="np-ref-term">Three-way handshake <span class="np-ref-tag">protocol</span></p>
+          <div class="net-ref-entry">
+            <p class="net-ref-term">Three-way handshake <span class="net-ref-tag">protocol</span></p>
             <p>
               Before any data flows, both sides agree the connection is real and
               synchronize starting sequence numbers. The client sends <code>SYN</code>
@@ -244,15 +263,15 @@ import Layout from "../../layouts/Layout.astro";
               <code>ACK</code>, acknowledging the server's number. Three messages, two
               round trips &mdash; exactly what the demo above animates.
             </p>
-            <ol class="np-ref-steps">
+            <ol class="net-ref-steps">
               <li>Client &rarr; server: <code>SYN seq=x</code></li>
               <li>Server &rarr; client: <code>SYN-ACK seq=y ack=x+1</code></li>
               <li>Client &rarr; server: <code>ACK ack=y+1</code></li>
             </ol>
           </div>
 
-          <div class="np-ref-entry">
-            <p class="np-ref-term">Sequence &amp; acknowledgment numbers <span class="np-ref-tag">concept</span></p>
+          <div class="net-ref-entry">
+            <p class="net-ref-term">Sequence &amp; acknowledgment numbers <span class="net-ref-tag">concept</span></p>
             <p>
               Every byte TCP sends is numbered. The sequence number in a segment is the
               position of its first byte in the stream; the acknowledgment number in a
@@ -263,8 +282,8 @@ import Layout from "../../layouts/Layout.astro";
             </p>
           </div>
 
-          <div class="np-ref-entry">
-            <p class="np-ref-term">Four-way close &amp; TIME_WAIT <span class="np-ref-tag">protocol</span></p>
+          <div class="net-ref-entry">
+            <p class="net-ref-term">Four-way close &amp; TIME_WAIT <span class="net-ref-tag">protocol</span></p>
             <p>
               Closing takes one more step than opening because TCP connections are
               full-duplex &mdash; each direction has to be closed independently.
@@ -274,16 +293,16 @@ import Layout from "../../layouts/Layout.astro";
               the socket in <code>TIME_WAIT</code> briefly, in case that last
               acknowledgment got lost and needs to be resent.
             </p>
-            <p class="np-ref-meta">FIN &middot; ACK &middot; FIN &middot; ACK &middot; TIME_WAIT</p>
+            <p class="net-ref-meta">FIN &middot; ACK &middot; FIN &middot; ACK &middot; TIME_WAIT</p>
           </div>
         </div>
 
         <!-- GROUP 03 -->
-        <div class="np-ref-group">
-          <p class="np-ref-group-label"><span class="np-num-inline">03</span>TCP vs UDP</p>
+        <div class="net-ref-group">
+          <p class="net-ref-group-label"><span class="net-num-inline">03</span>TCP vs UDP</p>
 
-          <div class="np-ref-entry">
-            <p class="np-ref-term">TCP: reliable, ordered delivery <span class="np-ref-tag">mechanism</span></p>
+          <div class="net-ref-entry">
+            <p class="net-ref-term">TCP: reliable, ordered delivery <span class="net-ref-tag">mechanism</span></p>
             <p>
               TCP guarantees every byte arrives, in order, exactly once &mdash; and it does
               that entirely through the sequence/acknowledgment numbers above. If an
@@ -294,8 +313,8 @@ import Layout from "../../layouts/Layout.astro";
             </p>
           </div>
 
-          <div class="np-ref-entry">
-            <p class="np-ref-term">UDP: unreliable, connectionless delivery <span class="np-ref-tag">mechanism</span></p>
+          <div class="net-ref-entry">
+            <p class="net-ref-term">UDP: unreliable, connectionless delivery <span class="net-ref-tag">mechanism</span></p>
             <p>
               UDP has no handshake, no sequence numbers, and no retransmission &mdash; it
               just fires a packet and moves on, with no confirmation it arrived. That
@@ -306,8 +325,8 @@ import Layout from "../../layouts/Layout.astro";
             </p>
           </div>
 
-          <div class="np-ref-entry">
-            <p class="np-ref-term">Sliding windows &amp; congestion control <span class="np-ref-tag">concept</span></p>
+          <div class="net-ref-entry">
+            <p class="net-ref-term">Sliding windows &amp; congestion control <span class="net-ref-tag">concept</span></p>
             <p>
               Real TCP doesn't send one packet and wait for one acknowledgment like the
               simplified demo above &mdash; it keeps a window of unacknowledged bytes in
@@ -321,11 +340,11 @@ import Layout from "../../layouts/Layout.astro";
         </div>
 
         <!-- GROUP 04 -->
-        <div class="np-ref-group">
-          <p class="np-ref-group-label"><span class="np-num-inline">04</span>Message framing</p>
+        <div class="net-ref-group">
+          <p class="net-ref-group-label"><span class="net-num-inline">04</span>Message framing</p>
 
-          <div class="np-ref-entry">
-            <p class="np-ref-term">Why framing is needed <span class="np-ref-tag">concept</span></p>
+          <div class="net-ref-entry">
+            <p class="net-ref-term">Why framing is needed <span class="net-ref-tag">concept</span></p>
             <p>
               TCP delivers a stream of bytes, not a stream of messages &mdash; it makes no
               promise that one <code>send()</code> call on one side arrives as one
@@ -336,8 +355,8 @@ import Layout from "../../layouts/Layout.astro";
             </p>
           </div>
 
-          <div class="np-ref-entry">
-            <p class="np-ref-term">Length-prefix framing <span class="np-ref-tag">technique</span></p>
+          <div class="net-ref-entry">
+            <p class="net-ref-term">Length-prefix framing <span class="net-ref-tag">technique</span></p>
             <p>
               Write the message's byte length before the message itself, using a fixed
               number of bytes for the length field. The reader always knows exactly how
@@ -345,11 +364,11 @@ import Layout from "../../layouts/Layout.astro";
               the payload &mdash; no scanning required. That's what the chat demo above
               does: a 4-byte length header precedes every message.
             </p>
-            <p class="np-ref-meta">Used by gRPC, most binary protocols &middot; O(1) to know a message's size</p>
+            <p class="net-ref-meta">Used by gRPC, most binary protocols &middot; O(1) to know a message's size</p>
           </div>
 
-          <div class="np-ref-entry">
-            <p class="np-ref-term">Delimiter-based framing <span class="np-ref-tag">technique</span></p>
+          <div class="net-ref-entry">
+            <p class="net-ref-term">Delimiter-based framing <span class="net-ref-tag">technique</span></p>
             <p>
               Mark the end of each message with a reserved byte sequence &mdash; a newline
               for line-based protocols like HTTP headers or Redis's older protocol.
@@ -357,7 +376,7 @@ import Layout from "../../layouts/Layout.astro";
               to scan every incoming byte looking for the delimiter, and the payload
               itself can never legally contain that exact sequence unless it's escaped.
             </p>
-            <p class="np-ref-meta">Used by HTTP/1.1 headers, SMTP, line-oriented protocols</p>
+            <p class="net-ref-meta">Used by HTTP/1.1 headers, SMTP, line-oriented protocols</p>
           </div>
         </div>
       </div>
@@ -368,249 +387,192 @@ import Layout from "../../layouts/Layout.astro";
 
 <style>
   /* =====================================================================
-     LIGHT / MINIMAL THEME
-     Matches the Algorithm Visualizer project page: warm off-white
-     background, near-black text, a muted olive accent, and bordered
-     cards instead of neon glow. Variables are scoped to .np-page so
-     nothing else on the site is affected.
+     ELECTRIC-BLUE THEME
+     Redeclaring --sec inside .net-page overrides it ONLY for this page's
+     subtree (CSS custom properties cascade), so every existing
+     var(--sec) reference below automatically becomes electric blue
+     without touching any other page on the site.
      ===================================================================== */
-  .np-page {
-    --np-bg: #f6f4ee;
-    --np-card: #fffdf9;
-    --np-border: #e5e1d3;
-    --np-border-strong: #cfc9b3;
-    --np-text: #201f1a;
-    --np-text-soft: #6f6d61;
-    --np-accent: #8c8944;
-    --np-accent-soft: rgba(140, 137, 68, 0.12);
-    --np-green: #3f8f5f;
-    --np-green-soft: rgba(63, 143, 95, 0.12);
-    --np-red: #c1573f;
-    --np-red-soft: rgba(193, 87, 63, 0.12);
-    --np-amber: #c2903a;
-    --np-amber-soft: rgba(194, 144, 58, 0.14);
-    --np-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  .net-page {
+    --sec: #38bdf8;
+    --net-blue: #38bdf8;
+    --net-cyan: #22d3ee;
+    --net-line: rgba(56, 189, 248, 0.9);
 
-    background: var(--np-bg);
-    color: var(--np-text);
+    position: relative;
+    isolation: isolate;
+    background: radial-gradient(ellipse 90% 60% at 50% -10%, #0c2340 0%, #061021 55%, #030712 100%);
   }
 
-  .np-content { position: relative; }
-
-  /* ---------------------------------------------------------------- */
-  /* BACK LINK + QUICK NAV                                             */
-  /* ---------------------------------------------------------------- */
-  .np-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.875rem;
-    color: var(--np-text-soft);
-    text-decoration: none;
-    transition: color 0.25s ease;
+  .net-content {
+    position: relative;
+    z-index: 1;
   }
-  .np-back:hover { color: var(--np-accent); }
-  .np-back-arrow { font-size: 1.05rem; }
 
-  .np-quicknav {
+  .net-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.85;
+    mask-image: radial-gradient(ellipse 85% 65% at 50% 10%, black, transparent 92%);
+  }
+
+  .net-page :global(.shiny-sec) {
+    background: linear-gradient(90deg, var(--sec), var(--net-cyan), var(--sec));
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: net-shine 3.5s linear infinite;
+  }
+
+  @keyframes net-shine {
+    to { background-position: -200% 0; }
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* QUICK NAV                                                          */
+  /* ---------------------------------------------------------------- */
+  .net-quicknav {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
-    margin: 1.75rem 0 3rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--np-border);
-    font-family: var(--np-mono);
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.14);
+    font-family: monospace;
     font-size: 0.78rem;
   }
-  .np-quicknav a {
+  .net-quicknav a {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    color: var(--np-text-soft);
+    color: var(--white-icon);
     text-decoration: none;
     transition: color 0.2s ease;
   }
-  .np-quicknav a:hover { color: var(--np-text); }
-  .np-quicknav-num { color: var(--np-accent); }
+  .net-quicknav a:hover { color: var(--sec); }
+  .net-quicknav-num { color: var(--sec); opacity: 0.85; }
 
-  /* ---------------------------------------------------------------- */
-  /* HERO                                                               */
-  /* ---------------------------------------------------------------- */
-  .np-hero { margin-bottom: 4rem; }
-
-  .np-eyebrow {
-    font-family: var(--np-mono);
-    font-size: 0.78rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--np-accent);
-    margin-bottom: 1.1rem;
-  }
-
-  .np-h1 {
-    font-size: 2.5rem;
-    line-height: 1.15;
-    font-weight: 500;
-    letter-spacing: -0.01em;
-    color: var(--np-text);
-  }
-  @media (min-width: 768px) { .np-h1 { font-size: 3.5rem; } }
-  .np-accent-dot { color: var(--np-accent); }
-
-  .np-lede {
-    margin-top: 1.25rem;
-    max-width: 42rem;
-    font-size: 1.1rem;
-    line-height: 1.65;
-    color: var(--np-text-soft);
-  }
-
-  .np-note {
-    margin-top: 0.85rem;
-    max-width: 42rem;
-    font-size: 0.85rem;
-    line-height: 1.6;
-    color: var(--np-text-soft);
-    opacity: 0.75;
-  }
-
-  .np-tags { margin-top: 1.6rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .np-tag {
+  .net-tag {
     border-radius: 9999px;
-    border: 1px solid var(--np-border-strong);
-    background: var(--np-card);
-    padding: 0.28rem 0.8rem;
-    font-size: 0.68rem;
-    font-family: var(--np-mono);
-    letter-spacing: 0.04em;
-    color: var(--np-text-soft);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    background: rgba(56, 189, 248, 0.06);
+    padding: 0.25rem 0.75rem;
+    font-size: 0.7rem;
+    font-family: monospace;
+    color: var(--white-icon);
   }
 
-  /* ---------------------------------------------------------------- */
-  /* BLOCK / CARD                                                       */
-  /* ---------------------------------------------------------------- */
-  .np-block {
+  .net-card {
+    position: relative;
+    overflow: hidden;
     border-radius: 1rem;
-    border: 1px solid var(--np-border);
-    background: var(--np-card);
+    border: 1px solid rgba(56, 189, 248, 0.16);
+    background: linear-gradient(180deg, rgba(9, 20, 38, 0.85), rgba(4, 9, 20, 0.92));
+    backdrop-filter: blur(8px);
     padding: 1.75rem;
-    margin-bottom: 2.25rem;
-    box-shadow: 0 1px 2px rgba(32, 31, 26, 0.03);
+    box-shadow: 0 25px 70px rgba(2, 6, 23, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
   }
-  @media (min-width: 768px) { .np-block { padding: 2.5rem; } }
-
-  .np-block-head { max-width: 44rem; }
-
-  .np-block-kicker { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-  .np-num {
-    font-family: var(--np-mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    color: var(--np-accent);
+  .net-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(56, 189, 248, 0.06), transparent 40%);
+    pointer-events: none;
   }
-  .np-kicker-line { height: 1px; width: 2.5rem; background: var(--np-border-strong); }
-  .np-kicker-label {
-    font-family: var(--np-mono);
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--np-text-soft);
+  .net-card:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 25px 70px rgba(2, 6, 23, 0.6), 0 0 40px rgba(56, 189, 248, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.03);
   }
+  @media (min-width: 768px) { .net-card { padding: 2.5rem; } }
+  .net-card-header { max-width: 48rem; }
 
-  .np-h2 { font-size: 1.6rem; font-weight: 500; letter-spacing: -0.01em; color: var(--np-text); }
-  @media (min-width: 768px) { .np-h2 { font-size: 1.85rem; } }
-
-  .np-block-desc { margin-top: 0.6rem; font-size: 1rem; line-height: 1.6; color: var(--np-text-soft); }
-
-  /* ---------------------------------------------------------------- */
-  /* CONTROLS                                                           */
-  /* ---------------------------------------------------------------- */
-  .np-controls { margin-top: 1.6rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
-  .ml-auto { margin-left: auto; }
-
-  .np-btn {
-    padding: 0.5rem 1.1rem;
+  .net-btn {
+    padding: 0.5rem 1rem;
     border-radius: 9999px;
-    border: 1px solid var(--np-border-strong);
-    color: var(--np-text);
+    border: 1px solid rgba(56, 189, 248, 0.18);
+    color: var(--white-icon);
     font-size: 0.8rem;
-    font-family: var(--np-mono);
-    background: var(--np-card);
+    font-family: monospace;
+    background: rgba(56, 189, 248, 0.02);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
   }
-  .np-btn:hover { border-color: var(--np-accent); color: var(--np-accent); }
-  .np-btn-primary { border-color: var(--np-accent); color: var(--np-accent); background: var(--np-accent-soft); }
-  .np-btn-primary:hover { background: var(--np-accent); color: var(--np-card); }
-  .np-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .net-btn:hover { border-color: var(--sec); color: var(--white); }
+  .net-btn-primary {
+    border-color: var(--sec);
+    color: var(--sec);
+    box-shadow: 0 0 16px rgba(56, 189, 248, 0.18);
+  }
+  .net-btn-primary:hover {
+    background: rgba(56, 189, 248, 0.14);
+    box-shadow: 0 0 24px rgba(56, 189, 248, 0.3);
+  }
+  .net-btn:disabled { opacity: 0.35; cursor: not-allowed; box-shadow: none; }
 
-  .np-input {
-    padding: 0.5rem 0.9rem;
+  .net-input {
+    padding: 0.5rem 0.85rem;
     border-radius: 9999px;
-    border: 1px solid var(--np-border-strong);
-    background: var(--np-card);
-    color: var(--np-text);
-    font-size: 0.85rem;
-    font-family: var(--np-mono);
+    border: 1px solid rgba(56, 189, 248, 0.18);
+    background: rgba(4, 10, 22, 0.7);
+    color: var(--white);
+    font-size: 0.8rem;
+    font-family: monospace;
     outline: none;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
   }
-  .np-input:focus { border-color: var(--np-accent); box-shadow: 0 0 0 3px var(--np-accent-soft); }
+  .net-input:focus { border-color: var(--sec); box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12); }
 
-  .np-range-label {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--np-mono);
-    font-size: 0.75rem;
-    color: var(--np-text-soft);
-  }
-  .np-range { accent-color: var(--np-accent); width: 6rem; }
-  .np-range-value { font-family: var(--np-mono); color: var(--np-accent); }
+  .net-range { accent-color: var(--sec); width: 6rem; }
 
-  .np-pill {
-    padding: 0.3rem 0.85rem;
+  .net-pill {
+    padding: 0.3rem 0.75rem;
     border-radius: 9999px;
-    border: 1px solid var(--np-border-strong);
-    font-family: var(--np-mono);
+    border: 1px solid rgba(56, 189, 248, 0.18);
+    font-family: monospace;
     font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    color: var(--np-text-soft);
-    background: var(--np-card);
+    letter-spacing: 0.1em;
+    color: var(--white-icon);
     transition: all 0.3s ease;
   }
-  .np-pill-status.open { border-color: var(--np-green); color: var(--np-green); background: var(--np-green-soft); }
-  .np-pill-status.closing { border-color: var(--np-amber); color: var(--np-amber); background: var(--np-amber-soft); }
+  .net-pill.open { border-color: var(--sec); color: var(--sec); box-shadow: 0 0 14px rgba(56, 189, 248, 0.3); }
+  .net-pill.closing { border-color: #f59e0b; color: #f59e0b; }
 
-  /* ---------------------------------------------------------------- */
-  /* HANDSHAKE LANE                                                     */
-  /* ---------------------------------------------------------------- */
-  .np-lane {
+  /* Handshake lane */
+  .net-lane {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     gap: 1rem;
-    border: 1px solid var(--np-border);
-    border-radius: 0.85rem;
-    background: var(--np-bg);
+    border: 1px solid rgba(56, 189, 248, 0.14);
+    border-radius: 0.75rem;
+    background: radial-gradient(ellipse at 50% 50%, rgba(56, 189, 248, 0.05), transparent 70%), rgba(4, 10, 22, 0.6);
     padding: 1.5rem 1rem;
     min-height: 180px;
-    margin-top: 1.75rem;
   }
-  .np-lane-col { display: flex; justify-content: center; }
-  .np-node {
+  .net-lane-col { display: flex; justify-content: center; }
+  .net-node {
     padding: 0.5rem 1.1rem;
     border-radius: 0.5rem;
-    border: 1px solid var(--np-border-strong);
-    background: var(--np-card);
-    font-family: var(--np-mono);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    background: rgba(56, 189, 248, 0.06);
+    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.06), 0 0 18px rgba(56, 189, 248, 0.12);
+    font-family: monospace;
     font-size: 0.8rem;
-    color: var(--np-text);
+    color: var(--white);
   }
-  .np-lane-wire { position: relative; width: 180px; min-height: 150px; }
-  @media (min-width: 640px) { .np-lane-wire { width: 260px; } }
+  .net-lane-wire {
+    position: relative;
+    width: 180px;
+    min-height: 150px;
+  }
+  @media (min-width: 640px) { .net-lane-wire { width: 260px; } }
 
-  .np-wire-line {
+  .net-wire-line {
     position: absolute;
     top: 50%;
     left: 0;
@@ -619,215 +581,228 @@ import Layout from "../../layouts/Layout.astro";
     transform: translateY(-50%);
     background-image: repeating-linear-gradient(
       90deg,
-      var(--np-border-strong) 0px,
-      var(--np-border-strong) 6px,
+      var(--net-line) 0px,
+      var(--net-line) 6px,
       transparent 6px,
       transparent 16px
     );
     background-size: 32px 2px;
-    opacity: 0.7;
-    animation: np-wire-flow 1.1s linear infinite;
+    opacity: 0.3;
+    animation: net-wire-flow 1s linear infinite;
   }
-  @keyframes np-wire-flow { to { background-position: -32px 0; } }
 
-  .np-packet {
+  @keyframes net-wire-flow {
+    to { background-position: -32px 0; }
+  }
+
+  .net-packet {
     position: absolute;
     top: 0;
     left: 0;
     transform: translate(-50%, -50%);
     padding: 0.3rem 0.7rem;
     border-radius: 9999px;
-    font-family: var(--np-mono);
+    font-family: monospace;
     font-size: 0.68rem;
     white-space: nowrap;
-    background: var(--np-accent-soft);
-    border: 1px solid var(--np-accent);
-    color: var(--np-accent);
-    z-index: 2;
+    background: rgba(56, 189, 248, 0.16);
+    border: 1px solid var(--sec);
+    color: var(--sec);
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
     opacity: 0;
+    z-index: 2;
     pointer-events: none;
   }
-  .np-packet.fin { background: var(--np-amber-soft); border-color: var(--np-amber); color: var(--np-amber); }
+  .net-packet.fin { background: rgba(245, 158, 11, 0.16); border-color: #f59e0b; color: #f59e0b; box-shadow: 0 0 14px rgba(245, 158, 11, 0.3); }
 
-  .np-log {
+  .net-log {
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
-    font-family: var(--np-mono);
+    font-family: monospace;
     font-size: 0.75rem;
-    color: var(--np-text-soft);
+    color: var(--white-icon);
     max-height: 160px;
     overflow-y: auto;
-    margin-top: 1.25rem;
   }
-  .np-log-line { opacity: 0; animation: np-fade-in 0.3s ease forwards; }
-  .np-log-line .tag { color: var(--np-accent); }
-  .np-log-line .tag.fin { color: var(--np-amber); }
-  @keyframes np-fade-in {
+  .net-log-line { opacity: 0; animation: net-fade-in 0.3s ease forwards; }
+  .net-log-line .tag { color: var(--sec); }
+  .net-log-line .tag.fin { color: #f59e0b; }
+
+  @keyframes net-fade-in {
     from { opacity: 0; transform: translateY(-2px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ---------------------------------------------------------------- */
-  /* PACKET LOSS SPLIT VIEW                                             */
-  /* ---------------------------------------------------------------- */
-  .np-split { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1.75rem; }
-  @media (min-width: 768px) { .np-split { grid-template-columns: 1fr 1fr; } }
-  .np-split-label {
-    font-family: var(--np-mono);
-    font-size: 0.72rem;
+  /* Packet loss split view */
+  .net-split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 768px) { .net-split { grid-template-columns: 1fr 1fr; } }
+  .net-split-label {
+    font-family: monospace;
+    font-size: 0.75rem;
     letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--np-text-soft);
+    color: var(--white-icon);
+    opacity: 0.7;
     margin-bottom: 0.5rem;
   }
-  .np-track {
+  .net-track {
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
     min-height: 3rem;
-    border: 1px solid var(--np-border);
-    border-radius: 0.65rem;
-    background: var(--np-bg);
+    border: 1px solid rgba(56, 189, 248, 0.14);
+    border-radius: 0.6rem;
+    background: rgba(4, 10, 22, 0.6);
     padding: 0.6rem;
   }
-  .np-split-stats { margin-top: 0.55rem; font-family: var(--np-mono); font-size: 0.75rem; color: var(--np-text-soft); }
-  .np-stat-ok { color: var(--np-green); }
-  .np-stat-warn { color: var(--np-amber); }
-  .np-stat-bad { color: var(--np-red); }
+  .net-split-stats { margin-top: 0.5rem; }
 
-  .np-packet-chip {
+  .net-packet-chip {
     width: 1.7rem;
     height: 1.7rem;
-    border-radius: 0.4rem;
+    border-radius: 0.35rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--np-mono);
+    font-family: monospace;
     font-size: 0.65rem;
-    border: 1px solid var(--np-border-strong);
-    color: var(--np-text-soft);
-    background: var(--np-card);
+    border: 1px solid rgba(56, 189, 248, 0.16);
+    color: var(--white-icon);
+    background: rgba(255, 255, 255, 0.03);
     transition: all 0.25s ease;
   }
-  .np-packet-chip.delivered { border-color: var(--np-green); color: var(--np-green); background: var(--np-green-soft); }
-  .np-packet-chip.lost { border-color: var(--np-red); color: var(--np-red); background: var(--np-red-soft); text-decoration: line-through; }
-  .np-packet-chip.retrans { border-color: var(--np-amber); color: var(--np-amber); background: var(--np-amber-soft); }
+  .net-packet-chip.delivered { border-color: var(--sec); color: var(--sec); background: rgba(56, 189, 248, 0.14); box-shadow: 0 0 10px rgba(56, 189, 248, 0.25); }
+  .net-packet-chip.lost { border-color: #ef4444; color: #ef4444; background: rgba(239, 68, 68, 0.12); text-decoration: line-through; }
+  .net-packet-chip.retrans { border-color: #f59e0b; color: #f59e0b; background: rgba(245, 158, 11, 0.12); }
 
-  /* ---------------------------------------------------------------- */
-  /* FRAMED CHAT                                                        */
-  /* ---------------------------------------------------------------- */
-  .np-frame-preview { margin-top: 1rem; font-family: var(--np-mono); font-size: 0.72rem; color: var(--np-text-soft); min-height: 1em; }
-
-  .np-chat {
+  /* Chat */
+  .net-chat {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     max-height: 260px;
     overflow-y: auto;
-    border: 1px solid var(--np-border);
-    border-radius: 0.85rem;
-    background: var(--np-bg);
+    border: 1px solid rgba(56, 189, 248, 0.14);
+    border-radius: 0.75rem;
+    background: rgba(4, 10, 22, 0.6);
     padding: 1rem;
-    margin-top: 1rem;
   }
-  .np-chat-empty { font-size: 0.8rem; color: var(--np-text-soft); opacity: 0.6; font-family: var(--np-mono); }
-  .np-chat-msg { display: flex; flex-direction: column; gap: 0.2rem; animation: np-fade-in 0.3s ease; }
-  .np-chat-frame { align-self: flex-start; font-family: var(--np-mono); font-size: 0.65rem; color: var(--np-text-soft); opacity: 0.75; }
-  .np-chat-bubble {
+  .net-chat-empty { font-size: 0.8rem; color: var(--white-icon); opacity: 0.5; font-family: monospace; }
+  .net-chat-msg {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    animation: net-fade-in 0.3s ease;
+  }
+  .net-chat-frame {
+    align-self: flex-start;
+    font-family: monospace;
+    font-size: 0.65rem;
+    color: var(--white-icon);
+    opacity: 0.6;
+  }
+  .net-chat-bubble {
     align-self: flex-start;
     max-width: 80%;
-    padding: 0.5rem 0.9rem;
-    border-radius: 0.7rem;
-    border: 1px solid var(--np-accent);
-    background: var(--np-accent-soft);
-    color: var(--np-text);
+    padding: 0.5rem 0.85rem;
+    border-radius: 0.6rem;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--white);
     font-size: 0.85rem;
   }
 
   /* ---------------------------------------------------------------- */
   /* REFERENCE / DOCUMENTATION                                          */
   /* ---------------------------------------------------------------- */
-  .np-reference { margin-top: 3rem; }
+  .net-ref-group { margin-top: 2.75rem; }
+  .net-ref-group:first-of-type { margin-top: 2.5rem; }
 
-  .np-ref-group { margin-top: 2.75rem; }
-  .np-ref-group:first-of-type { margin-top: 2.5rem; }
-
-  .np-ref-group-label {
+  .net-ref-group-label {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-family: var(--np-mono);
+    font-family: monospace;
     font-size: 0.72rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--np-text-soft);
+    color: var(--white-icon);
+    opacity: 0.85;
     margin-bottom: 0.5rem;
     padding-bottom: 0.75rem;
-    border-bottom: 1px solid var(--np-border);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.14);
   }
-  .np-num-inline { color: var(--np-accent); }
+  .net-num-inline { color: var(--sec); }
 
-  .np-ref-entry { border-top: 1px solid var(--np-border); padding: 1.5rem 0; }
-  .np-ref-entry:first-of-type { border-top: none; }
+  .net-ref-entry { border-top: 1px solid rgba(56, 189, 248, 0.1); padding: 1.5rem 0; }
+  .net-ref-entry:first-of-type { border-top: none; }
 
-  .np-ref-term {
+  .net-ref-term {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
     gap: 0.6rem;
     font-size: 1.02rem;
     font-weight: 600;
-    color: var(--np-text);
+    color: var(--white);
     margin-bottom: 0.55rem;
   }
-  .np-ref-tag {
-    font-family: var(--np-mono);
+  .net-ref-tag {
+    font-family: monospace;
     font-size: 0.66rem;
     font-weight: 400;
     letter-spacing: 0.04em;
-    color: var(--np-accent);
-    background: var(--np-accent-soft);
+    color: var(--sec);
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
     padding: 0.15rem 0.55rem;
     border-radius: 9999px;
   }
 
-  .np-ref-entry p {
-    color: var(--np-text-soft);
+  .net-ref-entry p {
+    color: var(--white-icon);
     line-height: 1.7;
     font-size: 0.95rem;
   }
-  .np-ref-entry p + p { margin-top: 0.65rem; }
+  .net-ref-entry p + p { margin-top: 0.65rem; }
 
-  .np-ref-steps {
+  .net-ref-steps {
     margin: 0.85rem 0 0.5rem;
     padding-left: 1.3rem;
-    color: var(--np-text-soft);
+    color: var(--white-icon);
     font-size: 0.92rem;
     line-height: 1.7;
   }
-  .np-ref-steps li { margin-bottom: 0.3rem; }
+  .net-ref-steps li { margin-bottom: 0.3rem; }
 
-  .np-ref-meta {
+  .net-ref-meta {
     margin-top: 0.75rem !important;
-    font-family: var(--np-mono);
+    font-family: monospace;
     font-size: 0.72rem !important;
-    color: var(--np-text-soft);
-    opacity: 0.8;
+    color: var(--white-icon);
+    opacity: 0.7;
   }
 
-  .np-reference code,
-  .np-ref-entry code {
-    font-family: var(--np-mono);
+  .net-reference code,
+  .net-ref-entry code {
+    font-family: monospace;
     font-size: 0.85em;
-    background: var(--np-accent-soft);
-    color: var(--np-text);
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.18);
+    color: var(--sec);
     padding: 0.1rem 0.4rem;
     border-radius: 0.35rem;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .np-wire-line { animation: none; }
+    .net-wire-line,
+    .net-page :global(.shiny-sec) {
+      animation: none;
+    }
   }
 </style>
 
@@ -837,6 +812,115 @@ import Layout from "../../layouts/Layout.astro";
   }
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ================================================================= */
+  /* ELECTRIC NETWORK BACKGROUND — animated node graph                  */
+  /* ================================================================= */
+  (function backgroundModule() {
+    const canvas = document.getElementById("net-bg");
+    if (!(canvas instanceof HTMLCanvasElement)) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const canvasEl = canvas;
+    const context = ctx;
+
+    type Node = { x: number; y: number; vx: number; vy: number };
+
+    let nodes: Node[] = [];
+    let width = 0;
+    let height = 0;
+    let frame = 0;
+    let running = false;
+
+    function resize(): void {
+      width = canvasEl.width = window.innerWidth;
+      height = canvasEl.height = window.innerHeight;
+
+      const count = Math.min(80, Math.max(24, Math.floor((width * height) / 16000)));
+
+      nodes = Array.from({ length: count }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.22,
+        vy: (Math.random() - 0.5) * 0.22,
+      }));
+    }
+
+    function step(): void {
+      for (const node of nodes) {
+        node.x += node.vx;
+        node.y += node.vy;
+
+        if (node.x < 0 || node.x > width) node.vx *= -1;
+        if (node.y < 0 || node.y > height) node.vy *= -1;
+      }
+    }
+
+    function draw(): void {
+      context.clearRect(0, 0, width, height);
+
+      const linkDistance = 150;
+
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const a = nodes[i];
+          const b = nodes[j];
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < linkDistance) {
+            const alpha = (1 - dist / linkDistance) * 0.22;
+            context.strokeStyle = `rgba(56, 189, 248, ${alpha.toFixed(3)})`;
+            context.lineWidth = 1;
+            context.beginPath();
+            context.moveTo(a.x, a.y);
+            context.lineTo(b.x, b.y);
+            context.stroke();
+          }
+        }
+      }
+
+      for (const node of nodes) {
+        context.fillStyle = "rgba(103, 232, 249, 0.65)";
+        context.beginPath();
+        context.arc(node.x, node.y, 1.6, 0, Math.PI * 2);
+        context.fill();
+      }
+
+      if (!reduceMotion) {
+        step();
+      }
+
+      if (running) frame = requestAnimationFrame(draw);
+    }
+
+    function start(): void {
+      if (running) return;
+      running = true;
+      frame = requestAnimationFrame(draw);
+    }
+
+    function stop(): void {
+      running = false;
+      if (frame) cancelAnimationFrame(frame);
+    }
+
+    window.addEventListener("resize", resize);
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        stop();
+      } else {
+        start();
+      }
+    });
+
+    resize();
+    start();
+  })();
 
   /* ================================================================= */
   /* TCP HANDSHAKE                                                      */
@@ -855,19 +939,19 @@ import Layout from "../../layouts/Layout.astro";
 
     function setState(text: string, cls?: "open" | "closing") {
       stateEl!.textContent = text;
-      stateEl!.className = "np-pill np-pill-status ml-auto" + (cls ? ` ${cls}` : "");
+      stateEl!.className = "net-pill ml-auto" + (cls ? ` ${cls}` : "");
     }
 
     function log(html: string) {
       const line = document.createElement("div");
-      line.className = "np-log-line";
+      line.className = "net-log-line";
       line.innerHTML = html;
       logEl!.appendChild(line);
       logEl!.scrollTop = logEl!.scrollHeight;
     }
 
     function clearPackets() {
-      wireEl!.querySelectorAll(".np-packet").forEach((el) => el.remove());
+      wireEl!.querySelectorAll(".net-packet").forEach((el) => el.remove());
     }
 
     /**
@@ -880,7 +964,7 @@ import Layout from "../../layouts/Layout.astro";
      */
     async function sendPacket(label: string, fromLeft: boolean, cls = "") {
       const packet = document.createElement("div");
-      packet.className = "np-packet" + (cls ? ` ${cls}` : "");
+      packet.className = "net-packet" + (cls ? ` ${cls}` : "");
       packet.textContent = `${fromLeft ? "▸" : "◂"} ${label}`;
       wireEl!.appendChild(packet);
 
@@ -992,7 +1076,7 @@ import Layout from "../../layouts/Layout.astro";
 
     function chip(label: string, cls: string) {
       const el = document.createElement("div");
-      el.className = `np-packet-chip ${cls}`;
+      el.className = `net-packet-chip ${cls}`;
       el.textContent = label;
       return el;
     }
@@ -1087,24 +1171,24 @@ import Layout from "../../layouts/Layout.astro";
     }
 
     function renderEmpty() {
-      log!.innerHTML = `<div class="np-chat-empty">No messages yet &mdash; send one to see it framed and delivered.</div>`;
+      log!.innerHTML = `<div class="net-chat-empty">No messages yet &mdash; send one to see it framed and delivered.</div>`;
     }
 
     async function send() {
       const text = input.value.trim();
       if (!text) return;
 
-      const emptyState = log!.querySelector(".np-chat-empty");
+      const emptyState = log!.querySelector(".net-chat-empty");
       if (emptyState) emptyState.remove();
 
       const len = new TextEncoder().encode(text).length;
       const lenHex = len.toString(16).padStart(4, "0");
 
       const wrapper = document.createElement("div");
-      wrapper.className = "np-chat-msg";
+      wrapper.className = "net-chat-msg";
 
       const frameLine = document.createElement("div");
-      frameLine.className = "np-chat-frame";
+      frameLine.className = "net-chat-frame";
       frameLine.textContent = `sending frame \u2014 length=0x${lenHex} (${len} bytes) \u2192 unframing on receipt\u2026`;
       wrapper.appendChild(frameLine);
 
@@ -1118,7 +1202,7 @@ import Layout from "../../layouts/Layout.astro";
       await sleep(500);
 
       const bubble = document.createElement("div");
-      bubble.className = "np-chat-bubble";
+      bubble.className = "net-chat-bubble";
       bubble.textContent = text;
       wrapper.appendChild(bubble);
       log!.scrollTop = log!.scrollHeight;
