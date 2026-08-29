@@ -60,6 +60,7 @@ import Layout from "../../layouts/Layout.astro";
           <div class="hero-key">
             <span><i class="key-dot compare"></i>comparing</span>
             <span><i class="key-dot swap"></i>writing</span>
+            <span><i class="key-dot pivot"></i>pivot</span>
             <span><i class="key-dot sorted"></i>settled</span>
           </div>
         </header>
@@ -72,8 +73,10 @@ import Layout from "../../layouts/Layout.astro";
               <div class="section-label">SORTING ALGORITHMS</div>
               <h2>Watch algorithms sort data.</h2>
               <p>
-                Compare five classic sorting algorithms and observe their
-                comparisons and writes in real time.
+                Compare five classic sorting algorithms. Labeled pointers
+                (i, j, min, key, pivot…) track exactly which values are
+                involved at every step, so the logic reads clearly just by
+                watching — no narration required.
               </p>
             </div>
           </div>
@@ -108,8 +111,10 @@ import Layout from "../../layouts/Layout.astro";
                 <span id="sort-algo-complexity">O(n log n) avg · O(n²) worst</span>
               </div>
               <p id="sort-algo-desc">
-                Picks a pivot, partitions the array so smaller values land
-                left and larger values land right, then repeats on each side.
+                Picks a pivot (shown in red) and rearranges its subarray so
+                smaller values end up left of it and larger values end up
+                right, then repeats on each side. i marks the boundary, j is
+                the scanning pointer.
               </p>
             </div>
 
@@ -117,8 +122,10 @@ import Layout from "../../layouts/Layout.astro";
               <div id="sort-stage" class="bars" aria-label="Sorting visualization"></div>
             </div>
 
+            <div id="sort-pointers" class="pointer-row" aria-hidden="true"></div>
+
             <div id="sort-narration" class="formula">
-              Ready — press Run to sort 42 bars with Quick Sort.
+              Ready — press Run to sort 20 bars with Quick Sort.
             </div>
 
             <div class="metrics">
@@ -130,6 +137,7 @@ import Layout from "../../layouts/Layout.astro";
             <div class="legend">
               <span><i class="legend-dot compare"></i>Comparing</span>
               <span><i class="legend-dot swap"></i>Swapping</span>
+              <span><i class="legend-dot pivot"></i>Pivot</span>
               <span><i class="legend-dot sorted"></i>Sorted</span>
             </div>
           </div>
@@ -269,9 +277,9 @@ import Layout from "../../layouts/Layout.astro";
                   more than doubles it.
                 </p>
                 <p>
-                  It matters at scale, not on 42 bars: sorting 42 items,
-                  bubble sort's worst case is around 861 comparisons and
-                  quick sort's average case is around 227. Sort 42,000 items
+                  It matters at scale, not on 20 bars: sorting 20 items,
+                  bubble sort's worst case is around 190 comparisons and
+                  quick sort's average case is around 86. Sort 20,000 items
                   instead and that gap stops being academic — bubble sort's
                   <code>n²</code> term dominates completely.
                 </p>
@@ -862,6 +870,7 @@ import Layout from "../../layouts/Layout.astro";
 
   .key-dot.compare { background: var(--olive-bright); }
   .key-dot.swap { background: var(--gold); }
+  .key-dot.pivot { background: var(--rust); }
   .key-dot.sorted { background: var(--olive-deep); }
 
   .demo-section,
@@ -1051,11 +1060,12 @@ import Layout from "../../layouts/Layout.astro";
   }
 
   .viz-bar {
+    position: relative;
     flex: 1;
     min-width: 2px;
     border-radius: 2px 2px 0 0;
     background: rgba(238, 240, 226, 0.2);
-    transition: height 50ms linear, background 100ms ease;
+    transition: height 50ms linear, background 100ms ease, opacity 200ms ease;
   }
 
   .viz-bar.compare {
@@ -1068,8 +1078,48 @@ import Layout from "../../layouts/Layout.astro";
     box-shadow: 0 0 12px rgba(217, 169, 74, 0.4);
   }
 
+  .viz-bar.pivot {
+    background: var(--rust);
+    box-shadow: 0 0 12px rgba(181, 86, 58, 0.45);
+  }
+
   .viz-bar.sorted {
     background: var(--olive-deep);
+  }
+
+  .viz-bar.dim {
+    opacity: 0.28;
+  }
+
+  .bar-value {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 4px;
+
+    color: var(--ink-faint);
+    font-size: 0.58rem;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .pointer-row {
+    display: flex;
+    gap: 3px;
+    padding: 0.4rem 1.1rem 0;
+  }
+
+  .pointer-slot {
+    flex: 1;
+    min-width: 2px;
+    text-align: center;
+
+    color: transparent;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: color 150ms ease;
   }
 
   .metrics {
@@ -1124,6 +1174,7 @@ import Layout from "../../layouts/Layout.astro";
 
   .legend-dot.compare { background: var(--olive-bright); }
   .legend-dot.swap { background: var(--gold); }
+  .legend-dot.pivot { background: var(--rust); }
   .legend-dot.sorted { background: var(--olive-deep); }
   .legend-dot.start { background: var(--olive-bright); }
   .legend-dot.wall { background: rgba(238, 240, 226, 0.3); }
@@ -1723,6 +1774,7 @@ import Layout from "../../layouts/Layout.astro";
 
   (() => {
     const stageElement = document.getElementById("sort-stage");
+    const pointerElement = document.getElementById("sort-pointers");
     const algorithmElement = document.getElementById("sort-algo");
     const runButtonElement = document.getElementById("sort-run");
     const shuffleButtonElement =
@@ -1741,6 +1793,7 @@ import Layout from "../../layouts/Layout.astro";
 
     if (
       !(stageElement instanceof HTMLDivElement) ||
+      !(pointerElement instanceof HTMLDivElement) ||
       !(algorithmElement instanceof HTMLSelectElement) ||
       !(runButtonElement instanceof HTMLButtonElement) ||
       !(shuffleButtonElement instanceof HTMLButtonElement) ||
@@ -1757,6 +1810,7 @@ import Layout from "../../layouts/Layout.astro";
     }
 
     const stage = stageElement;
+    const pointerRow = pointerElement;
     const algorithm = algorithmElement;
     const runButton = runButtonElement;
     const shuffleButton = shuffleButtonElement;
@@ -1769,7 +1823,7 @@ import Layout from "../../layouts/Layout.astro";
     const algoComplexityOutput = algoComplexityElement;
     const algoDescOutput = algoDescElement;
 
-    const COUNT = 42;
+    const COUNT = 20;
 
     type AlgoKey =
       | "bubble"
@@ -1785,27 +1839,27 @@ import Layout from "../../layouts/Layout.astro";
       bubble: {
         name: "Bubble Sort",
         complexity: "O(n²) avg/worst · O(n) best",
-        desc: "Walks the array repeatedly, swapping any two neighbors that are out of order. Each full pass pushes the next-largest value to its final spot — like a bubble rising to the top.",
+        desc: "Walks the array repeatedly, swapping any two neighbors that are out of order. The j / j+1 tags below the bars mark the exact pair being compared right now.",
       },
       selection: {
         name: "Selection Sort",
         complexity: "O(n²) in every case",
-        desc: "Scans the unsorted remainder for the smallest value, then swaps it to the front. One value gets finalized per pass, so it always takes the same number of comparisons regardless of input.",
+        desc: "Scans the unsorted remainder for the smallest value, then swaps it to the front. min marks the smallest value found so far; j is the scanning pointer checking each candidate.",
       },
       insertion: {
         name: "Insertion Sort",
         complexity: "O(n²) avg/worst · O(n) best",
-        desc: "Grows a sorted section one value at a time, sliding each new value left past anything bigger than it — the way you'd sort playing cards in your hand.",
+        desc: "Grows a sorted section one value at a time, sliding each new value left past anything bigger than it. key follows the value being inserted as it slides into place.",
       },
       merge: {
         name: "Merge Sort",
         complexity: "O(n log n) in every case",
-        desc: "Splits the array in half recursively until pieces are trivially sorted, then merges pairs of sorted halves back together in order.",
+        desc: "Splits the array in half recursively, then merges pairs of sorted halves back together. Dimmed bars are outside the current merge window; L and R mark the fronts of each half being compared.",
       },
       quick: {
         name: "Quick Sort",
         complexity: "O(n log n) avg · O(n²) worst",
-        desc: "Picks a pivot, partitions the array so smaller values land left and larger values land right, then repeats that on each side.",
+        desc: "Picks a pivot (shown in red) and rearranges its subarray so smaller values end up left of it and larger values end up right, then repeats on each side. i marks the boundary, j is the scanning pointer.",
       },
     };
 
@@ -1820,13 +1874,19 @@ import Layout from "../../layouts/Layout.astro";
 
     let values: number[] = [];
     let bars: HTMLDivElement[] = [];
+    let valueLabels: HTMLSpanElement[] = [];
+    let pointerSlots: HTMLDivElement[] = [];
     let running = false;
 
     let comparisons = 0;
     let swaps = 0;
 
+    const OLIVE = "var(--olive-bright)";
+    const GOLD = "var(--gold)";
+    const RUST = "var(--rust)";
+
     const delay = (): number =>
-      Math.max(8, 220 - Number(speed.value) * 2);
+      Math.max(8, 260 - Number(speed.value) * 2.2);
 
     function createArray(): void {
       values = Array.from(
@@ -1837,16 +1897,30 @@ import Layout from "../../layouts/Layout.astro";
 
     function render(): void {
       stage.innerHTML = "";
+      pointerRow.innerHTML = "";
 
-      bars = values.map((value) => {
+      bars = [];
+      valueLabels = [];
+      pointerSlots = [];
+
+      values.forEach((value) => {
         const bar = document.createElement("div");
-
         bar.className = "viz-bar";
         bar.style.height = `${value}%`;
 
-        stage.appendChild(bar);
+        const label = document.createElement("span");
+        label.className = "bar-value";
+        label.textContent = String(value);
+        bar.appendChild(label);
 
-        return bar;
+        stage.appendChild(bar);
+        bars.push(bar);
+        valueLabels.push(label);
+
+        const slot = document.createElement("div");
+        slot.className = "pointer-slot";
+        pointerRow.appendChild(slot);
+        pointerSlots.push(slot);
       });
     }
 
@@ -1855,17 +1929,50 @@ import Layout from "../../layouts/Layout.astro";
       swapsOutput.textContent = String(swaps);
     }
 
+    function clearPointers(): void {
+      pointerSlots.forEach((slot) => {
+        slot.textContent = "";
+        slot.style.color = "transparent";
+      });
+    }
+
+    function setPointer(index: number, text: string, color: string): void {
+      const slot = pointerSlots[index];
+
+      if (slot) {
+        slot.textContent = text;
+        slot.style.color = color;
+      }
+    }
+
+    function setActiveRange(left: number, right: number): void {
+      bars.forEach((bar, index) => {
+        bar.classList.toggle("dim", index < left || index > right);
+      });
+    }
+
+    function clearActiveRange(): void {
+      bars.forEach((bar) => bar.classList.remove("dim"));
+    }
+
     function clearMarks(): void {
       bars.forEach((bar) => {
         bar.classList.remove("compare", "swap");
       });
+
+      clearPointers();
     }
 
     function updateBar(index: number): void {
       const bar = bars[index];
+      const label = valueLabels[index];
 
       if (bar) {
         bar.style.height = `${values[index]}%`;
+      }
+
+      if (label) {
+        label.textContent = String(values[index]);
       }
     }
 
@@ -1874,7 +1981,7 @@ import Layout from "../../layouts/Layout.astro";
       className: "compare" | "swap",
       note?: string
     ): Promise<void> {
-      clearMarks();
+      bars.forEach((bar) => bar.classList.remove("compare", "swap"));
 
       indices.forEach((index) => {
         bars[index]?.classList.add(className);
@@ -1895,6 +2002,10 @@ import Layout from "../../layouts/Layout.astro";
           comparisons++;
           updateMetrics();
 
+          clearPointers();
+          setPointer(j, "j", OLIVE);
+          setPointer(j + 1, "j+1", GOLD);
+
           await highlight(
             [j, j + 1],
             "compare",
@@ -1914,6 +2025,10 @@ import Layout from "../../layouts/Layout.astro";
             updateBar(j + 1);
             updateMetrics();
 
+            clearPointers();
+            setPointer(j, "j", OLIVE);
+            setPointer(j + 1, "j+1", GOLD);
+
             await highlight(
               [j, j + 1],
               "swap",
@@ -1929,6 +2044,8 @@ import Layout from "../../layouts/Layout.astro";
           break;
         }
       }
+
+      clearPointers();
     }
 
     async function selectionSort(): Promise<void> {
@@ -1938,6 +2055,10 @@ import Layout from "../../layouts/Layout.astro";
         for (let j = i + 1; j < values.length; j++) {
           comparisons++;
           updateMetrics();
+
+          clearPointers();
+          setPointer(minimum, "min", OLIVE);
+          setPointer(j, "j", GOLD);
 
           await highlight(
             [minimum, j],
@@ -1962,6 +2083,10 @@ import Layout from "../../layouts/Layout.astro";
           updateBar(minimum);
           updateMetrics();
 
+          clearPointers();
+          setPointer(i, "i", OLIVE);
+          setPointer(minimum, "min", GOLD);
+
           await highlight(
             [i, minimum],
             "swap",
@@ -1971,6 +2096,8 @@ import Layout from "../../layouts/Layout.astro";
 
         bars[i]?.classList.add("sorted");
       }
+
+      clearPointers();
     }
 
     async function insertionSort(): Promise<void> {
@@ -1980,6 +2107,10 @@ import Layout from "../../layouts/Layout.astro";
         while (j > 0) {
           comparisons++;
           updateMetrics();
+
+          clearPointers();
+          setPointer(j, "key", GOLD);
+          setPointer(j - 1, "j-1", OLIVE);
 
           await highlight(
             [j - 1, j],
@@ -2002,6 +2133,9 @@ import Layout from "../../layouts/Layout.astro";
           updateBar(j);
           updateMetrics();
 
+          clearPointers();
+          setPointer(j - 1, "key", GOLD);
+
           await highlight(
             [j - 1, j],
             "swap",
@@ -2011,6 +2145,8 @@ import Layout from "../../layouts/Layout.astro";
           j--;
         }
       }
+
+      clearPointers();
 
       bars.forEach((bar) => {
         bar.classList.add("sorted");
@@ -2023,6 +2159,9 @@ import Layout from "../../layouts/Layout.astro";
         middle: number,
         right: number
       ): Promise<void> {
+        setActiveRange(left, right);
+        clearPointers();
+
         const first = values.slice(left, middle + 1);
         const second = values.slice(middle + 1, right + 1);
 
@@ -2033,6 +2172,10 @@ import Layout from "../../layouts/Layout.astro";
         while (i < first.length && j < second.length) {
           comparisons++;
           updateMetrics();
+
+          clearPointers();
+          setPointer(left + i, "L", OLIVE);
+          setPointer(middle + 1 + j, "R", GOLD);
 
           await highlight(
             [left + i, middle + 1 + j],
@@ -2074,6 +2217,8 @@ import Layout from "../../layouts/Layout.astro";
           position++;
         }
 
+        clearPointers();
+
         await sleep(delay());
       }
 
@@ -2094,6 +2239,9 @@ import Layout from "../../layouts/Layout.astro";
 
       await sort(0, values.length - 1);
 
+      clearActiveRange();
+      clearPointers();
+
       bars.forEach((bar) => {
         bar.classList.add("sorted");
       });
@@ -2104,12 +2252,21 @@ import Layout from "../../layouts/Layout.astro";
         left: number,
         right: number
       ): Promise<number> {
+        setActiveRange(left, right);
+
         const pivot = values[right];
         let index = left;
+
+        bars[right]?.classList.add("pivot");
 
         for (let i = left; i < right; i++) {
           comparisons++;
           updateMetrics();
+
+          clearPointers();
+          setPointer(right, "pivot", RUST);
+          setPointer(index, "i", OLIVE);
+          setPointer(i, "j", GOLD);
 
           await highlight(
             [i, right],
@@ -2129,6 +2286,10 @@ import Layout from "../../layouts/Layout.astro";
             updateBar(i);
             updateMetrics();
 
+            clearPointers();
+            setPointer(right, "pivot", RUST);
+            setPointer(index, "i", OLIVE);
+
             await highlight(
               [index, i],
               "swap",
@@ -2138,6 +2299,9 @@ import Layout from "../../layouts/Layout.astro";
             index++;
           }
         }
+
+        bars[right]?.classList.remove("pivot");
+        clearPointers();
 
         [values[index], values[right]] = [
           values[right],
@@ -2177,7 +2341,11 @@ import Layout from "../../layouts/Layout.astro";
 
       await sort(0, values.length - 1);
 
+      clearActiveRange();
+      clearPointers();
+
       bars.forEach((bar) => {
+        bar.classList.remove("pivot");
         bar.classList.add("sorted");
       });
     }
@@ -2199,8 +2367,10 @@ import Layout from "../../layouts/Layout.astro";
       updateMetrics();
 
       bars.forEach((bar) => {
-        bar.classList.remove("sorted");
+        bar.classList.remove("sorted", "dim", "pivot");
       });
+
+      clearPointers();
 
       statusOutput.textContent = "Running";
 
@@ -2219,8 +2389,10 @@ import Layout from "../../layouts/Layout.astro";
       }
 
       clearMarks();
+      clearActiveRange();
 
       bars.forEach((bar) => {
+        bar.classList.remove("pivot");
         bar.classList.add("sorted");
       });
 
