@@ -3,70 +3,91 @@ import 'package:flutter/material.dart';
 import '../services/settlement_service.dart';
 
 class SettlementCard extends StatelessWidget {
-  final Transfer transfer;
-  final String Function(int) formatCents;
+  final Settlement settlement;
 
   const SettlementCard({
     super.key,
-    required this.transfer,
-    required this.formatCents,
+    required this.settlement,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 14,
-        vertical: 13,
-      ),
+      padding: const EdgeInsets.all(18),
+
       decoration: BoxDecoration(
-        color: const Color(0x0A6EE7B7),
-        borderRadius: BorderRadius.circular(14),
+        color: const Color(0xFF151515),
+
+        borderRadius: BorderRadius.circular(16),
+
         border: Border.all(
-          color: const Color(0x336EE7B7),
+          color: const Color(0xFF303030),
         ),
       ),
+
       child: Row(
         children: [
-          const Icon(
-            Icons.arrow_forward_rounded,
-            color: Color(0xFF6EE7B7),
-            size: 19,
+          CircleAvatar(
+            radius: 20,
+
+            backgroundColor:
+                const Color(0xFF15803D).withOpacity(0.14),
+
+            child: Text(
+              settlement.from.name.isEmpty
+                  ? '?'
+                  : settlement.from.name[0].toUpperCase(),
+
+              style: const TextStyle(
+                color: Color(0xFF15803D),
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
-          const SizedBox(width: 10),
+
+          const SizedBox(width: 12),
+
           Expanded(
-            child: Text.rich(
-              TextSpan(
+            child: RichText(
+              text: TextSpan(
+                style: const TextStyle(
+                  color: Color(0xFFAAAAAA),
+                  fontSize: 14,
+                ),
+
                 children: [
                   TextSpan(
-                    text: transfer.from,
+                    text: settlement.from.name,
                     style: const TextStyle(
-                      fontWeight: FontWeight.bold,
                       color: Colors.white,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
+
                   const TextSpan(
                     text: ' pays ',
-                    style: TextStyle(
-                      color: Colors.white54,
-                    ),
                   ),
+
                   TextSpan(
-                    text: transfer.to,
+                    text: settlement.to.name,
                     style: const TextStyle(
-                      fontWeight: FontWeight.bold,
                       color: Colors.white,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ],
               ),
             ),
           ),
+
+          const SizedBox(width: 12),
+
           Text(
-            formatCents(transfer.cents),
+            '€${settlement.amount.toStringAsFixed(2)}',
             style: const TextStyle(
-              color: Color(0xFF6EE7B7),
-              fontWeight: FontWeight.bold,
+              color: Color(0xFF15803D),
+              fontSize: 17,
+              fontWeight: FontWeight.w700,
             ),
           ),
         ],

@@ -1,5 +1,5 @@
 class Person {
-  final int id;
+  final String id;
   final String name;
 
   const Person({
@@ -8,7 +8,7 @@ class Person {
   });
 
   Person copyWith({
-    int? id,
+    String? id,
     String? name,
   }) {
     return Person(

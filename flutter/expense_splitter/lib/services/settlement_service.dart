@@ -1,124 +1,70 @@
 import '../models/expense.dart';
 import '../models/person.dart';
 
-class Balance {
-  final int personId;
-  final String name;
+class Settlement {
+  final Person from;
+  final Person to;
+  final double amount;
 
-  /// Positive = person should receive money.
-  /// Negative = person owes money.
-  int cents;
-
-  Balance({
-    required this.personId,
-    required this.name,
-    required this.cents,
-  });
-}
-
-class Transfer {
-  final String from;
-  final String to;
-  final int cents;
-
-  const Transfer({
+  const Settlement({
     required this.from,
     required this.to,
-    required this.cents,
+    required this.amount,
   });
 }
 
 class SettlementService {
-  static int calculateTotal(List<Expense> expenses) {
-    return expenses.fold(
-      0,
-      (sum, expense) => sum + expense.amountCents,
-    );
-  }
-
-  static List<Balance> calculateBalances({
+  static List<Settlement> calculateSettlements({
     required List<Person> people,
     required List<Expense> expenses,
   }) {
-    if (people.isEmpty) {
-      return [];
+    final balances = <String, double>{};
+
+    for (final person in people) {
+      balances[person.id] = 0;
     }
-
-    final totalCents = calculateTotal(expenses);
-
-    final baseShare = totalCents ~/ people.length;
-    final remainder = totalCents % people.length;
-
-    final paidByPerson = <int, int>{
-      for (final person in people) person.id: 0,
-    };
 
     for (final expense in expenses) {
-      paidByPerson[expense.payerId] =
-          (paidByPerson[expense.payerId] ?? 0) +
-              expense.amountCents;
+      if (!balances.containsKey(expense.paidBy)) {
+        continue;
+      }
+
+      balances[expense.paidBy] =
+          (balances[expense.paidBy] ?? 0) + expense.amount;
+
+      if (expense.participants.isNotEmpty) {
+        final share = expense.amount / expense.participants.length;
+
+        for (final participant in expense.participants) {
+          if (!balances.containsKey(participant)) {
+            continue;
+          }
+
+          balances[participant] =
+              (balances[participant] ?? 0) - share;
+        }
+      }
     }
 
-    return List.generate(
-      people.length,
-      (index) {
-        final person = people[index];
+    final creditors = <MapEntry<String, double>>[];
+    final debtors = <MapEntry<String, double>>[];
 
-        // Distribute remaining cents deterministically.
-        final share = baseShare + (index < remainder ? 1 : 0);
-
-        return Balance(
-          personId: person.id,
-          name: person.name,
-          cents: (paidByPerson[person.id] ?? 0) - share,
+    balances.forEach((personId, balance) {
+      if (balance > 0.01) {
+        creditors.add(
+          MapEntry(personId, balance),
         );
-      },
-    );
-  }
+      } else if (balance < -0.01) {
+        debtors.add(
+          MapEntry(personId, -balance),
+        );
+      }
+    });
 
-  static List<Transfer> calculateTransfers({
-    required List<Person> people,
-    required List<Expense> expenses,
-  }) {
-    final balances = calculateBalances(
-      people: people,
-      expenses: expenses,
-    );
+    final settlements = <Settlement>[];
 
-    final creditors = balances
-        .where((balance) => balance.cents > 0)
-        .map(
-          (balance) => Balance(
-            personId: balance.personId,
-            name: balance.name,
-            cents: balance.cents,
-          ),
-        )
-        .toList();
-
-    final debtors = balances
-        .where((balance) => balance.cents < 0)
-        .map(
-          (balance) => Balance(
-            personId: balance.personId,
-            name: balance.name,
-            cents: balance.cents,
-          ),
-        )
-        .toList();
-
-    creditors.sort(
-      (a, b) => b.cents.compareTo(a.cents),
-    );
-
-    debtors.sort(
-      (a, b) => a.cents.compareTo(b.cents),
-    );
-
-    final transfers = <Transfer>[];
-
-    var creditorIndex = 0;
-    var debtorIndex = 0;
+    int creditorIndex = 0;
+    int debtorIndex = 0;
 
     while (
         creditorIndex < creditors.length &&
@@ -126,32 +72,86 @@ class SettlementService {
       final creditor = creditors[creditorIndex];
       final debtor = debtors[debtorIndex];
 
-      final amount = creditor.cents < -debtor.cents
-          ? creditor.cents
-          : -debtor.cents;
+      final amount = creditor.value < debtor.value
+          ? creditor.value
+          : debtor.value;
 
-      if (amount > 0) {
-        transfers.add(
-          Transfer(
-            from: debtor.name,
-            to: creditor.name,
-            cents: amount,
-          ),
-        );
-      }
+      final from = people.firstWhere(
+        (person) => person.id == debtor.key,
+      );
 
-      creditor.cents -= amount;
-      debtor.cents += amount;
+      final to = people.firstWhere(
+        (person) => person.id == creditor.key,
+      );
 
-      if (creditor.cents == 0) {
+      settlements.add(
+        Settlement(
+          from: from,
+          to: to,
+          amount: amount,
+        ),
+      );
+
+      final remainingCredit = creditor.value - amount;
+      final remainingDebt = debtor.value - amount;
+
+      creditors[creditorIndex] = MapEntry(
+        creditor.key,
+        remainingCredit,
+      );
+
+      debtors[debtorIndex] = MapEntry(
+        debtor.key,
+        remainingDebt,
+      );
+
+      if (remainingCredit.abs() < 0.01) {
         creditorIndex++;
       }
 
-      if (debtor.cents == 0) {
+      if (remainingDebt.abs() < 0.01) {
         debtorIndex++;
       }
     }
 
-    return transfers;
+    return settlements;
+  }
+
+  static Map<String, double> calculateBalances({
+    required List<Person> people,
+    required List<Expense> expenses,
+  }) {
+    final balances = <String, double>{};
+
+    for (final person in people) {
+      balances[person.id] = 0;
+    }
+
+    for (final expense in expenses) {
+      if (!balances.containsKey(expense.paidBy)) {
+        continue;
+      }
+
+      balances[expense.paidBy] =
+          (balances[expense.paidBy] ?? 0) + expense.amount;
+
+      if (expense.participants.isEmpty) {
+        continue;
+      }
+
+      final share =
+          expense.amount / expense.participants.length;
+
+      for (final participant in expense.participants) {
+        if (!balances.containsKey(participant)) {
+          continue;
+        }
+
+        balances[participant] =
+            (balances[participant] ?? 0) - share;
+      }
+    }
+
+    return balances;
   }
 }

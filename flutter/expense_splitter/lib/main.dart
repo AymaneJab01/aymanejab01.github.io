@@ -4,6 +4,7 @@ import 'screens/home_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const ExpenseSplitterApp());
 }
 
@@ -15,39 +16,51 @@ class ExpenseSplitterApp extends StatelessWidget {
     return MaterialApp(
       title: 'Expense Splitter',
       debugShowCheckedModeBanner: false,
+
       theme: ThemeData(
-        brightness: Brightness.dark,
         useMaterial3: true,
-        scaffoldBackgroundColor: const Color(0xFF080808),
+
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFFA476FF),
+          seedColor: const Color(0xFF15803D),
           brightness: Brightness.dark,
         ),
-        fontFamily: 'monospace',
+
+        scaffoldBackgroundColor: const Color(0xFF0B0B0B),
+
+        cardTheme: const CardThemeData(
+          color: Color(0xFF151515),
+          elevation: 0,
+          margin: EdgeInsets.zero,
+        ),
+
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
-          fillColor: const Color(0xFF111111),
+          fillColor: const Color(0xFF151515),
+
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(14),
             borderSide: const BorderSide(
-              color: Color(0x33202020),
+              color: Color(0xFF303030),
             ),
           ),
+
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(14),
             borderSide: const BorderSide(
-              color: Color(0x33444444),
+              color: Color(0xFF303030),
             ),
           ),
+
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(14),
             borderSide: const BorderSide(
-              color: Color(0xFFA476FF),
+              color: Color(0xFF15803D),
               width: 1.5,
             ),
           ),
         ),
       ),
+
       home: const HomeScreen(),
     );
   }

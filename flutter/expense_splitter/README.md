@@ -1,30 +1,33 @@
 # Expense Splitter
 
-A Flutter application for splitting group expenses and calculating
-the minimum number of payments required to settle the group.
+A Flutter application for managing shared group expenses.
 
 ## Features
 
 - Add people
-- Remove people
-- Add expenses
-- Select the person who paid
-- Exact cent-based calculations
-- Automatic equal-share calculation
-- Minimum-transfer settlement
-- Example data
-- Reset functionality
-- Responsive Material 3 interface
-- Dark portfolio-inspired UI
+- Add shared expenses
+- Select who paid
+- Select who participates
+- Automatically calculate individual shares
+- Calculate balances
+- Minimize the number of required transfers
+- Responsive desktop/mobile interface
+- Material 3 design
 
-## Requirements
+## Architecture
 
-Flutter 3.x
-Dart 3.4+
-
-## Installation
-
-Clone or create the project:
-
-```bash
-flutter create expense_splitter
+```text
+lib/
+├── main.dart
+├── models/
+│   ├── person.dart
+│   └── expense.dart
+├── services/
+│   └── settlement_service.dart
+├── screens/
+│   └── home_screen.dart
+└── widgets/
+    ├── summary_card.dart
+    ├── person_chip.dart
+    ├── expense_card.dart
+    └── settlement_card.dart
