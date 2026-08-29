@@ -1,33 +1,23 @@
-# Expense Splitter
+name: expense_splitter
+description: A modern Flutter expense splitting application.
+publish_to: "none"
 
-A Flutter application for managing shared group expenses.
+version: 1.0.0+1
 
-## Features
+environment:
+  sdk: ">=3.5.0 <4.0.0"
 
-- Add people
-- Add shared expenses
-- Select who paid
-- Select who participates
-- Automatically calculate individual shares
-- Calculate balances
-- Minimize the number of required transfers
-- Responsive desktop/mobile interface
-- Material 3 design
+dependencies:
+  flutter:
+    sdk: flutter
 
-## Architecture
+  cupertino_icons: ^1.0.8
 
-```text
-lib/
-├── main.dart
-├── models/
-│   ├── person.dart
-│   └── expense.dart
-├── services/
-│   └── settlement_service.dart
-├── screens/
-│   └── home_screen.dart
-└── widgets/
-    ├── summary_card.dart
-    ├── person_chip.dart
-    ├── expense_card.dart
-    └── settlement_card.dart
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
