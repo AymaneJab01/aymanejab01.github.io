@@ -17,51 +17,97 @@ import Layout from "../../layouts/Layout.astro";
 
       <div class="mb-16 md:mb-20">
         <div class="flex items-center gap-3 mb-5">
-          <span class="h-2 w-2 rounded-full bg-[var(--sec)] shadow-[0_0_12px_var(--sec)]"></span>
-          <span class="text-sm tracking-[0.25em] uppercase text-[var(--sec)] shiny-sec">
+          <span
+            class="h-2 w-2 rounded-full bg-[var(--sec)] shadow-[0_0_12px_var(--sec)]"
+          ></span>
+
+          <span
+            class="text-sm tracking-[0.25em] uppercase text-[var(--sec)] shiny-sec"
+          >
             Project 07 &middot; Flutter Mobile
           </span>
         </div>
 
-        <h1 class="text-4xl md:text-6xl font-medium tracking-tight text-[var(--white)]">
+        <h1
+          class="text-4xl md:text-6xl font-medium tracking-tight text-[var(--white)]"
+        >
           Splitting the bill, fairly<span class="text-[var(--sec)]">.</span>
         </h1>
 
-        <p class="mt-5 max-w-2xl text-lg text-[var(--white-icon)] leading-relaxed">
+        <p
+          class="mt-5 max-w-2xl text-lg text-[var(--white-icon)] leading-relaxed"
+        >
           A Flutter-inspired expense splitting experience. Add people, record
-          expenses, and calculate who owes whom with the minimum number of transfers.
+          expenses, and calculate who owes whom with the minimum number of
+          transfers.
         </p>
 
-        <p class="mt-3 max-w-2xl text-sm text-[var(--white-icon)] leading-relaxed opacity-70">
-          This page is the interactive web preview of the application's state model.
-          The production mobile version is intended for Flutter and Dart on iOS/Android.
+        <p
+          class="mt-3 max-w-2xl text-sm text-[var(--white-icon)] leading-relaxed opacity-70"
+        >
+          This page is the interactive web preview of the application's state
+          model. The production mobile version is intended for Flutter and Dart
+          on iOS/Android.
         </p>
 
         <div class="mt-7 flex flex-wrap gap-2">
-          <span class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]">Flutter &amp; Dart</span>
-          <span class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]">State Management</span>
-          <span class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]">Local Storage</span>
-          <span class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]">Settlement Algorithm</span>
+          <span
+            class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]"
+          >
+            Flutter &amp; Dart
+          </span>
+
+          <span
+            class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]"
+          >
+            State Management
+          </span>
+
+          <span
+            class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]"
+          >
+            Local Storage
+          </span>
+
+          <span
+            class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]"
+          >
+            Settlement Algorithm
+          </span>
         </div>
       </div>
 
       <div class="ex-card">
         <div class="ex-card-header">
           <div class="flex items-center gap-3">
-            <span class="font-mono text-xs tracking-[0.2em] text-[var(--sec)]">01</span>
-            <span class="h-px w-12 bg-[var(--sec)] opacity-40"></span>
-            <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]">
+            <span
+              class="font-mono text-xs tracking-[0.2em] text-[var(--sec)]"
+            >
+              01
+            </span>
+
+            <span
+              class="h-px w-12 bg-[var(--sec)] opacity-40"
+            ></span>
+
+            <span
+              class="text-xs uppercase tracking-widest text-[var(--white-icon)]"
+            >
               Interactive demo
             </span>
           </div>
 
-          <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4">
+          <h2
+            class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4"
+          >
             Expense splitter
           </h2>
 
-          <p class="mt-2 text-base text-[var(--white-icon)] leading-relaxed max-w-2xl">
-            Add people, log what everyone paid, and the settlement engine calculates
-            the transfers required to balance the group.
+          <p
+            class="mt-2 text-base text-[var(--white-icon)] leading-relaxed max-w-2xl"
+          >
+            Add people, log what everyone paid, and the settlement engine
+            calculates the transfers required to balance the group.
           </p>
         </div>
 
@@ -111,7 +157,10 @@ import Layout from "../../layouts/Layout.astro";
               </button>
             </div>
 
-            <div id="ex-people-list" class="ex-people mt-3"></div>
+            <div
+              id="ex-people-list"
+              class="ex-people mt-3"
+            ></div>
           </div>
 
           <div class="ex-panel">
@@ -138,7 +187,10 @@ import Layout from "../../layouts/Layout.astro";
                   class="ex-input flex-1"
                 />
 
-                <select id="ex-expense-payer" class="ex-select">
+                <select
+                  id="ex-expense-payer"
+                  class="ex-select flex-1"
+                >
                   <option value="">payer</option>
                 </select>
               </div>
@@ -162,11 +214,22 @@ import Layout from "../../layouts/Layout.astro";
 
         <div class="mt-6">
           <div class="ex-section-heading">
-            <div class="ex-panel-title">Expenses</div>
-            <span id="ex-expense-total" class="ex-section-value">$0.00</span>
+            <div class="ex-panel-title">
+              Expenses
+            </div>
+
+            <span
+              id="ex-expense-total"
+              class="ex-section-value"
+            >
+              $0.00
+            </span>
           </div>
 
-          <div id="ex-expenses-list" class="ex-expenses mt-2"></div>
+          <div
+            id="ex-expenses-list"
+            class="ex-expenses mt-2"
+          ></div>
         </div>
 
         <div class="mt-6">
@@ -175,14 +238,23 @@ import Layout from "../../layouts/Layout.astro";
               Settlement &mdash; who pays who
             </div>
 
-            <span class="ex-section-value">MINIMUM TRANSFERS</span>
+            <span class="ex-section-value">
+              MINIMUM TRANSFERS
+            </span>
           </div>
 
-          <div id="ex-settlement" class="ex-settlement mt-2"></div>
+          <div
+            id="ex-settlement"
+            class="ex-settlement mt-2"
+          ></div>
         </div>
 
         <div class="ex-actions mt-6">
-          <button id="ex-reset" type="button" class="ex-btn">
+          <button
+            id="ex-reset"
+            type="button"
+            class="ex-btn"
+          >
             Reset demo
           </button>
 
@@ -199,25 +271,37 @@ import Layout from "../../layouts/Layout.astro";
       <div class="ex-card ex-info-card">
         <div class="ex-card-header">
           <div class="flex items-center gap-3">
-            <span class="font-mono text-xs tracking-[0.2em] text-[var(--sec)]">
+            <span
+              class="font-mono text-xs tracking-[0.2em] text-[var(--sec)]"
+            >
               02
             </span>
 
-            <span class="h-px w-12 bg-[var(--sec)] opacity-40"></span>
+            <span
+              class="h-px w-12 bg-[var(--sec)] opacity-40"
+            ></span>
 
-            <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]">
+            <span
+              class="text-xs uppercase tracking-widest text-[var(--white-icon)]"
+            >
               How it works
             </span>
           </div>
 
-          <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4">
+          <h2
+            class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4"
+          >
             From expenses to balances.
           </h2>
 
           <div class="ex-concepts mt-6">
             <div>
               <span>01</span>
-              <strong>Calculate the equal share</strong>
+
+              <strong>
+                Calculate the equal share
+              </strong>
+
               <p>
                 Total expenses are divided equally between all active people.
               </p>
@@ -225,17 +309,27 @@ import Layout from "../../layouts/Layout.astro";
 
             <div>
               <span>02</span>
-              <strong>Calculate each balance</strong>
+
+              <strong>
+                Calculate each balance
+              </strong>
+
               <p>
-                Paid more than the share? You are owed money. Paid less? You owe money.
+                Paid more than the share? You are owed money. Paid less? You
+                owe money.
               </p>
             </div>
 
             <div>
               <span>03</span>
-              <strong>Settle efficiently</strong>
+
+              <strong>
+                Settle efficiently
+              </strong>
+
               <p>
-                Debtors are matched with creditors until every balance reaches zero.
+                Debtors are matched with creditors until every balance reaches
+                zero.
               </p>
             </div>
           </div>
@@ -248,7 +342,13 @@ import Layout from "../../layouts/Layout.astro";
 
 <style>
   .ex-page :global(.shiny-sec) {
-    background: linear-gradient(90deg, var(--sec), #6ee7b7, var(--sec));
+    background: linear-gradient(
+      90deg,
+      var(--sec),
+      #6ee7b7,
+      var(--sec)
+    );
+
     background-size: 200% 100%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -341,7 +441,8 @@ import Layout from "../../layouts/Layout.astro";
     font-family: monospace;
     background: transparent;
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition:
+      all 0.25s ease;
   }
 
   .ex-btn:hover {
@@ -630,20 +731,22 @@ import Layout from "../../layouts/Layout.astro";
     };
 
     /*
-     * IMPORTANT:
+     * DOM helper.
      *
-     * This helper intentionally returns T rather than T | null.
-     * If an expected DOM element does not exist, the application fails
-     * immediately with a useful error message.
+     * The important TypeScript fix is here:
+     * this function returns T instead of T | null.
      *
-     * This prevents TypeScript errors such as:
-     * "'descInput' is possibly 'null'"
+     * If an expected element does not exist, it throws a clear
+     * error immediately instead of allowing null to propagate
+     * through the rest of the application.
      */
     const $ = <T extends HTMLElement>(id: string): T => {
       const element = document.getElementById(id);
 
       if (!element) {
-        throw new Error(`Required element #${id} was not found.`);
+        throw new Error(
+          `Required element #${id} was not found.`,
+        );
       }
 
       return element as T;
@@ -706,85 +809,113 @@ import Layout from "../../layouts/Layout.astro";
     let nextPersonId = 1;
     let nextExpenseId = 1;
 
-    const currency = new Intl.NumberFormat(undefined, {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    });
-
-    const escapeHtml = (value: string): string =>
-      value.replace(/[&<>"']/g, (char) => {
-        const entities: Record<string, string> = {
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': "&quot;",
-          "'": "&#039;",
-        };
-
-        return entities[char] ?? char;
+    const currency =
+      new Intl.NumberFormat(undefined, {
+        style: "currency",
+        currency: "USD",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
       });
 
-    const formatCents = (cents: number): string =>
-      currency.format(cents / 100);
+    const escapeHtml = (
+      value: string,
+    ): string => {
+      const entities: Record<
+        string,
+        string
+      > = {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;",
+      };
+
+      return value.replace(
+        /[&<>"']/g,
+        (char) => entities[char] ?? char,
+      );
+    };
+
+    const formatCents = (
+      cents: number,
+    ): string => {
+      return currency.format(cents / 100);
+    };
 
     const parseAmountToCents = (
       value: string,
     ): number | null => {
-      const normalized = value.trim().replace(",", ".");
+      const normalized =
+        value.trim().replace(",", ".");
 
       if (!normalized) {
         return null;
       }
 
-      if (!/^\d+(\.\d{1,2})?$/.test(normalized)) {
+      if (
+        !/^\d+(\.\d{1,2})?$/.test(
+          normalized,
+        )
+      ) {
         return null;
       }
 
-      const amount = Number(normalized);
+      const amount =
+        Number(normalized);
 
-      if (!Number.isFinite(amount) || amount <= 0) {
+      if (
+        !Number.isFinite(amount) ||
+        amount <= 0
+      ) {
         return null;
       }
 
       return Math.round(amount * 100);
     };
 
-    const showMessage = (message = ""): void => {
-      formMessageEl.textContent = message;
+    const showMessage = (
+      message = "",
+    ): void => {
+      formMessageEl.textContent =
+        message;
     };
 
-    const getTotalCents = (): number =>
-      expenses.reduce(
-        (sum, expense) => sum + expense.amountCents,
+    const getTotalCents = (): number => {
+      return expenses.reduce(
+        (sum, expense) =>
+          sum + expense.amountCents,
         0,
       );
+    };
 
     function renderPeople(): void {
       if (people.length === 0) {
         peopleListEl.innerHTML =
           `<div class="ex-empty">No one added yet.</div>`;
       } else {
-        peopleListEl.innerHTML = people
-          .map(
-            (person) => `
-              <div class="ex-person-chip">
-                <span>${escapeHtml(person.name)}</span>
+        peopleListEl.innerHTML =
+          people
+            .map(
+              (person) => `
+                <div class="ex-person-chip">
+                  <span>
+                    ${escapeHtml(person.name)}
+                  </span>
 
-                <button
-                  type="button"
-                  class="ex-person-remove"
-                  data-person-id="${person.id}"
-                  aria-label="Remove ${escapeHtml(person.name)}"
-                  title="Remove ${escapeHtml(person.name)}"
-                >
-                  &times;
-                </button>
-              </div>
-            `,
-          )
-          .join("");
+                  <button
+                    type="button"
+                    class="ex-person-remove"
+                    data-person-id="${person.id}"
+                    aria-label="Remove ${escapeHtml(person.name)}"
+                    title="Remove ${escapeHtml(person.name)}"
+                  >
+                    &times;
+                  </button>
+                </div>
+              `,
+            )
+            .join("");
       }
 
       payerSelect.innerHTML =
@@ -792,7 +923,9 @@ import Layout from "../../layouts/Layout.astro";
         people
           .map(
             (person) =>
-              `<option value="${person.id}">${escapeHtml(person.name)}</option>`,
+              `<option value="${person.id}">
+                ${escapeHtml(person.name)}
+              </option>`,
           )
           .join("");
     }
@@ -805,31 +938,43 @@ import Layout from "../../layouts/Layout.astro";
         return;
       }
 
-      expensesListEl.innerHTML = expenses
-        .map((expense) => {
-          const payer = people.find(
-            (person) => person.id === expense.payerId,
-          );
+      expensesListEl.innerHTML =
+        expenses
+          .map((expense) => {
+            const payer =
+              people.find(
+                (person) =>
+                  person.id ===
+                  expense.payerId,
+              );
 
-          return `
-            <div class="ex-expense-row">
-              <div>
-                <div class="ex-expense-desc">
-                  ${escapeHtml(expense.desc)}
+            return `
+              <div class="ex-expense-row">
+                <div>
+                  <div class="ex-expense-desc">
+                    ${escapeHtml(
+                      expense.desc,
+                    )}
+                  </div>
+
+                  <div class="ex-expense-meta">
+                    paid by
+                    ${escapeHtml(
+                      payer?.name ??
+                        "Unknown",
+                    )}
+                  </div>
                 </div>
 
-                <div class="ex-expense-meta">
-                  paid by ${escapeHtml(payer?.name ?? "Unknown")}
+                <div class="ex-expense-amount">
+                  ${formatCents(
+                    expense.amountCents,
+                  )}
                 </div>
               </div>
-
-              <div class="ex-expense-amount">
-                ${formatCents(expense.amountCents)}
-              </div>
-            </div>
-          `;
-        })
-        .join("");
+            `;
+          })
+          .join("");
     }
 
     function calculateBalances(): Balance[] {
@@ -837,76 +982,126 @@ import Layout from "../../layouts/Layout.astro";
         return [];
       }
 
-      const totalCents = getTotalCents();
+      const totalCents =
+        getTotalCents();
 
-      const baseShare = Math.floor(
-        totalCents / people.length,
-      );
+      const baseShare =
+        Math.floor(
+          totalCents /
+            people.length,
+        );
 
-      const remainder = totalCents % people.length;
+      const remainder =
+        totalCents %
+        people.length;
 
-      const paidByPerson = new Map<number, number>();
+      const paidByPerson =
+        new Map<number, number>();
 
       for (const person of people) {
-        paidByPerson.set(person.id, 0);
+        paidByPerson.set(
+          person.id,
+          0,
+        );
       }
 
       for (const expense of expenses) {
         paidByPerson.set(
           expense.payerId,
-          (paidByPerson.get(expense.payerId) ?? 0) +
+          (paidByPerson.get(
+            expense.payerId,
+          ) ?? 0) +
             expense.amountCents,
         );
       }
 
-      return people.map((person, index) => {
-        /*
-         * Distribute leftover cents deterministically.
-         * This guarantees that the shares add up to the exact
-         * total amount without floating-point rounding problems.
-         */
-        const share =
-          baseShare + (index < remainder ? 1 : 0);
+      return people.map(
+        (person, index) => {
+          /*
+           * Distribute any remainder cents
+           * deterministically.
+           */
+          const share =
+            baseShare +
+            (index < remainder
+              ? 1
+              : 0);
 
-        return {
-          id: person.id,
-          name: person.name,
-          cents:
-            (paidByPerson.get(person.id) ?? 0) -
-            share,
-        };
-      });
+          return {
+            id: person.id,
+            name: person.name,
+            cents:
+              (paidByPerson.get(
+                person.id,
+              ) ?? 0) -
+              share,
+          };
+        },
+      );
     }
 
     function calculateTransfers(): Transfer[] {
-      const balances = calculateBalances();
+      /*
+       * Copy the balances before modifying them.
+       * This prevents accidental mutation of
+       * the balance calculation.
+       */
+      const balances =
+        calculateBalances();
 
-      const creditors = balances
-        .filter((balance) => balance.cents > 0)
-        .map((balance) => ({ ...balance }))
-        .sort((a, b) => b.cents - a.cents);
+      const creditors =
+        balances
+          .filter(
+            (balance) =>
+              balance.cents > 0,
+          )
+          .map((balance) => ({
+            ...balance,
+          }))
+          .sort(
+            (a, b) =>
+              b.cents - a.cents,
+          );
 
-      const debtors = balances
-        .filter((balance) => balance.cents < 0)
-        .map((balance) => ({ ...balance }))
-        .sort((a, b) => a.cents - b.cents);
+      const debtors =
+        balances
+          .filter(
+            (balance) =>
+              balance.cents < 0,
+          )
+          .map((balance) => ({
+            ...balance,
+          }))
+          .sort(
+            (a, b) =>
+              a.cents - b.cents,
+          );
 
-      const transfers: Transfer[] = [];
+      const transfers: Transfer[] =
+        [];
 
       let creditorIndex = 0;
       let debtorIndex = 0;
 
       while (
-        creditorIndex < creditors.length &&
-        debtorIndex < debtors.length
+        creditorIndex <
+          creditors.length &&
+        debtorIndex <
+          debtors.length
       ) {
-        const creditor = creditors[creditorIndex];
-        const debtor = debtors[debtorIndex];
+        const creditor =
+          creditors[
+            creditorIndex
+          ];
 
-        const amount = Math.min(
-          creditor.cents,
-          -debtor.cents,
-        );
+        const debtor =
+          debtors[debtorIndex];
+
+        const amount =
+          Math.min(
+            creditor.cents,
+            -debtor.cents,
+          );
 
         if (amount > 0) {
           transfers.push({
@@ -916,14 +1111,21 @@ import Layout from "../../layouts/Layout.astro";
           });
         }
 
-        creditor.cents -= amount;
-        debtor.cents += amount;
+        creditor.cents -=
+          amount;
 
-        if (creditor.cents === 0) {
+        debtor.cents +=
+          amount;
+
+        if (
+          creditor.cents === 0
+        ) {
           creditorIndex++;
         }
 
-        if (debtor.cents === 0) {
+        if (
+          debtor.cents === 0
+        ) {
           debtorIndex++;
         }
       }
@@ -946,7 +1148,8 @@ import Layout from "../../layouts/Layout.astro";
         return 0;
       }
 
-      const transfers = calculateTransfers();
+      const transfers =
+        calculateTransfers();
 
       if (transfers.length === 0) {
         settlementEl.innerHTML =
@@ -955,25 +1158,36 @@ import Layout from "../../layouts/Layout.astro";
         return 0;
       }
 
-      settlementEl.innerHTML = transfers
-        .map(
-          (transfer) => `
-            <div class="ex-settlement-row">
-              <span>${escapeHtml(transfer.from)}</span>
+      settlementEl.innerHTML =
+        transfers
+          .map(
+            (transfer) => `
+              <div class="ex-settlement-row">
+                <span>
+                  ${escapeHtml(
+                    transfer.from,
+                  )}
+                </span>
 
-              <span class="ex-settlement-arrow">
-                &rarr;
-              </span>
+                <span class="ex-settlement-arrow">
+                  &rarr;
+                </span>
 
-              <span>${escapeHtml(transfer.to)}</span>
+                <span>
+                  ${escapeHtml(
+                    transfer.to,
+                  )}
+                </span>
 
-              <span class="ex-settlement-amount">
-                ${formatCents(transfer.cents)}
-              </span>
-            </div>
-          `,
-        )
-        .join("");
+                <span class="ex-settlement-amount">
+                  ${formatCents(
+                    transfer.cents,
+                  )}
+                </span>
+              </div>
+            `,
+          )
+          .join("");
 
       return transfers.length;
     }
@@ -981,7 +1195,8 @@ import Layout from "../../layouts/Layout.astro";
     function renderSummary(
       transferCount: number,
     ): void {
-      const totalCents = getTotalCents();
+      const totalCents =
+        getTotalCents();
 
       totalEl.textContent =
         formatCents(totalCents);
@@ -1006,7 +1221,9 @@ import Layout from "../../layouts/Layout.astro";
       const transferCount =
         renderSettlement();
 
-      renderSummary(transferCount);
+      renderSummary(
+        transferCount,
+      );
     }
 
     function addPerson(): void {
@@ -1014,16 +1231,21 @@ import Layout from "../../layouts/Layout.astro";
         personNameInput.value.trim();
 
       if (!name) {
-        showMessage("Enter a person's name.");
+        showMessage(
+          "Enter a person's name.",
+        );
+
         personNameInput.focus();
+
         return;
       }
 
-      const duplicate = people.some(
-        (person) =>
-          person.name.toLowerCase() ===
-          name.toLowerCase(),
-      );
+      const duplicate =
+        people.some(
+          (person) =>
+            person.name.toLowerCase() ===
+            name.toLowerCase(),
+        );
 
       if (duplicate) {
         showMessage(
@@ -1031,6 +1253,7 @@ import Layout from "../../layouts/Layout.astro";
         );
 
         personNameInput.select();
+
         return;
       }
 
@@ -1058,7 +1281,9 @@ import Layout from "../../layouts/Layout.astro";
         );
 
       const payerId =
-        Number(payerSelect.value);
+        Number(
+          payerSelect.value,
+        );
 
       if (people.length === 0) {
         showMessage(
@@ -1078,7 +1303,9 @@ import Layout from "../../layouts/Layout.astro";
         return;
       }
 
-      if (amountCents === null) {
+      if (
+        amountCents === null
+      ) {
         showMessage(
           "Enter a valid amount, for example 24.50.",
         );
@@ -1091,7 +1318,8 @@ import Layout from "../../layouts/Layout.astro";
       if (
         !payerId ||
         !people.some(
-          (person) => person.id === payerId,
+          (person) =>
+            person.id === payerId,
         )
       ) {
         showMessage(
@@ -1123,19 +1351,21 @@ import Layout from "../../layouts/Layout.astro";
     function removePerson(
       id: number,
     ): void {
-      people = people.filter(
-        (person) => person.id !== id,
-      );
+      people =
+        people.filter(
+          (person) =>
+            person.id !== id,
+        );
 
       /*
-       * Expenses belonging to a removed payer are also
-       * removed so that no expense references a person
-       * that no longer exists.
+       * Remove expenses whose payer
+       * has been removed.
        */
-      expenses = expenses.filter(
-        (expense) =>
-          expense.payerId !== id,
-      );
+      expenses =
+        expenses.filter(
+          (expense) =>
+            expense.payerId !== id,
+        );
 
       renderAll();
     }
@@ -1254,9 +1484,13 @@ import Layout from "../../layouts/Layout.astro";
         }
 
         const id =
-          Number(button.dataset.personId);
+          Number(
+            button.dataset.personId,
+          );
 
-        if (Number.isInteger(id)) {
+        if (
+          Number.isInteger(id)
+        ) {
           removePerson(id);
         }
       },
@@ -1273,10 +1507,10 @@ import Layout from "../../layouts/Layout.astro";
     );
 
     /*
-     * Start with the example data so the project
-     * looks populated when opened from the portfolio.
+     * Populate the demo initially.
      */
     loadExample();
   })();
 </script>
 ```
+
