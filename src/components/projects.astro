@@ -8,22 +8,63 @@
 >
 
   <!-- ========================================================= -->
-  <!-- BACKGROUND — AURORA (Momiji Red / Forest Green) -->
+  <!-- BACKGROUND — JAPANESE GARDEN (forest green / amber / coral) -->
   <!-- ========================================================= -->
 
-  <div id="projects-bg" class="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-[#07070b]">
+  <div id="projects-bg" class="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-[#050b08]">
     <div class="nebula-field-alt" data-parallax="0.5" aria-hidden="true">
       <div class="nebula-ribbon-alt ribbon-back-alt"></div>
       <div class="nebula-ribbon-alt ribbon-mid-alt"></div>
       <div class="nebula-ribbon-alt ribbon-core-alt"></div>
+    </div>
 
-      <div class="glow-wrap-alt" data-parallax="1.6">
-        <div class="nebula-glow-alt glow-a-alt"></div>
+    <!-- Bokeh field — soft blurred discs echoing the maple-leaf bokeh in
+         the reference photo. Green pools bottom-left (water/shadow),
+         amber scattered across the top (canopy), coral-red clustered
+         right (foreground maple leaves). Each one reacts to the pointer:
+         the closer your cursor is, the more it "racks into focus". -->
+    <div class="bokeh-field-alt" aria-hidden="true">
+
+      <div class="bokeh-wrap-alt" style="--x:8;--y:70;--dur:17s;--delay:0s;">
+        <div class="bokeh-alt bokeh-green-alt" data-x="8" data-y="70" style="--size:280px;--blur:44px;--base-opacity:0.5;"></div>
       </div>
 
-      <div class="glow-wrap-alt" data-parallax="-1.2">
-        <div class="nebula-glow-alt glow-b-alt"></div>
+      <div class="bokeh-wrap-alt" style="--x:20;--y:84;--dur:14s;--delay:-3s;">
+        <div class="bokeh-alt bokeh-green-alt" data-x="20" data-y="84" style="--size:170px;--blur:32px;--base-opacity:0.46;"></div>
       </div>
+
+      <div class="bokeh-wrap-alt" style="--x:33;--y:60;--dur:19s;--delay:-7s;">
+        <div class="bokeh-alt bokeh-green-alt" data-x="33" data-y="60" style="--size:130px;--blur:26px;--base-opacity:0.38;"></div>
+      </div>
+
+      <div class="bokeh-wrap-alt" style="--x:30;--y:14;--dur:16s;--delay:-2s;">
+        <div class="bokeh-alt bokeh-amber-alt" data-x="30" data-y="14" style="--size:230px;--blur:42px;--base-opacity:0.4;"></div>
+      </div>
+
+      <div class="bokeh-wrap-alt" style="--x:52;--y:9;--dur:20s;--delay:-9s;">
+        <div class="bokeh-alt bokeh-amber-alt" data-x="52" data-y="9" style="--size:150px;--blur:30px;--base-opacity:0.36;"></div>
+      </div>
+
+      <div class="bokeh-wrap-alt" style="--x:66;--y:23;--dur:13s;--delay:-5s;">
+        <div class="bokeh-alt bokeh-amber-alt" data-x="66" data-y="23" style="--size:100px;--blur:22px;--base-opacity:0.32;"></div>
+      </div>
+
+      <div class="bokeh-wrap-alt" style="--x:79;--y:37;--dur:15s;--delay:-1s;">
+        <div class="bokeh-alt bokeh-red-alt" data-x="79" data-y="37" style="--size:200px;--blur:34px;--base-opacity:0.5;"></div>
+      </div>
+
+      <div class="bokeh-wrap-alt" style="--x:89;--y:55;--dur:18s;--delay:-6s;">
+        <div class="bokeh-alt bokeh-red-alt" data-x="89" data-y="55" style="--size:150px;--blur:26px;--base-opacity:0.48;"></div>
+      </div>
+
+      <div class="bokeh-wrap-alt" style="--x:95;--y:29;--dur:12s;--delay:-4s;">
+        <div class="bokeh-alt bokeh-red-alt" data-x="95" data-y="29" style="--size:95px;--blur:18px;--base-opacity:0.42;"></div>
+      </div>
+
+      <div class="bokeh-wrap-alt" style="--x:85;--y:76;--dur:21s;--delay:-10s;">
+        <div class="bokeh-alt bokeh-red-alt" data-x="85" data-y="76" style="--size:120px;--blur:24px;--base-opacity:0.4;"></div>
+      </div>
+
     </div>
 
     <div class="cursor-glow-alt" aria-hidden="true"></div>
@@ -1401,7 +1442,7 @@
 </script>
 
 <!-- ============================================================= -->
-<!-- INTERACTIVE BACKGROUND (pointer-reactive parallax + spotlight) -->
+<!-- INTERACTIVE BACKGROUND (pointer-reactive parallax + bokeh focus) -->
 <!-- ============================================================= -->
 
 <script>
@@ -1420,11 +1461,15 @@
     const cursorGlow =
       bg.querySelector<HTMLElement>(".cursor-glow-alt");
 
+    const bokehEls = Array.from(
+      bg.querySelectorAll<HTMLElement>(".bokeh-alt")
+    );
+
     // Target = where the pointer actually is (normalized -1..1, and 0..1 for the glow).
     let targetNormX = 0;
     let targetNormY = 0;
-    let targetGlowX = 0.28; // default resting position: left-ish, matching the green glow
-    let targetGlowY = 0.32;
+    let targetGlowX = 0.3; // resting position — roughly where the green pool sits
+    let targetGlowY = 0.55;
 
     // Current = the smoothed, lerped value actually applied to the DOM.
     let currentNormX = 0;
@@ -1437,6 +1482,9 @@
 
     const lerp = (start: number, end: number, t: number): number =>
       start + (end - start) * t;
+
+    const clamp01 = (value: number): number =>
+      Math.min(1, Math.max(0, value));
 
     const handlePointerMove = (event: PointerEvent): void => {
       const rect = section.getBoundingClientRect();
@@ -1462,8 +1510,8 @@
 
       targetNormX = 0;
       targetNormY = 0;
-      targetGlowX = 0.28;
-      targetGlowY = 0.32;
+      targetGlowX = 0.3;
+      targetGlowY = 0.55;
     };
 
     const tick = (): void => {
@@ -1474,6 +1522,7 @@
       currentGlowX = lerp(currentGlowX, targetGlowX, ease);
       currentGlowY = lerp(currentGlowY, targetGlowY, ease);
 
+      // Ambient aurora parallax.
       for (const el of parallaxEls) {
         const strength = Number(el.dataset.parallax ?? "1");
 
@@ -1484,6 +1533,7 @@
         el.style.setProperty("--py", `${py}px`);
       }
 
+      // Cursor spotlight.
       if (cursorGlow) {
         cursorGlow.style.setProperty(
           "--glow-x",
@@ -1495,7 +1545,28 @@
           `${(currentGlowY * 100).toFixed(2)}%`
         );
 
-        cursorGlow.style.opacity = pointerActive ? "1" : "0.55";
+        cursorGlow.style.opacity = pointerActive ? "1" : "0.5";
+      }
+
+      // Bokeh "rack focus": the closer the pointer is to a bokeh disc's
+      // resting position, the sharper/brighter/larger it becomes.
+      const glowXPct = currentGlowX * 100;
+      const glowYPct = currentGlowY * 100;
+      const influenceRadius = 34; // in the same 0-100 percentage space
+
+      for (const el of bokehEls) {
+        const bx = Number(el.dataset.x ?? "50");
+        const by = Number(el.dataset.y ?? "50");
+
+        const dx = bx - glowXPct;
+        const dy = by - glowYPct;
+
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        const raw = clamp01(1 - dist / influenceRadius);
+        const focus = raw * raw; // ease the falloff so it feels soft, not linear
+
+        el.style.setProperty("--focus", focus.toFixed(3));
       }
 
       rafId = requestAnimationFrame(tick);
@@ -1543,13 +1614,15 @@
 <style is:global>
 
   /* ============================================================= */
-  /* BACKGROUND — MOMIJI RED / FOREST GREEN AURORA (Projects only) */
+  /* BACKGROUND — JAPANESE GARDEN (Projects only) */
   /* ============================================================= */
   /*
-    Self-contained variant of the nebula background from home.astro.
-    Uses -alt / -Alt suffixed class + keyframe names so it never
-    collides with the blue version used in the hero section, even
-    if both files share a global stylesheet.
+    Palette lifted from a Chiba garden photo: deep pond-water green,
+    warm amber canopy, and coral-red maple leaves rendered as soft
+    bokeh. Self-contained variant of the nebula background from
+    home.astro — uses -alt suffixed class + keyframe names so it
+    never collides with the blue hero version even if both files
+    share a global stylesheet.
   */
 
   .hero-dots-alt {
@@ -1590,15 +1663,15 @@
     background:
       linear-gradient(
         90deg,
-        rgba(5, 6, 12, 0.55) 0%,
+        rgba(3, 8, 5, 0.55) 0%,
         transparent 26%,
         transparent 72%,
-        rgba(5, 6, 12, 0.55) 100%
+        rgba(3, 8, 5, 0.55) 100%
       ),
       radial-gradient(
         ellipse 72% 72% at 50% 45%,
         transparent 30%,
-        rgba(5, 6, 12, 0.55) 100%
+        rgba(3, 8, 5, 0.6) 100%
       );
   }
 
@@ -1616,53 +1689,9 @@
     transition: transform 60ms linear;
   }
 
-  /* Wrapper that receives the pointer-parallax offset, so it doesn't
-     fight with the drift keyframes already animating the glow inside it. */
-  .glow-wrap-alt {
-    position: absolute;
-    inset: 0;
-
-    --px: 0px;
-    --py: 0px;
-
-    transform: translate3d(var(--px), var(--py), 0);
-
-    transition: transform 60ms linear;
-  }
-
-  /* Soft light that follows the pointer — warm at the center, cooling
-     into the section's green/red palette at the edges. */
-  .cursor-glow-alt {
-    position: absolute;
-
-    left: var(--glow-x, 28%);
-    top: var(--glow-y, 32%);
-
-    width: 620px;
-    height: 620px;
-
-    transform: translate3d(-50%, -50%, 0);
-
-    border-radius: 999px;
-
-    background: radial-gradient(
-      circle,
-      rgba(224, 250, 235, 0.10) 0%,
-      rgba(45, 106, 79, 0.16) 35%,
-      rgba(217, 51, 63, 0.08) 60%,
-      transparent 78%
-    );
-
-    filter: blur(10px);
-
-    mix-blend-mode: screen;
-
-    opacity: 0.55;
-
-    transition: opacity 400ms ease;
-  }
-
-  /* Wide, soft outer wash — mostly deep forest green, torii-red only at the right edge */
+  /* Wide, soft outer wash — deep pond green sliding through warm amber
+     canopy toward a coral-red edge, echoing the diagonal light in the
+     reference photo. */
   .ribbon-back-alt {
     position: absolute;
 
@@ -1675,10 +1704,10 @@
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(20, 83, 45, 0.34) 18%,
-      rgba(45, 106, 79, 0.36) 38%,
-      rgba(64, 145, 108, 0.24) 58%,
-      rgba(217, 51, 63, 0.16) 82%,
+      rgba(13, 40, 24, 0.36) 16%,
+      rgba(31, 77, 51, 0.32) 36%,
+      rgba(201, 130, 46, 0.2) 58%,
+      rgba(217, 83, 63, 0.22) 80%,
       transparent 100%
     );
 
@@ -1687,7 +1716,7 @@
     animation: nebulaBreatheAlt 16s ease-in-out infinite;
   }
 
-  /* Mid-density body — pine/moss green dominates, torii vermillion only bleeds in on the right */
+  /* Mid-density body — the same three hues, richer and more saturated. */
   .ribbon-mid-alt {
     position: absolute;
 
@@ -1700,10 +1729,10 @@
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(20, 83, 45, 0.4) 20%,
-      rgba(45, 106, 79, 0.52) 42%,
-      rgba(64, 145, 108, 0.3) 60%,
-      rgba(217, 51, 63, 0.28) 84%,
+      rgba(13, 40, 24, 0.42) 18%,
+      rgba(31, 77, 51, 0.46) 38%,
+      rgba(214, 140, 58, 0.3) 60%,
+      rgba(224, 96, 74, 0.34) 84%,
       transparent 96%
     );
 
@@ -1714,7 +1743,8 @@
     animation: nebulaBreatheAlt 16s ease-in-out infinite reverse;
   }
 
-  /* Bright, thin core streak — pale moss highlight fading to a torii-red edge on the right */
+  /* Bright, thin core streak — pale moss highlight warming into amber
+     and finishing on a coral-red edge. */
   .ribbon-core-alt {
     position: absolute;
 
@@ -1729,10 +1759,10 @@
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(190, 242, 214, 0.1) 16%,
-      rgba(224, 250, 235, 0.55) 42%,
-      rgba(64, 145, 108, 0.4) 62%,
-      rgba(217, 51, 63, 0.32) 86%,
+      rgba(190, 242, 214, 0.1) 14%,
+      rgba(224, 250, 235, 0.5) 36%,
+      rgba(224, 172, 96, 0.42) 58%,
+      rgba(224, 96, 74, 0.34) 82%,
       transparent 96%
     );
 
@@ -1745,48 +1775,6 @@
     animation: nebulaShimmerAlt 9s ease-in-out infinite;
   }
 
-  .nebula-glow-alt {
-    position: absolute;
-
-    border-radius: 999px;
-
-    filter: blur(90px);
-
-    mix-blend-mode: screen;
-  }
-
-  /* Forest green ambient glow — left side, large and dominant */
-  .glow-a-alt {
-    left: 2%;
-    top: 0%;
-
-    width: 52vw;
-    height: 52vw;
-
-    max-width: 680px;
-    max-height: 680px;
-
-    background: radial-gradient(circle, rgba(20, 83, 45, 0.6) 0%, rgba(45, 106, 79, 0.28) 45%, transparent 72%);
-
-    animation: driftOneAlt 24s ease-in-out infinite;
-  }
-
-  /* Torii-gate vermillion ambient glow — right side, smaller accent */
-  .glow-b-alt {
-    right: 4%;
-    bottom: 6%;
-
-    width: 24vw;
-    height: 24vw;
-
-    max-width: 340px;
-    max-height: 340px;
-
-    background: radial-gradient(circle, rgba(217, 51, 63, 0.34) 0%, transparent 72%);
-
-    animation: driftTwoAlt 28s ease-in-out infinite;
-  }
-
   @keyframes nebulaBreatheAlt {
     0%, 100% { transform: scaleX(1) translateX(0); opacity: 1; }
     50% { transform: scaleX(1.06) translateX(2%); opacity: 0.85; }
@@ -1797,14 +1785,127 @@
     50% { opacity: 1; filter: blur(10px); }
   }
 
-  @keyframes driftOneAlt {
-    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-    50% { transform: translate3d(4%, 6%, 0) scale(1.08); }
+  /* ============================================================= */
+  /* BOKEH FIELD — pointer-reactive, echoes the blurred maple leaves */
+  /* ============================================================= */
+
+  .bokeh-field-alt {
+    position: absolute;
+    inset: 0;
   }
 
-  @keyframes driftTwoAlt {
-    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-    50% { transform: translate3d(-6%, 4%, 0) scale(0.94); }
+  /* Wrapper: owns position on the canvas + the ambient idle float.
+     Kept separate from the focus-reactive inner element so the two
+     transforms never fight each other. */
+  .bokeh-wrap-alt {
+    position: absolute;
+
+    left: calc(var(--x) * 1%);
+    top: calc(var(--y) * 1%);
+
+    animation: bokehFloatAlt var(--dur, 16s) ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+  }
+
+  @keyframes bokehFloatAlt {
+    0%, 100% { transform: translate3d(-50%, -50%, 0); }
+    50% { transform: translate3d(calc(-50% + 10px), calc(-50% - 16px), 0); }
+  }
+
+  /* Inner disc: owns size/color/blur + the pointer-driven "focus pull".
+     --focus is written every frame by the interactivity script (0 = far
+     from the cursor / soft & dim, 1 = right under the cursor / sharp &
+     bright), giving a rack-focus camera feel as you move the mouse. */
+  .bokeh-alt {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: var(--size);
+    height: var(--size);
+
+    --focus: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(calc(1 + 0.22 * var(--focus)));
+
+    border-radius: 999px;
+
+    filter:
+      blur(calc(var(--blur) * (1 - 0.4 * var(--focus))))
+      brightness(calc(1 + 0.6 * var(--focus)));
+
+    opacity: calc(var(--base-opacity, 0.5) + 0.35 * var(--focus));
+
+    mix-blend-mode: screen;
+
+    pointer-events: none;
+
+    transition: filter 220ms ease, opacity 220ms ease, transform 220ms ease;
+
+    will-change: transform, filter, opacity;
+  }
+
+  .bokeh-green-alt {
+    background: radial-gradient(
+      circle,
+      rgba(45, 106, 79, 0.85) 0%,
+      rgba(13, 40, 24, 0.4) 55%,
+      transparent 76%
+    );
+  }
+
+  .bokeh-amber-alt {
+    background: radial-gradient(
+      circle,
+      rgba(224, 172, 96, 0.72) 0%,
+      rgba(180, 106, 40, 0.3) 55%,
+      transparent 76%
+    );
+  }
+
+  .bokeh-red-alt {
+    background: radial-gradient(
+      circle,
+      rgba(228, 110, 88, 0.85) 0%,
+      rgba(190, 62, 50, 0.34) 55%,
+      transparent 76%
+    );
+  }
+
+  /* Warm light that follows the pointer — like sun filtering through
+     leaves — cooling into green at one edge and coral at the other. */
+  .cursor-glow-alt {
+    position: absolute;
+
+    left: var(--glow-x, 30%);
+    top: var(--glow-y, 55%);
+
+    width: 620px;
+    height: 620px;
+
+    transform: translate3d(-50%, -50%, 0);
+
+    border-radius: 999px;
+
+    background: radial-gradient(
+      circle,
+      rgba(255, 232, 189, 0.14) 0%,
+      rgba(214, 140, 58, 0.12) 30%,
+      rgba(45, 106, 79, 0.12) 55%,
+      rgba(217, 83, 63, 0.07) 72%,
+      transparent 84%
+    );
+
+    filter: blur(10px);
+
+    mix-blend-mode: screen;
+
+    opacity: 0.5;
+
+    transition: opacity 400ms ease;
   }
 
   @media (max-width: 640px) {
@@ -1819,16 +1920,13 @@
       filter: blur(38px);
     }
 
-    .glow-a-alt,
-    .glow-b-alt {
-      width: 65vw;
-      height: 65vw;
-
-      filter: blur(60px);
-    }
-
     .hero-dots-alt {
       background-size: 20px 20px;
+    }
+
+    .bokeh-alt {
+      width: calc(var(--size) * 0.7);
+      height: calc(var(--size) * 0.7);
     }
   }
 
@@ -1836,7 +1934,7 @@
     .ribbon-back-alt,
     .ribbon-mid-alt,
     .ribbon-core-alt,
-    .nebula-glow-alt {
+    .bokeh-wrap-alt {
       animation: none;
     }
 
@@ -1845,10 +1943,11 @@
     }
 
     .nebula-field-alt,
-    .glow-wrap-alt {
+    .bokeh-alt {
       transition: none;
     }
   }
+
   /* ============================================================= */
   /* LIQUID GLASS — project cards */
   /* ============================================================= */
@@ -1912,7 +2011,7 @@
       rgba(255, 255, 255, 0.06) 22%,
       transparent 45%,
       transparent 75%,
-      rgba(64, 145, 108, 0.16) 100%
+      rgba(214, 140, 58, 0.14) 100%
     );
 
     -webkit-mask:
@@ -1937,7 +2036,7 @@
     background: radial-gradient(
       260px circle at var(--mx) var(--my),
       rgba(255, 255, 255, 0.14),
-      rgba(64, 145, 108, 0.06) 40%,
+      rgba(45, 106, 79, 0.06) 40%,
       transparent 65%
     );
 
@@ -1960,7 +2059,7 @@
       inset 0 0 0 1px rgba(255, 255, 255, 0.05),
       inset 0 -18px 36px -24px rgba(0, 0, 0, 0.55),
       0 28px 60px rgba(0, 0, 0, 0.35),
-      0 0 50px rgba(217, 51, 63, 0.06);
+      0 0 50px rgba(217, 83, 63, 0.07);
   }
 
   @media (prefers-reduced-motion: reduce) {
