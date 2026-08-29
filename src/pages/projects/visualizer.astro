@@ -102,8 +102,23 @@ import Layout from "../../layouts/Layout.astro";
               </div>
             </div>
 
+            <div id="sort-info" class="algo-info">
+              <div class="algo-info-head">
+                <strong id="sort-algo-name">Quick Sort</strong>
+                <span id="sort-algo-complexity">O(n log n) avg · O(n²) worst</span>
+              </div>
+              <p id="sort-algo-desc">
+                Picks a pivot, partitions the array so smaller values land
+                left and larger values land right, then repeats on each side.
+              </p>
+            </div>
+
             <div class="visual-stage sorting-stage">
               <div id="sort-stage" class="bars" aria-label="Sorting visualization"></div>
+            </div>
+
+            <div id="sort-narration" class="formula">
+              Ready — press Run to sort 42 bars with Quick Sort.
             </div>
 
             <div class="metrics">
@@ -223,38 +238,359 @@ import Layout from "../../layouts/Layout.astro";
 
             <div>
               <div class="section-label">REFERENCE</div>
-              <h2>Built as an interactive reference.</h2>
+              <h2>How each algorithm actually works.</h2>
               <p>
-                Each visualization exposes the underlying algorithm rather
-                than hiding it behind a static animation.
+                The visualizations above show <em>that</em> something happens.
+                This is the <em>why</em> — the concept behind each algorithm,
+                spelled out in plain terms.
               </p>
             </div>
           </div>
 
-          <div class="documentation-grid">
-            <article>
+          <div class="doc-group">
+            <div class="doc-group-title">
               <span>01</span>
-              <h3>Sorting</h3>
-              <p>Bubble, selection, insertion, merge, and quick sort with live comparison and swap counters.</p>
-            </article>
+              Sorting algorithms
+            </div>
 
-            <article>
+            <details class="doc-item" open>
+              <summary>
+                <span class="doc-item-name">Big-O notation</span>
+                <span class="badge">concept</span>
+                <span class="doc-item-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="doc-item-body">
+                <p>
+                  Big-O describes how an algorithm's running time grows as the
+                  input gets bigger — not the exact number of steps, but the
+                  <em>shape</em> of the growth curve. <code>O(n²)</code> means
+                  doubling the input roughly quadruples the work;
+                  <code>O(n log n)</code> means doubling the input barely
+                  more than doubles it.
+                </p>
+                <p>
+                  It matters at scale, not on 42 bars: sorting 42 items,
+                  bubble sort's worst case is around 861 comparisons and
+                  quick sort's average case is around 227. Sort 42,000 items
+                  instead and that gap stops being academic — bubble sort's
+                  <code>n²</code> term dominates completely.
+                </p>
+              </div>
+            </details>
+
+            <details class="doc-item">
+              <summary>
+                <span class="doc-item-name">Bubble Sort</span>
+                <span class="badge">O(n²)</span>
+                <span class="doc-item-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="doc-item-body">
+                <p>
+                  Walks the array left to right, comparing each pair of
+                  neighbors and swapping them if they're out of order. One
+                  full pass guarantees the largest remaining value "bubbles"
+                  to its correct position at the end — so after
+                  <code>k</code> passes, the last <code>k</code> items are
+                  guaranteed sorted.
+                </p>
+                <ol class="doc-steps">
+                  <li>Compare each adjacent pair, left to right.</li>
+                  <li>Swap the pair if the left value is bigger.</li>
+                  <li>Repeat passes until a full pass makes no swaps.</li>
+                </ol>
+                <p class="doc-meta">
+                  Stable · in-place · rarely used outside teaching, but the
+                  easiest algorithm to trace by hand.
+                </p>
+              </div>
+            </details>
+
+            <details class="doc-item">
+              <summary>
+                <span class="doc-item-name">Selection Sort</span>
+                <span class="badge">O(n²)</span>
+                <span class="doc-item-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="doc-item-body">
+                <p>
+                  Splits the array into a sorted section (front) and an
+                  unsorted section (back). On each pass it scans the entire
+                  unsorted section to find the smallest value, then swaps it
+                  into the next open slot at the front.
+                </p>
+                <ol class="doc-steps">
+                  <li>Assume the first unsorted item is the minimum.</li>
+                  <li>Scan the rest, updating the minimum when a smaller value appears.</li>
+                  <li>Swap the true minimum into place, then move the boundary forward.</li>
+                </ol>
+                <p class="doc-meta">
+                  Not stable · in-place · always exactly one swap per pass,
+                  which makes it cheap on writes even though comparisons
+                  stay <code>O(n²)</code>.
+                </p>
+              </div>
+            </details>
+
+            <details class="doc-item">
+              <summary>
+                <span class="doc-item-name">Insertion Sort</span>
+                <span class="badge">O(n²)</span>
+                <span class="doc-item-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="doc-item-body">
+                <p>
+                  Builds a sorted section one value at a time. Each new value
+                  is compared against its sorted neighbors and shifted left
+                  until it lands in the correct spot — the same motion as
+                  sorting a hand of playing cards.
+                </p>
+                <ol class="doc-steps">
+                  <li>Take the next unsorted value.</li>
+                  <li>Shift it left past every sorted value bigger than it.</li>
+                  <li>Drop it into the gap that's left behind.</li>
+                </ol>
+                <p class="doc-meta">
+                  Stable · in-place · <code>O(n)</code> best case on nearly-sorted
+                  data, which is why it's often used to finish off other
+                  algorithms on small sub-arrays.
+                </p>
+              </div>
+            </details>
+
+            <details class="doc-item">
+              <summary>
+                <span class="doc-item-name">Merge Sort</span>
+                <span class="badge">O(n log n)</span>
+                <span class="doc-item-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="doc-item-body">
+                <p>
+                  A divide-and-conquer algorithm: split the array in half
+                  recursively until each piece has one item (trivially
+                  sorted), then merge pairs of sorted pieces back together by
+                  repeatedly taking the smaller of the two fronts.
+                </p>
+                <ol class="doc-steps">
+                  <li>Split the array in half, recursively, down to single items.</li>
+                  <li>Merge each pair of halves, always taking the smaller front value.</li>
+                  <li>Repeat merging upward until one sorted array remains.</li>
+                </ol>
+                <p class="doc-meta">
+                  Stable · <strong>not</strong> in-place (needs <code>O(n)</code>
+                  extra space for the merge step) · guaranteed
+                  <code>O(n log n)</code> — no worst-case cliff like quick sort.
+                </p>
+              </div>
+            </details>
+
+            <details class="doc-item">
+              <summary>
+                <span class="doc-item-name">Quick Sort</span>
+                <span class="badge">O(n log n) avg</span>
+                <span class="doc-item-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="doc-item-body">
+                <p>
+                  Also divide-and-conquer, but it partitions instead of
+                  merging: pick a pivot value, rearrange the array so
+                  everything smaller ends up left of it and everything
+                  bigger ends up right, then recurse on each side.
+                </p>
+                <ol class="doc-steps">
+                  <li>Choose a pivot — this demo uses the last element.</li>
+                  <li>Walk the array, moving anything smaller than the pivot to the left side.</li>
+                  <li>Drop the pivot into the boundary between the two sides.</li>
+                  <li>Recurse into the left and right partitions independently.</li>
+                </ol>
+                <p class="doc-meta">
+                  Not stable · in-place · fast in practice despite an
+                  <code>O(n²)</code> worst case, because that worst case
+                  (already-sorted input with a bad pivot choice) is rare.
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <div class="doc-group">
+            <div class="doc-group-title">
               <span>02</span>
-              <h3>Hashing</h3>
-              <p>A simple hash function demonstrates bucket selection and separate chaining.</p>
-            </article>
+              Hash tables
+            </div>
 
-            <article>
+            <details class="doc-item">
+              <summary>
+                <span class="doc-item-name">Hash functions</span>
+                <span class="badge">concept</span>
+                <span class="doc-item-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="doc-item-body">
+                <p>
+                  A hash function takes a key of any size — a string, a
+                  number, anything — and deterministically maps it to a
+                  fixed-size number: the bucket index. The demo above walks
+                  each character's code through <code>hash = hash × 31 +
+                  charCode</code>, then takes the result modulo 8 so it
+                  always lands inside the eight buckets.
+                </p>
+                <p>
+                  A good hash function spreads keys evenly across buckets
+                  and is fast to compute. It does <em>not</em> need to be
+                  reversible — you can't recover the key from the bucket
+                  index alone.
+                </p>
+              </div>
+            </details>
+
+            <details class="doc-item">
+              <summary>
+                <span class="doc-item-name">Collisions &amp; chaining</span>
+                <span class="badge">O(1) avg</span>
+                <span class="doc-item-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="doc-item-body">
+                <p>
+                  Two different keys can hash to the same bucket — that's a
+                  collision, and it's expected, not a bug. This table
+                  resolves it with <strong>separate chaining</strong>: each
+                  bucket holds a small list, and colliding keys simply get
+                  appended to that bucket's chain instead of overwriting
+                  each other.
+                </p>
+                <p>
+                  Lookups still work because inserting <em>and</em> searching
+                  use the same hash function — to find a key you hash it,
+                  jump straight to its bucket, then scan that bucket's
+                  (usually short) chain for a match.
+                </p>
+              </div>
+            </details>
+
+            <details class="doc-item">
+              <summary>
+                <span class="doc-item-name">Load factor</span>
+                <span class="badge">concept</span>
+                <span class="doc-item-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="doc-item-body">
+                <p>
+                  Load factor is <code>entries ÷ buckets</code> — shown live
+                  at the bottom of the table above. As it climbs past
+                  roughly <code>0.7</code>, chains get longer and lookups
+                  degrade from an average <code>O(1)</code> toward
+                  <code>O(n)</code> in the worst case.
+                </p>
+                <p>
+                  Real hash table implementations watch this number and
+                  automatically <em>resize</em> — allocate a bigger bucket
+                  array and rehash every existing key into it — once the
+                  load factor crosses a threshold. This demo skips resizing
+                  to keep the eight buckets visible.
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <div class="doc-group">
+            <div class="doc-group-title">
               <span>03</span>
-              <h3>Pathfinding</h3>
-              <p>BFS, Dijkstra, and A* explore the same weighted-free grid using different search strategies.</p>
-            </article>
+              Pathfinding
+            </div>
 
-            <article>
-              <span>04</span>
-              <h3>Client-side</h3>
-              <p>Everything runs directly in the browser using TypeScript, DOM APIs, and Canvas.</p>
-            </article>
+            <details class="doc-item">
+              <summary>
+                <span class="doc-item-name">Graphs, nodes &amp; edges</span>
+                <span class="badge">concept</span>
+                <span class="doc-item-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="doc-item-body">
+                <p>
+                  The grid above is a graph in disguise: every open cell is
+                  a <strong>node</strong>, and every pair of adjacent
+                  open cells is connected by an <strong>edge</strong>.
+                  Walls simply remove a node from the graph entirely — no
+                  edges connect to it, so no search can pass through.
+                </p>
+                <p>
+                  Every edge here has the same weight (one step), which is
+                  what makes BFS behave identically to Dijkstra on this
+                  particular grid. Give the edges different costs — uneven
+                  terrain, diagonal moves — and BFS would stop guaranteeing
+                  the shortest path while Dijkstra still would.
+                </p>
+              </div>
+            </details>
+
+            <details class="doc-item">
+              <summary>
+                <span class="doc-item-name">Breadth-First Search</span>
+                <span class="badge">O(V + E)</span>
+                <span class="doc-item-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="doc-item-body">
+                <p>
+                  Explores the grid in rings, one step out at a time: visit
+                  every neighbor of the start, then every neighbor of
+                  those, and so on. Because it expands outward evenly, the
+                  first time it reaches the end cell is guaranteed to be by
+                  the shortest possible path — as long as every step costs
+                  the same.
+                </p>
+                <p>
+                  Implemented with a queue (first in, first out): each cell
+                  gets visited once, its unvisited neighbors get added to
+                  the back of the queue, and the search always processes
+                  the oldest queued cell next.
+                </p>
+              </div>
+            </details>
+
+            <details class="doc-item">
+              <summary>
+                <span class="doc-item-name">Dijkstra's algorithm</span>
+                <span class="badge">O((V+E) log V)</span>
+                <span class="doc-item-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="doc-item-body">
+                <p>
+                  Generalizes BFS to handle edges with different costs. It
+                  always expands the unvisited cell with the
+                  <strong>lowest total distance from the start</strong> so
+                  far, and updates a neighbor's distance whenever a shorter
+                  route to it is found. On this grid, where every step
+                  costs exactly one, it visits cells in the same order as
+                  BFS.
+                </p>
+                <p>
+                  The "priority" in priority queue is doing the real work
+                  here — it's the mechanism that always pulls out the
+                  currently-cheapest cell to expand next.
+                </p>
+              </div>
+            </details>
+
+            <details class="doc-item">
+              <summary>
+                <span class="doc-item-name">A* search</span>
+                <span class="badge">O((V+E) log V)</span>
+                <span class="doc-item-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="doc-item-body">
+                <p>
+                  Dijkstra plus a hint: it prioritizes cells by <code>cost
+                  so far + estimated cost to the goal</code>, using a
+                  heuristic (this demo uses Manhattan distance — horizontal
+                  steps plus vertical steps to the end). That estimate
+                  biases the search to expand toward the goal instead of
+                  spreading out equally in every direction.
+                </p>
+                <p>
+                  Watch the visited-cell count: A* typically explores far
+                  fewer cells than BFS or Dijkstra to find the same
+                  shortest path, because it isn't wasting time exploring
+                  away from the destination.
+                </p>
+              </div>
+            </details>
           </div>
         </section>
 
@@ -806,6 +1142,46 @@ import Layout from "../../layouts/Layout.astro";
     background: var(--olive-wash);
   }
 
+  .algo-info {
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid var(--olive-line);
+    background: var(--olive-wash);
+  }
+
+  .algo-info-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .algo-info-head strong {
+    font-family: var(--font-display);
+    color: var(--ink);
+    font-size: 0.92rem;
+    font-weight: 600;
+  }
+
+  .algo-info-head span {
+    color: var(--olive-bright);
+    font-size: 0.64rem;
+    letter-spacing: 0.03em;
+  }
+
+  .algo-info p {
+    margin: 0;
+    max-width: 640px;
+    color: var(--ink-dim);
+    font-size: 0.78rem;
+    line-height: 1.65;
+  }
+
+  #sort-narration {
+    color: var(--ink);
+    font-size: 0.72rem;
+  }
+
   .hash-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -971,6 +1347,166 @@ import Layout from "../../layouts/Layout.astro";
     color: var(--ink-faint);
     font-size: 0.8rem;
     line-height: 1.7;
+  }
+
+  /* -- Documentation accordions ------------------------------------- */
+
+  .doc-group {
+    margin-top: 2.2rem;
+  }
+
+  .doc-group:first-of-type {
+    margin-top: 0;
+  }
+
+  .doc-group-title {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: 0.9rem;
+
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .doc-group-title span {
+    color: var(--olive);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+  }
+
+  .doc-item {
+    border: 1px solid var(--olive-line-strong);
+    border-radius: 10px;
+    background: var(--bg-elev);
+  }
+
+  .doc-item + .doc-item {
+    margin-top: 0.55rem;
+  }
+
+  .doc-item summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.7rem;
+
+    padding: 0.85rem 1rem;
+    cursor: pointer;
+    list-style: none;
+
+    transition: background 180ms ease;
+  }
+
+  .doc-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .doc-item summary:hover {
+    background: var(--olive-wash);
+  }
+
+  .doc-item-name {
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 0.86rem;
+    font-weight: 600;
+  }
+
+  .badge {
+    padding: 0.22rem 0.55rem;
+    border: 1px solid var(--olive-line-strong);
+    border-radius: 999px;
+
+    color: var(--olive-bright);
+    font-size: 0.6rem;
+    letter-spacing: 0.05em;
+    background: var(--olive-wash);
+  }
+
+  .doc-item-toggle {
+    margin-left: auto;
+    position: relative;
+
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  .doc-item-toggle::before,
+  .doc-item-toggle::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    background: var(--olive-bright);
+    transform: translate(-50%, -50%);
+    transition: transform 200ms ease, opacity 200ms ease;
+  }
+
+  .doc-item-toggle::before {
+    width: 14px;
+    height: 1.5px;
+  }
+
+  .doc-item-toggle::after {
+    width: 1.5px;
+    height: 14px;
+  }
+
+  .doc-item[open] .doc-item-toggle::after {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  .doc-item-body {
+    padding: 0 1.1rem 1.1rem;
+    border-top: 1px solid var(--olive-line);
+  }
+
+  .doc-item-body p {
+    margin: 0.9rem 0 0;
+    color: var(--ink-dim);
+    font-size: 0.82rem;
+    line-height: 1.75;
+  }
+
+  .doc-item-body p:first-child {
+    margin-top: 0.9rem;
+  }
+
+  .doc-item-body code {
+    padding: 0.1rem 0.35rem;
+    border: 1px solid var(--olive-line-strong);
+    border-radius: 4px;
+
+    color: var(--olive-bright);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    background: var(--olive-wash);
+  }
+
+  .doc-steps {
+    margin: 0.9rem 0 0;
+    padding-left: 1.1rem;
+
+    color: var(--ink-dim);
+    font-size: 0.82rem;
+    line-height: 1.75;
+  }
+
+  .doc-steps li + li {
+    margin-top: 0.2rem;
+  }
+
+  .doc-meta {
+    color: var(--ink-faint) !important;
+    font-size: 0.74rem !important;
+    font-style: italic;
   }
 
   .page-footer {
@@ -1196,6 +1732,12 @@ import Layout from "../../layouts/Layout.astro";
       document.getElementById("sort-comparisons");
     const swapsElement = document.getElementById("sort-swaps");
     const statusElement = document.getElementById("sort-status");
+    const narrationElement = document.getElementById("sort-narration");
+    const algoNameElement = document.getElementById("sort-algo-name");
+    const algoComplexityElement = document.getElementById(
+      "sort-algo-complexity"
+    );
+    const algoDescElement = document.getElementById("sort-algo-desc");
 
     if (
       !(stageElement instanceof HTMLDivElement) ||
@@ -1205,7 +1747,11 @@ import Layout from "../../layouts/Layout.astro";
       !(speedElement instanceof HTMLInputElement) ||
       !(comparisonsElement instanceof HTMLElement) ||
       !(swapsElement instanceof HTMLElement) ||
-      !(statusElement instanceof HTMLElement)
+      !(statusElement instanceof HTMLElement) ||
+      !(narrationElement instanceof HTMLElement) ||
+      !(algoNameElement instanceof HTMLElement) ||
+      !(algoComplexityElement instanceof HTMLElement) ||
+      !(algoDescElement instanceof HTMLElement)
     ) {
       return;
     }
@@ -1218,8 +1764,59 @@ import Layout from "../../layouts/Layout.astro";
     const comparisonsOutput = comparisonsElement;
     const swapsOutput = swapsElement;
     const statusOutput = statusElement;
+    const narrationOutput = narrationElement;
+    const algoNameOutput = algoNameElement;
+    const algoComplexityOutput = algoComplexityElement;
+    const algoDescOutput = algoDescElement;
 
     const COUNT = 42;
+
+    type AlgoKey =
+      | "bubble"
+      | "selection"
+      | "insertion"
+      | "merge"
+      | "quick";
+
+    const algoInfo: Record<
+      AlgoKey,
+      { name: string; complexity: string; desc: string }
+    > = {
+      bubble: {
+        name: "Bubble Sort",
+        complexity: "O(n²) avg/worst · O(n) best",
+        desc: "Walks the array repeatedly, swapping any two neighbors that are out of order. Each full pass pushes the next-largest value to its final spot — like a bubble rising to the top.",
+      },
+      selection: {
+        name: "Selection Sort",
+        complexity: "O(n²) in every case",
+        desc: "Scans the unsorted remainder for the smallest value, then swaps it to the front. One value gets finalized per pass, so it always takes the same number of comparisons regardless of input.",
+      },
+      insertion: {
+        name: "Insertion Sort",
+        complexity: "O(n²) avg/worst · O(n) best",
+        desc: "Grows a sorted section one value at a time, sliding each new value left past anything bigger than it — the way you'd sort playing cards in your hand.",
+      },
+      merge: {
+        name: "Merge Sort",
+        complexity: "O(n log n) in every case",
+        desc: "Splits the array in half recursively until pieces are trivially sorted, then merges pairs of sorted halves back together in order.",
+      },
+      quick: {
+        name: "Quick Sort",
+        complexity: "O(n log n) avg · O(n²) worst",
+        desc: "Picks a pivot, partitions the array so smaller values land left and larger values land right, then repeats that on each side.",
+      },
+    };
+
+    function updateAlgoInfo(): void {
+      const key = algorithm.value as AlgoKey;
+      const info = algoInfo[key] ?? algoInfo.quick;
+
+      algoNameOutput.textContent = info.name;
+      algoComplexityOutput.textContent = info.complexity;
+      algoDescOutput.textContent = info.desc;
+    }
 
     let values: number[] = [];
     let bars: HTMLDivElement[] = [];
@@ -1274,13 +1871,18 @@ import Layout from "../../layouts/Layout.astro";
 
     async function highlight(
       indices: number[],
-      className: "compare" | "swap"
+      className: "compare" | "swap",
+      note?: string
     ): Promise<void> {
       clearMarks();
 
       indices.forEach((index) => {
         bars[index]?.classList.add(className);
       });
+
+      if (note) {
+        narrationOutput.textContent = note;
+      }
 
       await sleep(delay());
     }
@@ -1293,7 +1895,11 @@ import Layout from "../../layouts/Layout.astro";
           comparisons++;
           updateMetrics();
 
-          await highlight([j, j + 1], "compare");
+          await highlight(
+            [j, j + 1],
+            "compare",
+            `Comparing ${values[j]} and ${values[j + 1]} — are they in order?`
+          );
 
           if (values[j] > values[j + 1]) {
             [values[j], values[j + 1]] = [
@@ -1308,11 +1914,16 @@ import Layout from "../../layouts/Layout.astro";
             updateBar(j + 1);
             updateMetrics();
 
-            await highlight([j, j + 1], "swap");
+            await highlight(
+              [j, j + 1],
+              "swap",
+              `${values[j + 1]} was bigger, so swap — now reads ${values[j]}, ${values[j + 1]}`
+            );
           }
         }
 
         bars[values.length - i - 1]?.classList.add("sorted");
+        narrationOutput.textContent = `Pass ${i + 1} done — ${values[values.length - i - 1]} is now in its final spot.`;
 
         if (!changed) {
           break;
@@ -1328,7 +1939,11 @@ import Layout from "../../layouts/Layout.astro";
           comparisons++;
           updateMetrics();
 
-          await highlight([minimum, j], "compare");
+          await highlight(
+            [minimum, j],
+            "compare",
+            `Is ${values[j]} smaller than current minimum ${values[minimum]}?`
+          );
 
           if (values[j] < values[minimum]) {
             minimum = j;
@@ -1347,7 +1962,11 @@ import Layout from "../../layouts/Layout.astro";
           updateBar(minimum);
           updateMetrics();
 
-          await highlight([i, minimum], "swap");
+          await highlight(
+            [i, minimum],
+            "swap",
+            `Smallest remaining value is ${values[i]} — moving it to position ${i}`
+          );
         }
 
         bars[i]?.classList.add("sorted");
@@ -1362,7 +1981,11 @@ import Layout from "../../layouts/Layout.astro";
           comparisons++;
           updateMetrics();
 
-          await highlight([j - 1, j], "compare");
+          await highlight(
+            [j - 1, j],
+            "compare",
+            `Does ${values[j]} still belong left of ${values[j - 1]}?`
+          );
 
           if (values[j - 1] <= values[j]) {
             break;
@@ -1379,7 +2002,11 @@ import Layout from "../../layouts/Layout.astro";
           updateBar(j);
           updateMetrics();
 
-          await highlight([j - 1, j], "swap");
+          await highlight(
+            [j - 1, j],
+            "swap",
+            `Shifting it left — now reads ${values[j - 1]}, ${values[j]}`
+          );
 
           j--;
         }
@@ -1409,7 +2036,8 @@ import Layout from "../../layouts/Layout.astro";
 
           await highlight(
             [left + i, middle + 1 + j],
-            "compare"
+            "compare",
+            `Merging halves — which comes first, ${first[i]} or ${second[j]}?`
           );
 
           if (first[i] <= second[j]) {
@@ -1483,7 +2111,11 @@ import Layout from "../../layouts/Layout.astro";
           comparisons++;
           updateMetrics();
 
-          await highlight([i, right], "compare");
+          await highlight(
+            [i, right],
+            "compare",
+            `Is ${values[i]} smaller than pivot ${pivot}?`
+          );
 
           if (values[i] < pivot) {
             [values[index], values[i]] = [
@@ -1497,7 +2129,11 @@ import Layout from "../../layouts/Layout.astro";
             updateBar(i);
             updateMetrics();
 
-            await highlight([index, i], "swap");
+            await highlight(
+              [index, i],
+              "swap",
+              `Moving ${values[index]} left of the boundary — it's smaller than the pivot`
+            );
 
             index++;
           }
@@ -1514,7 +2150,11 @@ import Layout from "../../layouts/Layout.astro";
         updateBar(right);
         updateMetrics();
 
-        await highlight([index, right], "swap");
+        await highlight(
+          [index, right],
+          "swap",
+          `Pivot ${values[index]} is now correctly placed — everything left is smaller, everything right is bigger`
+        );
 
         bars[index]?.classList.add("sorted");
 
@@ -1585,6 +2225,7 @@ import Layout from "../../layouts/Layout.astro";
       });
 
       statusOutput.textContent = "Complete";
+      narrationOutput.textContent = `Done — ${comparisons} comparisons and ${swaps} swaps to fully sort ${COUNT} bars.`;
 
       running = false;
 
@@ -1607,6 +2248,7 @@ import Layout from "../../layouts/Layout.astro";
       updateMetrics();
 
       statusOutput.textContent = "Ready";
+      narrationOutput.textContent = `Ready — press Run to sort ${COUNT} bars with ${algoInfo[algorithm.value as AlgoKey]?.name ?? algorithm.value}.`;
     }
 
     runButton.addEventListener("click", () => {
@@ -1615,6 +2257,15 @@ import Layout from "../../layouts/Layout.astro";
 
     shuffleButton.addEventListener("click", shuffle);
 
+    algorithm.addEventListener("change", () => {
+      updateAlgoInfo();
+
+      if (!running) {
+        narrationOutput.textContent = `Ready — press Run to sort ${COUNT} bars with ${algoInfo[algorithm.value as AlgoKey]?.name ?? algorithm.value}.`;
+      }
+    });
+
+    updateAlgoInfo();
     shuffle();
   })();
 
