@@ -1,4 +1,3 @@
-```astro
 ---
 import Layout from "../../layouts/Layout.astro";
 ---
@@ -77,6 +76,7 @@ import Layout from "../../layouts/Layout.astro";
         </div>
       </div>
 
+      <!-- Interactive demo -->
       <div class="ex-card">
         <div class="ex-card-header">
           <div class="flex items-center gap-3">
@@ -86,9 +86,7 @@ import Layout from "../../layouts/Layout.astro";
               01
             </span>
 
-            <span
-              class="h-px w-12 bg-[var(--sec)] opacity-40"
-            ></span>
+            <span class="h-px w-12 bg-[var(--sec)] opacity-40"></span>
 
             <span
               class="text-xs uppercase tracking-widest text-[var(--white-icon)]"
@@ -111,6 +109,7 @@ import Layout from "../../layouts/Layout.astro";
           </p>
         </div>
 
+        <!-- Summary -->
         <div class="ex-summary" aria-live="polite">
           <div>
             <span>Total spent</span>
@@ -133,8 +132,10 @@ import Layout from "../../layouts/Layout.astro";
           </div>
         </div>
 
+        <!-- Input panels -->
         <div class="ex-layout mt-6">
 
+          <!-- People -->
           <div class="ex-panel">
             <div class="ex-panel-title">People</div>
 
@@ -157,12 +158,10 @@ import Layout from "../../layouts/Layout.astro";
               </button>
             </div>
 
-            <div
-              id="ex-people-list"
-              class="ex-people mt-3"
-            ></div>
+            <div id="ex-people-list" class="ex-people mt-3"></div>
           </div>
 
+          <!-- Expense -->
           <div class="ex-panel">
             <div class="ex-panel-title">New expense</div>
 
@@ -207,31 +206,26 @@ import Layout from "../../layouts/Layout.astro";
                 id="ex-form-message"
                 class="ex-form-message"
                 role="status"
+                aria-live="polite"
               ></p>
             </div>
           </div>
         </div>
 
+        <!-- Expenses -->
         <div class="mt-6">
           <div class="ex-section-heading">
-            <div class="ex-panel-title">
-              Expenses
-            </div>
+            <div class="ex-panel-title">Expenses</div>
 
-            <span
-              id="ex-expense-total"
-              class="ex-section-value"
-            >
+            <span id="ex-expense-total" class="ex-section-value">
               $0.00
             </span>
           </div>
 
-          <div
-            id="ex-expenses-list"
-            class="ex-expenses mt-2"
-          ></div>
+          <div id="ex-expenses-list" class="ex-expenses mt-2"></div>
         </div>
 
+        <!-- Settlement -->
         <div class="mt-6">
           <div class="ex-section-heading">
             <div class="ex-panel-title">
@@ -243,18 +237,12 @@ import Layout from "../../layouts/Layout.astro";
             </span>
           </div>
 
-          <div
-            id="ex-settlement"
-            class="ex-settlement mt-2"
-          ></div>
+          <div id="ex-settlement" class="ex-settlement mt-2"></div>
         </div>
 
+        <!-- Actions -->
         <div class="ex-actions mt-6">
-          <button
-            id="ex-reset"
-            type="button"
-            class="ex-btn"
-          >
+          <button id="ex-reset" type="button" class="ex-btn">
             Reset demo
           </button>
 
@@ -268,6 +256,7 @@ import Layout from "../../layouts/Layout.astro";
         </div>
       </div>
 
+      <!-- Concepts -->
       <div class="ex-card ex-info-card">
         <div class="ex-card-header">
           <div class="flex items-center gap-3">
@@ -277,9 +266,7 @@ import Layout from "../../layouts/Layout.astro";
               02
             </span>
 
-            <span
-              class="h-px w-12 bg-[var(--sec)] opacity-40"
-            ></span>
+            <span class="h-px w-12 bg-[var(--sec)] opacity-40"></span>
 
             <span
               class="text-xs uppercase tracking-widest text-[var(--white-icon)]"
@@ -298,9 +285,7 @@ import Layout from "../../layouts/Layout.astro";
             <div>
               <span>01</span>
 
-              <strong>
-                Calculate the equal share
-              </strong>
+              <strong>Calculate the equal share</strong>
 
               <p>
                 Total expenses are divided equally between all active people.
@@ -310,9 +295,7 @@ import Layout from "../../layouts/Layout.astro";
             <div>
               <span>02</span>
 
-              <strong>
-                Calculate each balance
-              </strong>
+              <strong>Calculate each balance</strong>
 
               <p>
                 Paid more than the share? You are owed money. Paid less? You
@@ -323,9 +306,7 @@ import Layout from "../../layouts/Layout.astro";
             <div>
               <span>03</span>
 
-              <strong>
-                Settle efficiently
-              </strong>
+              <strong>Settle efficiently</strong>
 
               <p>
                 Debtors are matched with creditors until every balance reaches
@@ -342,13 +323,7 @@ import Layout from "../../layouts/Layout.astro";
 
 <style>
   .ex-page :global(.shiny-sec) {
-    background: linear-gradient(
-      90deg,
-      var(--sec),
-      #6ee7b7,
-      var(--sec)
-    );
-
+    background: linear-gradient(90deg, var(--sec), #6ee7b7, var(--sec));
     background-size: 200% 100%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -494,8 +469,8 @@ import Layout from "../../layouts/Layout.astro";
     opacity: 0.6;
     font-size: 0.9rem;
     line-height: 1;
-    background: transparent;
     border: 0;
+    background: transparent;
     padding: 0;
   }
 
@@ -731,21 +706,26 @@ import Layout from "../../layouts/Layout.astro";
     };
 
     /*
-     * DOM helper.
+     * IMPORTANT:
+     * This helper returns a NON-NULL element.
      *
-     * The important TypeScript fix is here:
-     * this function returns T instead of T | null.
+     * The previous implementation used:
      *
-     * If an expected element does not exist, it throws a clear
-     * error immediately instead of allowing null to propagate
-     * through the rest of the application.
+     * document.getElementById(...) as T | null
+     *
+     * TypeScript then correctly complained that variables such as
+     * descInput, amountInput, payerSelect, etc. could be null inside
+     * nested functions.
+     *
+     * By performing the null check here, all callers receive T rather
+     * than T | null.
      */
-    const $ = <T extends HTMLElement>(id: string): T => {
+    const requiredElement = <T extends HTMLElement>(id: string): T => {
       const element = document.getElementById(id);
 
       if (!element) {
         throw new Error(
-          `Required element #${id} was not found.`,
+          `Expense Splitter: required element "#${id}" was not found.`,
         );
       }
 
@@ -753,55 +733,55 @@ import Layout from "../../layouts/Layout.astro";
     };
 
     const personNameInput =
-      $<HTMLInputElement>("ex-person-name");
+      requiredElement<HTMLInputElement>("ex-person-name");
 
     const addPersonBtn =
-      $<HTMLButtonElement>("ex-add-person");
+      requiredElement<HTMLButtonElement>("ex-add-person");
 
     const peopleListEl =
-      $<HTMLDivElement>("ex-people-list");
+      requiredElement<HTMLDivElement>("ex-people-list");
 
     const descInput =
-      $<HTMLInputElement>("ex-expense-desc");
+      requiredElement<HTMLInputElement>("ex-expense-desc");
 
     const amountInput =
-      $<HTMLInputElement>("ex-expense-amount");
+      requiredElement<HTMLInputElement>("ex-expense-amount");
 
     const payerSelect =
-      $<HTMLSelectElement>("ex-expense-payer");
+      requiredElement<HTMLSelectElement>("ex-expense-payer");
 
     const addExpenseBtn =
-      $<HTMLButtonElement>("ex-add-expense");
+      requiredElement<HTMLButtonElement>("ex-add-expense");
 
     const expensesListEl =
-      $<HTMLDivElement>("ex-expenses-list");
+      requiredElement<HTMLDivElement>("ex-expenses-list");
 
     const settlementEl =
-      $<HTMLDivElement>("ex-settlement");
+      requiredElement<HTMLDivElement>("ex-settlement");
 
     const resetBtn =
-      $<HTMLButtonElement>("ex-reset");
+      requiredElement<HTMLButtonElement>("ex-reset");
 
     const loadExampleBtn =
-      $<HTMLButtonElement>("ex-load-example");
+      requiredElement<HTMLButtonElement>("ex-load-example");
 
     const formMessageEl =
-      $<HTMLParagraphElement>("ex-form-message");
+      requiredElement<HTMLParagraphElement>("ex-form-message");
 
     const totalEl =
-      $<HTMLElement>("ex-total");
+      requiredElement<HTMLElement>("ex-total");
 
     const countEl =
-      $<HTMLElement>("ex-count");
+      requiredElement<HTMLElement>("ex-count");
 
     const expenseCountEl =
-      $<HTMLElement>("ex-expense-count");
+      requiredElement<HTMLElement>("ex-expense-count");
 
     const transferCountEl =
-      $<HTMLElement>("ex-transfer-count");
+      requiredElement<HTMLElement>("ex-transfer-count");
 
     const expenseTotalEl =
-      $<HTMLElement>("ex-expense-total");
+      requiredElement<HTMLElement>("ex-expense-total");
 
     let people: Person[] = [];
     let expenses: Expense[] = [];
@@ -809,21 +789,23 @@ import Layout from "../../layouts/Layout.astro";
     let nextPersonId = 1;
     let nextExpenseId = 1;
 
-    const currency =
-      new Intl.NumberFormat(undefined, {
-        style: "currency",
-        currency: "USD",
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-      });
+    const currency = new Intl.NumberFormat(undefined, {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
 
-    const escapeHtml = (
-      value: string,
-    ): string => {
-      const entities: Record<
-        string,
-        string
-      > = {
+    const formatCents = (cents: number): string => {
+      return currency.format(cents / 100);
+    };
+
+    /*
+     * Escape user-entered strings before putting them into innerHTML.
+     * This prevents names/descriptions from being interpreted as HTML.
+     */
+    const escapeHtml = (value: string): string => {
+      const replacements: Record<string, string> = {
         "&": "&amp;",
         "<": "&lt;",
         ">": "&gt;",
@@ -833,275 +815,245 @@ import Layout from "../../layouts/Layout.astro";
 
       return value.replace(
         /[&<>"']/g,
-        (char) => entities[char] ?? char,
+        (character) => replacements[character] ?? character,
       );
     };
 
-    const formatCents = (
-      cents: number,
-    ): string => {
-      return currency.format(cents / 100);
-    };
-
+    /*
+     * Convert a decimal amount into integer cents.
+     *
+     * Examples:
+     * 24     -> 2400
+     * 24.5   -> 2450
+     * 24.50  -> 2450
+     *
+     * Using integer cents avoids floating-point money errors.
+     */
     const parseAmountToCents = (
       value: string,
     ): number | null => {
-      const normalized =
-        value.trim().replace(",", ".");
+      const normalized = value.trim().replace(",", ".");
 
       if (!normalized) {
         return null;
       }
 
-      if (
-        !/^\d+(\.\d{1,2})?$/.test(
-          normalized,
-        )
-      ) {
+      if (!/^\d+(\.\d{1,2})?$/.test(normalized)) {
         return null;
       }
 
-      const amount =
-        Number(normalized);
+      const amount = Number(normalized);
 
-      if (
-        !Number.isFinite(amount) ||
-        amount <= 0
-      ) {
+      if (!Number.isFinite(amount) || amount <= 0) {
         return null;
       }
 
-      return Math.round(amount * 100);
+      const cents = Math.round(amount * 100);
+
+      if (cents <= 0) {
+        return null;
+      }
+
+      return cents;
     };
 
-    const showMessage = (
-      message = "",
-    ): void => {
-      formMessageEl.textContent =
-        message;
+    const showMessage = (message = ""): void => {
+      formMessageEl.textContent = message;
     };
 
     const getTotalCents = (): number => {
       return expenses.reduce(
-        (sum, expense) =>
-          sum + expense.amountCents,
+        (sum, expense) => sum + expense.amountCents,
         0,
       );
     };
 
-    function renderPeople(): void {
+    /*
+     * Render people and rebuild the payer select.
+     */
+    const renderPeople = (): void => {
       if (people.length === 0) {
         peopleListEl.innerHTML =
-          `<div class="ex-empty">No one added yet.</div>`;
+          '<div class="ex-empty">No one added yet.</div>';
       } else {
-        peopleListEl.innerHTML =
-          people
-            .map(
-              (person) => `
-                <div class="ex-person-chip">
-                  <span>
-                    ${escapeHtml(person.name)}
-                  </span>
+        peopleListEl.innerHTML = people
+          .map(
+            (person) => `
+              <div class="ex-person-chip">
+                <span>${escapeHtml(person.name)}</span>
 
-                  <button
-                    type="button"
-                    class="ex-person-remove"
-                    data-person-id="${person.id}"
-                    aria-label="Remove ${escapeHtml(person.name)}"
-                    title="Remove ${escapeHtml(person.name)}"
-                  >
-                    &times;
-                  </button>
-                </div>
-              `,
-            )
-            .join("");
+                <button
+                  type="button"
+                  class="ex-person-remove"
+                  data-person-id="${person.id}"
+                  aria-label="Remove ${escapeHtml(person.name)}"
+                  title="Remove ${escapeHtml(person.name)}"
+                >
+                  &times;
+                </button>
+              </div>
+            `,
+          )
+          .join("");
       }
 
+      const currentPayer = payerSelect.value;
+
       payerSelect.innerHTML =
-        `<option value="">Choose payer</option>` +
+        '<option value="">Choose payer</option>' +
         people
           .map(
             (person) =>
-              `<option value="${person.id}">
-                ${escapeHtml(person.name)}
-              </option>`,
+              `<option value="${person.id}">${escapeHtml(person.name)}</option>`,
           )
           .join("");
-    }
 
-    function renderExpenses(): void {
+      /*
+       * Preserve the selected payer when possible.
+       */
+      if (
+        currentPayer &&
+        people.some(
+          (person) => String(person.id) === currentPayer,
+        )
+      ) {
+        payerSelect.value = currentPayer;
+      }
+    };
+
+    /*
+     * Render expense history.
+     */
+    const renderExpenses = (): void => {
       if (expenses.length === 0) {
         expensesListEl.innerHTML =
-          `<div class="ex-empty">No expenses logged yet.</div>`;
+          '<div class="ex-empty">No expenses logged yet.</div>';
 
         return;
       }
 
-      expensesListEl.innerHTML =
-        expenses
-          .map((expense) => {
-            const payer =
-              people.find(
-                (person) =>
-                  person.id ===
-                  expense.payerId,
-              );
+      expensesListEl.innerHTML = expenses
+        .map((expense) => {
+          const payer = people.find(
+            (person) => person.id === expense.payerId,
+          );
 
-            return `
-              <div class="ex-expense-row">
-                <div>
-                  <div class="ex-expense-desc">
-                    ${escapeHtml(
-                      expense.desc,
-                    )}
-                  </div>
-
-                  <div class="ex-expense-meta">
-                    paid by
-                    ${escapeHtml(
-                      payer?.name ??
-                        "Unknown",
-                    )}
-                  </div>
+          return `
+            <div class="ex-expense-row">
+              <div>
+                <div class="ex-expense-desc">
+                  ${escapeHtml(expense.desc)}
                 </div>
 
-                <div class="ex-expense-amount">
-                  ${formatCents(
-                    expense.amountCents,
-                  )}
+                <div class="ex-expense-meta">
+                  paid by ${escapeHtml(payer?.name ?? "Unknown")}
                 </div>
               </div>
-            `;
-          })
-          .join("");
-    }
 
-    function calculateBalances(): Balance[] {
+              <div class="ex-expense-amount">
+                ${formatCents(expense.amountCents)}
+              </div>
+            </div>
+          `;
+        })
+        .join("");
+    };
+
+    /*
+     * Calculate each person's balance.
+     *
+     * Positive balance:
+     *   person should receive money.
+     *
+     * Negative balance:
+     *   person needs to pay money.
+     *
+     * The equal share is calculated in integer cents.
+     */
+    const calculateBalances = (): Balance[] => {
       if (people.length === 0) {
         return [];
       }
 
-      const totalCents =
-        getTotalCents();
+      const totalCents = getTotalCents();
 
-      const baseShare =
-        Math.floor(
-          totalCents /
-            people.length,
-        );
+      const baseShare = Math.floor(
+        totalCents / people.length,
+      );
 
-      const remainder =
-        totalCents %
-        people.length;
+      const remainder = totalCents % people.length;
 
-      const paidByPerson =
-        new Map<number, number>();
+      const paidByPerson = new Map<number, number>();
 
       for (const person of people) {
-        paidByPerson.set(
-          person.id,
-          0,
-        );
+        paidByPerson.set(person.id, 0);
       }
 
       for (const expense of expenses) {
+        const current =
+          paidByPerson.get(expense.payerId) ?? 0;
+
         paidByPerson.set(
           expense.payerId,
-          (paidByPerson.get(
-            expense.payerId,
-          ) ?? 0) +
-            expense.amountCents,
+          current + expense.amountCents,
         );
       }
 
-      return people.map(
-        (person, index) => {
-          /*
-           * Distribute any remainder cents
-           * deterministically.
-           */
-          const share =
-            baseShare +
-            (index < remainder
-              ? 1
-              : 0);
+      return people.map((person, index) => {
+        /*
+         * If the total cannot be divided perfectly by the number
+         * of people, distribute the leftover cents deterministically.
+         */
+        const share =
+          baseShare +
+          (index < remainder ? 1 : 0);
 
-          return {
-            id: person.id,
-            name: person.name,
-            cents:
-              (paidByPerson.get(
-                person.id,
-              ) ?? 0) -
-              share,
-          };
-        },
-      );
-    }
+        const paid =
+          paidByPerson.get(person.id) ?? 0;
 
-    function calculateTransfers(): Transfer[] {
-      /*
-       * Copy the balances before modifying them.
-       * This prevents accidental mutation of
-       * the balance calculation.
-       */
-      const balances =
-        calculateBalances();
+        return {
+          id: person.id,
+          name: person.name,
+          cents: paid - share,
+        };
+      });
+    };
 
-      const creditors =
-        balances
-          .filter(
-            (balance) =>
-              balance.cents > 0,
-          )
-          .map((balance) => ({
-            ...balance,
-          }))
-          .sort(
-            (a, b) =>
-              b.cents - a.cents,
-          );
+    /*
+     * Convert balances into the minimum number of transfers.
+     *
+     * Creditors receive money.
+     * Debtors pay money.
+     */
+    const calculateTransfers = (): Transfer[] => {
+      const balances = calculateBalances();
 
-      const debtors =
-        balances
-          .filter(
-            (balance) =>
-              balance.cents < 0,
-          )
-          .map((balance) => ({
-            ...balance,
-          }))
-          .sort(
-            (a, b) =>
-              a.cents - b.cents,
-          );
+      const creditors = balances
+        .filter((balance) => balance.cents > 0)
+        .map((balance) => ({ ...balance }))
+        .sort((a, b) => b.cents - a.cents);
 
-      const transfers: Transfer[] =
-        [];
+      const debtors = balances
+        .filter((balance) => balance.cents < 0)
+        .map((balance) => ({ ...balance }))
+        .sort((a, b) => a.cents - b.cents);
+
+      const transfers: Transfer[] = [];
 
       let creditorIndex = 0;
       let debtorIndex = 0;
 
       while (
-        creditorIndex <
-          creditors.length &&
-        debtorIndex <
-          debtors.length
+        creditorIndex < creditors.length &&
+        debtorIndex < debtors.length
       ) {
-        const creditor =
-          creditors[
-            creditorIndex
-          ];
+        const creditor = creditors[creditorIndex];
+        const debtor = debtors[debtorIndex];
 
-        const debtor =
-          debtors[debtorIndex];
-
-        const amount =
-          Math.min(
-            creditor.cents,
-            -debtor.cents,
-          );
+        const amount = Math.min(
+          creditor.cents,
+          -debtor.cents,
+        );
 
         if (amount > 0) {
           transfers.push({
@@ -1111,92 +1063,78 @@ import Layout from "../../layouts/Layout.astro";
           });
         }
 
-        creditor.cents -=
-          amount;
+        creditor.cents -= amount;
+        debtor.cents += amount;
 
-        debtor.cents +=
-          amount;
-
-        if (
-          creditor.cents === 0
-        ) {
+        if (creditor.cents === 0) {
           creditorIndex++;
         }
 
-        if (
-          debtor.cents === 0
-        ) {
+        if (debtor.cents === 0) {
           debtorIndex++;
         }
       }
 
       return transfers;
-    }
+    };
 
-    function renderSettlement(): number {
+    /*
+     * Render settlement transfers.
+     */
+    const renderSettlement = (): number => {
       if (people.length === 0) {
         settlementEl.innerHTML =
-          `<div class="ex-empty">Add people to calculate a settlement.</div>`;
+          '<div class="ex-empty">Add people to calculate a settlement.</div>';
 
         return 0;
       }
 
       if (expenses.length === 0) {
         settlementEl.innerHTML =
-          `<div class="ex-empty">Add an expense to calculate a settlement.</div>`;
+          '<div class="ex-empty">Add an expense to calculate a settlement.</div>';
 
         return 0;
       }
 
-      const transfers =
-        calculateTransfers();
+      const transfers = calculateTransfers();
 
       if (transfers.length === 0) {
         settlementEl.innerHTML =
-          `<div class="ex-empty">Everyone is even — no transfers needed.</div>`;
+          '<div class="ex-empty">Everyone is even — no transfers needed.</div>';
 
         return 0;
       }
 
-      settlementEl.innerHTML =
-        transfers
-          .map(
-            (transfer) => `
-              <div class="ex-settlement-row">
-                <span>
-                  ${escapeHtml(
-                    transfer.from,
-                  )}
-                </span>
+      settlementEl.innerHTML = transfers
+        .map(
+          (transfer) => `
+            <div class="ex-settlement-row">
+              <span>${escapeHtml(transfer.from)}</span>
 
-                <span class="ex-settlement-arrow">
-                  &rarr;
-                </span>
+              <span class="ex-settlement-arrow">
+                &rarr;
+              </span>
 
-                <span>
-                  ${escapeHtml(
-                    transfer.to,
-                  )}
-                </span>
+              <span>${escapeHtml(transfer.to)}</span>
 
-                <span class="ex-settlement-amount">
-                  ${formatCents(
-                    transfer.cents,
-                  )}
-                </span>
-              </div>
-            `,
-          )
-          .join("");
+              <span class="ex-settlement-amount">
+                ${formatCents(transfer.cents)}
+              </span>
+            </div>
+          `,
+        )
+        .join("");
 
       return transfers.length;
-    }
+    };
 
-    function renderSummary(
+    /*
+     * Update summary counters.
+     */
+    const renderSummary = (
       transferCount: number,
-    ): void {
-      const totalCents =
-        getTotalCents();
+    ): void => {
+      const totalCents = getTotalCents();
 
       totalEl.textContent =
         formatCents(totalCents);
@@ -1212,21 +1150,25 @@ import Layout from "../../layouts/Layout.astro";
 
       transferCountEl.textContent =
         String(transferCount);
-    }
+    };
 
-    function renderAll(): void {
+    /*
+     * Render the complete application.
+     */
+    const renderAll = (): void => {
       renderPeople();
       renderExpenses();
 
       const transferCount =
         renderSettlement();
 
-      renderSummary(
-        transferCount,
-      );
-    }
+      renderSummary(transferCount);
+    };
 
-    function addPerson(): void {
+    /*
+     * Add a person.
+     */
+    const addPerson = (): void => {
       const name =
         personNameInput.value.trim();
 
@@ -1240,12 +1182,11 @@ import Layout from "../../layouts/Layout.astro";
         return;
       }
 
-      const duplicate =
-        people.some(
-          (person) =>
-            person.name.toLowerCase() ===
-            name.toLowerCase(),
-        );
+      const duplicate = people.some(
+        (person) =>
+          person.name.toLowerCase() ===
+          name.toLowerCase(),
+      );
 
       if (duplicate) {
         showMessage(
@@ -1258,9 +1199,11 @@ import Layout from "../../layouts/Layout.astro";
       }
 
       people.push({
-        id: nextPersonId++,
+        id: nextPersonId,
         name,
       });
+
+      nextPersonId++;
 
       personNameInput.value = "";
 
@@ -1269,9 +1212,12 @@ import Layout from "../../layouts/Layout.astro";
       renderAll();
 
       personNameInput.focus();
-    }
+    };
 
-    function addExpense(): void {
+    /*
+     * Add an expense.
+     */
+    const addExpense = (): void => {
       const desc =
         descInput.value.trim();
 
@@ -1281,14 +1227,14 @@ import Layout from "../../layouts/Layout.astro";
         );
 
       const payerId =
-        Number(
-          payerSelect.value,
-        );
+        Number(payerSelect.value);
 
       if (people.length === 0) {
         showMessage(
           "Add at least one person first.",
         );
+
+        personNameInput.focus();
 
         return;
       }
@@ -1303,9 +1249,7 @@ import Layout from "../../layouts/Layout.astro";
         return;
       }
 
-      if (
-        amountCents === null
-      ) {
+      if (amountCents === null) {
         showMessage(
           "Enter a valid amount, for example 24.50.",
         );
@@ -1315,13 +1259,11 @@ import Layout from "../../layouts/Layout.astro";
         return;
       }
 
-      if (
-        !payerId ||
-        !people.some(
-          (person) =>
-            person.id === payerId,
-        )
-      ) {
+      const payerExists = people.some(
+        (person) => person.id === payerId,
+      );
+
+      if (!payerId || !payerExists) {
         showMessage(
           "Choose who paid the expense.",
         );
@@ -1332,11 +1274,13 @@ import Layout from "../../layouts/Layout.astro";
       }
 
       expenses.push({
-        id: nextExpenseId++,
+        id: nextExpenseId,
         desc,
         amountCents,
         payerId,
       });
+
+      nextExpenseId++;
 
       descInput.value = "";
       amountInput.value = "";
@@ -1346,43 +1290,51 @@ import Layout from "../../layouts/Layout.astro";
       renderAll();
 
       descInput.focus();
-    }
+    };
 
-    function removePerson(
+    /*
+     * Remove a person.
+     *
+     * Expenses paid by the removed person are also removed because
+     * keeping an expense with a non-existent payer would corrupt the
+     * settlement calculation.
+     */
+    const removePerson = (
       id: number,
-    ): void {
-      people =
-        people.filter(
-          (person) =>
-            person.id !== id,
-        );
+    ): void => {
+      people = people.filter(
+        (person) => person.id !== id,
+      );
 
-      /*
-       * Remove expenses whose payer
-       * has been removed.
-       */
-      expenses =
-        expenses.filter(
-          (expense) =>
-            expense.payerId !== id,
-        );
+      expenses = expenses.filter(
+        (expense) => expense.payerId !== id,
+      );
 
       renderAll();
-    }
+    };
 
-    function resetDemo(): void {
+    /*
+     * Reset everything.
+     */
+    const resetDemo = (): void => {
       people = [];
       expenses = [];
 
       nextPersonId = 1;
       nextExpenseId = 1;
 
+      descInput.value = "";
+      amountInput.value = "";
+
       showMessage("");
 
       renderAll();
-    }
+    };
 
-    function loadExample(): void {
+    /*
+     * Load demonstration data.
+     */
+    const loadExample = (): void => {
       people = [
         {
           id: 1,
@@ -1429,8 +1381,11 @@ import Layout from "../../layouts/Layout.astro";
       showMessage("");
 
       renderAll();
-    }
+    };
 
+    /*
+     * Event listeners.
+     */
     addPersonBtn.addEventListener(
       "click",
       addPerson,
@@ -1438,8 +1393,9 @@ import Layout from "../../layouts/Layout.astro";
 
     personNameInput.addEventListener(
       "keydown",
-      (event) => {
+      (event: KeyboardEvent) => {
         if (event.key === "Enter") {
+          event.preventDefault();
           addPerson();
         }
       },
@@ -1452,8 +1408,9 @@ import Layout from "../../layouts/Layout.astro";
 
     descInput.addEventListener(
       "keydown",
-      (event) => {
+      (event: KeyboardEvent) => {
         if (event.key === "Enter") {
+          event.preventDefault();
           addExpense();
         }
       },
@@ -1461,8 +1418,9 @@ import Layout from "../../layouts/Layout.astro";
 
     amountInput.addEventListener(
       "keydown",
-      (event) => {
+      (event: KeyboardEvent) => {
         if (event.key === "Enter") {
+          event.preventDefault();
           addExpense();
         }
       },
@@ -1470,7 +1428,7 @@ import Layout from "../../layouts/Layout.astro";
 
     peopleListEl.addEventListener(
       "click",
-      (event) => {
+      (event: MouseEvent) => {
         const target =
           event.target as HTMLElement;
 
@@ -1484,13 +1442,9 @@ import Layout from "../../layouts/Layout.astro";
         }
 
         const id =
-          Number(
-            button.dataset.personId,
-          );
+          Number(button.dataset.personId);
 
-        if (
-          Number.isInteger(id)
-        ) {
+        if (Number.isInteger(id)) {
           removePerson(id);
         }
       },
@@ -1507,10 +1461,8 @@ import Layout from "../../layouts/Layout.astro";
     );
 
     /*
-     * Populate the demo initially.
+     * Initial state.
      */
     loadExample();
   })();
 </script>
-```
-
