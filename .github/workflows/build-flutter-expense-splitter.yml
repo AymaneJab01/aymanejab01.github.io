@@ -1,4 +1,4 @@
-name: Build Flutter Expense Splitter
+﻿name: Build Flutter Expense Splitter
 
 "on":
   push:
@@ -6,7 +6,6 @@ name: Build Flutter Expense Splitter
       - main
     paths:
       - "flutter/expense_splitter/**"
-      - ".github/workflows/build-flutter-expense-splitter.yml"
   workflow_dispatch:
 
 permissions:
