@@ -10,100 +10,126 @@ void main() {
 class ExpenseSplitterApp extends StatelessWidget {
   const ExpenseSplitterApp({super.key});
 
+  static const Color deepGreen = Color(0xFF0B5D3B);
+  static const Color lightGreen = Color(0xFFE8F5EE);
+  static const Color background = Color(0xFFF6F9F7);
+  static const Color border = Color(0xFFDCE7E1);
+  static const Color darkText = Color(0xFF17231D);
+
   @override
   Widget build(BuildContext context) {
-    const deepGreen = Color(0xFF0B5D3B);
-    const lightGreen = Color(0xFFE8F5EE);
-    const background = Color(0xFFF7F9F8);
-    const border = Color(0xFFE1E8E4);
-    const darkText = Color(0xFF17231D);
-
     return MaterialApp(
       title: 'Expense Splitter',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
         brightness: Brightness.light,
+
         colorScheme: ColorScheme.fromSeed(
           seedColor: deepGreen,
           brightness: Brightness.light,
+        ).copyWith(
+          primary: deepGreen,
+          onPrimary: Colors.white,
+          secondary: deepGreen,
+          surface: Colors.white,
         ),
+
         scaffoldBackgroundColor: background,
+
         cardTheme: const CardThemeData(
           color: Colors.white,
           elevation: 0,
           margin: EdgeInsets.zero,
           surfaceTintColor: Colors.transparent,
         ),
-        inputDecorationTheme: InputDecorationTheme(
+
+        inputDecorationTheme:
+            InputDecorationTheme(
           filled: true,
           fillColor: Colors.white,
+
           labelStyle: const TextStyle(
             color: Color(0xFF64736B),
           ),
+
           hintStyle: const TextStyle(
             color: Color(0xFFA0ABA5),
           ),
+
           prefixIconColor: deepGreen,
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(14),
-            ),
-            borderSide: BorderSide(
+
+          border: OutlineInputBorder(
+            borderRadius:
+                BorderRadius.circular(14),
+            borderSide: const BorderSide(
               color: border,
             ),
           ),
-          enabledBorder: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(14),
-            ),
-            borderSide: BorderSide(
+
+          enabledBorder: OutlineInputBorder(
+            borderRadius:
+                BorderRadius.circular(14),
+            borderSide: const BorderSide(
               color: border,
             ),
           ),
-          focusedBorder: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(14),
-            ),
-            borderSide: BorderSide(
+
+          focusedBorder: OutlineInputBorder(
+            borderRadius:
+                BorderRadius.circular(14),
+            borderSide: const BorderSide(
               color: deepGreen,
               width: 1.5,
             ),
           ),
-          contentPadding: const EdgeInsets.symmetric(
+
+          contentPadding:
+              const EdgeInsets.symmetric(
             horizontal: 16,
             vertical: 16,
           ),
         ),
-        filledButtonTheme: FilledButtonThemeData(
+
+        filledButtonTheme:
+            FilledButtonThemeData(
           style: FilledButton.styleFrom(
             backgroundColor: deepGreen,
             foregroundColor: Colors.white,
             elevation: 0,
-            padding: const EdgeInsets.symmetric(
+            padding:
+                const EdgeInsets.symmetric(
               horizontal: 20,
               vertical: 15,
             ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(14),
+            shape:
+                RoundedRectangleBorder(
+              borderRadius:
+                  BorderRadius.circular(14),
             ),
           ),
         ),
-        textButtonTheme: TextButtonThemeData(
+
+        textButtonTheme:
+            TextButtonThemeData(
           style: TextButton.styleFrom(
             foregroundColor: deepGreen,
           ),
         ),
+
         chipTheme: ChipThemeData(
           backgroundColor: Colors.white,
           selectedColor: lightGreen,
           side: const BorderSide(
             color: border,
           ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+          shape:
+              RoundedRectangleBorder(
+            borderRadius:
+                BorderRadius.circular(12),
           ),
-          labelStyle: const TextStyle(
+          labelStyle:
+              const TextStyle(
             color: darkText,
           ),
         ),
