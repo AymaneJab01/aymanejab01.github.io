@@ -1,47 +1,23 @@
-name: Build Flutter Expense Splitter
+﻿name: expense_splitter
+description: A Flutter application for splitting group expenses.
+publish_to: "none"
 
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - "flutter/expense_splitter/**"
-  workflow_dispatch:
+version: 1.0.0+1
 
-permissions:
-  contents: write
+environment:
+  sdk: ">=3.0.0 <4.0.0"
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+dependencies:
+  flutter:
+    sdk: flutter
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+  cupertino_icons: ^1.0.8
 
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          channel: stable
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
 
-      - name: Install dependencies
-        working-directory: flutter/expense_splitter
-        run: flutter pub get
+  flutter_lints: ^5.0.0
 
-      - name: Build web release
-        working-directory: flutter/expense_splitter
-        run: flutter build web --release --base-href /projects/expense-splitter/
-
-      - name: Copy build output into public folder
-        run: |
-          rm -rf public/projects/expense-splitter
-          mkdir -p public/projects/expense-splitter
-          cp -r flutter/expense_splitter/build/web/. public/projects/expense-splitter/
-
-      - name: Commit and push if changed
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/projects/expense-splitter
-          git diff --staged --quiet || git commit -m "chore: rebuild expense splitter flutter web app"
-          git push
+flutter:
+  uses-material-design: true

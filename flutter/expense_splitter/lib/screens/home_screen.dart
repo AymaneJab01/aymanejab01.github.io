@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 
 import '../models/expense.dart';
 import '../models/person.dart';
@@ -226,7 +226,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
               decoration: BoxDecoration(
                 color:
-                    const Color(0xFF15803D).withOpacity(0.12),
+                    const Color(0xFF15803D).withValues(alpha: 0.12),
 
                 borderRadius:
                     BorderRadius.circular(12),
@@ -289,7 +289,7 @@ class _HomeScreenState extends State<HomeScreen> {
         SummaryCard(
           title: 'TOTAL EXPENSES',
           value:
-              '€${totalExpenses.toStringAsFixed(2)}',
+              'â‚¬${totalExpenses.toStringAsFixed(2)}',
           icon: Icons.euro_rounded,
           subtitle:
               '${_expenses.length} expense${_expenses.length == 1 ? '' : 's'}',
@@ -712,7 +712,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                   Center(
                     child: Text(
-                      'Expense Splitter · Flutter & Dart',
+                      'Expense Splitter Â· Flutter & Dart',
                       style: const TextStyle(
                         color: Color(0xFF444444),
                         fontSize: 12,
