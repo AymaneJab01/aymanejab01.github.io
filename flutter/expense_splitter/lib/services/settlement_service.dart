@@ -40,8 +40,7 @@ class SettlementService {
             continue;
           }
 
-          balances[participant] =
-              (balances[participant] ?? 0) - share;
+          balances[participant] = (balances[participant] ?? 0) - share;
         }
       }
     }
@@ -66,15 +65,12 @@ class SettlementService {
     int creditorIndex = 0;
     int debtorIndex = 0;
 
-    while (
-        creditorIndex < creditors.length &&
-        debtorIndex < debtors.length) {
+    while (creditorIndex < creditors.length && debtorIndex < debtors.length) {
       final creditor = creditors[creditorIndex];
       final debtor = debtors[debtorIndex];
 
-      final amount = creditor.value < debtor.value
-          ? creditor.value
-          : debtor.value;
+      final amount =
+          creditor.value < debtor.value ? creditor.value : debtor.value;
 
       final from = people.firstWhere(
         (person) => person.id == debtor.key,
@@ -139,16 +135,14 @@ class SettlementService {
         continue;
       }
 
-      final share =
-          expense.amount / expense.participants.length;
+      final share = expense.amount / expense.participants.length;
 
       for (final participant in expense.participants) {
         if (!balances.containsKey(participant)) {
           continue;
         }
 
-        balances[participant] =
-            (balances[participant] ?? 0) - share;
+        balances[participant] = (balances[participant] ?? 0) - share;
       }
     }
 
