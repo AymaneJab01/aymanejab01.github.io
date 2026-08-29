@@ -4,1065 +4,461 @@
 
 <section
   id="projects"
-  class="relative overflow-hidden text-[var(--white)] py-24 md:py-36"
+  class="text-[var(--white)] py-24 md:py-36"
 >
+  <div class="max-w-6xl mx-auto px-6">
 
-  <!-- ========================================================= -->
-  <!-- BACKGROUND — JAPANESE GARDEN (forest green / amber / coral) -->
-  <!-- ========================================================= -->
+```
+<!-- ========================================================= -->
+<!-- SECTION HEADER -->
+<!-- ========================================================= -->
 
-  <div id="projects-bg" class="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-[#050b08]">
-    <div class="nebula-field-alt" data-parallax="0.5" aria-hidden="true">
-      <div class="nebula-ribbon-alt ribbon-back-alt"></div>
-      <div class="nebula-ribbon-alt ribbon-mid-alt"></div>
-      <div class="nebula-ribbon-alt ribbon-core-alt"></div>
-    </div>
+<div class="mb-16 md:mb-20">
+  <div class="flex items-center gap-3 mb-5">
+    <span
+      class="h-2 w-2 rounded-full bg-[var(--sec)]
+      shadow-[0_0_12px_var(--sec)]"
+    ></span>
 
-    <!-- Bokeh field — soft blurred discs echoing the maple-leaf bokeh in
-         the reference photo. Green pools bottom-left (water/shadow),
-         amber scattered across the top (canopy), coral-red clustered
-         right (foreground maple leaves). Each one reacts to the pointer:
-         the closer your cursor is, the more it "racks into focus". -->
-    <div class="bokeh-field-alt" aria-hidden="true">
-
-      <div class="bokeh-wrap-alt" style="--x:8;--y:70;--dur:17s;--delay:0s;">
-        <div class="bokeh-alt bokeh-green-alt" data-x="8" data-y="70" style="--size:280px;--blur:44px;--base-opacity:0.5;"></div>
-      </div>
-
-      <div class="bokeh-wrap-alt" style="--x:20;--y:84;--dur:14s;--delay:-3s;">
-        <div class="bokeh-alt bokeh-green-alt" data-x="20" data-y="84" style="--size:170px;--blur:32px;--base-opacity:0.46;"></div>
-      </div>
-
-      <div class="bokeh-wrap-alt" style="--x:33;--y:60;--dur:19s;--delay:-7s;">
-        <div class="bokeh-alt bokeh-green-alt" data-x="33" data-y="60" style="--size:130px;--blur:26px;--base-opacity:0.38;"></div>
-      </div>
-
-      <div class="bokeh-wrap-alt" style="--x:30;--y:14;--dur:16s;--delay:-2s;">
-        <div class="bokeh-alt bokeh-amber-alt" data-x="30" data-y="14" style="--size:230px;--blur:42px;--base-opacity:0.4;"></div>
-      </div>
-
-      <div class="bokeh-wrap-alt" style="--x:52;--y:9;--dur:20s;--delay:-9s;">
-        <div class="bokeh-alt bokeh-amber-alt" data-x="52" data-y="9" style="--size:150px;--blur:30px;--base-opacity:0.36;"></div>
-      </div>
-
-      <div class="bokeh-wrap-alt" style="--x:66;--y:23;--dur:13s;--delay:-5s;">
-        <div class="bokeh-alt bokeh-amber-alt" data-x="66" data-y="23" style="--size:100px;--blur:22px;--base-opacity:0.32;"></div>
-      </div>
-
-      <div class="bokeh-wrap-alt" style="--x:79;--y:37;--dur:15s;--delay:-1s;">
-        <div class="bokeh-alt bokeh-red-alt" data-x="79" data-y="37" style="--size:200px;--blur:34px;--base-opacity:0.5;"></div>
-      </div>
-
-      <div class="bokeh-wrap-alt" style="--x:89;--y:55;--dur:18s;--delay:-6s;">
-        <div class="bokeh-alt bokeh-red-alt" data-x="89" data-y="55" style="--size:150px;--blur:26px;--base-opacity:0.48;"></div>
-      </div>
-
-      <div class="bokeh-wrap-alt" style="--x:95;--y:29;--dur:12s;--delay:-4s;">
-        <div class="bokeh-alt bokeh-red-alt" data-x="95" data-y="29" style="--size:95px;--blur:18px;--base-opacity:0.42;"></div>
-      </div>
-
-      <div class="bokeh-wrap-alt" style="--x:85;--y:76;--dur:21s;--delay:-10s;">
-        <div class="bokeh-alt bokeh-red-alt" data-x="85" data-y="76" style="--size:120px;--blur:24px;--base-opacity:0.4;"></div>
-      </div>
-
-    </div>
-
-    <div class="cursor-glow-alt" aria-hidden="true"></div>
-
-    <div class="absolute inset-0 hero-dots-alt opacity-[0.5]"></div>
-
-    <div class="absolute inset-0 noise-layer-alt opacity-[0.02]"></div>
-
-    <div class="hero-vignette-alt"></div>
+    <span
+      class="text-sm tracking-[0.25em] uppercase
+      text-[var(--sec)] shiny-sec"
+    >
+      Projects
+    </span>
   </div>
 
-  <div class="max-w-6xl mx-auto px-6 relative z-10">
+  <h2
+    class="text-4xl md:text-6xl font-medium tracking-tight
+    text-[var(--white)]"
+  >
+    Things I've built<span class="text-[var(--sec)]">.</span>
+  </h2>
 
-    <!-- ========================================================= -->
-    <!-- SECTION HEADER -->
-    <!-- ========================================================= -->
+  <p
+    class="mt-5 max-w-2xl text-lg
+    text-[var(--white-icon)] leading-relaxed"
+  >
+    A collection of projects, experiments and ideas that
+    represent what I'm building and learning as a software developer.
+  </p>
+</div>
 
-    <div class="mb-16 md:mb-20">
-      <div class="flex items-center gap-3 mb-5">
-        <span
-          class="h-2 w-2 rounded-full bg-[var(--sec)]
-          shadow-[0_0_12px_var(--sec)]"
-        ></span>
 
-        <span
-          class="text-sm tracking-[0.25em] uppercase
-          text-[var(--sec)] shiny-sec"
+<!-- ========================================================= -->
+<!-- PROJECT 01 — TERMINAL -->
+<!-- ========================================================= -->
+
+<div
+  class="group relative mb-10 overflow-hidden rounded-2xl
+  border border-[var(--white-icon-tr)]
+  bg-[#1414149c] backdrop-blur-sm
+  transition-all duration-500
+  hover:border-[var(--sec)]/40
+  hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
+>
+
+  <div
+    class="pointer-events-none absolute -right-32 -top-32
+    h-64 w-64 rounded-full
+    bg-[var(--sec)] opacity-[0.04] blur-3xl
+    transition-opacity duration-500
+    group-hover:opacity-[0.08]"
+  ></div>
+
+  <a
+    href="/#terminal"
+    class="relative block p-7 md:p-10"
+  >
+
+    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+
+      <div class="flex-1">
+
+        <div class="mb-5 flex items-center gap-3">
+          <span
+            class="font-mono text-xs tracking-[0.2em]
+            text-[var(--sec)]"
+          >
+            PROJECT 01
+          </span>
+
+          <span
+            class="h-px w-12 bg-[var(--sec)] opacity-40"
+          ></span>
+
+          <span
+            class="text-xs uppercase tracking-widest
+            text-[var(--white-icon)]"
+          >
+            Interactive
+          </span>
+        </div>
+
+        <h3
+          class="text-2xl md:text-4xl font-medium
+          tracking-tight text-[var(--white)]
+          transition-colors duration-300
+          group-hover:text-[var(--sec)]"
         >
-          Projects
-        </span>
+          Developer Terminal
+          <span class="text-[var(--sec)]">.</span>
+        </h3>
+
+        <p
+          class="mt-4 max-w-2xl text-base md:text-lg
+          leading-relaxed text-[var(--white-icon)]"
+        >
+          An interactive terminal built directly into my portfolio,
+          designed to provide a developer-style way of exploring
+          my work, skills and information.
+        </p>
+
+        <p
+          class="mt-3 max-w-2xl text-sm
+          leading-relaxed text-[var(--white-icon)]
+          opacity-70"
+        >
+          This terminal will keep evolving day after day as new
+          commands, features and ideas are added.
+        </p>
+
+        <div class="mt-7 flex flex-wrap gap-2">
+
+          <span
+            class="rounded-full border border-[var(--white-icon-tr)]
+            px-3 py-1 text-xs font-mono
+            text-[var(--white-icon)]"
+          >
+            Astro
+          </span>
+
+          <span
+            class="rounded-full border border-[var(--white-icon-tr)]
+            px-3 py-1 text-xs font-mono
+            text-[var(--white-icon)]"
+          >
+            TypeScript
+          </span>
+
+          <span
+            class="rounded-full border border-[var(--white-icon-tr)]
+            px-3 py-1 text-xs font-mono
+            text-[var(--white-icon)]"
+          >
+            Interactive UI
+          </span>
+
+        </div>
+
       </div>
 
-      <h2
-        class="text-4xl md:text-6xl font-medium tracking-tight
-        text-[var(--white)]"
+      <div
+        class="flex md:flex-col items-center md:items-end
+        justify-between gap-5 md:min-w-[150px]"
       >
-        Things I've built<span class="text-[var(--sec)]">.</span>
-      </h2>
 
-      <p
-        class="mt-5 max-w-2xl text-lg
-        text-[var(--white-icon)] leading-relaxed"
-      >
-        A collection of projects, experiments and ideas that
-        represent what I'm building and learning as a software developer.
-      </p>
+        <div
+          class="font-mono text-xs
+          text-[var(--white-icon)] opacity-60"
+        >
+          01 / 07
+        </div>
+
+        <div
+          class="flex items-center gap-2
+          text-sm text-[var(--sec)]
+          transition-transform duration-300
+          group-hover:translate-x-1"
+        >
+          <span>Open terminal</span>
+          <span class="text-lg">→</span>
+        </div>
+
+      </div>
+
     </div>
 
+  </a>
+</div>
 
-    <!-- ========================================================= -->
-    <!-- PROJECT 01 — TERMINAL -->
-    <!-- ========================================================= -->
 
-    <div
-      class="group relative mb-10 overflow-hidden rounded-2xl
-      border border-[var(--white-icon-tr)]
-      liquid-glass
-      transition-all duration-500
-      hover:border-[var(--sec)]/40
-      hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
-    >
+<!-- ========================================================= -->
+<!-- PROJECT 02 — MOVIE RANKING -->
+<!-- ========================================================= -->
 
-      <div
-        class="pointer-events-none absolute -right-32 -top-32
-        h-64 w-64 rounded-full
-        bg-[var(--sec)] opacity-[0.04] blur-3xl
-        transition-opacity duration-500
-        group-hover:opacity-[0.08]"
-      ></div>
+<div
+  class="group relative mb-10 overflow-hidden rounded-2xl
+  border border-[var(--white-icon-tr)]
+  bg-[#1414149c] backdrop-blur-sm
+  transition-all duration-500
+  hover:border-[var(--sec)]/40
+  hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
+>
 
-      <a
-        href="/#terminal"
-        class="relative block p-7 md:p-10"
-      >
+  <a
+    href="/projects/movie-ranking"
+    class="relative block p-7 md:p-10"
+  >
 
-        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+    <div class="flex flex-col md:flex-row gap-8">
 
-          <div class="flex-1">
+      <div class="flex flex-1 flex-col justify-between">
 
-            <div class="mb-5 flex items-center gap-3">
-              <span
-                class="font-mono text-xs tracking-[0.2em]
+        <div>
+
+          <div class="mb-5 flex items-center gap-3">
+
+            <span
+              class="font-mono text-xs tracking-[0.2em]
+              text-[var(--sec)]"
+            >
+              PROJECT 02
+            </span>
+
+            <span
+              class="h-px w-12 bg-[var(--sec)] opacity-40"
+            ></span>
+
+            <span
+              class="text-xs uppercase tracking-widest
+              text-[var(--white-icon)]"
+            >
+              Web App
+            </span>
+
+          </div>
+
+          <h3
+            class="text-2xl md:text-4xl font-medium
+            tracking-tight text-[var(--white)]
+            transition-colors duration-300
+            group-hover:text-[var(--sec)]"
+          >
+            Movie Ranking
+            <span class="text-[var(--sec)]">.</span>
+          </h3>
+
+          <p
+            class="mt-4 max-w-2xl text-base md:text-lg
+            leading-relaxed text-[var(--white-icon)]"
+          >
+            A movie ranking interface where films can be explored
+            through their covers, ratings and personal reviews.
+          </p>
+
+          <div
+            class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4"
+          >
+
+            <div>
+              <p
+                class="text-xs uppercase tracking-widest
+                text-[var(--white-icon)] opacity-60"
+              >
+                Featured movie
+              </p>
+
+              <p
+                class="mt-1 text-lg font-medium
+                text-[var(--white)]"
+              >
+                Avengers: Infinity War
+              </p>
+            </div>
+
+            <div
+              class="h-8 w-px bg-[var(--white-icon-tr)]
+              hidden sm:block"
+            ></div>
+
+            <div>
+              <p
+                class="text-xs uppercase tracking-widest
+                text-[var(--white-icon)] opacity-60"
+              >
+                Rating
+              </p>
+
+              <p
+                class="mt-1 font-mono text-lg
                 text-[var(--sec)]"
               >
-                PROJECT 01
-              </span>
-
-              <span
-                class="h-px w-12 bg-[var(--sec)] opacity-40"
-              ></span>
-
-              <span
-                class="text-xs uppercase tracking-widest
-                text-[var(--white-icon)]"
-              >
-                Interactive
-              </span>
+                9<span class="text-[var(--white-icon)]">/10</span>
+              </p>
             </div>
 
-            <h3
-              class="text-2xl md:text-4xl font-medium
-              tracking-tight text-[var(--white)]
-              transition-colors duration-300
-              group-hover:text-[var(--sec)]"
+          </div>
+
+        </div>
+
+        <div
+          class="mt-8 flex flex-col sm:flex-row
+          sm:items-center sm:justify-between gap-5"
+        >
+
+          <div class="flex flex-wrap gap-2">
+
+            <span
+              class="rounded-full border border-[var(--white-icon-tr)]
+              px-3 py-1 text-xs font-mono
+              text-[var(--white-icon)]"
             >
-              Developer Terminal
-              <span class="text-[var(--sec)]">.</span>
-            </h3>
+              Astro
+            </span>
 
-            <p
-              class="mt-4 max-w-2xl text-base md:text-lg
-              leading-relaxed text-[var(--white-icon)]"
+            <span
+              class="rounded-full border border-[var(--white-icon-tr)]
+              px-3 py-1 text-xs font-mono
+              text-[var(--white-icon)]"
             >
-              An interactive terminal built directly into my portfolio,
-              designed to provide a developer-style way of exploring
-              my work, skills and information.
-            </p>
+              UI
+            </span>
 
-            <p
-              class="mt-3 max-w-2xl text-sm
-              leading-relaxed text-[var(--white-icon)]
-              opacity-70"
+            <span
+              class="rounded-full border border-[var(--white-icon-tr)]
+              px-3 py-1 text-xs font-mono
+              text-[var(--white-icon)]"
             >
-              This terminal will keep evolving day after day as new
-              commands, features and ideas are added.
-            </p>
-
-            <div class="mt-7 flex flex-wrap gap-2">
-
-              <span
-                class="rounded-full border border-[var(--white-icon-tr)]
-                px-3 py-1 text-xs font-mono
-                text-[var(--white-icon)]"
-              >
-                Astro
-              </span>
-
-              <span
-                class="rounded-full border border-[var(--white-icon-tr)]
-                px-3 py-1 text-xs font-mono
-                text-[var(--white-icon)]"
-              >
-                TypeScript
-              </span>
-
-              <span
-                class="rounded-full border border-[var(--white-icon-tr)]
-                px-3 py-1 text-xs font-mono
-                text-[var(--white-icon)]"
-              >
-                Interactive UI
-              </span>
-
-            </div>
+              Movies
+            </span>
 
           </div>
 
           <div
-            class="flex md:flex-col items-center md:items-end
-            justify-between gap-5 md:min-w-[150px]"
+            class="flex items-center gap-2
+            text-sm text-[var(--sec)]
+            transition-transform duration-300
+            group-hover:translate-x-1"
           >
-
-            <div
-              class="font-mono text-xs
-              text-[var(--white-icon)] opacity-60"
-            >
-              01 / 07
-            </div>
-
-            <div
-              class="flex items-center gap-2
-              text-sm text-[var(--sec)]
-              transition-transform duration-300
-              group-hover:translate-x-1"
-            >
-              <span>Open terminal</span>
-              <span class="text-lg">→</span>
-            </div>
-
+            <span>View project</span>
+            <span class="text-lg">→</span>
           </div>
 
         </div>
-
-      </a>
-    </div>
-
-
-    <!-- ========================================================= -->
-    <!-- PROJECT 02 — MOVIE RANKING -->
-    <!-- ========================================================= -->
-
-    <div
-      class="group relative mb-10 overflow-hidden rounded-2xl
-      border border-[var(--white-icon-tr)]
-      liquid-glass
-      transition-all duration-500
-      hover:border-[var(--sec)]/40
-      hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
-    >
-
-      <a
-        href="/projects/movie-ranking"
-        class="relative block p-7 md:p-10"
-      >
-
-        <div class="flex flex-col md:flex-row gap-8">
-
-          <div class="flex flex-1 flex-col justify-between">
-
-            <div>
-
-              <div class="mb-5 flex items-center gap-3">
-
-                <span
-                  class="font-mono text-xs tracking-[0.2em]
-                  text-[var(--sec)]"
-                >
-                  PROJECT 02
-                </span>
-
-                <span
-                  class="h-px w-12 bg-[var(--sec)] opacity-40"
-                ></span>
-
-                <span
-                  class="text-xs uppercase tracking-widest
-                  text-[var(--white-icon)]"
-                >
-                  Web App
-                </span>
-
-              </div>
-
-              <h3
-                class="text-2xl md:text-4xl font-medium
-                tracking-tight text-[var(--white)]
-                transition-colors duration-300
-                group-hover:text-[var(--sec)]"
-              >
-                Movie Ranking
-                <span class="text-[var(--sec)]">.</span>
-              </h3>
-
-              <p
-                class="mt-4 max-w-2xl text-base md:text-lg
-                leading-relaxed text-[var(--white-icon)]"
-              >
-                A movie ranking interface where films can be explored
-                through their covers, ratings and personal reviews.
-              </p>
-
-              <div
-                class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4"
-              >
-
-                <div>
-                  <p
-                    class="text-xs uppercase tracking-widest
-                    text-[var(--white-icon)] opacity-60"
-                  >
-                    Featured movie
-                  </p>
-
-                  <p
-                    class="mt-1 text-lg font-medium
-                    text-[var(--white)]"
-                  >
-                    Avengers: Infinity War
-                  </p>
-                </div>
-
-                <div
-                  class="h-8 w-px bg-[var(--white-icon-tr)]
-                  hidden sm:block"
-                ></div>
-
-                <div>
-                  <p
-                    class="text-xs uppercase tracking-widest
-                    text-[var(--white-icon)] opacity-60"
-                  >
-                    Rating
-                  </p>
-
-                  <p
-                    class="mt-1 font-mono text-lg
-                    text-[var(--sec)]"
-                  >
-                    9<span class="text-[var(--white-icon)]">/10</span>
-                  </p>
-                </div>
-
-              </div>
-
-            </div>
-
-            <div
-              class="mt-8 flex flex-col sm:flex-row
-              sm:items-center sm:justify-between gap-5"
-            >
-
-              <div class="flex flex-wrap gap-2">
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Astro
-                </span>
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  UI
-                </span>
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Movies
-                </span>
-
-              </div>
-
-              <div
-                class="flex items-center gap-2
-                text-sm text-[var(--sec)]
-                transition-transform duration-300
-                group-hover:translate-x-1"
-              >
-                <span>View project</span>
-                <span class="text-lg">→</span>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </a>
-    </div>
-
-
-    <!-- ========================================================= -->
-    <!-- PROJECT 03 — WEATHER -->
-    <!-- ========================================================= -->
-
-    <div
-      class="group relative mb-10 overflow-hidden rounded-2xl
-      border border-[var(--white-icon-tr)]
-      liquid-glass
-      transition-all duration-500
-      hover:border-[var(--sec)]/40
-      hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
-    >
-
-      <div
-        class="pointer-events-none absolute inset-0 overflow-hidden opacity-60"
-      >
-
-        <div
-          class="absolute -right-32 -top-32
-          h-72 w-72 rounded-full
-          bg-[var(--sec)] opacity-[0.06]
-          blur-3xl
-          transition-all duration-700
-          group-hover:opacity-[0.12]
-          group-hover:scale-110"
-        ></div>
-
-        <div
-          class="absolute -left-32 -bottom-40
-          h-80 w-80 rounded-full
-          bg-[#0f5132] opacity-[0.05]
-          blur-3xl
-          transition-all duration-700
-          group-hover:opacity-[0.09]"
-        ></div>
-
-        <div
-          class="absolute inset-0 opacity-[0.12]"
-          style="
-            background-image:
-              linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-            background-size: 42px 42px;
-            mask-image: radial-gradient(circle at center, black, transparent 75%);
-            -webkit-mask-image: radial-gradient(circle at center, black, transparent 75%);
-          "
-        ></div>
 
       </div>
 
-      <a
-        href="/projects/weather"
-        class="relative block p-7 md:p-10"
-      >
-
-        <div class="flex flex-col md:flex-row gap-8">
-
-          <div class="flex flex-1 flex-col justify-between">
-
-            <div>
-
-              <div class="mb-5 flex items-center gap-3">
-
-                <span
-                  class="font-mono text-xs tracking-[0.2em]
-                  text-[var(--sec)]"
-                >
-                  PROJECT 03
-                </span>
-
-                <span
-                  class="h-px w-12 bg-[var(--sec)] opacity-40"
-                ></span>
-
-                <span
-                  class="text-xs uppercase tracking-widest
-                  text-[var(--white-icon)]"
-                >
-                  Live Data
-                </span>
-
-              </div>
-
-              <h3
-                class="text-2xl md:text-4xl font-medium
-                tracking-tight text-[var(--white)]
-                transition-colors duration-300
-                group-hover:text-[var(--sec)]"
-              >
-                Weather Dashboard
-                <span class="text-[var(--sec)]">.</span>
-              </h3>
-
-              <p
-                class="mt-4 max-w-2xl text-base md:text-lg
-                leading-relaxed text-[var(--white-icon)]"
-              >
-                A dynamic weather dashboard displaying live weather
-                conditions for Alcoi and Valencia through a clean
-                developer-focused interface.
-              </p>
-
-              <div
-                class="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl"
-              >
-
-                <div
-                  class="relative overflow-hidden rounded-xl
-                  border border-[var(--white-icon-tr)]
-                  bg-[#10101080] px-5 py-4
-                  backdrop-blur-md"
-                >
-
-                  <div class="flex items-center justify-between gap-4">
-
-                    <div>
-
-                      <p
-                        class="text-xs uppercase tracking-widest
-                        text-[var(--white-icon)] opacity-60"
-                      >
-                        Location
-                      </p>
-
-                      <p
-                        class="mt-1 text-lg font-medium
-                        text-[var(--white)]"
-                      >
-                        Alcoi
-                      </p>
-
-                    </div>
-
-                    <div class="text-right">
-
-                      <p
-                        id="weather-alcoi-temperature"
-                        class="font-mono text-xl
-                        text-[var(--sec)]"
-                      >
-                        --°C
-                      </p>
-
-                      <p
-                        id="weather-alcoi-status"
-                        class="mt-1 text-xs
-                        text-[var(--white-icon)]"
-                      >
-                        Loading...
-                      </p>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div
-                  class="relative overflow-hidden rounded-xl
-                  border border-[var(--white-icon-tr)]
-                  bg-[#10101080] px-5 py-4
-                  backdrop-blur-md"
-                >
-
-                  <div class="flex items-center justify-between gap-4">
-
-                    <div>
-
-                      <p
-                        class="text-xs uppercase tracking-widest
-                        text-[var(--white-icon)] opacity-60"
-                      >
-                        Location
-                      </p>
-
-                      <p
-                        class="mt-1 text-lg font-medium
-                        text-[var(--white)]"
-                      >
-                        Valencia
-                      </p>
-
-                    </div>
-
-                    <div class="text-right">
-
-                      <p
-                        id="weather-valencia-temperature"
-                        class="font-mono text-xl
-                        text-[var(--sec)]"
-                      >
-                        --°C
-                      </p>
-
-                      <p
-                        id="weather-valencia-status"
-                        class="mt-1 text-xs
-                        text-[var(--white-icon)]"
-                      >
-                        Loading...
-                      </p>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div
-              class="mt-8 flex flex-col sm:flex-row
-              sm:items-center sm:justify-between gap-5"
-            >
-
-              <div class="flex flex-wrap gap-2">
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Astro
-                </span>
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  API
-                </span>
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Live Weather
-                </span>
-
-              </div>
-
-              <div
-                class="flex items-center gap-2
-                text-sm text-[var(--sec)]
-                transition-transform duration-300
-                group-hover:translate-x-1"
-              >
-                <span>View weather</span>
-                <span class="text-lg">→</span>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </a>
     </div>
 
+  </a>
+</div>
 
-    <!-- ========================================================= -->
-    <!-- PROJECT 04 — ALGORITHM VISUALIZER -->
-    <!-- ========================================================= -->
+
+<!-- ========================================================= -->
+<!-- PROJECT 03 — WEATHER -->
+<!-- ========================================================= -->
+
+<div
+  class="group relative mb-10 overflow-hidden rounded-2xl
+  border border-[var(--white-icon-tr)]
+  bg-[#1414149c] backdrop-blur-sm
+  transition-all duration-500
+  hover:border-[var(--sec)]/40
+  hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
+>
+
+  <div
+    class="pointer-events-none absolute inset-0 overflow-hidden opacity-60"
+  >
 
     <div
-      class="group relative mb-10 overflow-hidden rounded-2xl
-      border border-[var(--white-icon-tr)]
-      liquid-glass
-      transition-all duration-500
-      hover:border-[var(--sec)]/40
-      hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
-    >
-
-      <div
-        class="pointer-events-none absolute -right-24 -bottom-32
-        h-72 w-72 rounded-full
-        bg-[var(--sec)] opacity-[0.045] blur-3xl
-        transition-opacity duration-500
-        group-hover:opacity-[0.09]"
-      ></div>
-
-      <a
-        href="/projects/visualizer"
-        class="relative block p-7 md:p-10"
-      >
-
-        <div class="flex flex-col md:flex-row gap-8">
-
-          <div class="flex flex-1 flex-col justify-between">
-
-            <div>
-
-              <div class="mb-5 flex items-center gap-3">
-
-                <span
-                  class="font-mono text-xs tracking-[0.2em]
-                  text-[var(--sec)]"
-                >
-                  PROJECT 04
-                </span>
-
-                <span
-                  class="h-px w-12 bg-[var(--sec)] opacity-40"
-                ></span>
-
-                <span
-                  class="text-xs uppercase tracking-widest
-                  text-[var(--white-icon)]"
-                >
-                  CS Fundamentals
-                </span>
-
-              </div>
-
-              <h3
-                class="text-2xl md:text-4xl font-medium
-                tracking-tight text-[var(--white)]
-                transition-colors duration-300
-                group-hover:text-[var(--sec)]"
-              >
-                Algorithm Visualizer
-                <span class="text-[var(--sec)]">.</span>
-              </h3>
-
-              <p
-                class="mt-4 max-w-2xl text-base md:text-lg
-                leading-relaxed text-[var(--white-icon)]"
-              >
-                An interactive playground for watching data structures
-                think: sorting algorithms step through comparisons and
-                swaps, a hash table resolves collisions with live
-                chaining, and a grid searches for the shortest path
-                with Dijkstra and A*.
-              </p>
-
-              <div
-                class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4"
-              >
-
-                <div>
-
-                  <p
-                    class="text-xs uppercase tracking-widest
-                    text-[var(--white-icon)] opacity-60"
-                  >
-                    Covers
-                  </p>
-
-                  <p
-                    class="mt-1 text-lg font-medium
-                    text-[var(--white)]"
-                  >
-                    Sorting &middot; Hashing &middot; Pathfinding
-                  </p>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div
-              class="mt-8 flex flex-col sm:flex-row
-              sm:items-center sm:justify-between gap-5"
-            >
-
-              <div class="flex flex-wrap gap-2">
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Astro
-                </span>
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  TypeScript
-                </span>
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Data Structures &amp; Algorithms
-                </span>
-
-              </div>
-
-              <div
-                class="flex items-center gap-2
-                text-sm text-[var(--sec)]
-                transition-transform duration-300
-                group-hover:translate-x-1"
-              >
-                <span>Open visualizer</span>
-                <span class="text-lg">→</span>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </a>
-    </div>
-
-
-    <!-- ========================================================= -->
-    <!-- PROJECT 05 — NETWORK PROTOCOL SIMULATOR -->
-    <!-- ========================================================= -->
+      class="absolute -right-32 -top-32
+      h-72 w-72 rounded-full
+      bg-[var(--sec)] opacity-[0.06]
+      blur-3xl
+      transition-all duration-700
+      group-hover:opacity-[0.12]
+      group-hover:scale-110"
+    ></div>
 
     <div
-      class="group relative mt-10 overflow-hidden rounded-2xl
-      border border-[var(--white-icon-tr)]
-      liquid-glass
-      transition-all duration-500
-      hover:border-[var(--sec)]/40
-      hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
-    >
-
-      <div
-        class="pointer-events-none absolute -left-24 -top-24
-        h-72 w-72 rounded-full
-        bg-[var(--sec)] opacity-[0.045] blur-3xl
-        transition-opacity duration-500
-        group-hover:opacity-[0.09]"
-      ></div>
-
-      <a
-        href="/projects/network"
-        class="relative block p-7 md:p-10"
-      >
-
-        <div class="flex flex-col md:flex-row gap-8">
-
-          <div class="flex flex-1 flex-col justify-between">
-
-            <div>
-
-              <div class="mb-5 flex items-center gap-3">
-
-                <span
-                  class="font-mono text-xs tracking-[0.2em]
-                  text-[var(--sec)]"
-                >
-                  PROJECT 05
-                </span>
-
-                <span
-                  class="h-px w-12 bg-[var(--sec)] opacity-40"
-                ></span>
-
-                <span
-                  class="text-xs uppercase tracking-widest
-                  text-[var(--white-icon)]"
-                >
-                  Networking
-                </span>
-
-              </div>
-
-              <h3
-                class="text-2xl md:text-4xl font-medium
-                tracking-tight text-[var(--white)]
-                transition-colors duration-300
-                group-hover:text-[var(--sec)]"
-              >
-                Network Protocol Simulator
-                <span class="text-[var(--sec)]">.</span>
-              </h3>
-
-              <p
-                class="mt-4 max-w-2xl text-base md:text-lg
-                leading-relaxed text-[var(--white-icon)]"
-              >
-                An interactive simulator for the TCP three-way handshake,
-                TCP vs UDP packet loss and retransmission, and message
-                framing over a byte stream &mdash; the transport layer,
-                animated and stepped through by hand.
-              </p>
-
-              <div
-                class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4"
-              >
-
-                <div>
-
-                  <p
-                    class="text-xs uppercase tracking-widest
-                    text-[var(--white-icon)] opacity-60"
-                  >
-                    Covers
-                  </p>
-
-                  <p
-                    class="mt-1 text-lg font-medium
-                    text-[var(--white)]"
-                  >
-                    TCP Handshake &middot; Packet Loss &middot; Framing
-                  </p>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div
-              class="mt-8 flex flex-col sm:flex-row
-              sm:items-center sm:justify-between gap-5"
-            >
-
-              <div class="flex flex-wrap gap-2">
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Astro
-                </span>
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  TypeScript
-                </span>
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  TCP/UDP
-                </span>
-
-              </div>
-
-              <div
-                class="flex items-center gap-2
-                text-sm text-[var(--sec)]
-                transition-transform duration-300
-                group-hover:translate-x-1"
-              >
-                <span>Open simulator</span>
-                <span class="text-lg">→</span>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </a>
-    </div>
-
-
-    <!-- ========================================================= -->
-    <!-- PROJECT 06 — CPU SIMULATOR -->
-    <!-- ========================================================= -->
+      class="absolute -left-32 -bottom-40
+      h-80 w-80 rounded-full
+      bg-[#0f5132] opacity-[0.05]
+      blur-3xl
+      transition-all duration-700
+      group-hover:opacity-[0.09]"
+    ></div>
 
     <div
-      class="group relative mt-10 overflow-hidden rounded-2xl
-      border border-[var(--white-icon-tr)]
-      liquid-glass
-      transition-all duration-500
-      hover:border-[var(--sec)]/40
-      hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
-    >
+      class="absolute inset-0 opacity-[0.12]"
+      style="
+        background-image:
+          linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+        background-size: 42px 42px;
+        mask-image: radial-gradient(circle at center, black, transparent 75%);
+        -webkit-mask-image: radial-gradient(circle at center, black, transparent 75%);
+      "
+    ></div>
 
-      <div
-        class="pointer-events-none absolute -right-24 -bottom-24
-        h-72 w-72 rounded-full
-        bg-[var(--sec)] opacity-[0.045] blur-3xl
-        transition-opacity duration-500
-        group-hover:opacity-[0.09]"
-      ></div>
+  </div>
 
-      <a
-        href="/projects/Cpu"
-        class="relative block p-7 md:p-10"
-      >
+  <a
+    href="/projects/weather"
+    class="relative block p-7 md:p-10"
+  >
 
-        <div class="flex flex-col md:flex-row gap-8">
+    <div class="flex flex-col md:flex-row gap-8">
 
-          <div class="flex flex-1 flex-col justify-between">
+      <div class="flex flex-1 flex-col justify-between">
 
-            <div>
+        <div>
 
-              <div class="mb-5 flex items-center gap-3">
+          <div class="mb-5 flex items-center gap-3">
 
-                <span
-                  class="font-mono text-xs tracking-[0.2em]
-                  text-[var(--sec)]"
-                >
-                  PROJECT 06
-                </span>
+            <span
+              class="font-mono text-xs tracking-[0.2em]
+              text-[var(--sec)]"
+            >
+              PROJECT 03
+            </span>
 
-                <span
-                  class="h-px w-12 bg-[var(--sec)] opacity-40"
-                ></span>
+            <span
+              class="h-px w-12 bg-[var(--sec)] opacity-40"
+            ></span>
 
-                <span
-                  class="text-xs uppercase tracking-widest
-                  text-[var(--white-icon)]"
-                >
-                  Computer Architecture
-                </span>
+            <span
+              class="text-xs uppercase tracking-widest
+              text-[var(--white-icon)]"
+            >
+              Live Data
+            </span>
 
-              </div>
+          </div>
 
-              <h3
-                class="text-2xl md:text-4xl font-medium
-                tracking-tight text-[var(--white)]
-                transition-colors duration-300
-                group-hover:text-[var(--sec)]"
-              >
-                CPU Simulator
-                <span class="text-[var(--sec)]">.</span>
-              </h3>
+          <h3
+            class="text-2xl md:text-4xl font-medium
+            tracking-tight text-[var(--white)]
+            transition-colors duration-300
+            group-hover:text-[var(--sec)]"
+          >
+            Weather Dashboard
+            <span class="text-[var(--sec)]">.</span>
+          </h3>
 
-              <p
-                class="mt-4 max-w-2xl text-base md:text-lg
-                leading-relaxed text-[var(--white-icon)]"
-              >
-                A tiny 8-register CPU with its own instruction set,
-                stepping through fetch, decode and execute one
-                instruction at a time &mdash; write a short program
-                and watch the registers and memory change live.
-              </p>
+          <p
+            class="mt-4 max-w-2xl text-base md:text-lg
+            leading-relaxed text-[var(--white-icon)]"
+          >
+            A dynamic weather dashboard displaying live weather
+            conditions for Alcoi and Valencia through a clean
+            developer-focused interface.
+          </p>
 
-              <div
-                class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4"
-              >
+          <div
+            class="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl"
+          >
+
+            <div
+              class="relative overflow-hidden rounded-xl
+              border border-[var(--white-icon-tr)]
+              bg-[#10101080] px-5 py-4
+              backdrop-blur-md"
+            >
+
+              <div class="flex items-center justify-between gap-4">
 
                 <div>
 
@@ -1070,14 +466,34 @@
                     class="text-xs uppercase tracking-widest
                     text-[var(--white-icon)] opacity-60"
                   >
-                    Covers
+                    Location
                   </p>
 
                   <p
                     class="mt-1 text-lg font-medium
                     text-[var(--white)]"
                   >
-                    Fetch-Decode-Execute &middot; Registers &middot; Memory
+                    Alcoi
+                  </p>
+
+                </div>
+
+                <div class="text-right">
+
+                  <p
+                    id="weather-alcoi-temperature"
+                    class="font-mono text-xl
+                    text-[var(--sec)]"
+                  >
+                    --°C
+                  </p>
+
+                  <p
+                    id="weather-alcoi-status"
+                    class="mt-1 text-xs
+                    text-[var(--white-icon)]"
+                  >
+                    Loading...
                   </p>
 
                 </div>
@@ -1087,46 +503,52 @@
             </div>
 
             <div
-              class="mt-8 flex flex-col sm:flex-row
-              sm:items-center sm:justify-between gap-5"
+              class="relative overflow-hidden rounded-xl
+              border border-[var(--white-icon-tr)]
+              bg-[#10101080] px-5 py-4
+              backdrop-blur-md"
             >
 
-              <div class="flex flex-wrap gap-2">
+              <div class="flex items-center justify-between gap-4">
 
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Astro
-                </span>
+                <div>
 
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  TypeScript
-                </span>
+                  <p
+                    class="text-xs uppercase tracking-widest
+                    text-[var(--white-icon)] opacity-60"
+                  >
+                    Location
+                  </p>
 
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Assembly
-                </span>
+                  <p
+                    class="mt-1 text-lg font-medium
+                    text-[var(--white)]"
+                  >
+                    Valencia
+                  </p>
 
-              </div>
+                </div>
 
-              <div
-                class="flex items-center gap-2
-                text-sm text-[var(--sec)]
-                transition-transform duration-300
-                group-hover:translate-x-1"
-              >
-                <span>Open simulator</span>
-                <span class="text-lg">→</span>
+                <div class="text-right">
+
+                  <p
+                    id="weather-valencia-temperature"
+                    class="font-mono text-xl
+                    text-[var(--sec)]"
+                  >
+                    --°C
+                  </p>
+
+                  <p
+                    id="weather-valencia-status"
+                    class="mt-1 text-xs
+                    text-[var(--white-icon)]"
+                  >
+                    Loading...
+                  </p>
+
+                </div>
+
               </div>
 
             </div>
@@ -1135,198 +557,643 @@
 
         </div>
 
-      </a>
+        <div
+          class="mt-8 flex flex-col sm:flex-row
+          sm:items-center sm:justify-between gap-5"
+        >
+
+          <div class="flex flex-wrap gap-2">
+
+            <span
+              class="rounded-full border border-[var(--white-icon-tr)]
+              px-3 py-1 text-xs font-mono
+              text-[var(--white-icon)]"
+            >
+              Astro
+            </span>
+
+            <span
+              class="rounded-full border border-[var(--white-icon-tr)]
+              px-3 py-1 text-xs font-mono
+              text-[var(--white-icon)]"
+            >
+              API
+            </span>
+
+            <span
+              class="rounded-full border border-[var(--white-icon-tr)]
+              px-3 py-1 text-xs font-mono
+              text-[var(--white-icon)]"
+            >
+              Live Weather
+            </span>
+
+          </div>
+
+          <div
+            class="flex items-center gap-2
+            text-sm text-[var(--sec)]
+            transition-transform duration-300
+            group-hover:translate-x-1"
+          >
+            <span>View weather</span>
+            <span class="text-lg">→</span>
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
 
+  </a>
+</div>
 
-    <!-- ========================================================= -->
-    <!-- PROJECT 07 — EXPENSE SPLITTER / FLUTTER APP -->
-    <!-- ========================================================= -->
 
-    <div
-      class="group relative mt-10 overflow-hidden rounded-2xl
-      border border-[var(--white-icon-tr)]
-      liquid-glass
-      transition-all duration-500
-      hover:border-[var(--sec)]/40
-      hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
-    >
+<!-- ========================================================= -->
+<!-- PROJECT 04 — ALGORITHM VISUALIZER -->
+<!-- ========================================================= -->
 
-      <div
-        class="pointer-events-none absolute -left-24 -top-24
-        h-72 w-72 rounded-full
-        bg-[var(--sec)] opacity-[0.045] blur-3xl
-        transition-opacity duration-500
-        group-hover:opacity-[0.09]"
-      ></div>
+<div
+  class="group relative mb-10 overflow-hidden rounded-2xl
+  border border-[var(--white-icon-tr)]
+  bg-[#1414149c] backdrop-blur-sm
+  transition-all duration-500
+  hover:border-[var(--sec)]/40
+  hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
+>
 
-      <!--
-        Expense Splitter is a Flutter web build, deployed as static
-        files at public/projects/expense-splitter/ in this repo.
-        Build it with:
-          flutter build web --release --base-href /projects/expense-splitter/
-        then copy the contents of build/web/ into
-        public/projects/expense-splitter/ so this href resolves.
-      -->
+  <div
+    class="pointer-events-none absolute -right-24 -bottom-32
+    h-72 w-72 rounded-full
+    bg-[var(--sec)] opacity-[0.045] blur-3xl
+    transition-opacity duration-500
+    group-hover:opacity-[0.09]"
+  ></div>
 
-      <a
-        href="/projects/expense-splitter/"
-        class="relative block p-7 md:p-10"
-      >
+  <a
+    href="/projects/visualizer"
+    class="relative block p-7 md:p-10"
+  >
 
-        <div class="flex flex-col md:flex-row gap-8">
+    <div class="flex flex-col md:flex-row gap-8">
 
-          <div class="flex flex-1 flex-col justify-between">
+      <div class="flex flex-1 flex-col justify-between">
+
+        <div>
+
+          <div class="mb-5 flex items-center gap-3">
+
+            <span
+              class="font-mono text-xs tracking-[0.2em]
+              text-[var(--sec)]"
+            >
+              PROJECT 04
+            </span>
+
+            <span
+              class="h-px w-12 bg-[var(--sec)] opacity-40"
+            ></span>
+
+            <span
+              class="text-xs uppercase tracking-widest
+              text-[var(--white-icon)]"
+            >
+              CS Fundamentals
+            </span>
+
+          </div>
+
+          <h3
+            class="text-2xl md:text-4xl font-medium
+            tracking-tight text-[var(--white)]
+            transition-colors duration-300
+            group-hover:text-[var(--sec)]"
+          >
+            Algorithm Visualizer
+            <span class="text-[var(--sec)]">.</span>
+          </h3>
+
+          <p
+            class="mt-4 max-w-2xl text-base md:text-lg
+            leading-relaxed text-[var(--white-icon)]"
+          >
+            An interactive playground for watching data structures
+            think: sorting algorithms step through comparisons and
+            swaps, a hash table resolves collisions with live
+            chaining, and a grid searches for the shortest path
+            with Dijkstra and A*.
+          </p>
+
+          <div
+            class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4"
+          >
 
             <div>
 
-              <div class="mb-5 flex items-center gap-3">
-
-                <span
-                  class="font-mono text-xs tracking-[0.2em]
-                  text-[var(--sec)]"
-                >
-                  PROJECT 07
-                </span>
-
-                <span
-                  class="h-px w-12 bg-[var(--sec)] opacity-40"
-                ></span>
-
-                <span
-                  class="text-xs uppercase tracking-widest
-                  text-[var(--white-icon)]"
-                >
-                  Flutter App
-                </span>
-
-              </div>
-
-              <h3
-                class="text-2xl md:text-4xl font-medium
-                tracking-tight text-[var(--white)]
-                transition-colors duration-300
-                group-hover:text-[var(--sec)]"
-              >
-                Expense Splitter
-                <span class="text-[var(--sec)]">.</span>
-              </h3>
-
               <p
-                class="mt-4 max-w-2xl text-base md:text-lg
-                leading-relaxed text-[var(--white-icon)]"
+                class="text-xs uppercase tracking-widest
+                text-[var(--white-icon)] opacity-60"
               >
-                A Flutter mobile application for splitting group expenses,
-                calculating balances between participants and minimizing
-                the number of transfers needed to settle shared costs.
+                Covers
               </p>
 
-              <div
-                class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4"
+              <p
+                class="mt-1 text-lg font-medium
+                text-[var(--white)]"
               >
+                Sorting &middot; Hashing &middot; Pathfinding
+              </p>
 
-                <div>
+            </div>
 
-                  <p
-                    class="text-xs uppercase tracking-widest
-                    text-[var(--white-icon)] opacity-60"
-                  >
-                    Platform
-                  </p>
+          </div>
 
-                  <p
-                    class="mt-1 text-lg font-medium
-                    text-[var(--white)]"
-                  >
-                    Android &middot; iOS &middot; Web
-                  </p>
+        </div>
 
-                </div>
+        <div
+          class="mt-8 flex flex-col sm:flex-row
+          sm:items-center sm:justify-between gap-5"
+        >
 
-                <div
-                  class="hidden sm:block h-8 w-px
-                  bg-[var(--white-icon-tr)]"
-                ></div>
+          <div class="flex flex-wrap gap-2">
 
-                <div>
+            <span
+              class="rounded-full border border-[var(--white-icon-tr)]
+              px-3 py-1 text-xs font-mono
+              text-[var(--white-icon)]"
+            >
+              Astro
+            </span>
 
-                  <p
-                    class="text-xs uppercase tracking-widest
-                    text-[var(--white-icon)] opacity-60"
-                  >
-                    Technology
-                  </p>
+            <span
+              class="rounded-full border border-[var(--white-icon-tr)]
+              px-3 py-1 text-xs font-mono
+              text-[var(--white-icon)]"
+            >
+              TypeScript
+            </span>
 
-                  <p
-                    class="mt-1 text-lg font-medium
-                    text-[var(--white)]"
-                  >
-                    Flutter &middot; Dart
-                  </p>
+            <span
+              class="rounded-full border border-[var(--white-icon-tr)]
+              px-3 py-1 text-xs font-mono
+              text-[var(--white-icon)]"
+            >
+              Data Structures &amp; Algorithms
+            </span>
 
-                </div>
+          </div>
 
-              </div>
+          <div
+            class="flex items-center gap-2
+            text-sm text-[var(--sec)]
+            transition-transform duration-300
+            group-hover:translate-x-1"
+          >
+            <span>Open visualizer</span>
+            <span class="text-lg">→</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </a>
+</div>
+
+
+<!-- ========================================================= -->
+<!-- PROJECT 05 — NETWORK PROTOCOL SIMULATOR -->
+<!-- ========================================================= -->
+
+<div
+  class="group relative mt-10 overflow-hidden rounded-2xl
+  border border-[var(--white-icon-tr)]
+  bg-[#1414149c] backdrop-blur-sm
+  transition-all duration-500
+  hover:border-[var(--sec)]/40
+  hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
+>
+
+  <div
+    class="pointer-events-none absolute -left-24 -top-24
+    h-72 w-72 rounded-full
+    bg-[var(--sec)] opacity-[0.045] blur-3xl
+    transition-opacity duration-500
+    group-hover:opacity-[0.09]"
+  ></div>
+
+  <a
+    href="/projects/network"
+    class="relative block p-7 md:p-10"
+  >
+
+    <div class="flex flex-col md:flex-row gap-8">
+
+      <div class="flex flex-1 flex-col justify-between">
+
+        <div>
+
+          <div class="mb-5 flex items-center gap-3">
+
+            <span
+              class="font-mono text-xs tracking-[0.2em]
+              text-[var(--sec)]"
+            >
+              PROJECT 05
+            </span>
+
+            <span
+              class="h-px w-12 bg-[var(--sec)] opacity-40"
+            ></span>
+
+            <span
+              class="text-xs uppercase tracking-widest
+              text-[var(--white-icon)]"
+            >
+              Networking
+            </span>
+
+          </div>
+
+          <h3
+            class="text-2xl md:text-4xl font-medium
+            tracking-tight text-[var(--white)]
+            transition-colors duration-300
+            group-hover:text-[var(--sec)]"
+          >
+            Network Protocol Simulator
+            <span class="text-[var(--sec)]">.</span>
+          </h3>
+
+          <p
+            class="mt-4 max-w-2xl text-base md:text-lg
+            leading-relaxed text-[var(--white-icon)]"
+          >
+            An interactive simulator for the TCP three-way handshake,
+            TCP vs UDP packet loss and retransmission, and message
+            framing over a byte stream &mdash; the transport layer,
+            animated and stepped through by hand.
+          </p>
+
+          <div
+            class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4"
+          >
+
+            <div>
+
+              <p
+                class="text-xs uppercase tracking-widest
+                text-[var(--white-icon)] opacity-60"
+              >
+                Covers
+              </p>
+
+              <p
+                class="mt-1 text-lg font-medium
+                text-[var(--white)]"
+              >
+                TCP Handshake &middot; Packet Loss &middot; Framing
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div
+          class="mt-8 flex flex-col sm:flex-row
+          sm:items-center sm:justify-between gap-5"
+        >
+
+          <div class="flex flex-wrap gap-2">
+
+            <span
+              class="rounded-full border border-[var(--white-icon-tr)]
+              px-3 py-1 text-xs font-mono
+              text-[var(--white-icon)]"
+            >
+              Astro
+            </span>
+
+            <span
+              class="rounded-full border border-[var(--white-icon-tr)]
+              px-3 py-1 text-xs font-mono
+              text-[var(--white-icon)]"
+            >
+              TypeScript
+            </span>
+
+            <span
+              class="rounded-full border border-[var(--white-icon-tr)]
+              px-3 py-1 text-xs font-mono
+              text-[var(--white-icon)]"
+            >
+              TCP/UDP
+            </span>
+
+          </div>
+
+          <div
+            class="flex items-center gap-2
+            text-sm text-[var(--sec)]
+            transition-transform duration-300
+            group-hover:translate-x-1"
+          >
+            <span>Open simulator</span>
+            <span class="text-lg">→</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </a>
+</div>
+
+
+<!-- ========================================================= -->
+<!-- PROJECT 06 — CPU SIMULATOR -->
+<!-- ========================================================= -->
+
+<div
+  class="group relative mt-10 overflow-hidden rounded-2xl
+  border border-[var(--white-icon-tr)]
+  bg-[#1414149c] backdrop-blur-sm
+  transition-all duration-500
+  hover:border-[var(--sec)]/40
+  hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
+>
+
+  <div
+    class="pointer-events-none absolute -right-24 -bottom-24
+    h-72 w-72 rounded-full
+    bg-[var(--sec)] opacity-[0.045] blur-3xl
+    transition-opacity duration-500
+    group-hover:opacity-[0.09]"
+  ></div>
+
+  <a
+    href="/projects/Cpu"
+    class="relative block p-7 md:p-10"
+  >
+
+    <div class="flex flex-col md:flex-row gap-8">
+
+      <div class="flex flex-1 flex-col justify-between">
+
+        <div>
+
+          <div class="mb-5 flex items-center gap-3">
+
+            <span
+              class="font-mono text-xs tracking-[0.2em]
+              text-[var(--sec)]"
+            >
+              PROJECT 06
+            </span>
+
+            <span
+              class="h-px w-12 bg-[var(--sec)] opacity-40"
+            ></span>
+
+            <span
+              class="text-xs uppercase tracking-widest
+              text-[var(--white-icon)]"
+            >
+              Computer Architecture
+            </span>
+
+          </div>
+
+          <h3
+            class="text-2xl md:text-4xl font-medium
+            tracking-tight text-[var(--white)]
+            transition-colors duration-300
+            group-hover:text-[var(--sec)]"
+          >
+            CPU Simulator
+            <span class="text-[var(--sec)]">.</span>
+          </h3>
+
+          <p
+            class="mt-4 max-w-2xl text-base md:text-lg
+            leading-relaxed text-[var(--white-icon)]"
+          >
+            A tiny 8-register CPU with its own instruction set,
+            stepping through fetch, decode and execute one
+            instruction at a time &mdash; write a short program
+            and watch the registers and memory change live.
+          </p>
+
+          <div
+            class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4"
+          >
+
+            <div>
+
+              <p
+                class="text-xs uppercase tracking-widest
+                text-[var(--white-icon)] opacity-60"
+              >
+                Covers
+              </p>
+
+              <p
+                class="mt-1 text-lg font-medium
+                text-[var(--white)]"
+              >
+                Fetch-Decode-Execute &middot; Registers &middot; Memory
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div
+          class="mt-8 flex flex-col sm:flex-row
+          sm:items-center sm:justify-between gap-5"
+        >
+
+          <div class="flex flex-wrap gap-2">
+
+            <span
+              class="rounded-full border border-[var(--white-icon-tr)]
+              px-3 py-1 text-xs font-mono
+              text-[var(--white-icon)]"
+            >
+              Astro
+            </span>
+
+            <span
+              class="rounded-full border border-[var(--white-icon-tr)]
+              px-3 py-1 text-xs font-mono
+              text-[var(--white-icon)]"
+            >
+              TypeScript
+            </span>
+
+            <span
+              class="rounded-full border border-[var(--white-icon-tr)]
+              px-3 py-1 text-xs font-mono
+              text-[var(--white-icon)]"
+            >
+              Assembly
+            </span>
+
+          </div>
+
+          <div
+            class="flex items-center gap-2
+            text-sm text-[var(--sec)]
+            transition-transform duration-300
+            group-hover:translate-x-1"
+          >
+            <span>Open simulator</span>
+            <span class="text-lg">→</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </a>
+</div>
+
+
+<!-- ========================================================= -->
+<!-- PROJECT 07 — EXPENSE SPLITTER / FLUTTER APP -->
+<!-- ========================================================= -->
+
+<div
+  class="group relative mt-10 overflow-hidden rounded-2xl
+  border border-[var(--white-icon-tr)]
+  bg-[#1414149c] backdrop-blur-sm
+  transition-all duration-500
+  hover:border-[var(--sec)]/40
+  hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
+>
+
+  <div
+    class="pointer-events-none absolute -left-24 -top-24
+    h-72 w-72 rounded-full
+    bg-[var(--sec)] opacity-[0.045] blur-3xl
+    transition-opacity duration-500
+    group-hover:opacity-[0.09]"
+  ></div>
+
+  <!--
+    Expense Splitter is a Flutter web build, deployed as static
+    files at public/projects/expense-splitter/ in this repo.
+    Build it with:
+      flutter build web --release --base-href /projects/expense-splitter/
+    then copy the contents of build/web/ into
+    public/projects/expense-splitter/ so this href resolves.
+  -->
+
+  <a
+    href="/projects/expense-splitter/"
+    class="relative block p-7 md:p-10"
+  >
+
+    <div class="flex flex-col md:flex-row gap-8">
+
+      <div class="flex flex-1 flex-col justify-between">
+
+        <div>
+
+          <div class="mb-5 flex items-center gap-3">
+
+            <span
+              class="font-mono text-xs tracking-[0.2em]
+              text-[var(--sec)]"
+            >
+              PROJECT 07
+            </span>
+
+            <span
+              class="h-px w-12 bg-[var(--sec)] opacity-40"
+            ></span>
+
+            <span
+              class="text-xs uppercase tracking-widest
+              text-[var(--white-icon)]"
+            >
+              Flutter App
+            </span>
+
+          </div>
+
+          <h3
+            class="text-2xl md:text-4xl font-medium
+            tracking-tight text-[var(--white)]
+            transition-colors duration-300
+            group-hover:text-[var(--sec)]"
+          >
+            Expense Splitter
+            <span class="text-[var(--sec)]">.</span>
+          </h3>
+
+          <p
+            class="mt-4 max-w-2xl text-base md:text-lg
+            leading-relaxed text-[var(--white-icon)]"
+          >
+            A Flutter mobile application for splitting group expenses,
+            calculating balances between participants and minimizing
+            the number of transfers needed to settle shared costs.
+          </p>
+
+          <div
+            class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4"
+          >
+
+            <div>
+
+              <p
+                class="text-xs uppercase tracking-widest
+                text-[var(--white-icon)] opacity-60"
+              >
+                Platform
+              </p>
+
+              <p
+                class="mt-1 text-lg font-medium
+                text-[var(--white)]"
+              >
+                Android &middot; iOS &middot; Web
+              </p>
 
             </div>
 
             <div
-              class="mt-8 flex flex-col sm:flex-row
-              sm:items-center sm:justify-between gap-5"
-            >
+              class="hidden sm:block h-8 w-px
+              bg-[var(--white-icon-tr)]"
+            ></div>
 
-              <div class="flex flex-wrap gap-2">
+            <div>
 
-                <span
-                  class="rounded-full
-                  border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Flutter
-                </span>
-
-                <span
-                  class="rounded-full
-                  border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Dart
-                </span>
-
-                <span
-                  class="rounded-full
-                  border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Mobile
-                </span>
-
-                <span
-                  class="rounded-full
-                  border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Expense Management
-                </span>
-
-              </div>
-
-              <div
-                class="flex items-center gap-2
-                text-sm text-[var(--sec)]
-                transition-transform duration-300
-                group-hover:translate-x-1"
+              <p
+                class="text-xs uppercase tracking-widest
+                text-[var(--white-icon)] opacity-60"
               >
-                <span>Open Flutter app</span>
+                Technology
+              </p>
 
-                <span class="text-lg">
-                  →
-                </span>
-              </div>
+              <p
+                class="mt-1 text-lg font-medium
+                text-[var(--white)]"
+              >
+                Flutter &middot; Dart
+              </p>
 
             </div>
 
@@ -1334,8 +1201,73 @@
 
         </div>
 
-      </a>
+        <div
+          class="mt-8 flex flex-col sm:flex-row
+          sm:items-center sm:justify-between gap-5"
+        >
+
+          <div class="flex flex-wrap gap-2">
+
+            <span
+              class="rounded-full
+              border border-[var(--white-icon-tr)]
+              px-3 py-1 text-xs font-mono
+              text-[var(--white-icon)]"
+            >
+              Flutter
+            </span>
+
+            <span
+              class="rounded-full
+              border border-[var(--white-icon-tr)]
+              px-3 py-1 text-xs font-mono
+              text-[var(--white-icon)]"
+            >
+              Dart
+            </span>
+
+            <span
+              class="rounded-full
+              border border-[var(--white-icon-tr)]
+              px-3 py-1 text-xs font-mono
+              text-[var(--white-icon)]"
+            >
+              Mobile
+            </span>
+
+            <span
+              class="rounded-full
+              border border-[var(--white-icon-tr)]
+              px-3 py-1 text-xs font-mono
+              text-[var(--white-icon)]"
+            >
+              Expense Management
+            </span>
+
+          </div>
+
+          <div
+            class="flex items-center gap-2
+            text-sm text-[var(--sec)]
+            transition-transform duration-300
+            group-hover:translate-x-1"
+          >
+            <span>Open Flutter app</span>
+
+            <span class="text-lg">
+              →
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
+
+  </a>
+</div>
+```
 
   </div>
 </section>
@@ -1440,954 +1372,3 @@
     loadAllWeather();
   }
 </script>
-
-<!-- ============================================================= -->
-<!-- INTERACTIVE BACKGROUND (pointer-reactive parallax + bokeh focus) -->
-<!-- ============================================================= -->
-
-<script>
-  const bg = document.getElementById("projects-bg");
-  const section = document.getElementById("projects");
-
-  const reduceMotion =
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  if (bg && section && !reduceMotion) {
-
-    const parallaxEls = Array.from(
-      bg.querySelectorAll<HTMLElement>("[data-parallax]")
-    );
-
-    const cursorGlow =
-      bg.querySelector<HTMLElement>(".cursor-glow-alt");
-
-    const bokehEls = Array.from(
-      bg.querySelectorAll<HTMLElement>(".bokeh-alt")
-    );
-
-    // Target = where the pointer actually is (normalized -1..1, and 0..1 for the glow).
-    let targetNormX = 0;
-    let targetNormY = 0;
-    let targetGlowX = 0.3; // resting position — roughly where the green pool sits
-    let targetGlowY = 0.55;
-
-    // Current = the smoothed, lerped value actually applied to the DOM.
-    let currentNormX = 0;
-    let currentNormY = 0;
-    let currentGlowX = targetGlowX;
-    let currentGlowY = targetGlowY;
-
-    let pointerActive = false;
-    let rafId = 0;
-
-    const lerp = (start: number, end: number, t: number): number =>
-      start + (end - start) * t;
-
-    const clamp01 = (value: number): number =>
-      Math.min(1, Math.max(0, value));
-
-    const handlePointerMove = (event: PointerEvent): void => {
-      const rect = section.getBoundingClientRect();
-
-      const relX = (event.clientX - rect.left) / rect.width;
-      const relY = (event.clientY - rect.top) / rect.height;
-
-      // Only react while the pointer is actually over this section.
-      pointerActive =
-        relX >= 0 && relX <= 1 && relY >= 0 && relY <= 1;
-
-      if (!pointerActive) return;
-
-      targetNormX = relX * 2 - 1; // -1 (left) .. 1 (right)
-      targetNormY = relY * 2 - 1; // -1 (top)  .. 1 (bottom)
-
-      targetGlowX = relX;
-      targetGlowY = relY;
-    };
-
-    const handlePointerLeave = (): void => {
-      pointerActive = false;
-
-      targetNormX = 0;
-      targetNormY = 0;
-      targetGlowX = 0.3;
-      targetGlowY = 0.55;
-    };
-
-    const tick = (): void => {
-      const ease = 0.06;
-
-      currentNormX = lerp(currentNormX, targetNormX, ease);
-      currentNormY = lerp(currentNormY, targetNormY, ease);
-      currentGlowX = lerp(currentGlowX, targetGlowX, ease);
-      currentGlowY = lerp(currentGlowY, targetGlowY, ease);
-
-      // Ambient aurora parallax.
-      for (const el of parallaxEls) {
-        const strength = Number(el.dataset.parallax ?? "1");
-
-        const px = currentNormX * strength * 22;
-        const py = currentNormY * strength * 22;
-
-        el.style.setProperty("--px", `${px}px`);
-        el.style.setProperty("--py", `${py}px`);
-      }
-
-      // Cursor spotlight.
-      if (cursorGlow) {
-        cursorGlow.style.setProperty(
-          "--glow-x",
-          `${(currentGlowX * 100).toFixed(2)}%`
-        );
-
-        cursorGlow.style.setProperty(
-          "--glow-y",
-          `${(currentGlowY * 100).toFixed(2)}%`
-        );
-
-        cursorGlow.style.opacity = pointerActive ? "1" : "0.5";
-      }
-
-      // Bokeh "rack focus": the closer the pointer is to a bokeh disc's
-      // resting position, the sharper/brighter/larger it becomes.
-      const glowXPct = currentGlowX * 100;
-      const glowYPct = currentGlowY * 100;
-      const influenceRadius = 34; // in the same 0-100 percentage space
-
-      for (const el of bokehEls) {
-        const bx = Number(el.dataset.x ?? "50");
-        const by = Number(el.dataset.y ?? "50");
-
-        const dx = bx - glowXPct;
-        const dy = by - glowYPct;
-
-        const dist = Math.sqrt(dx * dx + dy * dy);
-
-        const raw = clamp01(1 - dist / influenceRadius);
-        const focus = raw * raw; // ease the falloff so it feels soft, not linear
-
-        el.style.setProperty("--focus", focus.toFixed(3));
-      }
-
-      rafId = requestAnimationFrame(tick);
-    };
-
-    section.addEventListener("pointermove", handlePointerMove);
-    section.addEventListener("pointerleave", handlePointerLeave);
-
-    rafId = requestAnimationFrame(tick);
-
-    // Clean up if the section is ever removed (e.g. Astro view transitions).
-    window.addEventListener(
-      "pagehide",
-      () => cancelAnimationFrame(rafId),
-      { once: true }
-    );
-  }
-
-  // --- Liquid glass: pointer-tracked specular highlight per card -------
-
-  if (!reduceMotion) {
-    const glassCards = Array.from(
-      document.querySelectorAll<HTMLElement>(".liquid-glass")
-    );
-
-    for (const card of glassCards) {
-      card.addEventListener("pointermove", (event: PointerEvent) => {
-        const rect = card.getBoundingClientRect();
-
-        const x = ((event.clientX - rect.left) / rect.width) * 100;
-        const y = ((event.clientY - rect.top) / rect.height) * 100;
-
-        card.style.setProperty("--mx", `${x.toFixed(1)}%`);
-        card.style.setProperty("--my", `${y.toFixed(1)}%`);
-      });
-
-      card.addEventListener("pointerleave", () => {
-        card.style.setProperty("--mx", "50%");
-        card.style.setProperty("--my", "30%");
-      });
-    }
-  }
-</script>
-
-<style is:global>
-
-  /* ============================================================= */
-  /* BACKGROUND — JAPANESE GARDEN (Projects only) */
-  /* ============================================================= */
-  /*
-    Palette lifted from a Chiba garden photo: deep pond-water green,
-    warm amber canopy, and coral-red maple leaves rendered as soft
-    bokeh. Self-contained variant of the nebula background from
-    home.astro — uses -alt suffixed class + keyframe names so it
-    never collides with the blue hero version even if both files
-    share a global stylesheet.
-  */
-
-  .hero-dots-alt {
-    background-image:
-      radial-gradient(
-        rgba(255, 255, 255, 0.14) 1px,
-        transparent 1.4px
-      );
-
-    background-size: 26px 26px;
-
-    mask-image:
-      radial-gradient(
-        ellipse 85% 75% at 42% 38%,
-        black 0%,
-        rgba(0, 0, 0, 0.5) 55%,
-        transparent 85%
-      );
-
-    -webkit-mask-image:
-      radial-gradient(
-        ellipse 85% 75% at 42% 38%,
-        black 0%,
-        rgba(0, 0, 0, 0.5) 55%,
-        transparent 85%
-      );
-  }
-
-  .noise-layer-alt {
-    background-image:
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
-  }
-
-  .hero-vignette-alt {
-    position: absolute;
-    inset: 0;
-
-    background:
-      linear-gradient(
-        90deg,
-        rgba(3, 8, 5, 0.55) 0%,
-        transparent 26%,
-        transparent 72%,
-        rgba(3, 8, 5, 0.55) 100%
-      ),
-      radial-gradient(
-        ellipse 72% 72% at 50% 45%,
-        transparent 30%,
-        rgba(3, 8, 5, 0.6) 100%
-      );
-  }
-
-  .nebula-field-alt {
-    position: absolute;
-    inset: -15%;
-
-    --px: 0px;
-    --py: 0px;
-
-    transform: rotate(-28deg) translate3d(var(--px), var(--py), 0);
-
-    transform-origin: 30% 55%;
-
-    transition: transform 60ms linear;
-  }
-
-  /* Wide, soft outer wash — deep pond green sliding through warm amber
-     canopy toward a coral-red edge, echoing the diagonal light in the
-     reference photo. */
-  .ribbon-back-alt {
-    position: absolute;
-
-    left: -10%;
-    top: 38%;
-
-    width: 135%;
-    height: 46%;
-
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(13, 40, 24, 0.36) 16%,
-      rgba(31, 77, 51, 0.32) 36%,
-      rgba(201, 130, 46, 0.2) 58%,
-      rgba(217, 83, 63, 0.22) 80%,
-      transparent 100%
-    );
-
-    filter: blur(70px);
-
-    animation: nebulaBreatheAlt 16s ease-in-out infinite;
-  }
-
-  /* Mid-density body — the same three hues, richer and more saturated. */
-  .ribbon-mid-alt {
-    position: absolute;
-
-    left: -5%;
-    top: 44%;
-
-    width: 120%;
-    height: 26%;
-
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(13, 40, 24, 0.42) 18%,
-      rgba(31, 77, 51, 0.46) 38%,
-      rgba(214, 140, 58, 0.3) 60%,
-      rgba(224, 96, 74, 0.34) 84%,
-      transparent 96%
-    );
-
-    filter: blur(42px);
-
-    mix-blend-mode: screen;
-
-    animation: nebulaBreatheAlt 16s ease-in-out infinite reverse;
-  }
-
-  /* Bright, thin core streak — pale moss highlight warming into amber
-     and finishing on a coral-red edge. */
-  .ribbon-core-alt {
-    position: absolute;
-
-    left: 2%;
-    top: 49.5%;
-
-    width: 96%;
-    height: 7%;
-
-    border-radius: 999px;
-
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(190, 242, 214, 0.1) 14%,
-      rgba(224, 250, 235, 0.5) 36%,
-      rgba(224, 172, 96, 0.42) 58%,
-      rgba(224, 96, 74, 0.34) 82%,
-      transparent 96%
-    );
-
-    filter: blur(14px);
-
-    mix-blend-mode: screen;
-
-    opacity: 0.85;
-
-    animation: nebulaShimmerAlt 9s ease-in-out infinite;
-  }
-
-  @keyframes nebulaBreatheAlt {
-    0%, 100% { transform: scaleX(1) translateX(0); opacity: 1; }
-    50% { transform: scaleX(1.06) translateX(2%); opacity: 0.85; }
-  }
-
-  @keyframes nebulaShimmerAlt {
-    0%, 100% { opacity: 0.7; filter: blur(14px); }
-    50% { opacity: 1; filter: blur(10px); }
-  }
-
-  /* ============================================================= */
-  /* BOKEH FIELD — pointer-reactive, echoes the blurred maple leaves */
-  /* ============================================================= */
-
-  .bokeh-field-alt {
-    position: absolute;
-    inset: 0;
-  }
-
-  /* Wrapper: owns position on the canvas + the ambient idle float.
-     Kept separate from the focus-reactive inner element so the two
-     transforms never fight each other. */
-  .bokeh-wrap-alt {
-    position: absolute;
-
-    left: calc(var(--x) * 1%);
-    top: calc(var(--y) * 1%);
-
-    animation: bokehFloatAlt var(--dur, 16s) ease-in-out infinite;
-    animation-delay: var(--delay, 0s);
-  }
-
-  @keyframes bokehFloatAlt {
-    0%, 100% { transform: translate3d(-50%, -50%, 0); }
-    50% { transform: translate3d(calc(-50% + 10px), calc(-50% - 16px), 0); }
-  }
-
-  /* Inner disc: owns size/color/blur + the pointer-driven "focus pull".
-     --focus is written every frame by the interactivity script (0 = far
-     from the cursor / soft & dim, 1 = right under the cursor / sharp &
-     bright), giving a rack-focus camera feel as you move the mouse. */
-  .bokeh-alt {
-    position: absolute;
-
-    top: 50%;
-    left: 50%;
-
-    width: var(--size);
-    height: var(--size);
-
-    --focus: 0;
-
-    transform:
-      translate(-50%, -50%)
-      scale(calc(1 + 0.22 * var(--focus)));
-
-    border-radius: 999px;
-
-    filter:
-      blur(calc(var(--blur) * (1 - 0.4 * var(--focus))))
-      brightness(calc(1 + 0.6 * var(--focus)));
-
-    opacity: calc(var(--base-opacity, 0.5) + 0.35 * var(--focus));
-
-    mix-blend-mode: screen;
-
-    pointer-events: none;
-
-    transition: filter 220ms ease, opacity 220ms ease, transform 220ms ease;
-
-    will-change: transform, filter, opacity;
-  }
-
-  .bokeh-green-alt {
-    background: radial-gradient(
-      circle,
-      rgba(45, 106, 79, 0.85) 0%,
-      rgba(13, 40, 24, 0.4) 55%,
-      transparent 76%
-    );
-  }
-
-  .bokeh-amber-alt {
-    background: radial-gradient(
-      circle,
-      rgba(224, 172, 96, 0.72) 0%,
-      rgba(180, 106, 40, 0.3) 55%,
-      transparent 76%
-    );
-  }
-
-  .bokeh-red-alt {
-    background: radial-gradient(
-      circle,
-      rgba(228, 110, 88, 0.85) 0%,
-      rgba(190, 62, 50, 0.34) 55%,
-      transparent 76%
-    );
-  }
-
-  /* Warm light that follows the pointer — like sun filtering through
-     leaves — cooling into green at one edge and coral at the other. */
-  .cursor-glow-alt {
-    position: absolute;
-
-    left: var(--glow-x, 30%);
-    top: var(--glow-y, 55%);
-
-    width: 620px;
-    height: 620px;
-
-    transform: translate3d(-50%, -50%, 0);
-
-    border-radius: 999px;
-
-    background: radial-gradient(
-      circle,
-      rgba(255, 232, 189, 0.14) 0%,
-      rgba(214, 140, 58, 0.12) 30%,
-      rgba(45, 106, 79, 0.12) 55%,
-      rgba(217, 83, 63, 0.07) 72%,
-      transparent 84%
-    );
-
-    filter: blur(10px);
-
-    mix-blend-mode: screen;
-
-    opacity: 0.5;
-
-    transition: opacity 400ms ease;
-  }
-
-  @media (max-width: 640px) {
-
-    .nebula-field-alt {
-      inset: -25%;
-    }
-
-    .ribbon-back-alt,
-    .ribbon-mid-alt,
-    .ribbon-core-alt {
-      filter: blur(38px);
-    }
-
-    .hero-dots-alt {
-      background-size: 20px 20px;
-    }
-
-    .bokeh-alt {
-      width: calc(var(--size) * 0.7);
-      height: calc(var(--size) * 0.7);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .ribbon-back-alt,
-    .ribbon-mid-alt,
-    .ribbon-core-alt,
-    .bokeh-wrap-alt {
-      animation: none;
-    }
-
-    .cursor-glow-alt {
-      display: none;
-    }
-
-    .nebula-field-alt,
-    .bokeh-alt {
-      transition: none;
-    }
-  }
-
-  /* ============================================================= */
-  /* LIQUID GLASS — project cards */
-  /* ============================================================= */
-  /*
-    A frosted, refractive glass material for the project cards:
-    - layered translucent fill + heavy blur/saturate for the "frosted" body
-    - a thin, bright top edge to fake light catching the rim
-    - a soft specular sheen that tracks the pointer (set via --mx / --my)
-    - a very subtle depth shadow so the card reads as sitting above the aurora
-  */
-
-  .liquid-glass {
-    position: relative;
-
-    --mx: 50%;
-    --my: 30%;
-
-    background:
-      radial-gradient(
-        480px circle at var(--mx) var(--my),
-        rgba(255, 255, 255, 0.09),
-        transparent 60%
-      ),
-      linear-gradient(
-        155deg,
-        rgba(255, 255, 255, 0.05) 0%,
-        rgba(255, 255, 255, 0.015) 40%,
-        rgba(20, 20, 20, 0.5) 100%
-      ),
-      rgba(15, 15, 16, 0.5);
-
-    backdrop-filter: blur(22px) saturate(150%);
-    -webkit-backdrop-filter: blur(22px) saturate(150%);
-
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.14),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.03),
-      inset 0 -18px 36px -24px rgba(0, 0, 0, 0.5),
-      0 20px 45px rgba(0, 0, 0, 0.28);
-
-    transition:
-      box-shadow 500ms ease,
-      background 500ms ease,
-      transform 400ms cubic-bezier(0.2, 0.8, 0.2, 1);
-  }
-
-  /* Thin bright rim along the top-left, like light skimming the edge of glass */
-  .liquid-glass::before {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    border-radius: inherit;
-
-    padding: 1px;
-
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.32) 0%,
-      rgba(255, 255, 255, 0.06) 22%,
-      transparent 45%,
-      transparent 75%,
-      rgba(214, 140, 58, 0.14) 100%
-    );
-
-    -webkit-mask:
-      linear-gradient(#000 0 0) content-box,
-      linear-gradient(#000 0 0);
-
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-
-    pointer-events: none;
-  }
-
-  /* Soft moving sheen that follows the pointer, like light refracting through glass */
-  .liquid-glass::after {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    border-radius: inherit;
-
-    background: radial-gradient(
-      260px circle at var(--mx) var(--my),
-      rgba(255, 255, 255, 0.14),
-      rgba(45, 106, 79, 0.06) 40%,
-      transparent 65%
-    );
-
-    opacity: 0;
-
-    transition: opacity 400ms ease;
-
-    pointer-events: none;
-  }
-
-  .liquid-glass:hover::after {
-    opacity: 1;
-  }
-
-  .liquid-glass:hover {
-    transform: translateY(-3px);
-
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.2),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.05),
-      inset 0 -18px 36px -24px rgba(0, 0, 0, 0.55),
-      0 28px 60px rgba(0, 0, 0, 0.35),
-      0 0 50px rgba(217, 83, 63, 0.07);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .liquid-glass,
-    .liquid-glass::after {
-      transition: none;
-    }
-
-    .liquid-glass:hover {
-      transform: none;
-    }
-  }
-
-  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-    .liquid-glass {
-      background: rgba(15, 15, 16, 0.86);
-    }
-  }
-
-
-/* ============================================================= */
-/* PREMIUM PROJECT CARDS — visual refinement                     */
-/* ============================================================= */
-
-#projects {
-  --project-surface: rgba(8, 18, 13, 0.58);
-  --project-surface-strong: rgba(10, 24, 17, 0.72);
-  --project-line: rgba(190, 242, 214, 0.12);
-  --project-muted: rgba(226, 244, 234, 0.68);
-}
-
-/* Give the whole section a more editorial rhythm. */
-#projects > .max-w-6xl {
-  max-width: 1180px;
-}
-
-/* Stronger section heading */
-#projects h2 {
-  letter-spacing: -0.045em;
-  text-wrap: balance;
-}
-
-#projects h2 + p {
-  max-width: 680px;
-  color: var(--project-muted);
-}
-
-/* Every project becomes a premium glass panel. */
-#projects .liquid-glass {
-  isolation: isolate;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.055) 0%,
-      rgba(255, 255, 255, 0.018) 34%,
-      rgba(7, 23, 15, 0.66) 100%
-    ),
-    var(--project-surface);
-  border-color: var(--project-line);
-  border-radius: 26px;
-  box-shadow:
-    0 1px 0 rgba(255,255,255,.08) inset,
-    0 24px 70px rgba(0,0,0,.20),
-    0 0 0 1px rgba(255,255,255,.015);
-}
-
-/* Subtle internal grid gives the cards a technical/developer feel. */
-#projects .liquid-glass > a::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  opacity: .18;
-  background-image:
-    linear-gradient(rgba(190,242,214,.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(190,242,214,.035) 1px, transparent 1px);
-  background-size: 38px 38px;
-  mask-image: radial-gradient(circle at 75% 25%, black, transparent 72%);
-  -webkit-mask-image: radial-gradient(circle at 75% 25%, black, transparent 72%);
-}
-
-/* Add a large, understated project index behind the content. */
-#projects .liquid-glass > a::after {
-  content: "";
-  position: absolute;
-  right: 26px;
-  top: 12px;
-  z-index: -1;
-  pointer-events: none;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: clamp(5rem, 12vw, 9rem);
-  line-height: 1;
-  font-weight: 700;
-  letter-spacing: -.08em;
-  color: rgba(190,242,214,.035);
-}
-
-/* Individual indices without changing the HTML. */
-#projects .liquid-glass:nth-of-type(1) > a::after { content: "01"; }
-#projects .liquid-glass:nth-of-type(2) > a::after { content: "02"; }
-#projects .liquid-glass:nth-of-type(3) > a::after { content: "03"; }
-#projects .liquid-glass:nth-of-type(4) > a::after { content: "04"; }
-#projects .liquid-glass:nth-of-type(5) > a::after { content: "05"; }
-#projects .liquid-glass:nth-of-type(6) > a::after { content: "06"; }
-#projects .liquid-glass:nth-of-type(7) > a::after { content: "07"; }
-
-/* Better project spacing */
-#projects .liquid-glass {
-  margin-top: 0 !important;
-  margin-bottom: 22px !important;
-}
-
-#projects .liquid-glass:last-child {
-  margin-bottom: 0 !important;
-}
-
-/* Card content */
-#projects .liquid-glass > a {
-  padding: clamp(1.5rem, 4vw, 2.8rem);
-}
-
-/* Project labels become compact technical metadata. */
-#projects .liquid-glass .font-mono.text-xs {
-  font-weight: 600;
-  letter-spacing: .18em;
-}
-
-#projects .liquid-glass .font-mono.text-xs + span {
-  width: 34px;
-}
-
-/* Project titles */
-#projects .liquid-glass h3 {
-  font-size: clamp(1.7rem, 4vw, 2.65rem);
-  line-height: 1.05;
-  letter-spacing: -.04em;
-  font-weight: 550;
-  max-width: 760px;
-}
-
-/* Descriptions */
-#projects .liquid-glass h3 + p {
-  max-width: 720px;
-  font-size: clamp(.98rem, 1.6vw, 1.08rem);
-  line-height: 1.75;
-  color: rgba(226,244,234,.72);
-}
-
-/* Metadata labels */
-#projects .liquid-glass p.text-xs {
-  letter-spacing: .16em;
-}
-
-/* Technology pills */
-#projects .liquid-glass .rounded-full {
-  border-color: rgba(190,242,214,.13);
-  background: rgba(190,242,214,.025);
-  transition:
-    border-color 220ms ease,
-    background 220ms ease,
-    transform 220ms ease;
-}
-
-#projects .liquid-glass .rounded-full:hover {
-  border-color: rgba(190,242,214,.3);
-  background: rgba(190,242,214,.07);
-  transform: translateY(-1px);
-}
-
-/* The CTA becomes a proper interactive control. */
-#projects .liquid-glass a [class*="text-[var(--sec)]"] {
-  font-weight: 550;
-}
-
-#projects .liquid-glass:hover {
-  transform: translateY(-5px);
-  border-color: rgba(190,242,214,.22);
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,.075) 0%,
-      rgba(190,242,214,.025) 45%,
-      rgba(7,23,15,.70) 100%
-    ),
-    var(--project-surface-strong);
-  box-shadow:
-    0 1px 0 rgba(255,255,255,.12) inset,
-    0 30px 80px rgba(0,0,0,.32),
-    0 0 60px rgba(21,128,61,.10);
-}
-
-/* Weather mini-panels */
-#projects [id^="weather-"] {
-  transition: color 250ms ease, transform 250ms ease;
-}
-
-#projects .liquid-glass:has([id="weather-alcoi-temperature"]) > a::after {
-  color: rgba(190,242,214,.045);
-}
-
-#projects .liquid-glass:has([id="weather-alcoi-temperature"]) .rounded-xl {
-  background:
-    linear-gradient(145deg, rgba(190,242,214,.045), rgba(0,0,0,.20)),
-    rgba(7,18,12,.46);
-  border-color: rgba(190,242,214,.11);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.055);
-}
-
-/* A subtle live indicator for the weather cards. */
-#projects .liquid-glass:has([id="weather-alcoi-temperature"]) .rounded-xl::before {
-  content: "";
-  display: inline-block;
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: var(--sec);
-  box-shadow: 0 0 12px var(--sec);
-  opacity: .8;
-}
-
-/* Improve the background without making it visually overpowering. */
-#projects-bg {
-  opacity: .94;
-}
-
-#projects .hero-vignette-alt {
-  background:
-    linear-gradient(
-      90deg,
-      rgba(3,8,5,.72) 0%,
-      transparent 22%,
-      transparent 78%,
-      rgba(3,8,5,.72) 100%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(3,8,5,.34) 0%,
-      transparent 20%,
-      transparent 80%,
-      rgba(3,8,5,.55) 100%
-    ),
-    radial-gradient(
-      ellipse 78% 76% at 50% 45%,
-      transparent 28%,
-      rgba(3,8,5,.62) 100%
-    );
-}
-
-/* Cleaner motion */
-@media (prefers-reduced-motion: no-preference) {
-  #projects .liquid-glass {
-    will-change: transform;
-  }
-
-  #projects .liquid-glass:hover h3 {
-    transform: translateX(2px);
-  }
-
-  #projects .liquid-glass h3 {
-    transition: transform 350ms cubic-bezier(.2,.8,.2,1), color 300ms ease;
-  }
-}
-
-/* Tablet/mobile refinement */
-@media (max-width: 768px) {
-  #projects {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-  }
-
-  #projects .liquid-glass {
-    border-radius: 21px;
-    margin-bottom: 16px !important;
-  }
-
-  #projects .liquid-glass > a {
-    padding: 1.35rem;
-  }
-
-  #projects .liquid-glass > a::after {
-    right: 16px;
-    top: 16px;
-    font-size: 5rem;
-  }
-
-  #projects .liquid-glass h3 {
-    max-width: calc(100% - 1rem);
-  }
-
-  #projects .liquid-glass h3 + p {
-    line-height: 1.65;
-  }
-}
-
-@media (max-width: 640px) {
-  #projects .liquid-glass:hover {
-    transform: translateY(-2px);
-  }
-
-  #projects .liquid-glass > a::before {
-    opacity: .10;
-  }
-
-  #projects .liquid-glass > a::after {
-    font-size: 4rem;
-    opacity: .8;
-  }
-}
-
-/* Accessibility: never force decorative animation on reduced-motion users. */
-@media (prefers-reduced-motion: reduce) {
-  #projects .liquid-glass,
-  #projects .liquid-glass h3,
-  #projects .liquid-glass .rounded-full {
-    transition: none !important;
-  }
-
-  #projects .liquid-glass:hover {
-    transform: none;
-  }
-
-  #projects .liquid-glass:hover h3 {
-    transform: none;
-  }
-}
-
-</style>
