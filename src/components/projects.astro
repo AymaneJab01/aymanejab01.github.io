@@ -11,14 +11,22 @@
   <!-- BACKGROUND — AURORA (Momiji Red / Forest Green) -->
   <!-- ========================================================= -->
 
-  <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-[#07070b]">
-    <div class="nebula-field-alt" aria-hidden="true">
+  <div id="projects-bg" class="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-[#07070b]">
+    <div class="nebula-field-alt" data-parallax="0.5" aria-hidden="true">
       <div class="nebula-ribbon-alt ribbon-back-alt"></div>
       <div class="nebula-ribbon-alt ribbon-mid-alt"></div>
       <div class="nebula-ribbon-alt ribbon-core-alt"></div>
-      <div class="nebula-glow-alt glow-a-alt"></div>
-      <div class="nebula-glow-alt glow-b-alt"></div>
+
+      <div class="glow-wrap-alt" data-parallax="1.6">
+        <div class="nebula-glow-alt glow-a-alt"></div>
+      </div>
+
+      <div class="glow-wrap-alt" data-parallax="-1.2">
+        <div class="nebula-glow-alt glow-b-alt"></div>
+      </div>
     </div>
+
+    <div class="cursor-glow-alt" aria-hidden="true"></div>
 
     <div class="absolute inset-0 hero-dots-alt opacity-[0.5]"></div>
 
@@ -72,7 +80,7 @@
     <div
       class="group relative mb-10 overflow-hidden rounded-2xl
       border border-[var(--white-icon-tr)]
-      bg-[#1414149c] backdrop-blur-sm
+      liquid-glass
       transition-all duration-500
       hover:border-[var(--sec)]/40
       hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
@@ -210,7 +218,7 @@
     <div
       class="group relative mb-10 overflow-hidden rounded-2xl
       border border-[var(--white-icon-tr)]
-      bg-[#1414149c] backdrop-blur-sm
+      liquid-glass
       transition-all duration-500
       hover:border-[var(--sec)]/40
       hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
@@ -372,7 +380,7 @@
     <div
       class="group relative mb-10 overflow-hidden rounded-2xl
       border border-[var(--white-icon-tr)]
-      bg-[#1414149c] backdrop-blur-sm
+      liquid-glass
       transition-all duration-500
       hover:border-[var(--sec)]/40
       hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
@@ -637,7 +645,7 @@
     <div
       class="group relative mb-10 overflow-hidden rounded-2xl
       border border-[var(--white-icon-tr)]
-      bg-[#1414149c] backdrop-blur-sm
+      liquid-glass
       transition-all duration-500
       hover:border-[var(--sec)]/40
       hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
@@ -791,7 +799,7 @@
     <div
       class="group relative mt-10 overflow-hidden rounded-2xl
       border border-[var(--white-icon-tr)]
-      bg-[#1414149c] backdrop-blur-sm
+      liquid-glass
       transition-all duration-500
       hover:border-[var(--sec)]/40
       hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
@@ -944,7 +952,7 @@
     <div
       class="group relative mt-10 overflow-hidden rounded-2xl
       border border-[var(--white-icon-tr)]
-      bg-[#1414149c] backdrop-blur-sm
+      liquid-glass
       transition-all duration-500
       hover:border-[var(--sec)]/40
       hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
@@ -1097,7 +1105,7 @@
     <div
       class="group relative mt-10 overflow-hidden rounded-2xl
       border border-[var(--white-icon-tr)]
-      bg-[#1414149c] backdrop-blur-sm
+      liquid-glass
       transition-all duration-500
       hover:border-[var(--sec)]/40
       hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
@@ -1392,6 +1400,146 @@
   }
 </script>
 
+<!-- ============================================================= -->
+<!-- INTERACTIVE BACKGROUND (pointer-reactive parallax + spotlight) -->
+<!-- ============================================================= -->
+
+<script>
+  const bg = document.getElementById("projects-bg");
+  const section = document.getElementById("projects");
+
+  const reduceMotion =
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (bg && section && !reduceMotion) {
+
+    const parallaxEls = Array.from(
+      bg.querySelectorAll<HTMLElement>("[data-parallax]")
+    );
+
+    const cursorGlow =
+      bg.querySelector<HTMLElement>(".cursor-glow-alt");
+
+    // Target = where the pointer actually is (normalized -1..1, and 0..1 for the glow).
+    let targetNormX = 0;
+    let targetNormY = 0;
+    let targetGlowX = 0.28; // default resting position: left-ish, matching the green glow
+    let targetGlowY = 0.32;
+
+    // Current = the smoothed, lerped value actually applied to the DOM.
+    let currentNormX = 0;
+    let currentNormY = 0;
+    let currentGlowX = targetGlowX;
+    let currentGlowY = targetGlowY;
+
+    let pointerActive = false;
+    let rafId = 0;
+
+    const lerp = (start: number, end: number, t: number): number =>
+      start + (end - start) * t;
+
+    const handlePointerMove = (event: PointerEvent): void => {
+      const rect = section.getBoundingClientRect();
+
+      const relX = (event.clientX - rect.left) / rect.width;
+      const relY = (event.clientY - rect.top) / rect.height;
+
+      // Only react while the pointer is actually over this section.
+      pointerActive =
+        relX >= 0 && relX <= 1 && relY >= 0 && relY <= 1;
+
+      if (!pointerActive) return;
+
+      targetNormX = relX * 2 - 1; // -1 (left) .. 1 (right)
+      targetNormY = relY * 2 - 1; // -1 (top)  .. 1 (bottom)
+
+      targetGlowX = relX;
+      targetGlowY = relY;
+    };
+
+    const handlePointerLeave = (): void => {
+      pointerActive = false;
+
+      targetNormX = 0;
+      targetNormY = 0;
+      targetGlowX = 0.28;
+      targetGlowY = 0.32;
+    };
+
+    const tick = (): void => {
+      const ease = 0.06;
+
+      currentNormX = lerp(currentNormX, targetNormX, ease);
+      currentNormY = lerp(currentNormY, targetNormY, ease);
+      currentGlowX = lerp(currentGlowX, targetGlowX, ease);
+      currentGlowY = lerp(currentGlowY, targetGlowY, ease);
+
+      for (const el of parallaxEls) {
+        const strength = Number(el.dataset.parallax ?? "1");
+
+        const px = currentNormX * strength * 22;
+        const py = currentNormY * strength * 22;
+
+        el.style.setProperty("--px", `${px}px`);
+        el.style.setProperty("--py", `${py}px`);
+      }
+
+      if (cursorGlow) {
+        cursorGlow.style.setProperty(
+          "--glow-x",
+          `${(currentGlowX * 100).toFixed(2)}%`
+        );
+
+        cursorGlow.style.setProperty(
+          "--glow-y",
+          `${(currentGlowY * 100).toFixed(2)}%`
+        );
+
+        cursorGlow.style.opacity = pointerActive ? "1" : "0.55";
+      }
+
+      rafId = requestAnimationFrame(tick);
+    };
+
+    section.addEventListener("pointermove", handlePointerMove);
+    section.addEventListener("pointerleave", handlePointerLeave);
+
+    rafId = requestAnimationFrame(tick);
+
+    // Clean up if the section is ever removed (e.g. Astro view transitions).
+    window.addEventListener(
+      "pagehide",
+      () => cancelAnimationFrame(rafId),
+      { once: true }
+    );
+  }
+
+  // --- Liquid glass: pointer-tracked specular highlight per card -------
+
+  if (!reduceMotion) {
+    const glassCards = Array.from(
+      document.querySelectorAll<HTMLElement>(".liquid-glass")
+    );
+
+    for (const card of glassCards) {
+      card.addEventListener("pointermove", (event: PointerEvent) => {
+        const rect = card.getBoundingClientRect();
+
+        const x = ((event.clientX - rect.left) / rect.width) * 100;
+        const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+        card.style.setProperty("--mx", `${x.toFixed(1)}%`);
+        card.style.setProperty("--my", `${y.toFixed(1)}%`);
+      });
+
+      card.addEventListener("pointerleave", () => {
+        card.style.setProperty("--mx", "50%");
+        card.style.setProperty("--my", "30%");
+      });
+    }
+  }
+</script>
+
 <style is:global>
 
   /* ============================================================= */
@@ -1458,9 +1606,60 @@
     position: absolute;
     inset: -15%;
 
-    transform: rotate(-28deg);
+    --px: 0px;
+    --py: 0px;
+
+    transform: rotate(-28deg) translate3d(var(--px), var(--py), 0);
 
     transform-origin: 30% 55%;
+
+    transition: transform 60ms linear;
+  }
+
+  /* Wrapper that receives the pointer-parallax offset, so it doesn't
+     fight with the drift keyframes already animating the glow inside it. */
+  .glow-wrap-alt {
+    position: absolute;
+    inset: 0;
+
+    --px: 0px;
+    --py: 0px;
+
+    transform: translate3d(var(--px), var(--py), 0);
+
+    transition: transform 60ms linear;
+  }
+
+  /* Soft light that follows the pointer — warm at the center, cooling
+     into the section's green/red palette at the edges. */
+  .cursor-glow-alt {
+    position: absolute;
+
+    left: var(--glow-x, 28%);
+    top: var(--glow-y, 32%);
+
+    width: 620px;
+    height: 620px;
+
+    transform: translate3d(-50%, -50%, 0);
+
+    border-radius: 999px;
+
+    background: radial-gradient(
+      circle,
+      rgba(224, 250, 235, 0.10) 0%,
+      rgba(45, 106, 79, 0.16) 35%,
+      rgba(217, 51, 63, 0.08) 60%,
+      transparent 78%
+    );
+
+    filter: blur(10px);
+
+    mix-blend-mode: screen;
+
+    opacity: 0.55;
+
+    transition: opacity 400ms ease;
   }
 
   /* Wide, soft outer wash — mostly deep forest green, torii-red only at the right edge */
@@ -1639,6 +1838,145 @@
     .ribbon-core-alt,
     .nebula-glow-alt {
       animation: none;
+    }
+
+    .cursor-glow-alt {
+      display: none;
+    }
+
+    .nebula-field-alt,
+    .glow-wrap-alt {
+      transition: none;
+    }
+  }
+  /* ============================================================= */
+  /* LIQUID GLASS — project cards */
+  /* ============================================================= */
+  /*
+    A frosted, refractive glass material for the project cards:
+    - layered translucent fill + heavy blur/saturate for the "frosted" body
+    - a thin, bright top edge to fake light catching the rim
+    - a soft specular sheen that tracks the pointer (set via --mx / --my)
+    - a very subtle depth shadow so the card reads as sitting above the aurora
+  */
+
+  .liquid-glass {
+    position: relative;
+
+    --mx: 50%;
+    --my: 30%;
+
+    background:
+      radial-gradient(
+        480px circle at var(--mx) var(--my),
+        rgba(255, 255, 255, 0.09),
+        transparent 60%
+      ),
+      linear-gradient(
+        155deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.015) 40%,
+        rgba(20, 20, 20, 0.5) 100%
+      ),
+      rgba(15, 15, 16, 0.5);
+
+    backdrop-filter: blur(22px) saturate(150%);
+    -webkit-backdrop-filter: blur(22px) saturate(150%);
+
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.14),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+      inset 0 -18px 36px -24px rgba(0, 0, 0, 0.5),
+      0 20px 45px rgba(0, 0, 0, 0.28);
+
+    transition:
+      box-shadow 500ms ease,
+      background 500ms ease,
+      transform 400ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  /* Thin bright rim along the top-left, like light skimming the edge of glass */
+  .liquid-glass::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    border-radius: inherit;
+
+    padding: 1px;
+
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.32) 0%,
+      rgba(255, 255, 255, 0.06) 22%,
+      transparent 45%,
+      transparent 75%,
+      rgba(64, 145, 108, 0.16) 100%
+    );
+
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    pointer-events: none;
+  }
+
+  /* Soft moving sheen that follows the pointer, like light refracting through glass */
+  .liquid-glass::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    border-radius: inherit;
+
+    background: radial-gradient(
+      260px circle at var(--mx) var(--my),
+      rgba(255, 255, 255, 0.14),
+      rgba(64, 145, 108, 0.06) 40%,
+      transparent 65%
+    );
+
+    opacity: 0;
+
+    transition: opacity 400ms ease;
+
+    pointer-events: none;
+  }
+
+  .liquid-glass:hover::after {
+    opacity: 1;
+  }
+
+  .liquid-glass:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+      inset 0 -18px 36px -24px rgba(0, 0, 0, 0.55),
+      0 28px 60px rgba(0, 0, 0, 0.35),
+      0 0 50px rgba(217, 51, 63, 0.06);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .liquid-glass,
+    .liquid-glass::after {
+      transition: none;
+    }
+
+    .liquid-glass:hover {
+      transform: none;
+    }
+  }
+
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .liquid-glass {
+      background: rgba(15, 15, 16, 0.86);
     }
   }
 
