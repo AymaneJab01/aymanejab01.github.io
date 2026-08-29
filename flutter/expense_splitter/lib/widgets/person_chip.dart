@@ -7,12 +7,14 @@ class PersonChip extends StatelessWidget {
   final Person person;
   final bool selected;
   final VoidCallback? onTap;
+  final VoidCallback? onDelete;
 
   const PersonChip({
     super.key,
     required this.person,
     this.selected = false,
     this.onTap,
+    this.onDelete,
   });
 
   @override
@@ -58,6 +60,17 @@ class PersonChip extends StatelessWidget {
                 fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
               ),
             ),
+            if (onDelete != null) ...[
+              const SizedBox(width: 6),
+              GestureDetector(
+                onTap: onDelete,
+                child: const Icon(
+                  Icons.close_rounded,
+                  size: 15,
+                  color: AppColors.textFaint,
+                ),
+              ),
+            ],
           ],
         ),
       ),

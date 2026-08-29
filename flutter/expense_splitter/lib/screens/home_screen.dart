@@ -184,6 +184,123 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  void _removePerson(Person person) {
+    if (_people.length <= 1) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text(
+            'You need at least one person in the group.',
+          ),
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+            side: const BorderSide(
+              color: AppColors.border,
+            ),
+          ),
+        ),
+      );
+      return;
+    }
+
+    final hasExpenses = _expenses.any(
+      (expense) =>
+          expense.paidBy == person.id ||
+          expense.participants.contains(person.id),
+    );
+
+    showDialog<void>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: AppColors.surface,
+          surfaceTintColor: Colors.transparent,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+            side: const BorderSide(
+              color: AppColors.border,
+            ),
+          ),
+          title: const Text(
+            'Remove person',
+            style: TextStyle(
+              color: AppColors.textPrimary,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          content: Text(
+            hasExpenses
+                ? '${person.name} will be removed from the group. '
+                    'Expenses they paid will be deleted, and they will '
+                    'be dropped from any expenses they were splitting.'
+                : '${person.name} will be removed from the group.',
+            style: const TextStyle(
+              color: AppColors.textSecondary,
+            ),
+          ),
+          actionsPadding: const EdgeInsets.fromLTRB(
+            20,
+            0,
+            20,
+            20,
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Cancel'),
+            ),
+            FilledButton(
+              style: FilledButton.styleFrom(
+                backgroundColor: AppColors.danger,
+                foregroundColor: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+                _deletePerson(person);
+              },
+              child: const Text('Remove'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _deletePerson(Person person) {
+    setState(() {
+      _people.removeWhere(
+        (item) => item.id == person.id,
+      );
+
+      _expenses.removeWhere(
+        (expense) => expense.paidBy == person.id,
+      );
+
+      for (var i = 0; i < _expenses.length; i++) {
+        final expense = _expenses[i];
+
+        if (expense.participants.contains(person.id)) {
+          _expenses[i] = expense.copyWith(
+            participants:
+                expense.participants.where((id) => id != person.id).toList(),
+          );
+        }
+      }
+
+      _expenses.removeWhere(
+        (expense) => expense.participants.isEmpty,
+      );
+
+      _selectedParticipants.remove(person.id);
+
+      if (_selectedPayer == person.id) {
+        _selectedPayer = _people.firstOrNull?.id;
+      }
+    });
+  }
+
   void _addExpense() {
     final description = _descriptionController.text.trim();
 
@@ -391,7 +508,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return _section(
       icon: Icons.people_outline_rounded,
       title: 'People',
-      subtitle: 'Everyone included in the group.',
+      subtitle: 'Everyone included in the group. Tap × to remove.',
       child: Wrap(
         spacing: 8,
         runSpacing: 8,
@@ -399,6 +516,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ..._people.map(
             (person) => PersonChip(
               person: person,
+              onDelete: () => _removePerson(person),
             ),
           ),
           ActionChip(
