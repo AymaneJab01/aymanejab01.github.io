@@ -175,6 +175,58 @@ import Layout from "../../layouts/Layout.astro";
               </div>
             </div>
 
+            <div class="execution-monitor">
+              <div class="execution-main">
+                <div class="execution-label">
+                  <span>LIVE EXECUTION</span>
+                  <span id="cpu-step-count">CYCLE 0</span>
+                </div>
+                <div class="execution-flow">
+                  <div class="execution-stage" data-execution-stage="fetch">
+                    <span class="execution-stage-number">01</span>
+                    <strong>FETCH</strong>
+                    <small>Read instruction</small>
+                  </div>
+                  <div class="execution-arrow">→</div>
+                  <div class="execution-stage" data-execution-stage="decode">
+                    <span class="execution-stage-number">02</span>
+                    <strong>DECODE</strong>
+                    <small>Interpret opcode</small>
+                  </div>
+                  <div class="execution-arrow">→</div>
+                  <div class="execution-stage" data-execution-stage="execute">
+                    <span class="execution-stage-number">03</span>
+                    <strong>EXECUTE</strong>
+                    <small>Update CPU state</small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="current-instruction">
+                <div class="current-instruction-head">
+                  <span>CURRENT INSTRUCTION</span>
+                  <span id="cpu-current-address">PC 00</span>
+                </div>
+                <code id="cpu-current-instruction">Waiting for program...</code>
+                <div class="instruction-effect" id="cpu-instruction-effect">
+                  Assemble a program, then press Step to see exactly what changes.
+                </div>
+              </div>
+            </div>
+
+            <div class="instruction-timeline-panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="panel-index">E</span>
+                  <span class="panel-title">Instruction timeline</span>
+                </div>
+                <span class="panel-meta">PC TRACKING</span>
+              </div>
+              <div id="cpu-timeline" class="cpu-timeline">
+                <div class="timeline-empty">No instructions loaded.</div>
+              </div>
+            </div>
+
             <div class="wide-panel">
               <div class="panel-heading">
                 <div>
@@ -486,7 +538,7 @@ import Layout from "../../layouts/Layout.astro";
 
         <footer class="page-footer">
           <span>CPU SIMULATOR · COMPUTER ARCHITECTURE</span>
-          <a href="/home">← Projects</a>
+          <a href="/home">← Home</a>
         </footer>
       </div>
     </div>
@@ -958,6 +1010,218 @@ import Layout from "../../layouts/Layout.astro";
   .cpu-console-line.err { color: var(--red); }
   .cpu-console-line.out { color: var(--sec); }
 
+  /* =========================================================
+     CLEAR CPU EXECUTION VISUALIZER
+     ========================================================= */
+
+  .execution-monitor {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 1px;
+    background: var(--line);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .execution-main,
+  .current-instruction {
+    min-width: 0;
+    padding: 1.15rem 1.25rem;
+    background: rgba(7, 14, 19, .96);
+  }
+
+  .execution-label,
+  .current-instruction-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: .75rem;
+    color: var(--faint);
+    font-size: .51rem;
+    letter-spacing: .11em;
+  }
+
+  .execution-label > span:first-child {
+    color: var(--sec);
+  }
+
+  #cpu-step-count {
+    color: var(--blue);
+  }
+
+  .execution-flow {
+    display: flex;
+    align-items: stretch;
+    gap: .45rem;
+  }
+
+  .execution-stage {
+    flex: 1;
+    min-width: 0;
+    padding: .78rem .7rem;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255,255,255,.015);
+    opacity: .48;
+    transform: scale(.98);
+    transition: opacity .18s ease, border-color .18s ease,
+      background .18s ease, box-shadow .18s ease, transform .18s ease;
+  }
+
+  .execution-stage.active {
+    opacity: 1;
+    transform: scale(1);
+    border-color: var(--sec);
+    background: var(--green-soft);
+    box-shadow: 0 0 24px rgba(85,230,193,.12);
+  }
+
+  .execution-stage.done {
+    opacity: .72;
+    border-color: rgba(98,168,255,.35);
+    background: var(--blue-soft);
+  }
+
+  .execution-stage-number {
+    display: block;
+    margin-bottom: .35rem;
+    color: var(--faint);
+    font-size: .47rem;
+  }
+
+  .execution-stage.active .execution-stage-number {
+    color: var(--sec);
+  }
+
+  .execution-stage strong {
+    display: block;
+    color: var(--white);
+    font-size: .62rem;
+    letter-spacing: .06em;
+  }
+
+  .execution-stage small {
+    display: block;
+    margin-top: .3rem;
+    color: var(--faint);
+    font-size: .49rem;
+    line-height: 1.4;
+  }
+
+  .execution-arrow {
+    display: grid;
+    place-items: center;
+    color: var(--line-strong);
+    font-size: .9rem;
+  }
+
+  .current-instruction {
+    border-left: 1px solid var(--line);
+  }
+
+  .current-instruction-head {
+    margin-bottom: .7rem;
+  }
+
+  #cpu-current-address {
+    color: var(--amber);
+  }
+
+  #cpu-current-instruction {
+    display: block;
+    overflow-x: auto;
+    padding: .7rem .8rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 7px;
+    color: var(--white);
+    background: #050a0e;
+    font: .75rem/1.5 "JetBrains Mono", monospace;
+    white-space: pre;
+  }
+
+  .instruction-effect {
+    min-height: 2.4em;
+    margin-top: .6rem;
+    color: var(--muted);
+    font: .64rem/1.55 "Space Grotesk", sans-serif;
+  }
+
+  .instruction-effect.changed {
+    color: var(--sec);
+  }
+
+  .instruction-timeline-panel {
+    padding: 1rem 1.25rem;
+    border-top: 1px solid var(--line);
+    background: rgba(6, 12, 17, .96);
+  }
+
+  .cpu-timeline {
+    display: flex;
+    gap: .38rem;
+    overflow-x: auto;
+    padding: .1rem .05rem .45rem;
+    scrollbar-width: thin;
+  }
+
+  .timeline-item {
+    flex: 0 0 auto;
+    min-width: 92px;
+    padding: .55rem .62rem;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    background: rgba(255,255,255,.015);
+    transition: border-color .18s ease, background .18s ease, transform .18s ease;
+  }
+
+  .timeline-item.active {
+    border-color: var(--sec);
+    background: var(--green-soft);
+    transform: translateY(-2px);
+    box-shadow: 0 0 18px rgba(85,230,193,.08);
+  }
+
+  .timeline-item.executed {
+    border-color: rgba(98,168,255,.28);
+    background: var(--blue-soft);
+  }
+
+  .timeline-pc {
+    display: block;
+    color: var(--faint);
+    font-size: .46rem;
+  }
+
+  .timeline-op {
+    display: block;
+    margin-top: .25rem;
+    color: var(--sec);
+    font-size: .58rem;
+    font-weight: 600;
+  }
+
+  .timeline-raw {
+    display: block;
+    max-width: 120px;
+    margin-top: .25rem;
+    overflow: hidden;
+    color: var(--muted);
+    font-size: .49rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .timeline-empty {
+    width: 100%;
+    padding: .65rem;
+    border: 1px dashed var(--line);
+    border-radius: 7px;
+    color: var(--faint);
+    font-size: .55rem;
+    text-align: center;
+  }
+
   .architecture-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -1160,6 +1424,8 @@ import Layout from "../../layouts/Layout.astro";
     .hero-stats div:nth-child(2) { border-right: 0; }
     .hero-stats div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
     .cpu-layout { grid-template-columns: 1fr; }
+    .execution-monitor { grid-template-columns: 1fr; }
+    .current-instruction { border-left: 0; border-top: 1px solid var(--line); }
     .architecture-grid { grid-template-columns: 1fr; }
     .pipeline-track { display: grid; grid-template-columns: 1fr; gap: .5rem; }
     .pipeline-connector { width: 1px; height: 18px; margin-left: 1.2rem; }
@@ -1176,6 +1442,9 @@ import Layout from "../../layouts/Layout.astro";
     .simulator-card { border-radius: 11px; }
     .panel, .wide-panel { padding: .9rem; }
     .cpu-editor { min-height: 245px; }
+    .execution-flow { gap: .25rem; }
+    .execution-stage { padding: .65rem .45rem; }
+    .execution-stage small { display: none; }
     .cpu-registers { grid-template-columns: repeat(2, 1fr); }
     .instruction-row { grid-template-columns: 68px 92px 1fr; padding: 0 .65rem; }
     .instruction-row p { font-size: .65rem; }
@@ -1211,10 +1480,17 @@ function sleep(ms: number) {
     const statusEl = document.getElementById("cpu-status");
     const memoryEl = document.getElementById("cpu-memory");
     const consoleEl = document.getElementById("cpu-console");
+    const executionStages = document.querySelectorAll("[data-execution-stage]");
+    const stepCountEl = document.getElementById("cpu-step-count");
+    const currentAddressEl = document.getElementById("cpu-current-address");
+    const currentInstructionEl = document.getElementById("cpu-current-instruction");
+    const instructionEffectEl = document.getElementById("cpu-instruction-effect");
+    const timelineEl = document.getElementById("cpu-timeline");
 
     if (!programEl || !exampleSelect || !loadExampleBtn || !registersEl || !cycleEl ||
         !assembleBtn || !stepBtn || !runBtn || !resetBtn || !pcEl || !statusEl ||
-        !memoryEl || !consoleEl) return;
+        !memoryEl || !consoleEl || !stepCountEl || !currentAddressEl ||
+        !currentInstructionEl || !instructionEffectEl || !timelineEl) return;
 
     const REG_COUNT = 8;
     const MEM_SIZE = 32;
@@ -1309,6 +1585,105 @@ function sleep(ms: number) {
       });
     }
 
+    let cycleNumber = 0;
+    let lastPc: number | null = null;
+
+    function setExecutionStage(stage: "fetch" | "decode" | "execute" | null) {
+      executionStages.forEach((el) => {
+        const elStage = el.getAttribute("data-execution-stage");
+        el.classList.toggle("active", elStage === stage);
+        el.classList.toggle(
+          "done",
+          stage !== null &&
+          ["fetch", "decode", "execute"].indexOf(elStage || "") <
+            ["fetch", "decode", "execute"].indexOf(stage)
+        );
+      });
+      setCycleStep(stage);
+    }
+
+    function describeEffect(instr: Instruction): string {
+      switch (instr.op) {
+        case "MOV":
+          return `Register ${instr.args[0]} receives ${instr.args[1]}.`;
+        case "ADD":
+          return `Add ${instr.args[1]} to ${instr.args[0]}.`;
+        case "SUB":
+          return `Subtract ${instr.args[1]} from ${instr.args[0]}.`;
+        case "LOAD":
+          return `Read memory[${instr.args[1]}] into ${instr.args[0]}.`;
+        case "STORE":
+          return `Write ${instr.args[0]} into memory[${instr.args[1]}].`;
+        case "CMP":
+          return `Compare ${instr.args[0]} with ${instr.args[1]} → zero flag is updated.`;
+        case "JMP":
+          return `Jump to label ${instr.args[0]}.`;
+        case "JZ":
+          return `Jump to ${instr.args[0]} only when the zero flag is set.`;
+        case "HALT":
+          return "Stop the processor.";
+        default:
+          return "Execute instruction.";
+      }
+    }
+
+    function renderTimeline(activePc: number | null = null) {
+      timelineEl!.innerHTML = "";
+
+      if (!program.length) {
+        const empty = document.createElement("div");
+        empty.className = "timeline-empty";
+        empty.textContent = "No instructions loaded.";
+        timelineEl!.appendChild(empty);
+        return;
+      }
+
+      program.forEach((instr, i) => {
+        const item = document.createElement("div");
+        item.className =
+          "timeline-item" +
+          (i === activePc ? " active" : "") +
+          (lastPc !== null && i < lastPc ? " executed" : "");
+
+        const pc = document.createElement("span");
+        pc.className = "timeline-pc";
+        pc.textContent = `PC ${String(i).padStart(2, "0")}`;
+
+        const op = document.createElement("strong");
+        op.className = "timeline-op";
+        op.textContent = instr.op;
+
+        const raw = document.createElement("span");
+        raw.className = "timeline-raw";
+        raw.textContent = instr.raw;
+
+        item.append(pc, op, raw);
+        timelineEl!.appendChild(item);
+      });
+
+      const active = timelineEl!.querySelector(".timeline-item.active") as HTMLElement | null;
+      active?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    }
+
+    function showCurrentInstruction(index: number | null) {
+      if (index === null || !program[index]) {
+        currentAddressEl!.textContent = "PC 00";
+        currentInstructionEl!.textContent = "Waiting for program...";
+        instructionEffectEl!.textContent =
+          "Assemble a program, then press Step to see exactly what changes.";
+        instructionEffectEl!.classList.remove("changed");
+        renderTimeline(null);
+        return;
+      }
+
+      const instr = program[index];
+      currentAddressEl!.textContent = `PC ${String(index).padStart(2, "0")}`;
+      currentInstructionEl!.textContent = instr.raw;
+      instructionEffectEl!.textContent = describeEffect(instr);
+      instructionEffectEl!.classList.add("changed");
+      renderTimeline(index);
+    }
+
     function resolveOperand(token: string): number {
       token = token.trim();
       if (token.startsWith("R") && !isNaN(Number(token.slice(1)))) {
@@ -1354,6 +1729,11 @@ function sleep(ms: number) {
       setCycleStep(null);
       pcEl!.textContent = "0";
       statusEl!.textContent = keepProgram ? "Assembled" : "Idle";
+      cycleNumber = 0;
+      lastPc = null;
+      stepCountEl!.textContent = "CYCLE 0";
+      setExecutionStage(null);
+      showCurrentInstruction(keepProgram && program.length ? 0 : null);
     }
 
     function labelsOf(prog: Instruction[]): Record<string, number> {
@@ -1369,16 +1749,18 @@ function sleep(ms: number) {
         return false;
       }
 
-      setCycleStep("fetch");
+      setExecutionStage("fetch");
       pcEl!.textContent = String(pc);
-      await sleep(150);
+      showCurrentInstruction(pc);
+      await sleep(300);
 
       const instr = program[pc];
-      setCycleStep("decode");
+      setExecutionStage("decode");
       log(`[${pc}] ${instr.raw}`);
-      await sleep(150);
+      await sleep(300);
 
-      setCycleStep("execute");
+      setExecutionStage("execute");
+      await sleep(300);
 
       const labels = labelsOf(program);
       let nextPc = pc + 1;
@@ -1455,10 +1837,17 @@ function sleep(ms: number) {
         return false;
       }
 
-      await sleep(150);
+      await sleep(300);
+      lastPc = pc;
       pc = nextPc;
+      cycleNumber += 1;
+      stepCountEl!.textContent = `CYCLE ${cycleNumber}`;
 
       if (halted) {
+        setExecutionStage("execute");
+        currentInstructionEl!.textContent = instr.raw;
+        instructionEffectEl!.textContent = "HALT completed — the CPU has stopped.";
+        instructionEffectEl!.classList.add("changed");
         statusEl!.textContent = "Halted";
         log("Program halted.", "out");
         stepBtn.disabled = true;
@@ -1483,6 +1872,11 @@ function sleep(ms: number) {
         renderRegisters(null);
         renderMemory(null);
         statusEl!.textContent = "Ready";
+        cycleNumber = 0;
+        lastPc = null;
+        stepCountEl!.textContent = "CYCLE 0";
+        setExecutionStage(null);
+        showCurrentInstruction(0);
       }
     });
 
@@ -1504,6 +1898,9 @@ function sleep(ms: number) {
       consoleEl!.innerHTML = "";
       stepBtn.disabled = true;
       runBtn.disabled = true;
+      setExecutionStage(null);
+      showCurrentInstruction(null);
+      stepCountEl!.textContent = "CYCLE 0";
     });
 
     loadExampleBtn.addEventListener("click", () => {
@@ -1514,3 +1911,4 @@ function sleep(ms: number) {
     resetMachine(false);
   })();
 </script>
+
