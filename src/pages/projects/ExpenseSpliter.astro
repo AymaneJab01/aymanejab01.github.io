@@ -1,3 +1,4 @@
+```astro
 ---
 import Layout from "../../layouts/Layout.astro";
 ---
@@ -49,7 +50,9 @@ import Layout from "../../layouts/Layout.astro";
           <div class="flex items-center gap-3">
             <span class="font-mono text-xs tracking-[0.2em] text-[var(--sec)]">01</span>
             <span class="h-px w-12 bg-[var(--sec)] opacity-40"></span>
-            <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]">Interactive demo</span>
+            <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]">
+              Interactive demo
+            </span>
           </div>
 
           <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4">
@@ -67,14 +70,17 @@ import Layout from "../../layouts/Layout.astro";
             <span>Total spent</span>
             <strong id="ex-total">$0.00</strong>
           </div>
+
           <div>
             <span>People</span>
             <strong id="ex-count">0</strong>
           </div>
+
           <div>
             <span>Expenses</span>
             <strong id="ex-expense-count">0</strong>
           </div>
+
           <div>
             <span>Transfers</span>
             <strong id="ex-transfer-count">0</strong>
@@ -95,7 +101,12 @@ import Layout from "../../layouts/Layout.astro";
                 maxlength="18"
                 autocomplete="off"
               />
-              <button id="ex-add-person" type="button" class="ex-btn ex-btn-primary">
+
+              <button
+                id="ex-add-person"
+                type="button"
+                class="ex-btn ex-btn-primary"
+              >
                 Add
               </button>
             </div>
@@ -127,16 +138,24 @@ import Layout from "../../layouts/Layout.astro";
                   class="ex-input flex-1"
                 />
 
-                <select id="ex-expense-payer" class="ex-select flex-1">
+                <select id="ex-expense-payer" class="ex-select">
                   <option value="">payer</option>
                 </select>
               </div>
 
-              <button id="ex-add-expense" type="button" class="ex-btn ex-btn-primary self-start">
+              <button
+                id="ex-add-expense"
+                type="button"
+                class="ex-btn ex-btn-primary self-start"
+              >
                 Add expense
               </button>
 
-              <p id="ex-form-message" class="ex-form-message" role="status"></p>
+              <p
+                id="ex-form-message"
+                class="ex-form-message"
+                role="status"
+              ></p>
             </div>
           </div>
         </div>
@@ -152,7 +171,10 @@ import Layout from "../../layouts/Layout.astro";
 
         <div class="mt-6">
           <div class="ex-section-heading">
-            <div class="ex-panel-title">Settlement &mdash; who pays who</div>
+            <div class="ex-panel-title">
+              Settlement &mdash; who pays who
+            </div>
+
             <span class="ex-section-value">MINIMUM TRANSFERS</span>
           </div>
 
@@ -160,8 +182,15 @@ import Layout from "../../layouts/Layout.astro";
         </div>
 
         <div class="ex-actions mt-6">
-          <button id="ex-reset" type="button" class="ex-btn">Reset demo</button>
-          <button id="ex-load-example" type="button" class="ex-btn ex-btn-secondary">
+          <button id="ex-reset" type="button" class="ex-btn">
+            Reset demo
+          </button>
+
+          <button
+            id="ex-load-example"
+            type="button"
+            class="ex-btn ex-btn-secondary"
+          >
             Load example
           </button>
         </div>
@@ -170,9 +199,15 @@ import Layout from "../../layouts/Layout.astro";
       <div class="ex-card ex-info-card">
         <div class="ex-card-header">
           <div class="flex items-center gap-3">
-            <span class="font-mono text-xs tracking-[0.2em] text-[var(--sec)]">02</span>
+            <span class="font-mono text-xs tracking-[0.2em] text-[var(--sec)]">
+              02
+            </span>
+
             <span class="h-px w-12 bg-[var(--sec)] opacity-40"></span>
-            <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]">How it works</span>
+
+            <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]">
+              How it works
+            </span>
           </div>
 
           <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4">
@@ -183,17 +218,25 @@ import Layout from "../../layouts/Layout.astro";
             <div>
               <span>01</span>
               <strong>Calculate the equal share</strong>
-              <p>Total expenses are divided equally between all active people.</p>
+              <p>
+                Total expenses are divided equally between all active people.
+              </p>
             </div>
+
             <div>
               <span>02</span>
               <strong>Calculate each balance</strong>
-              <p>Paid more than the share? You are owed money. Paid less? You owe money.</p>
+              <p>
+                Paid more than the share? You are owed money. Paid less? You owe money.
+              </p>
             </div>
+
             <div>
               <span>03</span>
               <strong>Settle efficiently</strong>
-              <p>Debtors are matched with creditors until every balance reaches zero.</p>
+              <p>
+                Debtors are matched with creditors until every balance reaches zero.
+              </p>
             </div>
           </div>
         </div>
@@ -350,6 +393,9 @@ import Layout from "../../layouts/Layout.astro";
     opacity: 0.6;
     font-size: 0.9rem;
     line-height: 1;
+    background: transparent;
+    border: 0;
+    padding: 0;
   }
 
   .ex-person-remove:hover {
@@ -583,54 +629,80 @@ import Layout from "../../layouts/Layout.astro";
       cents: number;
     };
 
-    const $ = <T extends HTMLElement>(id: string) =>
-      document.getElementById(id) as T | null;
+    /*
+     * IMPORTANT:
+     *
+     * This helper intentionally returns T rather than T | null.
+     * If an expected DOM element does not exist, the application fails
+     * immediately with a useful error message.
+     *
+     * This prevents TypeScript errors such as:
+     * "'descInput' is possibly 'null'"
+     */
+    const $ = <T extends HTMLElement>(id: string): T => {
+      const element = document.getElementById(id);
 
-    const personNameInput = $<HTMLInputElement>("ex-person-name");
-    const addPersonBtn = $<HTMLButtonElement>("ex-add-person");
-    const peopleListEl = $<HTMLDivElement>("ex-people-list");
+      if (!element) {
+        throw new Error(`Required element #${id} was not found.`);
+      }
 
-    const descInput = $<HTMLInputElement>("ex-expense-desc");
-    const amountInput = $<HTMLInputElement>("ex-expense-amount");
-    const payerSelect = $<HTMLSelectElement>("ex-expense-payer");
-    const addExpenseBtn = $<HTMLButtonElement>("ex-add-expense");
-    const expensesListEl = $<HTMLDivElement>("ex-expenses-list");
+      return element as T;
+    };
 
-    const settlementEl = $<HTMLDivElement>("ex-settlement");
-    const resetBtn = $<HTMLButtonElement>("ex-reset");
-    const loadExampleBtn = $<HTMLButtonElement>("ex-load-example");
-    const formMessageEl = $<HTMLParagraphElement>("ex-form-message");
+    const personNameInput =
+      $<HTMLInputElement>("ex-person-name");
 
-    const totalEl = $<HTMLElement>("ex-total");
-    const countEl = $<HTMLElement>("ex-count");
-    const expenseCountEl = $<HTMLElement>("ex-expense-count");
-    const transferCountEl = $<HTMLElement>("ex-transfer-count");
-    const expenseTotalEl = $<HTMLElement>("ex-expense-total");
+    const addPersonBtn =
+      $<HTMLButtonElement>("ex-add-person");
 
-    if (
-      !personNameInput ||
-      !addPersonBtn ||
-      !peopleListEl ||
-      !descInput ||
-      !amountInput ||
-      !payerSelect ||
-      !addExpenseBtn ||
-      !expensesListEl ||
-      !settlementEl ||
-      !resetBtn ||
-      !loadExampleBtn ||
-      !formMessageEl ||
-      !totalEl ||
-      !countEl ||
-      !expenseCountEl ||
-      !transferCountEl ||
-      !expenseTotalEl
-    ) {
-      return;
-    }
+    const peopleListEl =
+      $<HTMLDivElement>("ex-people-list");
+
+    const descInput =
+      $<HTMLInputElement>("ex-expense-desc");
+
+    const amountInput =
+      $<HTMLInputElement>("ex-expense-amount");
+
+    const payerSelect =
+      $<HTMLSelectElement>("ex-expense-payer");
+
+    const addExpenseBtn =
+      $<HTMLButtonElement>("ex-add-expense");
+
+    const expensesListEl =
+      $<HTMLDivElement>("ex-expenses-list");
+
+    const settlementEl =
+      $<HTMLDivElement>("ex-settlement");
+
+    const resetBtn =
+      $<HTMLButtonElement>("ex-reset");
+
+    const loadExampleBtn =
+      $<HTMLButtonElement>("ex-load-example");
+
+    const formMessageEl =
+      $<HTMLParagraphElement>("ex-form-message");
+
+    const totalEl =
+      $<HTMLElement>("ex-total");
+
+    const countEl =
+      $<HTMLElement>("ex-count");
+
+    const expenseCountEl =
+      $<HTMLElement>("ex-expense-count");
+
+    const transferCountEl =
+      $<HTMLElement>("ex-transfer-count");
+
+    const expenseTotalEl =
+      $<HTMLElement>("ex-expense-total");
 
     let people: Person[] = [];
     let expenses: Expense[] = [];
+
     let nextPersonId = 1;
     let nextExpenseId = 1;
 
@@ -641,35 +713,55 @@ import Layout from "../../layouts/Layout.astro";
       maximumFractionDigits: 2,
     });
 
-    const escapeHtml = (value: string) =>
-      value.replace(/[&<>"']/g, (char) => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#039;",
-      }[char] || char));
+    const escapeHtml = (value: string): string =>
+      value.replace(/[&<>"']/g, (char) => {
+        const entities: Record<string, string> = {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#039;",
+        };
 
-    const formatCents = (cents: number) => currency.format(cents / 100);
+        return entities[char] ?? char;
+      });
 
-    const parseAmountToCents = (value: string) => {
+    const formatCents = (cents: number): string =>
+      currency.format(cents / 100);
+
+    const parseAmountToCents = (
+      value: string,
+    ): number | null => {
       const normalized = value.trim().replace(",", ".");
-      if (!normalized || !/^\d+(\.\d{1,2})?$/.test(normalized)) return null;
+
+      if (!normalized) {
+        return null;
+      }
+
+      if (!/^\d+(\.\d{1,2})?$/.test(normalized)) {
+        return null;
+      }
 
       const amount = Number(normalized);
-      if (!Number.isFinite(amount) || amount <= 0) return null;
+
+      if (!Number.isFinite(amount) || amount <= 0) {
+        return null;
+      }
 
       return Math.round(amount * 100);
     };
 
-    const showMessage = (message = "") => {
+    const showMessage = (message = ""): void => {
       formMessageEl.textContent = message;
     };
 
-    const getTotalCents = () =>
-      expenses.reduce((sum, expense) => sum + expense.amountCents, 0);
+    const getTotalCents = (): number =>
+      expenses.reduce(
+        (sum, expense) => sum + expense.amountCents,
+        0,
+      );
 
-    function renderPeople() {
+    function renderPeople(): void {
       if (people.length === 0) {
         peopleListEl.innerHTML =
           `<div class="ex-empty">No one added yet.</div>`;
@@ -679,13 +771,16 @@ import Layout from "../../layouts/Layout.astro";
             (person) => `
               <div class="ex-person-chip">
                 <span>${escapeHtml(person.name)}</span>
+
                 <button
                   type="button"
                   class="ex-person-remove"
                   data-person-id="${person.id}"
                   aria-label="Remove ${escapeHtml(person.name)}"
                   title="Remove ${escapeHtml(person.name)}"
-                >&times;</button>
+                >
+                  &times;
+                </button>
               </div>
             `,
           )
@@ -702,25 +797,32 @@ import Layout from "../../layouts/Layout.astro";
           .join("");
     }
 
-    function renderExpenses() {
+    function renderExpenses(): void {
       if (expenses.length === 0) {
         expensesListEl.innerHTML =
           `<div class="ex-empty">No expenses logged yet.</div>`;
+
         return;
       }
 
       expensesListEl.innerHTML = expenses
         .map((expense) => {
-          const payer = people.find((person) => person.id === expense.payerId);
+          const payer = people.find(
+            (person) => person.id === expense.payerId,
+          );
 
           return `
             <div class="ex-expense-row">
               <div>
-                <div class="ex-expense-desc">${escapeHtml(expense.desc)}</div>
+                <div class="ex-expense-desc">
+                  ${escapeHtml(expense.desc)}
+                </div>
+
                 <div class="ex-expense-meta">
                   paid by ${escapeHtml(payer?.name ?? "Unknown")}
                 </div>
               </div>
+
               <div class="ex-expense-amount">
                 ${formatCents(expense.amountCents)}
               </div>
@@ -731,10 +833,16 @@ import Layout from "../../layouts/Layout.astro";
     }
 
     function calculateBalances(): Balance[] {
-      if (people.length === 0) return [];
+      if (people.length === 0) {
+        return [];
+      }
 
       const totalCents = getTotalCents();
-      const baseShare = Math.floor(totalCents / people.length);
+
+      const baseShare = Math.floor(
+        totalCents / people.length,
+      );
+
       const remainder = totalCents % people.length;
 
       const paidByPerson = new Map<number, number>();
@@ -746,19 +854,26 @@ import Layout from "../../layouts/Layout.astro";
       for (const expense of expenses) {
         paidByPerson.set(
           expense.payerId,
-          (paidByPerson.get(expense.payerId) ?? 0) + expense.amountCents,
+          (paidByPerson.get(expense.payerId) ?? 0) +
+            expense.amountCents,
         );
       }
 
       return people.map((person, index) => {
-        // Distribute leftover cents deterministically so the total always
-        // balances exactly to the cent.
-        const share = baseShare + (index < remainder ? 1 : 0);
+        /*
+         * Distribute leftover cents deterministically.
+         * This guarantees that the shares add up to the exact
+         * total amount without floating-point rounding problems.
+         */
+        const share =
+          baseShare + (index < remainder ? 1 : 0);
 
         return {
           id: person.id,
           name: person.name,
-          cents: (paidByPerson.get(person.id) ?? 0) - share,
+          cents:
+            (paidByPerson.get(person.id) ?? 0) -
+            share,
         };
       });
     }
@@ -768,13 +883,16 @@ import Layout from "../../layouts/Layout.astro";
 
       const creditors = balances
         .filter((balance) => balance.cents > 0)
+        .map((balance) => ({ ...balance }))
         .sort((a, b) => b.cents - a.cents);
 
       const debtors = balances
         .filter((balance) => balance.cents < 0)
+        .map((balance) => ({ ...balance }))
         .sort((a, b) => a.cents - b.cents);
 
       const transfers: Transfer[] = [];
+
       let creditorIndex = 0;
       let debtorIndex = 0;
 
@@ -784,7 +902,11 @@ import Layout from "../../layouts/Layout.astro";
       ) {
         const creditor = creditors[creditorIndex];
         const debtor = debtors[debtorIndex];
-        const amount = Math.min(creditor.cents, -debtor.cents);
+
+        const amount = Math.min(
+          creditor.cents,
+          -debtor.cents,
+        );
 
         if (amount > 0) {
           transfers.push({
@@ -797,23 +919,30 @@ import Layout from "../../layouts/Layout.astro";
         creditor.cents -= amount;
         debtor.cents += amount;
 
-        if (creditor.cents === 0) creditorIndex++;
-        if (debtor.cents === 0) debtorIndex++;
+        if (creditor.cents === 0) {
+          creditorIndex++;
+        }
+
+        if (debtor.cents === 0) {
+          debtorIndex++;
+        }
       }
 
       return transfers;
     }
 
-    function renderSettlement() {
+    function renderSettlement(): number {
       if (people.length === 0) {
         settlementEl.innerHTML =
           `<div class="ex-empty">Add people to calculate a settlement.</div>`;
+
         return 0;
       }
 
       if (expenses.length === 0) {
         settlementEl.innerHTML =
           `<div class="ex-empty">Add an expense to calculate a settlement.</div>`;
+
         return 0;
       }
 
@@ -822,6 +951,7 @@ import Layout from "../../layouts/Layout.astro";
       if (transfers.length === 0) {
         settlementEl.innerHTML =
           `<div class="ex-empty">Everyone is even — no transfers needed.</div>`;
+
         return 0;
       }
 
@@ -830,8 +960,13 @@ import Layout from "../../layouts/Layout.astro";
           (transfer) => `
             <div class="ex-settlement-row">
               <span>${escapeHtml(transfer.from)}</span>
-              <span class="ex-settlement-arrow">&rarr;</span>
+
+              <span class="ex-settlement-arrow">
+                &rarr;
+              </span>
+
               <span>${escapeHtml(transfer.to)}</span>
+
               <span class="ex-settlement-amount">
                 ${formatCents(transfer.cents)}
               </span>
@@ -843,25 +978,40 @@ import Layout from "../../layouts/Layout.astro";
       return transfers.length;
     }
 
-    function renderSummary(transferCount: number) {
+    function renderSummary(
+      transferCount: number,
+    ): void {
       const totalCents = getTotalCents();
 
-      totalEl.textContent = formatCents(totalCents);
-      expenseTotalEl.textContent = formatCents(totalCents);
-      countEl.textContent = String(people.length);
-      expenseCountEl.textContent = String(expenses.length);
-      transferCountEl.textContent = String(transferCount);
+      totalEl.textContent =
+        formatCents(totalCents);
+
+      expenseTotalEl.textContent =
+        formatCents(totalCents);
+
+      countEl.textContent =
+        String(people.length);
+
+      expenseCountEl.textContent =
+        String(expenses.length);
+
+      transferCountEl.textContent =
+        String(transferCount);
     }
 
-    function renderAll() {
+    function renderAll(): void {
       renderPeople();
       renderExpenses();
-      const transferCount = renderSettlement();
+
+      const transferCount =
+        renderSettlement();
+
       renderSummary(transferCount);
     }
 
-    function addPerson() {
-      const name = personNameInput.value.trim();
+    function addPerson(): void {
+      const name =
+        personNameInput.value.trim();
 
       if (!name) {
         showMessage("Enter a person's name.");
@@ -869,12 +1019,17 @@ import Layout from "../../layouts/Layout.astro";
         return;
       }
 
-      if (
-        people.some(
-          (person) => person.name.toLowerCase() === name.toLowerCase(),
-        )
-      ) {
-        showMessage("That person is already in the group.");
+      const duplicate = people.some(
+        (person) =>
+          person.name.toLowerCase() ===
+          name.toLowerCase(),
+      );
+
+      if (duplicate) {
+        showMessage(
+          "That person is already in the group.",
+        );
+
         personNameInput.select();
         return;
       }
@@ -885,36 +1040,66 @@ import Layout from "../../layouts/Layout.astro";
       });
 
       personNameInput.value = "";
+
       showMessage("");
+
       renderAll();
+
       personNameInput.focus();
     }
 
-    function addExpense() {
-      const desc = descInput.value.trim();
-      const amountCents = parseAmountToCents(amountInput.value);
-      const payerId = Number(payerSelect.value);
+    function addExpense(): void {
+      const desc =
+        descInput.value.trim();
 
-      if (!people.length) {
-        showMessage("Add at least one person first.");
+      const amountCents =
+        parseAmountToCents(
+          amountInput.value,
+        );
+
+      const payerId =
+        Number(payerSelect.value);
+
+      if (people.length === 0) {
+        showMessage(
+          "Add at least one person first.",
+        );
+
         return;
       }
 
       if (!desc) {
-        showMessage("Enter a description.");
+        showMessage(
+          "Enter a description.",
+        );
+
         descInput.focus();
+
         return;
       }
 
       if (amountCents === null) {
-        showMessage("Enter a valid amount, for example 24.50.");
+        showMessage(
+          "Enter a valid amount, for example 24.50.",
+        );
+
         amountInput.focus();
+
         return;
       }
 
-      if (!payerId || !people.some((person) => person.id === payerId)) {
-        showMessage("Choose who paid the expense.");
+      if (
+        !payerId ||
+        !people.some(
+          (person) => person.id === payerId,
+        )
+      ) {
+        showMessage(
+          "Choose who paid the expense.",
+        );
+
         payerSelect.focus();
+
         return;
       }
 
@@ -927,79 +1112,171 @@ import Layout from "../../layouts/Layout.astro";
 
       descInput.value = "";
       amountInput.value = "";
+
       showMessage("");
+
       renderAll();
+
       descInput.focus();
     }
 
-    function removePerson(id: number) {
-      people = people.filter((person) => person.id !== id);
+    function removePerson(
+      id: number,
+    ): void {
+      people = people.filter(
+        (person) => person.id !== id,
+      );
 
-      // Keep the data model consistent: expenses belonging to a removed
-      // payer are removed as well.
-      expenses = expenses.filter((expense) => expense.payerId !== id);
+      /*
+       * Expenses belonging to a removed payer are also
+       * removed so that no expense references a person
+       * that no longer exists.
+       */
+      expenses = expenses.filter(
+        (expense) =>
+          expense.payerId !== id,
+      );
 
       renderAll();
     }
 
-    function resetDemo() {
+    function resetDemo(): void {
       people = [];
       expenses = [];
+
       nextPersonId = 1;
       nextExpenseId = 1;
+
       showMessage("");
+
       renderAll();
     }
 
-    function loadExample() {
+    function loadExample(): void {
       people = [
-        { id: 1, name: "Alex" },
-        { id: 2, name: "Sam" },
-        { id: 3, name: "Jo" },
-        { id: 4, name: "Mia" },
+        {
+          id: 1,
+          name: "Alex",
+        },
+        {
+          id: 2,
+          name: "Sam",
+        },
+        {
+          id: 3,
+          name: "Jo",
+        },
+        {
+          id: 4,
+          name: "Mia",
+        },
       ];
 
       expenses = [
-        { id: 1, desc: "Dinner", amountCents: 6000, payerId: 1 },
-        { id: 2, desc: "Taxi", amountCents: 1800, payerId: 2 },
-        { id: 3, desc: "Tickets", amountCents: 4000, payerId: 3 },
+        {
+          id: 1,
+          desc: "Dinner",
+          amountCents: 6000,
+          payerId: 1,
+        },
+        {
+          id: 2,
+          desc: "Taxi",
+          amountCents: 1800,
+          payerId: 2,
+        },
+        {
+          id: 3,
+          desc: "Tickets",
+          amountCents: 4000,
+          payerId: 3,
+        },
       ];
 
       nextPersonId = 5;
       nextExpenseId = 4;
+
       showMessage("");
+
       renderAll();
     }
 
-    addPersonBtn.addEventListener("click", addPerson);
+    addPersonBtn.addEventListener(
+      "click",
+      addPerson,
+    );
 
-    personNameInput.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") addPerson();
-    });
+    personNameInput.addEventListener(
+      "keydown",
+      (event) => {
+        if (event.key === "Enter") {
+          addPerson();
+        }
+      },
+    );
 
-    addExpenseBtn.addEventListener("click", addExpense);
+    addExpenseBtn.addEventListener(
+      "click",
+      addExpense,
+    );
 
-    descInput.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") addExpense();
-    });
+    descInput.addEventListener(
+      "keydown",
+      (event) => {
+        if (event.key === "Enter") {
+          addExpense();
+        }
+      },
+    );
 
-    amountInput.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") addExpense();
-    });
+    amountInput.addEventListener(
+      "keydown",
+      (event) => {
+        if (event.key === "Enter") {
+          addExpense();
+        }
+      },
+    );
 
-    peopleListEl.addEventListener("click", (event) => {
-      const target = event.target as HTMLElement;
-      const button = target.closest<HTMLButtonElement>("[data-person-id]");
+    peopleListEl.addEventListener(
+      "click",
+      (event) => {
+        const target =
+          event.target as HTMLElement;
 
-      if (!button) return;
+        const button =
+          target.closest<HTMLButtonElement>(
+            "[data-person-id]",
+          );
 
-      const id = Number(button.dataset.personId);
-      if (Number.isInteger(id)) removePerson(id);
-    });
+        if (!button) {
+          return;
+        }
 
-    resetBtn.addEventListener("click", resetDemo);
-    loadExampleBtn.addEventListener("click", loadExample);
+        const id =
+          Number(button.dataset.personId);
 
+        if (Number.isInteger(id)) {
+          removePerson(id);
+        }
+      },
+    );
+
+    resetBtn.addEventListener(
+      "click",
+      resetDemo,
+    );
+
+    loadExampleBtn.addEventListener(
+      "click",
+      loadExample,
+    );
+
+    /*
+     * Start with the example data so the project
+     * looks populated when opened from the portfolio.
+     */
     loadExample();
   })();
 </script>
+```
