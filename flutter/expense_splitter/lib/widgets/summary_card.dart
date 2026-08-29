@@ -1,12 +1,8 @@
 ﻿import 'package:flutter/material.dart';
 
-class SummaryCard extends StatelessWidget {
-  static const Color deepGreen = Color(0xFF0B5D3B);
-  static const Color lightGreen = Color(0xFFE8F5EE);
-  static const Color darkText = Color(0xFF17231D);
-  static const Color secondaryText = Color(0xFF68756F);
-  static const Color border = Color(0xFFDCE7E1);
+import '../main.dart' show AppColors;
 
+class SummaryCard extends StatelessWidget {
   final String title;
   final String value;
   final IconData icon;
@@ -25,15 +21,15 @@ class SummaryCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(19),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.surface,
         borderRadius: BorderRadius.circular(18),
         border: Border.all(
-          color: border,
+          color: AppColors.border,
         ),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(
-              alpha: 0.035,
+              alpha: 0.35,
             ),
             blurRadius: 16,
             offset: const Offset(0, 5),
@@ -46,29 +42,30 @@ class SummaryCard extends StatelessWidget {
             width: 48,
             height: 48,
             decoration: BoxDecoration(
-              color: lightGreen,
+              color: AppColors.accent.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(14),
+              border: Border.all(
+                color: AppColors.borderGlow,
+              ),
             ),
             child: Icon(
               icon,
-              color: deepGreen,
+              color: AppColors.accent,
               size: 23,
             ),
           ),
           const SizedBox(width: 14),
           Expanded(
             child: Column(
-              crossAxisAlignment:
-                  CrossAxisAlignment.start,
-              mainAxisAlignment:
-                  MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   title,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
-                    color: secondaryText,
+                    color: AppColors.textSecondary,
                     fontSize: 11,
                     fontWeight: FontWeight.w800,
                     letterSpacing: 0.7,
@@ -80,7 +77,7 @@ class SummaryCard extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
-                    color: darkText,
+                    color: AppColors.textPrimary,
                     fontSize: 24,
                     fontWeight: FontWeight.w800,
                     letterSpacing: -0.4,
@@ -93,7 +90,7 @@ class SummaryCard extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
-                      color: secondaryText,
+                      color: AppColors.textSecondary,
                       fontSize: 11.5,
                     ),
                   ),

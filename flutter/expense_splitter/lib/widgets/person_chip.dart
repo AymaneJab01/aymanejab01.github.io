@@ -1,5 +1,6 @@
 ﻿import 'package:flutter/material.dart';
 
+import '../main.dart' show AppColors;
 import '../models/person.dart';
 
 class PersonChip extends StatelessWidget {
@@ -18,59 +19,43 @@ class PersonChip extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-
         padding: const EdgeInsets.symmetric(
           horizontal: 14,
           vertical: 10,
         ),
-
         decoration: BoxDecoration(
           color: selected
-              ? const Color(0xFF15803D).withValues(alpha: 0.18)
-              : const Color(0xFF151515),
-
+              ? AppColors.accent.withValues(alpha: 0.16)
+              : AppColors.surfaceRaised,
           borderRadius: BorderRadius.circular(30),
-
           border: Border.all(
-            color: selected
-                ? const Color(0xFF15803D)
-                : const Color(0xFF303030),
+            color: selected ? AppColors.accent : AppColors.border,
           ),
         ),
-
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             CircleAvatar(
               radius: 14,
-
-              backgroundColor: selected
-                  ? const Color(0xFF15803D)
-                  : const Color(0xFF292929),
-
+              backgroundColor: selected ? AppColors.accent : AppColors.border,
               child: Text(
-                person.name.isEmpty
-                    ? '?'
-                    : person.name[0].toUpperCase(),
-
-                style: const TextStyle(
+                person.name.isEmpty ? '?' : person.name[0].toUpperCase(),
+                style: TextStyle(
+                  color:
+                      selected ? AppColors.background : AppColors.textPrimary,
                   fontSize: 12,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
-
             const SizedBox(width: 8),
-
             Text(
               person.name,
               style: TextStyle(
-                color: Colors.white,
-                fontWeight:
-                    selected ? FontWeight.w600 : FontWeight.w400,
+                color: selected ? AppColors.accent : AppColors.textPrimary,
+                fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
               ),
             ),
           ],
