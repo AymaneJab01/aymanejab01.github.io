@@ -4,7 +4,9 @@ import Layout from "../../layouts/Layout.astro";
 
 <Layout title="Network Protocol Simulator">
   <section class="net-page text-[var(--white)] py-24 md:py-36">
-    <div class="max-w-6xl mx-auto px-6">
+    <canvas id="net-bg" class="net-bg" aria-hidden="true"></canvas>
+
+    <div class="net-content max-w-6xl mx-auto px-6">
 
       <!-- ===================================================== -->
       <!-- BACK LINK -->
@@ -46,9 +48,9 @@ import Layout from "../../layouts/Layout.astro";
         </p>
 
         <div class="mt-7 flex flex-wrap gap-2">
-          <span class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]">Astro</span>
-          <span class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]">TypeScript</span>
-          <span class="rounded-full border border-[var(--white-icon-tr)] px-3 py-1 text-xs font-mono text-[var(--white-icon)]">Networking</span>
+          <span class="net-tag">Astro</span>
+          <span class="net-tag">TypeScript</span>
+          <span class="net-tag">Networking</span>
         </div>
       </div>
 
@@ -82,7 +84,9 @@ import Layout from "../../layouts/Layout.astro";
           <div class="net-lane-col">
             <div class="net-node">Client</div>
           </div>
-          <div id="tcp-wire" class="net-lane-wire"></div>
+          <div id="tcp-wire" class="net-lane-wire">
+            <div class="net-wire-line" aria-hidden="true"></div>
+          </div>
           <div class="net-lane-col">
             <div class="net-node">Server</div>
           </div>
@@ -176,88 +180,158 @@ import Layout from "../../layouts/Layout.astro";
 </Layout>
 
 <style>
+  /* =====================================================================
+     ELECTRIC-BLUE THEME
+     Redeclaring --sec inside .net-page overrides it ONLY for this page's
+     subtree (CSS custom properties cascade), so every existing
+     var(--sec) reference below automatically becomes electric blue
+     without touching any other page on the site.
+     ===================================================================== */
+  .net-page {
+    --sec: #38bdf8;
+    --net-blue: #38bdf8;
+    --net-cyan: #22d3ee;
+    --net-line: rgba(56, 189, 248, 0.9);
+
+    position: relative;
+    isolation: isolate;
+    background: radial-gradient(ellipse 90% 60% at 50% -10%, #0c2340 0%, #061021 55%, #030712 100%);
+  }
+
+  .net-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .net-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.85;
+    mask-image: radial-gradient(ellipse 85% 65% at 50% 10%, black, transparent 92%);
+  }
+
   .net-page :global(.shiny-sec) {
-    background: linear-gradient(90deg, var(--sec), #6ee7b7, var(--sec));
+    background: linear-gradient(90deg, var(--sec), var(--net-cyan), var(--sec));
     background-size: 200% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    animation: net-shine 3.5s linear infinite;
+  }
+
+  @keyframes net-shine {
+    to { background-position: -200% 0; }
+  }
+
+  .net-tag {
+    border-radius: 9999px;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    background: rgba(56, 189, 248, 0.06);
+    padding: 0.25rem 0.75rem;
+    font-size: 0.7rem;
+    font-family: monospace;
+    color: var(--white-icon);
   }
 
   .net-card {
     position: relative;
     overflow: hidden;
     border-radius: 1rem;
-    border: 1px solid var(--white-icon-tr);
-    background: #1414149c;
-    backdrop-filter: blur(6px);
+    border: 1px solid rgba(56, 189, 248, 0.16);
+    background: linear-gradient(180deg, rgba(9, 20, 38, 0.85), rgba(4, 9, 20, 0.92));
+    backdrop-filter: blur(8px);
     padding: 1.75rem;
-    transition: border-color 0.4s ease;
+    box-shadow: 0 25px 70px rgba(2, 6, 23, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
   }
-  .net-card:hover { border-color: rgba(21, 128, 61, 0.4); }
+  .net-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(56, 189, 248, 0.06), transparent 40%);
+    pointer-events: none;
+  }
+  .net-card:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 25px 70px rgba(2, 6, 23, 0.6), 0 0 40px rgba(56, 189, 248, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  }
   @media (min-width: 768px) { .net-card { padding: 2.5rem; } }
   .net-card-header { max-width: 48rem; }
 
   .net-btn {
     padding: 0.5rem 1rem;
     border-radius: 9999px;
-    border: 1px solid var(--white-icon-tr);
+    border: 1px solid rgba(56, 189, 248, 0.18);
     color: var(--white-icon);
     font-size: 0.8rem;
     font-family: monospace;
-    background: transparent;
+    background: rgba(56, 189, 248, 0.02);
     cursor: pointer;
     transition: all 0.25s ease;
   }
   .net-btn:hover { border-color: var(--sec); color: var(--white); }
-  .net-btn-primary { border-color: var(--sec); color: var(--sec); }
-  .net-btn-primary:hover { background: rgba(21, 128, 61, 0.12); }
-  .net-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .net-btn-primary {
+    border-color: var(--sec);
+    color: var(--sec);
+    box-shadow: 0 0 16px rgba(56, 189, 248, 0.18);
+  }
+  .net-btn-primary:hover {
+    background: rgba(56, 189, 248, 0.14);
+    box-shadow: 0 0 24px rgba(56, 189, 248, 0.3);
+  }
+  .net-btn:disabled { opacity: 0.35; cursor: not-allowed; box-shadow: none; }
 
   .net-input {
     padding: 0.5rem 0.85rem;
     border-radius: 9999px;
-    border: 1px solid var(--white-icon-tr);
-    background: #10101080;
+    border: 1px solid rgba(56, 189, 248, 0.18);
+    background: rgba(4, 10, 22, 0.7);
     color: var(--white);
     font-size: 0.8rem;
     font-family: monospace;
     outline: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
   }
-  .net-input:focus { border-color: var(--sec); }
+  .net-input:focus { border-color: var(--sec); box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12); }
 
   .net-range { accent-color: var(--sec); width: 6rem; }
 
   .net-pill {
     padding: 0.3rem 0.75rem;
     border-radius: 9999px;
-    border: 1px solid var(--white-icon-tr);
+    border: 1px solid rgba(56, 189, 248, 0.18);
     font-family: monospace;
     font-size: 0.7rem;
     letter-spacing: 0.1em;
     color: var(--white-icon);
+    transition: all 0.3s ease;
   }
-  .net-pill.open { border-color: var(--sec); color: var(--sec); }
+  .net-pill.open { border-color: var(--sec); color: var(--sec); box-shadow: 0 0 14px rgba(56, 189, 248, 0.3); }
   .net-pill.closing { border-color: #f59e0b; color: #f59e0b; }
 
   /* Handshake lane */
   .net-lane {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
-    align-items: start;
+    align-items: center;
     gap: 1rem;
-    border: 1px solid var(--white-icon-tr);
+    border: 1px solid rgba(56, 189, 248, 0.14);
     border-radius: 0.75rem;
-    background: #10101080;
+    background: radial-gradient(ellipse at 50% 50%, rgba(56, 189, 248, 0.05), transparent 70%), rgba(4, 10, 22, 0.6);
     padding: 1.5rem 1rem;
     min-height: 180px;
   }
   .net-lane-col { display: flex; justify-content: center; }
   .net-node {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.1rem;
     border-radius: 0.5rem;
-    border: 1px solid var(--white-icon-tr);
-    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    background: rgba(56, 189, 248, 0.06);
+    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.06), 0 0 18px rgba(56, 189, 248, 0.12);
     font-family: monospace;
     font-size: 0.8rem;
     color: var(--white);
@@ -269,22 +343,47 @@ import Layout from "../../layouts/Layout.astro";
   }
   @media (min-width: 640px) { .net-lane-wire { width: 260px; } }
 
+  .net-wire-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    transform: translateY(-50%);
+    background-image: repeating-linear-gradient(
+      90deg,
+      var(--net-line) 0px,
+      var(--net-line) 6px,
+      transparent 6px,
+      transparent 16px
+    );
+    background-size: 32px 2px;
+    opacity: 0.3;
+    animation: net-wire-flow 1s linear infinite;
+  }
+
+  @keyframes net-wire-flow {
+    to { background-position: -32px 0; }
+  }
+
   .net-packet {
     position: absolute;
     top: 0;
     left: 0;
     transform: translate(-50%, -50%);
-    padding: 0.25rem 0.6rem;
+    padding: 0.3rem 0.7rem;
     border-radius: 9999px;
     font-family: monospace;
     font-size: 0.68rem;
     white-space: nowrap;
-    background: rgba(21, 128, 61, 0.15);
+    background: rgba(56, 189, 248, 0.16);
     border: 1px solid var(--sec);
     color: var(--sec);
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
     opacity: 0;
+    z-index: 2;
   }
-  .net-packet.fin { background: rgba(245, 158, 11, 0.15); border-color: #f59e0b; color: #f59e0b; }
+  .net-packet.fin { background: rgba(245, 158, 11, 0.16); border-color: #f59e0b; color: #f59e0b; box-shadow: 0 0 14px rgba(245, 158, 11, 0.3); }
 
   .net-log {
     display: flex;
@@ -325,9 +424,9 @@ import Layout from "../../layouts/Layout.astro";
     flex-wrap: wrap;
     gap: 0.4rem;
     min-height: 3rem;
-    border: 1px solid var(--white-icon-tr);
+    border: 1px solid rgba(56, 189, 248, 0.14);
     border-radius: 0.6rem;
-    background: #10101080;
+    background: rgba(4, 10, 22, 0.6);
     padding: 0.6rem;
   }
   .net-split-stats { margin-top: 0.5rem; }
@@ -341,14 +440,14 @@ import Layout from "../../layouts/Layout.astro";
     justify-content: center;
     font-family: monospace;
     font-size: 0.65rem;
-    border: 1px solid var(--white-icon-tr);
+    border: 1px solid rgba(56, 189, 248, 0.16);
     color: var(--white-icon);
-    background: rgba(255,255,255,0.03);
+    background: rgba(255, 255, 255, 0.03);
     transition: all 0.25s ease;
   }
-  .net-packet-chip.delivered { border-color: var(--sec); color: var(--sec); background: rgba(21,128,61,0.12); }
-  .net-packet-chip.lost { border-color: #ef4444; color: #ef4444; background: rgba(239,68,68,0.12); text-decoration: line-through; }
-  .net-packet-chip.retrans { border-color: #f59e0b; color: #f59e0b; background: rgba(245,158,11,0.12); }
+  .net-packet-chip.delivered { border-color: var(--sec); color: var(--sec); background: rgba(56, 189, 248, 0.14); box-shadow: 0 0 10px rgba(56, 189, 248, 0.25); }
+  .net-packet-chip.lost { border-color: #ef4444; color: #ef4444; background: rgba(239, 68, 68, 0.12); text-decoration: line-through; }
+  .net-packet-chip.retrans { border-color: #f59e0b; color: #f59e0b; background: rgba(245, 158, 11, 0.12); }
 
   /* Chat */
   .net-chat {
@@ -357,9 +456,9 @@ import Layout from "../../layouts/Layout.astro";
     gap: 0.5rem;
     max-height: 260px;
     overflow-y: auto;
-    border: 1px solid var(--white-icon-tr);
+    border: 1px solid rgba(56, 189, 248, 0.14);
     border-radius: 0.75rem;
-    background: #10101080;
+    background: rgba(4, 10, 22, 0.6);
     padding: 1rem;
   }
   .net-chat-empty { font-size: 0.8rem; color: var(--white-icon); opacity: 0.5; font-family: monospace; }
@@ -381,10 +480,17 @@ import Layout from "../../layouts/Layout.astro";
     max-width: 80%;
     padding: 0.5rem 0.85rem;
     border-radius: 0.6rem;
-    border: 1px solid rgba(21, 128, 61, 0.4);
-    background: rgba(21, 128, 61, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    background: rgba(56, 189, 248, 0.1);
     color: var(--white);
     font-size: 0.85rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .net-wire-line,
+    .net-page :global(.shiny-sec) {
+      animation: none;
+    }
   }
 </style>
 
@@ -392,6 +498,105 @@ import Layout from "../../layouts/Layout.astro";
   function sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
+
+  /* ================================================================= */
+  /* ELECTRIC NETWORK BACKGROUND — animated node graph                  */
+  /* ================================================================= */
+  (function backgroundModule() {
+    const canvas = document.getElementById("net-bg");
+    if (!(canvas instanceof HTMLCanvasElement)) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const canvasEl = canvas;
+    const context = ctx;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    type Node = { x: number; y: number; vx: number; vy: number };
+
+    let nodes: Node[] = [];
+    let width = 0;
+    let height = 0;
+    let frame = 0;
+
+    function resize(): void {
+      width = canvasEl.width = window.innerWidth;
+      height = canvasEl.height = window.innerHeight;
+
+      const count = Math.min(80, Math.max(24, Math.floor((width * height) / 16000)));
+
+      nodes = Array.from({ length: count }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.22,
+        vy: (Math.random() - 0.5) * 0.22,
+      }));
+    }
+
+    function step(): void {
+      for (const node of nodes) {
+        node.x += node.vx;
+        node.y += node.vy;
+
+        if (node.x < 0 || node.x > width) node.vx *= -1;
+        if (node.y < 0 || node.y > height) node.vy *= -1;
+      }
+    }
+
+    function draw(): void {
+      context.clearRect(0, 0, width, height);
+
+      const linkDistance = 150;
+
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const a = nodes[i];
+          const b = nodes[j];
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < linkDistance) {
+            const alpha = (1 - dist / linkDistance) * 0.22;
+            context.strokeStyle = `rgba(56, 189, 248, ${alpha.toFixed(3)})`;
+            context.lineWidth = 1;
+            context.beginPath();
+            context.moveTo(a.x, a.y);
+            context.lineTo(b.x, b.y);
+            context.stroke();
+          }
+        }
+      }
+
+      for (const node of nodes) {
+        context.fillStyle = "rgba(103, 232, 249, 0.65)";
+        context.beginPath();
+        context.arc(node.x, node.y, 1.6, 0, Math.PI * 2);
+        context.fill();
+      }
+
+      if (!reduceMotion) {
+        step();
+      }
+
+      frame = requestAnimationFrame(draw);
+    }
+
+    window.addEventListener("resize", resize);
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden && frame) {
+        cancelAnimationFrame(frame);
+      } else if (!document.hidden) {
+        frame = requestAnimationFrame(draw);
+      }
+    });
+
+    resize();
+    draw();
+  })();
 
   /* ================================================================= */
   /* TCP HANDSHAKE                                                      */
@@ -407,7 +612,6 @@ import Layout from "../../layouts/Layout.astro";
 
     let seqClient = Math.floor(Math.random() * 1000) + 1000;
     let seqServer = Math.floor(Math.random() * 1000) + 5000;
-    let open = false;
 
     function setState(text: string, cls?: "open" | "closing") {
       stateEl!.textContent = text;
@@ -422,26 +626,55 @@ import Layout from "../../layouts/Layout.astro";
       logEl!.scrollTop = logEl!.scrollHeight;
     }
 
+    function clearPackets() {
+      wireEl!.querySelectorAll(".net-packet").forEach((el) => el.remove());
+    }
+
+    /**
+     * Animates a packet bubble sliding across the wire.
+     *
+     * The previous version set the packet's starting position and its
+     * final position back-to-back in the same tick, which most browsers
+     * collapse into a single style recalculation — the CSS transition
+     * never gets a "before" state to animate from, so the bubble either
+     * jumps straight to the end or never visibly moves at all.
+     *
+     * Forcing a layout read (`packet.offsetWidth`) between each state
+     * change makes the browser commit the current style before the next
+     * one is applied, so the transition reliably fires every time.
+     */
     async function sendPacket(label: string, fromLeft: boolean, cls = "") {
       const packet = document.createElement("div");
       packet.className = "net-packet" + (cls ? ` ${cls}` : "");
-      packet.textContent = label;
+      packet.textContent = `${fromLeft ? "▸" : "◂"} ${label}`;
       wireEl!.appendChild(packet);
 
       const width = wireEl!.clientWidth;
-      const startX = fromLeft ? 0 : width;
-      const endX = fromLeft ? width : 0;
-      const y = 20 + Math.random() * 100;
+      const trackHeight = wireEl!.clientHeight || 150;
+      const inset = 14;
+
+      const startX = fromLeft ? inset : width - inset;
+      const endX = fromLeft ? width - inset : inset;
+      const y = trackHeight * 0.25 + Math.random() * (trackHeight * 0.5);
 
       packet.style.top = `${y}px`;
       packet.style.left = `${startX}px`;
+      packet.style.opacity = "0";
+
+      void packet.offsetWidth; // commit start state
+
+      packet.style.transition = "opacity 0.2s ease";
       packet.style.opacity = "1";
 
-      await sleep(30);
-      packet.style.transition = "left 0.6s ease, opacity 0.3s ease";
+      await sleep(220);
+
+      void packet.offsetWidth; // commit fade-in before enabling the slide
+
+      packet.style.transition = "left 0.6s cubic-bezier(0.35, 0, 0.25, 1), opacity 0.3s ease";
       packet.style.left = `${endX}px`;
 
       await sleep(650);
+
       packet.style.opacity = "0";
       await sleep(300);
       packet.remove();
@@ -449,7 +682,7 @@ import Layout from "../../layouts/Layout.astro";
 
     async function handshake() {
       connectBtn.disabled = true;
-      wireEl!.innerHTML = "";
+      clearPackets();
       logEl!.innerHTML = "";
       setState("CONNECTING");
 
@@ -465,7 +698,6 @@ import Layout from "../../layouts/Layout.astro";
       setState("ESTABLISHED", "open");
       log(`<span class="tag">Connection established.</span> Both sides can now send data.`);
 
-      open = true;
       connectBtn.disabled = true;
       closeBtn.disabled = false;
     }
@@ -489,7 +721,6 @@ import Layout from "../../layouts/Layout.astro";
       setState("CLOSED");
       log(`<span class="tag">Connection closed.</span>`);
 
-      open = false;
       seqClient = Math.floor(Math.random() * 1000) + 1000;
       seqServer = Math.floor(Math.random() * 1000) + 5000;
       connectBtn.disabled = false;
@@ -566,13 +797,11 @@ import Layout from "../../layouts/Layout.astro";
 
       // TCP: every packet eventually delivered via retransmission
       for (let i = 1; i <= PACKET_COUNT; i++) {
-        let attempt = 0;
         let delivered = false;
         let el = chip(String(i), "");
         tcpTrack!.appendChild(el);
 
         while (!delivered) {
-          attempt++;
           await sleep(70);
           const lost = Math.random() < lossRate;
           if (lost) {
