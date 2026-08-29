@@ -1,0 +1,65 @@
+```yaml
+name: Build Flutter Expense Splitter
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "flutter/expense_splitter/**"
+      - ".github/workflows/build-flutter-expense-splitter.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Check Flutter version
+        run: flutter --version
+
+      - name: Install dependencies
+        working-directory: flutter/expense_splitter
+        run: flutter pub get
+
+      - name: Run tests
+        working-directory: flutter/expense_splitter
+        run: flutter test
+
+      - name: Build Flutter Web
+        working-directory: flutter/expense_splitter
+        run: flutter build web --release --base-href /projects/expense-splitter/
+
+      - name: Copy Flutter Web build to Astro public directory
+        run: |
+          rm -rf public/projects/expense-splitter
+          mkdir -p public/projects/expense-splitter
+          cp -r flutter/expense_splitter/build/web/. public/projects/expense-splitter/
+
+      - name: Commit generated Flutter Web files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add public/projects/expense-splitter
+
+          if git diff --cached --quiet; then
+            echo "No Flutter Web changes to commit."
+          else
+            git commit -m "chore: rebuild expense splitter flutter web app"
+            git push
+          fi
+```
