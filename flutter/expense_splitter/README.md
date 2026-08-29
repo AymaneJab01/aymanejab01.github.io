@@ -21,3 +21,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+Flutter web build deployed through GitHub Actions.
