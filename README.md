@@ -1,102 +1,636 @@
-# Portfolio
-> A minimal, highly customizable, and performant personal portfolio template built with Astro, React, and Tailwind CSS.
+# Aymane Jabrane — Software Developer Portfolio
 
-![OscarHernandez-portfolio](https://github.com/user-attachments/assets/e284a42b-15c5-495c-99c7-ad5c1eb3bbe7)
-![Deploy Status](https://img.shields.io/badge/Deploy-Vercel-black?style=flat&logo=vercel)
+<p align="center">
+  <a href="https://aymanejab01.github.io/">
+    <img
+      src="docs/portfolioprevi.png"
+      alt="Aymane Jabrane Portfolio Preview"
+      width="900"
+    >
+  </a>
+</p>
+
+<p align="center">
+  <strong>Building a computer science journey through code, systems and creative ideas.</strong>
+</p>
+
+<p align="center">
+  <a href="https://aymanejab01.github.io/">🌐 Live Portfolio</a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/AymaneJab01">💻 GitHub</a>
+  &nbsp;·&nbsp;
+  <a href="#projects">🚀 Projects</a>
+  &nbsp;·&nbsp;
+  <a href="#technologies">🛠️ Technologies</a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Astro-FF5D01?style=flat&logo=astro&logoColor=white" alt="Astro">
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black" alt="React">
+  <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/Status-Active-success?style=flat" alt="Status">
+</p>
 
 ---
 
-[Demo](https://oscarhernandez.vercel.app/) | [Astro Themes](https://astro.build/themes/details/dark-minimal/) | [ReactBits Showcase](https://www.reactbits.dev/showcase) 
+## ✨ Overview
 
-## **Features**
-- 🚀 **Blazing fast performance** powered by Astro
-- 🎨 **Beautifully styled** with Tailwind CSS
-- 🎵 **Spotify integration** for showcasing your favorite album
-- ✉️ **Working contact form** powered by Formspree
-- ⚛️ **Interactive UI** including the `<LetterGlitch />` component from [ReactBits.dev](https://www.reactbits.dev/)
+Welcome to my personal developer portfolio.
 
-## **Stack**  
-### **Frontend**  
-![Astro](https://img.shields.io/badge/Astro-FF5D01?logo=astro&logoColor=white)
-![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?logo=tailwind-css&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+I'm **Aymane Jabrane**, a Software Developer interested in building software, understanding computer systems, and exploring the relationship between hardware and software.
 
-### **Tools**  
-![Figma](https://img.shields.io/badge/Figma-F24E1E?logo=figma&logoColor=white)
-![Prettier](https://img.shields.io/badge/Prettier-F7B93E?logo=prettier&logoColor=black)
-![Canva](https://img.shields.io/badge/Canva-c900c3?logo=canva&logoColor=white)
+This portfolio is designed to be more than a traditional résumé website. It combines:
 
-## **Configuration Guides**
+* 💻 Software projects
+* 🧠 Computer science concepts
+* ⚙️ Interactive simulations
+* 📚 Technical notes
+* 🌐 Web development
+* 🔬 Experiments
+* 🖥️ Developer-oriented interfaces
 
-### **Show your favorite Spotify album (or your own)** ![Spotify](https://img.shields.io/badge/Spotify-06cc1a?logo=spotify&logoColor=white)
-1. Choose your Spotify album
-2. Access the share options
-3. Select 'copy embed code'
-```html
-<iframe src="https://open.spotify.com/embed/album/YOUR_ALBUM_ID_HERE" style="border-radius:12px border:0;" class="w-full h-40" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-```
-4. Insert the embed code on `src/Components/footer.astro`
+The portfolio continuously evolves as I learn, experiment, and build new projects.
 
-### **Set up contact form (Formspree)** ![Formspree](https://img.shields.io/badge/Formspree-E21A28?logo=formspree&logoColor=white)
-1. Create an account on [Formspree](https://formspree.io/)
-2. Create a new project/form and copy your form endpoint URL (it looks like `https://formspree.io/f/your_id`)
-3. Open the `src/Components/contact.astro` file
-4. Replace the `action` attribute in the `<form>` tag with your endpoint URL:
-```html
-<form action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST">
-```
+### 🌐 Live Website
 
-## **Customization**
-To make this portfolio your own, you can edit the following files:
-- **Global Settings:** Update metadata and title in `src/layouts/Layout.astro`.
-- **Content:** Modify the text, links, and details inside the components in `src/Components/` (e.g., `home.astro`, `projects.astro`, `contact.astro`).
-- **Styling:** The design uses Tailwind CSS. You can adjust the theme configuration in `tailwind.config.mjs` and custom styles if needed.
+**[Visit my portfolio →](https://aymanejab01.github.io/)**
 
-## **Project structure**
+---
+
+<details>
+<summary><strong>📑 Table of Contents</strong></summary>
+
+<br>
+
+* [✨ Overview](#-overview)
+* [🚀 Highlights](#-highlights)
+* [🛠️ Technologies](#️-technologies)
+* [🧠 What I Explore](#-what-i-explore)
+* [📚 Notes & Learning](#-notes--learning)
+* [💻 Interactive Terminal](#-interactive-terminal)
+* [🚀 Projects](#-projects)
+* [🏗️ Architecture](#️-architecture)
+* [📁 Project Structure](#-project-structure)
+* [⚙️ Development](#️-development)
+* [🌐 Deployment](#-deployment)
+* [📸 Portfolio Preview](#-portfolio-preview)
+* [🔗 Links](#-links)
+* [📜 License & Attribution](#-license--attribution)
+* [👤 Author](#-author)
+
+</details>
+
+---
+
+# 🚀 Highlights
+
+<table>
+<tr>
+<td width="50%">
+
+### ⚡ Fast
+
+Built with **Astro** for a performant web experience.
+
+</td>
+
+<td width="50%">
+
+### 🎨 Interactive
+
+Developer-focused interfaces and interactive experiences.
+
+</td>
+</tr>
+
+<tr>
+<td width="50%">
+
+### 🧠 Educational
+
+Computer science concepts are presented through notes, visualizations and simulations.
+
+</td>
+
+<td width="50%">
+
+### 🔬 Experimental
+
+The portfolio is also a place to experiment with new technologies and ideas.
+
+</td>
+</tr>
+</table>
+
+---
+
+# 🛠️ Technologies
+
+## Languages
+
+<p>
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=flat&logo=openjdk&logoColor=white" alt="Java">
+  <img src="https://img.shields.io/badge/C-A8B9CC?style=flat&logo=c&logoColor=black" alt="C">
+  <img src="https://img.shields.io/badge/C++-00599C?style=flat&logo=cplusplus&logoColor=white" alt="C++">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/Dart-0175C2?style=flat&logo=dart&logoColor=white" alt="Dart">
+</p>
+
+## Web & Frameworks
+
+<p>
+  <img src="https://img.shields.io/badge/Astro-FF5D01?style=flat&logo=astro&logoColor=white" alt="Astro">
+  <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black" alt="React">
+  <img src="https://img.shields.io/badge/Vue-4FC08D?style=flat&logo=vuedotjs&logoColor=white" alt="Vue">
+  <img src="https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white" alt="Next.js">
+  <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3">
+</p>
+
+## Tools & Platforms
+
+<p>
+  <img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white" alt="Node.js">
+  <img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white" alt="Git">
+  <img src="https://img.shields.io/badge/Azure-0078D4?style=flat&logo=microsoftazure&logoColor=white" alt="Azure">
+  <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=flat&logo=supabase&logoColor=white" alt="Supabase">
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white" alt="MySQL">
+  <img src="https://img.shields.io/badge/Bash-4EAA25?style=flat&logo=gnubash&logoColor=white" alt="Bash">
+  <img src="https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=figma&logoColor=white" alt="Figma">
+</p>
+
+---
+
+# 🧠 What I Explore
+
+## 🌐 Web Development
+
+My web development interests include:
+
+* Single Page Applications
+* Landing pages
+* Business websites
+* Portfolio websites
+* Frontend development
+* React
+* Astro
+
+---
+
+## 🤖 Machine Learning
+
+I'm exploring:
+
+* Machine learning fundamentals
+* Data preprocessing
+* Data analysis
+* Supervised learning
+* Unsupervised learning
+* Practical machine learning applications
+
+---
+
+## 🖥️ Computer Architecture
+
+Areas I'm studying include:
+
+* Computer organization
+* CPU fundamentals
+* Memory fundamentals
+* Instruction sets
+* Fetch-decode-execute cycles
+* Hardware/software interaction
+
+---
+
+## ⚙️ Systems
+
+I'm also interested in:
+
+* Operating system fundamentals
+* Computer components
+* Peripherals
+* Low-level computing
+* Computer networks
+* Hardware/software interaction
+
+---
+
+# 📚 Notes & Learning
+
+The portfolio contains a growing collection of technical notes and concepts explored throughout my computer science journey.
+
+| Topic                                | Area             |
+| ------------------------------------ | ---------------- |
+| Hash Tables — Practical View         | Data Structures  |
+| Computer from a Hardware Perspective | Computer Science |
+| Hash Tables — Definitions            | Data Structures  |
+| Git & GitHub                         | Development      |
+| Analog vs Digital Signals            | Systems          |
+| Java                                 | Programming      |
+
+The notes evolve alongside my studies and projects.
+
+---
+
+# 💻 Interactive Terminal
+
+One of the central features of the portfolio is an interactive terminal.
+
 ```text
-public/
-└── svg/
-src/
-├── Components/
-|    ├── contact.astro
-|    ├── footer.astro
-|    ├── home.astro
-|    ├── logoWall.astro
-|    ├── nav.astro
-|    └── projects.astro
-├── layouts/
-|    └── Layout.astro
-├── React/
-|    ├── LetterGlitch.tsx
-|    ├── LikeButton.tsx
-|    └── SkillsList.tsx
-└── pages/
-     └── index.astro
+aymane@portfolio:~$ help
+
+Available commands:
+
+  help       Display available commands
+  about      About me
+  skills     Explore technologies and skills
+  projects   Explore projects
+  contact    Contact information
 ```
 
-## **Local configuration** 
+The terminal provides an alternative developer-oriented way of navigating the portfolio.
 
-### Prerequisites
-- **Node.js** (v18 or higher recommended)
-- **npm** or **pnpm**
+### Try it
 
-1. Clone the repo:  
+**[→ Open the interactive portfolio](https://aymanejab01.github.io/)**
+
+---
+
+# 🚀 Projects
+
+The portfolio currently features several projects and interactive experiments.
+
+---
+
+## 01 — Interactive Developer Terminal
+
+> A developer-style terminal built directly into the portfolio.
+
+The terminal provides an interactive way of exploring:
+
+* My work
+* Skills
+* Projects
+* Contact information
+* Portfolio information
+
+**Technologies**
+
+`Astro` `TypeScript` `Interactive UI`
+
+---
+
+## 02 — Movie Ranking
+
+> A movie ranking interface for exploring films through covers, ratings and personal reviews.
+
+The project demonstrates a movie-focused interactive interface.
+
+### Featured
+
+**Avengers: Infinity War**
+
+⭐ **Rating: 9/10**
+
+**Technologies**
+
+`Astro` `UI` `Movies`
+
+---
+
+## 03 — Live Weather Dashboard
+
+> A dynamic weather dashboard displaying live weather conditions.
+
+The dashboard provides weather information for:
+
+* 📍 Alcoi
+* 📍 Valencia
+
+It combines live API data with a developer-focused interface.
+
+**Technologies**
+
+`Astro` `API` `JavaScript`
+
+---
+
+## 04 — Computer Science Algorithm Visualizer
+
+> An interactive playground for watching data structures and algorithms work.
+
+### Sorting
+
+* Comparisons
+* Swaps
+* Step-by-step execution
+
+### Hashing
+
+* Hash tables
+* Collision handling
+* Chaining
+
+### Pathfinding
+
+* Dijkstra's algorithm
+* A* algorithm
+* Grid-based pathfinding
+
+**Technologies**
+
+`Astro` `TypeScript` `Data Structures & Algorithms`
+
+---
+
+## 05 — Network Protocol Simulator
+
+> An interactive simulator for understanding transport-layer networking concepts.
+
+The simulator explores:
+
+* TCP three-way handshake
+* TCP vs UDP
+* Packet loss
+* Retransmission
+* Message framing
+* Byte streams
+
+The goal is to make networking concepts easier to understand through interactive visualization.
+
+**Technologies**
+
+`Astro` `TypeScript` `TCP/UDP`
+
+---
+
+## 06 — CPU Simulator
+
+> A small simulated CPU designed to demonstrate fundamental computer architecture concepts.
+
+The simulator includes:
+
+* 8 registers
+* Custom instruction set
+* Assembly-like programming
+* Fetch
+* Decode
+* Execute
+* Memory
+* Live register changes
+
+The simulator allows individual instructions to be executed step by step while observing how the CPU state changes.
+
+**Technologies**
+
+`Astro` `TypeScript` `Assembly`
+
+---
+
+## 07 — Flutter Expense Splitter
+
+> A Flutter application for managing shared group expenses.
+
+The application focuses on:
+
+* Shared expenses
+* Individual balances
+* Debt calculation
+* Expense management
+* Settling debts with a minimum number of transfers
+
+**Technologies**
+
+`Flutter` `Dart`
+
+**Platforms**
+
+`Mobile` `Web`
+
+---
+
+# 🏗️ Architecture
+
+At a high level, the portfolio follows an Astro-based architecture.
+
+```text
+                         PORTFOLIO
+                             │
+             ┌───────────────┼───────────────┐
+             │               │               │
+             ▼               ▼               ▼
+         ┌───────┐       ┌────────┐      ┌─────────┐
+         │ Astro │       │ React  │      │  CSS/UI │
+         │ Pages │       │Components│    │ Styling │
+         └───┬───┘       └────┬───┘      └────┬────┘
+             │                │               │
+             └────────────────┼───────────────┘
+                              │
+                              ▼
+                       ┌─────────────┐
+                       │ Astro Build │
+                       │    /dist    │
+                       └──────┬──────┘
+                              │
+                              ▼
+                     🌐 LIVE WEBSITE
+```
+
+---
+
+# 📁 Project Structure
+
+```text
+.
+├── public/
+│   └── ...
+│
+├── src/
+│   ├── components/
+│   │   └── ...
+│   │
+│   ├── layouts/
+│   │   └── ...
+│   │
+│   ├── pages/
+│   │   └── ...
+│   │
+│   └── ...
+│
+├── docs/
+│   └── portfolioprevi.png
+│
+├── astro.config.mjs
+├── package.json
+├── pnpm-lock.yaml
+├── tailwind.config.mjs
+├── tsconfig.json
+└── README.md
+```
+
+---
+
+# ⚙️ Development
+
+## Requirements
+
+* Node.js
+* pnpm
+* Git
+
+## Clone
+
+Because the development repository is private:
+
 ```bash
-git clone https://github.com/Gothsec/Astro-portfolio
-```
-2. Install dependencies:
-```bash  
-npm install
-```
-3. Start the development server:
-```bash  
-npm run dev
+git clone <PRIVATE_REPOSITORY_URL>
+cd <PROJECT_DIRECTORY>
 ```
 
-## **Deployment**
-This project is built with Astro and can be easily deployed to Vercel, Netlify, or GitHub Pages. For the easiest setup, push your repository to GitHub and import it directly into [Vercel](https://vercel.com/) or [Netlify](https://www.netlify.com/).
+## Install dependencies
 
-> **Important Notice:**  
-> This project is licensed under the [MIT License](https://opensource.org/licenses/mit).  
-> According to the license terms, any redistribution (including compiled or modified versions), you **must** retain the original copyright 
-> notice and the full license text. Copyright © 2026 Oscar Hernandez. All rights reserved.
+```bash
+pnpm install
+```
+
+## Start development server
+
+```bash
+pnpm dev
+```
+
+## Build
+
+```bash
+pnpm run build
+```
+
+## Preview production build
+
+```bash
+pnpm preview
+```
+
+---
+
+# 🌐 Deployment
+
+The portfolio is publicly accessible at:
+
+### 🌐 [aymanejab01.github.io](https://aymanejab01.github.io/)
+
+The website is built with Astro and deployed as a static web application.
+
+The distinction between the website and source code is intentional:
+
+```text
+PRIVATE SOURCE
+      │
+      │ Build
+      ▼
+STATIC WEBSITE
+      │
+      ▼
+PUBLIC INTERNET
+```
+
+The development source repository can remain private while the finished portfolio remains publicly accessible.
+
+---
+
+# 📸 Portfolio Preview
+
+Click the image below to visit the live portfolio.
+
+<p align="center">
+  <a href="https://aymanejab01.github.io/">
+    <img
+      src="docs/portfolioprevi.png"
+      alt="Aymane Jabrane Portfolio Preview"
+      width="900"
+    >
+  </a>
+</p>
+
+<p align="center">
+  <sub>Click the preview to open the live portfolio.</sub>
+</p>
+
+---
+
+# 🔗 Links
+
+<p align="center">
+  <a href="https://aymanejab01.github.io/">
+    🌐 <strong>Portfolio</strong>
+  </a>
+  &nbsp;&nbsp;•&nbsp;&nbsp;
+  <a href="https://github.com/AymaneJab01">
+    💻 <strong>GitHub</strong>
+  </a>
+</p>
+
+---
+
+# 📜 License & Attribution
+
+This portfolio is based on the **Astro Portfolio** template originally created by **Oscar Hernandez / Gothsec**.
+
+The original repository is:
+
+**Gothsec/Astro-portfolio**
+
+The original project is distributed under the **MIT License**.
+
+The original license and copyright notice are retained in this project in accordance with the original license terms.
+
+### Original Template
+
+Copyright © 2026 Oscar Hernandez.
+
+The original MIT license permits modification and redistribution provided that the original copyright notice and license text are retained.
+
+### My Work
+
+This portfolio also contains original work created by **Aymane Jabrane**, including:
+
+* Portfolio content
+* Project descriptions
+* Documentation
+* Personal branding
+* Design modifications
+* Interactive experiences
+* Computer science visualizations
+* Project implementations
+* Additional features and modifications
+
+Third-party libraries, frameworks, icons, fonts, assets and dependencies remain subject to their respective licenses.
+
+---
+
+# 👤 Author
+
+## Aymane Jabrane
+
+**Software Developer**
+
+> Building a computer science journey through code, systems and creative ideas.
+
+### 🌐 Portfolio
+
+**[aymanejab01.github.io](https://aymanejab01.github.io/)**
+
+### 💻 GitHub
+
+**[github.com/AymaneJab01](https://github.com/AymaneJab01)**
+
+---
+
+<p align="center">
+  <sub>Built with curiosity, code and a lot of debugging.</sub>
+</p>
