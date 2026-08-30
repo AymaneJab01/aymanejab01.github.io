@@ -95,11 +95,15 @@ const projects: Project[] = [
 const initialLines: TerminalLine[] = [
   {
     type: "info",
-    content: "Welcome to Aymane's interactive terminal.",
+    content: "Initializing portfolio terminal...",
   },
   {
-    type: "output",
-    content: 'Type "help" to see available commands.',
+    type: "success",
+    content: "Connection established.",
+  },
+  {
+    type: "info",
+    content: "Type help to see available commands.",
   },
 ];
 
