@@ -8,23 +8,29 @@ import Layout from "../../layouts/Layout.astro";
 
     <div class="shell">
       <aside class="sidebar">
-        <a href="/projects" class="back-link">
+        <a href="/projects" class="back-link" data-i18n="backLink">
           <span>←</span>
-          <span>Back to projects</span>
+          <span data-i18n="backLinkText">Back to projects</span>
         </a>
 
         <div class="brand">
           <span class="brand-dot"></span>
           <span class="brand-name">algorithm<span class="brand-cursor">_</span></span>
         </div>
-        <div class="brand-sub">visualizer / interactive reference</div>
+        <div class="brand-sub" data-i18n="brandSub">visualizer / interactive reference</div>
+
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="fr">FR</button>
+          <button type="button" class="lang-btn" data-lang="es">ES</button>
+        </div>
 
         <nav class="doc-nav" aria-label="Sections">
-          <a href="#overview"><span>00</span>Overview</a>
-          <a href="#sorting"><span>01</span>Sorting</a>
-          <a href="#hash-table"><span>02</span>Hash table</a>
-          <a href="#pathfinding"><span>03</span>Pathfinding</a>
-          <a href="#reference"><span>04</span>Reference</a>
+          <a href="#overview"><span>00</span><span data-i18n="navOverview">Overview</span></a>
+          <a href="#sorting"><span>01</span><span data-i18n="navSorting">Sorting</span></a>
+          <a href="#hash-table"><span>02</span><span data-i18n="navHashTable">Hash table</span></a>
+          <a href="#pathfinding"><span>03</span><span data-i18n="navPathfinding">Pathfinding</span></a>
+          <a href="#reference"><span>04</span><span data-i18n="navReference">Reference</span></a>
         </nav>
 
         <div class="sidebar-foot">
@@ -42,15 +48,15 @@ import Layout from "../../layouts/Layout.astro";
             <span class="status-dot"></span>
             <span>PROJECT 04</span>
             <span class="separator">/</span>
-            <span>COMPUTER SCIENCE</span>
+            <span data-i18n="eyebrowCategory">COMPUTER SCIENCE</span>
           </div>
 
           <h1>
-            Algorithms,
-            <span>rendered live.</span>
+            <span data-i18n="heroTitle1">Algorithms,</span>
+            <span data-i18n="heroTitle2">rendered live.</span>
           </h1>
 
-          <p class="hero-description">
+          <p class="hero-description" data-i18n="heroDesc">
             Three interactive references for how classic algorithms actually
             move through data — sorting, hashing, and pathfinding, executed
             step by step in the browser rather than narrated over a static
@@ -58,10 +64,10 @@ import Layout from "../../layouts/Layout.astro";
           </p>
 
           <div class="hero-key">
-            <span><i class="key-dot compare"></i>comparing</span>
-            <span><i class="key-dot swap"></i>writing</span>
-            <span><i class="key-dot pivot"></i>pivot</span>
-            <span><i class="key-dot sorted"></i>settled</span>
+            <span><i class="key-dot compare"></i><span data-i18n="keyComparing">comparing</span></span>
+            <span><i class="key-dot swap"></i><span data-i18n="keyWriting">writing</span></span>
+            <span><i class="key-dot pivot"></i><span data-i18n="keyPivot">pivot</span></span>
+            <span><i class="key-dot sorted"></i><span data-i18n="keySettled">settled</span></span>
           </div>
         </header>
 
@@ -70,9 +76,9 @@ import Layout from "../../layouts/Layout.astro";
             <div class="section-number">01</div>
 
             <div>
-              <div class="section-label">SORTING ALGORITHMS</div>
-              <h2>Watch algorithms sort data.</h2>
-              <p>
+              <div class="section-label" data-i18n="sortSectionLabel">SORTING ALGORITHMS</div>
+              <h2 data-i18n="sortSectionH2">Watch algorithms sort data.</h2>
+              <p data-i18n="sortSectionDesc">
                 Compare five classic sorting algorithms. Labeled pointers
                 (i, j, min, key, pivot…) track exactly which values are
                 involved at every step, so the logic reads clearly just by
@@ -84,23 +90,23 @@ import Layout from "../../layouts/Layout.astro";
           <div class="demo-card">
             <div class="demo-toolbar">
               <div class="control-group">
-                <label for="sort-algo">Algorithm</label>
+                <label for="sort-algo" data-i18n="labelAlgorithm">Algorithm</label>
                 <select id="sort-algo">
-                  <option value="bubble">Bubble Sort</option>
-                  <option value="selection">Selection Sort</option>
-                  <option value="insertion">Insertion Sort</option>
-                  <option value="merge">Merge Sort</option>
-                  <option value="quick" selected>Quick Sort</option>
+                  <option value="bubble" data-i18n="algoBubble">Bubble Sort</option>
+                  <option value="selection" data-i18n="algoSelection">Selection Sort</option>
+                  <option value="insertion" data-i18n="algoInsertion">Insertion Sort</option>
+                  <option value="merge" data-i18n="algoMerge">Merge Sort</option>
+                  <option value="quick" selected data-i18n="algoQuick">Quick Sort</option>
                 </select>
               </div>
 
               <div class="toolbar-actions">
-                <button id="sort-run" class="button primary">Run algorithm</button>
-                <button id="sort-shuffle" class="button">Shuffle</button>
+                <button id="sort-run" class="button primary" data-i18n="buttonRun">Run algorithm</button>
+                <button id="sort-shuffle" class="button" data-i18n="buttonShuffle">Shuffle</button>
               </div>
 
               <div class="speed-control">
-                <label for="sort-speed">Speed</label>
+                <label for="sort-speed" data-i18n="labelSpeed">Speed</label>
                 <input id="sort-speed" type="range" min="1" max="100" value="65" />
               </div>
             </div>
@@ -129,16 +135,16 @@ import Layout from "../../layouts/Layout.astro";
             </div>
 
             <div class="metrics">
-              <div><span>Comparisons</span><strong id="sort-comparisons">0</strong></div>
-              <div><span>Swaps</span><strong id="sort-swaps">0</strong></div>
-              <div><span>Status</span><strong id="sort-status">Ready</strong></div>
+              <div><span data-i18n="metricComparisons">Comparisons</span><strong id="sort-comparisons">0</strong></div>
+              <div><span data-i18n="metricSwaps">Swaps</span><strong id="sort-swaps">0</strong></div>
+              <div><span data-i18n="metricStatus">Status</span><strong id="sort-status">Ready</strong></div>
             </div>
 
             <div class="legend">
-              <span><i class="legend-dot compare"></i>Comparing</span>
-              <span><i class="legend-dot swap"></i>Swapping</span>
-              <span><i class="legend-dot pivot"></i>Pivot</span>
-              <span><i class="legend-dot sorted"></i>Sorted</span>
+              <span><i class="legend-dot compare"></i><span data-i18n="legendComparing">Comparing</span></span>
+              <span><i class="legend-dot swap"></i><span data-i18n="legendSwapping">Swapping</span></span>
+              <span><i class="legend-dot pivot"></i><span data-i18n="legendPivot">Pivot</span></span>
+              <span><i class="legend-dot sorted"></i><span data-i18n="legendSorted">Sorted</span></span>
             </div>
           </div>
         </section>
@@ -148,9 +154,9 @@ import Layout from "../../layouts/Layout.astro";
             <div class="section-number">02</div>
 
             <div>
-              <div class="section-label">HASH TABLE</div>
-              <h2>See collision resolution.</h2>
-              <p>
+              <div class="section-label" data-i18n="hashSectionLabel">HASH TABLE</div>
+              <h2 data-i18n="hashSectionH2">See collision resolution.</h2>
+              <p data-i18n="hashSectionDesc">
                 Insert key-value pairs into an eight-bucket hash table and
                 watch separate chaining resolve collisions.
               </p>
@@ -160,19 +166,19 @@ import Layout from "../../layouts/Layout.astro";
           <div class="demo-card">
             <div class="demo-toolbar hash-toolbar">
               <div class="control-group">
-                <label for="hash-key">Key</label>
+                <label for="hash-key" data-i18n="labelKey">Key</label>
                 <input id="hash-key" class="text-input" type="text" placeholder="user" maxlength="16" />
               </div>
 
               <div class="control-group">
-                <label for="hash-value">Value</label>
+                <label for="hash-value" data-i18n="labelValue">Value</label>
                 <input id="hash-value" class="text-input" type="text" placeholder="Aymane" maxlength="16" />
               </div>
 
               <div class="toolbar-actions">
-                <button id="hash-insert" class="button primary">Insert</button>
-                <button id="hash-random" class="button">Random</button>
-                <button id="hash-clear" class="button">Clear</button>
+                <button id="hash-insert" class="button primary" data-i18n="buttonInsert">Insert</button>
+                <button id="hash-random" class="button" data-i18n="buttonRandom">Random</button>
+                <button id="hash-clear" class="button" data-i18n="buttonClear">Clear</button>
               </div>
             </div>
 
@@ -181,7 +187,7 @@ import Layout from "../../layouts/Layout.astro";
             <div id="hash-buckets" class="hash-grid" aria-label="Hash table buckets"></div>
 
             <div class="hash-footer">
-              <span>Load factor</span>
+              <span data-i18n="labelLoadFactor">Load factor</span>
               <strong id="hash-load">0.00</strong>
             </div>
           </div>
@@ -192,9 +198,9 @@ import Layout from "../../layouts/Layout.astro";
             <div class="section-number">03</div>
 
             <div>
-              <div class="section-label">PATHFINDING</div>
-              <h2>Find the shortest path.</h2>
-              <p>
+              <div class="section-label" data-i18n="pathSectionLabel">PATHFINDING</div>
+              <h2 data-i18n="pathSectionH2">Find the shortest path.</h2>
+              <p data-i18n="pathSectionDesc">
                 Draw walls on the grid and compare BFS, Dijkstra, and A*
                 while watching the search happen cell by cell.
               </p>
@@ -204,21 +210,21 @@ import Layout from "../../layouts/Layout.astro";
           <div class="demo-card">
             <div class="demo-toolbar">
               <div class="control-group">
-                <label for="path-algo">Algorithm</label>
+                <label for="path-algo" data-i18n="labelAlgorithm">Algorithm</label>
                 <select id="path-algo">
-                  <option value="bfs">Breadth-First Search</option>
-                  <option value="dijkstra">Dijkstra</option>
-                  <option value="astar" selected>A*</option>
+                  <option value="bfs" data-i18n="algoBFS">Breadth-First Search</option>
+                  <option value="dijkstra" data-i18n="algoDijkstra">Dijkstra</option>
+                  <option value="astar" selected data-i18n="algoAStar">A*</option>
                 </select>
               </div>
 
               <div class="toolbar-actions">
-                <button id="path-run" class="button primary">Find path</button>
-                <button id="path-walls" class="button">Random walls</button>
-                <button id="path-clear" class="button">Clear</button>
+                <button id="path-run" class="button primary" data-i18n="buttonFindPath">Find path</button>
+                <button id="path-walls" class="button" data-i18n="buttonRandomWalls">Random walls</button>
+                <button id="path-clear" class="button" data-i18n="buttonClear">Clear</button>
               </div>
 
-              <div class="path-help">Click / drag to draw walls</div>
+              <div class="path-help" data-i18n="pathHelp">Click / drag to draw walls</div>
             </div>
 
             <div class="visual-stage path-stage">
@@ -226,16 +232,16 @@ import Layout from "../../layouts/Layout.astro";
             </div>
 
             <div class="metrics">
-              <div><span>Visited</span><strong id="path-visited">0</strong></div>
-              <div><span>Path length</span><strong id="path-length">—</strong></div>
-              <div><span>Status</span><strong id="path-status">Ready</strong></div>
+              <div><span data-i18n="metricVisited">Visited</span><strong id="path-visited">0</strong></div>
+              <div><span data-i18n="metricPathLength">Path length</span><strong id="path-length">—</strong></div>
+              <div><span data-i18n="metricStatus">Status</span><strong id="path-status">Ready</strong></div>
             </div>
 
             <div class="legend">
-              <span><i class="legend-dot start"></i>Start</span>
-              <span><i class="legend-dot wall"></i>Wall</span>
-              <span><i class="legend-dot visited"></i>Visited</span>
-              <span><i class="legend-dot path"></i>Shortest path</span>
+              <span><i class="legend-dot start"></i><span data-i18n="legendStart">Start</span></span>
+              <span><i class="legend-dot wall"></i><span data-i18n="legendWall">Wall</span></span>
+              <span><i class="legend-dot visited"></i><span data-i18n="legendVisited">Visited</span></span>
+              <span><i class="legend-dot path"></i><span data-i18n="legendPath">Shortest path</span></span>
             </div>
           </div>
         </section>
@@ -245,9 +251,9 @@ import Layout from "../../layouts/Layout.astro";
             <div class="section-number">04</div>
 
             <div>
-              <div class="section-label">REFERENCE</div>
-              <h2>How each algorithm actually works.</h2>
-              <p>
+              <div class="section-label" data-i18n="refSectionLabel">REFERENCE</div>
+              <h2 data-i18n="refSectionH2">How each algorithm actually works.</h2>
+              <p data-i18n-html="refSectionDesc">
                 The visualizations above show <em>that</em> something happens.
                 This is the <em>why</em> — the concept behind each algorithm,
                 spelled out in plain terms.
@@ -258,16 +264,16 @@ import Layout from "../../layouts/Layout.astro";
           <div class="doc-group">
             <div class="doc-group-title">
               <span>01</span>
-              Sorting algorithms
+              <span data-i18n="docGroupSorting">Sorting algorithms</span>
             </div>
 
             <details class="doc-item" open>
               <summary>
-                <span class="doc-item-name">Big-O notation</span>
-                <span class="badge">concept</span>
+                <span class="doc-item-name" data-i18n="docBigOName">Big-O notation</span>
+                <span class="badge" data-i18n="badgeConcept">concept</span>
                 <span class="doc-item-toggle" aria-hidden="true"></span>
               </summary>
-              <div class="doc-item-body">
+              <div class="doc-item-body" data-i18n-html="docBigOBody">
                 <p>
                   Big-O describes how an algorithm's running time grows as the
                   input gets bigger — not the exact number of steps, but the
@@ -288,11 +294,11 @@ import Layout from "../../layouts/Layout.astro";
 
             <details class="doc-item">
               <summary>
-                <span class="doc-item-name">Bubble Sort</span>
+                <span class="doc-item-name" data-i18n="docBubbleName">Bubble Sort</span>
                 <span class="badge">O(n²)</span>
                 <span class="doc-item-toggle" aria-hidden="true"></span>
               </summary>
-              <div class="doc-item-body">
+              <div class="doc-item-body" data-i18n-html="docBubbleBody">
                 <p>
                   Walks the array left to right, comparing each pair of
                   neighbors and swapping them if they're out of order. One
@@ -315,11 +321,11 @@ import Layout from "../../layouts/Layout.astro";
 
             <details class="doc-item">
               <summary>
-                <span class="doc-item-name">Selection Sort</span>
+                <span class="doc-item-name" data-i18n="docSelectionName">Selection Sort</span>
                 <span class="badge">O(n²)</span>
                 <span class="doc-item-toggle" aria-hidden="true"></span>
               </summary>
-              <div class="doc-item-body">
+              <div class="doc-item-body" data-i18n-html="docSelectionBody">
                 <p>
                   Splits the array into a sorted section (front) and an
                   unsorted section (back). On each pass it scans the entire
@@ -341,11 +347,11 @@ import Layout from "../../layouts/Layout.astro";
 
             <details class="doc-item">
               <summary>
-                <span class="doc-item-name">Insertion Sort</span>
+                <span class="doc-item-name" data-i18n="docInsertionName">Insertion Sort</span>
                 <span class="badge">O(n²)</span>
                 <span class="doc-item-toggle" aria-hidden="true"></span>
               </summary>
-              <div class="doc-item-body">
+              <div class="doc-item-body" data-i18n-html="docInsertionBody">
                 <p>
                   Builds a sorted section one value at a time. Each new value
                   is compared against its sorted neighbors and shifted left
@@ -367,11 +373,11 @@ import Layout from "../../layouts/Layout.astro";
 
             <details class="doc-item">
               <summary>
-                <span class="doc-item-name">Merge Sort</span>
+                <span class="doc-item-name" data-i18n="docMergeName">Merge Sort</span>
                 <span class="badge">O(n log n)</span>
                 <span class="doc-item-toggle" aria-hidden="true"></span>
               </summary>
-              <div class="doc-item-body">
+              <div class="doc-item-body" data-i18n-html="docMergeBody">
                 <p>
                   A divide-and-conquer algorithm: split the array in half
                   recursively until each piece has one item (trivially
@@ -393,11 +399,11 @@ import Layout from "../../layouts/Layout.astro";
 
             <details class="doc-item">
               <summary>
-                <span class="doc-item-name">Quick Sort</span>
+                <span class="doc-item-name" data-i18n="docQuickName">Quick Sort</span>
                 <span class="badge">O(n log n) avg</span>
                 <span class="doc-item-toggle" aria-hidden="true"></span>
               </summary>
-              <div class="doc-item-body">
+              <div class="doc-item-body" data-i18n-html="docQuickBody">
                 <p>
                   Also divide-and-conquer, but it partitions instead of
                   merging: pick a pivot value, rearrange the array so
@@ -422,16 +428,16 @@ import Layout from "../../layouts/Layout.astro";
           <div class="doc-group">
             <div class="doc-group-title">
               <span>02</span>
-              Hash tables
+              <span data-i18n="docGroupHash">Hash tables</span>
             </div>
 
             <details class="doc-item">
               <summary>
-                <span class="doc-item-name">Hash functions</span>
-                <span class="badge">concept</span>
+                <span class="doc-item-name" data-i18n="docHashFnName">Hash functions</span>
+                <span class="badge" data-i18n="badgeConcept">concept</span>
                 <span class="doc-item-toggle" aria-hidden="true"></span>
               </summary>
-              <div class="doc-item-body">
+              <div class="doc-item-body" data-i18n-html="docHashFnBody">
                 <p>
                   A hash function takes a key of any size — a string, a
                   number, anything — and deterministically maps it to a
@@ -451,11 +457,11 @@ import Layout from "../../layouts/Layout.astro";
 
             <details class="doc-item">
               <summary>
-                <span class="doc-item-name">Collisions &amp; chaining</span>
+                <span class="doc-item-name" data-i18n="docCollisionsName">Collisions &amp; chaining</span>
                 <span class="badge">O(1) avg</span>
                 <span class="doc-item-toggle" aria-hidden="true"></span>
               </summary>
-              <div class="doc-item-body">
+              <div class="doc-item-body" data-i18n-html="docCollisionsBody">
                 <p>
                   Two different keys can hash to the same bucket — that's a
                   collision, and it's expected, not a bug. This table
@@ -475,11 +481,11 @@ import Layout from "../../layouts/Layout.astro";
 
             <details class="doc-item">
               <summary>
-                <span class="doc-item-name">Load factor</span>
-                <span class="badge">concept</span>
+                <span class="doc-item-name" data-i18n="docLoadFactorName">Load factor</span>
+                <span class="badge" data-i18n="badgeConcept">concept</span>
                 <span class="doc-item-toggle" aria-hidden="true"></span>
               </summary>
-              <div class="doc-item-body">
+              <div class="doc-item-body" data-i18n-html="docLoadFactorBody">
                 <p>
                   Load factor is <code>entries ÷ buckets</code> — shown live
                   at the bottom of the table above. As it climbs past
@@ -501,16 +507,16 @@ import Layout from "../../layouts/Layout.astro";
           <div class="doc-group">
             <div class="doc-group-title">
               <span>03</span>
-              Pathfinding
+              <span data-i18n="docGroupPath">Pathfinding</span>
             </div>
 
             <details class="doc-item">
               <summary>
-                <span class="doc-item-name">Graphs, nodes &amp; edges</span>
-                <span class="badge">concept</span>
+                <span class="doc-item-name" data-i18n="docGraphsName">Graphs, nodes &amp; edges</span>
+                <span class="badge" data-i18n="badgeConcept">concept</span>
                 <span class="doc-item-toggle" aria-hidden="true"></span>
               </summary>
-              <div class="doc-item-body">
+              <div class="doc-item-body" data-i18n-html="docGraphsBody">
                 <p>
                   The grid above is a graph in disguise: every open cell is
                   a <strong>node</strong>, and every pair of adjacent
@@ -530,11 +536,11 @@ import Layout from "../../layouts/Layout.astro";
 
             <details class="doc-item">
               <summary>
-                <span class="doc-item-name">Breadth-First Search</span>
+                <span class="doc-item-name" data-i18n="docBFSName">Breadth-First Search</span>
                 <span class="badge">O(V + E)</span>
                 <span class="doc-item-toggle" aria-hidden="true"></span>
               </summary>
-              <div class="doc-item-body">
+              <div class="doc-item-body" data-i18n-html="docBFSBody">
                 <p>
                   Explores the grid in rings, one step out at a time: visit
                   every neighbor of the start, then every neighbor of
@@ -554,11 +560,11 @@ import Layout from "../../layouts/Layout.astro";
 
             <details class="doc-item">
               <summary>
-                <span class="doc-item-name">Dijkstra's algorithm</span>
+                <span class="doc-item-name" data-i18n="docDijkstraName">Dijkstra's algorithm</span>
                 <span class="badge">O((V+E) log V)</span>
                 <span class="doc-item-toggle" aria-hidden="true"></span>
               </summary>
-              <div class="doc-item-body">
+              <div class="doc-item-body" data-i18n-html="docDijkstraBody">
                 <p>
                   Generalizes BFS to handle edges with different costs. It
                   always expands the unvisited cell with the
@@ -578,11 +584,11 @@ import Layout from "../../layouts/Layout.astro";
 
             <details class="doc-item">
               <summary>
-                <span class="doc-item-name">A* search</span>
+                <span class="doc-item-name" data-i18n="docAStarName">A* search</span>
                 <span class="badge">O((V+E) log V)</span>
                 <span class="doc-item-toggle" aria-hidden="true"></span>
               </summary>
-              <div class="doc-item-body">
+              <div class="doc-item-body" data-i18n-html="docAStarBody">
                 <p>
                   Dijkstra plus a hint: it prioritizes cells by <code>cost
                   so far + estimated cost to the goal</code>, using a
@@ -604,7 +610,7 @@ import Layout from "../../layouts/Layout.astro";
 
         <footer class="page-footer">
           <span>ALGORITHM VISUALIZER</span>
-          <a href="/projects">← Projects</a>
+          <a href="/projects" data-i18n="footerProjects">← Projects</a>
         </footer>
       </div>
     </div>
@@ -729,6 +735,47 @@ import Layout from "../../layouts/Layout.astro";
     letter-spacing: 0.06em;
   }
 
+  /* -- Language switcher --------------------------------------------- */
+
+  .lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    width: fit-content;
+
+    padding: 3px;
+    border: 1px solid var(--olive-line-strong);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.22);
+  }
+
+  .lang-btn {
+    min-width: 34px;
+    padding: 0.32rem 0.6rem;
+    border: none;
+    border-radius: 999px;
+
+    color: var(--ink-faint);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
+
+    background: transparent;
+    cursor: pointer;
+
+    transition: color 180ms ease, background 180ms ease;
+  }
+
+  .lang-btn:hover {
+    color: var(--ink);
+  }
+
+  .lang-btn.active {
+    color: var(--bg);
+    background: var(--olive-bright);
+    font-weight: 600;
+  }
+
   .doc-nav {
     display: flex;
     flex-direction: column;
@@ -828,7 +875,7 @@ import Layout from "../../layouts/Layout.astro";
     color: var(--ink);
   }
 
-  .hero h1 span {
+  .hero h1 span:last-child {
     display: block;
     background: linear-gradient(100deg, var(--ink) 0%, var(--ink) 40%, var(--olive-bright) 100%);
     -webkit-background-clip: text;
@@ -1422,7 +1469,7 @@ import Layout from "../../layouts/Layout.astro";
     font-weight: 600;
   }
 
-  .doc-group-title span {
+  .doc-group-title span:first-child {
     color: var(--olive);
     font-family: var(--font-mono);
     font-size: 0.68rem;
@@ -1670,6 +1717,333 @@ import Layout from "../../layouts/Layout.astro";
     new Promise((resolve) => setTimeout(resolve, ms));
 
   /* ================================================================
+     I18N — translation dictionary + helpers
+     ================================================================ */
+
+  type LangCode = "en" | "fr" | "es";
+
+  const LANG_STORAGE_KEY = "algoViz.lang";
+
+  const STATIC_TEXT: Record<string, Record<LangCode, string>> = {
+    backLinkText: { en: "Back to projects", fr: "Retour aux projets", es: "Volver a proyectos" },
+    brandSub: {
+      en: "visualizer / interactive reference",
+      fr: "visualiseur / référence interactive",
+      es: "visualizador / referencia interactiva",
+    },
+    navOverview: { en: "Overview", fr: "Aperçu", es: "Resumen" },
+    navSorting: { en: "Sorting", fr: "Tri", es: "Ordenamiento" },
+    navHashTable: { en: "Hash table", fr: "Table de hachage", es: "Tabla hash" },
+    navPathfinding: { en: "Pathfinding", fr: "Recherche de chemin", es: "Búsqueda de rutas" },
+    navReference: { en: "Reference", fr: "Référence", es: "Referencia" },
+    eyebrowCategory: { en: "COMPUTER SCIENCE", fr: "INFORMATIQUE", es: "CIENCIAS DE LA COMPUTACIÓN" },
+    heroTitle1: { en: "Algorithms,", fr: "Des algorithmes,", es: "Algoritmos," },
+    heroTitle2: { en: "rendered live.", fr: "rendus en direct.", es: "renderizados en vivo." },
+    heroDesc: {
+      en: "Three interactive references for how classic algorithms actually move through data — sorting, hashing, and pathfinding, executed step by step in the browser rather than narrated over a static diagram.",
+      fr: "Trois références interactives sur la façon dont les algorithmes classiques parcourent réellement les données — tri, hachage et recherche de chemin — exécutées pas à pas dans le navigateur plutôt que décrites sur un schéma statique.",
+      es: "Tres referencias interactivas sobre cómo los algoritmos clásicos recorren realmente los datos — ordenamiento, hashing y búsqueda de rutas — ejecutadas paso a paso en el navegador en lugar de explicadas sobre un diagrama estático.",
+    },
+    keyComparing: { en: "comparing", fr: "comparaison", es: "comparando" },
+    keyWriting: { en: "writing", fr: "écriture", es: "escribiendo" },
+    keyPivot: { en: "pivot", fr: "pivot", es: "pivote" },
+    keySettled: { en: "settled", fr: "fixé", es: "asentado" },
+
+    sortSectionLabel: { en: "SORTING ALGORITHMS", fr: "ALGORITHMES DE TRI", es: "ALGORITMOS DE ORDENAMIENTO" },
+    sortSectionH2: { en: "Watch algorithms sort data.", fr: "Regardez les algorithmes trier des données.", es: "Observa cómo los algoritmos ordenan datos." },
+    sortSectionDesc: {
+      en: "Compare five classic sorting algorithms. Labeled pointers (i, j, min, key, pivot…) track exactly which values are involved at every step, so the logic reads clearly just by watching — no narration required.",
+      fr: "Comparez cinq algorithmes de tri classiques. Des pointeurs étiquetés (i, j, min, key, pivot…) indiquent exactement les valeurs impliquées à chaque étape, si bien que la logique se lit clairement rien qu'en regardant — aucune narration n'est nécessaire.",
+      es: "Compara cinco algoritmos de ordenamiento clásicos. Los punteros etiquetados (i, j, min, key, pivot…) muestran exactamente qué valores intervienen en cada paso, de modo que la lógica se entiende con solo mirar — sin necesidad de narración.",
+    },
+    labelAlgorithm: { en: "Algorithm", fr: "Algorithme", es: "Algoritmo" },
+    algoBubble: { en: "Bubble Sort", fr: "Tri à bulles", es: "Ordenamiento de burbuja" },
+    algoSelection: { en: "Selection Sort", fr: "Tri par sélection", es: "Ordenamiento por selección" },
+    algoInsertion: { en: "Insertion Sort", fr: "Tri par insertion", es: "Ordenamiento por inserción" },
+    algoMerge: { en: "Merge Sort", fr: "Tri fusion", es: "Ordenamiento por mezcla" },
+    algoQuick: { en: "Quick Sort", fr: "Tri rapide", es: "Ordenamiento rápido" },
+    buttonRun: { en: "Run algorithm", fr: "Lancer l'algorithme", es: "Ejecutar algoritmo" },
+    buttonShuffle: { en: "Shuffle", fr: "Mélanger", es: "Mezclar" },
+    labelSpeed: { en: "Speed", fr: "Vitesse", es: "Velocidad" },
+    metricComparisons: { en: "Comparisons", fr: "Comparaisons", es: "Comparaciones" },
+    metricSwaps: { en: "Swaps", fr: "Échanges", es: "Intercambios" },
+    metricStatus: { en: "Status", fr: "Statut", es: "Estado" },
+    legendComparing: { en: "Comparing", fr: "Comparaison", es: "Comparando" },
+    legendSwapping: { en: "Swapping", fr: "Échange", es: "Intercambiando" },
+    legendPivot: { en: "Pivot", fr: "Pivot", es: "Pivote" },
+    legendSorted: { en: "Sorted", fr: "Trié", es: "Ordenado" },
+
+    hashSectionLabel: { en: "HASH TABLE", fr: "TABLE DE HACHAGE", es: "TABLA HASH" },
+    hashSectionH2: { en: "See collision resolution.", fr: "Visualisez la résolution des collisions.", es: "Observa la resolución de colisiones." },
+    hashSectionDesc: {
+      en: "Insert key-value pairs into an eight-bucket hash table and watch separate chaining resolve collisions.",
+      fr: "Insérez des paires clé-valeur dans une table de hachage à huit compartiments et observez le chaînage séparé résoudre les collisions.",
+      es: "Inserta pares clave-valor en una tabla hash de ocho cubetas y observa cómo el encadenamiento separado resuelve las colisiones.",
+    },
+    labelKey: { en: "Key", fr: "Clé", es: "Clave" },
+    labelValue: { en: "Value", fr: "Valeur", es: "Valor" },
+    buttonInsert: { en: "Insert", fr: "Insérer", es: "Insertar" },
+    buttonRandom: { en: "Random", fr: "Aléatoire", es: "Aleatorio" },
+    buttonClear: { en: "Clear", fr: "Effacer", es: "Limpiar" },
+    labelLoadFactor: { en: "Load factor", fr: "Facteur de charge", es: "Factor de carga" },
+
+    pathSectionLabel: { en: "PATHFINDING", fr: "RECHERCHE DE CHEMIN", es: "BÚSQUEDA DE RUTAS" },
+    pathSectionH2: { en: "Find the shortest path.", fr: "Trouvez le chemin le plus court.", es: "Encuentra el camino más corto." },
+    pathSectionDesc: {
+      en: "Draw walls on the grid and compare BFS, Dijkstra, and A* while watching the search happen cell by cell.",
+      fr: "Dessinez des murs sur la grille et comparez BFS, Dijkstra et A* en observant la recherche se dérouler case par case.",
+      es: "Dibuja muros en la cuadrícula y compara BFS, Dijkstra y A* mientras observas la búsqueda avanzar celda por celda.",
+    },
+    algoBFS: { en: "Breadth-First Search", fr: "Parcours en largeur (BFS)", es: "Búsqueda en anchura (BFS)" },
+    algoDijkstra: { en: "Dijkstra", fr: "Dijkstra", es: "Dijkstra" },
+    algoAStar: { en: "A*", fr: "A*", es: "A*" },
+    buttonFindPath: { en: "Find path", fr: "Trouver le chemin", es: "Buscar camino" },
+    buttonRandomWalls: { en: "Random walls", fr: "Murs aléatoires", es: "Muros aleatorios" },
+    pathHelp: { en: "Click / drag to draw walls", fr: "Cliquez / glissez pour dessiner des murs", es: "Haz clic o arrastra para dibujar muros" },
+    metricVisited: { en: "Visited", fr: "Visités", es: "Visitadas" },
+    metricPathLength: { en: "Path length", fr: "Longueur du chemin", es: "Longitud del camino" },
+    legendStart: { en: "Start", fr: "Départ", es: "Inicio" },
+    legendWall: { en: "Wall", fr: "Mur", es: "Muro" },
+    legendVisited: { en: "Visited", fr: "Visité", es: "Visitada" },
+    legendPath: { en: "Shortest path", fr: "Chemin le plus court", es: "Camino más corto" },
+
+    refSectionLabel: { en: "REFERENCE", fr: "RÉFÉRENCE", es: "REFERENCIA" },
+    refSectionH2: { en: "How each algorithm actually works.", fr: "Comment chaque algorithme fonctionne réellement.", es: "Cómo funciona realmente cada algoritmo." },
+    footerProjects: { en: "← Projects", fr: "← Projets", es: "← Proyectos" },
+
+    docGroupSorting: { en: "Sorting algorithms", fr: "Algorithmes de tri", es: "Algoritmos de ordenamiento" },
+    docGroupHash: { en: "Hash tables", fr: "Tables de hachage", es: "Tablas hash" },
+    docGroupPath: { en: "Pathfinding", fr: "Recherche de chemin", es: "Búsqueda de rutas" },
+    badgeConcept: { en: "concept", fr: "concept", es: "concepto" },
+
+    docBigOName: { en: "Big-O notation", fr: "Notation Big-O", es: "Notación Big-O" },
+    docBubbleName: { en: "Bubble Sort", fr: "Tri à bulles", es: "Ordenamiento de burbuja" },
+    docSelectionName: { en: "Selection Sort", fr: "Tri par sélection", es: "Ordenamiento por selección" },
+    docInsertionName: { en: "Insertion Sort", fr: "Tri par insertion", es: "Ordenamiento por inserción" },
+    docMergeName: { en: "Merge Sort", fr: "Tri fusion", es: "Ordenamiento por mezcla" },
+    docQuickName: { en: "Quick Sort", fr: "Tri rapide", es: "Ordenamiento rápido" },
+    docHashFnName: { en: "Hash functions", fr: "Fonctions de hachage", es: "Funciones hash" },
+    docCollisionsName: { en: "Collisions & chaining", fr: "Collisions et chaînage", es: "Colisiones y encadenamiento" },
+    docLoadFactorName: { en: "Load factor", fr: "Facteur de charge", es: "Factor de carga" },
+    docGraphsName: { en: "Graphs, nodes & edges", fr: "Graphes, sommets et arêtes", es: "Grafos, nodos y aristas" },
+    docBFSName: { en: "Breadth-First Search", fr: "Parcours en largeur (BFS)", es: "Búsqueda en anchura (BFS)" },
+    docDijkstraName: { en: "Dijkstra's algorithm", fr: "Algorithme de Dijkstra", es: "Algoritmo de Dijkstra" },
+    docAStarName: { en: "A* search", fr: "Recherche A*", es: "Búsqueda A*" },
+  };
+
+  const STATIC_HTML: Record<string, Record<LangCode, string>> = {
+    refSectionDesc: {
+      en: `The visualizations above show <em>that</em> something happens. This is the <em>why</em> — the concept behind each algorithm, spelled out in plain terms.`,
+      fr: `Les visualisations ci-dessus montrent <em>que</em> quelque chose se passe. Voici le <em>pourquoi</em> — le concept derrière chaque algorithme, expliqué en termes simples.`,
+      es: `Las visualizaciones de arriba muestran <em>que</em> algo sucede. Esto es el <em>por qué</em> — el concepto detrás de cada algoritmo, explicado en términos simples.`,
+    },
+    docBigOBody: {
+      en: `<p>Big-O describes how an algorithm's running time grows as the input gets bigger — not the exact number of steps, but the <em>shape</em> of the growth curve. <code>O(n²)</code> means doubling the input roughly quadruples the work; <code>O(n log n)</code> means doubling the input barely more than doubles it.</p>
+        <p>It matters at scale, not on 20 bars: sorting 20 items, bubble sort's worst case is around 190 comparisons and quick sort's average case is around 86. Sort 20,000 items instead and that gap stops being academic — bubble sort's <code>n²</code> term dominates completely.</p>`,
+      fr: `<p>Le Big-O décrit la façon dont le temps d'exécution d'un algorithme croît quand l'entrée grandit — pas le nombre exact d'étapes, mais la <em>forme</em> de la courbe de croissance. <code>O(n²)</code> signifie que doubler l'entrée multiplie le travail par environ quatre ; <code>O(n log n)</code> signifie que doubler l'entrée le fait à peine plus que doubler.</p>
+        <p>Cela compte à grande échelle, pas sur 20 barres : pour trier 20 éléments, le pire cas du tri à bulles est d'environ 190 comparaisons et le cas moyen du tri rapide d'environ 86. Trier 20 000 éléments à la place, et cet écart cesse d'être théorique — le terme <code>n²</code> du tri à bulles domine complètement.</p>`,
+      es: `<p>La notación Big-O describe cómo crece el tiempo de ejecución de un algoritmo a medida que la entrada aumenta — no el número exacto de pasos, sino la <em>forma</em> de la curva de crecimiento. <code>O(n²)</code> significa que duplicar la entrada multiplica el trabajo aproximadamente por cuatro; <code>O(n log n)</code> significa que duplicar la entrada apenas más que la duplica.</p>
+        <p>Esto importa a gran escala, no con 20 barras: al ordenar 20 elementos, el peor caso del ordenamiento de burbuja son unas 190 comparaciones y el caso promedio del ordenamiento rápido unas 86. Ordena 20.000 elementos en su lugar, y esa diferencia deja de ser académica — el término <code>n²</code> del ordenamiento de burbuja domina por completo.</p>`,
+    },
+    docBubbleBody: {
+      en: `<p>Walks the array left to right, comparing each pair of neighbors and swapping them if they're out of order. One full pass guarantees the largest remaining value "bubbles" to its correct position at the end — so after <code>k</code> passes, the last <code>k</code> items are guaranteed sorted.</p>
+        <ol class="doc-steps"><li>Compare each adjacent pair, left to right.</li><li>Swap the pair if the left value is bigger.</li><li>Repeat passes until a full pass makes no swaps.</li></ol>
+        <p class="doc-meta">Stable · in-place · rarely used outside teaching, but the easiest algorithm to trace by hand.</p>`,
+      fr: `<p>Parcourt le tableau de gauche à droite, comparant chaque paire de voisins et les échangeant s'ils sont dans le mauvais ordre. Un passage complet garantit que la plus grande valeur restante « remonte » à sa position finale — ainsi après <code>k</code> passages, les <code>k</code> derniers éléments sont garantis triés.</p>
+        <ol class="doc-steps"><li>Comparer chaque paire adjacente, de gauche à droite.</li><li>Échanger la paire si la valeur de gauche est plus grande.</li><li>Répéter les passages jusqu'à ce qu'un passage complet ne fasse aucun échange.</li></ol>
+        <p class="doc-meta">Stable · en place · rarement utilisé en dehors de l'enseignement, mais l'algorithme le plus facile à suivre à la main.</p>`,
+      es: `<p>Recorre el arreglo de izquierda a derecha, comparando cada par de vecinos e intercambiándolos si están en el orden incorrecto. Una pasada completa garantiza que el mayor valor restante "burbujee" hasta su posición final — así que tras <code>k</code> pasadas, los últimos <code>k</code> elementos están garantizados como ordenados.</p>
+        <ol class="doc-steps"><li>Comparar cada par adyacente, de izquierda a derecha.</li><li>Intercambiar el par si el valor de la izquierda es mayor.</li><li>Repetir pasadas hasta que una pasada completa no haga intercambios.</li></ol>
+        <p class="doc-meta">Estable · en el mismo lugar · rara vez se usa fuera de la enseñanza, pero es el algoritmo más fácil de seguir a mano.</p>`,
+    },
+    docSelectionBody: {
+      en: `<p>Splits the array into a sorted section (front) and an unsorted section (back). On each pass it scans the entire unsorted section to find the smallest value, then swaps it into the next open slot at the front.</p>
+        <ol class="doc-steps"><li>Assume the first unsorted item is the minimum.</li><li>Scan the rest, updating the minimum when a smaller value appears.</li><li>Swap the true minimum into place, then move the boundary forward.</li></ol>
+        <p class="doc-meta">Not stable · in-place · always exactly one swap per pass, which makes it cheap on writes even though comparisons stay <code>O(n²)</code>.</p>`,
+      fr: `<p>Divise le tableau en une section triée (avant) et une section non triée (arrière). À chaque passage, il parcourt toute la section non triée pour trouver la plus petite valeur, puis l'échange dans la prochaine case libre à l'avant.</p>
+        <ol class="doc-steps"><li>Supposer que le premier élément non trié est le minimum.</li><li>Parcourir le reste, en mettant à jour le minimum quand une valeur plus petite apparaît.</li><li>Échanger le vrai minimum à sa place, puis avancer la frontière.</li></ol>
+        <p class="doc-meta">Non stable · en place · toujours exactement un échange par passage, ce qui le rend peu coûteux en écritures même si les comparaisons restent en <code>O(n²)</code>.</p>`,
+      es: `<p>Divide el arreglo en una sección ordenada (al frente) y una sin ordenar (al final). En cada pasada recorre toda la sección sin ordenar para encontrar el valor más pequeño, y luego lo intercambia en el siguiente lugar libre al frente.</p>
+        <ol class="doc-steps"><li>Suponer que el primer elemento sin ordenar es el mínimo.</li><li>Recorrer el resto, actualizando el mínimo cuando aparece un valor más pequeño.</li><li>Intercambiar el verdadero mínimo a su lugar y avanzar el límite.</li></ol>
+        <p class="doc-meta">No estable · en el mismo lugar · siempre exactamente un intercambio por pasada, lo que lo hace barato en escrituras aunque las comparaciones sigan en <code>O(n²)</code>.</p>`,
+    },
+    docInsertionBody: {
+      en: `<p>Builds a sorted section one value at a time. Each new value is compared against its sorted neighbors and shifted left until it lands in the correct spot — the same motion as sorting a hand of playing cards.</p>
+        <ol class="doc-steps"><li>Take the next unsorted value.</li><li>Shift it left past every sorted value bigger than it.</li><li>Drop it into the gap that's left behind.</li></ol>
+        <p class="doc-meta">Stable · in-place · <code>O(n)</code> best case on nearly-sorted data, which is why it's often used to finish off other algorithms on small sub-arrays.</p>`,
+      fr: `<p>Construit une section triée une valeur à la fois. Chaque nouvelle valeur est comparée à ses voisins triés et décalée vers la gauche jusqu'à trouver sa place — le même geste que trier une main de cartes.</p>
+        <ol class="doc-steps"><li>Prendre la prochaine valeur non triée.</li><li>La décaler vers la gauche au-delà de chaque valeur triée plus grande qu'elle.</li><li>La déposer dans l'espace laissé libre.</li></ol>
+        <p class="doc-meta">Stable · en place · meilleur cas en <code>O(n)</code> sur des données presque triées, c'est pourquoi il est souvent utilisé pour finir d'autres algorithmes sur de petits sous-tableaux.</p>`,
+      es: `<p>Construye una sección ordenada un valor a la vez. Cada nuevo valor se compara con sus vecinos ordenados y se desplaza a la izquierda hasta encontrar su lugar — el mismo movimiento que ordenar una mano de cartas.</p>
+        <ol class="doc-steps"><li>Tomar el siguiente valor sin ordenar.</li><li>Desplazarlo a la izquierda pasando cada valor ordenado mayor que él.</li><li>Colocarlo en el hueco que queda libre.</li></ol>
+        <p class="doc-meta">Estable · en el mismo lugar · mejor caso en <code>O(n)</code> con datos casi ordenados, por eso suele usarse para rematar otros algoritmos en subarreglos pequeños.</p>`,
+    },
+    docMergeBody: {
+      en: `<p>A divide-and-conquer algorithm: split the array in half recursively until each piece has one item (trivially sorted), then merge pairs of sorted pieces back together by repeatedly taking the smaller of the two fronts.</p>
+        <ol class="doc-steps"><li>Split the array in half, recursively, down to single items.</li><li>Merge each pair of halves, always taking the smaller front value.</li><li>Repeat merging upward until one sorted array remains.</li></ol>
+        <p class="doc-meta">Stable · <strong>not</strong> in-place (needs <code>O(n)</code> extra space for the merge step) · guaranteed <code>O(n log n)</code> — no worst-case cliff like quick sort.</p>`,
+      fr: `<p>Un algorithme diviser-pour-régner : diviser le tableau en deux récursivement jusqu'à ce que chaque morceau ait un seul élément (trivialement trié), puis fusionner les paires de morceaux triés en prenant à chaque fois la plus petite des deux valeurs de tête.</p>
+        <ol class="doc-steps"><li>Diviser le tableau en deux, récursivement, jusqu'aux éléments seuls.</li><li>Fusionner chaque paire de moitiés, en prenant toujours la plus petite valeur de tête.</li><li>Répéter la fusion vers le haut jusqu'à obtenir un seul tableau trié.</li></ol>
+        <p class="doc-meta">Stable · <strong>pas</strong> en place (nécessite un espace supplémentaire en <code>O(n)</code> pour l'étape de fusion) · garanti en <code>O(n log n)</code> — pas de pire cas catastrophique comme le tri rapide.</p>`,
+      es: `<p>Un algoritmo de divide y vencerás: divide el arreglo por la mitad recursivamente hasta que cada trozo tenga un solo elemento (trivialmente ordenado), y luego fusiona pares de trozos ordenados tomando repetidamente el menor de los dos frentes.</p>
+        <ol class="doc-steps"><li>Dividir el arreglo por la mitad, recursivamente, hasta elementos individuales.</li><li>Fusionar cada par de mitades, tomando siempre el valor frontal menor.</li><li>Repetir la fusión hacia arriba hasta que quede un solo arreglo ordenado.</li></ol>
+        <p class="doc-meta">Estable · <strong>no</strong> en el mismo lugar (necesita espacio extra en <code>O(n)</code> para el paso de fusión) · garantizado en <code>O(n log n)</code> — sin el peor caso catastrófico del ordenamiento rápido.</p>`,
+    },
+    docQuickBody: {
+      en: `<p>Also divide-and-conquer, but it partitions instead of merging: pick a pivot value, rearrange the array so everything smaller ends up left of it and everything bigger ends up right, then recurse on each side.</p>
+        <ol class="doc-steps"><li>Choose a pivot — this demo uses the last element.</li><li>Walk the array, moving anything smaller than the pivot to the left side.</li><li>Drop the pivot into the boundary between the two sides.</li><li>Recurse into the left and right partitions independently.</li></ol>
+        <p class="doc-meta">Not stable · in-place · fast in practice despite an <code>O(n²)</code> worst case, because that worst case (already-sorted input with a bad pivot choice) is rare.</p>`,
+      fr: `<p>Également diviser-pour-régner, mais il partitionne au lieu de fusionner : choisir une valeur pivot, réorganiser le tableau pour que tout ce qui est plus petit se retrouve à gauche et tout ce qui est plus grand à droite, puis récurer sur chaque côté.</p>
+        <ol class="doc-steps"><li>Choisir un pivot — cette démo utilise le dernier élément.</li><li>Parcourir le tableau, déplaçant à gauche tout ce qui est plus petit que le pivot.</li><li>Placer le pivot à la frontière entre les deux côtés.</li><li>Récurer indépendamment sur les partitions gauche et droite.</li></ol>
+        <p class="doc-meta">Non stable · en place · rapide en pratique malgré un pire cas en <code>O(n²)</code>, car ce pire cas (entrée déjà triée avec un mauvais choix de pivot) est rare.</p>`,
+      es: `<p>También divide y vencerás, pero particiona en vez de fusionar: elige un valor pivote, reorganiza el arreglo para que todo lo menor quede a su izquierda y todo lo mayor a su derecha, y luego recurre en cada lado.</p>
+        <ol class="doc-steps"><li>Elegir un pivote — esta demo usa el último elemento.</li><li>Recorrer el arreglo, moviendo a la izquierda todo lo menor que el pivote.</li><li>Colocar el pivote en el límite entre los dos lados.</li><li>Recurrir de forma independiente en las particiones izquierda y derecha.</li></ol>
+        <p class="doc-meta">No estable · en el mismo lugar · rápido en la práctica pese a un peor caso en <code>O(n²)</code>, porque ese peor caso (entrada ya ordenada con una mala elección de pivote) es poco frecuente.</p>`,
+    },
+    docHashFnBody: {
+      en: `<p>A hash function takes a key of any size — a string, a number, anything — and deterministically maps it to a fixed-size number: the bucket index. The demo above walks each character's code through <code>hash = hash × 31 + charCode</code>, then takes the result modulo 8 so it always lands inside the eight buckets.</p>
+        <p>A good hash function spreads keys evenly across buckets and is fast to compute. It does <em>not</em> need to be reversible — you can't recover the key from the bucket index alone.</p>`,
+      fr: `<p>Une fonction de hachage prend une clé de taille quelconque — une chaîne, un nombre, n'importe quoi — et la fait correspondre de façon déterministe à un nombre de taille fixe : l'indice du compartiment. La démo ci-dessus fait passer le code de chaque caractère par <code>hash = hash × 31 + charCode</code>, puis prend le résultat modulo 8 pour qu'il tombe toujours dans l'un des huit compartiments.</p>
+        <p>Une bonne fonction de hachage répartit les clés uniformément entre les compartiments et se calcule rapidement. Elle n'a <em>pas</em> besoin d'être réversible — on ne peut pas retrouver la clé à partir du seul indice du compartiment.</p>`,
+      es: `<p>Una función hash toma una clave de cualquier tamaño — una cadena, un número, lo que sea — y la asigna de forma determinista a un número de tamaño fijo: el índice de la cubeta. La demo de arriba pasa el código de cada carácter por <code>hash = hash × 31 + charCode</code>, y luego toma el resultado módulo 8 para que siempre caiga en una de las ocho cubetas.</p>
+        <p>Una buena función hash reparte las claves de forma uniforme entre las cubetas y es rápida de calcular. <em>No</em> necesita ser reversible — no se puede recuperar la clave solo a partir del índice de la cubeta.</p>`,
+    },
+    docCollisionsBody: {
+      en: `<p>Two different keys can hash to the same bucket — that's a collision, and it's expected, not a bug. This table resolves it with <strong>separate chaining</strong>: each bucket holds a small list, and colliding keys simply get appended to that bucket's chain instead of overwriting each other.</p>
+        <p>Lookups still work because inserting <em>and</em> searching use the same hash function — to find a key you hash it, jump straight to its bucket, then scan that bucket's (usually short) chain for a match.</p>`,
+      fr: `<p>Deux clés différentes peuvent se hacher vers le même compartiment — c'est une collision, et c'est attendu, pas un bug. Cette table la résout par <strong>chaînage séparé</strong> : chaque compartiment contient une petite liste, et les clés en collision sont simplement ajoutées à la chaîne du compartiment au lieu de s'écraser mutuellement.</p>
+        <p>Les recherches fonctionnent toujours car l'insertion <em>et</em> la recherche utilisent la même fonction de hachage — pour trouver une clé, on la hache, on saute directement à son compartiment, puis on parcourt la chaîne (généralement courte) de ce compartiment pour trouver une correspondance.</p>`,
+      es: `<p>Dos claves distintas pueden generar el mismo hash y caer en la misma cubeta — eso es una colisión, y es esperado, no un error. Esta tabla lo resuelve con <strong>encadenamiento separado</strong>: cada cubeta contiene una pequeña lista, y las claves en colisión simplemente se añaden a la cadena de esa cubeta en lugar de sobrescribirse entre sí.</p>
+        <p>Las búsquedas siguen funcionando porque insertar <em>y</em> buscar usan la misma función hash — para encontrar una clave la hasheas, saltas directamente a su cubeta y luego recorres la cadena (normalmente corta) de esa cubeta buscando una coincidencia.</p>`,
+    },
+    docLoadFactorBody: {
+      en: `<p>Load factor is <code>entries ÷ buckets</code> — shown live at the bottom of the table above. As it climbs past roughly <code>0.7</code>, chains get longer and lookups degrade from an average <code>O(1)</code> toward <code>O(n)</code> in the worst case.</p>
+        <p>Real hash table implementations watch this number and automatically <em>resize</em> — allocate a bigger bucket array and rehash every existing key into it — once the load factor crosses a threshold. This demo skips resizing to keep the eight buckets visible.</p>`,
+      fr: `<p>Le facteur de charge est <code>entrées ÷ compartiments</code> — affiché en direct en bas de la table ci-dessus. Lorsqu'il dépasse environ <code>0.7</code>, les chaînes s'allongent et les recherches se dégradent d'une moyenne en <code>O(1)</code> vers <code>O(n)</code> dans le pire cas.</p>
+        <p>Les vraies implémentations de tables de hachage surveillent ce nombre et <em>redimensionnent</em> automatiquement — en allouant un tableau de compartiments plus grand et en rehachant chaque clé existante — une fois qu'un seuil est franchi. Cette démo saute le redimensionnement pour garder les huit compartiments visibles.</p>`,
+      es: `<p>El factor de carga es <code>entradas ÷ cubetas</code> — se muestra en vivo al final de la tabla de arriba. Cuando supera aproximadamente <code>0.7</code>, las cadenas se alargan y las búsquedas se degradan de un promedio <code>O(1)</code> hacia <code>O(n)</code> en el peor caso.</p>
+        <p>Las implementaciones reales de tablas hash vigilan este número y <em>redimensionan</em> automáticamente — asignando un arreglo de cubetas más grande y rehasheando cada clave existente — una vez que el factor de carga supera un umbral. Esta demo omite el redimensionamiento para mantener visibles las ocho cubetas.</p>`,
+    },
+    docGraphsBody: {
+      en: `<p>The grid above is a graph in disguise: every open cell is a <strong>node</strong>, and every pair of adjacent open cells is connected by an <strong>edge</strong>. Walls simply remove a node from the graph entirely — no edges connect to it, so no search can pass through.</p>
+        <p>Every edge here has the same weight (one step), which is what makes BFS behave identically to Dijkstra on this particular grid. Give the edges different costs — uneven terrain, diagonal moves — and BFS would stop guaranteeing the shortest path while Dijkstra still would.</p>`,
+      fr: `<p>La grille ci-dessus est un graphe déguisé : chaque case libre est un <strong>sommet</strong>, et chaque paire de cases libres adjacentes est reliée par une <strong>arête</strong>. Les murs suppriment simplement un sommet du graphe — aucune arête ne le relie, donc aucune recherche ne peut y passer.</p>
+        <p>Chaque arête a ici le même poids (un pas), ce qui fait que BFS se comporte de façon identique à Dijkstra sur cette grille précise. Donnez des coûts différents aux arêtes — terrain irrégulier, déplacements diagonaux — et BFS cesserait de garantir le chemin le plus court, alors que Dijkstra continuerait.</p>`,
+      es: `<p>La cuadrícula de arriba es un grafo disfrazado: cada celda libre es un <strong>nodo</strong>, y cada par de celdas libres adyacentes está conectado por una <strong>arista</strong>. Los muros simplemente eliminan un nodo del grafo por completo — ninguna arista lo conecta, así que ninguna búsqueda puede pasar por él.</p>
+        <p>Aquí cada arista tiene el mismo peso (un paso), lo que hace que BFS se comporte igual que Dijkstra en esta cuadrícula en particular. Da costos distintos a las aristas — terreno desigual, movimientos diagonales — y BFS dejaría de garantizar el camino más corto, mientras que Dijkstra seguiría haciéndolo.</p>`,
+    },
+    docBFSBody: {
+      en: `<p>Explores the grid in rings, one step out at a time: visit every neighbor of the start, then every neighbor of those, and so on. Because it expands outward evenly, the first time it reaches the end cell is guaranteed to be by the shortest possible path — as long as every step costs the same.</p>
+        <p>Implemented with a queue (first in, first out): each cell gets visited once, its unvisited neighbors get added to the back of the queue, and the search always processes the oldest queued cell next.</p>`,
+      fr: `<p>Explore la grille en anneaux, un pas à la fois : visiter chaque voisin du départ, puis chaque voisin de ceux-ci, et ainsi de suite. Comme elle s'étend uniformément vers l'extérieur, la première fois qu'elle atteint la case d'arrivée, c'est garanti par le chemin le plus court possible — tant que chaque pas coûte la même chose.</p>
+        <p>Implémenté avec une file (premier entré, premier sorti) : chaque case est visitée une fois, ses voisins non visités sont ajoutés à la fin de la file, et la recherche traite toujours ensuite la case la plus ancienne de la file.</p>`,
+      es: `<p>Explora la cuadrícula en anillos, un paso a la vez: visita cada vecino del inicio, luego cada vecino de esos, y así sucesivamente. Como se expande uniformemente hacia afuera, la primera vez que alcanza la celda final está garantizado que es por el camino más corto posible — siempre que cada paso cueste lo mismo.</p>
+        <p>Se implementa con una cola (primero en entrar, primero en salir): cada celda se visita una vez, sus vecinos no visitados se añaden al final de la cola, y la búsqueda siempre procesa a continuación la celda más antigua de la cola.</p>`,
+    },
+    docDijkstraBody: {
+      en: `<p>Generalizes BFS to handle edges with different costs. It always expands the unvisited cell with the <strong>lowest total distance from the start</strong> so far, and updates a neighbor's distance whenever a shorter route to it is found. On this grid, where every step costs exactly one, it visits cells in the same order as BFS.</p>
+        <p>The "priority" in priority queue is doing the real work here — it's the mechanism that always pulls out the currently-cheapest cell to expand next.</p>`,
+      fr: `<p>Généralise BFS pour gérer des arêtes de coûts différents. Il étend toujours la case non visitée ayant la <strong>plus petite distance totale depuis le départ</strong> jusqu'à présent, et met à jour la distance d'un voisin dès qu'une route plus courte est trouvée. Sur cette grille, où chaque pas coûte exactement un, il visite les cases dans le même ordre que BFS.</p>
+        <p>La « priorité » de la file à priorité fait ici tout le travail — c'est le mécanisme qui extrait toujours la case actuellement la moins coûteuse à étendre ensuite.</p>`,
+      es: `<p>Generaliza BFS para manejar aristas con costos distintos. Siempre expande la celda no visitada con la <strong>menor distancia total desde el inicio</strong> hasta el momento, y actualiza la distancia de un vecino cada vez que se encuentra una ruta más corta hacia él. En esta cuadrícula, donde cada paso cuesta exactamente uno, visita las celdas en el mismo orden que BFS.</p>
+        <p>La "prioridad" de la cola de prioridad es la que hace el trabajo real aquí — es el mecanismo que siempre extrae la celda actualmente más barata para expandir a continuación.</p>`,
+    },
+    docAStarBody: {
+      en: `<p>Dijkstra plus a hint: it prioritizes cells by <code>cost so far + estimated cost to the goal</code>, using a heuristic (this demo uses Manhattan distance — horizontal steps plus vertical steps to the end). That estimate biases the search to expand toward the goal instead of spreading out equally in every direction.</p>
+        <p>Watch the visited-cell count: A* typically explores far fewer cells than BFS or Dijkstra to find the same shortest path, because it isn't wasting time exploring away from the destination.</p>`,
+      fr: `<p>Dijkstra avec un indice en plus : il priorise les cases selon <code>coût jusqu'ici + coût estimé jusqu'à l'objectif</code>, en utilisant une heuristique (cette démo utilise la distance de Manhattan — pas horizontaux plus pas verticaux jusqu'à l'arrivée). Cette estimation oriente la recherche à s'étendre vers l'objectif plutôt qu'à se répandre également dans toutes les directions.</p>
+        <p>Observez le nombre de cases visitées : A* explore généralement beaucoup moins de cases que BFS ou Dijkstra pour trouver le même chemin le plus court, car il ne perd pas de temps à explorer loin de la destination.</p>`,
+      es: `<p>Dijkstra más una pista: prioriza las celdas según <code>costo hasta ahora + costo estimado hasta la meta</code>, usando una heurística (esta demo usa la distancia de Manhattan — pasos horizontales más pasos verticales hasta el final). Esa estimación orienta la búsqueda a expandirse hacia la meta en lugar de esparcirse por igual en todas direcciones.</p>
+        <p>Observa el número de celdas visitadas: A* normalmente explora muchas menos celdas que BFS o Dijkstra para encontrar el mismo camino más corto, porque no pierde tiempo explorando lejos del destino.</p>`,
+    },
+  };
+
+  let currentLang: LangCode = "en";
+
+  try {
+    const saved = localStorage.getItem(LANG_STORAGE_KEY);
+    if (saved === "en" || saved === "fr" || saved === "es") {
+      currentLang = saved;
+    }
+  } catch {
+    // localStorage unavailable — fall back to English
+  }
+
+  function t(key: string, vars?: Record<string, string | number>): string {
+    const entry = STATIC_TEXT[key];
+    let str = entry ? entry[currentLang] ?? entry.en : key;
+
+    if (vars) {
+      for (const varKey in vars) {
+        str = str.replace(new RegExp(`\\{${varKey}\\}`, "g"), String(vars[varKey]));
+      }
+    }
+
+    return str;
+  }
+
+  function applyStaticTranslations(): void {
+    document.querySelectorAll<HTMLElement>("[data-i18n]").forEach((element) => {
+      const key = element.getAttribute("data-i18n");
+      if (key && STATIC_TEXT[key]) {
+        element.textContent = t(key);
+      }
+    });
+
+    document.querySelectorAll<HTMLElement>("[data-i18n-html]").forEach((element) => {
+      const key = element.getAttribute("data-i18n-html");
+      if (key && STATIC_HTML[key]) {
+        element.innerHTML = STATIC_HTML[key][currentLang] ?? STATIC_HTML[key].en;
+      }
+    });
+
+    document.documentElement.lang = currentLang;
+  }
+
+  function updateLangButtons(): void {
+    document.querySelectorAll<HTMLButtonElement>(".lang-btn").forEach((button) => {
+      button.classList.toggle("active", button.dataset.lang === currentLang);
+    });
+  }
+
+  const langChangeListeners: (() => void)[] = [];
+
+  function onLangChange(listener: () => void): void {
+    langChangeListeners.push(listener);
+  }
+
+  function setLanguage(lang: LangCode): void {
+    if (lang === currentLang) {
+      return;
+    }
+
+    currentLang = lang;
+
+    try {
+      localStorage.setItem(LANG_STORAGE_KEY, lang);
+    } catch {
+      // ignore storage failures
+    }
+
+    applyStaticTranslations();
+    updateLangButtons();
+
+    langChangeListeners.forEach((listener) => listener());
+  }
+
+  document.querySelectorAll<HTMLButtonElement>(".lang-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      const lang = button.dataset.lang;
+      if (lang === "en" || lang === "fr" || lang === "es") {
+        setLanguage(lang);
+      }
+    });
+  });
+
+  applyStaticTranslations();
+  updateLangButtons();
+
+  /* ================================================================
      ASCII / LIQUID BACKGROUND — olive-green signature effect
      ================================================================ */
 
@@ -1834,38 +2208,96 @@ import Layout from "../../layouts/Layout.astro";
 
     const algoInfo: Record<
       AlgoKey,
-      { name: string; complexity: string; desc: string }
+      Record<LangCode, { name: string; complexity: string; desc: string }>
     > = {
       bubble: {
-        name: "Bubble Sort",
-        complexity: "O(n²) avg/worst · O(n) best",
-        desc: "Walks the array repeatedly, swapping any two neighbors that are out of order. The j / j+1 tags below the bars mark the exact pair being compared right now.",
+        en: { name: "Bubble Sort", complexity: "O(n²) avg/worst · O(n) best", desc: "Walks the array repeatedly, swapping any two neighbors that are out of order. The j / j+1 tags below the bars mark the exact pair being compared right now." },
+        fr: { name: "Tri à bulles", complexity: "O(n²) moy/pire · O(n) meilleur", desc: "Parcourt le tableau à répétition, échangeant deux voisins mal ordonnés. Les étiquettes j / j+1 sous les barres marquent la paire comparée en ce moment." },
+        es: { name: "Ordenamiento de burbuja", complexity: "O(n²) prom/peor · O(n) mejor", desc: "Recorre el arreglo repetidamente, intercambiando cualquier par de vecinos que esté en el orden incorrecto. Las etiquetas j / j+1 bajo las barras marcan el par que se compara en este momento." },
       },
       selection: {
-        name: "Selection Sort",
-        complexity: "O(n²) in every case",
-        desc: "Scans the unsorted remainder for the smallest value, then swaps it to the front. min marks the smallest value found so far; j is the scanning pointer checking each candidate.",
+        en: { name: "Selection Sort", complexity: "O(n²) in every case", desc: "Scans the unsorted remainder for the smallest value, then swaps it to the front. min marks the smallest value found so far; j is the scanning pointer checking each candidate." },
+        fr: { name: "Tri par sélection", complexity: "O(n²) dans tous les cas", desc: "Parcourt le reste non trié pour trouver la plus petite valeur, puis l'échange vers l'avant. min marque la plus petite valeur trouvée jusqu'ici ; j est le pointeur qui vérifie chaque candidat." },
+        es: { name: "Ordenamiento por selección", complexity: "O(n²) en todos los casos", desc: "Recorre el resto sin ordenar buscando el valor más pequeño, y lo intercambia hacia el frente. min marca el menor valor encontrado hasta ahora; j es el puntero que revisa cada candidato." },
       },
       insertion: {
-        name: "Insertion Sort",
-        complexity: "O(n²) avg/worst · O(n) best",
-        desc: "Grows a sorted section one value at a time, sliding each new value left past anything bigger than it. key follows the value being inserted as it slides into place.",
+        en: { name: "Insertion Sort", complexity: "O(n²) avg/worst · O(n) best", desc: "Grows a sorted section one value at a time, sliding each new value left past anything bigger than it. key follows the value being inserted as it slides into place." },
+        fr: { name: "Tri par insertion", complexity: "O(n²) moy/pire · O(n) meilleur", desc: "Fait grandir une section triée une valeur à la fois, en glissant chaque nouvelle valeur vers la gauche au-delà de tout ce qui est plus grand. key suit la valeur en cours d'insertion pendant qu'elle glisse à sa place." },
+        es: { name: "Ordenamiento por inserción", complexity: "O(n²) prom/peor · O(n) mejor", desc: "Hace crecer una sección ordenada un valor a la vez, deslizando cada nuevo valor a la izquierda más allá de todo lo que es mayor. key sigue al valor que se está insertando mientras se desliza a su lugar." },
       },
       merge: {
-        name: "Merge Sort",
-        complexity: "O(n log n) in every case",
-        desc: "Splits the array in half recursively, then merges pairs of sorted halves back together. Dimmed bars are outside the current merge window; L and R mark the fronts of each half being compared.",
+        en: { name: "Merge Sort", complexity: "O(n log n) in every case", desc: "Splits the array in half recursively, then merges pairs of sorted halves back together. Dimmed bars are outside the current merge window; L and R mark the fronts of each half being compared." },
+        fr: { name: "Tri fusion", complexity: "O(n log n) dans tous les cas", desc: "Divise le tableau en deux récursivement, puis fusionne les paires de moitiés triées. Les barres atténuées sont hors de la fenêtre de fusion actuelle ; L et R marquent les têtes de chaque moitié comparée." },
+        es: { name: "Ordenamiento por mezcla", complexity: "O(n log n) en todos los casos", desc: "Divide el arreglo por la mitad recursivamente, y luego fusiona pares de mitades ordenadas. Las barras atenuadas están fuera de la ventana de fusión actual; L y R marcan los frentes de cada mitad comparada." },
       },
       quick: {
-        name: "Quick Sort",
-        complexity: "O(n log n) avg · O(n²) worst",
-        desc: "Picks a pivot (shown in red) and rearranges its subarray so smaller values end up left of it and larger values end up right, then repeats on each side. i marks the boundary, j is the scanning pointer.",
+        en: { name: "Quick Sort", complexity: "O(n log n) avg · O(n²) worst", desc: "Picks a pivot (shown in red) and rearranges its subarray so smaller values end up left of it and larger values end up right, then repeats on each side. i marks the boundary, j is the scanning pointer." },
+        fr: { name: "Tri rapide", complexity: "O(n log n) moy · O(n²) pire", desc: "Choisit un pivot (en rouge) et réorganise son sous-tableau pour que les valeurs plus petites se retrouvent à gauche et les plus grandes à droite, puis répète sur chaque côté. i marque la frontière, j est le pointeur de balayage." },
+        es: { name: "Ordenamiento rápido", complexity: "O(n log n) prom · O(n²) peor", desc: "Elige un pivote (en rojo) y reorganiza su subarreglo para que los valores menores queden a su izquierda y los mayores a su derecha, y luego repite en cada lado. i marca el límite, j es el puntero de recorrido." },
       },
     };
 
+    const sortMsg: Record<LangCode, Record<string, string>> = {
+      en: {
+        bubbleCompare: "Comparing {a} and {b} — are they in order?",
+        bubbleSwap: "{b} was bigger, so swap — now reads {a}, {b}",
+        bubblePass: "Pass {n} done — {v} is now in its final spot.",
+        selectionCompare: "Is {j} smaller than current minimum {min}?",
+        selectionSwap: "Smallest remaining value is {v} — moving it to position {i}",
+        insertionCompare: "Does {a} still belong left of {b}?",
+        insertionSwap: "Shifting it left — now reads {a}, {b}",
+        mergeCompare: "Merging halves — which comes first, {a} or {b}?",
+        quickCompare: "Is {v} smaller than pivot {p}?",
+        quickSwap: "Moving {v} left of the boundary — it's smaller than the pivot",
+        quickPlace: "Pivot {v} is now correctly placed — everything left is smaller, everything right is bigger",
+        ready: "Ready — press Run to sort {count} bars with {algo}.",
+        done: "Done — {comparisons} comparisons and {swaps} swaps to fully sort {count} bars.",
+      },
+      fr: {
+        bubbleCompare: "Comparaison de {a} et {b} — sont-ils dans l'ordre ?",
+        bubbleSwap: "{b} était plus grand, donc échange — on lit maintenant {a}, {b}",
+        bubblePass: "Passage {n} terminé — {v} est maintenant à sa place finale.",
+        selectionCompare: "{j} est-il plus petit que le minimum actuel {min} ?",
+        selectionSwap: "La plus petite valeur restante est {v} — déplacement vers la position {i}",
+        insertionCompare: "{a} appartient-il toujours à gauche de {b} ?",
+        insertionSwap: "Décalage vers la gauche — on lit maintenant {a}, {b}",
+        mergeCompare: "Fusion des moitiés — lequel vient en premier, {a} ou {b} ?",
+        quickCompare: "{v} est-il plus petit que le pivot {p} ?",
+        quickSwap: "Déplacement de {v} à gauche de la frontière — il est plus petit que le pivot",
+        quickPlace: "Le pivot {v} est maintenant bien placé — tout ce qui est à gauche est plus petit, tout ce qui est à droite est plus grand",
+        ready: "Prêt — appuyez sur Lancer pour trier {count} barres avec {algo}.",
+        done: "Terminé — {comparisons} comparaisons et {swaps} échanges pour trier complètement {count} barres.",
+      },
+      es: {
+        bubbleCompare: "Comparando {a} y {b} — ¿están en orden?",
+        bubbleSwap: "{b} era mayor, así que se intercambia — ahora se lee {a}, {b}",
+        bubblePass: "Pasada {n} completada — {v} ya está en su lugar final.",
+        selectionCompare: "¿Es {j} menor que el mínimo actual {min}?",
+        selectionSwap: "El menor valor restante es {v} — moviéndolo a la posición {i}",
+        insertionCompare: "¿Sigue {a} perteneciendo a la izquierda de {b}?",
+        insertionSwap: "Desplazándolo a la izquierda — ahora se lee {a}, {b}",
+        mergeCompare: "Fusionando mitades — ¿cuál va primero, {a} o {b}?",
+        quickCompare: "¿Es {v} menor que el pivote {p}?",
+        quickSwap: "Moviendo {v} a la izquierda del límite — es menor que el pivote",
+        quickPlace: "El pivote {v} ya quedó bien colocado — todo lo de la izquierda es menor, todo lo de la derecha es mayor",
+        ready: "Listo — presiona Ejecutar para ordenar {count} barras con {algo}.",
+        done: "Listo — {comparisons} comparaciones y {swaps} intercambios para ordenar por completo {count} barras.",
+      },
+    };
+
+    function sortT(key: string, vars?: Record<string, string | number>): string {
+      let str = sortMsg[currentLang][key] ?? sortMsg.en[key];
+      if (vars) {
+        for (const varKey in vars) {
+          str = str.replace(new RegExp(`\\{${varKey}\\}`, "g"), String(vars[varKey]));
+        }
+      }
+      return str;
+    }
+
     function updateAlgoInfo(): void {
       const key = algorithm.value as AlgoKey;
-      const info = algoInfo[key] ?? algoInfo.quick;
+      const info = (algoInfo[key] ?? algoInfo.quick)[currentLang];
 
       algoNameOutput.textContent = info.name;
       algoComplexityOutput.textContent = info.complexity;
@@ -2009,7 +2441,7 @@ import Layout from "../../layouts/Layout.astro";
           await highlight(
             [j, j + 1],
             "compare",
-            `Comparing ${values[j]} and ${values[j + 1]} — are they in order?`
+            sortT("bubbleCompare", { a: values[j], b: values[j + 1] })
           );
 
           if (values[j] > values[j + 1]) {
@@ -2032,13 +2464,16 @@ import Layout from "../../layouts/Layout.astro";
             await highlight(
               [j, j + 1],
               "swap",
-              `${values[j + 1]} was bigger, so swap — now reads ${values[j]}, ${values[j + 1]}`
+              sortT("bubbleSwap", { a: values[j], b: values[j + 1] })
             );
           }
         }
 
         bars[values.length - i - 1]?.classList.add("sorted");
-        narrationOutput.textContent = `Pass ${i + 1} done — ${values[values.length - i - 1]} is now in its final spot.`;
+        narrationOutput.textContent = sortT("bubblePass", {
+          n: i + 1,
+          v: values[values.length - i - 1],
+        });
 
         if (!changed) {
           break;
@@ -2063,7 +2498,7 @@ import Layout from "../../layouts/Layout.astro";
           await highlight(
             [minimum, j],
             "compare",
-            `Is ${values[j]} smaller than current minimum ${values[minimum]}?`
+            sortT("selectionCompare", { j: values[j], min: values[minimum] })
           );
 
           if (values[j] < values[minimum]) {
@@ -2090,7 +2525,7 @@ import Layout from "../../layouts/Layout.astro";
           await highlight(
             [i, minimum],
             "swap",
-            `Smallest remaining value is ${values[i]} — moving it to position ${i}`
+            sortT("selectionSwap", { v: values[i], i })
           );
         }
 
@@ -2115,7 +2550,7 @@ import Layout from "../../layouts/Layout.astro";
           await highlight(
             [j - 1, j],
             "compare",
-            `Does ${values[j]} still belong left of ${values[j - 1]}?`
+            sortT("insertionCompare", { a: values[j], b: values[j - 1] })
           );
 
           if (values[j - 1] <= values[j]) {
@@ -2139,7 +2574,7 @@ import Layout from "../../layouts/Layout.astro";
           await highlight(
             [j - 1, j],
             "swap",
-            `Shifting it left — now reads ${values[j - 1]}, ${values[j]}`
+            sortT("insertionSwap", { a: values[j - 1], b: values[j] })
           );
 
           j--;
@@ -2180,7 +2615,7 @@ import Layout from "../../layouts/Layout.astro";
           await highlight(
             [left + i, middle + 1 + j],
             "compare",
-            `Merging halves — which comes first, ${first[i]} or ${second[j]}?`
+            sortT("mergeCompare", { a: first[i], b: second[j] })
           );
 
           if (first[i] <= second[j]) {
@@ -2271,7 +2706,7 @@ import Layout from "../../layouts/Layout.astro";
           await highlight(
             [i, right],
             "compare",
-            `Is ${values[i]} smaller than pivot ${pivot}?`
+            sortT("quickCompare", { v: values[i], p: pivot })
           );
 
           if (values[i] < pivot) {
@@ -2293,7 +2728,7 @@ import Layout from "../../layouts/Layout.astro";
             await highlight(
               [index, i],
               "swap",
-              `Moving ${values[index]} left of the boundary — it's smaller than the pivot`
+              sortT("quickSwap", { v: values[index] })
             );
 
             index++;
@@ -2317,7 +2752,7 @@ import Layout from "../../layouts/Layout.astro";
         await highlight(
           [index, right],
           "swap",
-          `Pivot ${values[index]} is now correctly placed — everything left is smaller, everything right is bigger`
+          sortT("quickPlace", { v: values[index] })
         );
 
         bars[index]?.classList.add("sorted");
@@ -2397,7 +2832,11 @@ import Layout from "../../layouts/Layout.astro";
       });
 
       statusOutput.textContent = "Complete";
-      narrationOutput.textContent = `Done — ${comparisons} comparisons and ${swaps} swaps to fully sort ${COUNT} bars.`;
+      narrationOutput.textContent = sortT("done", {
+        comparisons,
+        swaps,
+        count: COUNT,
+      });
 
       running = false;
 
@@ -2420,7 +2859,10 @@ import Layout from "../../layouts/Layout.astro";
       updateMetrics();
 
       statusOutput.textContent = "Ready";
-      narrationOutput.textContent = `Ready — press Run to sort ${COUNT} bars with ${algoInfo[algorithm.value as AlgoKey]?.name ?? algorithm.value}.`;
+      narrationOutput.textContent = sortT("ready", {
+        count: COUNT,
+        algo: (algoInfo[algorithm.value as AlgoKey] ?? algoInfo.quick)[currentLang].name,
+      });
     }
 
     runButton.addEventListener("click", () => {
@@ -2433,7 +2875,21 @@ import Layout from "../../layouts/Layout.astro";
       updateAlgoInfo();
 
       if (!running) {
-        narrationOutput.textContent = `Ready — press Run to sort ${COUNT} bars with ${algoInfo[algorithm.value as AlgoKey]?.name ?? algorithm.value}.`;
+        narrationOutput.textContent = sortT("ready", {
+          count: COUNT,
+          algo: (algoInfo[algorithm.value as AlgoKey] ?? algoInfo.quick)[currentLang].name,
+        });
+      }
+    });
+
+    onLangChange(() => {
+      updateAlgoInfo();
+
+      if (!running) {
+        narrationOutput.textContent = sortT("ready", {
+          count: COUNT,
+          algo: (algoInfo[algorithm.value as AlgoKey] ?? algoInfo.quick)[currentLang].name,
+        });
       }
     });
 
@@ -2484,10 +2940,18 @@ import Layout from "../../layouts/Layout.astro";
       value: string;
     };
 
+    const hashMsg: Record<LangCode, { ready: string; bucket: string; insert: string; collision: string }> = {
+      en: { ready: "Ready for insertion.", bucket: "bucket {n}", insert: 'hash("{key}") → {index} / bucket {index}', collision: " / collision → chaining" },
+      fr: { ready: "Prêt pour l'insertion.", bucket: "compartiment {n}", insert: 'hash("{key}") → {index} / compartiment {index}', collision: " / collision → chaînage" },
+      es: { ready: "Listo para insertar.", bucket: "cubeta {n}", insert: 'hash("{key}") → {index} / cubeta {index}', collision: " / colisión → encadenamiento" },
+    };
+
     let table: Entry[][] = Array.from(
       { length: BUCKETS },
       () => []
     );
+
+    let lastFormula: string | null = null;
 
     function hash(key: string): number {
       let value = 0;
@@ -2513,7 +2977,7 @@ import Layout from "../../layouts/Layout.astro";
 
         const label = document.createElement("div");
         label.className = "hash-index";
-        label.textContent = `bucket ${index}`;
+        label.textContent = hashMsg[currentLang].bucket.replace("{n}", String(index));
 
         bucket.appendChild(label);
 
@@ -2576,11 +3040,13 @@ import Layout from "../../layouts/Layout.astro";
         });
       }
 
-      formula.textContent =
-        `hash("${key}") → ${index} / bucket ${index}` +
-        (chain.length > 1
-          ? " / collision → chaining"
-          : "");
+      lastFormula =
+        hashMsg[currentLang].insert
+          .replace(/{key}/g, key)
+          .replace(/{index}/g, String(index)) +
+        (chain.length > 1 ? hashMsg[currentLang].collision : "");
+
+      formula.textContent = lastFormula;
 
       render();
     }
@@ -2648,9 +3114,16 @@ import Layout from "../../layouts/Layout.astro";
         () => []
       );
 
-      formula.textContent =
-        "Ready for insertion.";
+      lastFormula = null;
+      formula.textContent = hashMsg[currentLang].ready;
 
+      render();
+    });
+
+    onLangChange(() => {
+      if (lastFormula === null) {
+        formula.textContent = hashMsg[currentLang].ready;
+      }
       render();
     });
 
@@ -2692,6 +3165,19 @@ import Layout from "../../layouts/Layout.astro";
     const visitedOutput = visitedElement;
     const lengthOutput = lengthElement;
     const statusOutput = statusElement;
+
+    const pathMsg: Record<LangCode, { ready: string; searching: string; notFound: string; found: string }> = {
+      en: { ready: "Ready", searching: "Searching", notFound: "No path found", found: "Path found" },
+      fr: { ready: "Prêt", searching: "Recherche", notFound: "Aucun chemin trouvé", found: "Chemin trouvé" },
+      es: { ready: "Listo", searching: "Buscando", notFound: "No se encontró camino", found: "Camino encontrado" },
+    };
+
+    let lastStatusKey: "ready" | "searching" | "notFound" | "found" = "ready";
+
+    function setStatus(key: "ready" | "searching" | "notFound" | "found"): void {
+      lastStatusKey = key;
+      statusOutput.textContent = pathMsg[currentLang][key];
+    }
 
     const ROWS = 14;
     const COLS = 28;
@@ -3286,8 +3772,7 @@ import Layout from "../../layouts/Layout.astro";
 
       setControls(false);
 
-      statusOutput.textContent =
-        "Searching";
+      setStatus("searching");
 
       visitedOutput.textContent =
         "0";
@@ -3314,8 +3799,7 @@ import Layout from "../../layouts/Layout.astro";
       );
 
       if (!result.found) {
-        statusOutput.textContent =
-          "No path found";
+        setStatus("notFound");
 
         running = false;
 
@@ -3347,8 +3831,7 @@ import Layout from "../../layouts/Layout.astro";
       lengthOutput.textContent =
         String(path.length);
 
-      statusOutput.textContent =
-        "Path found";
+      setStatus("found");
 
       running = false;
 
@@ -3395,8 +3878,7 @@ import Layout from "../../layouts/Layout.astro";
       lengthOutput.textContent =
         "—";
 
-      statusOutput.textContent =
-        "Ready";
+      setStatus("ready");
     }
 
     function clear(): void {
@@ -3413,8 +3895,7 @@ import Layout from "../../layouts/Layout.astro";
       lengthOutput.textContent =
         "—";
 
-      statusOutput.textContent =
-        "Ready";
+      setStatus("ready");
     }
 
     runButton.addEventListener(
@@ -3433,6 +3914,12 @@ import Layout from "../../layouts/Layout.astro";
       "click",
       clear
     );
+
+    onLangChange(() => {
+      if (!running) {
+        setStatus(lastStatusKey);
+      }
+    });
 
     createGrid();
     render();
