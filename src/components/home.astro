@@ -687,7 +687,10 @@ import SkillsList from "../React/SkillsList.tsx";
   const terminalWindow =
     document.querySelector("#portfolio-terminal") as HTMLDivElement | null;
 
-  type TerminalCommand = () => string | Promise<string>;
+  // `navigate` controls whether a command jumps to its project page after
+  // showing info. Bare commands (e.g. "weather") only display info; only
+  // "open <name>" navigates.
+  type TerminalCommand = (navigate?: boolean) => string | Promise<string>;
 
   const history: string[] = [];
   let historyIndex: number = -1;
@@ -855,6 +858,263 @@ import SkillsList from "../React/SkillsList.tsx";
     { title: "Avengers: Infinity War", rating: 9 },
   ];
 
+  /* ============================================================ */
+  /* PROJECT CONTENT (info only — navigation is opt-in via `navigate`) */
+  /* ============================================================ */
+
+  const visualizerContent = (navigate = false): string => {
+    if (navigate) {
+      goTo("/projects/visualizer", 900);
+    }
+
+    return `
+      <div class="terminal-info-block">
+
+        <div class="terminal-response-title">
+          Algorithm Visualizer
+        </div>
+
+        <div class="terminal-list">
+
+          <div>
+            <span>01</span>
+            Sorting — Bubble, Selection, Insertion, Merge, Quick Sort
+          </div>
+
+          <div>
+            <span>02</span>
+            Hash table — 8 buckets, separate chaining, live load factor
+          </div>
+
+          <div>
+            <span>03</span>
+            Pathfinding — BFS, Dijkstra, A* on a drawable grid
+          </div>
+
+        </div>
+
+        ${
+          navigate
+            ? `<div class="terminal-success-response terminal-small-gap">
+                 ✓ Opening Algorithm Visualizer...
+               </div>`
+            : `<div class="terminal-terminal-text terminal-small-gap">
+                 Type <strong>open visualizer</strong> to jump to it.
+               </div>`
+        }
+
+      </div>
+    `;
+  };
+
+  const weatherContent = async (navigate = false): Promise<string> => {
+    try {
+      const summaries = await Promise.all(
+        WEATHER_LOCATIONS.map(fetchLocationSummary)
+      );
+
+      if (navigate) {
+        goTo("/projects/weather", 900);
+      }
+
+      return `
+        <div class="terminal-info-block">
+
+          <div class="terminal-response-title">
+            Live weather
+          </div>
+
+          <div class="terminal-list">
+            ${summaries
+              .map(
+                (summary) => `
+              <div>
+                <span>•</span>
+                ${summary.city}: ${summary.temperature}°C, ${summary.description}
+              </div>
+            `
+              )
+              .join("")}
+          </div>
+
+          ${
+            navigate
+              ? `<div class="terminal-success-response terminal-small-gap">
+                   ✓ Opening Weather Dashboard...
+                 </div>`
+              : `<div class="terminal-terminal-text terminal-small-gap">
+                   Type <strong>open weather</strong> to jump to it.
+                 </div>`
+          }
+
+        </div>
+      `;
+    } catch {
+      if (navigate) {
+        goTo("/projects/weather", 900);
+      }
+
+      return `
+        <div class="terminal-error">
+          Live weather is unavailable right now.
+        </div>
+      `;
+    }
+  };
+
+  const movieRankingContent = (navigate = false): string => {
+    if (navigate) {
+      goTo("/projects/movie-ranking", 900);
+    }
+
+    const top = [...RANKED_MOVIES].sort((a, b) => b.rating - a.rating);
+
+    return `
+      <div class="terminal-info-block">
+
+        <div class="terminal-response-title">
+          Top-rated movies
+        </div>
+
+        <div class="terminal-list">
+          ${top
+            .map(
+              (movie) => `
+            <div>
+              <span>${movie.rating.toFixed(1).replace(/\\.0$/, "")}/10</span>
+              ${escapeHTML(movie.title)}
+            </div>
+          `
+            )
+            .join("")}
+        </div>
+
+        ${
+          navigate
+            ? `<div class="terminal-success-response terminal-small-gap">
+                 ✓ Opening Movie Ranking...
+               </div>`
+            : `<div class="terminal-terminal-text terminal-small-gap">
+                 Type <strong>open movie-ranking</strong> to jump to it.
+               </div>`
+        }
+
+      </div>
+    `;
+  };
+
+  const cpuContent = (navigate = false): string => {
+    if (navigate) {
+      goTo("/projects/Cpu", 900);
+    }
+
+    return `
+      <div class="terminal-info-block">
+
+        <div class="terminal-response-title">
+          CPU Simulator
+        </div>
+
+        <div class="terminal-list">
+
+          <div>
+            <span>01</span>
+            8 general-purpose registers (R0–R7)
+          </div>
+
+          <div>
+            <span>02</span>
+            32 addressable memory cells
+          </div>
+
+          <div>
+            <span>03</span>
+            9 instructions: MOV, ADD, SUB, LOAD, STORE, CMP, JMP, JZ, HALT
+          </div>
+
+          <div>
+            <span>04</span>
+            Fetch → Decode → Execute, one instruction at a time
+          </div>
+
+        </div>
+
+        ${
+          navigate
+            ? `<div class="terminal-success-response terminal-small-gap">
+                 ✓ Opening CPU Simulator...
+               </div>`
+            : `<div class="terminal-terminal-text terminal-small-gap">
+                 Type <strong>open cpu</strong> to jump to it.
+               </div>`
+        }
+
+      </div>
+    `;
+  };
+
+  const networkContent = (navigate = false): string => {
+    if (navigate) {
+      goTo("/projects/network", 700);
+
+      return `
+        <div class="terminal-success-response">
+          ✓ Opening Network Protocol Simulator...
+        </div>
+      `;
+    }
+
+    return `
+      <div class="terminal-info-block">
+
+        <div class="terminal-response-title">
+          Network Protocol Simulator
+        </div>
+
+        <div class="terminal-terminal-text">
+          Simulates the TCP three-way handshake, packet loss/retransmission,
+          and byte-stream framing.
+        </div>
+
+        <div class="terminal-terminal-text terminal-small-gap">
+          Type <strong>open network</strong> to jump to it.
+        </div>
+
+      </div>
+    `;
+  };
+
+  const expenseSplitterContent = (navigate = false): string => {
+    if (navigate) {
+      goTo("/projects/expense-splitter/", 700);
+
+      return `
+        <div class="terminal-success-response">
+          ✓ Opening Expense Splitter...
+        </div>
+      `;
+    }
+
+    return `
+      <div class="terminal-info-block">
+
+        <div class="terminal-response-title">
+          Expense Splitter
+        </div>
+
+        <div class="terminal-terminal-text">
+          A Flutter app for splitting group expenses and minimizing the
+          transfers needed to settle up.
+        </div>
+
+        <div class="terminal-terminal-text terminal-small-gap">
+          Type <strong>open expense-splitter</strong> to jump to it.
+        </div>
+
+      </div>
+    `;
+  };
+
   const commands: Record<string, TerminalCommand> = {
     help: (): string => `
       <div class="terminal-help">
@@ -901,7 +1161,7 @@ import SkillsList from "../React/SkillsList.tsx";
             </span>
 
             <span class="terminal-command-description">
-              — algorithm visualizer
+              — algorithm visualizer info
             </span>
           </div>
 
@@ -941,7 +1201,7 @@ import SkillsList from "../React/SkillsList.tsx";
             </span>
 
             <span class="terminal-command-description">
-              — network protocol simulator
+              — network simulator info
             </span>
           </div>
 
@@ -951,7 +1211,17 @@ import SkillsList from "../React/SkillsList.tsx";
             </span>
 
             <span class="terminal-command-description">
-              — Flutter expense app
+              — expense splitter info
+            </span>
+          </div>
+
+          <div>
+            <span class="terminal-command-name">
+              open &lt;project&gt;
+            </span>
+
+            <span class="terminal-command-description">
+              — jump to a project's page
             </span>
           </div>
 
@@ -1148,189 +1418,28 @@ import SkillsList from "../React/SkillsList.tsx";
         </div>
 
         <div class="terminal-terminal-text terminal-small-gap">
-          Type any project's name above to preview and open it,
-          or use <strong>View my work</strong> to browse them all.
+          Type any project's name above to preview it, or
+          <strong>open &lt;name&gt;</strong> to jump straight to it.
         </div>
 
       </div>
     `,
 
-    visualizer: (): string => {
-      goTo("/projects/visualizer", 900);
+    // Bare commands: info only, no navigation.
+    visualizer: (): string | Promise<string> => visualizerContent(false),
+    weather: (): string | Promise<string> => weatherContent(false),
+    "movie-ranking": (): string | Promise<string> => movieRankingContent(false),
+    cpu: (): string | Promise<string> => cpuContent(false),
+    network: (): string | Promise<string> => networkContent(false),
+    "expense-splitter": (): string | Promise<string> => expenseSplitterContent(false),
 
-      return `
-        <div class="terminal-info-block">
-
-          <div class="terminal-response-title">
-            Algorithm Visualizer
-          </div>
-
-          <div class="terminal-list">
-
-            <div>
-              <span>01</span>
-              Sorting — Bubble, Selection, Insertion, Merge, Quick Sort
-            </div>
-
-            <div>
-              <span>02</span>
-              Hash table — 8 buckets, separate chaining, live load factor
-            </div>
-
-            <div>
-              <span>03</span>
-              Pathfinding — BFS, Dijkstra, A* on a drawable grid
-            </div>
-
-          </div>
-
-          <div class="terminal-success-response terminal-small-gap">
-            ✓ Opening Algorithm Visualizer...
-          </div>
-
-        </div>
-      `;
-    },
-
-    weather: async (): Promise<string> => {
-      try {
-        const summaries = await Promise.all(
-          WEATHER_LOCATIONS.map(fetchLocationSummary)
-        );
-
-        goTo("/projects/weather", 900);
-
-        return `
-          <div class="terminal-info-block">
-
-            <div class="terminal-response-title">
-              Live weather
-            </div>
-
-            <div class="terminal-list">
-              ${summaries
-                .map(
-                  (summary) => `
-                <div>
-                  <span>•</span>
-                  ${summary.city}: ${summary.temperature}°C, ${summary.description}
-                </div>
-              `
-                )
-                .join("")}
-            </div>
-
-            <div class="terminal-success-response terminal-small-gap">
-              ✓ Opening Weather Dashboard...
-            </div>
-
-          </div>
-        `;
-      } catch {
-        goTo("/projects/weather", 900);
-
-        return `
-          <div class="terminal-error">
-            Live weather is unavailable right now.
-          </div>
-        `;
-      }
-    },
-
-    "movie-ranking": (): string => {
-      goTo("/projects/movie-ranking", 900);
-
-      const top = [...RANKED_MOVIES].sort((a, b) => b.rating - a.rating);
-
-      return `
-        <div class="terminal-info-block">
-
-          <div class="terminal-response-title">
-            Top-rated movies
-          </div>
-
-          <div class="terminal-list">
-            ${top
-              .map(
-                (movie) => `
-              <div>
-                <span>${movie.rating.toFixed(1).replace(/\\.0$/, "")}/10</span>
-                ${escapeHTML(movie.title)}
-              </div>
-            `
-              )
-              .join("")}
-          </div>
-
-          <div class="terminal-success-response terminal-small-gap">
-            ✓ Opening Movie Ranking...
-          </div>
-
-        </div>
-      `;
-    },
-
-    cpu: (): string => {
-      goTo("/projects/Cpu", 900);
-
-      return `
-        <div class="terminal-info-block">
-
-          <div class="terminal-response-title">
-            CPU Simulator
-          </div>
-
-          <div class="terminal-list">
-
-            <div>
-              <span>01</span>
-              8 general-purpose registers (R0–R7)
-            </div>
-
-            <div>
-              <span>02</span>
-              32 addressable memory cells
-            </div>
-
-            <div>
-              <span>03</span>
-              9 instructions: MOV, ADD, SUB, LOAD, STORE, CMP, JMP, JZ, HALT
-            </div>
-
-            <div>
-              <span>04</span>
-              Fetch → Decode → Execute, one instruction at a time
-            </div>
-
-          </div>
-
-          <div class="terminal-success-response terminal-small-gap">
-            ✓ Opening CPU Simulator...
-          </div>
-
-        </div>
-      `;
-    },
-
-    network: (): string => {
-      goTo("/projects/network", 700);
-
-      return `
-        <div class="terminal-success-response">
-          ✓ Opening Network Protocol Simulator...
-        </div>
-      `;
-    },
-
-    "expense-splitter": (): string => {
-      goTo("/projects/expense-splitter/", 700);
-
-      return `
-        <div class="terminal-success-response">
-          ✓ Opening Expense Splitter...
-        </div>
-      `;
-    },
+    // "open <name>": info + navigate.
+    "open visualizer": (): string | Promise<string> => visualizerContent(true),
+    "open weather": (): string | Promise<string> => weatherContent(true),
+    "open movie-ranking": (): string | Promise<string> => movieRankingContent(true),
+    "open cpu": (): string | Promise<string> => cpuContent(true),
+    "open network": (): string | Promise<string> => networkContent(true),
+    "open expense-splitter": (): string | Promise<string> => expenseSplitterContent(true),
 
     contact: (): string => `
       <div class="terminal-info-block">
@@ -1447,6 +1556,20 @@ import SkillsList from "../React/SkillsList.tsx";
     },
   };
 
+  // Project keys "open <x>" can target — used only to give a nicer error
+  // message when someone types "open <something not recognized>".
+  const OPENABLE_TARGETS = [
+    "github",
+    "linkedin",
+    "email",
+    "visualizer",
+    "weather",
+    "movie-ranking",
+    "cpu",
+    "network",
+    "expense-splitter",
+  ];
+
   const executeCommand = (rawCommand: string): void => {
     const command = rawCommand.trim().toLowerCase();
 
@@ -1478,18 +1601,37 @@ import SkillsList from "../React/SkillsList.tsx";
       } else {
         addResponse(result);
       }
-    } else {
+
+      return;
+    }
+
+    if (command.startsWith("open ")) {
+      const target = command.slice(5).trim();
+
       addResponse(`
         <div class="terminal-error">
-          command not found:
-          <span>${escapeHTML(command)}</span>
+          No project matching
+          <span>"${escapeHTML(target)}"</span>
         </div>
 
         <div class="terminal-terminal-text">
-          Type <strong>help</strong> to see available commands.
+          Try: <strong>open ${OPENABLE_TARGETS.join("</strong>, <strong>open ")}</strong>
         </div>
       `);
+
+      return;
     }
+
+    addResponse(`
+      <div class="terminal-error">
+        command not found:
+        <span>${escapeHTML(command)}</span>
+      </div>
+
+      <div class="terminal-terminal-text">
+        Type <strong>help</strong> to see available commands.
+      </div>
+    `);
   };
 
   if (terminalForm && terminalInput) {

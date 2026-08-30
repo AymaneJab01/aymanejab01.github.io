@@ -292,7 +292,13 @@ export default function Terminal() {
     }, 250);
   };
 
-  const showWeatherSummary = async (project?: Project) => {
+  // `navigate` controls whether we jump to the project after showing info.
+  // Bare commands (e.g. "weather") should only display info; only the
+  // "open <name>" flow should navigate.
+  const showWeatherSummary = async (
+    project?: Project,
+    navigate: boolean = false
+  ) => {
     addLines([
       {
         type: "output",
@@ -320,12 +326,12 @@ export default function Terminal() {
       ]);
     }
 
-    if (project) {
+    if (project && navigate) {
       goToProject(project);
     }
   };
 
-  const showTopMovies = (project?: Project) => {
+  const showTopMovies = (project?: Project, navigate: boolean = false) => {
     const top = [...RANKED_MOVIES]
       .sort((a, b) => b.rating - a.rating)
       .slice(0, 5);
@@ -338,7 +344,7 @@ export default function Terminal() {
       })),
     ]);
 
-    if (project) {
+    if (project && navigate) {
       goToProject(project);
     }
   };
@@ -392,11 +398,11 @@ export default function Terminal() {
           { type: "output", content: "  skills             → View technologies and skills" },
           { type: "output", content: "  projects           → List all projects" },
           { type: "output", content: "  open <n|name>      → Jump to a project by number or name" },
-          { type: "output", content: "  visualizer         → Open the Algorithm Visualizer" },
-          { type: "output", content: "  weather            → Show live conditions for 3 cities, then open the dashboard" },
-          { type: "output", content: "  movie-ranking      → Show my top-rated movies, then open the list" },
+          { type: "output", content: "  visualizer         → Show Algorithm Visualizer info" },
+          { type: "output", content: "  weather            → Show live conditions for 3 cities" },
+          { type: "output", content: "  movie-ranking      → Show my top-rated movies" },
           { type: "output", content: "  network            → Open the Network Protocol Simulator" },
-          { type: "output", content: "  cpu                → Show the CPU's specs, then open the simulator" },
+          { type: "output", content: "  cpu                → Show the CPU's specs" },
           { type: "output", content: "  expense-splitter   → Open the Expense Splitter app" },
           { type: "output", content: "  notes              → Open my study notes" },
           { type: "output", content: "  education          → View my computer science background" },
@@ -485,12 +491,12 @@ export default function Terminal() {
         }
 
         if (project.key === "movie-ranking") {
-          showTopMovies(project);
+          showTopMovies(project, true);
           break;
         }
 
         if (project.key === "weather") {
-          void showWeatherSummary(project);
+          void showWeatherSummary(project, true);
           break;
         }
 
@@ -522,50 +528,40 @@ export default function Terminal() {
       }
 
       case "visualizer": {
-        const project = findProject("visualizer");
-
+        // Bare "visualizer" only displays info — use "open visualizer" to navigate.
         addLines([
           { type: "output", content: "Algorithm Visualizer — three interactive references:" },
           { type: "success", content: "  sorting     → Bubble, Selection, Insertion, Merge, Quick Sort" },
           { type: "success", content: "  hash table  → 8 buckets, separate chaining, live load factor" },
           { type: "success", content: "  pathfinding → BFS, Dijkstra, A* on a drawable grid" },
           { type: "info", content: "Supports EN / FR / ES." },
+          { type: "info", content: 'Type "open visualizer" to jump to it.' },
         ]);
-
-        if (project) {
-          goToProject(project);
-        }
-
         break;
       }
 
       case "weather": {
-        const project = findProject("weather");
-        void showWeatherSummary(project);
+        // Bare "weather" only displays live conditions — use "open weather" to navigate.
+        void showWeatherSummary();
         break;
       }
 
       case "movie-ranking": {
-        const project = findProject("movie-ranking");
-        showTopMovies(project);
+        // Bare "movie-ranking" only displays the list — use "open movie-ranking" to navigate.
+        showTopMovies();
         break;
       }
 
       case "cpu": {
-        const project = findProject("cpu");
-
+        // Bare "cpu" only displays specs — use "open cpu" to navigate.
         addLines([
           { type: "output", content: "CPU Simulator — a tiny 8-register machine:" },
           { type: "success", content: "  8 general-purpose registers (R0–R7)" },
           { type: "success", content: "  32 addressable memory cells" },
           { type: "success", content: "  9 instructions: MOV, ADD, SUB, LOAD, STORE, CMP, JMP, JZ, HALT" },
           { type: "success", content: "  Fetch → Decode → Execute, one instruction at a time" },
+          { type: "info", content: 'Type "open cpu" to jump to it.' },
         ]);
-
-        if (project) {
-          goToProject(project);
-        }
-
         break;
       }
 
