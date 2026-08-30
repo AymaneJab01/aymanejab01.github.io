@@ -9,31 +9,37 @@ import Layout from "../../layouts/Layout.astro";
 
     <div class="cpu-shell">
       <aside class="cpu-sidebar">
-        <a href="/home" class="back-link">
+        <a href="/home" class="back-link" data-i18n="backLink">
           <span class="back-arrow">←</span>
-          <span>Back to home</span>
+          <span data-i18n="backLinkText">Back to home</span>
         </a>
 
         <div class="brand">
           <span class="brand-mark"></span>
           <div>
             <div class="brand-name">cpu<span>_</span></div>
-            <div class="brand-sub">architecture / interactive lab</div>
+            <div class="brand-sub" data-i18n="brandSub">architecture / interactive lab</div>
           </div>
         </div>
 
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="fr">FR</button>
+          <button type="button" class="lang-btn" data-lang="es">ES</button>
+        </div>
+
         <nav class="doc-nav" aria-label="CPU simulator sections">
-          <a href="#overview"><span>00</span><b>Overview</b></a>
-          <a href="#simulator"><span>01</span><b>Simulator</b></a>
-          <a href="#architecture"><span>02</span><b>Architecture</b></a>
-          <a href="#instructions"><span>03</span><b>Instruction set</b></a>
-          <a href="#concepts"><span>04</span><b>Key concepts</b></a>
+          <a href="#overview"><span>00</span><b data-i18n="navOverview">Overview</b></a>
+          <a href="#simulator"><span>01</span><b data-i18n="navSimulator">Simulator</b></a>
+          <a href="#architecture"><span>02</span><b data-i18n="navArchitecture">Architecture</b></a>
+          <a href="#instructions"><span>03</span><b data-i18n="navInstructions">Instruction set</b></a>
+          <a href="#concepts"><span>04</span><b data-i18n="navConcepts">Key concepts</b></a>
         </nav>
 
         <div class="sidebar-status">
           <div class="live-row">
             <span class="live-dot"></span>
-            <span>SIMULATOR READY</span>
+            <span data-i18n="simulatorReady">SIMULATOR READY</span>
           </div>
           <div class="tech-row">
             <span>ASTRO</span>
@@ -49,15 +55,15 @@ import Layout from "../../layouts/Layout.astro";
             <span class="status-dot"></span>
             <span>PROJECT 06</span>
             <span class="separator">/</span>
-            <span>COMPUTER ARCHITECTURE</span>
+            <span data-i18n="eyebrowCategory">COMPUTER ARCHITECTURE</span>
           </div>
 
-          <h1>
+          <h1 data-i18n-html="heroTitle">
             Fetch. Decode.
             <span>Execute.</span>
           </h1>
 
-          <p class="hero-description">
+          <p class="hero-description" data-i18n="heroDesc">
             A tiny 8-register CPU you can program directly in the browser.
             Write instructions, assemble them, then watch the program counter,
             registers, memory and fetch-decode-execute cycle change in real time.
@@ -66,19 +72,19 @@ import Layout from "../../layouts/Layout.astro";
           <div class="hero-stats">
             <div>
               <strong>8</strong>
-              <span>REGISTERS</span>
+              <span data-i18n="statRegisters">REGISTERS</span>
             </div>
             <div>
               <strong>32</strong>
-              <span>MEMORY CELLS</span>
+              <span data-i18n="statMemoryCells">MEMORY CELLS</span>
             </div>
             <div>
               <strong>9</strong>
-              <span>INSTRUCTIONS</span>
+              <span data-i18n="statInstructions">INSTRUCTIONS</span>
             </div>
             <div>
               <strong>3</strong>
-              <span>CPU STAGES</span>
+              <span data-i18n="statCpuStages">CPU STAGES</span>
             </div>
           </div>
         </header>
@@ -87,9 +93,9 @@ import Layout from "../../layouts/Layout.astro";
           <div class="section-heading">
             <div class="section-number">01</div>
             <div>
-              <div class="section-label">LIVE CPU SIMULATOR</div>
-              <h2>Build a program. Run the machine.</h2>
-              <p>
+              <div class="section-label" data-i18n="simSectionLabel">LIVE CPU SIMULATOR</div>
+              <h2 data-i18n="simSectionH2">Build a program. Run the machine.</h2>
+              <p data-i18n="simSectionDesc">
                 Edit the assembly-like program, assemble it, then step through
                 each instruction or let the CPU run automatically.
               </p>
@@ -103,8 +109,8 @@ import Layout from "../../layouts/Layout.astro";
                 <span class="terminal-dot"></span>
                 <span class="terminal-dot"></span>
               </div>
-              <span class="topbar-title">CPU / EMULATOR</span>
-              <span class="topbar-state"><i></i> LIVE</span>
+              <span class="topbar-title" data-i18n="topbarTitle">CPU / EMULATOR</span>
+              <span class="topbar-state"><i></i> <span data-i18n="topbarState">LIVE</span></span>
             </div>
 
             <div class="cpu-layout">
@@ -112,9 +118,9 @@ import Layout from "../../layouts/Layout.astro";
                 <div class="panel-heading">
                   <div>
                     <span class="panel-index">A</span>
-                    <span class="panel-title">Program</span>
+                    <span class="panel-title" data-i18n="panelAProgram">Program</span>
                   </div>
-                  <span class="panel-meta">ASSEMBLY</span>
+                  <span class="panel-meta" data-i18n="panelMetaAssembly">ASSEMBLY</span>
                 </div>
 
                 <textarea
@@ -126,16 +132,16 @@ import Layout from "../../layouts/Layout.astro";
 
                 <div class="editor-footer">
                   <select id="cpu-example" class="cpu-select" aria-label="CPU example">
-                    <option value="sum">Sum 1..5</option>
-                    <option value="loop">Countdown loop</option>
-                    <option value="fib">Fibonacci (first 6)</option>
+                    <option value="sum" data-i18n="exampleSum">Sum 1..5</option>
+                    <option value="loop" data-i18n="exampleLoop">Countdown loop</option>
+                    <option value="fib" data-i18n="exampleFib">Fibonacci (first 6)</option>
                   </select>
-                  <button id="cpu-load-example" class="cpu-btn">Load example</button>
+                  <button id="cpu-load-example" class="cpu-btn" data-i18n="btnLoadExample">Load example</button>
                 </div>
 
                 <div class="instruction-hint">
-                  <span>TIP</span>
-                  Use <code>;</code> for comments and labels such as <code>LOOP:</code>.
+                  <span data-i18n="hintTip">TIP</span>
+                  <span data-i18n-html="hintText">Use <code>;</code> for comments and labels such as <code>LOOP:</code>.</span>
                 </div>
               </div>
 
@@ -143,34 +149,34 @@ import Layout from "../../layouts/Layout.astro";
                 <div class="panel-heading">
                   <div>
                     <span class="panel-index">B</span>
-                    <span class="panel-title">Processor state</span>
+                    <span class="panel-title" data-i18n="panelBState">Processor state</span>
                   </div>
-                  <span class="panel-meta">8 × GPR</span>
+                  <span class="panel-meta" data-i18n="panelMetaGpr">8 × GPR</span>
                 </div>
 
                 <div id="cpu-registers" class="cpu-registers"></div>
 
                 <div class="cycle-block">
-                  <div class="mini-label">FETCH / DECODE / EXECUTE</div>
+                  <div class="mini-label" data-i18n="cycleLabel">FETCH / DECODE / EXECUTE</div>
                   <div id="cpu-cycle" class="cpu-cycle">
-                    <span class="cpu-cycle-step" data-step="fetch">Fetch</span>
+                    <span class="cpu-cycle-step" data-step="fetch" data-i18n="stepFetch">Fetch</span>
                     <span class="cpu-cycle-arrow">→</span>
-                    <span class="cpu-cycle-step" data-step="decode">Decode</span>
+                    <span class="cpu-cycle-step" data-step="decode" data-i18n="stepDecode">Decode</span>
                     <span class="cpu-cycle-arrow">→</span>
-                    <span class="cpu-cycle-step" data-step="execute">Execute</span>
+                    <span class="cpu-cycle-step" data-step="execute" data-i18n="stepExecute">Execute</span>
                   </div>
                 </div>
 
                 <div class="control-actions">
-                  <button id="cpu-assemble" class="cpu-btn cpu-btn-primary">Assemble</button>
-                  <button id="cpu-step" class="cpu-btn" disabled>Step</button>
-                  <button id="cpu-run" class="cpu-btn" disabled>Run</button>
-                  <button id="cpu-reset" class="cpu-btn">Reset</button>
+                  <button id="cpu-assemble" class="cpu-btn cpu-btn-primary" data-i18n="btnAssemble">Assemble</button>
+                  <button id="cpu-step" class="cpu-btn" disabled data-i18n="btnStep">Step</button>
+                  <button id="cpu-run" class="cpu-btn" disabled data-i18n="btnRun">Run</button>
+                  <button id="cpu-reset" class="cpu-btn" data-i18n="btnReset">Reset</button>
                 </div>
 
                 <div class="machine-status">
-                  <div><span>PROGRAM COUNTER</span><strong id="cpu-pc">0</strong></div>
-                  <div><span>STATUS</span><strong id="cpu-status">Idle</strong></div>
+                  <div><span data-i18n="statusPC">PROGRAM COUNTER</span><strong id="cpu-pc">0</strong></div>
+                  <div><span data-i18n="statusLabel">STATUS</span><strong id="cpu-status">Idle</strong></div>
                 </div>
               </div>
             </div>
@@ -178,37 +184,37 @@ import Layout from "../../layouts/Layout.astro";
             <div class="execution-monitor">
               <div class="execution-main">
                 <div class="execution-label">
-                  <span>LIVE EXECUTION</span>
+                  <span data-i18n="liveExecution">LIVE EXECUTION</span>
                   <span id="cpu-step-count">CYCLE 0</span>
                 </div>
                 <div class="execution-flow">
                   <div class="execution-stage" data-execution-stage="fetch">
                     <span class="execution-stage-number">01</span>
-                    <strong>FETCH</strong>
-                    <small>Read instruction</small>
+                    <strong data-i18n="execStageFetchTitle">FETCH</strong>
+                    <small data-i18n="execStageFetchDesc">Read instruction</small>
                   </div>
                   <div class="execution-arrow">→</div>
                   <div class="execution-stage" data-execution-stage="decode">
                     <span class="execution-stage-number">02</span>
-                    <strong>DECODE</strong>
-                    <small>Interpret opcode</small>
+                    <strong data-i18n="execStageDecodeTitle">DECODE</strong>
+                    <small data-i18n="execStageDecodeDesc">Interpret opcode</small>
                   </div>
                   <div class="execution-arrow">→</div>
                   <div class="execution-stage" data-execution-stage="execute">
                     <span class="execution-stage-number">03</span>
-                    <strong>EXECUTE</strong>
-                    <small>Update CPU state</small>
+                    <strong data-i18n="execStageExecuteTitle">EXECUTE</strong>
+                    <small data-i18n="execStageExecuteDesc">Update CPU state</small>
                   </div>
                 </div>
               </div>
 
               <div class="current-instruction">
                 <div class="current-instruction-head">
-                  <span>CURRENT INSTRUCTION</span>
+                  <span data-i18n="currentInstructionLabel">CURRENT INSTRUCTION</span>
                   <span id="cpu-current-address">PC 00</span>
                 </div>
-                <code id="cpu-current-instruction">Waiting for program...</code>
-                <div class="instruction-effect" id="cpu-instruction-effect">
+                <code id="cpu-current-instruction" data-i18n="waitingForProgram">Waiting for program...</code>
+                <div class="instruction-effect" id="cpu-instruction-effect" data-i18n="instructionEffectDefault">
                   Assemble a program, then press Step to see exactly what changes.
                 </div>
               </div>
@@ -218,12 +224,12 @@ import Layout from "../../layouts/Layout.astro";
               <div class="panel-heading">
                 <div>
                   <span class="panel-index">E</span>
-                  <span class="panel-title">Instruction timeline</span>
+                  <span class="panel-title" data-i18n="timelineTitle">Instruction timeline</span>
                 </div>
-                <span class="panel-meta">PC TRACKING</span>
+                <span class="panel-meta" data-i18n="timelineMetaPcTracking">PC TRACKING</span>
               </div>
               <div id="cpu-timeline" class="cpu-timeline">
-                <div class="timeline-empty">No instructions loaded.</div>
+                <div class="timeline-empty" data-i18n="timelineEmpty">No instructions loaded.</div>
               </div>
             </div>
 
@@ -231,9 +237,9 @@ import Layout from "../../layouts/Layout.astro";
               <div class="panel-heading">
                 <div>
                   <span class="panel-index">C</span>
-                  <span class="panel-title">Memory</span>
+                  <span class="panel-title" data-i18n="memoryTitle">Memory</span>
                 </div>
-                <span class="panel-meta">32 CELLS</span>
+                <span class="panel-meta" data-i18n="memoryMeta">32 CELLS</span>
               </div>
               <div id="cpu-memory" class="cpu-memory"></div>
             </div>
@@ -242,9 +248,9 @@ import Layout from "../../layouts/Layout.astro";
               <div class="panel-heading">
                 <div>
                   <span class="panel-index">D</span>
-                  <span class="panel-title">Execution console</span>
+                  <span class="panel-title" data-i18n="consoleTitle">Execution console</span>
                 </div>
-                <span class="panel-meta">TRACE</span>
+                <span class="panel-meta" data-i18n="consoleMeta">TRACE</span>
               </div>
               <div id="cpu-console" class="cpu-console"></div>
             </div>
@@ -255,9 +261,9 @@ import Layout from "../../layouts/Layout.astro";
           <div class="section-heading">
             <div class="section-number">02</div>
             <div>
-              <div class="section-label">ARCHITECTURE</div>
-              <h2>What is inside this CPU?</h2>
-              <p>
+              <div class="section-label" data-i18n="archSectionLabel">ARCHITECTURE</div>
+              <h2 data-i18n="archSectionH2">What is inside this CPU?</h2>
+              <p data-i18n="archSectionDesc">
                 The simulator reduces a processor to the essential pieces:
                 registers, memory, a program counter, flags and an instruction cycle.
               </p>
@@ -268,8 +274,8 @@ import Layout from "../../layouts/Layout.astro";
             <article class="architecture-card featured">
               <span class="card-number">01</span>
               <div class="architecture-icon">REG</div>
-              <h3>Registers</h3>
-              <p>
+              <h3 data-i18n="archRegTitle">Registers</h3>
+              <p data-i18n="archRegDesc">
                 Eight general-purpose registers, R0 through R7, provide the
                 fastest storage available to the simulated CPU.
               </p>
@@ -279,19 +285,19 @@ import Layout from "../../layouts/Layout.astro";
             <article class="architecture-card">
               <span class="card-number">02</span>
               <div class="architecture-icon">MEM</div>
-              <h3>Memory</h3>
-              <p>
+              <h3 data-i18n="archMemTitle">Memory</h3>
+              <p data-i18n="archMemDesc">
                 Thirty-two addressable memory cells hold values that programs
                 can read with LOAD and write with STORE.
               </p>
-              <div class="card-code">ADDRESS 00 — 31</div>
+              <div class="card-code" data-i18n="archMemCode">ADDRESS 00 — 31</div>
             </article>
 
             <article class="architecture-card">
               <span class="card-number">03</span>
               <div class="architecture-icon">PC</div>
-              <h3>Program counter</h3>
-              <p>
+              <h3 data-i18n="archPcTitle">Program counter</h3>
+              <p data-i18n="archPcDesc">
                 The PC identifies the next instruction. Sequential execution
                 increments it, while jumps replace it with a label target.
               </p>
@@ -301,8 +307,8 @@ import Layout from "../../layouts/Layout.astro";
             <article class="architecture-card">
               <span class="card-number">04</span>
               <div class="architecture-icon">ZF</div>
-              <h3>Zero flag</h3>
-              <p>
+              <h3 data-i18n="archZfTitle">Zero flag</h3>
+              <p data-i18n="archZfDesc">
                 CMP updates the zero flag when two operands are equal. JZ uses
                 that flag to decide whether a branch should happen.
               </p>
@@ -311,24 +317,24 @@ import Layout from "../../layouts/Layout.astro";
           </div>
 
           <div class="pipeline">
-            <div class="pipeline-label">INSTRUCTION PIPELINE — CONCEPTUAL VIEW</div>
+            <div class="pipeline-label" data-i18n="pipelineLabel">INSTRUCTION PIPELINE — CONCEPTUAL VIEW</div>
             <div class="pipeline-track">
               <div class="pipeline-step">
                 <span>01</span>
-                <strong>FETCH</strong>
-                <small>Read instruction at PC</small>
+                <strong data-i18n="execStageFetchTitle">FETCH</strong>
+                <small data-i18n="pipeFetchDesc">Read instruction at PC</small>
               </div>
               <div class="pipeline-connector"></div>
               <div class="pipeline-step">
                 <span>02</span>
-                <strong>DECODE</strong>
-                <small>Identify operation + operands</small>
+                <strong data-i18n="execStageDecodeTitle">DECODE</strong>
+                <small data-i18n="pipeDecodeDesc">Identify operation + operands</small>
               </div>
               <div class="pipeline-connector"></div>
               <div class="pipeline-step active">
                 <span>03</span>
-                <strong>EXECUTE</strong>
-                <small>Change CPU state</small>
+                <strong data-i18n="execStageExecuteTitle">EXECUTE</strong>
+                <small data-i18n="pipeExecuteDesc">Change CPU state</small>
               </div>
             </div>
           </div>
@@ -338,9 +344,9 @@ import Layout from "../../layouts/Layout.astro";
           <div class="section-heading">
             <div class="section-number">03</div>
             <div>
-              <div class="section-label">INSTRUCTION SET</div>
-              <h2>The CPU's vocabulary.</h2>
-              <p>
+              <div class="section-label" data-i18n="instrSectionLabel">INSTRUCTION SET</div>
+              <h2 data-i18n="instrSectionH2">The CPU's vocabulary.</h2>
+              <p data-i18n="instrSectionDesc">
                 These nine operations are enough to demonstrate arithmetic,
                 memory access, comparisons, control flow and termination.
               </p>
@@ -349,36 +355,36 @@ import Layout from "../../layouts/Layout.astro";
 
           <div class="instruction-table">
             <div class="instruction-row instruction-head">
-              <span>OPCODE</span>
-              <span>FORM</span>
-              <span>WHAT IT DOES</span>
+              <span data-i18n="instrHeadOpcode">OPCODE</span>
+              <span data-i18n="instrHeadForm">FORM</span>
+              <span data-i18n="instrHeadWhat">WHAT IT DOES</span>
             </div>
             <div class="instruction-row">
-              <code>MOV</code><span>R0, value</span><p>Copies an immediate value or another register into the destination.</p>
+              <code>MOV</code><span>R0, value</span><p data-i18n="instrMovDesc">Copies an immediate value or another register into the destination.</p>
             </div>
             <div class="instruction-row">
-              <code>ADD</code><span>R0, value</span><p>Adds the operand to the destination register.</p>
+              <code>ADD</code><span>R0, value</span><p data-i18n="instrAddDesc">Adds the operand to the destination register.</p>
             </div>
             <div class="instruction-row">
-              <code>SUB</code><span>R0, value</span><p>Subtracts the operand from the destination register.</p>
+              <code>SUB</code><span>R0, value</span><p data-i18n="instrSubDesc">Subtracts the operand from the destination register.</p>
             </div>
             <div class="instruction-row">
-              <code>LOAD</code><span>R0, addr</span><p>Reads a value from memory into a register.</p>
+              <code>LOAD</code><span>R0, addr</span><p data-i18n="instrLoadDesc">Reads a value from memory into a register.</p>
             </div>
             <div class="instruction-row">
-              <code>STORE</code><span>value, addr</span><p>Writes a value into one of the 32 memory cells.</p>
+              <code>STORE</code><span>value, addr</span><p data-i18n="instrStoreDesc">Writes a value into one of the 32 memory cells.</p>
             </div>
             <div class="instruction-row">
-              <code>CMP</code><span>R0, value</span><p>Compares two operands and updates the zero flag.</p>
+              <code>CMP</code><span>R0, value</span><p data-i18n="instrCmpDesc">Compares two operands and updates the zero flag.</p>
             </div>
             <div class="instruction-row">
-              <code>JMP</code><span>LABEL</span><p>Unconditionally changes the program counter.</p>
+              <code>JMP</code><span>LABEL</span><p data-i18n="instrJmpDesc">Unconditionally changes the program counter.</p>
             </div>
             <div class="instruction-row">
-              <code>JZ</code><span>LABEL</span><p>Jumps only when the zero flag is set.</p>
+              <code>JZ</code><span>LABEL</span><p data-i18n="instrJzDesc">Jumps only when the zero flag is set.</p>
             </div>
             <div class="instruction-row">
-              <code>HALT</code><span>—</span><p>Stops execution and leaves the final machine state visible.</p>
+              <code>HALT</code><span>—</span><p data-i18n="instrHaltDesc">Stops execution and leaves the final machine state visible.</p>
             </div>
           </div>
         </section>
@@ -387,9 +393,9 @@ import Layout from "../../layouts/Layout.astro";
           <div class="section-heading">
             <div class="section-number">04</div>
             <div>
-              <div class="section-label">REFERENCE</div>
-              <h2>Key CPU concepts, explained.</h2>
-              <p>
+              <div class="section-label" data-i18n="conceptsSectionLabel">REFERENCE</div>
+              <h2 data-i18n="conceptsSectionH2">Key CPU concepts, explained.</h2>
+              <p data-i18n="conceptsSectionDesc">
                 Use these notes alongside the simulator to connect the visual
                 state changes to the underlying computer architecture ideas.
               </p>
@@ -397,15 +403,15 @@ import Layout from "../../layouts/Layout.astro";
           </div>
 
           <div class="doc-group">
-            <div class="doc-group-title"><span>01</span> The instruction cycle</div>
+            <div class="doc-group-title"><span>01</span> <span data-i18n="docGroup1Title">The instruction cycle</span></div>
 
             <details class="doc-item" open>
               <summary>
-                <span class="doc-item-name">Fetch → Decode → Execute</span>
-                <span class="badge">core concept</span>
+                <span class="doc-item-name" data-i18n="docFetchName">Fetch → Decode → Execute</span>
+                <span class="badge" data-i18n="badgeCoreConcept">core concept</span>
                 <span class="doc-toggle" aria-hidden="true"></span>
               </summary>
-              <div class="doc-body">
+              <div class="doc-body" data-i18n-html="docFetchBody">
                 <p>
                   The CPU repeatedly obtains the next instruction, interprets
                   what that instruction means, and performs the requested
@@ -422,11 +428,11 @@ import Layout from "../../layouts/Layout.astro";
 
             <details class="doc-item">
               <summary>
-                <span class="doc-item-name">Program counter</span>
+                <span class="doc-item-name" data-i18n="docPcName">Program counter</span>
                 <span class="badge">PC</span>
                 <span class="doc-toggle" aria-hidden="true"></span>
               </summary>
-              <div class="doc-body">
+              <div class="doc-body" data-i18n-html="docPcBody">
                 <p>
                   The program counter stores the address or index of the next
                   instruction to execute. Normally it advances sequentially;
@@ -438,11 +444,11 @@ import Layout from "../../layouts/Layout.astro";
 
             <details class="doc-item">
               <summary>
-                <span class="doc-item-name">Registers vs memory</span>
-                <span class="badge">storage</span>
+                <span class="doc-item-name" data-i18n="docRegMemName">Registers vs memory</span>
+                <span class="badge" data-i18n="badgeStorage">storage</span>
                 <span class="doc-toggle" aria-hidden="true"></span>
               </summary>
-              <div class="doc-body">
+              <div class="doc-body" data-i18n-html="docRegMemBody">
                 <p>
                   Registers are small, directly accessible storage locations
                   inside the CPU. Memory is a larger addressable storage area.
@@ -453,15 +459,15 @@ import Layout from "../../layouts/Layout.astro";
           </div>
 
           <div class="doc-group">
-            <div class="doc-group-title"><span>02</span> Control flow & flags</div>
+            <div class="doc-group-title"><span>02</span> <span data-i18n="docGroup2Title">Control flow &amp; flags</span></div>
 
             <details class="doc-item">
               <summary>
-                <span class="doc-item-name">CMP and the zero flag</span>
-                <span class="badge">branching</span>
+                <span class="doc-item-name" data-i18n="docCmpName">CMP and the zero flag</span>
+                <span class="badge" data-i18n="badgeBranching">branching</span>
                 <span class="doc-toggle" aria-hidden="true"></span>
               </summary>
-              <div class="doc-body">
+              <div class="doc-body" data-i18n-html="docCmpBody">
                 <p>
                   CMP does not need to store a result in a general-purpose
                   register. Instead, it records whether the two operands are
@@ -474,11 +480,11 @@ import Layout from "../../layouts/Layout.astro";
 
             <details class="doc-item">
               <summary>
-                <span class="doc-item-name">Loops</span>
-                <span class="badge">control flow</span>
+                <span class="doc-item-name" data-i18n="docLoopsName">Loops</span>
+                <span class="badge" data-i18n="badgeControlFlow">control flow</span>
                 <span class="doc-toggle" aria-hidden="true"></span>
               </summary>
-              <div class="doc-body">
+              <div class="doc-body" data-i18n-html="docLoopsBody">
                 <p>
                   A loop is created by combining a label, a state-changing
                   instruction, a comparison and a conditional or unconditional
@@ -494,15 +500,15 @@ import Layout from "../../layouts/Layout.astro";
           </div>
 
           <div class="doc-group">
-            <div class="doc-group-title"><span>03</span> From simulator to real CPU</div>
+            <div class="doc-group-title"><span>03</span> <span data-i18n="docGroup3Title">From simulator to real CPU</span></div>
 
             <details class="doc-item">
               <summary>
-                <span class="doc-item-name">What this model leaves out</span>
-                <span class="badge">perspective</span>
+                <span class="doc-item-name" data-i18n="docLeavesOutName">What this model leaves out</span>
+                <span class="badge" data-i18n="badgePerspective">perspective</span>
                 <span class="doc-toggle" aria-hidden="true"></span>
               </summary>
-              <div class="doc-body">
+              <div class="doc-body" data-i18n-html="docLeavesOutBody">
                 <p>
                   This is intentionally a teaching model. A real processor adds
                   many more details: instruction encoding, control logic,
@@ -520,11 +526,11 @@ import Layout from "../../layouts/Layout.astro";
 
             <details class="doc-item">
               <summary>
-                <span class="doc-item-name">Why assembly matters</span>
-                <span class="badge">low level</span>
+                <span class="doc-item-name" data-i18n="docAssemblyName">Why assembly matters</span>
+                <span class="badge" data-i18n="badgeLowLevel">low level</span>
                 <span class="doc-toggle" aria-hidden="true"></span>
               </summary>
-              <div class="doc-body">
+              <div class="doc-body" data-i18n-html="docAssemblyBody">
                 <p>
                   Assembly exposes operations close to the processor's
                   instruction model. Instead of expressing a high-level loop
@@ -537,8 +543,8 @@ import Layout from "../../layouts/Layout.astro";
         </section>
 
         <footer class="page-footer">
-          <span>CPU SIMULATOR · COMPUTER ARCHITECTURE</span>
-          <a href="/home">← Home</a>
+          <span data-i18n="footerText">CPU SIMULATOR · COMPUTER ARCHITECTURE</span>
+          <a href="/home" data-i18n="footerHome">← Home</a>
         </footer>
       </div>
     </div>
@@ -660,6 +666,47 @@ import Layout from "../../layouts/Layout.astro";
     color: var(--faint);
     font-size: .58rem;
     letter-spacing: .05em;
+  }
+
+  /* -- Language switcher --------------------------------------------- */
+
+  .lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    width: fit-content;
+
+    padding: 3px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.22);
+  }
+
+  .lang-btn {
+    min-width: 34px;
+    padding: 0.32rem 0.6rem;
+    border: none;
+    border-radius: 999px;
+
+    color: var(--faint);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
+
+    background: transparent;
+    cursor: pointer;
+
+    transition: color 180ms ease, background 180ms ease;
+  }
+
+  .lang-btn:hover {
+    color: var(--white);
+  }
+
+  .lang-btn.active {
+    color: var(--bg);
+    background: var(--sec);
+    font-weight: 600;
   }
 
   .doc-nav { display: flex; flex-direction: column; gap: .18rem; }
@@ -1466,6 +1513,327 @@ function sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
+  /* ================================================================= */
+  /* I18N — translation dictionary + helpers                            */
+  /* ================================================================= */
+
+  type LangCode = "en" | "fr" | "es";
+
+  const LANG_STORAGE_KEY = "cpuSim.lang";
+
+  const STATIC_TEXT: Record<string, Record<LangCode, string>> = {
+    backLinkText: { en: "Back to home", fr: "Retour à l'accueil", es: "Volver al inicio" },
+    brandSub: { en: "architecture / interactive lab", fr: "architecture / labo interactif", es: "arquitectura / laboratorio interactivo" },
+    navOverview: { en: "Overview", fr: "Aperçu", es: "Resumen" },
+    navSimulator: { en: "Simulator", fr: "Simulateur", es: "Simulador" },
+    navArchitecture: { en: "Architecture", fr: "Architecture", es: "Arquitectura" },
+    navInstructions: { en: "Instruction set", fr: "Jeu d'instructions", es: "Conjunto de instrucciones" },
+    navConcepts: { en: "Key concepts", fr: "Concepts clés", es: "Conceptos clave" },
+    simulatorReady: { en: "SIMULATOR READY", fr: "SIMULATEUR PRÊT", es: "SIMULADOR LISTO" },
+
+    eyebrowCategory: { en: "COMPUTER ARCHITECTURE", fr: "ARCHITECTURE DES ORDINATEURS", es: "ARQUITECTURA DE COMPUTADORAS" },
+    heroDesc: {
+      en: "A tiny 8-register CPU you can program directly in the browser. Write instructions, assemble them, then watch the program counter, registers, memory and fetch-decode-execute cycle change in real time.",
+      fr: "Un minuscule CPU à 8 registres que vous pouvez programmer directement dans le navigateur. Écrivez des instructions, assemblez-les, puis observez le compteur ordinal, les registres, la mémoire et le cycle recherche-décodage-exécution changer en temps réel.",
+      es: "Una diminuta CPU de 8 registros que puedes programar directamente en el navegador. Escribe instrucciones, ensámblalas y observa cómo cambian en tiempo real el contador de programa, los registros, la memoria y el ciclo de búsqueda-decodificación-ejecución.",
+    },
+    statRegisters: { en: "REGISTERS", fr: "REGISTRES", es: "REGISTROS" },
+    statMemoryCells: { en: "MEMORY CELLS", fr: "CELLULES MÉMOIRE", es: "CELDAS DE MEMORIA" },
+    statInstructions: { en: "INSTRUCTIONS", fr: "INSTRUCTIONS", es: "INSTRUCCIONES" },
+    statCpuStages: { en: "CPU STAGES", fr: "ÉTAPES DU CPU", es: "ETAPAS DE LA CPU" },
+
+    simSectionLabel: { en: "LIVE CPU SIMULATOR", fr: "SIMULATEUR CPU EN DIRECT", es: "SIMULADOR DE CPU EN VIVO" },
+    simSectionH2: { en: "Build a program. Run the machine.", fr: "Créez un programme. Lancez la machine.", es: "Crea un programa. Ejecuta la máquina." },
+    simSectionDesc: {
+      en: "Edit the assembly-like program, assemble it, then step through each instruction or let the CPU run automatically.",
+      fr: "Modifiez le programme de type assembleur, assemblez-le, puis parcourez chaque instruction ou laissez le CPU s'exécuter automatiquement.",
+      es: "Edita el programa tipo ensamblador, ensámblalo y luego recorre cada instrucción o deja que la CPU se ejecute automáticamente.",
+    },
+    topbarTitle: { en: "CPU / EMULATOR", fr: "CPU / ÉMULATEUR", es: "CPU / EMULADOR" },
+    topbarState: { en: "LIVE", fr: "EN DIRECT", es: "EN VIVO" },
+    panelAProgram: { en: "Program", fr: "Programme", es: "Programa" },
+    panelMetaAssembly: { en: "ASSEMBLY", fr: "ASSEMBLEUR", es: "ENSAMBLADOR" },
+    exampleSum: { en: "Sum 1..5", fr: "Somme 1..5", es: "Suma 1..5" },
+    exampleLoop: { en: "Countdown loop", fr: "Boucle de compte à rebours", es: "Bucle de cuenta regresiva" },
+    exampleFib: { en: "Fibonacci (first 6)", fr: "Fibonacci (6 premiers)", es: "Fibonacci (los primeros 6)" },
+    btnLoadExample: { en: "Load example", fr: "Charger l'exemple", es: "Cargar ejemplo" },
+    hintTip: { en: "TIP", fr: "ASTUCE", es: "CONSEJO" },
+    panelBState: { en: "Processor state", fr: "État du processeur", es: "Estado del procesador" },
+    panelMetaGpr: { en: "8 × GPR", fr: "8 × GPR", es: "8 × GPR" },
+    cycleLabel: { en: "FETCH / DECODE / EXECUTE", fr: "RECHERCHE / DÉCODAGE / EXÉCUTION", es: "BÚSQUEDA / DECODIFICACIÓN / EJECUCIÓN" },
+    stepFetch: { en: "Fetch", fr: "Recherche", es: "Búsqueda" },
+    stepDecode: { en: "Decode", fr: "Décodage", es: "Decodificación" },
+    stepExecute: { en: "Execute", fr: "Exécution", es: "Ejecución" },
+    btnAssemble: { en: "Assemble", fr: "Assembler", es: "Ensamblar" },
+    btnStep: { en: "Step", fr: "Pas à pas", es: "Paso" },
+    btnRun: { en: "Run", fr: "Exécuter", es: "Ejecutar" },
+    btnReset: { en: "Reset", fr: "Réinitialiser", es: "Reiniciar" },
+    statusPC: { en: "PROGRAM COUNTER", fr: "COMPTEUR ORDINAL", es: "CONTADOR DE PROGRAMA" },
+    statusLabel: { en: "STATUS", fr: "STATUT", es: "ESTADO" },
+
+    liveExecution: { en: "LIVE EXECUTION", fr: "EXÉCUTION EN DIRECT", es: "EJECUCIÓN EN VIVO" },
+    execStageFetchTitle: { en: "FETCH", fr: "RECHERCHE", es: "BÚSQUEDA" },
+    execStageFetchDesc: { en: "Read instruction", fr: "Lire l'instruction", es: "Leer instrucción" },
+    execStageDecodeTitle: { en: "DECODE", fr: "DÉCODAGE", es: "DECODIFICACIÓN" },
+    execStageDecodeDesc: { en: "Interpret opcode", fr: "Interpréter le code opération", es: "Interpretar el código de operación" },
+    execStageExecuteTitle: { en: "EXECUTE", fr: "EXÉCUTION", es: "EJECUCIÓN" },
+    execStageExecuteDesc: { en: "Update CPU state", fr: "Mettre à jour l'état du CPU", es: "Actualizar el estado de la CPU" },
+    currentInstructionLabel: { en: "CURRENT INSTRUCTION", fr: "INSTRUCTION ACTUELLE", es: "INSTRUCCIÓN ACTUAL" },
+    waitingForProgram: { en: "Waiting for program...", fr: "En attente du programme...", es: "Esperando el programa..." },
+    instructionEffectDefault: {
+      en: "Assemble a program, then press Step to see exactly what changes.",
+      fr: "Assemblez un programme, puis appuyez sur Pas à pas pour voir exactement ce qui change.",
+      es: "Ensambla un programa y luego pulsa Paso para ver exactamente qué cambia.",
+    },
+    timelineTitle: { en: "Instruction timeline", fr: "Chronologie des instructions", es: "Cronología de instrucciones" },
+    timelineMetaPcTracking: { en: "PC TRACKING", fr: "SUIVI DU PC", es: "SEGUIMIENTO DEL PC" },
+    timelineEmpty: { en: "No instructions loaded.", fr: "Aucune instruction chargée.", es: "No hay instrucciones cargadas." },
+    memoryTitle: { en: "Memory", fr: "Mémoire", es: "Memoria" },
+    memoryMeta: { en: "32 CELLS", fr: "32 CELLULES", es: "32 CELDAS" },
+    consoleTitle: { en: "Execution console", fr: "Console d'exécution", es: "Consola de ejecución" },
+    consoleMeta: { en: "TRACE", fr: "TRACE", es: "TRAZA" },
+
+    archSectionLabel: { en: "ARCHITECTURE", fr: "ARCHITECTURE", es: "ARQUITECTURA" },
+    archSectionH2: { en: "What is inside this CPU?", fr: "Que contient ce CPU ?", es: "¿Qué hay dentro de esta CPU?" },
+    archSectionDesc: {
+      en: "The simulator reduces a processor to the essential pieces: registers, memory, a program counter, flags and an instruction cycle.",
+      fr: "Le simulateur réduit un processeur à ses éléments essentiels : registres, mémoire, compteur ordinal, drapeaux et cycle d'instruction.",
+      es: "El simulador reduce un procesador a sus piezas esenciales: registros, memoria, un contador de programa, indicadores y un ciclo de instrucción.",
+    },
+    archRegTitle: { en: "Registers", fr: "Registres", es: "Registros" },
+    archRegDesc: {
+      en: "Eight general-purpose registers, R0 through R7, provide the fastest storage available to the simulated CPU.",
+      fr: "Huit registres à usage général, R0 à R7, offrent le stockage le plus rapide disponible pour le CPU simulé.",
+      es: "Ocho registros de propósito general, de R0 a R7, ofrecen el almacenamiento más rápido disponible para la CPU simulada.",
+    },
+    archMemTitle: { en: "Memory", fr: "Mémoire", es: "Memoria" },
+    archMemDesc: {
+      en: "Thirty-two addressable memory cells hold values that programs can read with LOAD and write with STORE.",
+      fr: "Trente-deux cellules de mémoire adressables contiennent des valeurs que les programmes peuvent lire avec LOAD et écrire avec STORE.",
+      es: "Treinta y dos celdas de memoria direccionables contienen valores que los programas pueden leer con LOAD y escribir con STORE.",
+    },
+    archMemCode: { en: "ADDRESS 00 — 31", fr: "ADRESSE 00 — 31", es: "DIRECCIÓN 00 — 31" },
+    archPcTitle: { en: "Program counter", fr: "Compteur ordinal", es: "Contador de programa" },
+    archPcDesc: {
+      en: "The PC identifies the next instruction. Sequential execution increments it, while jumps replace it with a label target.",
+      fr: "Le PC identifie la prochaine instruction. L'exécution séquentielle l'incrémente, tandis que les sauts le remplacent par la cible d'une étiquette.",
+      es: "El PC identifica la siguiente instrucción. La ejecución secuencial lo incrementa, mientras que los saltos lo reemplazan con el destino de una etiqueta.",
+    },
+    archZfTitle: { en: "Zero flag", fr: "Drapeau zéro", es: "Indicador cero" },
+    archZfDesc: {
+      en: "CMP updates the zero flag when two operands are equal. JZ uses that flag to decide whether a branch should happen.",
+      fr: "CMP met à jour le drapeau zéro lorsque deux opérandes sont égaux. JZ utilise ce drapeau pour décider si un saut doit avoir lieu.",
+      es: "CMP actualiza el indicador cero cuando dos operandos son iguales. JZ usa ese indicador para decidir si debe producirse un salto.",
+    },
+
+    pipelineLabel: { en: "INSTRUCTION PIPELINE — CONCEPTUAL VIEW", fr: "PIPELINE D'INSTRUCTIONS — VUE CONCEPTUELLE", es: "CANAL DE INSTRUCCIONES — VISTA CONCEPTUAL" },
+    pipeFetchDesc: { en: "Read instruction at PC", fr: "Lire l'instruction au PC", es: "Leer la instrucción en el PC" },
+    pipeDecodeDesc: { en: "Identify operation + operands", fr: "Identifier l'opération et les opérandes", es: "Identificar la operación y los operandos" },
+    pipeExecuteDesc: { en: "Change CPU state", fr: "Modifier l'état du CPU", es: "Cambiar el estado de la CPU" },
+
+    instrSectionLabel: { en: "INSTRUCTION SET", fr: "JEU D'INSTRUCTIONS", es: "CONJUNTO DE INSTRUCCIONES" },
+    instrSectionH2: { en: "The CPU's vocabulary.", fr: "Le vocabulaire du CPU.", es: "El vocabulario de la CPU." },
+    instrSectionDesc: {
+      en: "These nine operations are enough to demonstrate arithmetic, memory access, comparisons, control flow and termination.",
+      fr: "Ces neuf opérations suffisent à illustrer l'arithmétique, l'accès mémoire, les comparaisons, le contrôle de flux et la terminaison.",
+      es: "Estas nueve operaciones bastan para mostrar aritmética, acceso a memoria, comparaciones, control de flujo y finalización.",
+    },
+    instrHeadOpcode: { en: "OPCODE", fr: "CODE OP", es: "CÓDIGO OP" },
+    instrHeadForm: { en: "FORM", fr: "FORME", es: "FORMA" },
+    instrHeadWhat: { en: "WHAT IT DOES", fr: "CE QU'IL FAIT", es: "QUÉ HACE" },
+    instrMovDesc: { en: "Copies an immediate value or another register into the destination.", fr: "Copie une valeur immédiate ou un autre registre dans la destination.", es: "Copia un valor inmediato u otro registro en el destino." },
+    instrAddDesc: { en: "Adds the operand to the destination register.", fr: "Ajoute l'opérande au registre de destination.", es: "Suma el operando al registro de destino." },
+    instrSubDesc: { en: "Subtracts the operand from the destination register.", fr: "Soustrait l'opérande du registre de destination.", es: "Resta el operando del registro de destino." },
+    instrLoadDesc: { en: "Reads a value from memory into a register.", fr: "Lit une valeur de la mémoire vers un registre.", es: "Lee un valor de la memoria hacia un registro." },
+    instrStoreDesc: { en: "Writes a value into one of the 32 memory cells.", fr: "Écrit une valeur dans l'une des 32 cellules mémoire.", es: "Escribe un valor en una de las 32 celdas de memoria." },
+    instrCmpDesc: { en: "Compares two operands and updates the zero flag.", fr: "Compare deux opérandes et met à jour le drapeau zéro.", es: "Compara dos operandos y actualiza el indicador cero." },
+    instrJmpDesc: { en: "Unconditionally changes the program counter.", fr: "Modifie le compteur ordinal de façon inconditionnelle.", es: "Cambia el contador de programa de forma incondicional." },
+    instrJzDesc: { en: "Jumps only when the zero flag is set.", fr: "Ne saute que lorsque le drapeau zéro est activé.", es: "Salta solo cuando el indicador cero está activado." },
+    instrHaltDesc: { en: "Stops execution and leaves the final machine state visible.", fr: "Arrête l'exécution et laisse visible l'état final de la machine.", es: "Detiene la ejecución y deja visible el estado final de la máquina." },
+
+    conceptsSectionLabel: { en: "REFERENCE", fr: "RÉFÉRENCE", es: "REFERENCIA" },
+    conceptsSectionH2: { en: "Key CPU concepts, explained.", fr: "Concepts clés du CPU, expliqués.", es: "Conceptos clave de la CPU, explicados." },
+    conceptsSectionDesc: {
+      en: "Use these notes alongside the simulator to connect the visual state changes to the underlying computer architecture ideas.",
+      fr: "Utilisez ces notes avec le simulateur pour relier les changements d'état visuels aux concepts sous-jacents de l'architecture des ordinateurs.",
+      es: "Usa estas notas junto con el simulador para conectar los cambios de estado visuales con las ideas subyacentes de la arquitectura de computadoras.",
+    },
+
+    docGroup1Title: { en: "The instruction cycle", fr: "Le cycle d'instruction", es: "El ciclo de instrucción" },
+    docFetchName: { en: "Fetch → Decode → Execute", fr: "Recherche → Décodage → Exécution", es: "Búsqueda → Decodificación → Ejecución" },
+    badgeCoreConcept: { en: "core concept", fr: "concept central", es: "concepto central" },
+    docPcName: { en: "Program counter", fr: "Compteur ordinal", es: "Contador de programa" },
+    docRegMemName: { en: "Registers vs memory", fr: "Registres contre mémoire", es: "Registros frente a memoria" },
+    badgeStorage: { en: "storage", fr: "stockage", es: "almacenamiento" },
+
+    docGroup2Title: { en: "Control flow & flags", fr: "Contrôle de flux et drapeaux", es: "Control de flujo e indicadores" },
+    docCmpName: { en: "CMP and the zero flag", fr: "CMP et le drapeau zéro", es: "CMP y el indicador cero" },
+    badgeBranching: { en: "branching", fr: "branchement", es: "ramificación" },
+    docLoopsName: { en: "Loops", fr: "Boucles", es: "Bucles" },
+    badgeControlFlow: { en: "control flow", fr: "contrôle de flux", es: "control de flujo" },
+
+    docGroup3Title: { en: "From simulator to real CPU", fr: "Du simulateur au vrai CPU", es: "Del simulador a la CPU real" },
+    docLeavesOutName: { en: "What this model leaves out", fr: "Ce que ce modèle omet", es: "Qué deja fuera este modelo" },
+    badgePerspective: { en: "perspective", fr: "perspective", es: "perspectiva" },
+    docAssemblyName: { en: "Why assembly matters", fr: "Pourquoi l'assembleur compte", es: "Por qué importa el ensamblador" },
+    badgeLowLevel: { en: "low level", fr: "bas niveau", es: "bajo nivel" },
+
+    footerText: { en: "CPU SIMULATOR · COMPUTER ARCHITECTURE", fr: "SIMULATEUR CPU · ARCHITECTURE DES ORDINATEURS", es: "SIMULADOR DE CPU · ARQUITECTURA DE COMPUTADORAS" },
+    footerHome: { en: "← Home", fr: "← Accueil", es: "← Inicio" },
+  };
+
+  const STATIC_HTML: Record<string, Record<LangCode, string>> = {
+    heroTitle: {
+      en: `Fetch. Decode.\n            <span>Execute.</span>`,
+      fr: `Recherche. Décodage.\n            <span>Exécution.</span>`,
+      es: `Búsqueda. Decodificación.\n            <span>Ejecución.</span>`,
+    },
+    hintText: {
+      en: `Use <code>;</code> for comments and labels such as <code>LOOP:</code>.`,
+      fr: `Utilisez <code>;</code> pour les commentaires et des étiquettes comme <code>LOOP:</code>.`,
+      es: `Usa <code>;</code> para comentarios y etiquetas como <code>LOOP:</code>.`,
+    },
+    docFetchBody: {
+      en: `<p>The CPU repeatedly obtains the next instruction, interprets what that instruction means, and performs the requested operation. This simulator makes those three phases visible during every step.</p>
+        <ol><li><strong>Fetch:</strong> use the PC to locate the next instruction.</li><li><strong>Decode:</strong> identify the opcode and operands.</li><li><strong>Execute:</strong> modify registers, memory, flags or control flow.</li></ol>`,
+      fr: `<p>Le CPU obtient à répétition la prochaine instruction, interprète ce qu'elle signifie, puis effectue l'opération demandée. Ce simulateur rend ces trois phases visibles à chaque étape.</p>
+        <ol><li><strong>Recherche :</strong> utiliser le PC pour localiser la prochaine instruction.</li><li><strong>Décodage :</strong> identifier le code opération et les opérandes.</li><li><strong>Exécution :</strong> modifier les registres, la mémoire, les drapeaux ou le flux de contrôle.</li></ol>`,
+      es: `<p>La CPU obtiene repetidamente la siguiente instrucción, interpreta lo que significa y realiza la operación solicitada. Este simulador hace visibles esas tres fases en cada paso.</p>
+        <ol><li><strong>Búsqueda:</strong> usar el PC para localizar la siguiente instrucción.</li><li><strong>Decodificación:</strong> identificar el código de operación y los operandos.</li><li><strong>Ejecución:</strong> modificar registros, memoria, indicadores o el flujo de control.</li></ol>`,
+    },
+    docPcBody: {
+      en: `<p>The program counter stores the address or index of the next instruction to execute. Normally it advances sequentially; JMP and JZ replace it with a different instruction index.</p>
+        <div class="formula-box">PC → instruction → PC + 1</div>`,
+      fr: `<p>Le compteur ordinal stocke l'adresse ou l'index de la prochaine instruction à exécuter. Normalement il avance séquentiellement ; JMP et JZ le remplacent par un index d'instruction différent.</p>
+        <div class="formula-box">PC → instruction → PC + 1</div>`,
+      es: `<p>El contador de programa almacena la dirección o el índice de la siguiente instrucción a ejecutar. Normalmente avanza de forma secuencial; JMP y JZ lo reemplazan por un índice de instrucción diferente.</p>
+        <div class="formula-box">PC → instrucción → PC + 1</div>`,
+    },
+    docRegMemBody: {
+      en: `<p>Registers are small, directly accessible storage locations inside the CPU. Memory is a larger addressable storage area. LOAD moves data from memory into a register; STORE writes it back.</p>`,
+      fr: `<p>Les registres sont de petits emplacements de stockage directement accessibles à l'intérieur du CPU. La mémoire est une zone de stockage adressable plus grande. LOAD déplace les données de la mémoire vers un registre ; STORE les réécrit.</p>`,
+      es: `<p>Los registros son pequeñas ubicaciones de almacenamiento directamente accesibles dentro de la CPU. La memoria es un área de almacenamiento direccionable más grande. LOAD mueve datos de la memoria a un registro; STORE los vuelve a escribir.</p>`,
+    },
+    docCmpBody: {
+      en: `<p>CMP does not need to store a result in a general-purpose register. Instead, it records whether the two operands are equal in the zero flag. JZ can then use that condition to choose between continuing sequentially and jumping to a label.</p>
+        <div class="formula-box">CMP A, B → ZF = (A === B) → JZ LABEL</div>`,
+      fr: `<p>CMP n'a pas besoin de stocker un résultat dans un registre à usage général. Il enregistre plutôt si les deux opérandes sont égaux dans le drapeau zéro. JZ peut ensuite utiliser cette condition pour choisir entre continuer séquentiellement et sauter vers une étiquette.</p>
+        <div class="formula-box">CMP A, B → ZF = (A === B) → JZ LABEL</div>`,
+      es: `<p>CMP no necesita almacenar un resultado en un registro de propósito general. En su lugar, registra si los dos operandos son iguales en el indicador cero. JZ puede entonces usar esa condición para elegir entre continuar secuencialmente o saltar a una etiqueta.</p>
+        <div class="formula-box">CMP A, B → ZF = (A === B) → JZ ETIQUETA</div>`,
+    },
+    docLoopsBody: {
+      en: `<p>A loop is created by combining a label, a state-changing instruction, a comparison and a conditional or unconditional jump. The countdown and sum examples demonstrate this pattern.</p>
+        <ol><li>Update a register representing the loop state.</li><li>Compare it with a stopping condition.</li><li>Use JZ to leave the loop or JMP to repeat it.</li></ol>`,
+      fr: `<p>Une boucle est créée en combinant une étiquette, une instruction qui modifie l'état, une comparaison et un saut conditionnel ou inconditionnel. Les exemples de compte à rebours et de somme illustrent ce schéma.</p>
+        <ol><li>Mettre à jour un registre représentant l'état de la boucle.</li><li>Le comparer à une condition d'arrêt.</li><li>Utiliser JZ pour quitter la boucle ou JMP pour la répéter.</li></ol>`,
+      es: `<p>Un bucle se crea combinando una etiqueta, una instrucción que cambia el estado, una comparación y un salto condicional o incondicional. Los ejemplos de cuenta regresiva y suma muestran este patrón.</p>
+        <ol><li>Actualizar un registro que representa el estado del bucle.</li><li>Compararlo con una condición de parada.</li><li>Usar JZ para salir del bucle o JMP para repetirlo.</li></ol>`,
+    },
+    docLeavesOutBody: {
+      en: `<p>This is intentionally a teaching model. A real processor adds many more details: instruction encoding, control logic, caches, buses, pipelining, branch prediction, interrupts, privilege levels and physical hardware timing.</p>
+        <p>The simplified machine is useful because the same fundamental ideas remain visible: instructions change state, the PC drives control flow, registers hold working data, and memory stores persistent values.</p>`,
+      fr: `<p>Il s'agit intentionnellement d'un modèle pédagogique. Un vrai processeur ajoute beaucoup plus de détails : encodage des instructions, logique de contrôle, caches, bus, pipelining, prédiction de branchement, interruptions, niveaux de privilège et timing matériel physique.</p>
+        <p>La machine simplifiée est utile car les mêmes idées fondamentales restent visibles : les instructions modifient l'état, le PC pilote le flux de contrôle, les registres contiennent les données de travail, et la mémoire stocke les valeurs persistantes.</p>`,
+      es: `<p>Este es intencionalmente un modelo didáctico. Un procesador real añade muchos más detalles: codificación de instrucciones, lógica de control, cachés, buses, segmentación, predicción de saltos, interrupciones, niveles de privilegio y sincronización física del hardware.</p>
+        <p>La máquina simplificada es útil porque las mismas ideas fundamentales siguen siendo visibles: las instrucciones cambian el estado, el PC impulsa el flujo de control, los registros contienen datos de trabajo y la memoria almacena valores persistentes.</p>`,
+    },
+    docAssemblyBody: {
+      en: `<p>Assembly exposes operations close to the processor's instruction model. Instead of expressing a high-level loop directly, you explicitly manipulate registers, compare values, store data and change the program counter.</p>`,
+      fr: `<p>L'assembleur expose des opérations proches du modèle d'instructions du processeur. Plutôt que d'exprimer directement une boucle de haut niveau, vous manipulez explicitement les registres, comparez des valeurs, stockez des données et modifiez le compteur ordinal.</p>`,
+      es: `<p>El ensamblador expone operaciones cercanas al modelo de instrucciones del procesador. En lugar de expresar directamente un bucle de alto nivel, manipulas explícitamente registros, comparas valores, almacenas datos y cambias el contador de programa.</p>`,
+    },
+  };
+
+  let currentLang: LangCode = "en";
+
+  try {
+    const saved = localStorage.getItem(LANG_STORAGE_KEY);
+    if (saved === "en" || saved === "fr" || saved === "es") {
+      currentLang = saved;
+    }
+  } catch {
+    // localStorage unavailable — fall back to English
+  }
+
+  function t(key: string, vars?: Record<string, string | number>): string {
+    const entry = STATIC_TEXT[key];
+    let str = entry ? entry[currentLang] ?? entry.en : key;
+
+    if (vars) {
+      for (const varKey in vars) {
+        str = str.replace(new RegExp(`\\{${varKey}\\}`, "g"), String(vars[varKey]));
+      }
+    }
+
+    return str;
+  }
+
+  function applyStaticTranslations(): void {
+    document.querySelectorAll<HTMLElement>("[data-i18n]").forEach((element) => {
+      const key = element.getAttribute("data-i18n");
+      if (key && STATIC_TEXT[key]) {
+        element.textContent = t(key);
+      }
+    });
+
+    document.querySelectorAll<HTMLElement>("[data-i18n-html]").forEach((element) => {
+      const key = element.getAttribute("data-i18n-html");
+      if (key && STATIC_HTML[key]) {
+        element.innerHTML = STATIC_HTML[key][currentLang] ?? STATIC_HTML[key].en;
+      }
+    });
+
+    document.documentElement.lang = currentLang;
+  }
+
+  function updateLangButtons(): void {
+    document.querySelectorAll<HTMLButtonElement>(".lang-btn").forEach((button) => {
+      button.classList.toggle("active", button.dataset.lang === currentLang);
+    });
+  }
+
+  const langChangeListeners: (() => void)[] = [];
+
+  function onLangChange(listener: () => void): void {
+    langChangeListeners.push(listener);
+  }
+
+  function setLanguage(lang: LangCode): void {
+    if (lang === currentLang) {
+      return;
+    }
+
+    currentLang = lang;
+
+    try {
+      localStorage.setItem(LANG_STORAGE_KEY, lang);
+    } catch {
+      // ignore storage failures
+    }
+
+    applyStaticTranslations();
+    updateLangButtons();
+
+    langChangeListeners.forEach((listener) => listener());
+  }
+
+  document.querySelectorAll<HTMLButtonElement>(".lang-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      const lang = button.dataset.lang;
+      if (lang === "en" || lang === "fr" || lang === "es") {
+        setLanguage(lang);
+      }
+    });
+  });
+
+  applyStaticTranslations();
+  updateLangButtons();
+
+  /* ================================================================= */
+  /* CPU SIMULATOR                                                      */
+  /* ================================================================= */
+
   (function cpuModule() {
     const programEl = document.getElementById("cpu-program") as HTMLTextAreaElement;
     const exampleSelect = document.getElementById("cpu-example") as HTMLSelectElement;
@@ -1504,6 +1872,98 @@ function sleep(ms: number) {
     let zeroFlag = false;
     let halted = true;
     let running = false;
+
+    /* -------------------- dynamic i18n messages -------------------- */
+
+    type StatusKey = "idle" | "assembled" | "ready" | "running" | "halted" | "error";
+    let currentStatus: StatusKey = "idle";
+
+    const statusMsg: Record<LangCode, Record<StatusKey, string>> = {
+      en: { idle: "Idle", assembled: "Assembled", ready: "Ready", running: "Running", halted: "Halted", error: "Error" },
+      fr: { idle: "Inactif", assembled: "Assemblé", ready: "Prêt", running: "En cours", halted: "Arrêté", error: "Erreur" },
+      es: { idle: "Inactivo", assembled: "Ensamblado", ready: "Listo", running: "Ejecutando", halted: "Detenido", error: "Error" },
+    };
+
+    const cpuMsg: Record<LangCode, Record<string, string>> = {
+      en: {
+        logAssembled: "Assembled {count} instructions.",
+        logMemoryWrite: "  memory[{addr}] = {val}",
+        logError: "error: {msg}",
+        logHalted: "Program halted.",
+        haltEffect: "HALT completed — the CPU has stopped.",
+        cyclePrefix: "CYCLE {n}",
+        pcPrefix: "PC {n}",
+        unknownLabel: "unknown label {label}",
+        unknownInstruction: "unknown instruction {op}",
+        effectMov: "Register {dest} receives {val}.",
+        effectAdd: "Add {val} to {dest}.",
+        effectSub: "Subtract {val} from {dest}.",
+        effectLoad: "Read memory[{addr}] into {dest}.",
+        effectStore: "Write {val} into memory[{addr}].",
+        effectCmp: "Compare {a} with {b} → zero flag is updated.",
+        effectJmp: "Jump to label {label}.",
+        effectJz: "Jump to {label} only when the zero flag is set.",
+        effectHalt: "Stop the processor.",
+        effectDefault: "Execute instruction.",
+      },
+      fr: {
+        logAssembled: "{count} instructions assemblées.",
+        logMemoryWrite: "  mémoire[{addr}] = {val}",
+        logError: "erreur : {msg}",
+        logHalted: "Programme arrêté.",
+        haltEffect: "HALT terminé — le CPU s'est arrêté.",
+        cyclePrefix: "CYCLE {n}",
+        pcPrefix: "PC {n}",
+        unknownLabel: "étiquette inconnue {label}",
+        unknownInstruction: "instruction inconnue {op}",
+        effectMov: "Le registre {dest} reçoit {val}.",
+        effectAdd: "Ajouter {val} à {dest}.",
+        effectSub: "Soustraire {val} de {dest}.",
+        effectLoad: "Lire mémoire[{addr}] vers {dest}.",
+        effectStore: "Écrire {val} dans mémoire[{addr}].",
+        effectCmp: "Comparer {a} avec {b} → le drapeau zéro est mis à jour.",
+        effectJmp: "Sauter vers l'étiquette {label}.",
+        effectJz: "Sauter vers {label} uniquement si le drapeau zéro est activé.",
+        effectHalt: "Arrêter le processeur.",
+        effectDefault: "Exécuter l'instruction.",
+      },
+      es: {
+        logAssembled: "Se ensamblaron {count} instrucciones.",
+        logMemoryWrite: "  memoria[{addr}] = {val}",
+        logError: "error: {msg}",
+        logHalted: "Programa detenido.",
+        haltEffect: "HALT completado — la CPU se ha detenido.",
+        cyclePrefix: "CICLO {n}",
+        pcPrefix: "PC {n}",
+        unknownLabel: "etiqueta desconocida {label}",
+        unknownInstruction: "instrucción desconocida {op}",
+        effectMov: "El registro {dest} recibe {val}.",
+        effectAdd: "Sumar {val} a {dest}.",
+        effectSub: "Restar {val} de {dest}.",
+        effectLoad: "Leer memoria[{addr}] hacia {dest}.",
+        effectStore: "Escribir {val} en memoria[{addr}].",
+        effectCmp: "Comparar {a} con {b} → se actualiza el indicador cero.",
+        effectJmp: "Saltar a la etiqueta {label}.",
+        effectJz: "Saltar a {label} solo si el indicador cero está activado.",
+        effectHalt: "Detener el procesador.",
+        effectDefault: "Ejecutar instrucción.",
+      },
+    };
+
+    function cpuT(key: string, vars?: Record<string, string | number>): string {
+      let str = cpuMsg[currentLang][key] ?? cpuMsg.en[key];
+      if (vars) {
+        for (const varKey in vars) {
+          str = str.replace(new RegExp(`\\{${varKey}\\}`, "g"), String(vars[varKey]));
+        }
+      }
+      return str;
+    }
+
+    function setStatus(status: StatusKey) {
+      currentStatus = status;
+      statusEl!.textContent = statusMsg[currentLang][status];
+    }
 
     const examples: Record<string, string> = {
       sum: [
@@ -1605,25 +2065,25 @@ function sleep(ms: number) {
     function describeEffect(instr: Instruction): string {
       switch (instr.op) {
         case "MOV":
-          return `Register ${instr.args[0]} receives ${instr.args[1]}.`;
+          return cpuT("effectMov", { dest: instr.args[0], val: instr.args[1] });
         case "ADD":
-          return `Add ${instr.args[1]} to ${instr.args[0]}.`;
+          return cpuT("effectAdd", { val: instr.args[1], dest: instr.args[0] });
         case "SUB":
-          return `Subtract ${instr.args[1]} from ${instr.args[0]}.`;
+          return cpuT("effectSub", { val: instr.args[1], dest: instr.args[0] });
         case "LOAD":
-          return `Read memory[${instr.args[1]}] into ${instr.args[0]}.`;
+          return cpuT("effectLoad", { addr: instr.args[1], dest: instr.args[0] });
         case "STORE":
-          return `Write ${instr.args[0]} into memory[${instr.args[1]}].`;
+          return cpuT("effectStore", { val: instr.args[0], addr: instr.args[1] });
         case "CMP":
-          return `Compare ${instr.args[0]} with ${instr.args[1]} → zero flag is updated.`;
+          return cpuT("effectCmp", { a: instr.args[0], b: instr.args[1] });
         case "JMP":
-          return `Jump to label ${instr.args[0]}.`;
+          return cpuT("effectJmp", { label: instr.args[0] });
         case "JZ":
-          return `Jump to ${instr.args[0]} only when the zero flag is set.`;
+          return cpuT("effectJz", { label: instr.args[0] });
         case "HALT":
-          return "Stop the processor.";
+          return cpuT("effectHalt");
         default:
-          return "Execute instruction.";
+          return cpuT("effectDefault");
       }
     }
 
@@ -1633,7 +2093,7 @@ function sleep(ms: number) {
       if (!program.length) {
         const empty = document.createElement("div");
         empty.className = "timeline-empty";
-        empty.textContent = "No instructions loaded.";
+        empty.textContent = t("timelineEmpty");
         timelineEl!.appendChild(empty);
         return;
       }
@@ -1645,9 +2105,9 @@ function sleep(ms: number) {
           (i === activePc ? " active" : "") +
           (lastPc !== null && i < lastPc ? " executed" : "");
 
-        const pc = document.createElement("span");
-        pc.className = "timeline-pc";
-        pc.textContent = `PC ${String(i).padStart(2, "0")}`;
+        const pcSpan = document.createElement("span");
+        pcSpan.className = "timeline-pc";
+        pcSpan.textContent = cpuT("pcPrefix", { n: String(i).padStart(2, "0") });
 
         const op = document.createElement("strong");
         op.className = "timeline-op";
@@ -1657,7 +2117,7 @@ function sleep(ms: number) {
         raw.className = "timeline-raw";
         raw.textContent = instr.raw;
 
-        item.append(pc, op, raw);
+        item.append(pcSpan, op, raw);
         timelineEl!.appendChild(item);
       });
 
@@ -1667,17 +2127,16 @@ function sleep(ms: number) {
 
     function showCurrentInstruction(index: number | null) {
       if (index === null || !program[index]) {
-        currentAddressEl!.textContent = "PC 00";
-        currentInstructionEl!.textContent = "Waiting for program...";
-        instructionEffectEl!.textContent =
-          "Assemble a program, then press Step to see exactly what changes.";
+        currentAddressEl!.textContent = cpuT("pcPrefix", { n: "00" });
+        currentInstructionEl!.textContent = t("waitingForProgram");
+        instructionEffectEl!.textContent = t("instructionEffectDefault");
         instructionEffectEl!.classList.remove("changed");
         renderTimeline(null);
         return;
       }
 
       const instr = program[index];
-      currentAddressEl!.textContent = `PC ${String(index).padStart(2, "0")}`;
+      currentAddressEl!.textContent = cpuT("pcPrefix", { n: String(index).padStart(2, "0") });
       currentInstructionEl!.textContent = instr.raw;
       instructionEffectEl!.textContent = describeEffect(instr);
       instructionEffectEl!.classList.add("changed");
@@ -1728,10 +2187,10 @@ function sleep(ms: number) {
       renderMemory(null);
       setCycleStep(null);
       pcEl!.textContent = "0";
-      statusEl!.textContent = keepProgram ? "Assembled" : "Idle";
+      setStatus(keepProgram ? "assembled" : "idle");
       cycleNumber = 0;
       lastPc = null;
-      stepCountEl!.textContent = "CYCLE 0";
+      stepCountEl!.textContent = cpuT("cyclePrefix", { n: 0 });
       setExecutionStage(null);
       showCurrentInstruction(keepProgram && program.length ? 0 : null);
     }
@@ -1743,7 +2202,7 @@ function sleep(ms: number) {
     async function step(): Promise<boolean> {
       if (halted || pc >= program.length) {
         halted = true;
-        statusEl!.textContent = "Halted";
+        setStatus("halted");
         stepBtn.disabled = true;
         runBtn.disabled = true;
         return false;
@@ -1798,7 +2257,7 @@ function sleep(ms: number) {
             const addr = resolveOperand(instr.args[1]);
             if (addr >= 0 && addr < MEM_SIZE) memory[addr] = val;
             renderMemory(addr);
-            log(`  memory[${addr}] = ${val}`, "out");
+            log(cpuT("logMemoryWrite", { addr, val }), "out");
             break;
           }
           case "CMP": {
@@ -1809,14 +2268,14 @@ function sleep(ms: number) {
           }
           case "JMP": {
             const target = labels[instr.args[0]];
-            if (target === undefined) throw new Error(`unknown label ${instr.args[0]}`);
+            if (target === undefined) throw new Error(cpuT("unknownLabel", { label: instr.args[0] }));
             nextPc = target;
             break;
           }
           case "JZ": {
             if (zeroFlag) {
               const target = labels[instr.args[0]];
-              if (target === undefined) throw new Error(`unknown label ${instr.args[0]}`);
+              if (target === undefined) throw new Error(cpuT("unknownLabel", { label: instr.args[0] }));
               nextPc = target;
             }
             break;
@@ -1826,12 +2285,12 @@ function sleep(ms: number) {
             break;
           }
           default:
-            throw new Error(`unknown instruction ${instr.op}`);
+            throw new Error(cpuT("unknownInstruction", { op: instr.op }));
         }
       } catch (e) {
-        log(`error: ${(e as Error).message}`, "err");
+        log(cpuT("logError", { msg: (e as Error).message }), "err");
         halted = true;
-        statusEl!.textContent = "Error";
+        setStatus("error");
         stepBtn.disabled = true;
         runBtn.disabled = true;
         return false;
@@ -1841,21 +2300,21 @@ function sleep(ms: number) {
       lastPc = pc;
       pc = nextPc;
       cycleNumber += 1;
-      stepCountEl!.textContent = `CYCLE ${cycleNumber}`;
+      stepCountEl!.textContent = cpuT("cyclePrefix", { n: cycleNumber });
 
       if (halted) {
         setExecutionStage("execute");
         currentInstructionEl!.textContent = instr.raw;
-        instructionEffectEl!.textContent = "HALT completed — the CPU has stopped.";
+        instructionEffectEl!.textContent = cpuT("haltEffect");
         instructionEffectEl!.classList.add("changed");
-        statusEl!.textContent = "Halted";
-        log("Program halted.", "out");
+        setStatus("halted");
+        log(cpuT("logHalted"), "out");
         stepBtn.disabled = true;
         runBtn.disabled = true;
         return false;
       }
 
-      statusEl!.textContent = "Running";
+      setStatus("running");
       return true;
     }
 
@@ -1868,13 +2327,13 @@ function sleep(ms: number) {
         stepBtn.disabled = false;
         runBtn.disabled = false;
         consoleEl!.innerHTML = "";
-        log(`Assembled ${program.length} instructions.`);
+        log(cpuT("logAssembled", { count: program.length }));
         renderRegisters(null);
         renderMemory(null);
-        statusEl!.textContent = "Ready";
+        setStatus("ready");
         cycleNumber = 0;
         lastPc = null;
-        stepCountEl!.textContent = "CYCLE 0";
+        stepCountEl!.textContent = cpuT("cyclePrefix", { n: 0 });
         setExecutionStage(null);
         showCurrentInstruction(0);
       }
@@ -1900,15 +2359,20 @@ function sleep(ms: number) {
       runBtn.disabled = true;
       setExecutionStage(null);
       showCurrentInstruction(null);
-      stepCountEl!.textContent = "CYCLE 0";
+      stepCountEl!.textContent = cpuT("cyclePrefix", { n: 0 });
     });
 
     loadExampleBtn.addEventListener("click", () => {
       programEl.value = examples[exampleSelect.value];
     });
 
+    onLangChange(() => {
+      setStatus(currentStatus);
+      stepCountEl!.textContent = cpuT("cyclePrefix", { n: cycleNumber });
+      showCurrentInstruction(program.length && lastPc !== null ? Math.min(pc, program.length - 1) : (program.length ? pc : null));
+    });
+
     programEl.value = examples.sum;
     resetMachine(false);
   })();
 </script>
-
