@@ -687,7 +687,7 @@ import SkillsList from "../React/SkillsList.tsx";
   const terminalWindow =
     document.querySelector("#portfolio-terminal") as HTMLDivElement | null;
 
-  type TerminalCommand = () => string;
+  type TerminalCommand = () => string | Promise<string>;
 
   const history: string[] = [];
   let historyIndex: number = -1;
@@ -739,6 +739,122 @@ import SkillsList from "../React/SkillsList.tsx";
     terminalOutput.scrollTop = terminalOutput.scrollHeight;
   };
 
+  /* ============================================================ */
+  /* PROJECT NAVIGATION HELPERS */
+  /* ============================================================ */
+
+  const goTo = (url: string, delay = 700): void => {
+    setTimeout(() => {
+      window.location.href = url;
+    }, delay);
+  };
+
+  /* ============================================================ */
+  /* WEATHER (live fetch) */
+  /* ============================================================ */
+
+  type WeatherLocation = {
+    city: string;
+    latitude: number;
+    longitude: number;
+  };
+
+  // Matches the locations tracked on the Weather Dashboard project itself.
+  const WEATHER_LOCATIONS: WeatherLocation[] = [
+    { city: "Alcoi", latitude: 38.6983, longitude: -0.4743 },
+    { city: "Valencia", latitude: 39.4699, longitude: -0.3763 },
+    { city: "Torrevieja", latitude: 37.9787, longitude: -0.6822 },
+  ];
+
+  const getWeatherDescription = (code: number): string => {
+    switch (code) {
+      case 0:
+        return "Clear sky";
+      case 1:
+        return "Mainly clear";
+      case 2:
+        return "Partly cloudy";
+      case 3:
+        return "Overcast";
+      case 45:
+      case 48:
+        return "Fog";
+      case 51:
+      case 53:
+      case 55:
+        return "Drizzle";
+      case 56:
+      case 57:
+        return "Freezing drizzle";
+      case 61:
+      case 63:
+      case 65:
+        return "Rain";
+      case 66:
+      case 67:
+        return "Freezing rain";
+      case 71:
+      case 73:
+      case 75:
+      case 77:
+        return "Snow";
+      case 80:
+      case 81:
+      case 82:
+        return "Rain showers";
+      case 85:
+      case 86:
+        return "Snow showers";
+      case 95:
+      case 96:
+      case 99:
+        return "Thunderstorm";
+      default:
+        return "Unknown conditions";
+    }
+  };
+
+  const fetchLocationSummary = async (
+    location: WeatherLocation
+  ): Promise<{ city: string; temperature: number; description: string }> => {
+    const params = new URLSearchParams({
+      latitude: String(location.latitude),
+      longitude: String(location.longitude),
+      current: "temperature_2m,weather_code",
+      timezone: "auto",
+    });
+
+    const response = await fetch(
+      `https://api.open-meteo.com/v1/forecast?${params.toString()}`
+    );
+
+    if (!response.ok) {
+      throw new Error(`Weather request failed for ${location.city}`);
+    }
+
+    const data = (await response.json()) as {
+      current: { temperature_2m: number; weather_code: number };
+    };
+
+    return {
+      city: location.city,
+      temperature: Math.round(data.current.temperature_2m),
+      description: getWeatherDescription(data.current.weather_code),
+    };
+  };
+
+  /* ============================================================ */
+  /* MOVIE RANKING DATA (title + rating only) */
+  /* ============================================================ */
+
+  const RANKED_MOVIES: { title: string; rating: number }[] = [
+    { title: "Interstellar", rating: 10 },
+    { title: "Ford v Ferrari", rating: 10 },
+    { title: "Your Name", rating: 10 },
+    { title: "Kimetsu no Yaiba: Infinity Castle", rating: 9.5 },
+    { title: "Avengers: Infinity War", rating: 9 },
+  ];
+
   const commands: Record<string, TerminalCommand> = {
     help: (): string => `
       <div class="terminal-help">
@@ -776,6 +892,66 @@ import SkillsList from "../React/SkillsList.tsx";
 
             <span class="terminal-command-description">
               — view my projects
+            </span>
+          </div>
+
+          <div>
+            <span class="terminal-command-name">
+              visualizer
+            </span>
+
+            <span class="terminal-command-description">
+              — algorithm visualizer
+            </span>
+          </div>
+
+          <div>
+            <span class="terminal-command-name">
+              weather
+            </span>
+
+            <span class="terminal-command-description">
+              — live weather, 3 cities
+            </span>
+          </div>
+
+          <div>
+            <span class="terminal-command-name">
+              movie-ranking
+            </span>
+
+            <span class="terminal-command-description">
+              — my top-rated movies
+            </span>
+          </div>
+
+          <div>
+            <span class="terminal-command-name">
+              cpu
+            </span>
+
+            <span class="terminal-command-description">
+              — CPU simulator specs
+            </span>
+          </div>
+
+          <div>
+            <span class="terminal-command-name">
+              network
+            </span>
+
+            <span class="terminal-command-description">
+              — network protocol simulator
+            </span>
+          </div>
+
+          <div>
+            <span class="terminal-command-name">
+              expense-splitter
+            </span>
+
+            <span class="terminal-command-description">
+              — Flutter expense app
             </span>
           </div>
 
@@ -936,33 +1112,225 @@ import SkillsList from "../React/SkillsList.tsx";
 
           <div>
             <span>01</span>
-            Portfolio — Astro / React / Tailwind
+            Developer Terminal — you're using it right now
           </div>
 
           <div>
             <span>02</span>
-            Flutter applications
+            Movie Ranking — type <strong>movie-ranking</strong>
           </div>
 
           <div>
             <span>03</span>
-            Computer Science projects
+            Weather Dashboard — type <strong>weather</strong>
           </div>
 
           <div>
             <span>04</span>
-            Algorithms & data structures
+            Algorithm Visualizer — type <strong>visualizer</strong>
+          </div>
+
+          <div>
+            <span>05</span>
+            Network Protocol Simulator — type <strong>network</strong>
+          </div>
+
+          <div>
+            <span>06</span>
+            CPU Simulator — type <strong>cpu</strong>
+          </div>
+
+          <div>
+            <span>07</span>
+            Expense Splitter — type <strong>expense-splitter</strong>
           </div>
 
         </div>
 
         <div class="terminal-terminal-text terminal-small-gap">
-          Use <strong>View my work</strong> above to explore
-          the portfolio.
+          Type any project's name above to preview and open it,
+          or use <strong>View my work</strong> to browse them all.
         </div>
 
       </div>
     `,
+
+    visualizer: (): string => {
+      goTo("/projects/visualizer", 900);
+
+      return `
+        <div class="terminal-info-block">
+
+          <div class="terminal-response-title">
+            Algorithm Visualizer
+          </div>
+
+          <div class="terminal-list">
+
+            <div>
+              <span>01</span>
+              Sorting — Bubble, Selection, Insertion, Merge, Quick Sort
+            </div>
+
+            <div>
+              <span>02</span>
+              Hash table — 8 buckets, separate chaining, live load factor
+            </div>
+
+            <div>
+              <span>03</span>
+              Pathfinding — BFS, Dijkstra, A* on a drawable grid
+            </div>
+
+          </div>
+
+          <div class="terminal-success-response terminal-small-gap">
+            ✓ Opening Algorithm Visualizer...
+          </div>
+
+        </div>
+      `;
+    },
+
+    weather: async (): Promise<string> => {
+      try {
+        const summaries = await Promise.all(
+          WEATHER_LOCATIONS.map(fetchLocationSummary)
+        );
+
+        goTo("/projects/weather", 900);
+
+        return `
+          <div class="terminal-info-block">
+
+            <div class="terminal-response-title">
+              Live weather
+            </div>
+
+            <div class="terminal-list">
+              ${summaries
+                .map(
+                  (summary) => `
+                <div>
+                  <span>•</span>
+                  ${summary.city}: ${summary.temperature}°C, ${summary.description}
+                </div>
+              `
+                )
+                .join("")}
+            </div>
+
+            <div class="terminal-success-response terminal-small-gap">
+              ✓ Opening Weather Dashboard...
+            </div>
+
+          </div>
+        `;
+      } catch {
+        goTo("/projects/weather", 900);
+
+        return `
+          <div class="terminal-error">
+            Live weather is unavailable right now.
+          </div>
+        `;
+      }
+    },
+
+    "movie-ranking": (): string => {
+      goTo("/projects/movie-ranking", 900);
+
+      const top = [...RANKED_MOVIES].sort((a, b) => b.rating - a.rating);
+
+      return `
+        <div class="terminal-info-block">
+
+          <div class="terminal-response-title">
+            Top-rated movies
+          </div>
+
+          <div class="terminal-list">
+            ${top
+              .map(
+                (movie) => `
+              <div>
+                <span>${movie.rating.toFixed(1).replace(/\\.0$/, "")}/10</span>
+                ${escapeHTML(movie.title)}
+              </div>
+            `
+              )
+              .join("")}
+          </div>
+
+          <div class="terminal-success-response terminal-small-gap">
+            ✓ Opening Movie Ranking...
+          </div>
+
+        </div>
+      `;
+    },
+
+    cpu: (): string => {
+      goTo("/projects/Cpu", 900);
+
+      return `
+        <div class="terminal-info-block">
+
+          <div class="terminal-response-title">
+            CPU Simulator
+          </div>
+
+          <div class="terminal-list">
+
+            <div>
+              <span>01</span>
+              8 general-purpose registers (R0–R7)
+            </div>
+
+            <div>
+              <span>02</span>
+              32 addressable memory cells
+            </div>
+
+            <div>
+              <span>03</span>
+              9 instructions: MOV, ADD, SUB, LOAD, STORE, CMP, JMP, JZ, HALT
+            </div>
+
+            <div>
+              <span>04</span>
+              Fetch → Decode → Execute, one instruction at a time
+            </div>
+
+          </div>
+
+          <div class="terminal-success-response terminal-small-gap">
+            ✓ Opening CPU Simulator...
+          </div>
+
+        </div>
+      `;
+    },
+
+    network: (): string => {
+      goTo("/projects/network", 700);
+
+      return `
+        <div class="terminal-success-response">
+          ✓ Opening Network Protocol Simulator...
+        </div>
+      `;
+    },
+
+    "expense-splitter": (): string => {
+      goTo("/projects/expense-splitter/", 700);
+
+      return `
+        <div class="terminal-success-response">
+          ✓ Opening Expense Splitter...
+        </div>
+      `;
+    },
 
     contact: (): string => `
       <div class="terminal-info-block">
@@ -1095,7 +1463,21 @@ import SkillsList from "../React/SkillsList.tsx";
     addCommand(command);
 
     if (command in commands) {
-      addResponse(commands[command]());
+      const result = commands[command]();
+
+      if (result instanceof Promise) {
+        addResponse(`
+          <div class="terminal-terminal-text">
+            Fetching live data...
+          </div>
+        `);
+
+        result.then((html) => {
+          addResponse(html);
+        });
+      } else {
+        addResponse(result);
+      }
     } else {
       addResponse(`
         <div class="terminal-error">
@@ -2788,5 +3170,3 @@ import SkillsList from "../React/SkillsList.tsx";
   }
 
 </style>
-
-
