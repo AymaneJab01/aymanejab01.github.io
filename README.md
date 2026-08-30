@@ -237,23 +237,46 @@ The notes evolve alongside my studies and projects.
 
 ---
 
-# 💻 Interactive Terminal
+## 🖥️ Interactive Terminal
 
-One of the central features of the portfolio is an interactive terminal.
+The portfolio includes a custom developer terminal. Try these commands:
 
-```text
-aymane@portfolio:~$ help
+### Info / About
+| Command | Description |
+|---|---|
+| `help` | List all available commands |
+| `whoami` | Display developer information |
+| `about` | Learn more about me |
+| `skills` | View technologies and areas of focus |
+| `education` | View my computer science background |
+| `status` | Check current availability |
 
-Available commands:
+### Projects
+| Command | Description |
+|---|---|
+| `projects` | List all projects |
+| `open <number\|name>` | Jump to a project by number or name (e.g. `open 4`, `open visualizer`) |
+| `visualizer` | Preview the Algorithm Visualizer (sorting, hashing, pathfinding), then open it |
+| `weather` | Fetch **live weather** for Alcoi, Valencia & Torrevieja, then open the dashboard |
+| `movie-ranking` | Show my top-rated movies, then open the full list |
+| `cpu` | Show the CPU Simulator's specs (registers, memory, instruction set), then open it |
+| `network` | Open the Network Protocol Simulator |
+| `expense-splitter` | Open the Expense Splitter app |
 
-  help       Display available commands
-  about      About me
-  skills     Explore technologies and skills
-  projects   Explore projects
-  contact    Contact information
-```
+### Navigation / Contact
+| Command | Description |
+|---|---|
+| `notes` | Open my study notes |
+| `contact` | Get in touch |
+| `github` | Open my GitHub profile |
+| `linkedin` | Open my LinkedIn profile |
 
-The terminal provides an alternative developer-oriented way of navigating the portfolio.
+### Terminal Controls
+| Command / Key | Description |
+|---|---|
+| `clear` | Clear the terminal |
+| `↑` / `↓` | Cycle through command history |
+| `Tab` | Autocomplete the current command |
 
 ### Try it
 
