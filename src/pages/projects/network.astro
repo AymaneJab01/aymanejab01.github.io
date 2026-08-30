@@ -9,26 +9,35 @@ import Layout from "../../layouts/Layout.astro";
     <div class="net-content max-w-6xl mx-auto px-6">
 
       <!-- ===================================================== -->
-      <!-- BACK LINK -->
+      <!-- BACK LINK + LANGUAGE SWITCH -->
       <!-- ===================================================== -->
-      <a
-        href="/projects"
-        class="inline-flex items-center gap-2 text-sm text-[var(--white-icon)]
-        hover:text-[var(--sec)] transition-colors duration-300 mb-10"
-      >
-        <span class="text-lg">&larr;</span>
-        <span>Back to projects</span>
-      </a>
+      <div class="net-topbar mb-10">
+        <a
+          href="/projects"
+          class="inline-flex items-center gap-2 text-sm text-[var(--white-icon)]
+          hover:text-[var(--sec)] transition-colors duration-300"
+          data-i18n="backLink"
+        >
+          <span class="text-lg">&larr;</span>
+          <span data-i18n="backLinkText">Back to projects</span>
+        </a>
+
+        <div class="net-lang-switch" role="group" aria-label="Language">
+          <button type="button" class="net-lang-btn" data-lang="en">EN</button>
+          <button type="button" class="net-lang-btn" data-lang="fr">FR</button>
+          <button type="button" class="net-lang-btn" data-lang="es">ES</button>
+        </div>
+      </div>
 
       <!-- ===================================================== -->
       <!-- QUICK NAV -->
       <!-- ===================================================== -->
       <nav class="net-quicknav mb-14" aria-label="Section navigation">
-        <a href="#overview"><span class="net-quicknav-num">00</span>Overview</a>
-        <a href="#handshake"><span class="net-quicknav-num">01</span>Handshake</a>
-        <a href="#loss"><span class="net-quicknav-num">02</span>Packet loss</a>
-        <a href="#framing"><span class="net-quicknav-num">03</span>Framing</a>
-        <a href="#reference"><span class="net-quicknav-num">04</span>Reference</a>
+        <a href="#overview"><span class="net-quicknav-num">00</span><span data-i18n="navOverview">Overview</span></a>
+        <a href="#handshake"><span class="net-quicknav-num">01</span><span data-i18n="navHandshake">Handshake</span></a>
+        <a href="#loss"><span class="net-quicknav-num">02</span><span data-i18n="navLoss">Packet loss</span></a>
+        <a href="#framing"><span class="net-quicknav-num">03</span><span data-i18n="navFraming">Framing</span></a>
+        <a href="#reference"><span class="net-quicknav-num">04</span><span data-i18n="navReference">Reference</span></a>
       </nav>
 
       <!-- ===================================================== -->
@@ -37,22 +46,22 @@ import Layout from "../../layouts/Layout.astro";
       <div id="overview" class="mb-16 md:mb-20">
         <div class="flex items-center gap-3 mb-5">
           <span class="h-2 w-2 rounded-full bg-[var(--sec)] shadow-[0_0_12px_var(--sec)]"></span>
-          <span class="text-sm tracking-[0.25em] uppercase text-[var(--sec)] shiny-sec">
+          <span class="text-sm tracking-[0.25em] uppercase text-[var(--sec)] shiny-sec" data-i18n="heroEyebrow">
             Project 05 &middot; Networking
           </span>
         </div>
 
-        <h1 class="text-4xl md:text-6xl font-medium tracking-tight text-[var(--white)]">
+        <h1 class="text-4xl md:text-6xl font-medium tracking-tight text-[var(--white)]" data-i18n-html="heroTitle">
           The transport layer, made visible<span class="text-[var(--sec)]">.</span>
         </h1>
 
-        <p class="mt-5 max-w-2xl text-lg text-[var(--white-icon)] leading-relaxed">
+        <p class="mt-5 max-w-2xl text-lg text-[var(--white-icon)] leading-relaxed" data-i18n="heroDesc">
           Three simulations of what's actually happening under a socket connection:
           the TCP handshake, how TCP and UDP behave differently when packets get lost,
           and how a stream of bytes gets framed into discrete messages.
         </p>
 
-        <p class="mt-3 max-w-2xl text-sm text-[var(--white-icon)] leading-relaxed opacity-70">
+        <p class="mt-3 max-w-2xl text-sm text-[var(--white-icon)] leading-relaxed opacity-70" data-i18n="heroNote">
           Note: this page is a client-side simulation, not a live socket server &mdash;
           a static site can't open raw TCP/UDP connections in the browser. Everything
           below models real protocol behavior, timing, and packet loss in software.
@@ -61,7 +70,7 @@ import Layout from "../../layouts/Layout.astro";
         <div class="mt-7 flex flex-wrap gap-2">
           <span class="net-tag">Astro</span>
           <span class="net-tag">TypeScript</span>
-          <span class="net-tag">Networking</span>
+          <span class="net-tag" data-i18n="tagNetworking">Networking</span>
         </div>
       </div>
 
@@ -75,10 +84,10 @@ import Layout from "../../layouts/Layout.astro";
             <span class="h-px w-12 bg-[var(--sec)] opacity-40"></span>
             <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]">TCP</span>
           </div>
-          <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4">
+          <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4" data-i18n="hsTitle">
             Three-way handshake
           </h2>
-          <p class="mt-2 text-base text-[var(--white-icon)] leading-relaxed max-w-2xl">
+          <p class="mt-2 text-base text-[var(--white-icon)] leading-relaxed max-w-2xl" data-i18n="hsDesc">
             SYN, SYN-ACK, ACK &mdash; the exchange that opens every TCP connection, with
             sequence and acknowledgment numbers tracked step by step. Run it again to
             see the four-way close (FIN / ACK / FIN / ACK).
@@ -86,20 +95,20 @@ import Layout from "../../layouts/Layout.astro";
         </div>
 
         <div class="mt-6 flex flex-wrap items-center gap-2">
-          <button id="tcp-connect" class="net-btn net-btn-primary">Open connection</button>
-          <button id="tcp-close" class="net-btn" disabled>Close connection</button>
+          <button id="tcp-connect" class="net-btn net-btn-primary" data-i18n="btnOpenConnection">Open connection</button>
+          <button id="tcp-close" class="net-btn" disabled data-i18n="btnCloseConnection">Close connection</button>
           <span id="tcp-state" class="net-pill ml-auto">CLOSED</span>
         </div>
 
         <div class="net-lane mt-6">
           <div class="net-lane-col">
-            <div class="net-node">Client</div>
+            <div class="net-node" data-i18n="nodeClient">Client</div>
           </div>
           <div id="tcp-wire" class="net-lane-wire">
             <div class="net-wire-line" aria-hidden="true"></div>
           </div>
           <div class="net-lane-col">
-            <div class="net-node">Server</div>
+            <div class="net-node" data-i18n="nodeServer">Server</div>
           </div>
         </div>
 
@@ -116,10 +125,10 @@ import Layout from "../../layouts/Layout.astro";
             <span class="h-px w-12 bg-[var(--sec)] opacity-40"></span>
             <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]">TCP vs UDP</span>
           </div>
-          <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4">
+          <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4" data-i18n="lossTitle">
             Packet loss &amp; retransmission
           </h2>
-          <p class="mt-2 text-base text-[var(--white-icon)] leading-relaxed max-w-2xl">
+          <p class="mt-2 text-base text-[var(--white-icon)] leading-relaxed max-w-2xl" data-i18n="lossDesc">
             Send the same burst of packets over a lossy link with both protocols.
             TCP notices the gap and retransmits; UDP just moves on &mdash; which is
             exactly why one is used for file transfer and the other for live video.
@@ -127,9 +136,9 @@ import Layout from "../../layouts/Layout.astro";
         </div>
 
         <div class="mt-6 flex flex-wrap items-center gap-2">
-          <button id="loss-run" class="net-btn net-btn-primary">Send 10 packets</button>
+          <button id="loss-run" class="net-btn net-btn-primary" data-i18n="btnSendPackets">Send 10 packets</button>
           <label class="flex items-center gap-2 text-xs text-[var(--white-icon)] ml-auto">
-            Loss rate
+            <span data-i18n="lossRateLabel">Loss rate</span>
             <input id="loss-rate" type="range" min="0" max="60" value="25" class="net-range" />
             <span id="loss-rate-value" class="font-mono text-[var(--sec)]">25%</span>
           </label>
@@ -140,16 +149,16 @@ import Layout from "../../layouts/Layout.astro";
             <div class="net-split-label">TCP</div>
             <div id="tcp-track" class="net-track"></div>
             <div class="net-split-stats font-mono text-xs text-[var(--white-icon)]">
-              Delivered: <span id="tcp-delivered" class="text-[var(--sec)]">0</span> / 10
-              &middot; Retransmits: <span id="tcp-retrans" class="text-[#f59e0b]">0</span>
+              <span data-i18n="statsDelivered">Delivered:</span> <span id="tcp-delivered" class="text-[var(--sec)]">0</span> <span data-i18n="statsOf10">/ 10</span>
+              &middot; <span data-i18n="statsRetransmits">Retransmits:</span> <span id="tcp-retrans" class="text-[#f59e0b]">0</span>
             </div>
           </div>
           <div class="net-split-col">
             <div class="net-split-label">UDP</div>
             <div id="udp-track" class="net-track"></div>
             <div class="net-split-stats font-mono text-xs text-[var(--white-icon)]">
-              Delivered: <span id="udp-delivered" class="text-[var(--sec)]">0</span> / 10
-              &middot; Dropped: <span id="udp-dropped" class="text-[#ef4444]">0</span>
+              <span data-i18n="statsDelivered">Delivered:</span> <span id="udp-delivered" class="text-[var(--sec)]">0</span> <span data-i18n="statsOf10">/ 10</span>
+              &middot; <span data-i18n="statsDropped">Dropped:</span> <span id="udp-dropped" class="text-[#ef4444]">0</span>
             </div>
           </div>
         </div>
@@ -163,12 +172,12 @@ import Layout from "../../layouts/Layout.astro";
           <div class="flex items-center gap-3">
             <span class="font-mono text-xs tracking-[0.2em] text-[var(--sec)]">03</span>
             <span class="h-px w-12 bg-[var(--sec)] opacity-40"></span>
-            <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]">Framing</span>
+            <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]" data-i18n="framingLabel">Framing</span>
           </div>
-          <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4">
+          <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4" data-i18n="framingTitle">
             Framed client &ndash; server chat
           </h2>
-          <p class="mt-2 text-base text-[var(--white-icon)] leading-relaxed max-w-2xl">
+          <p class="mt-2 text-base text-[var(--white-icon)] leading-relaxed max-w-2xl" data-i18n="framingDesc">
             TCP delivers a raw byte stream with no message boundaries, so applications
             frame their own messages. Type below and watch each message get wrapped
             with a length-prefix header before it's "sent" across the wire and
@@ -177,8 +186,8 @@ import Layout from "../../layouts/Layout.astro";
         </div>
 
         <div class="mt-6 flex flex-wrap items-center gap-2">
-          <input id="chat-input" type="text" placeholder="type a message" class="net-input flex-1 min-w-[200px]" maxlength="60" />
-          <button id="chat-send" class="net-btn net-btn-primary">Send</button>
+          <input id="chat-input" type="text" data-i18n-placeholder="chatInputPlaceholder" placeholder="type a message" class="net-input flex-1 min-w-[200px]" maxlength="60" />
+          <button id="chat-send" class="net-btn net-btn-primary" data-i18n="btnSend">Send</button>
         </div>
 
         <div id="chat-frame-preview" class="mt-4 font-mono text-xs text-[var(--white-icon)] opacity-80"></div>
@@ -194,12 +203,12 @@ import Layout from "../../layouts/Layout.astro";
           <div class="flex items-center gap-3">
             <span class="font-mono text-xs tracking-[0.2em] text-[var(--sec)]">04</span>
             <span class="h-px w-12 bg-[var(--sec)] opacity-40"></span>
-            <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]">Reference</span>
+            <span class="text-xs uppercase tracking-widest text-[var(--white-icon)]" data-i18n="refLabel">Reference</span>
           </div>
-          <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4">
+          <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-[var(--white)] mt-4" data-i18n="refTitle">
             How the transport layer actually works.
           </h2>
-          <p class="mt-2 text-base text-[var(--white-icon)] leading-relaxed max-w-2xl">
+          <p class="mt-2 text-base text-[var(--white-icon)] leading-relaxed max-w-2xl" data-i18n-html="refDesc">
             The simulations above show <em>that</em> something happens. This is the
             <em>why</em> &mdash; the concepts behind each demo, spelled out in plain terms.
           </p>
@@ -207,63 +216,71 @@ import Layout from "../../layouts/Layout.astro";
 
         <!-- GROUP 01 -->
         <div class="net-ref-group">
-          <p class="net-ref-group-label"><span class="net-num-inline">01</span>Transport layer basics</p>
+          <p class="net-ref-group-label"><span class="net-num-inline">01</span><span data-i18n="group01Label">Transport layer basics</span></p>
 
           <div class="net-ref-entry">
-            <p class="net-ref-term">OSI &amp; TCP/IP layers <span class="net-ref-tag">concept</span></p>
-            <p>
-              Networking is built in layers, each one only responsible for its own job.
-              The application layer (HTTP, your chat protocol) hands data to the
-              transport layer (TCP or UDP), which hands segments to the network layer
-              (IP), which hands packets to the link layer (Ethernet, Wi-Fi). Every demo
-              on this page lives at the transport layer: it assumes IP already knows how
-              to get bytes from one machine to another, and focuses on what TCP and UDP
-              do with them once they arrive.
-            </p>
-            <p class="net-ref-meta">Application &middot; Transport &middot; Network &middot; Link</p>
+            <p class="net-ref-term"><span data-i18n="osiTitle">OSI &amp; TCP/IP layers</span> <span class="net-ref-tag" data-i18n="tagConcept">concept</span></p>
+            <div data-i18n-html="osiBody">
+              <p>
+                Networking is built in layers, each one only responsible for its own job.
+                The application layer (HTTP, your chat protocol) hands data to the
+                transport layer (TCP or UDP), which hands segments to the network layer
+                (IP), which hands packets to the link layer (Ethernet, Wi-Fi). Every demo
+                on this page lives at the transport layer: it assumes IP already knows how
+                to get bytes from one machine to another, and focuses on what TCP and UDP
+                do with them once they arrive.
+              </p>
+            </div>
+            <p class="net-ref-meta" data-i18n="osiMeta">Application &middot; Transport &middot; Network &middot; Link</p>
           </div>
 
           <div class="net-ref-entry">
-            <p class="net-ref-term">Sockets &amp; ports <span class="net-ref-tag">concept</span></p>
-            <p>
-              An IP address gets a packet to the right machine; a port number gets it to
-              the right process on that machine. A socket is the pairing of the two &mdash;
-              <code>(local IP, local port, remote IP, remote port)</code> &mdash; and it's
-              what a TCP connection actually identifies. That's why a server can hold
-              thousands of simultaneous connections on the same port 443: each one is a
-              distinct socket because the remote IP or port differs.
-            </p>
-            <p class="net-ref-meta">Well-known ports 0&ndash;1023 &middot; ephemeral ports assigned per connection</p>
+            <p class="net-ref-term"><span data-i18n="socketsTitle">Sockets &amp; ports</span> <span class="net-ref-tag" data-i18n="tagConcept">concept</span></p>
+            <div data-i18n-html="socketsBody">
+              <p>
+                An IP address gets a packet to the right machine; a port number gets it to
+                the right process on that machine. A socket is the pairing of the two &mdash;
+                <code>(local IP, local port, remote IP, remote port)</code> &mdash; and it's
+                what a TCP connection actually identifies. That's why a server can hold
+                thousands of simultaneous connections on the same port 443: each one is a
+                distinct socket because the remote IP or port differs.
+              </p>
+            </div>
+            <p class="net-ref-meta" data-i18n="socketsMeta">Well-known ports 0&ndash;1023 &middot; ephemeral ports assigned per connection</p>
           </div>
 
           <div class="net-ref-entry">
-            <p class="net-ref-term">MTU &amp; packetization <span class="net-ref-tag">concept</span></p>
-            <p>
-              A network link can only carry so many bytes in one frame &mdash; the maximum
-              transmission unit, typically 1500 bytes on Ethernet. Anything bigger than
-              that gets split into multiple packets before it's sent and reassembled on
-              arrival. This is separate from message framing (below): MTU splitting
-              happens transparently at the network layer, while framing is something the
-              application has to do itself on top of a byte stream.
-            </p>
+            <p class="net-ref-term"><span data-i18n="mtuTitle">MTU &amp; packetization</span> <span class="net-ref-tag" data-i18n="tagConcept">concept</span></p>
+            <div data-i18n-html="mtuBody">
+              <p>
+                A network link can only carry so many bytes in one frame &mdash; the maximum
+                transmission unit, typically 1500 bytes on Ethernet. Anything bigger than
+                that gets split into multiple packets before it's sent and reassembled on
+                arrival. This is separate from message framing (below): MTU splitting
+                happens transparently at the network layer, while framing is something the
+                application has to do itself on top of a byte stream.
+              </p>
+            </div>
           </div>
         </div>
 
         <!-- GROUP 02 -->
         <div class="net-ref-group">
-          <p class="net-ref-group-label"><span class="net-num-inline">02</span>Connection lifecycle</p>
+          <p class="net-ref-group-label"><span class="net-num-inline">02</span><span data-i18n="group02Label">Connection lifecycle</span></p>
 
           <div class="net-ref-entry">
-            <p class="net-ref-term">Three-way handshake <span class="net-ref-tag">protocol</span></p>
-            <p>
-              Before any data flows, both sides agree the connection is real and
-              synchronize starting sequence numbers. The client sends <code>SYN</code>
-              with an initial sequence number; the server replies <code>SYN-ACK</code>,
-              acknowledging that number and sending its own; the client replies
-              <code>ACK</code>, acknowledging the server's number. Three messages, two
-              round trips &mdash; exactly what the demo above animates.
-            </p>
-            <ol class="net-ref-steps">
+            <p class="net-ref-term"><span data-i18n="handshakeRefTitle">Three-way handshake</span> <span class="net-ref-tag" data-i18n="tagProtocol">protocol</span></p>
+            <div data-i18n-html="handshakeRefBody">
+              <p>
+                Before any data flows, both sides agree the connection is real and
+                synchronize starting sequence numbers. The client sends <code>SYN</code>
+                with an initial sequence number; the server replies <code>SYN-ACK</code>,
+                acknowledging that number and sending its own; the client replies
+                <code>ACK</code>, acknowledging the server's number. Three messages, two
+                round trips &mdash; exactly what the demo above animates.
+              </p>
+            </div>
+            <ol class="net-ref-steps" data-i18n-html="handshakeSteps">
               <li>Client &rarr; server: <code>SYN seq=x</code></li>
               <li>Server &rarr; client: <code>SYN-ACK seq=y ack=x+1</code></li>
               <li>Client &rarr; server: <code>ACK ack=y+1</code></li>
@@ -271,112 +288,128 @@ import Layout from "../../layouts/Layout.astro";
           </div>
 
           <div class="net-ref-entry">
-            <p class="net-ref-term">Sequence &amp; acknowledgment numbers <span class="net-ref-tag">concept</span></p>
-            <p>
-              Every byte TCP sends is numbered. The sequence number in a segment is the
-              position of its first byte in the stream; the acknowledgment number in a
-              reply says "I've received everything up to this byte, send me what comes
-              next." This is how TCP notices a gap &mdash; if bytes arrive out of order or
-              go missing, the acknowledgment number simply stops advancing until the
-              missing piece shows up, which is the signal that triggers retransmission.
-            </p>
+            <p class="net-ref-term"><span data-i18n="seqAckTitle">Sequence &amp; acknowledgment numbers</span> <span class="net-ref-tag" data-i18n="tagConcept">concept</span></p>
+            <div data-i18n-html="seqAckBody">
+              <p>
+                Every byte TCP sends is numbered. The sequence number in a segment is the
+                position of its first byte in the stream; the acknowledgment number in a
+                reply says "I've received everything up to this byte, send me what comes
+                next." This is how TCP notices a gap &mdash; if bytes arrive out of order or
+                go missing, the acknowledgment number simply stops advancing until the
+                missing piece shows up, which is the signal that triggers retransmission.
+              </p>
+            </div>
           </div>
 
           <div class="net-ref-entry">
-            <p class="net-ref-term">Four-way close &amp; TIME_WAIT <span class="net-ref-tag">protocol</span></p>
-            <p>
-              Closing takes one more step than opening because TCP connections are
-              full-duplex &mdash; each direction has to be closed independently.
-              Either side can send <code>FIN</code> to say "I'm done sending"; the other
-              acknowledges it and, once it's also done, sends its own <code>FIN</code>
-              back. After the final <code>ACK</code>, the side that closed first holds
-              the socket in <code>TIME_WAIT</code> briefly, in case that last
-              acknowledgment got lost and needs to be resent.
-            </p>
-            <p class="net-ref-meta">FIN &middot; ACK &middot; FIN &middot; ACK &middot; TIME_WAIT</p>
+            <p class="net-ref-term"><span data-i18n="closeTitle">Four-way close &amp; TIME_WAIT</span> <span class="net-ref-tag" data-i18n="tagProtocol">protocol</span></p>
+            <div data-i18n-html="closeBody">
+              <p>
+                Closing takes one more step than opening because TCP connections are
+                full-duplex &mdash; each direction has to be closed independently.
+                Either side can send <code>FIN</code> to say "I'm done sending"; the other
+                acknowledges it and, once it's also done, sends its own <code>FIN</code>
+                back. After the final <code>ACK</code>, the side that closed first holds
+                the socket in <code>TIME_WAIT</code> briefly, in case that last
+                acknowledgment got lost and needs to be resent.
+              </p>
+            </div>
+            <p class="net-ref-meta" data-i18n="closeMeta">FIN &middot; ACK &middot; FIN &middot; ACK &middot; TIME_WAIT</p>
           </div>
         </div>
 
         <!-- GROUP 03 -->
         <div class="net-ref-group">
-          <p class="net-ref-group-label"><span class="net-num-inline">03</span>TCP vs UDP</p>
+          <p class="net-ref-group-label"><span class="net-num-inline">03</span><span data-i18n="group03Label">TCP vs UDP</span></p>
 
           <div class="net-ref-entry">
-            <p class="net-ref-term">TCP: reliable, ordered delivery <span class="net-ref-tag">mechanism</span></p>
-            <p>
-              TCP guarantees every byte arrives, in order, exactly once &mdash; and it does
-              that entirely through the sequence/acknowledgment numbers above. If an
-              acknowledgment doesn't arrive within a timeout, the sender assumes the
-              segment was lost and retransmits it. That's the gap between the TCP and
-              UDP tracks in the demo: TCP keeps resending packet <code>N</code> until it's
-              confirmed, so the delivered count always eventually reaches 10.
-            </p>
+            <p class="net-ref-term"><span data-i18n="tcpRelTitle">TCP: reliable, ordered delivery</span> <span class="net-ref-tag" data-i18n="tagMechanism">mechanism</span></p>
+            <div data-i18n-html="tcpRelBody">
+              <p>
+                TCP guarantees every byte arrives, in order, exactly once &mdash; and it does
+                that entirely through the sequence/acknowledgment numbers above. If an
+                acknowledgment doesn't arrive within a timeout, the sender assumes the
+                segment was lost and retransmits it. That's the gap between the TCP and
+                UDP tracks in the demo: TCP keeps resending packet <code>N</code> until it's
+                confirmed, so the delivered count always eventually reaches 10.
+              </p>
+            </div>
           </div>
 
           <div class="net-ref-entry">
-            <p class="net-ref-term">UDP: unreliable, connectionless delivery <span class="net-ref-tag">mechanism</span></p>
-            <p>
-              UDP has no handshake, no sequence numbers, and no retransmission &mdash; it
-              just fires a packet and moves on, with no confirmation it arrived. That
-              sounds worse, but it's exactly what's wanted for live video or voice: a
-              retransmitted frame from three seconds ago is useless, so UDP's lack of
-              guarantees removes the latency retransmission would add. The application
-              decides whether and how to handle loss, not the protocol.
-            </p>
+            <p class="net-ref-term"><span data-i18n="udpUnrelTitle">UDP: unreliable, connectionless delivery</span> <span class="net-ref-tag" data-i18n="tagMechanism">mechanism</span></p>
+            <div data-i18n-html="udpUnrelBody">
+              <p>
+                UDP has no handshake, no sequence numbers, and no retransmission &mdash; it
+                just fires a packet and moves on, with no confirmation it arrived. That
+                sounds worse, but it's exactly what's wanted for live video or voice: a
+                retransmitted frame from three seconds ago is useless, so UDP's lack of
+                guarantees removes the latency retransmission would add. The application
+                decides whether and how to handle loss, not the protocol.
+              </p>
+            </div>
           </div>
 
           <div class="net-ref-entry">
-            <p class="net-ref-term">Sliding windows &amp; congestion control <span class="net-ref-tag">concept</span></p>
-            <p>
-              Real TCP doesn't send one packet and wait for one acknowledgment like the
-              simplified demo above &mdash; it keeps a window of unacknowledged bytes in
-              flight at once, sized to use the connection efficiently without
-              overwhelming the receiver or the network. That window shrinks sharply when
-              loss is detected (a signal of congestion) and grows gradually when
-              delivery is clean, which is what lets TCP share a link fairly with other
-              connections without any central coordination.
-            </p>
+            <p class="net-ref-term"><span data-i18n="slidingTitle">Sliding windows &amp; congestion control</span> <span class="net-ref-tag" data-i18n="tagConcept">concept</span></p>
+            <div data-i18n-html="slidingBody">
+              <p>
+                Real TCP doesn't send one packet and wait for one acknowledgment like the
+                simplified demo above &mdash; it keeps a window of unacknowledged bytes in
+                flight at once, sized to use the connection efficiently without
+                overwhelming the receiver or the network. That window shrinks sharply when
+                loss is detected (a signal of congestion) and grows gradually when
+                delivery is clean, which is what lets TCP share a link fairly with other
+                connections without any central coordination.
+              </p>
+            </div>
           </div>
         </div>
 
         <!-- GROUP 04 -->
         <div class="net-ref-group">
-          <p class="net-ref-group-label"><span class="net-num-inline">04</span>Message framing</p>
+          <p class="net-ref-group-label"><span class="net-num-inline">04</span><span data-i18n="group04Label">Message framing</span></p>
 
           <div class="net-ref-entry">
-            <p class="net-ref-term">Why framing is needed <span class="net-ref-tag">concept</span></p>
-            <p>
-              TCP delivers a stream of bytes, not a stream of messages &mdash; it makes no
-              promise that one <code>send()</code> call on one side arrives as one
-              <code>read()</code> on the other. Two small messages can arrive fused
-              together, and one large message can arrive split across several reads.
-              Anything built on raw TCP has to define its own rule for where one message
-              ends and the next begins.
-            </p>
+            <p class="net-ref-term"><span data-i18n="whyFramingTitle">Why framing is needed</span> <span class="net-ref-tag" data-i18n="tagConcept">concept</span></p>
+            <div data-i18n-html="whyFramingBody">
+              <p>
+                TCP delivers a stream of bytes, not a stream of messages &mdash; it makes no
+                promise that one <code>send()</code> call on one side arrives as one
+                <code>read()</code> on the other. Two small messages can arrive fused
+                together, and one large message can arrive split across several reads.
+                Anything built on raw TCP has to define its own rule for where one message
+                ends and the next begins.
+              </p>
+            </div>
           </div>
 
           <div class="net-ref-entry">
-            <p class="net-ref-term">Length-prefix framing <span class="net-ref-tag">technique</span></p>
-            <p>
-              Write the message's byte length before the message itself, using a fixed
-              number of bytes for the length field. The reader always knows exactly how
-              many bytes to read for the length, then exactly how many more to read for
-              the payload &mdash; no scanning required. That's what the chat demo above
-              does: a 4-byte length header precedes every message.
-            </p>
-            <p class="net-ref-meta">Used by gRPC, most binary protocols &middot; O(1) to know a message's size</p>
+            <p class="net-ref-term"><span data-i18n="lengthPrefixTitle">Length-prefix framing</span> <span class="net-ref-tag" data-i18n="tagTechnique">technique</span></p>
+            <div data-i18n-html="lengthPrefixBody">
+              <p>
+                Write the message's byte length before the message itself, using a fixed
+                number of bytes for the length field. The reader always knows exactly how
+                many bytes to read for the length, then exactly how many more to read for
+                the payload &mdash; no scanning required. That's what the chat demo above
+                does: a 4-byte length header precedes every message.
+              </p>
+            </div>
+            <p class="net-ref-meta" data-i18n="lengthPrefixMeta">Used by gRPC, most binary protocols &middot; O(1) to know a message's size</p>
           </div>
 
           <div class="net-ref-entry">
-            <p class="net-ref-term">Delimiter-based framing <span class="net-ref-tag">technique</span></p>
-            <p>
-              Mark the end of each message with a reserved byte sequence &mdash; a newline
-              for line-based protocols like HTTP headers or Redis's older protocol.
-              Simpler to write and debug by eye than length-prefixing, but the reader has
-              to scan every incoming byte looking for the delimiter, and the payload
-              itself can never legally contain that exact sequence unless it's escaped.
-            </p>
-            <p class="net-ref-meta">Used by HTTP/1.1 headers, SMTP, line-oriented protocols</p>
+            <p class="net-ref-term"><span data-i18n="delimiterTitle">Delimiter-based framing</span> <span class="net-ref-tag" data-i18n="tagTechnique">technique</span></p>
+            <div data-i18n-html="delimiterBody">
+              <p>
+                Mark the end of each message with a reserved byte sequence &mdash; a newline
+                for line-based protocols like HTTP headers or Redis's older protocol.
+                Simpler to write and debug by eye than length-prefixing, but the reader has
+                to scan every incoming byte looking for the delimiter, and the payload
+                itself can never legally contain that exact sequence unless it's escaped.
+              </p>
+            </div>
+            <p class="net-ref-meta" data-i18n="delimiterMeta">Used by HTTP/1.1 headers, SMTP, line-oriented protocols</p>
           </div>
         </div>
       </div>
@@ -431,6 +464,56 @@ import Layout from "../../layouts/Layout.astro";
 
   @keyframes net-shine {
     to { background-position: -200% 0; }
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* TOPBAR / LANGUAGE SWITCH                                           */
+  /* ---------------------------------------------------------------- */
+  .net-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .net-lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    padding: 3px;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 9999px;
+    background: rgba(4, 10, 22, 0.55);
+  }
+
+  .net-lang-btn {
+    min-width: 34px;
+    padding: 0.32rem 0.65rem;
+    border: none;
+    border-radius: 9999px;
+
+    color: var(--white-icon);
+    font-family: monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+
+    background: transparent;
+    cursor: pointer;
+
+    transition: color 180ms ease, background 180ms ease;
+  }
+
+  .net-lang-btn:hover {
+    color: var(--white);
+  }
+
+  .net-lang-btn.active {
+    color: #041423;
+    background: var(--sec);
+    font-weight: 600;
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
   }
 
   /* ---------------------------------------------------------------- */
@@ -814,6 +897,273 @@ import Layout from "../../layouts/Layout.astro";
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ================================================================= */
+  /* I18N — translation dictionary + helpers                            */
+  /* ================================================================= */
+
+  type LangCode = "en" | "fr" | "es";
+
+  const LANG_STORAGE_KEY = "netSim.lang";
+
+  const STATIC_TEXT: Record<string, Record<LangCode, string>> = {
+    backLinkText: { en: "Back to projects", fr: "Retour aux projets", es: "Volver a proyectos" },
+    navOverview: { en: "Overview", fr: "Aperçu", es: "Resumen" },
+    navHandshake: { en: "Handshake", fr: "Négociation", es: "Negociación" },
+    navLoss: { en: "Packet loss", fr: "Perte de paquets", es: "Pérdida de paquetes" },
+    navFraming: { en: "Framing", fr: "Trames", es: "Tramas" },
+    navReference: { en: "Reference", fr: "Référence", es: "Referencia" },
+
+    heroEyebrow: { en: "Project 05 · Networking", fr: "Projet 05 · Réseaux", es: "Proyecto 05 · Redes" },
+    heroDesc: {
+      en: "Three simulations of what's actually happening under a socket connection: the TCP handshake, how TCP and UDP behave differently when packets get lost, and how a stream of bytes gets framed into discrete messages.",
+      fr: "Trois simulations de ce qui se passe réellement sous une connexion socket : la négociation TCP, la façon dont TCP et UDP se comportent différemment en cas de perte de paquets, et comment un flux d'octets est découpé en messages distincts.",
+      es: "Tres simulaciones de lo que realmente ocurre bajo una conexión de socket: la negociación TCP, cómo se comportan de forma distinta TCP y UDP cuando se pierden paquetes, y cómo un flujo de bytes se enmarca en mensajes discretos.",
+    },
+    heroNote: {
+      en: "Note: this page is a client-side simulation, not a live socket server — a static site can't open raw TCP/UDP connections in the browser. Everything below models real protocol behavior, timing, and packet loss in software.",
+      fr: "Remarque : cette page est une simulation côté client, pas un serveur socket réel — un site statique ne peut pas ouvrir de connexions TCP/UDP brutes dans le navigateur. Tout ce qui suit modélise le comportement réel du protocole, le timing et la perte de paquets en logiciel.",
+      es: "Nota: esta página es una simulación del lado del cliente, no un servidor de sockets real — un sitio estático no puede abrir conexiones TCP/UDP en bruto en el navegador. Todo lo que sigue modela el comportamiento real del protocolo, los tiempos y la pérdida de paquetes en software.",
+    },
+    tagNetworking: { en: "Networking", fr: "Réseaux", es: "Redes" },
+
+    hsTitle: { en: "Three-way handshake", fr: "Négociation en trois temps", es: "Negociación en tres pasos" },
+    hsDesc: {
+      en: "SYN, SYN-ACK, ACK — the exchange that opens every TCP connection, with sequence and acknowledgment numbers tracked step by step. Run it again to see the four-way close (FIN / ACK / FIN / ACK).",
+      fr: "SYN, SYN-ACK, ACK — l'échange qui ouvre chaque connexion TCP, avec les numéros de séquence et d'accusé de réception suivis étape par étape. Relancez-le pour voir la fermeture en quatre temps (FIN / ACK / FIN / ACK).",
+      es: "SYN, SYN-ACK, ACK — el intercambio que abre toda conexión TCP, con los números de secuencia y de confirmación registrados paso a paso. Vuelve a ejecutarlo para ver el cierre en cuatro pasos (FIN / ACK / FIN / ACK).",
+    },
+    btnOpenConnection: { en: "Open connection", fr: "Ouvrir la connexion", es: "Abrir conexión" },
+    btnCloseConnection: { en: "Close connection", fr: "Fermer la connexion", es: "Cerrar conexión" },
+    nodeClient: { en: "Client", fr: "Client", es: "Cliente" },
+    nodeServer: { en: "Server", fr: "Serveur", es: "Servidor" },
+
+    lossTitle: { en: "Packet loss & retransmission", fr: "Perte de paquets et retransmission", es: "Pérdida de paquetes y retransmisión" },
+    lossDesc: {
+      en: "Send the same burst of packets over a lossy link with both protocols. TCP notices the gap and retransmits; UDP just moves on — which is exactly why one is used for file transfer and the other for live video.",
+      fr: "Envoyez la même rafale de paquets sur une liaison avec pertes, avec les deux protocoles. TCP remarque le trou et retransmet ; UDP passe simplement à la suite — c'est exactement pourquoi l'un est utilisé pour le transfert de fichiers et l'autre pour la vidéo en direct.",
+      es: "Envía la misma ráfaga de paquetes por un enlace con pérdidas usando ambos protocolos. TCP nota el hueco y retransmite; UDP simplemente sigue adelante — precisamente por eso uno se usa para transferir archivos y el otro para video en vivo.",
+    },
+    btnSendPackets: { en: "Send 10 packets", fr: "Envoyer 10 paquets", es: "Enviar 10 paquetes" },
+    lossRateLabel: { en: "Loss rate", fr: "Taux de perte", es: "Tasa de pérdida" },
+    statsDelivered: { en: "Delivered:", fr: "Livrés :", es: "Entregados:" },
+    statsOf10: { en: "/ 10", fr: "/ 10", es: "/ 10" },
+    statsRetransmits: { en: "Retransmits:", fr: "Retransmissions :", es: "Retransmisiones:" },
+    statsDropped: { en: "Dropped:", fr: "Perdus :", es: "Perdidos:" },
+
+    framingLabel: { en: "Framing", fr: "Trames", es: "Tramas" },
+    framingTitle: { en: "Framed client – server chat", fr: "Chat client-serveur avec trames", es: "Chat cliente-servidor con tramas" },
+    framingDesc: {
+      en: "TCP delivers a raw byte stream with no message boundaries, so applications frame their own messages. Type below and watch each message get wrapped with a length-prefix header before it's \"sent\" across the wire and unframed on the other side.",
+      fr: "TCP livre un flux d'octets brut sans limites de messages, donc les applications découpent elles-mêmes leurs messages. Tapez ci-dessous et observez chaque message être enveloppé d'un en-tête de longueur avant d'être « envoyé » sur le fil, puis dé-encadré de l'autre côté.",
+      es: "TCP entrega un flujo de bytes en bruto sin límites de mensaje, así que las aplicaciones enmarcan sus propios mensajes. Escribe abajo y observa cómo cada mensaje se envuelve con una cabecera de longitud antes de ser «enviado» por el cable y desenmarcado en el otro extremo.",
+    },
+    chatInputPlaceholder: { en: "type a message", fr: "tapez un message", es: "escribe un mensaje" },
+    btnSend: { en: "Send", fr: "Envoyer", es: "Enviar" },
+
+    refLabel: { en: "Reference", fr: "Référence", es: "Referencia" },
+    refTitle: { en: "How the transport layer actually works.", fr: "Comment fonctionne réellement la couche transport.", es: "Cómo funciona realmente la capa de transporte." },
+
+    group01Label: { en: "Transport layer basics", fr: "Bases de la couche transport", es: "Fundamentos de la capa de transporte" },
+    osiTitle: { en: "OSI & TCP/IP layers", fr: "Couches OSI et TCP/IP", es: "Capas OSI y TCP/IP" },
+    osiMeta: { en: "Application · Transport · Network · Link", fr: "Application · Transport · Réseau · Liaison", es: "Aplicación · Transporte · Red · Enlace" },
+    socketsTitle: { en: "Sockets & ports", fr: "Sockets et ports", es: "Sockets y puertos" },
+    socketsMeta: { en: "Well-known ports 0–1023 · ephemeral ports assigned per connection", fr: "Ports connus 0–1023 · ports éphémères attribués par connexion", es: "Puertos conocidos 0–1023 · puertos efímeros asignados por conexión" },
+    mtuTitle: { en: "MTU & packetization", fr: "MTU et découpage en paquets", es: "MTU y empaquetado" },
+
+    group02Label: { en: "Connection lifecycle", fr: "Cycle de vie de la connexion", es: "Ciclo de vida de la conexión" },
+    handshakeRefTitle: { en: "Three-way handshake", fr: "Négociation en trois temps", es: "Negociación en tres pasos" },
+    seqAckTitle: { en: "Sequence & acknowledgment numbers", fr: "Numéros de séquence et d'accusé de réception", es: "Números de secuencia y confirmación" },
+    closeTitle: { en: "Four-way close & TIME_WAIT", fr: "Fermeture en quatre temps et TIME_WAIT", es: "Cierre en cuatro pasos y TIME_WAIT" },
+    closeMeta: { en: "FIN · ACK · FIN · ACK · TIME_WAIT", fr: "FIN · ACK · FIN · ACK · TIME_WAIT", es: "FIN · ACK · FIN · ACK · TIME_WAIT" },
+
+    group03Label: { en: "TCP vs UDP", fr: "TCP contre UDP", es: "TCP frente a UDP" },
+    tcpRelTitle: { en: "TCP: reliable, ordered delivery", fr: "TCP : livraison fiable et ordonnée", es: "TCP: entrega fiable y ordenada" },
+    udpUnrelTitle: { en: "UDP: unreliable, connectionless delivery", fr: "UDP : livraison non fiable et sans connexion", es: "UDP: entrega no fiable y sin conexión" },
+    slidingTitle: { en: "Sliding windows & congestion control", fr: "Fenêtres glissantes et contrôle de congestion", es: "Ventanas deslizantes y control de congestión" },
+
+    group04Label: { en: "Message framing", fr: "Découpage des messages", es: "Enmarcado de mensajes" },
+    whyFramingTitle: { en: "Why framing is needed", fr: "Pourquoi le découpage est nécessaire", es: "Por qué es necesario el enmarcado" },
+    lengthPrefixTitle: { en: "Length-prefix framing", fr: "Découpage par préfixe de longueur", es: "Enmarcado por prefijo de longitud" },
+    lengthPrefixMeta: { en: "Used by gRPC, most binary protocols · O(1) to know a message's size", fr: "Utilisé par gRPC, la plupart des protocoles binaires · O(1) pour connaître la taille d'un message", es: "Usado por gRPC, la mayoría de protocolos binarios · O(1) para conocer el tamaño de un mensaje" },
+    delimiterTitle: { en: "Delimiter-based framing", fr: "Découpage par délimiteur", es: "Enmarcado por delimitador" },
+    delimiterMeta: { en: "Used by HTTP/1.1 headers, SMTP, line-oriented protocols", fr: "Utilisé par les en-têtes HTTP/1.1, SMTP, les protocoles orientés lignes", es: "Usado por las cabeceras HTTP/1.1, SMTP, protocolos orientados a líneas" },
+
+    tagConcept: { en: "concept", fr: "concept", es: "concepto" },
+    tagProtocol: { en: "protocol", fr: "protocole", es: "protocolo" },
+    tagMechanism: { en: "mechanism", fr: "mécanisme", es: "mecanismo" },
+    tagTechnique: { en: "technique", fr: "technique", es: "técnica" },
+  };
+
+  const STATIC_HTML: Record<string, Record<LangCode, string>> = {
+    heroTitle: {
+      en: `The transport layer, made visible<span class="text-[var(--sec)]">.</span>`,
+      fr: `La couche transport, rendue visible<span class="text-[var(--sec)]">.</span>`,
+      es: `La capa de transporte, hecha visible<span class="text-[var(--sec)]">.</span>`,
+    },
+    refDesc: {
+      en: `The simulations above show <em>that</em> something happens. This is the <em>why</em> — the concepts behind each demo, spelled out in plain terms.`,
+      fr: `Les simulations ci-dessus montrent <em>que</em> quelque chose se passe. Voici le <em>pourquoi</em> — les concepts derrière chaque démo, expliqués en termes simples.`,
+      es: `Las simulaciones de arriba muestran <em>que</em> algo sucede. Esto es el <em>por qué</em> — los conceptos detrás de cada demo, explicados en términos simples.`,
+    },
+    osiBody: {
+      en: `<p>Networking is built in layers, each one only responsible for its own job. The application layer (HTTP, your chat protocol) hands data to the transport layer (TCP or UDP), which hands segments to the network layer (IP), which hands packets to the link layer (Ethernet, Wi-Fi). Every demo on this page lives at the transport layer: it assumes IP already knows how to get bytes from one machine to another, and focuses on what TCP and UDP do with them once they arrive.</p>`,
+      fr: `<p>Le réseau est construit en couches, chacune responsable uniquement de sa propre tâche. La couche application (HTTP, votre protocole de chat) transmet les données à la couche transport (TCP ou UDP), qui transmet des segments à la couche réseau (IP), qui transmet des paquets à la couche liaison (Ethernet, Wi-Fi). Chaque démo de cette page se situe au niveau de la couche transport : elle suppose qu'IP sait déjà faire circuler les octets d'une machine à l'autre, et se concentre sur ce que TCP et UDP en font une fois arrivés.</p>`,
+      es: `<p>Las redes se construyen en capas, cada una responsable solo de su propia tarea. La capa de aplicación (HTTP, tu protocolo de chat) entrega datos a la capa de transporte (TCP o UDP), que entrega segmentos a la capa de red (IP), que entrega paquetes a la capa de enlace (Ethernet, Wi-Fi). Cada demo de esta página vive en la capa de transporte: asume que IP ya sabe llevar bytes de una máquina a otra, y se centra en lo que TCP y UDP hacen con ellos al llegar.</p>`,
+    },
+    socketsBody: {
+      en: `<p>An IP address gets a packet to the right machine; a port number gets it to the right process on that machine. A socket is the pairing of the two — <code>(local IP, local port, remote IP, remote port)</code> — and it's what a TCP connection actually identifies. That's why a server can hold thousands of simultaneous connections on the same port 443: each one is a distinct socket because the remote IP or port differs.</p>`,
+      fr: `<p>Une adresse IP achemine un paquet vers la bonne machine ; un numéro de port l'achemine vers le bon processus sur cette machine. Un socket est l'association des deux — <code>(IP locale, port local, IP distante, port distant)</code> — et c'est ce qu'une connexion TCP identifie réellement. C'est pourquoi un serveur peut maintenir des milliers de connexions simultanées sur le même port 443 : chacune est un socket distinct car l'IP ou le port distant diffère.</p>`,
+      es: `<p>Una dirección IP lleva un paquete a la máquina correcta; un número de puerto lo lleva al proceso correcto en esa máquina. Un socket es la combinación de ambos — <code>(IP local, puerto local, IP remota, puerto remoto)</code> — y es lo que realmente identifica una conexión TCP. Por eso un servidor puede mantener miles de conexiones simultáneas en el mismo puerto 443: cada una es un socket distinto porque la IP o el puerto remoto difieren.</p>`,
+    },
+    mtuBody: {
+      en: `<p>A network link can only carry so many bytes in one frame — the maximum transmission unit, typically 1500 bytes on Ethernet. Anything bigger than that gets split into multiple packets before it's sent and reassembled on arrival. This is separate from message framing (below): MTU splitting happens transparently at the network layer, while framing is something the application has to do itself on top of a byte stream.</p>`,
+      fr: `<p>Une liaison réseau ne peut transporter qu'un certain nombre d'octets dans une trame — l'unité de transmission maximale, généralement 1500 octets sur Ethernet. Tout ce qui dépasse est divisé en plusieurs paquets avant l'envoi puis réassemblé à l'arrivée. Ceci est distinct du découpage de messages (ci-dessous) : la division par la MTU se fait de façon transparente au niveau de la couche réseau, tandis que le découpage en trames est quelque chose que l'application doit faire elle-même par-dessus un flux d'octets.</p>`,
+      es: `<p>Un enlace de red solo puede transportar cierta cantidad de bytes en una trama — la unidad máxima de transmisión, típicamente 1500 bytes en Ethernet. Todo lo que supera eso se divide en varios paquetes antes de enviarse y se reensambla al llegar. Esto es distinto del enmarcado de mensajes (más abajo): la división por MTU ocurre de forma transparente en la capa de red, mientras que el enmarcado es algo que la propia aplicación debe hacer sobre un flujo de bytes.</p>`,
+    },
+    handshakeRefBody: {
+      en: `<p>Before any data flows, both sides agree the connection is real and synchronize starting sequence numbers. The client sends <code>SYN</code> with an initial sequence number; the server replies <code>SYN-ACK</code>, acknowledging that number and sending its own; the client replies <code>ACK</code>, acknowledging the server's number. Three messages, two round trips — exactly what the demo above animates.</p>`,
+      fr: `<p>Avant que la moindre donnée ne circule, les deux parties conviennent que la connexion est réelle et synchronisent leurs numéros de séquence de départ. Le client envoie <code>SYN</code> avec un numéro de séquence initial ; le serveur répond <code>SYN-ACK</code>, accusant réception de ce numéro et envoyant le sien ; le client répond <code>ACK</code>, accusant réception du numéro du serveur. Trois messages, deux allers-retours — exactement ce que la démo ci-dessus anime.</p>`,
+      es: `<p>Antes de que fluya cualquier dato, ambas partes acuerdan que la conexión es real y sincronizan sus números de secuencia iniciales. El cliente envía <code>SYN</code> con un número de secuencia inicial; el servidor responde <code>SYN-ACK</code>, confirmando ese número y enviando el suyo propio; el cliente responde <code>ACK</code>, confirmando el número del servidor. Tres mensajes, dos idas y vueltas — exactamente lo que anima la demo de arriba.</p>`,
+    },
+    handshakeSteps: {
+      en: `<li>Client &rarr; server: <code>SYN seq=x</code></li><li>Server &rarr; client: <code>SYN-ACK seq=y ack=x+1</code></li><li>Client &rarr; server: <code>ACK ack=y+1</code></li>`,
+      fr: `<li>Client &rarr; serveur : <code>SYN seq=x</code></li><li>Serveur &rarr; client : <code>SYN-ACK seq=y ack=x+1</code></li><li>Client &rarr; serveur : <code>ACK ack=y+1</code></li>`,
+      es: `<li>Cliente &rarr; servidor: <code>SYN seq=x</code></li><li>Servidor &rarr; cliente: <code>SYN-ACK seq=y ack=x+1</code></li><li>Cliente &rarr; servidor: <code>ACK ack=y+1</code></li>`,
+    },
+    seqAckBody: {
+      en: `<p>Every byte TCP sends is numbered. The sequence number in a segment is the position of its first byte in the stream; the acknowledgment number in a reply says "I've received everything up to this byte, send me what comes next." This is how TCP notices a gap — if bytes arrive out of order or go missing, the acknowledgment number simply stops advancing until the missing piece shows up, which is the signal that triggers retransmission.</p>`,
+      fr: `<p>Chaque octet envoyé par TCP est numéroté. Le numéro de séquence d'un segment est la position de son premier octet dans le flux ; le numéro d'accusé de réception dans une réponse dit « j'ai reçu tout jusqu'à cet octet, envoie-moi la suite ». C'est ainsi que TCP remarque un trou — si des octets arrivent dans le désordre ou manquent, le numéro d'accusé de réception cesse simplement d'avancer jusqu'à ce que la partie manquante arrive, ce qui déclenche la retransmission.</p>`,
+      es: `<p>Cada byte que envía TCP está numerado. El número de secuencia de un segmento es la posición de su primer byte en el flujo; el número de confirmación en una respuesta dice "he recibido todo hasta este byte, envíame lo que sigue". Así es como TCP nota un hueco — si los bytes llegan desordenados o se pierden, el número de confirmación simplemente deja de avanzar hasta que llega la pieza faltante, lo cual es la señal que dispara la retransmisión.</p>`,
+    },
+    closeBody: {
+      en: `<p>Closing takes one more step than opening because TCP connections are full-duplex — each direction has to be closed independently. Either side can send <code>FIN</code> to say "I'm done sending"; the other acknowledges it and, once it's also done, sends its own <code>FIN</code> back. After the final <code>ACK</code>, the side that closed first holds the socket in <code>TIME_WAIT</code> briefly, in case that last acknowledgment got lost and needs to be resent.</p>`,
+      fr: `<p>La fermeture prend une étape de plus que l'ouverture car les connexions TCP sont full-duplex — chaque direction doit être fermée indépendamment. Chaque côté peut envoyer <code>FIN</code> pour dire « j'ai fini d'envoyer » ; l'autre en accuse réception et, une fois qu'il a aussi terminé, renvoie son propre <code>FIN</code>. Après l'<code>ACK</code> final, le côté qui a fermé en premier garde le socket en <code>TIME_WAIT</code> brièvement, au cas où ce dernier accusé de réception se soit perdu et doive être renvoyé.</p>`,
+      es: `<p>Cerrar lleva un paso más que abrir porque las conexiones TCP son full-duplex — cada dirección debe cerrarse de forma independiente. Cualquiera de los lados puede enviar <code>FIN</code> para decir "he terminado de enviar"; el otro lo confirma y, una vez que también termina, envía su propio <code>FIN</code> de vuelta. Después del <code>ACK</code> final, el lado que cerró primero mantiene el socket en <code>TIME_WAIT</code> brevemente, por si ese último acuse se perdió y necesita reenviarse.</p>`,
+    },
+    tcpRelBody: {
+      en: `<p>TCP guarantees every byte arrives, in order, exactly once — and it does that entirely through the sequence/acknowledgment numbers above. If an acknowledgment doesn't arrive within a timeout, the sender assumes the segment was lost and retransmits it. That's the gap between the TCP and UDP tracks in the demo: TCP keeps resending packet <code>N</code> until it's confirmed, so the delivered count always eventually reaches 10.</p>`,
+      fr: `<p>TCP garantit que chaque octet arrive, dans l'ordre, exactement une fois — et il le fait entièrement grâce aux numéros de séquence/accusé de réception ci-dessus. Si un accusé de réception n'arrive pas dans un délai imparti, l'émetteur suppose que le segment a été perdu et le retransmet. C'est l'écart entre les pistes TCP et UDP dans la démo : TCP continue de renvoyer le paquet <code>N</code> jusqu'à sa confirmation, donc le nombre livré finit toujours par atteindre 10.</p>`,
+      es: `<p>TCP garantiza que cada byte llega, en orden, exactamente una vez — y lo hace enteramente mediante los números de secuencia/confirmación de arriba. Si una confirmación no llega dentro de un plazo, el emisor asume que el segmento se perdió y lo retransmite. Esa es la diferencia entre las pistas de TCP y UDP en la demo: TCP sigue reenviando el paquete <code>N</code> hasta que se confirma, así que el contador de entregados siempre termina llegando a 10.</p>`,
+    },
+    udpUnrelBody: {
+      en: `<p>UDP has no handshake, no sequence numbers, and no retransmission — it just fires a packet and moves on, with no confirmation it arrived. That sounds worse, but it's exactly what's wanted for live video or voice: a retransmitted frame from three seconds ago is useless, so UDP's lack of guarantees removes the latency retransmission would add. The application decides whether and how to handle loss, not the protocol.</p>`,
+      fr: `<p>UDP n'a ni négociation, ni numéros de séquence, ni retransmission — il envoie simplement un paquet et passe à la suite, sans confirmation qu'il soit arrivé. Cela paraît pire, mais c'est exactement ce qui est souhaité pour la vidéo ou la voix en direct : une trame retransmise vieille de trois secondes est inutile, donc l'absence de garanties d'UDP supprime la latence qu'ajouterait la retransmission. C'est l'application qui décide si et comment gérer la perte, pas le protocole.</p>`,
+      es: `<p>UDP no tiene negociación, ni números de secuencia, ni retransmisión — simplemente envía un paquete y sigue adelante, sin confirmación de que haya llegado. Suena peor, pero es exactamente lo que se necesita para video o voz en vivo: un cuadro retransmitido de hace tres segundos es inútil, así que la falta de garantías de UDP elimina la latencia que añadiría la retransmisión. Es la aplicación la que decide si y cómo manejar la pérdida, no el protocolo.</p>`,
+    },
+    slidingBody: {
+      en: `<p>Real TCP doesn't send one packet and wait for one acknowledgment like the simplified demo above — it keeps a window of unacknowledged bytes in flight at once, sized to use the connection efficiently without overwhelming the receiver or the network. That window shrinks sharply when loss is detected (a signal of congestion) and grows gradually when delivery is clean, which is what lets TCP share a link fairly with other connections without any central coordination.</p>`,
+      fr: `<p>En réalité, TCP n'envoie pas un paquet et n'attend pas un accusé de réception comme dans la démo simplifiée ci-dessus — il maintient une fenêtre d'octets non confirmés en vol à la fois, dimensionnée pour utiliser la connexion efficacement sans submerger le récepteur ou le réseau. Cette fenêtre se réduit fortement quand une perte est détectée (signe de congestion) et croît progressivement quand la livraison est propre, ce qui permet à TCP de partager équitablement une liaison avec d'autres connexions sans coordination centrale.</p>`,
+      es: `<p>El TCP real no envía un paquete y espera una confirmación como en la demo simplificada de arriba — mantiene una ventana de bytes sin confirmar en tránsito a la vez, dimensionada para usar la conexión eficientemente sin saturar al receptor ni a la red. Esa ventana se reduce bruscamente cuando se detecta pérdida (señal de congestión) y crece gradualmente cuando la entrega es limpia, lo cual permite que TCP comparta un enlace de forma justa con otras conexiones sin ninguna coordinación central.</p>`,
+    },
+    whyFramingBody: {
+      en: `<p>TCP delivers a stream of bytes, not a stream of messages — it makes no promise that one <code>send()</code> call on one side arrives as one <code>read()</code> on the other. Two small messages can arrive fused together, and one large message can arrive split across several reads. Anything built on raw TCP has to define its own rule for where one message ends and the next begins.</p>`,
+      fr: `<p>TCP livre un flux d'octets, pas un flux de messages — il ne garantit pas qu'un appel <code>send()</code> d'un côté arrive comme un seul <code>read()</code> de l'autre. Deux petits messages peuvent arriver fusionnés, et un gros message peut arriver réparti sur plusieurs lectures. Tout ce qui est construit sur TCP brut doit définir sa propre règle pour savoir où un message se termine et où le suivant commence.</p>`,
+      es: `<p>TCP entrega un flujo de bytes, no un flujo de mensajes — no promete que una llamada <code>send()</code> de un lado llegue como un solo <code>read()</code> del otro. Dos mensajes pequeños pueden llegar fusionados, y un mensaje grande puede llegar dividido en varias lecturas. Todo lo que se construye sobre TCP en bruto tiene que definir su propia regla para saber dónde termina un mensaje y dónde empieza el siguiente.</p>`,
+    },
+    lengthPrefixBody: {
+      en: `<p>Write the message's byte length before the message itself, using a fixed number of bytes for the length field. The reader always knows exactly how many bytes to read for the length, then exactly how many more to read for the payload — no scanning required. That's what the chat demo above does: a 4-byte length header precedes every message.</p>`,
+      fr: `<p>Écrire la longueur en octets du message avant le message lui-même, en utilisant un nombre fixe d'octets pour le champ de longueur. Le lecteur sait toujours exactement combien d'octets lire pour la longueur, puis exactement combien de plus lire pour le contenu — aucun balayage requis. C'est ce que fait la démo de chat ci-dessus : un en-tête de longueur de 4 octets précède chaque message.</p>`,
+      es: `<p>Escribir la longitud en bytes del mensaje antes del mensaje mismo, usando un número fijo de bytes para el campo de longitud. El lector siempre sabe exactamente cuántos bytes leer para la longitud, y luego exactamente cuántos más leer para el contenido — sin necesidad de escanear. Eso es lo que hace la demo de chat de arriba: una cabecera de longitud de 4 bytes precede a cada mensaje.</p>`,
+    },
+    delimiterBody: {
+      en: `<p>Mark the end of each message with a reserved byte sequence — a newline for line-based protocols like HTTP headers or Redis's older protocol. Simpler to write and debug by eye than length-prefixing, but the reader has to scan every incoming byte looking for the delimiter, and the payload itself can never legally contain that exact sequence unless it's escaped.</p>`,
+      fr: `<p>Marquer la fin de chaque message par une séquence d'octets réservée — un saut de ligne pour les protocoles orientés lignes comme les en-têtes HTTP ou l'ancien protocole de Redis. Plus simple à écrire et à déboguer à l'œil que le préfixe de longueur, mais le lecteur doit scruter chaque octet entrant à la recherche du délimiteur, et le contenu lui-même ne peut jamais légalement contenir cette séquence exacte, sauf s'il est échappé.</p>`,
+      es: `<p>Marcar el final de cada mensaje con una secuencia de bytes reservada — un salto de línea para protocolos orientados a líneas como las cabeceras HTTP o el antiguo protocolo de Redis. Más simple de escribir y depurar a simple vista que el prefijo de longitud, pero el lector tiene que escanear cada byte entrante buscando el delimitador, y el contenido mismo nunca puede contener legalmente esa secuencia exacta a menos que se escape.</p>`,
+    },
+  };
+
+  let currentLang: LangCode = "en";
+
+  try {
+    const saved = localStorage.getItem(LANG_STORAGE_KEY);
+    if (saved === "en" || saved === "fr" || saved === "es") {
+      currentLang = saved;
+    }
+  } catch {
+    // localStorage unavailable — fall back to English
+  }
+
+  function t(key: string, vars?: Record<string, string | number>): string {
+    const entry = STATIC_TEXT[key];
+    let str = entry ? entry[currentLang] ?? entry.en : key;
+
+    if (vars) {
+      for (const varKey in vars) {
+        str = str.replace(new RegExp(`\\{${varKey}\\}`, "g"), String(vars[varKey]));
+      }
+    }
+
+    return str;
+  }
+
+  function applyStaticTranslations(): void {
+    document.querySelectorAll<HTMLElement>("[data-i18n]").forEach((element) => {
+      const key = element.getAttribute("data-i18n");
+      if (key && STATIC_TEXT[key]) {
+        element.textContent = t(key);
+      }
+    });
+
+    document.querySelectorAll<HTMLElement>("[data-i18n-html]").forEach((element) => {
+      const key = element.getAttribute("data-i18n-html");
+      if (key && STATIC_HTML[key]) {
+        element.innerHTML = STATIC_HTML[key][currentLang] ?? STATIC_HTML[key].en;
+      }
+    });
+
+    document.querySelectorAll<HTMLInputElement>("[data-i18n-placeholder]").forEach((element) => {
+      const key = element.getAttribute("data-i18n-placeholder");
+      if (key && STATIC_TEXT[key]) {
+        element.placeholder = t(key);
+      }
+    });
+
+    document.documentElement.lang = currentLang;
+  }
+
+  function updateLangButtons(): void {
+    document.querySelectorAll<HTMLButtonElement>(".net-lang-btn").forEach((button) => {
+      button.classList.toggle("active", button.dataset.lang === currentLang);
+    });
+  }
+
+  const langChangeListeners: (() => void)[] = [];
+
+  function onLangChange(listener: () => void): void {
+    langChangeListeners.push(listener);
+  }
+
+  function setLanguage(lang: LangCode): void {
+    if (lang === currentLang) {
+      return;
+    }
+
+    currentLang = lang;
+
+    try {
+      localStorage.setItem(LANG_STORAGE_KEY, lang);
+    } catch {
+      // ignore storage failures
+    }
+
+    applyStaticTranslations();
+    updateLangButtons();
+
+    langChangeListeners.forEach((listener) => listener());
+  }
+
+  document.querySelectorAll<HTMLButtonElement>(".net-lang-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      const lang = button.dataset.lang;
+      if (lang === "en" || lang === "fr" || lang === "es") {
+        setLanguage(lang);
+      }
+    });
+  });
+
+  applyStaticTranslations();
+  updateLangButtons();
+
+  /* ================================================================= */
   /* ELECTRIC NETWORK BACKGROUND — animated node graph                  */
   /* ================================================================= */
   (function backgroundModule() {
@@ -937,8 +1287,64 @@ import Layout from "../../layouts/Layout.astro";
     let seqClient = Math.floor(Math.random() * 1000) + 1000;
     let seqServer = Math.floor(Math.random() * 1000) + 5000;
 
-    function setState(text: string, cls?: "open" | "closing") {
-      stateEl!.textContent = text;
+    type StateKey = "closed" | "connecting" | "established" | "closing";
+    let currentState: StateKey = "closed";
+
+    const stateMsg: Record<LangCode, Record<StateKey, string>> = {
+      en: { closed: "CLOSED", connecting: "CONNECTING", established: "ESTABLISHED", closing: "CLOSING" },
+      fr: { closed: "FERMÉ", connecting: "CONNEXION", established: "ÉTABLIE", closing: "FERMETURE" },
+      es: { closed: "CERRADO", connecting: "CONECTANDO", established: "ESTABLECIDA", closing: "CERRANDO" },
+    };
+
+    const hsMsg: Record<LangCode, Record<string, string>> = {
+      en: {
+        synLog: "SYN client → server \u00a0 seq={seq}",
+        synAckLog: "SYN-ACK server → client \u00a0 seq={seqServer} ack={ack}",
+        ackLog: "ACK client → server \u00a0 ack={ack}",
+        established: "Connection established. Both sides can now send data.",
+        finClientLog: "FIN client → server",
+        ackServerLog: "ACK server → client",
+        finServerLog: "FIN server → client",
+        ackClientLog: "ACK client → server",
+        closedLog: "Connection closed.",
+      },
+      fr: {
+        synLog: "SYN client → serveur \u00a0 seq={seq}",
+        synAckLog: "SYN-ACK serveur → client \u00a0 seq={seqServer} ack={ack}",
+        ackLog: "ACK client → serveur \u00a0 ack={ack}",
+        established: "Connexion établie. Les deux côtés peuvent maintenant envoyer des données.",
+        finClientLog: "FIN client → serveur",
+        ackServerLog: "ACK serveur → client",
+        finServerLog: "FIN serveur → client",
+        ackClientLog: "ACK client → serveur",
+        closedLog: "Connexion fermée.",
+      },
+      es: {
+        synLog: "SYN cliente → servidor \u00a0 seq={seq}",
+        synAckLog: "SYN-ACK servidor → cliente \u00a0 seq={seqServer} ack={ack}",
+        ackLog: "ACK cliente → servidor \u00a0 ack={ack}",
+        established: "Conexión establecida. Ambos lados ya pueden enviar datos.",
+        finClientLog: "FIN cliente → servidor",
+        ackServerLog: "ACK servidor → cliente",
+        finServerLog: "FIN servidor → cliente",
+        ackClientLog: "ACK cliente → servidor",
+        closedLog: "Conexión cerrada.",
+      },
+    };
+
+    function hsT(key: string, vars?: Record<string, string | number>): string {
+      let str = hsMsg[currentLang][key] ?? hsMsg.en[key];
+      if (vars) {
+        for (const varKey in vars) {
+          str = str.replace(new RegExp(`\\{${varKey}\\}`, "g"), String(vars[varKey]));
+        }
+      }
+      return str;
+    }
+
+    function setState(state: StateKey, cls?: "open" | "closing") {
+      currentState = state;
+      stateEl!.textContent = stateMsg[currentLang][state];
       stateEl!.className = "net-pill ml-auto" + (cls ? ` ${cls}` : "");
     }
 
@@ -1005,19 +1411,19 @@ import Layout from "../../layouts/Layout.astro";
       connectBtn.disabled = true;
       clearPackets();
       logEl!.innerHTML = "";
-      setState("CONNECTING");
+      setState("connecting");
 
-      log(`<span class="tag">SYN</span> client &rarr; server &nbsp; seq=${seqClient}`);
+      log(`<span class="tag">SYN</span> ${hsT("synLog", { seq: seqClient })}`);
       await sendPacket(`SYN seq=${seqClient}`, true);
 
-      log(`<span class="tag">SYN-ACK</span> server &rarr; client &nbsp; seq=${seqServer} ack=${seqClient + 1}`);
+      log(`<span class="tag">SYN-ACK</span> ${hsT("synAckLog", { seqServer, ack: seqClient + 1 })}`);
       await sendPacket(`SYN-ACK seq=${seqServer} ack=${seqClient + 1}`, false);
 
-      log(`<span class="tag">ACK</span> client &rarr; server &nbsp; ack=${seqServer + 1}`);
+      log(`<span class="tag">ACK</span> ${hsT("ackLog", { ack: seqServer + 1 })}`);
       await sendPacket(`ACK ack=${seqServer + 1}`, true);
 
-      setState("ESTABLISHED", "open");
-      log(`<span class="tag">Connection established.</span> Both sides can now send data.`);
+      setState("established", "open");
+      log(`<span class="tag">${hsT("established")}</span>`);
 
       connectBtn.disabled = true;
       closeBtn.disabled = false;
@@ -1025,22 +1431,22 @@ import Layout from "../../layouts/Layout.astro";
 
     async function teardown() {
       closeBtn.disabled = true;
-      setState("CLOSING", "closing");
+      setState("closing", "closing");
 
-      log(`<span class="tag fin">FIN</span> client &rarr; server`);
+      log(`<span class="tag fin">FIN</span> ${hsT("finClientLog")}`);
       await sendPacket("FIN", true, "fin");
 
-      log(`<span class="tag fin">ACK</span> server &rarr; client`);
+      log(`<span class="tag fin">ACK</span> ${hsT("ackServerLog")}`);
       await sendPacket("ACK", false, "fin");
 
-      log(`<span class="tag fin">FIN</span> server &rarr; client`);
+      log(`<span class="tag fin">FIN</span> ${hsT("finServerLog")}`);
       await sendPacket("FIN", false, "fin");
 
-      log(`<span class="tag fin">ACK</span> client &rarr; server`);
+      log(`<span class="tag fin">ACK</span> ${hsT("ackClientLog")}`);
       await sendPacket("ACK", true, "fin");
 
-      setState("CLOSED");
-      log(`<span class="tag">Connection closed.</span>`);
+      setState("closed");
+      log(`<span class="tag">${hsT("closedLog")}</span>`);
 
       seqClient = Math.floor(Math.random() * 1000) + 1000;
       seqServer = Math.floor(Math.random() * 1000) + 5000;
@@ -1049,6 +1455,12 @@ import Layout from "../../layouts/Layout.astro";
 
     connectBtn.addEventListener("click", () => { void handshake(); });
     closeBtn.addEventListener("click", () => { void teardown(); });
+
+    onLangChange(() => {
+      const cls = currentState === "established" ? "open" : currentState === "closing" ? "closing" : undefined;
+      stateEl!.textContent = stateMsg[currentLang][currentState];
+      stateEl!.className = "net-pill ml-auto" + (cls ? ` ${cls}` : "");
+    });
   })();
 
   /* ================================================================= */
@@ -1159,6 +1571,34 @@ import Layout from "../../layouts/Layout.astro";
 
     if (!input || !sendBtn || !preview || !log) return;
 
+    const chatMsg: Record<LangCode, Record<string, string>> = {
+      en: {
+        preview: 'frame: [4-byte length prefix: 0x{lenHex} ({len})] + [payload: "{text}"]',
+        empty: "No messages yet — send one to see it framed and delivered.",
+        sending: "sending frame — length=0x{lenHex} ({len} bytes) → unframing on receipt…",
+      },
+      fr: {
+        preview: 'trame : [préfixe de longueur 4 octets : 0x{lenHex} ({len})] + [contenu : "{text}"]',
+        empty: "Aucun message pour l'instant — envoyez-en un pour le voir encadré et livré.",
+        sending: "envoi de la trame — longueur=0x{lenHex} ({len} octets) → dé-encadrage à la réception…",
+      },
+      es: {
+        preview: 'trama: [prefijo de longitud de 4 bytes: 0x{lenHex} ({len})] + [contenido: "{text}"]',
+        empty: "Aún no hay mensajes — envía uno para verlo enmarcado y entregado.",
+        sending: "enviando trama — longitud=0x{lenHex} ({len} bytes) → desenmarcando al recibir…",
+      },
+    };
+
+    function chatT(key: string, vars?: Record<string, string | number>): string {
+      let str = chatMsg[currentLang][key] ?? chatMsg.en[key];
+      if (vars) {
+        for (const varKey in vars) {
+          str = str.replace(new RegExp(`\\{${varKey}\\}`, "g"), String(vars[varKey]));
+        }
+      }
+      return str;
+    }
+
     function updatePreview() {
       const text = input.value;
       if (!text) {
@@ -1167,11 +1607,11 @@ import Layout from "../../layouts/Layout.astro";
       }
       const len = new TextEncoder().encode(text).length;
       const lenHex = len.toString(16).padStart(4, "0");
-      preview!.textContent = `frame: [4-byte length prefix: 0x${lenHex} (${len})] + [payload: "${text}"]`;
+      preview!.textContent = chatT("preview", { lenHex, len, text });
     }
 
     function renderEmpty() {
-      log!.innerHTML = `<div class="net-chat-empty">No messages yet &mdash; send one to see it framed and delivered.</div>`;
+      log!.innerHTML = `<div class="net-chat-empty">${chatT("empty")}</div>`;
     }
 
     async function send() {
@@ -1189,7 +1629,7 @@ import Layout from "../../layouts/Layout.astro";
 
       const frameLine = document.createElement("div");
       frameLine.className = "net-chat-frame";
-      frameLine.textContent = `sending frame \u2014 length=0x${lenHex} (${len} bytes) \u2192 unframing on receipt\u2026`;
+      frameLine.textContent = chatT("sending", { lenHex, len });
       wrapper.appendChild(frameLine);
 
       log!.appendChild(wrapper);
@@ -1216,6 +1656,12 @@ import Layout from "../../layouts/Layout.astro";
       if (e.key === "Enter") send();
     });
     sendBtn.addEventListener("click", () => { void send(); });
+
+    onLangChange(() => {
+      if (log!.querySelector(".net-chat-empty")) {
+        renderEmpty();
+      }
+    });
 
     renderEmpty();
   })();
