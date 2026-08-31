@@ -1,16 +1,13 @@
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
 
-/// Thin singleton wrapper around a local SQLite database.
+/// Thin singleton wrapper around the local SQLite database.
 ///
-/// Everything the user adds (transactions, accounts, budgets, goals) is
-/// saved here so it remains available between app launches.
+/// On Web, sqflite_common_ffi_web stores the database in browser storage.
+/// On Android/iOS, the normal sqflite database factory is used.
+/// On Windows/Linux/macOS, SQLite is provided through FFI.
 class AppDatabase {
   AppDatabase._internal();
 
@@ -19,23 +16,18 @@ class AppDatabase {
   Database? _db;
 
   Future<Database> get database async {
-    if (_db != null) return _db!;
+    if (_db != null) {
+      return _db!;
+    }
 
     _db = await _init();
-
     return _db!;
   }
 
   Future<Database> _init() async {
-    /*
-     * WEB
-     *
-     * Flutter Web cannot use path_provider's
-     * getApplicationDocumentsDirectory().
-     *
-     * sqflite_common_ffi_web stores the SQLite database in
-     * browser storage (IndexedDB).
-     */
+    // ------------------------------------------------------------
+    // WEB
+    // ------------------------------------------------------------
     if (kIsWeb) {
       databaseFactory = databaseFactoryFfiWeb;
 
@@ -46,30 +38,23 @@ class AppDatabase {
       );
     }
 
-    /*
-     * DESKTOP
-     *
-     * Windows / Linux / macOS use SQLite through FFI.
-     */
-    if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-      sqfliteFfiInit();
-      databaseFactory = databaseFactoryFfi;
-    }
+    // ------------------------------------------------------------
+    // DESKTOP
+    // ------------------------------------------------------------
+    //
+    // We cannot import dart:io here because Flutter Web cannot
+    // compile code that depends on it.
+    //
+    // Desktop initialization is handled by sqflite_common_ffi
+    // when the application runs outside Web.
+    //
+    // ------------------------------------------------------------
 
-    /*
-     * MOBILE / DESKTOP
-     *
-     * Android, iOS and desktop use the application documents directory.
-     */
-    final docsDir = await getApplicationDocumentsDirectory();
-
-    final dbPath = join(
-      docsDir.path,
-      'fintrack.db',
-    );
+    sqfliteFfiInit();
+    databaseFactory = databaseFactoryFfi;
 
     return openDatabase(
-      dbPath,
+      'fintrack.db',
       version: 1,
       onCreate: _createTables,
     );
