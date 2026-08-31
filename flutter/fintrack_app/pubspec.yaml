@@ -39,7 +39,8 @@ dev_dependencies:
   flutter_lints: ^4.0.0
 
 flutter:
+  flutter:
   uses-material-design: true
+
   assets:
-    - assets/icons/
-    - assets/illustrations/
+    - assets/icons/app_icon.svg
