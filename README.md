@@ -28,6 +28,7 @@
   <img src="https://img.shields.io/badge/Astro-FF5D01?style=flat&logo=astro&logoColor=white" alt="Astro">
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript">
   <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black" alt="React">
+  <img src="https://img.shields.io/badge/Flutter-02569B?style=flat&logo=flutter&logoColor=white" alt="Flutter">
   <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white" alt="Tailwind CSS">
   <img src="https://img.shields.io/badge/Status-Active-success?style=flat" alt="Status">
 </p>
@@ -146,6 +147,7 @@ The portfolio is also a place to experiment with new technologies and ideas.
   <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black" alt="React">
   <img src="https://img.shields.io/badge/Vue-4FC08D?style=flat&logo=vuedotjs&logoColor=white" alt="Vue">
   <img src="https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white" alt="Next.js">
+  <img src="https://img.shields.io/badge/Flutter-02569B?style=flat&logo=flutter&logoColor=white" alt="Flutter">
   <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white" alt="Tailwind CSS">
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5">
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3">
@@ -159,6 +161,7 @@ The portfolio is also a place to experiment with new technologies and ideas.
   <img src="https://img.shields.io/badge/Azure-0078D4?style=flat&logo=microsoftazure&logoColor=white" alt="Azure">
   <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=flat&logo=supabase&logoColor=white" alt="Supabase">
   <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white" alt="MySQL">
+  <img src="https://img.shields.io/badge/SQLite-003B57?style=flat&logo=sqlite&logoColor=white" alt="SQLite">
   <img src="https://img.shields.io/badge/Bash-4EAA25?style=flat&logo=gnubash&logoColor=white" alt="Bash">
   <img src="https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=figma&logoColor=white" alt="Figma">
 </p>
@@ -262,6 +265,7 @@ The portfolio includes a custom developer terminal. Try these commands:
 | `cpu` | Show the CPU Simulator's specs (registers, memory, instruction set), then open it |
 | `network` | Open the Network Protocol Simulator |
 | `expense-splitter` | Open the Expense Splitter app |
+| `fintrack` | Show the FinTrack app's feature summary, then open it |
 
 ### Navigation / Contact
 | Command | Description |
@@ -434,6 +438,29 @@ The application focuses on:
 **Platforms**
 
 `Mobile` `Web`
+
+---
+
+## 08 — FinTrack (Personal Finance Manager)
+
+> A friendly Flutter finance app for tracking spending, accounts, budgets and savings goals — designed around adding and managing personal data as easily as possible.
+
+The application focuses on:
+
+* A dashboard with cash balance, quick "Add Money" / "Withdraw" actions and recent activity
+* Guided, validated forms for adding transactions, linked accounts, budgets and goals
+* Editing and deleting existing entries directly from their lists (tap to edit, swipe to delete)
+* An editable personal profile (name, email, phone)
+* Spend-by-category analytics and a weekly spending chart
+* Consistent **Back** and **Home** navigation on every screen, including on desktop window sizes
+
+**Technologies**
+
+`Flutter` `Dart` `Provider` `SQLite` `go_router` `fl_chart`
+
+**Platforms**
+
+`Mobile` `Desktop` `Web`
 
 ---
 
