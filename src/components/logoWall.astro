@@ -61,6 +61,7 @@ const getTechnologyName = (tech: string) => {
   class="relative overflow-hidden py-10"
   aria-label="Technologies and tools"
 >
+  <!-- Section title -->
   <div class="mx-auto mb-8 max-w-6xl px-6">
     <div class="flex items-center justify-center gap-4">
       <div class="h-px w-12 bg-white/10"></div>
@@ -173,6 +174,7 @@ const getTechnologyName = (tech: string) => {
     <div class="flex justify-center">
       <div
         class="
+          upv-card
           group
           relative
           flex
@@ -200,63 +202,167 @@ const getTechnologyName = (tech: string) => {
       >
 
         <!-- ================================================= -->
-        <!-- SUBTLE BLUE GLOW -->
+        <!-- LARGE AMBIENT BLUE GLOW -->
         <!-- ================================================= -->
 
         <div
           class="
             pointer-events-none
             absolute
-            -left-28
-            -top-28
-            h-72
-            w-72
+            -left-32
+            -top-32
+            h-80
+            w-80
             rounded-full
             bg-blue-500/10
             blur-3xl
             opacity-0
-            transition-opacity
-            duration-500
+            transition-all
+            duration-700
+            group-hover:scale-125
             group-hover:opacity-100
           "
           aria-hidden="true"
         ></div>
 
         <!-- ================================================= -->
-        <!-- LARGE UPV LOGO -->
+        <!-- SECONDARY BLUE LIGHT -->
         <!-- ================================================= -->
 
         <div
           class="
+            pointer-events-none
+            absolute
+            left-1/4
+            top-1/2
+            h-40
+            w-72
+            -translate-y-1/2
+            rounded-full
+            bg-blue-400/[0.04]
+            blur-3xl
+            opacity-0
+            transition-opacity
+            duration-700
+            group-hover:opacity-100
+          "
+          aria-hidden="true"
+        ></div>
+
+        <!-- ================================================= -->
+        <!-- PREMIUM UPV LOGO -->
+        <!-- ================================================= -->
+
+        <div
+          class="
+            upv-logo-area
             relative
             flex
-            h-56
-            w-72
+            h-60
+            w-80
             shrink-0
             items-center
             justify-center
-            transition-transform
-            duration-500
-            group-hover:scale-105
           "
         >
+
+          <!-- Main logo glow -->
+          <div
+            class="
+              pointer-events-none
+              absolute
+              left-1/2
+              top-1/2
+              h-44
+              w-64
+              -translate-x-1/2
+              -translate-y-1/2
+              rounded-full
+              bg-blue-500/10
+              blur-3xl
+              opacity-60
+              transition-all
+              duration-700
+              group-hover:scale-125
+              group-hover:bg-blue-400/15
+              group-hover:opacity-100
+            "
+            aria-hidden="true"
+          ></div>
+
+          <!-- Secondary white glow -->
+          <div
+            class="
+              pointer-events-none
+              absolute
+              left-1/2
+              top-1/2
+              h-28
+              w-56
+              -translate-x-1/2
+              -translate-y-1/2
+              rounded-full
+              bg-white/5
+              blur-2xl
+              opacity-50
+              transition-all
+              duration-700
+              group-hover:scale-110
+              group-hover:opacity-80
+            "
+            aria-hidden="true"
+          ></div>
+
+          <!-- UPV image -->
           <img
             src="/svg/UPV.jpg"
             alt="Universitat Politècnica de València"
             class="
+              upv-logo
+              relative
+              z-10
               block
               h-full
               w-full
               object-contain
-              transition-transform
-              duration-500
-              group-hover:scale-110
+              opacity-90
+              brightness-110
+              contrast-105
+              drop-shadow-[0_10px_30px_rgba(0,0,0,0.35)]
+              transition-all
+              duration-700
+              group-hover:scale-105
+              group-hover:opacity-100
+              group-hover:brightness-110
+              group-hover:drop-shadow-[0_16px_40px_rgba(30,100,255,0.25)]
             "
-            width="288"
-            height="224"
+            width="320"
+            height="240"
             loading="lazy"
             decoding="async"
           />
+
+          <!-- Bottom reflection -->
+          <div
+            class="
+              pointer-events-none
+              absolute
+              inset-x-8
+              bottom-2
+              z-20
+              h-px
+              bg-gradient-to-r
+              from-transparent
+              via-white/20
+              to-transparent
+              opacity-40
+              transition-opacity
+              duration-500
+              group-hover:opacity-70
+            "
+            aria-hidden="true"
+          ></div>
+
         </div>
 
         <!-- ================================================= -->
@@ -265,9 +371,10 @@ const getTechnologyName = (tech: string) => {
 
         <div class="relative min-w-0">
 
+          <!-- Small category -->
           <p
             class="
-              mb-2
+              mb-3
               text-xs
               font-semibold
               uppercase
@@ -279,6 +386,7 @@ const getTechnologyName = (tech: string) => {
             University
           </p>
 
+          <!-- University name -->
           <h3
             class="
               text-2xl
@@ -293,6 +401,7 @@ const getTechnologyName = (tech: string) => {
             de València
           </h3>
 
+          <!-- Short name -->
           <p
             class="
               mt-3
@@ -305,7 +414,43 @@ const getTechnologyName = (tech: string) => {
             UPV
           </p>
 
+          <!-- Small accent line -->
+          <div
+            class="
+              mt-6
+              h-px
+              w-16
+              bg-gradient-to-r
+              from-blue-400/60
+              to-transparent
+              transition-all
+              duration-500
+              group-hover:w-24
+            "
+            aria-hidden="true"
+          ></div>
+
         </div>
+
+        <!-- ================================================= -->
+        <!-- TOP GLASS HIGHLIGHT -->
+        <!-- ================================================= -->
+
+        <div
+          class="
+            pointer-events-none
+            absolute
+            inset-x-8
+            top-0
+            h-px
+            bg-gradient-to-r
+            from-transparent
+            via-white/15
+            to-transparent
+            opacity-60
+          "
+          aria-hidden="true"
+        ></div>
 
       </div>
     </div>
@@ -335,12 +480,12 @@ const getTechnologyName = (tech: string) => {
     animation: scroll 60s linear infinite;
   }
 
-  /* Pause when cursor is over technology wall */
+  /* Pause technology wall on hover */
   .technology-wall:hover .animate-scroll {
     animation-play-state: paused;
   }
 
-  /* Keep normal/default cursor */
+  /* Normal cursor */
   .technology-wall,
   .technology-wall * {
     cursor: default !important;
@@ -371,19 +516,42 @@ const getTechnologyName = (tech: string) => {
   /* ========================================================= */
 
   @media (max-width: 640px) {
-    section[aria-label="Organizations"] .group.relative.flex {
+    section[aria-label="Organizations"] .upv-card {
       flex-direction: column;
       gap: 1.5rem;
       text-align: center;
+      padding: 2rem 1.5rem;
     }
 
-    section[aria-label="Organizations"] .group.relative.flex > div:first-of-type {
-      height: 13rem;
-      width: 18rem;
+    section[aria-label="Organizations"] .upv-logo-area {
+      height: 14rem;
+      width: 19rem;
     }
 
-    section[aria-label="Organizations"] .group.relative.flex > div:last-child {
+    section[aria-label="Organizations"] .upv-card > div:last-of-type {
       padding-right: 0;
+    }
+
+    section[aria-label="Organizations"] .upv-card .h-px.w-16 {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  /* ========================================================= */
+  /* SMALL MOBILE */
+  /* ========================================================= */
+
+  @media (max-width: 420px) {
+    section[aria-label="Organizations"] .upv-logo-area {
+      height: 12rem;
+      width: 16rem;
+    }
+
+    section[aria-label="Organizations"] .upv-card {
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
   }
 </style>
+
