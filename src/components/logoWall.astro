@@ -1,3 +1,4 @@
+```astro
 ---
 const technologies = [
   "astro",
@@ -60,6 +61,7 @@ const getTechnologyName = (tech: string) => {
   class="relative overflow-hidden py-10"
   aria-label="Technologies and tools"
 >
+  <!-- Section title -->
   <div class="mx-auto mb-8 max-w-6xl px-6">
     <div class="flex items-center justify-center gap-4">
       <div class="h-px w-12 bg-white/10"></div>
@@ -92,8 +94,12 @@ const getTechnologyName = (tech: string) => {
       aria-hidden="true"
     ></div>
 
-    <!-- Scrolling content -->
+    <!-- ======================================================= -->
+    <!-- MARQUEE -->
+    <!-- ======================================================= -->
+
     <div class="flex w-max animate-scroll will-change-transform">
+
       {
         [...technologies, ...technologies].map((tech, index) => (
           <div
@@ -132,6 +138,7 @@ const getTechnologyName = (tech: string) => {
           </div>
         ))
       }
+
     </div>
   </div>
 </section>
@@ -141,16 +148,16 @@ const getTechnologyName = (tech: string) => {
 <!-- ========================================================= -->
 
 <section
-  class="relative overflow-hidden py-14 md:py-20"
+  class="relative overflow-hidden py-16 md:py-24"
   aria-label="Organizations"
 >
-  <div class="mx-auto max-w-6xl px-6">
+  <div class="mx-auto max-w-7xl px-6">
 
     <!-- ===================================================== -->
     <!-- SECTION HEADER -->
     <!-- ===================================================== -->
 
-    <div class="mb-10 text-center">
+    <div class="mb-12 text-center">
       <div class="mb-4 flex items-center justify-center gap-4">
         <div class="h-px w-12 bg-white/10"></div>
 
@@ -175,104 +182,138 @@ const getTechnologyName = (tech: string) => {
     <!-- ===================================================== -->
 
     <div class="flex justify-center">
+
       <div
         class="
-          group relative
-          flex w-full max-w-4xl
+          upv-card
+          group
+          relative
+          flex
+          w-full
+          max-w-6xl
           items-center
-          gap-12
+          gap-16
           overflow-hidden
-          rounded-3xl
-          border border-white/10
+          rounded-[2rem]
+          border
+          border-white/10
           bg-white/[0.035]
-          px-8 py-8
+          px-10
+          py-10
           backdrop-blur-2xl
-          transition-all duration-500
+          transition-all
+          duration-500
           hover:border-white/20
           hover:bg-white/[0.06]
-          hover:shadow-[0_20px_70px_rgba(0,0,0,0.25)]
-          md:gap-16
-          md:px-12
-          md:py-10
+          hover:shadow-[0_30px_100px_rgba(0,0,0,0.30)]
+          md:gap-24
+          md:px-16
+          md:py-12
+          lg:px-20
+          lg:py-14
         "
       >
 
         <!-- ================================================= -->
-        <!-- SUBTLE BLUE GLOW -->
+        <!-- BLUE AMBIENT GLOW -->
         <!-- ================================================= -->
 
         <div
           class="
             pointer-events-none
             absolute
-            -left-28
-            -top-28
-            h-72
-            w-72
+            -left-40
+            -top-40
+            h-[32rem]
+            w-[32rem]
             rounded-full
             bg-blue-500/10
-            blur-3xl
+            blur-[100px]
             opacity-0
             transition-opacity
-            duration-500
+            duration-700
+            group-hover:opacity-100
+          "
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="
+            pointer-events-none
+            absolute
+            -bottom-40
+            -right-40
+            h-[28rem]
+            w-[28rem]
+            rounded-full
+            bg-indigo-500/[0.07]
+            blur-[100px]
+            opacity-0
+            transition-opacity
+            duration-700
             group-hover:opacity-100
           "
           aria-hidden="true"
         ></div>
 
         <!-- ================================================= -->
-        <!-- LARGE UPV LOGO -->
-        <!-- No border -->
-        <!-- No background -->
-        <!-- No box -->
+        <!-- MASSIVE UPV LOGO -->
         <!-- ================================================= -->
 
         <div
           class="
+            upv-logo-wrapper
             relative
             flex
-            h-56
-            w-72
+            h-72
+            w-[26rem]
             shrink-0
             items-center
             justify-center
-            transition-all
-            duration-500
-            group-hover:scale-105
+            transition-transform
+            duration-700
+            group-hover:scale-[1.04]
+            md:h-80
+            md:w-[30rem]
+            lg:h-96
+            lg:w-[34rem]
           "
         >
+
           <img
             src="/svg/UPV.jpg"
             alt="Universitat Politècnica de València"
             class="
+              upv-logo
               block
               h-full
               w-full
               object-contain
               transition-transform
-              duration-500
-              group-hover:scale-110
+              duration-700
+              group-hover:scale-[1.10]
             "
-            width="288"
-            height="224"
+            width="544"
+            height="384"
             loading="lazy"
             decoding="async"
           />
+
         </div>
 
         <!-- ================================================= -->
         <!-- UPV INFORMATION -->
         <!-- ================================================= -->
 
-        <div class="relative min-w-0">
+        <div class="relative min-w-0 flex-1">
 
           <p
             class="
-              mb-2
+              mb-3
               text-xs
               font-semibold
               uppercase
-              tracking-[0.2em]
+              tracking-[0.25em]
               text-[var(--white-icon)]
               opacity-40
             "
@@ -282,11 +323,13 @@ const getTechnologyName = (tech: string) => {
 
           <h3
             class="
-              text-2xl
+              text-3xl
               font-semibold
-              leading-snug
+              leading-[1.15]
+              tracking-tight
               text-[var(--white)]
-              md:text-3xl
+              md:text-4xl
+              lg:text-5xl
             "
           >
             Universitat Politècnica
@@ -296,17 +339,42 @@ const getTechnologyName = (tech: string) => {
 
           <p
             class="
-              mt-3
-              text-sm
+              mt-5
+              text-base
               font-medium
+              tracking-wide
               text-[var(--white-icon)]
               opacity-50
+              md:text-lg
             "
           >
             UPV
           </p>
 
         </div>
+
+        <!-- ================================================= -->
+        <!-- SUBTLE HIGHLIGHT -->
+        <!-- ================================================= -->
+
+        <div
+          class="
+            pointer-events-none
+            absolute
+            inset-x-0
+            top-0
+            h-px
+            bg-gradient-to-r
+            from-transparent
+            via-white/20
+            to-transparent
+            opacity-0
+            transition-opacity
+            duration-500
+            group-hover:opacity-100
+          "
+          aria-hidden="true"
+        ></div>
 
       </div>
     </div>
@@ -318,8 +386,9 @@ const getTechnologyName = (tech: string) => {
 <!-- ========================================================= -->
 
 <style is:global>
+
   /* ========================================================= */
-  /* TECHNOLOGY SCROLL */
+  /* TECHNOLOGY MARQUEE */
   /* ========================================================= */
 
   @keyframes scroll {
@@ -336,12 +405,12 @@ const getTechnologyName = (tech: string) => {
     animation: scroll 60s linear infinite;
   }
 
-  /* Pause carousel on hover */
+  /* Pause when cursor enters technology wall */
   .technology-wall:hover .animate-scroll {
     animation-play-state: paused;
   }
 
-  /* Normal cursor */
+  /* Keep normal/default cursor */
   .technology-wall,
   .technology-wall * {
     cursor: default !important;
@@ -371,28 +440,43 @@ const getTechnologyName = (tech: string) => {
   /* MOBILE */
   /* ========================================================= */
 
-  @media (max-width: 640px) {
-    .group.relative.flex {
-      gap: 1rem;
-    }
+  @media (max-width: 767px) {
 
-    /*
-     * Keep the UPV logo large but make
-     * the card fit comfortably on mobile.
-     */
-    section[aria-label="Organizations"] .group.relative.flex {
+    .upv-card {
       flex-direction: column;
       gap: 1.5rem;
       text-align: center;
+      padding: 2rem 1.5rem 2.5rem;
     }
 
-    section[aria-label="Organizations"] .group.relative.flex > div:first-of-type {
-      height: 13rem;
-      width: 18rem;
+    .upv-logo-wrapper {
+      width: 100%;
+      height: 18rem;
     }
 
-    section[aria-label="Organizations"] .group.relative.flex > div:last-child {
-      padding-right: 0;
+    .upv-card h3 {
+      font-size: 2rem;
+    }
+
+    .upv-card p {
+      text-align: center;
     }
   }
+
+  /* ========================================================= */
+  /* SMALL MOBILE */
+  /* ========================================================= */
+
+  @media (max-width: 480px) {
+
+    .upv-logo-wrapper {
+      height: 15rem;
+    }
+
+    .upv-card h3 {
+      font-size: 1.7rem;
+    }
+  }
+
 </style>
+```
