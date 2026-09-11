@@ -74,9 +74,8 @@ const getTechnologyName = (tech: string) => {
     </div>
   </div>
 
-  <div
-    class="technology-wall relative overflow-x-hidden py-6"
-  >
+  <div class="technology-wall relative overflow-x-hidden py-6">
+
     <!-- Left fade -->
     <div
       class="pointer-events-none absolute inset-y-0 left-0 z-20 w-24 bg-gradient-to-r from-[var(--background)] via-[var(--background)]/80 to-transparent md:w-40"
@@ -164,37 +163,42 @@ const getTechnologyName = (tech: string) => {
       </p>
     </div>
 
-    <!-- UPV card -->
+    <!-- ===================================================== -->
+    <!-- UPV CARD -->
+    <!-- ===================================================== -->
+
     <div class="flex justify-center">
       <div
         class="
           group relative
           flex w-full max-w-2xl
           items-center
-          gap-6
+          gap-8
           overflow-hidden
           rounded-3xl
           border border-white/10
           bg-white/[0.035]
-          px-7 py-7
+          px-7 py-8
           backdrop-blur-2xl
           transition-all duration-500
           hover:border-white/20
           hover:bg-white/[0.06]
           hover:shadow-[0_20px_70px_rgba(0,0,0,0.25)]
-          md:px-10 md:py-8
+          md:gap-10
+          md:px-10
+          md:py-9
         "
       >
 
-        <!-- Glow -->
+        <!-- Blue glow -->
         <div
           class="
             pointer-events-none
             absolute
-            -left-20
-            -top-20
-            h-48
-            w-48
+            -left-24
+            -top-24
+            h-56
+            w-56
             rounded-full
             bg-blue-500/10
             blur-3xl
@@ -206,13 +210,16 @@ const getTechnologyName = (tech: string) => {
           aria-hidden="true"
         ></div>
 
-        <!-- UPV Logo -->
+        <!-- ================================================= -->
+        <!-- UPV LOGO -->
+        <!-- ================================================= -->
+
         <div
           class="
             relative
             flex
-            h-28
-            w-32
+            h-36
+            w-44
             shrink-0
             items-center
             justify-center
@@ -221,10 +228,10 @@ const getTechnologyName = (tech: string) => {
             border
             border-white/10
             bg-white/[0.06]
-            p-3
+            p-2
             transition-all
             duration-500
-            group-hover:scale-105
+            group-hover:scale-[1.03]
             group-hover:border-white/20
             group-hover:bg-white/[0.09]
           "
@@ -233,22 +240,26 @@ const getTechnologyName = (tech: string) => {
             src="/svg/UPV.jpg"
             alt="Universitat Politècnica de València"
             class="
-              max-h-full
-              max-w-full
+              block
+              h-full
+              w-full
               object-contain
               transition-transform
               duration-500
               group-hover:scale-105
             "
-            width="120"
-            height="100"
+            width="176"
+            height="144"
             loading="lazy"
             decoding="async"
           />
         </div>
 
-        <!-- UPV Information -->
-        <div class="relative min-w-0 pr-6">
+        <!-- ================================================= -->
+        <!-- UPV INFORMATION -->
+        <!-- ================================================= -->
+
+        <div class="relative min-w-0 pr-4">
 
           <p
             class="
@@ -266,11 +277,11 @@ const getTechnologyName = (tech: string) => {
 
           <h3
             class="
-              text-lg
+              text-xl
               font-semibold
               leading-snug
               text-[var(--white)]
-              md:text-xl
+              md:text-2xl
             "
           >
             Universitat Politècnica
@@ -301,10 +312,6 @@ const getTechnologyName = (tech: string) => {
 <!-- ========================================================= -->
 
 <style is:global>
-  /* ========================================================= */
-  /* TECHNOLOGY SCROLL */
-  /* ========================================================= */
-
   @keyframes scroll {
     from {
       transform: translate3d(0, 0, 0);
@@ -319,27 +326,16 @@ const getTechnologyName = (tech: string) => {
     animation: scroll 60s linear infinite;
   }
 
-  /*
-   * Pause the technology carousel
-   * when the cursor is over it.
-   */
+  /* Pause carousel on hover */
   .technology-wall:hover .animate-scroll {
     animation-play-state: paused;
   }
 
-  /*
-   * Keep the normal cursor.
-   * No pointer/hand arrow appears when
-   * hovering over the technology logos.
-   */
+  /* Normal cursor — no pointer arrow */
   .technology-wall,
   .technology-wall * {
     cursor: default !important;
   }
-
-  /* ========================================================= */
-  /* DESKTOP SPEED */
-  /* ========================================================= */
 
   @media (min-width: 768px) {
     .animate-scroll {
@@ -347,13 +343,19 @@ const getTechnologyName = (tech: string) => {
     }
   }
 
-  /* ========================================================= */
-  /* REDUCED MOTION */
-  /* ========================================================= */
-
   @media (prefers-reduced-motion: reduce) {
     .animate-scroll {
       animation-play-state: paused;
+    }
+  }
+
+  /* ========================================================= */
+  /* MOBILE */
+  /* ========================================================= */
+
+  @media (max-width: 640px) {
+    .group.relative.flex {
+      gap: 1rem;
     }
   }
 </style>
