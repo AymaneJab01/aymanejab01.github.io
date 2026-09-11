@@ -9,23 +9,26 @@ import SkillsList from "../React/SkillsList.tsx";
   class="relative overflow-hidden bg-transparent text-[var(--white)]"
 >
   <!-- ========================================================= -->
-  <!-- BACKGROUND — AURORA -->
+  <!-- BACKGROUND — QUIET / EDITORIAL -->
   <!-- ========================================================= -->
 
-  <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-[#07070b]">
-    <div class="nebula-field" aria-hidden="true">
-      <div class="nebula-ribbon ribbon-back"></div>
-      <div class="nebula-ribbon ribbon-mid"></div>
-      <div class="nebula-ribbon ribbon-core"></div>
-      <div class="nebula-glow glow-a"></div>
-      <div class="nebula-glow glow-b"></div>
+  <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-[#08090c]">
+
+    <!-- very subtle atmospheric depth -->
+    <div class="ambient-background" aria-hidden="true">
+      <div class="ambient-wash ambient-wash-one"></div>
+      <div class="ambient-wash ambient-wash-two"></div>
     </div>
 
-    <div class="absolute inset-0 hero-dots opacity-[0.5]"></div>
+    <!-- architectural grid -->
+    <div class="absolute inset-0 hero-grid"></div>
 
-    <div class="absolute inset-0 noise-layer opacity-[0.02]"></div>
+    <!-- subtle paper/noise texture -->
+    <div class="absolute inset-0 noise-layer"></div>
 
+    <!-- edge vignette -->
     <div class="hero-vignette"></div>
+
   </div>
 
   <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
@@ -38,34 +41,32 @@ import SkillsList from "../React/SkillsList.tsx";
       class="relative grid min-h-[780px] items-center gap-16 py-20 sm:py-24 lg:grid-cols-[1.08fr_.92fr] lg:gap-20 lg:py-28"
     >
 
+      <!-- ======================================================= -->
       <!-- LEFT -->
+      <!-- ======================================================= -->
+
       <div class="relative z-10 min-w-0">
 
+        <!-- availability -->
         <div
           class="status-badge mb-8 inline-flex items-center gap-2.5 rounded-full px-3.5 py-2"
         >
-          <span class="relative flex h-2 w-2 shrink-0">
-            <span
-              class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-50"
-            ></span>
-
-            <span
-              class="relative inline-flex h-2 w-2 rounded-full bg-sky-400 shadow-[0_0_12px_rgba(56, 189, 248,.8)]"
-            ></span>
-          </span>
+          <span class="status-indicator"></span>
 
           <span>Open to opportunities</span>
         </div>
 
+        <!-- name -->
         <div class="mb-5">
           <p
-            class="text-xs font-medium uppercase tracking-[0.22em] text-white/45 sm:text-sm"
+            class="text-xs font-medium uppercase tracking-[0.22em] text-white/40 sm:text-sm"
           >
             Hi, I'm
-            <span class="name-glow"> Aymane Jabrane</span>
+            <span class="name-accent"> Aymane Jabrane</span>
           </p>
         </div>
 
+        <!-- title -->
         <h1
           class="hero-title max-w-5xl text-[3.8rem] font-semibold leading-[0.88] tracking-[-0.065em] sm:text-7xl lg:text-[6.6rem]"
         >
@@ -73,14 +74,16 @@ import SkillsList from "../React/SkillsList.tsx";
           <span class="block title-gradient">Developer.</span>
         </h1>
 
+        <!-- description -->
         <p
-          class="mt-8 max-w-xl text-base leading-[1.75] text-white/55 sm:text-lg lg:text-xl"
+          class="mt-8 max-w-xl text-base leading-[1.75] text-white/48 sm:text-lg lg:text-xl"
         >
           Building a
-          <span class="shiny-sec font-medium"> computer science </span>
+          <span class="quiet-accent font-medium"> computer science </span>
           journey through code, systems and creative ideas.
         </p>
 
+        <!-- actions -->
         <div class="mt-9 flex flex-wrap items-center gap-3">
 
           <a
@@ -140,7 +143,7 @@ import SkillsList from "../React/SkillsList.tsx";
                 class="size-5"
               >
                 <path
-                  d="M18.3362 18.339H15.6707V14.1622C15.6707 13.1662 15.6505 11.8845 14.2817 11.8845C12.892 11.8845 12.6797 12.9683 12.6797 14.0887V18.339H10.0142V9.75H12.5747V10.9207H12.6092C12.967 10.2457 13.837 9.53325 15.1367 9.53325C17.8375 9.53325 18.337 11.3108 18.337 13.6245V18.339H18.3362ZM7.00373 8.57475C6.14573 8.57475 5.45648 7.88025 5.45648 7.026C5.45648 6.1725 6.14648 5.47875 7.00373 5.47875C7.85873 5.47875 8.55173 6.1725 8.55173 7.026C8.55173 7.88025 7.85798 8.57475 7.00373 8.57475ZM8.34023 18.339H5.66723V9.75H8.34023V18.339ZM19.6697 3H4.32923C3.59498 3 3.00098 3.5805 3.00098 4.29675V19.7033C3.00098 20.4202 3.59498 21 4.32923 21H19.6675C20.401 21 21.001 20.4202 21.001 19.7033V4.29675C21.001 3.5805 20.401 3 19.6675 3Z"
+                  d="M18.3362 18.339H15.6707V14.1622C15.6707 13.1662 15.6505 11.8845 14.2817 11.8845C12.892 11.8845 12.6797 12.9683 12.6797 14.0887V18.339H10.0142V9.75H12.5747V10.9207H12.6092C12.967 10.2457 13.837 9.53325 15.1367 9.53325C17.8375 9.53325 18.337 11.3108 18.337 13.6245V18.339H18.3362ZM7.00373 8.57475C6.14573 8.57475 5.45648 7.88025 5.45648 7.026C5.45648 6.1725 6.14648 5.47875 7.00373 5.47875C7.85873 5.47875 8.55173 6.1725 8.55173 7.026C8.55173 7.88025 7.85798 8.57475 7.00373 8.57475ZM8.34023 18.339H5.66723V9.75H8.34023V18.339ZM19.6697 3H4.32923C3.59498 3 3.00098 3.5805 3.00098 4.29675V19.7033C3.00098 20.4202 3.59498 21 4.32923 21H19.6675C20.401 21 21.001 20.4202 21.001 19.7033V4.29675C21.001 3.5805 20.401 3 19.6697 3Z"
                 />
               </svg>
             </a>
@@ -168,11 +171,12 @@ import SkillsList from "../React/SkillsList.tsx";
           </div>
         </div>
 
+        <!-- metadata -->
         <div
-          class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-white/30"
+          class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-white/28"
         >
           <span class="inline-flex items-center gap-2">
-            <span class="h-1.5 w-1.5 rounded-full bg-sky-400/70"></span>
+            <span class="h-1.5 w-1.5 rounded-full bg-sky-300/60"></span>
             Computer Science
           </span>
 
@@ -182,61 +186,74 @@ import SkillsList from "../React/SkillsList.tsx";
         </div>
       </div>
 
-      <!-- RIGHT -->
+      <!-- ======================================================= -->
+      <!-- RIGHT — CODE CARD -->
+      <!-- ======================================================= -->
+
       <div class="relative flex justify-center lg:justify-end">
 
-        <div class="glitch-glow"></div>
-
         <div
-          class="glitch-card relative flex w-full max-w-[340px] flex-col overflow-hidden rounded-[1.25rem] sm:max-w-[420px]"
+          class="code-card relative flex w-full max-w-[340px] flex-col overflow-hidden rounded-[1.25rem] sm:max-w-[420px]"
         >
-          <div class="glitch-card-titlebar">
-            <div class="glitch-card-dots">
+
+          <!-- top bar -->
+          <div class="code-card-titlebar">
+
+            <div class="code-card-dots">
               <span></span>
               <span></span>
               <span></span>
             </div>
 
-            <span class="glitch-card-label">build.tsx</span>
+            <span class="code-card-label">
+              build.tsx
+            </span>
 
-            <span class="glitch-card-tag">live</span>
+            <span class="code-card-tag">
+              live
+            </span>
+
           </div>
 
+          <!-- visual -->
           <div class="relative aspect-square w-full overflow-hidden p-2">
-          <div
-            class="absolute left-[15%] right-[15%] top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"
-          ></div>
-
-          <div class="relative h-full w-full overflow-hidden rounded-[1.4rem]">
-            <LetterGlitch
-              client:load
-              glitchColors={["#1e3a8a", "#2563eb", "#0f172a"]}
-              glitchSpeed={33}
-              centerVignette={false}
-              outerVignette={true}
-              smooth={true}
-            />
 
             <div
-              class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"
+              class="absolute left-[15%] right-[15%] top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent"
             ></div>
-          </div>
 
-          <div
-            class="absolute bottom-5 left-5 flex items-center gap-2 rounded-lg border border-white/10 bg-black/50 px-3 py-2 font-mono text-[10px] text-white/50 backdrop-blur-xl"
-          >
-            <span
-              class="h-1.5 w-1.5 rounded-full bg-sky-400 shadow-[0_0_8px_rgba(56, 189, 248,.8)]"
-            ></span>
+            <div
+              class="relative h-full w-full overflow-hidden rounded-[1.4rem]"
+            >
 
-            {"< build />"}
-          </div>
+              <LetterGlitch
+                client:load
+                glitchColors={["#1e3a8a", "#2563eb", "#0f172a"]}
+                glitchSpeed={33}
+                centerVignette={false}
+                outerVignette={true}
+                smooth={true}
+              />
 
-          <div
-            class="absolute right-5 top-5 font-mono text-[9px] uppercase tracking-[0.2em] text-white/25"
-          >
-            01 / 01
-          </div>
+              <!-- subtle matte overlay -->
+              <div class="absolute inset-0 matte-overlay"></div>
+
+            </div>
+
+            <!-- bottom label -->
+            <div class="build-label">
+
+              <span class="build-marker"></span>
+
+              {"< build />"}
+
+            </div>
+
+            <!-- index -->
+            <div class="card-index">
+              01 / 01
+            </div>
+
           </div>
         </div>
       </div>
@@ -247,21 +264,25 @@ import SkillsList from "../React/SkillsList.tsx";
     <!-- ========================================================= -->
 
     <div class="section-line">
+
       <div class="py-10 sm:py-12">
 
         <div class="mb-8 flex items-center justify-between gap-4">
+
           <p class="section-eyebrow">
             Technologies
           </p>
 
           <span
-            class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/20"
+            class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/18"
           >
             Tools I work with
           </span>
+
         </div>
 
         <LogoWall />
+
       </div>
     </div>
 
@@ -270,9 +291,11 @@ import SkillsList from "../React/SkillsList.tsx";
     <!-- ========================================================= -->
 
     <div class="section-block">
+
       <div class="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
 
         <div>
+
           <p class="section-eyebrow mb-4">
             Skills & tools
           </p>
@@ -288,11 +311,13 @@ import SkillsList from "../React/SkillsList.tsx";
           </p>
 
           <div class="mt-8 hidden lg:block">
+
             <div class="skill-line">
               <span></span>
               <span></span>
               <span></span>
             </div>
+
           </div>
         </div>
 
@@ -313,7 +338,8 @@ import SkillsList from "../React/SkillsList.tsx";
     >
 
       <div class="max-w-2xl">
-        <p class="section-eyebrow mb-4 text-sky-300/80">
+
+        <p class="section-eyebrow mb-4 text-sky-300/70">
           Things I've studied & explored
         </p>
 
@@ -326,6 +352,7 @@ import SkillsList from "../React/SkillsList.tsx";
           A collection of notes and concepts I've been studying along
           my computer science journey.
         </p>
+
       </div>
 
       <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -483,7 +510,8 @@ import SkillsList from "../React/SkillsList.tsx";
       <div class="mx-auto max-w-5xl">
 
         <div class="mb-10 text-center">
-          <p class="section-eyebrow mb-4 text-sky-300/80">
+
+          <p class="section-eyebrow mb-4 text-sky-300/70">
             Interactive
           </p>
 
@@ -496,12 +524,11 @@ import SkillsList from "../React/SkillsList.tsx";
             Type a command below to explore my skills, projects,
             contact information and more.
           </p>
+
         </div>
 
-        <!-- Terminal window -->
         <div class="terminal-shell">
 
-          <!-- Terminal top bar -->
           <div class="terminal-header">
 
             <div class="terminal-dots">
@@ -521,7 +548,6 @@ import SkillsList from "../React/SkillsList.tsx";
 
           </div>
 
-          <!-- Terminal body -->
           <div
             id="portfolio-terminal"
             class="terminal-body"
@@ -536,6 +562,7 @@ import SkillsList from "../React/SkillsList.tsx";
 
               <div class="terminal-line terminal-system">
                 <span class="terminal-prompt">›</span>
+
                 <span>
                   Initializing portfolio terminal...
                 </span>
@@ -543,6 +570,7 @@ import SkillsList from "../React/SkillsList.tsx";
 
               <div class="terminal-line terminal-success">
                 <span class="terminal-prompt">✓</span>
+
                 <span>
                   Connection established.
                 </span>
@@ -550,6 +578,7 @@ import SkillsList from "../React/SkillsList.tsx";
 
               <div class="terminal-line terminal-muted">
                 <span class="terminal-prompt">›</span>
+
                 <span>
                   Type <strong>help</strong> to see available commands.
                 </span>
@@ -559,19 +588,21 @@ import SkillsList from "../React/SkillsList.tsx";
 
             </div>
 
-            <!-- Input line -->
             <form
               id="terminal-form"
               class="terminal-input-row"
               autocomplete="off"
             >
+
               <span class="terminal-prompt-main">
+
                 <span class="terminal-user">aymane</span>
                 <span class="terminal-at">@</span>
                 <span class="terminal-host">portfolio</span>
                 <span class="terminal-colon">:</span>
                 <span class="terminal-path">~</span>
                 <span class="terminal-symbol">$</span>
+
               </span>
 
               <input
@@ -584,11 +615,11 @@ import SkillsList from "../React/SkillsList.tsx";
                 aria-label="Terminal command"
                 placeholder="type a command..."
               />
+
             </form>
 
           </div>
 
-          <!-- Bottom status -->
           <div class="terminal-footer">
 
             <div>
@@ -621,10 +652,6 @@ import SkillsList from "../React/SkillsList.tsx";
       class="relative overflow-hidden border-t border-white/[0.06] py-24 text-center sm:py-32"
     >
 
-      <div
-        class="absolute left-1/2 top-1/2 -z-10 h-[280px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-500/[0.06] blur-[120px]"
-      ></div>
-
       <p class="section-eyebrow mb-5">
         Have an idea?
       </p>
@@ -633,13 +660,13 @@ import SkillsList from "../React/SkillsList.tsx";
         class="mx-auto max-w-3xl text-4xl font-semibold leading-[0.95] tracking-[-0.055em] text-white sm:text-6xl"
       >
         Let's build
-        <span class="shiny-sec">
+        <span class="quiet-accent">
           something together.
         </span>
       </h2>
 
       <p
-        class="mx-auto mt-6 max-w-lg text-base leading-[1.7] text-white/40 sm:text-lg"
+        class="mx-auto mt-6 max-w-lg text-base leading-[1.7] text-white/38 sm:text-lg"
       >
         Whether it's a project, an idea or simply a conversation,
         I'd love to hear from you.
@@ -649,6 +676,7 @@ import SkillsList from "../React/SkillsList.tsx";
         href="#contact"
         class="talk-button group mt-9 inline-flex items-center gap-2.5 rounded-xl px-6 py-3.5 text-sm font-medium"
       >
+
         <span>Let's talk</span>
 
         <svg
@@ -663,6 +691,7 @@ import SkillsList from "../React/SkillsList.tsx";
             clip-rule="evenodd"
           />
         </svg>
+
       </a>
 
     </div>
@@ -687,9 +716,6 @@ import SkillsList from "../React/SkillsList.tsx";
   const terminalWindow =
     document.querySelector("#portfolio-terminal") as HTMLDivElement | null;
 
-  // `navigate` controls whether a command jumps to its project page after
-  // showing info. Bare commands (e.g. "weather") only display info; only
-  // "open <name>" navigates.
   type TerminalCommand = (navigate?: boolean) => string | Promise<string>;
 
   const history: string[] = [];
@@ -742,19 +768,11 @@ import SkillsList from "../React/SkillsList.tsx";
     terminalOutput.scrollTop = terminalOutput.scrollHeight;
   };
 
-  /* ============================================================ */
-  /* PROJECT NAVIGATION HELPERS */
-  /* ============================================================ */
-
   const goTo = (url: string, delay = 700): void => {
     setTimeout(() => {
       window.location.href = url;
     }, delay);
   };
-
-  /* ============================================================ */
-  /* WEATHER (live fetch) */
-  /* ============================================================ */
 
   type WeatherLocation = {
     city: string;
@@ -762,7 +780,6 @@ import SkillsList from "../React/SkillsList.tsx";
     longitude: number;
   };
 
-  // Matches the locations tracked on the Weather Dashboard project itself.
   const WEATHER_LOCATIONS: WeatherLocation[] = [
     { city: "Alcoi", latitude: 38.6983, longitude: -0.4743 },
     { city: "Valencia", latitude: 39.4699, longitude: -0.3763 },
@@ -846,10 +863,6 @@ import SkillsList from "../React/SkillsList.tsx";
     };
   };
 
-  /* ============================================================ */
-  /* MOVIE RANKING DATA (title + rating only) */
-  /* ============================================================ */
-
   const RANKED_MOVIES: { title: string; rating: number }[] = [
     { title: "Interstellar", rating: 10 },
     { title: "Ford v Ferrari", rating: 10 },
@@ -858,10 +871,6 @@ import SkillsList from "../React/SkillsList.tsx";
     { title: "Avengers: Infinity War", rating: 9 },
   ];
 
-  /* ============================================================ */
-  /* PROJECT CONTENT (info only — navigation is opt-in via `navigate`) */
-  /* ============================================================ */
-
   const visualizerContent = (navigate = false): string => {
     if (navigate) {
       goTo("/projects/visualizer", 900);
@@ -869,13 +878,11 @@ import SkillsList from "../React/SkillsList.tsx";
 
     return `
       <div class="terminal-info-block">
-
         <div class="terminal-response-title">
           Algorithm Visualizer
         </div>
 
         <div class="terminal-list">
-
           <div>
             <span>01</span>
             Sorting — Bubble, Selection, Insertion, Merge, Quick Sort
@@ -890,7 +897,6 @@ import SkillsList from "../React/SkillsList.tsx";
             <span>03</span>
             Pathfinding — BFS, Dijkstra, A* on a drawable grid
           </div>
-
         </div>
 
         ${
@@ -902,7 +908,6 @@ import SkillsList from "../React/SkillsList.tsx";
                  Type <strong>open visualizer</strong> to jump to it.
                </div>`
         }
-
       </div>
     `;
   };
@@ -981,7 +986,7 @@ import SkillsList from "../React/SkillsList.tsx";
             .map(
               (movie) => `
             <div>
-              <span>${movie.rating.toFixed(1).replace(/\\.0$/, "")}/10</span>
+              <span>${movie.rating.toFixed(1).replace(/\.0$/, "")}/10</span>
               ${escapeHTML(movie.title)}
             </div>
           `
@@ -1126,173 +1131,88 @@ import SkillsList from "../React/SkillsList.tsx";
         <div class="terminal-command-grid">
 
           <div>
-            <span class="terminal-command-name">
-              whoami
-            </span>
-
-            <span class="terminal-command-description">
-              — about me
-            </span>
+            <span class="terminal-command-name">whoami</span>
+            <span class="terminal-command-description">— about me</span>
           </div>
 
           <div>
-            <span class="terminal-command-name">
-              skills
-            </span>
-
-            <span class="terminal-command-description">
-              — technologies & tools
-            </span>
+            <span class="terminal-command-name">skills</span>
+            <span class="terminal-command-description">— technologies & tools</span>
           </div>
 
           <div>
-            <span class="terminal-command-name">
-              projects
-            </span>
-
-            <span class="terminal-command-description">
-              — view my projects
-            </span>
+            <span class="terminal-command-name">projects</span>
+            <span class="terminal-command-description">— view my projects</span>
           </div>
 
           <div>
-            <span class="terminal-command-name">
-              visualizer
-            </span>
-
-            <span class="terminal-command-description">
-              — algorithm visualizer info
-            </span>
+            <span class="terminal-command-name">visualizer</span>
+            <span class="terminal-command-description">— algorithm visualizer info</span>
           </div>
 
           <div>
-            <span class="terminal-command-name">
-              weather
-            </span>
-
-            <span class="terminal-command-description">
-              — live weather, 3 cities
-            </span>
+            <span class="terminal-command-name">weather</span>
+            <span class="terminal-command-description">— live weather, 3 cities</span>
           </div>
 
           <div>
-            <span class="terminal-command-name">
-              movie-ranking
-            </span>
-
-            <span class="terminal-command-description">
-              — my top-rated movies
-            </span>
+            <span class="terminal-command-name">movie-ranking</span>
+            <span class="terminal-command-description">— my top-rated movies</span>
           </div>
 
           <div>
-            <span class="terminal-command-name">
-              cpu
-            </span>
-
-            <span class="terminal-command-description">
-              — CPU simulator specs
-            </span>
+            <span class="terminal-command-name">cpu</span>
+            <span class="terminal-command-description">— CPU simulator specs</span>
           </div>
 
           <div>
-            <span class="terminal-command-name">
-              network
-            </span>
-
-            <span class="terminal-command-description">
-              — network simulator info
-            </span>
+            <span class="terminal-command-name">network</span>
+            <span class="terminal-command-description">— network simulator info</span>
           </div>
 
           <div>
-            <span class="terminal-command-name">
-              expense-splitter
-            </span>
-
-            <span class="terminal-command-description">
-              — expense splitter info
-            </span>
+            <span class="terminal-command-name">expense-splitter</span>
+            <span class="terminal-command-description">— expense splitter info</span>
           </div>
 
           <div>
-            <span class="terminal-command-name">
-              open &lt;project&gt;
-            </span>
-
-            <span class="terminal-command-description">
-              — jump to a project's page
-            </span>
+            <span class="terminal-command-name">open &lt;project&gt;</span>
+            <span class="terminal-command-description">— jump to a project's page</span>
           </div>
 
           <div>
-            <span class="terminal-command-name">
-              contact
-            </span>
-
-            <span class="terminal-command-description">
-              — contact information
-            </span>
+            <span class="terminal-command-name">contact</span>
+            <span class="terminal-command-description">— contact information</span>
           </div>
 
           <div>
-            <span class="terminal-command-name">
-              status
-            </span>
-
-            <span class="terminal-command-description">
-              — current status
-            </span>
+            <span class="terminal-command-name">status</span>
+            <span class="terminal-command-description">— current status</span>
           </div>
 
           <div>
-            <span class="terminal-command-name">
-              date
-            </span>
-
-            <span class="terminal-command-description">
-              — current date
-            </span>
+            <span class="terminal-command-name">date</span>
+            <span class="terminal-command-description">— current date</span>
           </div>
 
           <div>
-            <span class="terminal-command-name">
-              open github
-            </span>
-
-            <span class="terminal-command-description">
-              — GitHub profile
-            </span>
+            <span class="terminal-command-name">open github</span>
+            <span class="terminal-command-description">— GitHub profile</span>
           </div>
 
           <div>
-            <span class="terminal-command-name">
-              open linkedin
-            </span>
-
-            <span class="terminal-command-description">
-              — LinkedIn profile
-            </span>
+            <span class="terminal-command-name">open linkedin</span>
+            <span class="terminal-command-description">— LinkedIn profile</span>
           </div>
 
           <div>
-            <span class="terminal-command-name">
-              open email
-            </span>
-
-            <span class="terminal-command-description">
-              — email me
-            </span>
+            <span class="terminal-command-name">open email</span>
+            <span class="terminal-command-description">— email me</span>
           </div>
 
           <div>
-            <span class="terminal-command-name">
-              clear
-            </span>
-
-            <span class="terminal-command-description">
-              — clear terminal
-            </span>
+            <span class="terminal-command-name">clear</span>
+            <span class="terminal-command-description">— clear terminal</span>
           </div>
 
         </div>
@@ -1327,47 +1247,17 @@ import SkillsList from "../React/SkillsList.tsx";
 
         <div class="terminal-list">
 
-          <div>
-            <span>01</span>
-            Programming
-          </div>
-
-          <div>
-            <span>02</span>
-            Data Structures & Algorithms
-          </div>
-
-          <div>
-            <span>03</span>
-            Computer Architecture
-          </div>
-
-          <div>
-            <span>04</span>
-            Operating Systems
-          </div>
-
-          <div>
-            <span>05</span>
-            Networking
-          </div>
-
-          <div>
-            <span>06</span>
-            Git & GitHub
-          </div>
-
-          <div>
-            <span>07</span>
-            Web Development
-          </div>
-
-          <div>
-            <span>08</span>
-            Flutter & Dart
-          </div>
+          <div><span>01</span>Programming</div>
+          <div><span>02</span>Data Structures & Algorithms</div>
+          <div><span>03</span>Computer Architecture</div>
+          <div><span>04</span>Operating Systems</div>
+          <div><span>05</span>Networking</div>
+          <div><span>06</span>Git & GitHub</div>
+          <div><span>07</span>Web Development</div>
+          <div><span>08</span>Flutter & Dart</div>
 
         </div>
+
       </div>
     `,
 
@@ -1425,21 +1315,41 @@ import SkillsList from "../React/SkillsList.tsx";
       </div>
     `,
 
-    // Bare commands: info only, no navigation.
-    visualizer: (): string | Promise<string> => visualizerContent(false),
-    weather: (): string | Promise<string> => weatherContent(false),
-    "movie-ranking": (): string | Promise<string> => movieRankingContent(false),
-    cpu: (): string | Promise<string> => cpuContent(false),
-    network: (): string | Promise<string> => networkContent(false),
-    "expense-splitter": (): string | Promise<string> => expenseSplitterContent(false),
+    visualizer: (): string | Promise<string> =>
+      visualizerContent(false),
 
-    // "open <name>": info + navigate.
-    "open visualizer": (): string | Promise<string> => visualizerContent(true),
-    "open weather": (): string | Promise<string> => weatherContent(true),
-    "open movie-ranking": (): string | Promise<string> => movieRankingContent(true),
-    "open cpu": (): string | Promise<string> => cpuContent(true),
-    "open network": (): string | Promise<string> => networkContent(true),
-    "open expense-splitter": (): string | Promise<string> => expenseSplitterContent(true),
+    weather: (): string | Promise<string> =>
+      weatherContent(false),
+
+    "movie-ranking": (): string | Promise<string> =>
+      movieRankingContent(false),
+
+    cpu: (): string | Promise<string> =>
+      cpuContent(false),
+
+    network: (): string | Promise<string> =>
+      networkContent(false),
+
+    "expense-splitter": (): string | Promise<string> =>
+      expenseSplitterContent(false),
+
+    "open visualizer": (): string | Promise<string> =>
+      visualizerContent(true),
+
+    "open weather": (): string | Promise<string> =>
+      weatherContent(true),
+
+    "open movie-ranking": (): string | Promise<string> =>
+      movieRankingContent(true),
+
+    "open cpu": (): string | Promise<string> =>
+      cpuContent(true),
+
+    "open network": (): string | Promise<string> =>
+      networkContent(true),
+
+    "open expense-splitter": (): string | Promise<string> =>
+      expenseSplitterContent(true),
 
     contact: (): string => `
       <div class="terminal-info-block">
@@ -1497,21 +1407,19 @@ import SkillsList from "../React/SkillsList.tsx";
       </div>
     `,
 
-    date: (): string => {
-      return `
-        <div class="terminal-info-block">
+    date: (): string => `
+      <div class="terminal-info-block">
 
-          <div class="terminal-response-title">
-            Current date
-          </div>
-
-          <div class="terminal-terminal-text">
-            ${new Date().toLocaleString()}
-          </div>
-
+        <div class="terminal-response-title">
+          Current date
         </div>
-      `;
-    },
+
+        <div class="terminal-terminal-text">
+          ${new Date().toLocaleString()}
+        </div>
+
+      </div>
+    `,
 
     "open github": (): string => {
       window.open(
@@ -1556,8 +1464,6 @@ import SkillsList from "../React/SkillsList.tsx";
     },
   };
 
-  // Project keys "open <x>" can target — used only to give a nicer error
-  // message when someone types "open <something not recognized>".
   const OPENABLE_TARGETS = [
     "github",
     "linkedin",
@@ -1648,13 +1554,11 @@ import SkillsList from "../React/SkillsList.tsx";
         }
 
         history.push(command);
-
         historyIndex = history.length;
 
         executeCommand(command);
 
         terminalInput.value = "";
-
         terminalInput.focus();
       }
     );
@@ -1712,6 +1616,7 @@ import SkillsList from "../React/SkillsList.tsx";
     terminalWindow.addEventListener(
       "keydown",
       (event: KeyboardEvent) => {
+
         if (
           event.key === "/" &&
           document.activeElement !== terminalInput
@@ -1727,193 +1632,128 @@ import SkillsList from "../React/SkillsList.tsx";
 <style is:global>
 
   /* ============================================================= */
-  /* BACKGROUND */
+  /* QUIET BACKGROUND */
   /* ============================================================= */
 
-  .hero-dots {
-    background-image:
+  .ambient-background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .ambient-wash {
+    position: absolute;
+    border-radius: 999px;
+    pointer-events: none;
+  }
+
+  .ambient-wash-one {
+    width: 720px;
+    height: 420px;
+    left: -260px;
+    top: 8%;
+    background:
       radial-gradient(
-        rgba(255, 255, 255, 0.14) 1px,
-        transparent 1.4px
+        ellipse,
+        rgba(40, 72, 120, 0.075) 0%,
+        rgba(40, 72, 120, 0.025) 42%,
+        transparent 72%
+      );
+    filter: blur(70px);
+    animation: ambientDriftOne 24s ease-in-out infinite;
+  }
+
+  .ambient-wash-two {
+    width: 650px;
+    height: 500px;
+    right: -250px;
+    top: 20%;
+    background:
+      radial-gradient(
+        ellipse,
+        rgba(75, 85, 110, 0.055) 0%,
+        rgba(75, 85, 110, 0.018) 45%,
+        transparent 72%
+      );
+    filter: blur(80px);
+    animation: ambientDriftTwo 30s ease-in-out infinite;
+  }
+
+  @keyframes ambientDriftOne {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+      opacity: 0.8;
+    }
+
+    50% {
+      transform: translate3d(45px, 22px, 0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes ambientDriftTwo {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+      opacity: 0.7;
+    }
+
+    50% {
+      transform: translate3d(-35px, 28px, 0);
+      opacity: 0.9;
+    }
+  }
+
+  /* ============================================================= */
+  /* GRID */
+  /* ============================================================= */
+
+  .hero-grid {
+    background-image:
+      linear-gradient(
+        rgba(255, 255, 255, 0.022) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.022) 1px,
+        transparent 1px
       );
 
-    background-size: 26px 26px;
+    background-size: 72px 72px;
 
     mask-image:
-      radial-gradient(
-        ellipse 85% 75% at 42% 38%,
-        black 0%,
-        rgba(0, 0, 0, 0.5) 55%,
-        transparent 85%
+      linear-gradient(
+        to bottom,
+        black,
+        rgba(0, 0, 0, 0.65) 55%,
+        transparent 100%
       );
 
     -webkit-mask-image:
-      radial-gradient(
-        ellipse 85% 75% at 42% 38%,
-        black 0%,
-        rgba(0, 0, 0, 0.5) 55%,
-        transparent 85%
+      linear-gradient(
+        to bottom,
+        black,
+        rgba(0, 0, 0, 0.65) 55%,
+        transparent 100%
       );
   }
 
+  /* ============================================================= */
+  /* NOISE */
+  /* ============================================================= */
+
   .noise-layer {
+    opacity: 0.018;
+
     background-image:
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
   }
 
   /* ============================================================= */
-  /* NEBULA BACKGROUND */
+  /* VIGNETTE */
   /* ============================================================= */
-
-  .nebula-field {
-    position: absolute;
-    inset: -15%;
-
-    transform: rotate(-28deg);
-
-    transform-origin: 30% 55%;
-  }
-
-  /* Wide, soft outer wash of the ribbon */
-  .ribbon-back {
-    position: absolute;
-
-    left: -10%;
-    top: 38%;
-
-    width: 135%;
-    height: 46%;
-
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(37, 99, 235, 0.16) 22%,
-      rgba(168, 85, 247, 0.32) 45%,
-      rgba(6, 182, 212, 0.22) 62%,
-      rgba(37, 99, 235, 0.1) 80%,
-      transparent 100%
-    );
-
-    filter: blur(70px);
-
-    animation: nebulaBreathe 16s ease-in-out infinite;
-  }
-
-  /* Mid-density body of the ribbon */
-  .ribbon-mid {
-    position: absolute;
-
-    left: -5%;
-    top: 44%;
-
-    width: 120%;
-    height: 26%;
-
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(139, 92, 246, 0.3) 25%,
-      rgba(192, 132, 252, 0.55) 48%,
-      rgba(232, 121, 249, 0.32) 66%,
-      transparent 92%
-    );
-
-    filter: blur(42px);
-
-    mix-blend-mode: screen;
-
-    animation: nebulaBreathe 16s ease-in-out infinite reverse;
-  }
-
-  /* Bright, thin core streak */
-  .ribbon-core {
-    position: absolute;
-
-    left: 2%;
-    top: 49.5%;
-
-    width: 96%;
-    height: 7%;
-
-    border-radius: 999px;
-
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(216, 180, 254, 0.05) 18%,
-      rgba(237, 233, 254, 0.55) 46%,
-      rgba(6, 182, 212, 0.4) 64%,
-      transparent 88%
-    );
-
-    filter: blur(14px);
-
-    mix-blend-mode: screen;
-
-    opacity: 0.85;
-
-    animation: nebulaShimmer 9s ease-in-out infinite;
-  }
-
-  .nebula-glow {
-    position: absolute;
-
-    border-radius: 999px;
-
-    filter: blur(90px);
-
-    mix-blend-mode: screen;
-  }
-
-  .glow-a {
-    left: 6%;
-    top: 4%;
-
-    width: 42vw;
-    height: 42vw;
-
-    max-width: 560px;
-    max-height: 560px;
-
-    background: radial-gradient(circle, rgba(37, 99, 235, 0.5) 0%, transparent 70%);
-
-    animation: driftOne 24s ease-in-out infinite;
-  }
-
-  .glow-b {
-    right: 2%;
-    bottom: 2%;
-
-    width: 34vw;
-    height: 34vw;
-
-    max-width: 460px;
-    max-height: 460px;
-
-    background: radial-gradient(circle, rgba(34, 211, 238, 0.28) 0%, transparent 72%);
-
-    animation: driftTwo 28s ease-in-out infinite;
-  }
-
-  @keyframes nebulaBreathe {
-    0%, 100% { transform: scaleX(1) translateX(0); opacity: 1; }
-    50% { transform: scaleX(1.06) translateX(2%); opacity: 0.85; }
-  }
-
-  @keyframes nebulaShimmer {
-    0%, 100% { opacity: 0.7; filter: blur(14px); }
-    50% { opacity: 1; filter: blur(10px); }
-  }
-
-  @keyframes driftOne {
-    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-    50% { transform: translate3d(4%, 6%, 0) scale(1.08); }
-  }
-
-  @keyframes driftTwo {
-    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-    50% { transform: translate3d(-6%, 4%, 0) scale(0.94); }
-  }
 
   .hero-vignette {
     position: absolute;
@@ -1922,15 +1762,15 @@ import SkillsList from "../React/SkillsList.tsx";
     background:
       linear-gradient(
         90deg,
-        rgba(5, 6, 12, 0.55) 0%,
-        transparent 26%,
-        transparent 72%,
-        rgba(5, 6, 12, 0.55) 100%
-      ),
-      radial-gradient(
-        ellipse 72% 72% at 50% 45%,
+        rgba(5, 6, 10, 0.42),
         transparent 30%,
-        rgba(5, 6, 12, 0.55) 100%
+        transparent 70%,
+        rgba(5, 6, 10, 0.38)
+      ),
+      linear-gradient(
+        to bottom,
+        transparent 65%,
+        rgba(5, 6, 10, 0.75) 100%
       );
   }
 
@@ -1939,46 +1779,65 @@ import SkillsList from "../React/SkillsList.tsx";
   /* ============================================================= */
 
   .status-badge {
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.085);
 
     background:
-      linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.055),
-        rgba(255, 255, 255, 0.018)
-      );
+      rgba(255, 255, 255, 0.028);
 
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(255, 255, 255, 0.52);
 
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.04),
-      0 10px 30px rgba(0, 0, 0, 0.08);
+      inset 0 1px 0 rgba(255, 255, 255, 0.045);
 
-    backdrop-filter: blur(18px);
+    backdrop-filter: blur(16px);
+
+    transition:
+      border-color 300ms ease,
+      background 300ms ease;
+  }
+
+  .status-badge:hover {
+    border-color: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .status-indicator {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 999px;
+
+    background: #8fc7df;
+
+    opacity: 0.8;
+
+    animation: statusBreath 4s ease-in-out infinite;
+  }
+
+  @keyframes statusBreath {
+    0%,
+    100% {
+      opacity: 0.5;
+    }
+
+    50% {
+      opacity: 0.9;
+    }
   }
 
   /* ============================================================= */
   /* NAME */
   /* ============================================================= */
 
-  .name-glow {
-    color: #7dd3fc;
-
-    text-shadow:
-      0 0 8px rgba(56, 189, 248, 0.35),
-      0 0 22px rgba(56, 189, 248, 0.14);
+  .name-accent {
+    color: rgba(174, 213, 230, 0.78);
 
     transition:
-      color 300ms ease,
-      text-shadow 300ms ease;
+      color 300ms ease;
   }
 
-  .name-glow:hover {
-    color: #bae6fd;
-
-    text-shadow:
-      0 0 10px rgba(56, 189, 248, 0.65),
-      0 0 28px rgba(56, 189, 248, 0.3);
+  .name-accent:hover {
+    color: rgba(210, 231, 241, 0.95);
   }
 
   /* ============================================================= */
@@ -1993,10 +1852,9 @@ import SkillsList from "../React/SkillsList.tsx";
     background:
       linear-gradient(
         135deg,
-        #eff6ff 0%,
-        #93c5fd 42%,
-        #2563eb 75%,
-        #06b6d4 100%
+        #f5f7fa 0%,
+        #d8dde4 45%,
+        #9da7b5 100%
       );
 
     -webkit-background-clip: text;
@@ -2006,39 +1864,11 @@ import SkillsList from "../React/SkillsList.tsx";
   }
 
   /* ============================================================= */
-  /* SHINY TEXT */
+  /* QUIET ACCENT */
   /* ============================================================= */
 
-  .shiny-sec {
-    background:
-      linear-gradient(
-        110deg,
-        #38bdf8 0%,
-        #bae6fd 25%,
-        #ffffff 50%,
-        #06b6d4 75%,
-        #38bdf8 100%
-      );
-
-    background-size: 250% 100%;
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    color: transparent;
-
-    animation: shine 5s ease-in-out infinite;
-  }
-
-  @keyframes shine {
-    0%,
-    100% {
-      background-position: 100% 50%;
-    }
-
-    50% {
-      background-position: 0% 50%;
-    }
+  .quiet-accent {
+    color: #b5d4e3;
   }
 
   /* ============================================================= */
@@ -2046,18 +1876,18 @@ import SkillsList from "../React/SkillsList.tsx";
   /* ============================================================= */
 
   .primary-button {
-    color: #09090b;
+    color: #0b0c0f;
 
     background:
       linear-gradient(
         135deg,
-        #ffffff,
-        #e9e9eb
+        #f5f5f5,
+        #dcdfe3
       );
 
     box-shadow:
-      0 10px 30px rgba(0, 0, 0, 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      0 12px 30px rgba(0, 0, 0, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
 
     transition:
       transform 300ms ease,
@@ -2068,8 +1898,8 @@ import SkillsList from "../React/SkillsList.tsx";
     transform: translateY(-2px);
 
     box-shadow:
-      0 15px 35px rgba(0, 0, 0, 0.25),
-      0 0 30px rgba(56, 189, 248, 0.16);
+      0 18px 35px rgba(0, 0, 0, 0.23),
+      inset 0 1px 0 rgba(255, 255, 255, 1);
   }
 
   .social-link {
@@ -2081,17 +1911,13 @@ import SkillsList from "../React/SkillsList.tsx";
     width: 46px;
     height: 46px;
 
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.075);
     border-radius: 13px;
 
-    color: rgba(255, 255, 255, 0.48);
+    color: rgba(255, 255, 255, 0.43);
 
     background:
-      linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.045),
-        rgba(255, 255, 255, 0.015)
-      );
+      rgba(255, 255, 255, 0.025);
 
     backdrop-filter: blur(14px);
 
@@ -2099,136 +1925,92 @@ import SkillsList from "../React/SkillsList.tsx";
       color 300ms ease,
       background 300ms ease,
       border-color 300ms ease,
-      transform 300ms ease,
-      box-shadow 300ms ease;
+      transform 300ms ease;
   }
 
   .social-link:hover {
-    color: white;
+    color: rgba(255, 255, 255, 0.9);
 
-    border-color: rgba(56, 189, 248, 0.3);
+    border-color: rgba(255, 255, 255, 0.17);
 
     background:
-      linear-gradient(
-        135deg,
-        rgba(37, 99, 235, 0.14),
-        rgba(255, 255, 255, 0.025)
-      );
-
-    box-shadow:
-      0 0 20px rgba(37, 99, 235, 0.1);
+      rgba(255, 255, 255, 0.055);
 
     transform: translateY(-3px);
   }
 
   /* ============================================================= */
-  /* GLITCH CARD */
+  /* CODE CARD */
   /* ============================================================= */
 
-  .glitch-glow {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 150px;
-    height: 150px;
-    border-radius: 999px;
-    transform: translate(-50%, -50%);
-
-    background:
-      radial-gradient(
-        circle,
-        rgba(37, 99, 235, 0.16) 0%,
-        rgba(6, 182, 212, 0.025) 45%,
-        transparent 70%
-      );
-
-    filter: blur(22px);
-    opacity: 0.65;
-    pointer-events: none;
-    z-index: 0;
-
-    animation:
-      pulseGlow
-      6s
-      ease-in-out
-      infinite;
-  }
-
-  .glitch-card {
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  .code-card {
+    border: 1px solid rgba(255, 255, 255, 0.105);
 
     background:
       linear-gradient(
         145deg,
-        rgba(255, 255, 255, 0.065),
-        rgba(255, 255, 255, 0.018)
+        rgba(255, 255, 255, 0.055),
+        rgba(255, 255, 255, 0.014)
       );
 
     box-shadow:
-      0 35px 80px rgba(0, 0, 0, 0.35),
-      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      0 40px 90px rgba(0, 0, 0, 0.38),
+      inset 0 1px 0 rgba(255, 255, 255, 0.055);
 
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(24px);
 
     transition:
       transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1),
-      border-color 400ms ease;
+      border-color 400ms ease,
+      box-shadow 400ms ease;
   }
 
-  .glitch-card:hover {
-    transform:
-      translateY(-6px)
-      rotate(0.35deg);
+  .code-card:hover {
+    transform: translateY(-5px);
 
-    border-color: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.15);
+
+    box-shadow:
+      0 48px 100px rgba(0, 0, 0, 0.43),
+      inset 0 1px 0 rgba(255, 255, 255, 0.07);
   }
 
-  .glitch-card-titlebar {
+  .code-card-titlebar {
     position: relative;
-
     z-index: 2;
 
     display: flex;
-
     align-items: center;
-
     gap: 10px;
 
     padding: 12px 14px;
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.065);
 
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.04),
-      rgba(255, 255, 255, 0.01)
-    );
+    background:
+      rgba(255, 255, 255, 0.018);
   }
 
-  .glitch-card-dots {
+  .code-card-dots {
     display: flex;
-
     align-items: center;
-
     gap: 6px;
   }
 
-  .glitch-card-dots span {
-    width: 8px;
-    height: 8px;
+  .code-card-dots span {
+    width: 7px;
+    height: 7px;
 
     border-radius: 999px;
 
-    background: rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.17);
   }
 
-  .glitch-card-dots span:nth-child(3) {
-    background: rgba(56, 189, 248, 0.55);
-
-    box-shadow: 0 0 8px rgba(56, 189, 248, 0.3);
+  .code-card-dots span:nth-child(3) {
+    background: rgba(157, 198, 218, 0.58);
   }
 
-  .glitch-card-label {
+  .code-card-label {
     font-family:
       ui-monospace,
       SFMono-Regular,
@@ -2241,19 +2023,19 @@ import SkillsList from "../React/SkillsList.tsx";
 
     letter-spacing: 0.06em;
 
-    color: rgba(255, 255, 255, 0.32);
+    color: rgba(255, 255, 255, 0.3);
   }
 
-  .glitch-card-tag {
+  .code-card-tag {
     margin-left: auto;
 
     padding: 2px 8px;
 
+    border: 1px solid rgba(255, 255, 255, 0.09);
     border-radius: 999px;
 
-    border: 1px solid rgba(56, 189, 248, 0.28);
-
-    background: rgba(37, 99, 235, 0.12);
+    background:
+      rgba(255, 255, 255, 0.025);
 
     font-family:
       ui-monospace,
@@ -2269,20 +2051,83 @@ import SkillsList from "../React/SkillsList.tsx";
 
     letter-spacing: 0.1em;
 
-    color: #7dd3fc;
+    color: rgba(255, 255, 255, 0.4);
   }
 
-  @keyframes pulseGlow {
-    0%,
-    100% {
-      opacity: 0.5;
-      transform: translate(-50%, -50%) scale(0.96);
-    }
+  .matte-overlay {
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.025),
+        transparent 30%,
+        transparent 65%,
+        rgba(0, 0, 0, 0.34)
+      );
 
-    50% {
-      opacity: 0.8;
-      transform: translate(-50%, -50%) scale(1.02);
-    }
+    mix-blend-mode: normal;
+  }
+
+  .build-label {
+    position: absolute;
+
+    bottom: 20px;
+    left: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 11px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+
+    background:
+      rgba(5, 7, 10, 0.68);
+
+    backdrop-filter: blur(14px);
+
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
+
+    font-size: 10px;
+
+    color: rgba(255, 255, 255, 0.42);
+  }
+
+  .build-marker {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 999px;
+
+    background: rgba(163, 204, 220, 0.75);
+  }
+
+  .card-index {
+    position: absolute;
+
+    right: 20px;
+    top: 20px;
+
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 0.2em;
+
+    color: rgba(255, 255, 255, 0.2);
   }
 
   /* ============================================================= */
@@ -2308,7 +2153,7 @@ import SkillsList from "../React/SkillsList.tsx";
 
     line-height: 1;
 
-    color: rgba(255, 255, 255, 0.32);
+    color: rgba(255, 255, 255, 0.3);
   }
 
   .section-title {
@@ -2336,7 +2181,7 @@ import SkillsList from "../React/SkillsList.tsx";
     font-size: 1rem;
     line-height: 1.75;
 
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.38);
   }
 
   /* ============================================================= */
@@ -2352,11 +2197,7 @@ import SkillsList from "../React/SkillsList.tsx";
     border-radius: 24px;
 
     background:
-      linear-gradient(
-        145deg,
-        rgba(37, 99, 235, 0.05),
-        rgba(255, 255, 255, 0.012)
-      );
+      rgba(255, 255, 255, 0.018);
 
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.035),
@@ -2366,7 +2207,6 @@ import SkillsList from "../React/SkillsList.tsx";
   .skill-line {
     display: flex;
     align-items: center;
-
     gap: 0.45rem;
   }
 
@@ -2382,7 +2222,7 @@ import SkillsList from "../React/SkillsList.tsx";
 
   .skill-line span:nth-child(1) {
     width: 42px;
-    background: rgba(56, 189, 248, 0.6);
+    background: rgba(160, 198, 215, 0.55);
   }
 
   .skill-line span:nth-child(2) {
@@ -2417,14 +2257,9 @@ import SkillsList from "../React/SkillsList.tsx";
     color: white;
 
     background:
-      radial-gradient(
-        circle at 100% 0%,
-        rgba(37, 99, 235, 0.08),
-        transparent 40%
-      ),
       linear-gradient(
         145deg,
-        rgba(255, 255, 255, 0.045),
+        rgba(255, 255, 255, 0.04),
         rgba(255, 255, 255, 0.012)
       );
 
@@ -2434,8 +2269,7 @@ import SkillsList from "../React/SkillsList.tsx";
     transition:
       transform 400ms cubic-bezier(0.2, 0.8, 0.2, 1),
       border-color 300ms ease,
-      box-shadow 400ms ease,
-      background 400ms ease;
+      background 300ms ease;
   }
 
   .note-card::before {
@@ -2453,7 +2287,7 @@ import SkillsList from "../React/SkillsList.tsx";
       linear-gradient(
         90deg,
         transparent,
-        rgba(56, 189, 248, 0.45),
+        rgba(180, 215, 228, 0.38),
         transparent
       );
 
@@ -2463,25 +2297,16 @@ import SkillsList from "../React/SkillsList.tsx";
   }
 
   .note-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-5px);
 
-    border-color: rgba(56, 189, 248, 0.25);
+    border-color: rgba(255, 255, 255, 0.14);
 
     background:
-      radial-gradient(
-        circle at 100% 0%,
-        rgba(37, 99, 235, 0.14),
-        transparent 45%
-      ),
       linear-gradient(
         145deg,
         rgba(255, 255, 255, 0.055),
-        rgba(255, 255, 255, 0.018)
+        rgba(255, 255, 255, 0.016)
       );
-
-    box-shadow:
-      0 25px 60px rgba(0, 0, 0, 0.22),
-      0 0 35px rgba(37, 99, 235, 0.06);
   }
 
   .note-card:hover::before {
@@ -2497,7 +2322,7 @@ import SkillsList from "../React/SkillsList.tsx";
     text-transform: uppercase;
     letter-spacing: 0.16em;
 
-    color: rgba(147, 197, 253, 0.8);
+    color: rgba(164, 203, 220, 0.68);
   }
 
   .note-card h3 {
@@ -2511,7 +2336,7 @@ import SkillsList from "../React/SkillsList.tsx";
     line-height: 1.35;
     letter-spacing: -0.015em;
 
-    color: rgba(255, 255, 255, 0.86);
+    color: rgba(255, 255, 255, 0.84);
   }
 
   .note-footer {
@@ -2527,13 +2352,13 @@ import SkillsList from "../React/SkillsList.tsx";
     text-transform: uppercase;
     letter-spacing: 0.12em;
 
-    color: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.24);
   }
 
   .note-arrow {
     font-size: 1.1rem;
 
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.28);
 
     transition:
       color 300ms ease,
@@ -2541,7 +2366,7 @@ import SkillsList from "../React/SkillsList.tsx";
   }
 
   .note-card:hover .note-arrow {
-    color: #7dd3fc;
+    color: rgba(190, 220, 232, 0.85);
 
     transform:
       translate(3px, -3px);
@@ -2556,15 +2381,11 @@ import SkillsList from "../React/SkillsList.tsx";
 
     overflow: hidden;
 
-    border: 1px solid rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.085);
     border-radius: 22px;
 
     background:
-      linear-gradient(
-        145deg,
-        rgba(255, 255, 255, 0.045),
-        rgba(255, 255, 255, 0.012)
-      );
+      rgba(255, 255, 255, 0.018);
 
     box-shadow:
       0 35px 80px rgba(0, 0, 0, 0.25),
@@ -2578,11 +2399,10 @@ import SkillsList from "../React/SkillsList.tsx";
   }
 
   .terminal-shell:hover {
-    border-color: rgba(56, 189, 248, 0.2);
+    border-color: rgba(255, 255, 255, 0.13);
 
     box-shadow:
-      0 35px 80px rgba(0, 0, 0, 0.3),
-      0 0 60px rgba(37, 99, 235, 0.06),
+      0 40px 85px rgba(0, 0, 0, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.055);
   }
 
@@ -2599,11 +2419,7 @@ import SkillsList from "../React/SkillsList.tsx";
     border-bottom: 1px solid rgba(255, 255, 255, 0.065);
 
     background:
-      linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.035),
-        rgba(255, 255, 255, 0.012)
-      );
+      rgba(255, 255, 255, 0.018);
   }
 
   .terminal-dots {
@@ -2624,25 +2440,11 @@ import SkillsList from "../React/SkillsList.tsx";
 
     border-radius: 999px;
 
-    background: rgba(255, 255, 255, 0.18);
-
-    box-shadow:
-      0 0 8px rgba(255, 255, 255, 0.03);
-  }
-
-  .terminal-dots span:nth-child(1) {
-    background: rgba(255, 255, 255, 0.25);
-  }
-
-  .terminal-dots span:nth-child(2) {
     background: rgba(255, 255, 255, 0.16);
   }
 
   .terminal-dots span:nth-child(3) {
-    background: rgba(56, 189, 248, 0.6);
-
-    box-shadow:
-      0 0 8px rgba(56, 189, 248, 0.3);
+    background: rgba(157, 198, 218, 0.55);
   }
 
   .terminal-title {
@@ -2658,7 +2460,7 @@ import SkillsList from "../React/SkillsList.tsx";
 
     letter-spacing: 0.08em;
 
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.28);
   }
 
   .terminal-header-status {
@@ -2685,7 +2487,7 @@ import SkillsList from "../React/SkillsList.tsx";
     text-transform: uppercase;
     letter-spacing: 0.12em;
 
-    color: rgba(255, 255, 255, 0.22);
+    color: rgba(255, 255, 255, 0.2);
   }
 
   .terminal-header-status span {
@@ -2694,16 +2496,9 @@ import SkillsList from "../React/SkillsList.tsx";
 
     border-radius: 999px;
 
-    background: #22d3ee;
+    background: rgba(155, 201, 219, 0.65);
 
-    box-shadow:
-      0 0 9px rgba(34, 211, 238, 0.65);
-
-    animation:
-      terminalPulse
-      2s
-      ease-in-out
-      infinite;
+    animation: terminalPulse 3s ease-in-out infinite;
   }
 
   .terminal-body {
@@ -2728,17 +2523,12 @@ import SkillsList from "../React/SkillsList.tsx";
     line-height: 1.7;
 
     background:
-      radial-gradient(
-        ellipse at 50% 0%,
-        rgba(37, 99, 235, 0.05),
-        transparent 55%
-      ),
-      rgba(3, 5, 8, 0.72);
+      rgba(3, 5, 8, 0.76);
 
     scrollbar-width: thin;
 
     scrollbar-color:
-      rgba(56, 189, 248, 0.2)
+      rgba(255, 255, 255, 0.12)
       transparent;
   }
 
@@ -2756,15 +2546,14 @@ import SkillsList from "../React/SkillsList.tsx";
         0deg,
         transparent,
         transparent 3px,
-        rgba(255, 255, 255, 0.006) 4px
+        rgba(255, 255, 255, 0.005) 4px
       );
 
-    opacity: 0.5;
+    opacity: 0.45;
   }
 
   .terminal-output {
     position: relative;
-
     z-index: 1;
   }
 
@@ -2777,33 +2566,28 @@ import SkillsList from "../React/SkillsList.tsx";
 
     margin-bottom: 5px;
 
-    color: rgba(255, 255, 255, 0.48);
+    color: rgba(255, 255, 255, 0.45);
   }
 
   .terminal-prompt {
     flex-shrink: 0;
-
-    color: #93c5fd;
-
-    text-shadow:
-      0 0 10px rgba(56, 189, 248, 0.4);
+    color: rgba(169, 204, 218, 0.75);
   }
 
   .terminal-system {
-    color: rgba(255, 255, 255, 0.42);
+    color: rgba(255, 255, 255, 0.4);
   }
 
   .terminal-success {
-    color: rgba(147, 197, 253, 0.75);
+    color: rgba(177, 211, 224, 0.68);
   }
 
   .terminal-muted {
-    color: rgba(255, 255, 255, 0.28);
+    color: rgba(255, 255, 255, 0.26);
   }
 
   .terminal-muted strong {
-    color: rgba(255, 255, 255, 0.65);
-
+    color: rgba(255, 255, 255, 0.62);
     font-weight: 500;
   }
 
@@ -2829,8 +2613,7 @@ import SkillsList from "../React/SkillsList.tsx";
   }
 
   .terminal-command-text {
-    color: rgba(255, 255, 255, 0.75);
-
+    color: rgba(255, 255, 255, 0.72);
     word-break: break-word;
   }
 
@@ -2838,13 +2621,13 @@ import SkillsList from "../React/SkillsList.tsx";
     margin-left: 24px;
     margin-bottom: 12px;
 
-    color: rgba(255, 255, 255, 0.38);
+    color: rgba(255, 255, 255, 0.36);
   }
 
   .terminal-response-title {
     margin-bottom: 8px;
 
-    color: rgba(255, 255, 255, 0.72);
+    color: rgba(255, 255, 255, 0.7);
 
     font-weight: 500;
   }
@@ -2852,7 +2635,7 @@ import SkillsList from "../React/SkillsList.tsx";
   .terminal-terminal-text {
     max-width: 720px;
 
-    color: rgba(255, 255, 255, 0.38);
+    color: rgba(255, 255, 255, 0.36);
   }
 
   .terminal-small-gap {
@@ -2860,25 +2643,19 @@ import SkillsList from "../React/SkillsList.tsx";
   }
 
   .terminal-highlight {
-    color: #7dd3fc;
-
-    text-shadow:
-      0 0 12px rgba(56, 189, 248, 0.2);
+    color: rgba(175, 212, 225, 0.86);
   }
 
   .terminal-success-response {
-    color: #7dd3fc;
-
-    text-shadow:
-      0 0 12px rgba(56, 189, 248, 0.22);
+    color: rgba(181, 218, 231, 0.86);
   }
 
   .terminal-error {
-    color: #fca5a5;
+    color: #dbaaaa;
   }
 
   .terminal-error span {
-    color: #fecaca;
+    color: #e4bcbc;
   }
 
   .terminal-help {
@@ -2902,14 +2679,11 @@ import SkillsList from "../React/SkillsList.tsx";
   }
 
   .terminal-command-name {
-    color: #7dd3fc;
-
-    text-shadow:
-      0 0 10px rgba(56, 189, 248, 0.16);
+    color: rgba(176, 213, 225, 0.8);
   }
 
   .terminal-command-description {
-    color: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.24);
   }
 
   .terminal-list {
@@ -2923,7 +2697,7 @@ import SkillsList from "../React/SkillsList.tsx";
   }
 
   .terminal-list div {
-    color: rgba(255, 255, 255, 0.42);
+    color: rgba(255, 255, 255, 0.4);
   }
 
   .terminal-list span {
@@ -2931,7 +2705,7 @@ import SkillsList from "../React/SkillsList.tsx";
 
     min-width: 25px;
 
-    color: rgba(147, 197, 253, 0.65);
+    color: rgba(173, 210, 223, 0.62);
   }
 
   .terminal-status-row {
@@ -2956,10 +2730,7 @@ import SkillsList from "../React/SkillsList.tsx";
 
     border-radius: 999px;
 
-    background: #22d3ee;
-
-    box-shadow:
-      0 0 8px rgba(34, 211, 238, 0.65);
+    background: rgba(158, 204, 220, 0.7);
   }
 
   .terminal-input-row {
@@ -2995,26 +2766,25 @@ import SkillsList from "../React/SkillsList.tsx";
   }
 
   .terminal-user {
-    color: #7dd3fc;
+    color: rgba(178, 216, 229, 0.86);
   }
 
   .terminal-at {
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.18);
   }
 
   .terminal-host {
-    color: rgba(255, 255, 255, 0.45);
+    color: rgba(255, 255, 255, 0.4);
   }
 
   .terminal-colon,
   .terminal-path {
-    color: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.23);
   }
 
   .terminal-symbol {
     margin-left: 5px;
-
-    color: rgba(147, 197, 253, 0.75);
+    color: rgba(181, 217, 229, 0.72);
   }
 
   .terminal-input {
@@ -3042,11 +2812,11 @@ import SkillsList from "../React/SkillsList.tsx";
 
     font-size: 12px;
 
-    caret-color: #38bdf8;
+    caret-color: rgba(177, 215, 227, 0.9);
   }
 
   .terminal-input::placeholder {
-    color: rgba(255, 255, 255, 0.13);
+    color: rgba(255, 255, 255, 0.12);
   }
 
   .terminal-input:focus {
@@ -3062,9 +2832,7 @@ import SkillsList from "../React/SkillsList.tsx";
 
     min-height: 38px;
 
-    padding:
-      0
-      18px;
+    padding: 0 18px;
 
     border-top: 1px solid rgba(255, 255, 255, 0.055);
 
@@ -3082,10 +2850,10 @@ import SkillsList from "../React/SkillsList.tsx";
 
     letter-spacing: 0.1em;
 
-    color: rgba(255, 255, 255, 0.18);
+    color: rgba(255, 255, 255, 0.17);
 
     background:
-      rgba(255, 255, 255, 0.012);
+      rgba(255, 255, 255, 0.01);
   }
 
   .terminal-footer-right {
@@ -3113,69 +2881,55 @@ import SkillsList from "../React/SkillsList.tsx";
 
     border:
       1px solid
-      rgba(255, 255, 255, 0.08);
+      rgba(255, 255, 255, 0.07);
 
     border-radius: 4px;
 
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.27);
 
     background:
-      rgba(255, 255, 255, 0.025);
+      rgba(255, 255, 255, 0.02);
   }
 
   @keyframes terminalPulse {
     0%,
     100% {
-      opacity: 0.55;
+      opacity: 0.45;
     }
 
     50% {
-      opacity: 1;
+      opacity: 0.85;
     }
   }
 
   /* ============================================================= */
-  /* TALK BUTTON */
+  /* CTA */
   /* ============================================================= */
 
   .talk-button {
-    color: #bae6fd;
+    color: rgba(190, 221, 232, 0.88);
 
-    border: 1px solid rgba(56, 189, 248, 0.3);
+    border: 1px solid rgba(174, 211, 224, 0.24);
 
     background:
-      linear-gradient(
-        135deg,
-        rgba(37, 99, 235, 0.16),
-        rgba(37, 99, 235, 0.04)
-      );
+      rgba(255, 255, 255, 0.025);
 
     box-shadow:
-      0 0 25px rgba(37, 99, 235, 0.08),
       inset 0 1px 0 rgba(255, 255, 255, 0.04);
 
     transition:
       transform 300ms ease,
       border-color 300ms ease,
-      background 300ms ease,
-      box-shadow 300ms ease;
+      background 300ms ease;
   }
 
   .talk-button:hover {
     transform: translateY(-3px);
 
-    border-color: rgba(56, 189, 248, 0.6);
+    border-color: rgba(190, 221, 232, 0.42);
 
     background:
-      linear-gradient(
-        135deg,
-        rgba(37, 99, 235, 0.24),
-        rgba(37, 99, 235, 0.07)
-      );
-
-    box-shadow:
-      0 0 15px rgba(37, 99, 235, 0.2),
-      0 0 45px rgba(37, 99, 235, 0.1);
+      rgba(255, 255, 255, 0.05);
   }
 
   /* ============================================================= */
@@ -3184,26 +2938,16 @@ import SkillsList from "../React/SkillsList.tsx";
 
   @media (max-width: 640px) {
 
-    .nebula-field {
-      inset: -25%;
-    }
-
-    .ribbon-back,
-    .ribbon-mid,
-    .ribbon-core {
-      filter: blur(38px);
-    }
-
-    .glow-a,
-    .glow-b {
-      width: 65vw;
-      height: 65vw;
+    .ambient-wash-one,
+    .ambient-wash-two {
+      width: 420px;
+      height: 320px;
 
       filter: blur(60px);
     }
 
-    .hero-dots {
-      background-size: 20px 20px;
+    .hero-grid {
+      background-size: 48px 48px;
     }
 
     .section-block {
@@ -3219,27 +2963,18 @@ import SkillsList from "../React/SkillsList.tsx";
       font-size: 0.95rem;
     }
 
-    .glitch-card:hover {
+    .code-card:hover {
       transform: none;
     }
 
     .note-card {
       min-height: 170px;
-
       padding: 20px;
     }
 
-    .shiny-sec {
-      white-space: normal;
-    }
-
-    /* Terminal mobile */
-
     .terminal-body {
       min-height: 390px;
-
       padding: 18px;
-
       font-size: 11px;
     }
 
@@ -3253,7 +2988,6 @@ import SkillsList from "../React/SkillsList.tsx";
 
     .terminal-command-grid {
       grid-template-columns: 1fr;
-
       gap: 6px;
     }
 
@@ -3263,23 +2997,17 @@ import SkillsList from "../React/SkillsList.tsx";
 
     .terminal-input-row {
       align-items: flex-start;
-
       flex-direction: column;
-
       gap: 4px;
     }
 
     .terminal-input {
       width: 100%;
-
-      padding-left: 0;
     }
 
     .terminal-footer {
       gap: 8px;
-
       padding: 0 12px;
-
       font-size: 8px;
     }
 
@@ -3294,12 +3022,9 @@ import SkillsList from "../React/SkillsList.tsx";
 
   @media (prefers-reduced-motion: reduce) {
 
-    .shiny-sec,
-    .glitch-glow,
-    .ribbon-back,
-    .ribbon-mid,
-    .ribbon-core,
-    .nebula-glow,
+    .ambient-wash-one,
+    .ambient-wash-two,
+    .status-indicator,
     .terminal-header-status span {
       animation: none;
     }
@@ -3309,7 +3034,7 @@ import SkillsList from "../React/SkillsList.tsx";
     .note-card,
     .note-arrow,
     .talk-button,
-    .glitch-card,
+    .code-card,
     .terminal-shell {
       transition: none;
     }
