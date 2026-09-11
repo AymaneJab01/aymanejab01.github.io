@@ -3,1477 +3,751 @@
 
 <section
   id="projects"
-  class="text-[var(--white)] py-24 md:py-36"
+  class="projects-section relative overflow-hidden text-[var(--white)]"
 >
-  <div class="max-w-6xl mx-auto px-6">
+  <!-- ========================================================= -->
+  <!-- AMBIENT BACKGROUND -->
+  <!-- ========================================================= -->
+
+  <div class="projects-background pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+    <div class="projects-glow projects-glow-top"></div>
+    <div class="projects-glow projects-glow-right"></div>
+    <div class="projects-glow projects-glow-bottom"></div>
+
+    <div class="projects-grid"></div>
+
+    <div class="projects-vignette"></div>
+  </div>
+
+
+  <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
 
     <!-- ========================================================= -->
     <!-- SECTION HEADER -->
     <!-- ========================================================= -->
 
-    <div class="mb-16 md:mb-20">
-      <div class="flex items-center gap-3 mb-5">
-        <span
-          class="h-2 w-2 rounded-full bg-[var(--sec)]
-          shadow-[0_0_12px_var(--sec)]"
-        ></span>
+    <div class="projects-header">
 
-        <span
-          class="text-sm tracking-[0.25em] uppercase
-          text-[var(--sec)] shiny-sec"
-        >
-          Projects
+      <div class="section-eyebrow">
+        <span class="eyebrow-line"></span>
+
+        <span>
+          Selected work
         </span>
       </div>
 
-      <h2
-        class="text-4xl md:text-6xl font-medium tracking-tight
-        text-[var(--white)]"
-      >
-        Things I've built<span class="text-[var(--sec)]">.</span>
-      </h2>
+      <div class="projects-heading-layout">
 
-      <p
-        class="mt-5 max-w-2xl text-lg
-        text-[var(--white-icon)] leading-relaxed"
-      >
-        A collection of projects, experiments and ideas that
-        represent what I'm building and learning as a software developer.
-      </p>
-    </div>
-
-
-    <!-- ========================================================= -->
-    <!-- PROJECT 01 — TERMINAL -->
-    <!-- ========================================================= -->
-
-    <div
-      class="group relative mb-10 overflow-hidden rounded-2xl
-      border border-[var(--white-icon-tr)]
-      bg-[#1414149c] backdrop-blur-sm
-      transition-all duration-500
-      hover:border-[var(--sec)]/40
-      hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
-    >
-
-      <div
-        class="pointer-events-none absolute -right-32 -top-32
-        h-64 w-64 rounded-full
-        bg-[var(--sec)] opacity-[0.04] blur-3xl
-        transition-opacity duration-500
-        group-hover:opacity-[0.08]"
-      ></div>
-
-      <a
-        href="/#terminal"
-        class="relative block p-7 md:p-10"
-      >
-
-        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
-
-          <div class="flex-1">
-
-            <div class="mb-5 flex items-center gap-3">
-              <span
-                class="font-mono text-xs tracking-[0.2em]
-                text-[var(--sec)]"
-              >
-                PROJECT 01
-              </span>
-
-              <span
-                class="h-px w-12 bg-[var(--sec)] opacity-40"
-              ></span>
-
-              <span
-                class="text-xs uppercase tracking-widest
-                text-[var(--white-icon)]"
-              >
-                Interactive
-              </span>
-            </div>
-
-            <h3
-              class="text-2xl md:text-4xl font-medium
-              tracking-tight text-[var(--white)]
-              transition-colors duration-300
-              group-hover:text-[var(--sec)]"
-            >
-              Developer Terminal
-              <span class="text-[var(--sec)]">.</span>
-            </h3>
-
-            <p
-              class="mt-4 max-w-2xl text-base md:text-lg
-              leading-relaxed text-[var(--white-icon)]"
-            >
-              An interactive terminal built directly into my portfolio,
-              designed to provide a developer-style way of exploring
-              my work, skills and information.
-            </p>
-
-            <p
-              class="mt-3 max-w-2xl text-sm
-              leading-relaxed text-[var(--white-icon)]
-              opacity-70"
-            >
-              This terminal will keep evolving day after day as new
-              commands, features and ideas are added.
-            </p>
-
-            <div class="mt-7 flex flex-wrap gap-2">
-
-              <span
-                class="rounded-full border border-[var(--white-icon-tr)]
-                px-3 py-1 text-xs font-mono
-                text-[var(--white-icon)]"
-              >
-                Astro
-              </span>
-
-              <span
-                class="rounded-full border border-[var(--white-icon-tr)]
-                px-3 py-1 text-xs font-mono
-                text-[var(--white-icon)]"
-              >
-                TypeScript
-              </span>
-
-              <span
-                class="rounded-full border border-[var(--white-icon-tr)]
-                px-3 py-1 text-xs font-mono
-                text-[var(--white-icon)]"
-              >
-                Interactive UI
-              </span>
-
-            </div>
-
-          </div>
-
-          <div
-            class="flex md:flex-col items-center md:items-end
-            justify-between gap-5 md:min-w-[150px]"
-          >
-
-            <div
-              class="font-mono text-xs
-              text-[var(--white-icon)] opacity-60"
-            >
-              01 / 08
-            </div>
-
-            <div
-              class="flex items-center gap-2
-              text-sm text-[var(--sec)]
-              transition-transform duration-300
-              group-hover:translate-x-1"
-            >
-              <span>Open terminal</span>
-              <span class="text-lg">→</span>
-            </div>
-
-          </div>
-
+        <div>
+          <h2 class="projects-title">
+            Things I've
+            <span>built.</span>
+          </h2>
         </div>
 
-      </a>
-    </div>
-
-
-    <!-- ========================================================= -->
-    <!-- PROJECT 02 — MOVIE RANKING -->
-    <!-- ========================================================= -->
-
-    <div
-      class="group relative mb-10 overflow-hidden rounded-2xl
-      border border-[var(--white-icon-tr)]
-      bg-[#1414149c] backdrop-blur-sm
-      transition-all duration-500
-      hover:border-[var(--sec)]/40
-      hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
-    >
-
-      <a
-        href="/projects/movie-ranking"
-        class="relative block p-7 md:p-10"
-      >
-
-        <div class="flex flex-col md:flex-row gap-8">
-
-          <div class="flex flex-1 flex-col justify-between">
-
-            <div>
-
-              <div class="mb-5 flex items-center gap-3">
-
-                <span
-                  class="font-mono text-xs tracking-[0.2em]
-                  text-[var(--sec)]"
-                >
-                  PROJECT 02
-                </span>
-
-                <span
-                  class="h-px w-12 bg-[var(--sec)] opacity-40"
-                ></span>
-
-                <span
-                  class="text-xs uppercase tracking-widest
-                  text-[var(--white-icon)]"
-                >
-                  Web App
-                </span>
-
-              </div>
-
-              <h3
-                class="text-2xl md:text-4xl font-medium
-                tracking-tight text-[var(--white)]
-                transition-colors duration-300
-                group-hover:text-[var(--sec)]"
-              >
-                Movie Ranking
-                <span class="text-[var(--sec)]">.</span>
-              </h3>
-
-              <p
-                class="mt-4 max-w-2xl text-base md:text-lg
-                leading-relaxed text-[var(--white-icon)]"
-              >
-                A movie ranking interface where films can be explored
-                through their covers, ratings and personal reviews.
-              </p>
-
-              <div
-                class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4"
-              >
-
-                <div>
-                  <p
-                    class="text-xs uppercase tracking-widest
-                    text-[var(--white-icon)] opacity-60"
-                  >
-                    Featured movie
-                  </p>
-
-                  <p
-                    class="mt-1 text-lg font-medium
-                    text-[var(--white)]"
-                  >
-                    Avengers: Infinity War
-                  </p>
-                </div>
-
-                <div
-                  class="h-8 w-px bg-[var(--white-icon-tr)]
-                  hidden sm:block"
-                ></div>
-
-                <div>
-                  <p
-                    class="text-xs uppercase tracking-widest
-                    text-[var(--white-icon)] opacity-60"
-                  >
-                    Rating
-                  </p>
-
-                  <p
-                    class="mt-1 font-mono text-lg
-                    text-[var(--sec)]"
-                  >
-                    9<span class="text-[var(--white-icon)]">/10</span>
-                  </p>
-                </div>
-
-              </div>
-
-            </div>
-
-            <div
-              class="mt-8 flex flex-col sm:flex-row
-              sm:items-center sm:justify-between gap-5"
-            >
-
-              <div class="flex flex-wrap gap-2">
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Astro
-                </span>
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  UI
-                </span>
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Movies
-                </span>
-
-              </div>
-
-              <div
-                class="flex items-center gap-2
-                text-sm text-[var(--sec)]
-                transition-transform duration-300
-                group-hover:translate-x-1"
-              >
-                <span>View project</span>
-                <span class="text-lg">→</span>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </a>
-    </div>
-
-
-    <!-- ========================================================= -->
-    <!-- PROJECT 03 — WEATHER -->
-    <!-- ========================================================= -->
-
-    <div
-      class="group relative mb-10 overflow-hidden rounded-2xl
-      border border-[var(--white-icon-tr)]
-      bg-[#1414149c] backdrop-blur-sm
-      transition-all duration-500
-      hover:border-[var(--sec)]/40
-      hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
-    >
-
-      <div
-        class="pointer-events-none absolute inset-0 overflow-hidden opacity-60"
-      >
-
-        <div
-          class="absolute -right-32 -top-32
-          h-72 w-72 rounded-full
-          bg-[var(--sec)] opacity-[0.06]
-          blur-3xl
-          transition-all duration-700
-          group-hover:opacity-[0.12]
-          group-hover:scale-110"
-        ></div>
-
-        <div
-          class="absolute -left-32 -bottom-40
-          h-80 w-80 rounded-full
-          bg-[#0f5132] opacity-[0.05]
-          blur-3xl
-          transition-all duration-700
-          group-hover:opacity-[0.09]"
-        ></div>
-
-        <div
-          class="absolute inset-0 opacity-[0.12]"
-          style="
-            background-image:
-              linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-            background-size: 42px 42px;
-            mask-image: radial-gradient(circle at center, black, transparent 75%);
-            -webkit-mask-image: radial-gradient(circle at center, black, transparent 75%);
-          "
-        ></div>
+        <p class="projects-introduction">
+          A collection of software projects, experiments and
+          interactive systems built throughout my computer
+          science journey.
+        </p>
 
       </div>
 
-      <a
-        href="/projects/weather"
-        class="relative block p-7 md:p-10"
-      >
-
-        <div class="flex flex-col md:flex-row gap-8">
-
-          <div class="flex flex-1 flex-col justify-between">
-
-            <div>
-
-              <div class="mb-5 flex items-center gap-3">
-
-                <span
-                  class="font-mono text-xs tracking-[0.2em]
-                  text-[var(--sec)]"
-                >
-                  PROJECT 03
-                </span>
-
-                <span
-                  class="h-px w-12 bg-[var(--sec)] opacity-40"
-                ></span>
-
-                <span
-                  class="text-xs uppercase tracking-widest
-                  text-[var(--white-icon)]"
-                >
-                  Live Data
-                </span>
-
-              </div>
-
-              <h3
-                class="text-2xl md:text-4xl font-medium
-                tracking-tight text-[var(--white)]
-                transition-colors duration-300
-                group-hover:text-[var(--sec)]"
-              >
-                Weather Dashboard
-                <span class="text-[var(--sec)]">.</span>
-              </h3>
-
-              <p
-                class="mt-4 max-w-2xl text-base md:text-lg
-                leading-relaxed text-[var(--white-icon)]"
-              >
-                A dynamic weather dashboard displaying live weather
-                conditions for Alcoi and Valencia through a clean
-                developer-focused interface.
-              </p>
-
-              <div
-                class="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl"
-              >
-
-                <div
-                  class="relative overflow-hidden rounded-xl
-                  border border-[var(--white-icon-tr)]
-                  bg-[#10101080] px-5 py-4
-                  backdrop-blur-md"
-                >
-
-                  <div class="flex items-center justify-between gap-4">
-
-                    <div>
-
-                      <p
-                        class="text-xs uppercase tracking-widest
-                        text-[var(--white-icon)] opacity-60"
-                      >
-                        Location
-                      </p>
-
-                      <p
-                        class="mt-1 text-lg font-medium
-                        text-[var(--white)]"
-                      >
-                        Alcoi
-                      </p>
-
-                    </div>
-
-                    <div class="text-right">
-
-                      <p
-                        id="weather-alcoi-temperature"
-                        class="font-mono text-xl
-                        text-[var(--sec)]"
-                      >
-                        --°C
-                      </p>
-
-                      <p
-                        id="weather-alcoi-status"
-                        class="mt-1 text-xs
-                        text-[var(--white-icon)]"
-                      >
-                        Loading...
-                      </p>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div
-                  class="relative overflow-hidden rounded-xl
-                  border border-[var(--white-icon-tr)]
-                  bg-[#10101080] px-5 py-4
-                  backdrop-blur-md"
-                >
-
-                  <div class="flex items-center justify-between gap-4">
-
-                    <div>
-
-                      <p
-                        class="text-xs uppercase tracking-widest
-                        text-[var(--white-icon)] opacity-60"
-                      >
-                        Location
-                      </p>
-
-                      <p
-                        class="mt-1 text-lg font-medium
-                        text-[var(--white)]"
-                      >
-                        Valencia
-                      </p>
-
-                    </div>
-
-                    <div class="text-right">
-
-                      <p
-                        id="weather-valencia-temperature"
-                        class="font-mono text-xl
-                        text-[var(--sec)]"
-                      >
-                        --°C
-                      </p>
-
-                      <p
-                        id="weather-valencia-status"
-                        class="mt-1 text-xs
-                        text-[var(--white-icon)]"
-                      >
-                        Loading...
-                      </p>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div
-              class="mt-8 flex flex-col sm:flex-row
-              sm:items-center sm:justify-between gap-5"
-            >
-
-              <div class="flex flex-wrap gap-2">
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Astro
-                </span>
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  API
-                </span>
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Live Weather
-                </span>
-
-              </div>
-
-              <div
-                class="flex items-center gap-2
-                text-sm text-[var(--sec)]
-                transition-transform duration-300
-                group-hover:translate-x-1"
-              >
-                <span>View weather</span>
-                <span class="text-lg">→</span>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </a>
     </div>
 
 
     <!-- ========================================================= -->
-    <!-- PROJECT 04 — ALGORITHM VISUALIZER -->
+    <!-- PROJECTS -->
     <!-- ========================================================= -->
 
-    <div
-      class="group relative mb-10 overflow-hidden rounded-2xl
-      border border-[var(--white-icon-tr)]
-      bg-[#1414149c] backdrop-blur-sm
-      transition-all duration-500
-      hover:border-[var(--sec)]/40
-      hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
-    >
+    <div class="projects-list">
 
-      <div
-        class="pointer-events-none absolute -right-24 -bottom-32
-        h-72 w-72 rounded-full
-        bg-[var(--sec)] opacity-[0.045] blur-3xl
-        transition-opacity duration-500
-        group-hover:opacity-[0.09]"
-      ></div>
 
-      <a
-        href="/projects/visualizer"
-        class="relative block p-7 md:p-10"
-      >
+      <!-- ======================================================= -->
+      <!-- PROJECT 01 — DEVELOPER TERMINAL -->
+      <!-- ======================================================= -->
 
-        <div class="flex flex-col md:flex-row gap-8">
+      <article class="project-card project-card-featured">
 
-          <div class="flex flex-1 flex-col justify-between">
+        <div class="project-number">
+          01
+          <span>/ 08</span>
+        </div>
 
-            <div>
+        <div class="project-card-inner">
 
-              <div class="mb-5 flex items-center gap-3">
+          <div class="project-main">
 
-                <span
-                  class="font-mono text-xs tracking-[0.2em]
-                  text-[var(--sec)]"
-                >
-                  PROJECT 04
-                </span>
+            <div class="project-meta">
+              <span>Interactive</span>
+              <span class="meta-separator"></span>
+              <span>Portfolio</span>
+            </div>
 
-                <span
-                  class="h-px w-12 bg-[var(--sec)] opacity-40"
-                ></span>
+            <h3 class="project-title">
+              Developer Terminal
+              <span>.</span>
+            </h3>
 
-                <span
-                  class="text-xs uppercase tracking-widest
-                  text-[var(--white-icon)]"
-                >
-                  CS Fundamentals
-                </span>
+            <p class="project-description">
+              An interactive terminal built directly into my portfolio,
+              providing a developer-focused way to explore my work,
+              skills, projects and information.
+            </p>
+
+            <p class="project-secondary">
+              Continuously evolving with new commands, features
+              and ideas.
+            </p>
+
+            <div class="project-tags">
+              <span>Astro</span>
+              <span>TypeScript</span>
+              <span>Interactive UI</span>
+            </div>
+
+          </div>
+
+          <a
+            href="/#terminal"
+            class="project-action"
+          >
+            <span>Open terminal</span>
+
+            <span class="project-arrow">
+              →
+            </span>
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- ======================================================= -->
+      <!-- PROJECT 02 — MOVIE RANKING -->
+      <!-- ======================================================= -->
+
+      <article class="project-card">
+
+        <div class="project-number">
+          02
+          <span>/ 08</span>
+        </div>
+
+        <div class="project-card-inner">
+
+          <div class="project-main">
+
+            <div class="project-meta">
+              <span>Web App</span>
+              <span class="meta-separator"></span>
+              <span>Entertainment</span>
+            </div>
+
+            <h3 class="project-title">
+              Movie Ranking
+              <span>.</span>
+            </h3>
+
+            <p class="project-description">
+              A personal movie ranking interface designed around
+              discovering films through covers, ratings and reviews.
+            </p>
+
+            <div class="project-highlight">
+
+              <div>
+                <span>Featured movie</span>
+
+                <strong>
+                  Avengers: Infinity War
+                </strong>
+              </div>
+
+              <div class="highlight-divider"></div>
+
+              <div>
+                <span>Rating</span>
+
+                <strong class="rating">
+                  9<span>/10</span>
+                </strong>
+              </div>
+
+            </div>
+
+            <div class="project-tags">
+              <span>Astro</span>
+              <span>UI</span>
+              <span>Movies</span>
+            </div>
+
+          </div>
+
+          <a
+            href="/projects/movie-ranking"
+            class="project-action"
+          >
+            <span>View project</span>
+
+            <span class="project-arrow">
+              →
+            </span>
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- ======================================================= -->
+      <!-- PROJECT 03 — WEATHER -->
+      <!-- ======================================================= -->
+
+      <article class="project-card weather-card">
+
+        <div class="project-number">
+          03
+          <span>/ 08</span>
+        </div>
+
+        <div class="project-card-inner">
+
+          <div class="project-main">
+
+            <div class="project-meta">
+              <span>Live Data</span>
+              <span class="meta-separator"></span>
+              <span>Weather</span>
+            </div>
+
+            <h3 class="project-title">
+              Weather Dashboard
+              <span>.</span>
+            </h3>
+
+            <p class="project-description">
+              A dynamic weather dashboard using live data to display
+              current conditions across Spanish cities through a
+              clean, responsive interface.
+            </p>
+
+            <div class="weather-preview">
+
+              <div class="weather-location">
+
+                <div>
+                  <span>Location</span>
+                  <strong>Alcoi</strong>
+                </div>
+
+                <div class="weather-value">
+                  <strong id="weather-alcoi-temperature">
+                    --°C
+                  </strong>
+
+                  <span id="weather-alcoi-status">
+                    Loading...
+                  </span>
+                </div>
 
               </div>
 
-              <h3
-                class="text-2xl md:text-4xl font-medium
-                tracking-tight text-[var(--white)]
-                transition-colors duration-300
-                group-hover:text-[var(--sec)]"
-              >
-                Algorithm Visualizer
-                <span class="text-[var(--sec)]">.</span>
-              </h3>
 
-              <p
-                class="mt-4 max-w-2xl text-base md:text-lg
-                leading-relaxed text-[var(--white-icon)]"
-              >
-                An interactive playground for watching data structures
-                think: sorting algorithms step through comparisons and
-                swaps, a hash table resolves collisions with live
-                chaining, and a grid searches for the shortest path
-                with Dijkstra and A*.
-              </p>
-
-              <div
-                class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4"
-              >
+              <div class="weather-location">
 
                 <div>
+                  <span>Location</span>
+                  <strong>Valencia</strong>
+                </div>
 
-                  <p
-                    class="text-xs uppercase tracking-widest
-                    text-[var(--white-icon)] opacity-60"
-                  >
-                    Covers
-                  </p>
+                <div class="weather-value">
+                  <strong id="weather-valencia-temperature">
+                    --°C
+                  </strong>
 
-                  <p
-                    class="mt-1 text-lg font-medium
-                    text-[var(--white)]"
-                  >
-                    Sorting &middot; Hashing &middot; Pathfinding
-                  </p>
-
+                  <span id="weather-valencia-status">
+                    Loading...
+                  </span>
                 </div>
 
               </div>
 
             </div>
 
-            <div
-              class="mt-8 flex flex-col sm:flex-row
-              sm:items-center sm:justify-between gap-5"
-            >
+            <div class="project-tags">
+              <span>Astro</span>
+              <span>Open-Meteo API</span>
+              <span>Live Data</span>
+            </div>
 
-              <div class="flex flex-wrap gap-2">
+          </div>
 
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Astro
-                </span>
+          <a
+            href="/projects/weather"
+            class="project-action"
+          >
+            <span>View weather</span>
 
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  TypeScript
-                </span>
+            <span class="project-arrow">
+              →
+            </span>
+          </a>
 
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Data Structures &amp; Algorithms
-                </span>
+        </div>
 
+      </article>
+
+
+      <!-- ======================================================= -->
+      <!-- PROJECT 04 — ALGORITHM VISUALIZER -->
+      <!-- ======================================================= -->
+
+      <article class="project-card">
+
+        <div class="project-number">
+          04
+          <span>/ 08</span>
+        </div>
+
+        <div class="project-card-inner">
+
+          <div class="project-main">
+
+            <div class="project-meta">
+              <span>Computer Science</span>
+              <span class="meta-separator"></span>
+              <span>Algorithms</span>
+            </div>
+
+            <h3 class="project-title">
+              Algorithm Visualizer
+              <span>.</span>
+            </h3>
+
+            <p class="project-description">
+              An interactive playground for exploring algorithms
+              through visual execution. Sorting, hashing and
+              pathfinding become easier to understand step by step.
+            </p>
+
+            <div class="project-highlight">
+
+              <div>
+                <span>Algorithms</span>
+
+                <strong>
+                  Sorting
+                </strong>
               </div>
 
-              <div
-                class="flex items-center gap-2
-                text-sm text-[var(--sec)]
-                transition-transform duration-300
-                group-hover:translate-x-1"
-              >
-                <span>Open visualizer</span>
-                <span class="text-lg">→</span>
+              <div class="highlight-divider"></div>
+
+              <div>
+                <span>Structures</span>
+
+                <strong>
+                  Hashing
+                </strong>
               </div>
+
+              <div class="highlight-divider"></div>
+
+              <div>
+                <span>Pathfinding</span>
+
+                <strong>
+                  Dijkstra · A*
+                </strong>
+              </div>
+
+            </div>
+
+            <div class="project-tags">
+              <span>Astro</span>
+              <span>TypeScript</span>
+              <span>Data Structures</span>
+            </div>
+
+          </div>
+
+          <a
+            href="/projects/visualizer"
+            class="project-action"
+          >
+            <span>Open visualizer</span>
+
+            <span class="project-arrow">
+              →
+            </span>
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- ======================================================= -->
+      <!-- PROJECT 05 — NETWORK PROTOCOL SIMULATOR -->
+      <!-- ======================================================= -->
+
+      <article class="project-card">
+
+        <div class="project-number">
+          05
+          <span>/ 08</span>
+        </div>
+
+        <div class="project-card-inner">
+
+          <div class="project-main">
+
+            <div class="project-meta">
+              <span>Systems</span>
+              <span class="meta-separator"></span>
+              <span>Networking</span>
+            </div>
+
+            <h3 class="project-title">
+              Network Protocol Simulator
+              <span>.</span>
+            </h3>
+
+            <p class="project-description">
+              An interactive transport-layer simulator exploring
+              TCP handshakes, packet loss, retransmission and
+              message framing over a byte stream.
+            </p>
+
+            <div class="project-highlight">
+
+              <div>
+                <span>Protocol</span>
+
+                <strong>
+                  TCP / UDP
+                </strong>
+              </div>
+
+              <div class="highlight-divider"></div>
+
+              <div>
+                <span>Concept</span>
+
+                <strong>
+                  Packet Loss
+                </strong>
+              </div>
+
+              <div class="highlight-divider"></div>
+
+              <div>
+                <span>Data</span>
+
+                <strong>
+                  Framing
+                </strong>
+              </div>
+
+            </div>
+
+            <div class="project-tags">
+              <span>Astro</span>
+              <span>TypeScript</span>
+              <span>TCP / UDP</span>
+            </div>
+
+          </div>
+
+          <a
+            href="/projects/network"
+            class="project-action"
+          >
+            <span>Open simulator</span>
+
+            <span class="project-arrow">
+              →
+            </span>
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- ======================================================= -->
+      <!-- PROJECT 06 — CPU SIMULATOR -->
+      <!-- ======================================================= -->
+
+      <article class="project-card">
+
+        <div class="project-number">
+          06
+          <span>/ 08</span>
+        </div>
+
+        <div class="project-card-inner">
+
+          <div class="project-main">
+
+            <div class="project-meta">
+              <span>Computer Architecture</span>
+              <span class="meta-separator"></span>
+              <span>Systems</span>
+            </div>
+
+            <h3 class="project-title">
+              CPU Simulator
+              <span>.</span>
+            </h3>
+
+            <p class="project-description">
+              A small simulated CPU with its own instruction set,
+              registers and memory. Programs can be executed one
+              instruction at a time to reveal the fetch-decode-execute
+              cycle.
+            </p>
+
+            <div class="project-highlight">
+
+              <div>
+                <span>Registers</span>
+
+                <strong>
+                  8
+                </strong>
+              </div>
+
+              <div class="highlight-divider"></div>
+
+              <div>
+                <span>Architecture</span>
+
+                <strong>
+                  Custom ISA
+                </strong>
+              </div>
+
+              <div class="highlight-divider"></div>
+
+              <div>
+                <span>Cycle</span>
+
+                <strong>
+                  Fetch · Decode · Execute
+                </strong>
+              </div>
+
+            </div>
+
+            <div class="project-tags">
+              <span>Astro</span>
+              <span>TypeScript</span>
+              <span>Assembly</span>
+            </div>
+
+          </div>
+
+          <a
+            href="/projects/Cpu"
+            class="project-action"
+          >
+            <span>Open simulator</span>
+
+            <span class="project-arrow">
+              →
+            </span>
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- ======================================================= -->
+      <!-- PROJECT 07 — EXPENSE SPLITTER -->
+      <!-- ======================================================= -->
+
+      <article class="project-card">
+
+        <div class="project-number">
+          07
+          <span>/ 08</span>
+        </div>
+
+        <div class="project-card-inner">
+
+          <div class="project-main">
+
+            <div class="project-meta">
+              <span>Mobile</span>
+              <span class="meta-separator"></span>
+              <span>Flutter</span>
+            </div>
+
+            <h3 class="project-title">
+              Expense Splitter
+              <span>.</span>
+            </h3>
+
+            <p class="project-description">
+              A Flutter application for splitting shared expenses,
+              calculating balances between participants and reducing
+              the number of transfers required to settle group costs.
+            </p>
+
+            <div class="project-highlight">
+
+              <div>
+                <span>Platform</span>
+
+                <strong>
+                  Android · iOS · Web
+                </strong>
+              </div>
+
+              <div class="highlight-divider"></div>
+
+              <div>
+                <span>Technology</span>
+
+                <strong>
+                  Flutter · Dart
+                </strong>
+              </div>
+
+            </div>
+
+            <div class="project-tags">
+              <span>Flutter</span>
+              <span>Dart</span>
+              <span>Mobile</span>
+              <span>Expense Management</span>
+            </div>
+
+          </div>
+
+          <a
+            href="/projects/expense-splitter/"
+            class="project-action"
+          >
+            <span>Open application</span>
+
+            <span class="project-arrow">
+              →
+            </span>
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- ======================================================= -->
+      <!-- PROJECT 08 — FINTRACK -->
+      <!-- ======================================================= -->
+
+      <article class="project-card project-card-fintrack">
+
+        <div class="project-number">
+          08
+          <span>/ 08</span>
+        </div>
+
+        <div class="project-card-inner">
+
+          <div class="project-main">
+
+            <div class="project-meta">
+              <span>Product</span>
+              <span class="meta-separator"></span>
+              <span>Personal Finance</span>
+            </div>
+
+            <h3 class="project-title">
+              FinTrack
+              <span>.</span>
+            </h3>
+
+            <p class="project-description">
+              A personal finance application designed around making
+              financial information easier to add, understand and
+              manage. Built with dashboards, transactions, budgets,
+              analytics and savings goals.
+            </p>
+
+            <div class="project-highlight">
+
+              <div>
+                <span>Platform</span>
+
+                <strong>
+                  Android · iOS · Web · Desktop
+                </strong>
+              </div>
+
+              <div class="highlight-divider"></div>
+
+              <div>
+                <span>Technology</span>
+
+                <strong>
+                  Flutter · Dart
+                </strong>
+              </div>
+
+            </div>
+
+            <div class="project-tags">
+              <span>Flutter</span>
+              <span>Dart</span>
+              <span>Finance</span>
+              <span>Riverpod</span>
 
             </div>
 
           </div>
 
+          <a
+            href="/projects/fintrack_app/"
+            class="project-action"
+          >
+            <span>Open FinTrack</span>
+
+            <span class="project-arrow">
+              →
+            </span>
+          </a>
+
         </div>
 
-      </a>
+      </article>
+
     </div>
 
 
     <!-- ========================================================= -->
-    <!-- PROJECT 05 — NETWORK PROTOCOL SIMULATOR -->
+    <!-- PROJECT FOOTER -->
     <!-- ========================================================= -->
 
-    <div
-      class="group relative mt-10 overflow-hidden rounded-2xl
-      border border-[var(--white-icon-tr)]
-      bg-[#1414149c] backdrop-blur-sm
-      transition-all duration-500
-      hover:border-[var(--sec)]/40
-      hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
-    >
+    <div class="projects-footer">
 
-      <div
-        class="pointer-events-none absolute -left-24 -top-24
-        h-72 w-72 rounded-full
-        bg-[var(--sec)] opacity-[0.045] blur-3xl
-        transition-opacity duration-500
-        group-hover:opacity-[0.09]"
-      ></div>
+      <span>
+        08 projects
+      </span>
 
-      <a
-        href="/projects/network"
-        class="relative block p-7 md:p-10"
-      >
+      <span class="footer-line"></span>
 
-        <div class="flex flex-col md:flex-row gap-8">
+      <span>
+        Always building
+      </span>
 
-          <div class="flex flex-1 flex-col justify-between">
-
-            <div>
-
-              <div class="mb-5 flex items-center gap-3">
-
-                <span
-                  class="font-mono text-xs tracking-[0.2em]
-                  text-[var(--sec)]"
-                >
-                  PROJECT 05
-                </span>
-
-                <span
-                  class="h-px w-12 bg-[var(--sec)] opacity-40"
-                ></span>
-
-                <span
-                  class="text-xs uppercase tracking-widest
-                  text-[var(--white-icon)]"
-                >
-                  Networking
-                </span>
-
-              </div>
-
-              <h3
-                class="text-2xl md:text-4xl font-medium
-                tracking-tight text-[var(--white)]
-                transition-colors duration-300
-                group-hover:text-[var(--sec)]"
-              >
-                Network Protocol Simulator
-                <span class="text-[var(--sec)]">.</span>
-              </h3>
-
-              <p
-                class="mt-4 max-w-2xl text-base md:text-lg
-                leading-relaxed text-[var(--white-icon)]"
-              >
-                An interactive simulator for the TCP three-way handshake,
-                TCP vs UDP packet loss and retransmission, and message
-                framing over a byte stream &mdash; the transport layer,
-                animated and stepped through by hand.
-              </p>
-
-              <div
-                class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4"
-              >
-
-                <div>
-
-                  <p
-                    class="text-xs uppercase tracking-widest
-                    text-[var(--white-icon)] opacity-60"
-                  >
-                    Covers
-                  </p>
-
-                  <p
-                    class="mt-1 text-lg font-medium
-                    text-[var(--white)]"
-                  >
-                    TCP Handshake &middot; Packet Loss &middot; Framing
-                  </p>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div
-              class="mt-8 flex flex-col sm:flex-row
-              sm:items-center sm:justify-between gap-5"
-            >
-
-              <div class="flex flex-wrap gap-2">
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Astro
-                </span>
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  TypeScript
-                </span>
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  TCP/UDP
-                </span>
-
-              </div>
-
-              <div
-                class="flex items-center gap-2
-                text-sm text-[var(--sec)]
-                transition-transform duration-300
-                group-hover:translate-x-1"
-              >
-                <span>Open simulator</span>
-                <span class="text-lg">→</span>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </a>
-    </div>
-
-
-    <!-- ========================================================= -->
-    <!-- PROJECT 06 — CPU SIMULATOR -->
-    <!-- ========================================================= -->
-
-    <div
-      class="group relative mt-10 overflow-hidden rounded-2xl
-      border border-[var(--white-icon-tr)]
-      bg-[#1414149c] backdrop-blur-sm
-      transition-all duration-500
-      hover:border-[var(--sec)]/40
-      hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
-    >
-
-      <div
-        class="pointer-events-none absolute -right-24 -bottom-24
-        h-72 w-72 rounded-full
-        bg-[var(--sec)] opacity-[0.045] blur-3xl
-        transition-opacity duration-500
-        group-hover:opacity-[0.09]"
-      ></div>
-
-      <a
-        href="/projects/Cpu"
-        class="relative block p-7 md:p-10"
-      >
-
-        <div class="flex flex-col md:flex-row gap-8">
-
-          <div class="flex flex-1 flex-col justify-between">
-
-            <div>
-
-              <div class="mb-5 flex items-center gap-3">
-
-                <span
-                  class="font-mono text-xs tracking-[0.2em]
-                  text-[var(--sec)]"
-                >
-                  PROJECT 06
-                </span>
-
-                <span
-                  class="h-px w-12 bg-[var(--sec)] opacity-40"
-                ></span>
-
-                <span
-                  class="text-xs uppercase tracking-widest
-                  text-[var(--white-icon)]"
-                >
-                  Computer Architecture
-                </span>
-
-              </div>
-
-              <h3
-                class="text-2xl md:text-4xl font-medium
-                tracking-tight text-[var(--white)]
-                transition-colors duration-300
-                group-hover:text-[var(--sec)]"
-              >
-                CPU Simulator
-                <span class="text-[var(--sec)]">.</span>
-              </h3>
-
-              <p
-                class="mt-4 max-w-2xl text-base md:text-lg
-                leading-relaxed text-[var(--white-icon)]"
-              >
-                A tiny 8-register CPU with its own instruction set,
-                stepping through fetch, decode and execute one
-                instruction at a time &mdash; write a short program
-                and watch the registers and memory change live.
-              </p>
-
-              <div
-                class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4"
-              >
-
-                <div>
-
-                  <p
-                    class="text-xs uppercase tracking-widest
-                    text-[var(--white-icon)] opacity-60"
-                  >
-                    Covers
-                  </p>
-
-                  <p
-                    class="mt-1 text-lg font-medium
-                    text-[var(--white)]"
-                  >
-                    Fetch-Decode-Execute &middot; Registers &middot; Memory
-                  </p>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div
-              class="mt-8 flex flex-col sm:flex-row
-              sm:items-center sm:justify-between gap-5"
-            >
-
-              <div class="flex flex-wrap gap-2">
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Astro
-                </span>
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  TypeScript
-                </span>
-
-                <span
-                  class="rounded-full border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Assembly
-                </span>
-
-              </div>
-
-              <div
-                class="flex items-center gap-2
-                text-sm text-[var(--sec)]
-                transition-transform duration-300
-                group-hover:translate-x-1"
-              >
-                <span>Open simulator</span>
-                <span class="text-lg">→</span>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </a>
-    </div>
-
-
-    <!-- ========================================================= -->
-    <!-- PROJECT 07 — EXPENSE SPLITTER / FLUTTER APP -->
-    <!-- ========================================================= -->
-
-    <div
-      class="group relative mt-10 overflow-hidden rounded-2xl
-      border border-[var(--white-icon-tr)]
-      bg-[#1414149c] backdrop-blur-sm
-      transition-all duration-500
-      hover:border-[var(--sec)]/40
-      hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
-    >
-
-      <div
-        class="pointer-events-none absolute -left-24 -top-24
-        h-72 w-72 rounded-full
-        bg-[var(--sec)] opacity-[0.045] blur-3xl
-        transition-opacity duration-500
-        group-hover:opacity-[0.09]"
-      ></div>
-
-      <!--
-        Expense Splitter is a Flutter web build, deployed as static
-        files at public/projects/expense-splitter/ in this repo.
-        Build it with:
-          flutter build web --release --base-href /projects/expense-splitter/
-        then copy the contents of build/web/ into
-        public/projects/expense-splitter/ so this href resolves.
-      -->
-
-      <a
-        href="/projects/expense-splitter/"
-        class="relative block p-7 md:p-10"
-      >
-
-        <div class="flex flex-col md:flex-row gap-8">
-
-          <div class="flex flex-1 flex-col justify-between">
-
-            <div>
-
-              <div class="mb-5 flex items-center gap-3">
-
-                <span
-                  class="font-mono text-xs tracking-[0.2em]
-                  text-[var(--sec)]"
-                >
-                  PROJECT 07
-                </span>
-
-                <span
-                  class="h-px w-12 bg-[var(--sec)] opacity-40"
-                ></span>
-
-                <span
-                  class="text-xs uppercase tracking-widest
-                  text-[var(--white-icon)]"
-                >
-                  Flutter App
-                </span>
-
-              </div>
-
-              <h3
-                class="text-2xl md:text-4xl font-medium
-                tracking-tight text-[var(--white)]
-                transition-colors duration-300
-                group-hover:text-[var(--sec)]"
-              >
-                Expense Splitter
-                <span class="text-[var(--sec)]">.</span>
-              </h3>
-
-              <p
-                class="mt-4 max-w-2xl text-base md:text-lg
-                leading-relaxed text-[var(--white-icon)]"
-              >
-                A Flutter mobile application for splitting group expenses,
-                calculating balances between participants and minimizing
-                the number of transfers needed to settle shared costs.
-              </p>
-
-              <div
-                class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4"
-              >
-
-                <div>
-
-                  <p
-                    class="text-xs uppercase tracking-widest
-                    text-[var(--white-icon)] opacity-60"
-                  >
-                    Platform
-                  </p>
-
-                  <p
-                    class="mt-1 text-lg font-medium
-                    text-[var(--white)]"
-                  >
-                    Android &middot; iOS &middot; Web
-                  </p>
-
-                </div>
-
-                <div
-                  class="hidden sm:block h-8 w-px
-                  bg-[var(--white-icon-tr)]"
-                ></div>
-
-                <div>
-
-                  <p
-                    class="text-xs uppercase tracking-widest
-                    text-[var(--white-icon)] opacity-60"
-                  >
-                    Technology
-                  </p>
-
-                  <p
-                    class="mt-1 text-lg font-medium
-                    text-[var(--white)]"
-                  >
-                    Flutter &middot; Dart
-                  </p>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div
-              class="mt-8 flex flex-col sm:flex-row
-              sm:items-center sm:justify-between gap-5"
-            >
-
-              <div class="flex flex-wrap gap-2">
-
-                <span
-                  class="rounded-full
-                  border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Flutter
-                </span>
-
-                <span
-                  class="rounded-full
-                  border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Dart
-                </span>
-
-                <span
-                  class="rounded-full
-                  border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Mobile
-                </span>
-
-                <span
-                  class="rounded-full
-                  border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Expense Management
-                </span>
-
-              </div>
-
-              <div
-                class="flex items-center gap-2
-                text-sm text-[var(--sec)]
-                transition-transform duration-300
-                group-hover:translate-x-1"
-              >
-                <span>Open Flutter app</span>
-
-                <span class="text-lg">
-                  →
-                </span>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </a>
-    </div>
-
-
-    <!-- ========================================================= -->
-    <!-- PROJECT 08 — FINTRACK / FLUTTER APP -->
-    <!-- ========================================================= -->
-
-    <div
-      class="group relative mt-10 overflow-hidden rounded-2xl
-      border border-[var(--white-icon-tr)]
-      bg-[#1414149c] backdrop-blur-sm
-      transition-all duration-500
-      hover:border-[var(--sec)]/40
-      hover:shadow-[0_0_40px_rgba(21,128,61,0.1)]"
-    >
-
-      <div
-        class="pointer-events-none absolute -right-24 -top-24
-        h-72 w-72 rounded-full
-        bg-[var(--sec)] opacity-[0.045] blur-3xl
-        transition-opacity duration-500
-        group-hover:opacity-[0.09]"
-      ></div>
-
-      <!--
-        FinTrack is a Flutter web build, source at flutter/fintrack_app
-        in this repo, deployed as static files at
-        public/projects/fintrack-app/.
-        Build it with:
-          flutter build web --release --base-href /projects/fintrack-app/
-        then copy the contents of build/web/ into
-        public/projects/fintrack-app/ so this href resolves.
-
-        Inside the Flutter app, the "back to portfolio" action should
-        link/route to /#projects so it lands the user back on this
-        section (not /#terminal like the terminal project).
-      -->
-
-      <a
-        href="/projects/fintrack_app/"
-        class="relative block p-7 md:p-10"
-      >
-
-        <div class="flex flex-col md:flex-row gap-8">
-
-          <div class="flex flex-1 flex-col justify-between">
-
-            <div>
-
-              <div class="mb-5 flex items-center gap-3">
-
-                <span
-                  class="font-mono text-xs tracking-[0.2em]
-                  text-[var(--sec)]"
-                >
-                  PROJECT 08
-                </span>
-
-                <span
-                  class="h-px w-12 bg-[var(--sec)] opacity-40"
-                ></span>
-
-                <span
-                  class="text-xs uppercase tracking-widest
-                  text-[var(--white-icon)]"
-                >
-                  Flutter App
-                </span>
-
-              </div>
-
-              <h3
-                class="text-2xl md:text-4xl font-medium
-                tracking-tight text-[var(--white)]
-                transition-colors duration-300
-                group-hover:text-[var(--sec)]"
-              >
-                FinTrack
-                <span class="text-[var(--sec)]">.</span>
-              </h3>
-
-              <p
-                class="mt-4 max-w-2xl text-base md:text-lg
-                leading-relaxed text-[var(--white-icon)]"
-              >
-                A personal finance manager for tracking spending,
-                linked accounts, budgets and savings goals, built
-                around adding and managing your own data as easily
-                as possible &mdash; with clear back/home navigation
-                on every screen, on mobile and desktop alike.
-              </p>
-
-              <div
-                class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4"
-              >
-
-                <div>
-
-                  <p
-                    class="text-xs uppercase tracking-widest
-                    text-[var(--white-icon)] opacity-60"
-                  >
-                    Platform
-                  </p>
-
-                  <p
-                    class="mt-1 text-lg font-medium
-                    text-[var(--white)]"
-                  >
-                    Android &middot; iOS &middot; Web &middot; Desktop
-                  </p>
-
-                </div>
-
-                <div
-                  class="hidden sm:block h-8 w-px
-                  bg-[var(--white-icon-tr)]"
-                ></div>
-
-                <div>
-
-                  <p
-                    class="text-xs uppercase tracking-widest
-                    text-[var(--white-icon)] opacity-60"
-                  >
-                    Technology
-                  </p>
-
-                  <p
-                    class="mt-1 text-lg font-medium
-                    text-[var(--white)]"
-                  >
-                    Flutter &middot; Dart
-                  </p>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div
-              class="mt-8 flex flex-col sm:flex-row
-              sm:items-center sm:justify-between gap-5"
-            >
-
-              <div class="flex flex-wrap gap-2">
-
-                <span
-                  class="rounded-full
-                  border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Flutter
-                </span>
-
-                <span
-                  class="rounded-full
-                  border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Dart
-                </span>
-
-                <span
-                  class="rounded-full
-                  border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Mobile
-                </span>
-
-                <span
-                  class="rounded-full
-                  border border-[var(--white-icon-tr)]
-                  px-3 py-1 text-xs font-mono
-                  text-[var(--white-icon)]"
-                >
-                  Finance
-                </span>
-
-              </div>
-
-              <div
-                class="flex items-center gap-2
-                text-sm text-[var(--sec)]
-                transition-transform duration-300
-                group-hover:translate-x-1"
-              >
-                <span>Open FinTrack</span>
-
-                <span class="text-lg">
-                  →
-                </span>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </a>
     </div>
 
   </div>
 </section>
+
 
 <script>
   interface WeatherData {
@@ -1505,34 +779,67 @@
     },
   ];
 
+
   function getWeatherDescription(code: number): string {
+
     if (code === 0) return "Clear";
     if (code === 1) return "Mainly clear";
     if (code === 2) return "Partly cloudy";
     if (code === 3) return "Cloudy";
-    if (code === 45 || code === 48) return "Fog";
-    if (code >= 51 && code <= 57) return "Drizzle";
-    if (code >= 61 && code <= 67) return "Rain";
-    if (code >= 71 && code <= 77) return "Snow";
-    if (code >= 80 && code <= 82) return "Showers";
-    if (code >= 85 && code <= 86) return "Snow showers";
-    if (code >= 95 && code <= 99) return "Thunderstorm";
+
+    if (code === 45 || code === 48) {
+      return "Fog";
+    }
+
+    if (code >= 51 && code <= 57) {
+      return "Drizzle";
+    }
+
+    if (code >= 61 && code <= 67) {
+      return "Rain";
+    }
+
+    if (code >= 71 && code <= 77) {
+      return "Snow";
+    }
+
+    if (code >= 80 && code <= 82) {
+      return "Showers";
+    }
+
+    if (code >= 85 && code <= 86) {
+      return "Snow showers";
+    }
+
+    if (code >= 95 && code <= 99) {
+      return "Thunderstorm";
+    }
 
     return "Unknown";
   }
 
-  async function loadWeather(location: WeatherLocation) {
-    const temperatureElement = document.getElementById(
-      location.temperatureElement
-    );
 
-    const statusElement = document.getElementById(
-      location.statusElement
-    );
+  async function loadWeather(
+    location: WeatherLocation
+  ) {
 
-    if (!temperatureElement || !statusElement) return;
+    const temperatureElement =
+      document.getElementById(
+        location.temperatureElement
+      );
+
+    const statusElement =
+      document.getElementById(
+        location.statusElement
+      );
+
+    if (!temperatureElement || !statusElement) {
+      return;
+    }
+
 
     try {
+
       const url =
         `https://api.open-meteo.com/v1/forecast` +
         `?latitude=${location.latitude}` +
@@ -1540,38 +847,1365 @@
         `&current=temperature_2m,weather_code` +
         `&timezone=Europe%2FMadrid`;
 
+
       const response = await fetch(url);
 
+
       if (!response.ok) {
-        throw new Error("Weather request failed");
+        throw new Error(
+          "Weather request failed"
+        );
       }
 
-      const data = (await response.json()) as WeatherData;
 
-      const temperature = data.current.temperature_2m;
-      const weatherCode = data.current.weather_code;
+      const data =
+        (await response.json()) as WeatherData;
+
+
+      const temperature =
+        data.current.temperature_2m;
+
+      const weatherCode =
+        data.current.weather_code;
+
 
       temperatureElement.textContent =
         `${Math.round(temperature)}°C`;
 
+
       statusElement.textContent =
-        getWeatherDescription(weatherCode);
+        getWeatherDescription(
+          weatherCode
+        );
 
     } catch {
-      temperatureElement.textContent = "--°C";
-      statusElement.textContent = "Unavailable";
+
+      temperatureElement.textContent =
+        "--°C";
+
+      statusElement.textContent =
+        "Unavailable";
     }
   }
 
+
   function loadAllWeather() {
-    weatherLocations.forEach((location) => {
-      void loadWeather(location);
-    });
+
+    weatherLocations.forEach(
+      (location) => {
+        void loadWeather(location);
+      }
+    );
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", loadAllWeather);
+
+  if (
+    document.readyState === "loading"
+  ) {
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      loadAllWeather
+    );
+
   } else {
+
     loadAllWeather();
+
   }
 </script>
+
+
+<style>
+
+  /* ============================================================= */
+  /* BASE */
+  /* ============================================================= */
+
+  .projects-section {
+
+    --projects-blue: #2997ff;
+    --projects-blue-soft: rgba(41, 151, 255, 0.12);
+
+    --projects-white: #f5f5f7;
+    --projects-secondary: #86868b;
+    --projects-muted: #6e6e73;
+
+    --projects-border:
+      rgba(255, 255, 255, 0.085);
+
+    --projects-border-hover:
+      rgba(41, 151, 255, 0.28);
+
+    --projects-surface:
+      rgba(255, 255, 255, 0.035);
+
+    --projects-surface-hover:
+      rgba(255, 255, 255, 0.052);
+
+    position: relative;
+
+    background:
+      linear-gradient(
+        180deg,
+        #050506 0%,
+        #06070a 50%,
+        #050506 100%
+      );
+
+  }
+
+
+  /* ============================================================= */
+  /* BACKGROUND */
+  /* ============================================================= */
+
+  .projects-glow {
+
+    position: absolute;
+
+    border-radius: 999px;
+
+    filter: blur(110px);
+
+    pointer-events: none;
+
+  }
+
+
+  .projects-glow-top {
+
+    width: 720px;
+    height: 420px;
+
+    top: -260px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background:
+      radial-gradient(
+        ellipse,
+        rgba(41, 151, 255, 0.12),
+        transparent 70%
+      );
+
+  }
+
+
+  .projects-glow-right {
+
+    width: 480px;
+    height: 480px;
+
+    top: 850px;
+    right: -300px;
+
+    background:
+      radial-gradient(
+        circle,
+        rgba(41, 151, 255, 0.07),
+        transparent 70%
+      );
+
+    animation:
+      projectsFloatRight 20s ease-in-out infinite;
+
+  }
+
+
+  .projects-glow-bottom {
+
+    width: 520px;
+    height: 420px;
+
+    bottom: -260px;
+    left: -260px;
+
+    background:
+      radial-gradient(
+        circle,
+        rgba(31, 75, 150, 0.06),
+        transparent 70%
+      );
+
+    animation:
+      projectsFloatBottom 25s ease-in-out infinite;
+
+  }
+
+
+  @keyframes projectsFloatRight {
+
+    0%,
+    100% {
+
+      transform:
+        translate3d(0, 0, 0)
+        scale(1);
+
+    }
+
+    50% {
+
+      transform:
+        translate3d(-60px, 50px, 0)
+        scale(1.08);
+
+    }
+
+  }
+
+
+  @keyframes projectsFloatBottom {
+
+    0%,
+    100% {
+
+      transform:
+        translate3d(0, 0, 0)
+        scale(1);
+
+    }
+
+    50% {
+
+      transform:
+        translate3d(70px, -40px, 0)
+        scale(1.1);
+
+    }
+
+  }
+
+
+  .projects-grid {
+
+    position: absolute;
+
+    inset: -100px;
+
+    background-image:
+      linear-gradient(
+        rgba(255,255,255,0.014) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255,255,255,0.014) 1px,
+        transparent 1px
+      );
+
+    background-size: 72px 72px;
+
+    opacity: 0.28;
+
+    mask-image:
+      radial-gradient(
+        ellipse 80% 55% at 50% 20%,
+        black 0%,
+        rgba(0,0,0,0.7) 35%,
+        transparent 85%
+      );
+
+  }
+
+
+  .projects-vignette {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+      radial-gradient(
+        ellipse at center,
+        transparent 35%,
+        rgba(0,0,0,0.38) 100%
+      );
+
+  }
+
+
+  /* ============================================================= */
+  /* HEADER */
+  /* ============================================================= */
+
+  .projects-header {
+
+    padding-top: 8rem;
+    padding-bottom: 5rem;
+
+  }
+
+
+  .section-eyebrow {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 24px;
+
+    color: var(--projects-blue);
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.18em;
+
+    text-transform: uppercase;
+
+  }
+
+
+  .eyebrow-line {
+
+    width: 28px;
+
+    height: 1px;
+
+    background:
+      rgba(41, 151, 255, 0.55);
+
+  }
+
+
+  .projects-heading-layout {
+
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1.15fr)
+      minmax(280px, 0.85fr);
+
+    gap: 5rem;
+
+    align-items: end;
+
+  }
+
+
+  .projects-title {
+
+    margin: 0;
+
+    color: var(--projects-white);
+
+    font-size: clamp(
+      3rem,
+      7vw,
+      6.8rem
+    );
+
+    line-height: 0.95;
+
+    font-weight: 500;
+
+    letter-spacing: -0.055em;
+
+  }
+
+
+  .projects-title span {
+
+    color: var(--projects-blue);
+
+  }
+
+
+  .projects-introduction {
+
+    max-width: 520px;
+
+    margin: 0;
+
+    color: var(--projects-secondary);
+
+    font-size: 17px;
+
+    line-height: 1.65;
+
+    letter-spacing: -0.01em;
+
+  }
+
+
+  /* ============================================================= */
+  /* PROJECT LIST */
+  /* ============================================================= */
+
+  .projects-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+  }
+
+
+  /* ============================================================= */
+  /* PROJECT CARD */
+  /* ============================================================= */
+
+  .project-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border:
+      1px solid
+      var(--projects-border);
+
+    border-radius: 24px;
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255,255,255,0.038),
+        rgba(255,255,255,0.018)
+      );
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    transition:
+      border-color 500ms ease,
+      background 500ms ease,
+      transform 500ms
+        cubic-bezier(.22,.61,.36,1),
+      box-shadow 500ms ease;
+
+  }
+
+
+  .project-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+      radial-gradient(
+        circle at 90% 0%,
+        rgba(41,151,255,0.065),
+        transparent 35%
+      );
+
+    opacity: 0.6;
+
+    transition:
+      opacity 500ms ease;
+
+  }
+
+
+  .project-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 1px;
+
+    height: 100%;
+
+    background:
+      linear-gradient(
+        180deg,
+        transparent,
+        rgba(41,151,255,0.35),
+        transparent
+      );
+
+    opacity: 0;
+
+    transition:
+      opacity 500ms ease;
+
+  }
+
+
+  .project-card:hover {
+
+    border-color:
+      var(--projects-border-hover);
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255,255,255,0.052),
+        rgba(255,255,255,0.022)
+      );
+
+    transform:
+      translateY(-3px);
+
+    box-shadow:
+      0 24px 70px
+      rgba(0,0,0,0.25);
+
+  }
+
+
+  .project-card:hover::before {
+
+    opacity: 1;
+
+  }
+
+
+  .project-card:hover::after {
+
+    opacity: 1;
+
+  }
+
+
+  /* ============================================================= */
+  /* FEATURED PROJECT */
+  /* ============================================================= */
+
+  .project-card-featured {
+
+    border-color:
+      rgba(41,151,255,0.15);
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(41,151,255,0.055),
+        rgba(255,255,255,0.018)
+      );
+
+  }
+
+
+  .project-card-featured::before {
+
+    background:
+      radial-gradient(
+        circle at 92% 0%,
+        rgba(41,151,255,0.12),
+        transparent 38%
+      );
+
+  }
+
+
+  /* ============================================================= */
+  /* NUMBER */
+  /* ============================================================= */
+
+  .project-number {
+
+    position: absolute;
+
+    top: 28px;
+
+    right: 32px;
+
+    color:
+      rgba(255,255,255,0.22);
+
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 0.08em;
+
+  }
+
+
+  .project-number span {
+
+    color:
+      rgba(255,255,255,0.11);
+
+  }
+
+
+  /* ============================================================= */
+  /* CARD CONTENT */
+  /* ============================================================= */
+
+  .project-card-inner {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 60px;
+
+    padding:
+      42px
+      42px
+      38px;
+
+  }
+
+
+  .project-main {
+
+    min-width: 0;
+
+    flex: 1;
+
+  }
+
+
+  /* ============================================================= */
+  /* PROJECT META */
+  /* ============================================================= */
+
+  .project-meta {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    margin-bottom: 20px;
+
+    color:
+      var(--projects-blue);
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.15em;
+
+    text-transform: uppercase;
+
+  }
+
+
+  .meta-separator {
+
+    width: 22px;
+
+    height: 1px;
+
+    background:
+      rgba(41,151,255,0.45);
+
+  }
+
+
+  /* ============================================================= */
+  /* TITLE */
+  /* ============================================================= */
+
+  .project-title {
+
+    margin: 0;
+
+    max-width: 900px;
+
+    color:
+      var(--projects-white);
+
+    font-size: clamp(
+      1.8rem,
+      3.2vw,
+      3rem
+    );
+
+    line-height: 1.04;
+
+    font-weight: 500;
+
+    letter-spacing: -0.04em;
+
+    transition:
+      color 300ms ease;
+
+  }
+
+
+  .project-title span {
+
+    color:
+      var(--projects-blue);
+
+  }
+
+
+  .project-card:hover
+  .project-title {
+
+    color:
+      #ffffff;
+
+  }
+
+
+  /* ============================================================= */
+  /* DESCRIPTION */
+  /* ============================================================= */
+
+  .project-description {
+
+    max-width: 780px;
+
+    margin-top: 18px;
+
+    margin-bottom: 0;
+
+    color:
+      var(--projects-secondary);
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+  }
+
+
+  .project-secondary {
+
+    max-width: 650px;
+
+    margin-top: 10px;
+
+    color:
+      var(--projects-muted);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+  }
+
+
+  /* ============================================================= */
+  /* HIGHLIGHTS */
+  /* ============================================================= */
+
+  .project-highlight {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    gap: 22px;
+
+    margin-top: 28px;
+
+    padding-top: 24px;
+
+    border-top:
+      1px solid
+      rgba(255,255,255,0.055);
+
+  }
+
+
+  .project-highlight > div:not(
+    .highlight-divider
+  ) {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+  }
+
+
+  .project-highlight span {
+
+    color:
+      var(--projects-muted);
+
+    font-size: 10px;
+
+    letter-spacing: 0.13em;
+
+    text-transform: uppercase;
+
+  }
+
+
+  .project-highlight strong {
+
+    color:
+      var(--projects-white);
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+  }
+
+
+  .project-highlight .rating {
+
+    color:
+      var(--projects-blue);
+
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      monospace;
+
+  }
+
+
+  .rating span {
+
+    color:
+      var(--projects-muted);
+
+    font-weight: 400;
+
+  }
+
+
+  .highlight-divider {
+
+    width: 1px;
+
+    height: 32px;
+
+    background:
+      rgba(255,255,255,0.08);
+
+  }
+
+
+  /* ============================================================= */
+  /* WEATHER */
+  /* ============================================================= */
+
+  .weather-preview {
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+
+    max-width: 720px;
+
+    margin-top: 28px;
+
+  }
+
+
+  .weather-location {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding:
+      17px
+      18px;
+
+    border:
+      1px solid
+      rgba(255,255,255,0.065);
+
+    border-radius: 15px;
+
+    background:
+      rgba(255,255,255,0.025);
+
+    transition:
+      border-color 300ms ease,
+      background 300ms ease;
+
+  }
+
+
+  .weather-location:hover {
+
+    border-color:
+      rgba(41,151,255,0.18);
+
+    background:
+      rgba(41,151,255,0.035);
+
+  }
+
+
+  .weather-location > div:first-child {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+  }
+
+
+  .weather-location span {
+
+    color:
+      var(--projects-muted);
+
+    font-size: 10px;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+  }
+
+
+  .weather-location strong {
+
+    color:
+      var(--projects-white);
+
+    font-size: 16px;
+
+    font-weight: 500;
+
+  }
+
+
+  .weather-value {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 3px;
+
+  }
+
+
+  .weather-value strong {
+
+    color:
+      var(--projects-blue);
+
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      monospace;
+
+    font-size: 19px;
+
+  }
+
+
+  .weather-value span {
+
+    text-align: right;
+
+    font-size: 9px;
+
+  }
+
+
+  /* ============================================================= */
+  /* TAGS */
+  /* ============================================================= */
+
+  .project-tags {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-top: 30px;
+
+  }
+
+
+  .project-tags span {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    min-height: 28px;
+
+    padding:
+      0 11px;
+
+    border:
+      1px solid
+      rgba(255,255,255,0.075);
+
+    border-radius: 999px;
+
+    color:
+      var(--projects-secondary);
+
+    background:
+      rgba(255,255,255,0.018);
+
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
+
+    font-size: 10px;
+
+    transition:
+      border-color 300ms ease,
+      color 300ms ease,
+      background 300ms ease;
+
+  }
+
+
+  .project-card:hover
+  .project-tags span {
+
+    border-color:
+      rgba(41,151,255,0.13);
+
+  }
+
+
+  /* ============================================================= */
+  /* ACTION */
+  /* ============================================================= */
+
+  .project-action {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    flex-shrink: 0;
+
+    color:
+      var(--projects-blue);
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    transition:
+      transform 300ms
+      cubic-bezier(.22,.61,.36,1);
+
+  }
+
+
+  .project-arrow {
+
+    display: inline-block;
+
+    font-size: 19px;
+
+    line-height: 1;
+
+    transition:
+      transform 300ms
+      cubic-bezier(.22,.61,.36,1);
+
+  }
+
+
+  .project-card:hover
+  .project-action {
+
+    transform:
+      translateX(2px);
+
+  }
+
+
+  .project-card:hover
+  .project-arrow {
+
+    transform:
+      translateX(5px);
+
+  }
+
+
+  /* ============================================================= */
+  /* FOOTER */
+  /* ============================================================= */
+
+  .projects-footer {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding:
+      28px
+      4px
+      100px;
+
+    color:
+      rgba(255,255,255,0.25);
+
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+  }
+
+
+  .footer-line {
+
+    width: 48px;
+
+    height: 1px;
+
+    background:
+      rgba(255,255,255,0.12);
+
+  }
+
+
+  /* ============================================================= */
+  /* RESPONSIVE */
+  /* ============================================================= */
+
+  @media (max-width: 900px) {
+
+    .projects-heading-layout {
+
+      grid-template-columns: 1fr;
+
+      gap: 24px;
+
+    }
+
+
+    .projects-title {
+
+      font-size:
+        clamp(
+          3rem,
+          11vw,
+          5rem
+        );
+
+    }
+
+
+    .project-card-inner {
+
+      align-items: flex-start;
+
+      flex-direction: column;
+
+      gap: 32px;
+
+    }
+
+
+    .project-action {
+
+      align-self: flex-start;
+
+    }
+
+  }
+
+
+  @media (max-width: 640px) {
+
+    .projects-header {
+
+      padding-top: 6rem;
+
+      padding-bottom: 3.5rem;
+
+    }
+
+
+    .projects-title {
+
+      font-size: 3.25rem;
+
+    }
+
+
+    .projects-introduction {
+
+      font-size: 15px;
+
+    }
+
+
+    .project-card {
+
+      border-radius: 20px;
+
+    }
+
+
+    .project-card-inner {
+
+      padding:
+        30px
+        24px
+        28px;
+
+    }
+
+
+    .project-number {
+
+      top: 24px;
+
+      right: 24px;
+
+    }
+
+
+    .project-meta {
+
+      padding-right: 55px;
+
+      font-size: 9px;
+
+    }
+
+
+    .project-title {
+
+      font-size: 1.85rem;
+
+    }
+
+
+    .project-description {
+
+      font-size: 15px;
+
+    }
+
+
+    .weather-preview {
+
+      grid-template-columns: 1fr;
+
+    }
+
+
+    .project-highlight {
+
+      gap: 16px;
+
+    }
+
+
+    .highlight-divider {
+
+      display: none;
+
+    }
+
+
+    .project-tags {
+
+      margin-top: 24px;
+
+    }
+
+
+    .projects-footer {
+
+      padding-bottom: 70px;
+
+    }
+
+  }
+
+
+  /* ============================================================= */
+  /* REDUCED MOTION */
+  /* ============================================================= */
+
+  @media (prefers-reduced-motion: reduce) {
+
+    .projects-glow-right,
+    .projects-glow-bottom {
+
+      animation: none !important;
+
+    }
+
+
+    .project-card,
+    .project-action,
+    .project-arrow {
+
+      transition: none !important;
+
+    }
+
+  }
+
+</style>

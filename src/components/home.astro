@@ -9,17 +9,36 @@ import SkillsList from "../React/SkillsList.tsx";
   class="apple-home relative overflow-hidden bg-[#050506] text-[var(--white)]"
 >
   <!-- ========================================================= -->
-  <!-- BACKGROUND -->
+  <!-- AMBIENT BACKGROUND -->
   <!-- ========================================================= -->
 
   <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-    <div class="ambient-light ambient-light-one"></div>
-    <div class="ambient-light ambient-light-two"></div>
 
-    <div class="grid-light"></div>
+    <div class="ambient-base"></div>
+
+    <!-- Slow atmospheric lights -->
+    <div class="ambient-orb orb-primary"></div>
+    <div class="ambient-orb orb-secondary"></div>
+    <div class="ambient-orb orb-tertiary"></div>
+
+    <!-- Subtle vertical light -->
+    <div class="ambient-beam beam-one"></div>
+    <div class="ambient-beam beam-two"></div>
+
+    <!-- Moving technical grid -->
+    <div class="ambient-grid"></div>
+
+    <!-- Soft horizon -->
+    <div class="ambient-horizon"></div>
+
+    <!-- Vignette -->
     <div class="edge-vignette"></div>
+
+    <!-- Fine grain -->
     <div class="grain"></div>
+
   </div>
+
 
   <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
 
@@ -31,7 +50,9 @@ import SkillsList from "../React/SkillsList.tsx";
       class="hero relative grid min-h-[850px] items-center gap-20 py-24 sm:py-28 lg:grid-cols-[1.08fr_.92fr] lg:gap-16 lg:py-32"
     >
 
+      <!-- ===================================================== -->
       <!-- HERO COPY -->
+      <!-- ===================================================== -->
 
       <div class="relative z-10 max-w-4xl">
 
@@ -75,7 +96,10 @@ import SkillsList from "../React/SkillsList.tsx";
             </svg>
           </a>
 
+
           <div class="social-actions">
+
+            <!-- GitHub -->
 
             <a
               href="https://github.com/AymaneJab01"
@@ -92,6 +116,9 @@ import SkillsList from "../React/SkillsList.tsx";
               </svg>
             </a>
 
+
+            <!-- LinkedIn -->
+
             <a
               href="https://www.linkedin.com/in/aymane-jabrane-73025726a/"
               target="_blank"
@@ -107,6 +134,9 @@ import SkillsList from "../React/SkillsList.tsx";
               </svg>
             </a>
 
+
+            <!-- Email -->
+
             <a
               href="https://mail.google.com/mail/?view=cm&fs=1&to=aymanejabranesm@gmail.com&su=Hey%20Jabrane!"
               target="_blank"
@@ -114,13 +144,18 @@ import SkillsList from "../React/SkillsList.tsx";
               class="social-button"
               aria-label="Email"
             >
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
                 <path
                   d="M4 6.5h16v11H4z"
                   stroke="currentColor"
                   stroke-width="1.5"
                   stroke-linejoin="round"
                 />
+
                 <path
                   d="m5 8 7 5 7-5"
                   stroke="currentColor"
@@ -134,7 +169,9 @@ import SkillsList from "../React/SkillsList.tsx";
           </div>
         </div>
 
+
         <div class="hero-meta">
+
           <span>
             <i></i>
             Computer Science
@@ -142,7 +179,10 @@ import SkillsList from "../React/SkillsList.tsx";
 
           <span class="meta-divider"></span>
 
-          <span>Software · Systems · Code</span>
+          <span>
+            Software · Systems · Code
+          </span>
+
         </div>
 
       </div>
@@ -158,6 +198,8 @@ import SkillsList from "../React/SkillsList.tsx";
         <div class="object-orbit orbit-two"></div>
 
         <div class="developer-window">
+
+          <!-- Window header -->
 
           <div class="window-header">
 
@@ -177,20 +219,47 @@ import SkillsList from "../React/SkillsList.tsx";
 
           </div>
 
+
+          <!-- Window content -->
+
           <div class="window-content">
 
             <div class="code-line code-line-top">
-              <span class="line-number">01</span>
-              <span class="code-muted">const</span>
-              <span class="code-blue">developer</span>
-              <span class="code-muted"> = </span>
-              <span class="code-white">Aymane</span>
+
+              <span class="line-number">
+                01
+              </span>
+
+              <span class="code-muted">
+                const
+              </span>
+
+              <span class="code-blue">
+                developer
+              </span>
+
+              <span class="code-muted">
+                =
+              </span>
+
+              <span class="code-white">
+                Aymane
+              </span>
+
             </div>
 
+
+            <!-- Existing LetterGlitch -->
+
             <div class="glitch-container">
+
               <LetterGlitch
                 client:load
-                glitchColors={["#1e3a8a", "#2563eb", "#0f172a"]}
+                glitchColors={[
+                  "#1e3a8a",
+                  "#2563eb",
+                  "#0f172a"
+                ]}
                 glitchSpeed={33}
                 centerVignette={false}
                 outerVignette={true}
@@ -198,16 +267,23 @@ import SkillsList from "../React/SkillsList.tsx";
               />
 
               <div class="glitch-overlay"></div>
+
             </div>
+
 
             <div class="object-footer">
 
               <div>
-                <span class="object-label">STATUS</span>
+
+                <span class="object-label">
+                  STATUS
+                </span>
+
                 <span class="object-value">
                   <i></i>
                   Building
                 </span>
+
               </div>
 
               <div class="object-index">
@@ -217,10 +293,15 @@ import SkillsList from "../React/SkillsList.tsx";
             </div>
 
           </div>
+
         </div>
 
+
         <div class="object-caption">
-          <span>Interactive developer artifact</span>
+          <span>
+            Interactive developer artifact
+          </span>
+
           <span class="caption-line"></span>
         </div>
 
@@ -238,6 +319,7 @@ import SkillsList from "../React/SkillsList.tsx";
       <div class="section-heading-row">
 
         <div>
+
           <p class="eyebrow">
             Technologies
           </p>
@@ -246,7 +328,9 @@ import SkillsList from "../React/SkillsList.tsx";
             Tools for
             <span>building.</span>
           </h2>
+
         </div>
+
 
         <p class="section-side-copy">
           Technologies and tools I use to turn ideas
@@ -254,6 +338,7 @@ import SkillsList from "../React/SkillsList.tsx";
         </p>
 
       </div>
+
 
       <div class="technology-surface">
         <LogoWall />
@@ -287,6 +372,7 @@ import SkillsList from "../React/SkillsList.tsx";
             computer science journey.
           </p>
 
+
           <div class="minimal-spec">
 
             <div>
@@ -307,6 +393,7 @@ import SkillsList from "../React/SkillsList.tsx";
           </div>
 
         </div>
+
 
         <div class="skills-surface">
           <SkillsList client:load />
@@ -329,6 +416,7 @@ import SkillsList from "../React/SkillsList.tsx";
       <div class="notes-heading">
 
         <div>
+
           <p class="eyebrow">
             Notes
           </p>
@@ -337,7 +425,9 @@ import SkillsList from "../React/SkillsList.tsx";
             Things I've
             <span>studied.</span>
           </h2>
+
         </div>
+
 
         <p class="section-side-copy">
           Ideas, concepts and technical subjects
@@ -349,12 +439,15 @@ import SkillsList from "../React/SkillsList.tsx";
 
       <div class="notes-grid">
 
+        <!-- Note 01 -->
+
         <a
           href="https://app.notion.com/p/Tablas-Hash-Vista-Practica-3a762e0580cb80de84eee02fade92863?source=copy_link"
           target="_blank"
           rel="noopener noreferrer"
           class="note-card"
         >
+
           <div class="note-top">
             <span>01</span>
             <span>Data Structures</span>
@@ -370,8 +463,11 @@ import SkillsList from "../React/SkillsList.tsx";
             <span>Notion</span>
             <span class="note-arrow">↗</span>
           </div>
+
         </a>
 
+
+        <!-- Note 02 -->
 
         <a
           href="https://app.notion.com/p/Computer-from-hardware-perspective-3a362e0580cb80cfbfa5f1228d060bcc?source=copy_link"
@@ -379,6 +475,7 @@ import SkillsList from "../React/SkillsList.tsx";
           rel="noopener noreferrer"
           class="note-card"
         >
+
           <div class="note-top">
             <span>02</span>
             <span>Computer Science</span>
@@ -394,8 +491,11 @@ import SkillsList from "../React/SkillsList.tsx";
             <span>Notion</span>
             <span class="note-arrow">↗</span>
           </div>
+
         </a>
 
+
+        <!-- Note 03 -->
 
         <a
           href="https://app.notion.com/p/Tablas-Hash-Definiciones-3a662e0580cb80089dd9c287f8864a93?source=copy_link"
@@ -403,6 +503,7 @@ import SkillsList from "../React/SkillsList.tsx";
           rel="noopener noreferrer"
           class="note-card"
         >
+
           <div class="note-top">
             <span>03</span>
             <span>Data Structures</span>
@@ -418,8 +519,11 @@ import SkillsList from "../React/SkillsList.tsx";
             <span>Notion</span>
             <span class="note-arrow">↗</span>
           </div>
+
         </a>
 
+
+        <!-- Note 04 -->
 
         <a
           href="https://app.notion.com/p/Git-Github-3a562e0580cb801089e5d47fbbaa221f?source=copy_link"
@@ -427,6 +531,7 @@ import SkillsList from "../React/SkillsList.tsx";
           rel="noopener noreferrer"
           class="note-card"
         >
+
           <div class="note-top">
             <span>04</span>
             <span>Development</span>
@@ -442,8 +547,11 @@ import SkillsList from "../React/SkillsList.tsx";
             <span>Notion</span>
             <span class="note-arrow">↗</span>
           </div>
+
         </a>
 
+
+        <!-- Note 05 -->
 
         <a
           href="https://app.notion.com/p/Syst-me-Signaux-Analogue-vs-Digitale-3b062e0580cb80d3ba80cb3e8232dee1?source=copy_link"
@@ -451,6 +559,7 @@ import SkillsList from "../React/SkillsList.tsx";
           rel="noopener noreferrer"
           class="note-card"
         >
+
           <div class="note-top">
             <span>05</span>
             <span>Systems</span>
@@ -466,8 +575,11 @@ import SkillsList from "../React/SkillsList.tsx";
             <span>Notion</span>
             <span class="note-arrow">↗</span>
           </div>
+
         </a>
 
+
+        <!-- Note 06 -->
 
         <a
           href="https://app.notion.com/p/Java-3a262e0580cb8037bee0c0e9aa4b480c?source=copy_link"
@@ -475,6 +587,7 @@ import SkillsList from "../React/SkillsList.tsx";
           rel="noopener noreferrer"
           class="note-card"
         >
+
           <div class="note-top">
             <span>06</span>
             <span>Programming</span>
@@ -490,6 +603,7 @@ import SkillsList from "../React/SkillsList.tsx";
             <span>Notion</span>
             <span class="note-arrow">↗</span>
           </div>
+
         </a>
 
       </div>
@@ -521,6 +635,7 @@ import SkillsList from "../React/SkillsList.tsx";
 
         </div>
 
+
         <p class="section-side-copy">
           A small command-line interface for exploring
           my work, projects and developer profile.
@@ -539,14 +654,26 @@ import SkillsList from "../React/SkillsList.tsx";
             <span></span>
           </div>
 
+
           <div class="terminal-window-title">
-            <span class="terminal-icon">⌘</span>
-            <span>aymane@portfolio</span>
+
+            <span class="terminal-icon">
+              ⌘
+            </span>
+
+            <span>
+              aymane@portfolio
+            </span>
+
           </div>
 
+
           <div class="terminal-online">
+
             <span></span>
+
             online
+
           </div>
 
         </div>
@@ -561,19 +688,35 @@ import SkillsList from "../React/SkillsList.tsx";
             id="terminal-output"
             class="terminal-output"
           >
+
             <div class="terminal-line terminal-system">
-              <span class="terminal-prefix">›</span>
+              <span class="terminal-prefix">
+                ›
+              </span>
+
               Initializing portfolio terminal...
             </div>
 
+
             <div class="terminal-line terminal-success">
-              <span class="terminal-prefix">✓</span>
+
+              <span class="terminal-prefix">
+                ✓
+              </span>
+
               Connection established.
+
             </div>
 
+
             <div class="terminal-line terminal-muted">
-              Type <strong>help</strong> to see available commands.
+
+              Type
+              <strong>help</strong>
+              to see available commands.
+
             </div>
+
           </div>
 
 
@@ -632,14 +775,17 @@ import SkillsList from "../React/SkillsList.tsx";
 
       <div class="cta-glow"></div>
 
+
       <p class="eyebrow">
         Let's build
       </p>
+
 
       <h2>
         Have an idea?
         <span>Let's make it real.</span>
       </h2>
+
 
       <p class="cta-description">
         Whether it's software, systems or something
@@ -647,13 +793,17 @@ import SkillsList from "../React/SkillsList.tsx";
         building meaningful things.
       </p>
 
+
       <a
         href="https://mail.google.com/mail/?view=cm&fs=1&to=aymanejabranesm@gmail.com&su=Hey%20Jabrane!"
         target="_blank"
         rel="noopener noreferrer"
         class="apple-button primary cta-button"
       >
-        <span>Let's talk</span>
+
+        <span>
+          Let's talk
+        </span>
 
         <svg
           viewBox="0 0 16 16"
@@ -668,6 +818,7 @@ import SkillsList from "../React/SkillsList.tsx";
             stroke-linejoin="round"
           />
         </svg>
+
       </a>
 
     </div>
@@ -682,37 +833,50 @@ import SkillsList from "../React/SkillsList.tsx";
      ============================================================ */
 
   const terminalForm =
-    document.querySelector<HTMLFormElement>("#terminal-form");
+    document.querySelector<HTMLFormElement>(
+      "#terminal-form"
+    );
 
   const terminalInput =
-    document.querySelector<HTMLInputElement>("#terminal-input");
+    document.querySelector<HTMLInputElement>(
+      "#terminal-input"
+    );
 
   const terminalOutput =
-    document.querySelector<HTMLDivElement>("#terminal-output");
+    document.querySelector<HTMLDivElement>(
+      "#terminal-output"
+    );
 
   const terminalShell =
-    document.querySelector<HTMLElement>("#portfolio-terminal");
+    document.querySelector<HTMLElement>(
+      "#portfolio-terminal"
+    );
 
 
   const commandHistory: string[] = [];
+
   let historyIndex = -1;
 
 
-  const escapeHTML = (value: string) =>
-    value
+  function escapeHTML(value: string) {
+    return value
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#039;");
+  }
 
 
   function addCommand(command: string) {
+
     if (!terminalOutput) return;
 
-    const line = document.createElement("div");
+    const line =
+      document.createElement("div");
 
-    line.className = "terminal-line terminal-command";
+    line.className =
+      "terminal-line terminal-command";
 
     line.innerHTML = `
       <span class="terminal-prompt">
@@ -722,6 +886,9 @@ import SkillsList from "../React/SkillsList.tsx";
     `;
 
     terminalOutput.appendChild(line);
+
+    terminalOutput.scrollTop =
+      terminalOutput.scrollHeight;
   }
 
 
@@ -733,11 +900,14 @@ import SkillsList from "../React/SkillsList.tsx";
       | "error"
       | "info" = "output"
   ) {
+
     if (!terminalOutput) return;
 
-    const line = document.createElement("div");
+    const line =
+      document.createElement("div");
 
-    line.className = `terminal-line terminal-${type}`;
+    line.className =
+      `terminal-line terminal-${type}`;
 
     line.innerHTML = content;
 
@@ -755,25 +925,36 @@ import SkillsList from "../React/SkillsList.tsx";
   }
 
 
+  /* ============================================================
+     WEATHER
+     ============================================================ */
+
   const weatherDescriptions: Record<number, string> = {
+
     0: "Clear sky",
     1: "Mainly clear",
     2: "Partly cloudy",
     3: "Overcast",
+
     45: "Fog",
     48: "Depositing rime fog",
+
     51: "Light drizzle",
     53: "Moderate drizzle",
     55: "Dense drizzle",
+
     61: "Slight rain",
     63: "Moderate rain",
     65: "Heavy rain",
+
     71: "Slight snow",
     73: "Moderate snow",
     75: "Heavy snow",
+
     80: "Rain showers",
     81: "Moderate rain showers",
     82: "Violent rain showers",
+
     95: "Thunderstorm",
     96: "Thunderstorm with hail",
     99: "Thunderstorm with heavy hail",
@@ -781,6 +962,7 @@ import SkillsList from "../React/SkillsList.tsx";
 
 
   const WEATHER_LOCATIONS = {
+
     alcoi: {
       name: "Alcoi",
       latitude: 38.6983,
@@ -798,6 +980,7 @@ import SkillsList from "../React/SkillsList.tsx";
       latitude: 37.9787,
       longitude: -0.6822,
     },
+
   };
 
 
@@ -805,15 +988,19 @@ import SkillsList from "../React/SkillsList.tsx";
     location:
       keyof typeof WEATHER_LOCATIONS
   ) {
+
     const place =
       WEATHER_LOCATIONS[location];
+
 
     addResponse(
       `<span class="terminal-muted">Fetching weather data for ${place.name}...</span>`,
       "info"
     );
 
+
     try {
+
       const url =
         `https://api.open-meteo.com/v1/forecast` +
         `?latitude=${place.latitude}` +
@@ -821,151 +1008,335 @@ import SkillsList from "../React/SkillsList.tsx";
         `&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m` +
         `&timezone=Europe%2FMadrid`;
 
-      const response = await fetch(url);
+
+      const response =
+        await fetch(url);
+
 
       if (!response.ok) {
-        throw new Error("Weather request failed");
+        throw new Error(
+          "Weather request failed"
+        );
       }
 
-      const data = await response.json();
 
-      const current = data.current;
+      const data =
+        await response.json();
+
+
+      const current =
+        data.current;
+
 
       const description =
         weatherDescriptions[
           current.weather_code
         ] ?? "Unknown conditions";
 
+
       addResponse(
         `
         <div class="terminal-weather">
+
           <div>
-            <strong>${escapeHTML(place.name)}</strong>
-            <span>${escapeHTML(description)}</span>
+            <strong>
+              ${escapeHTML(place.name)}
+            </strong>
+
+            <span>
+              ${escapeHTML(description)}
+            </span>
           </div>
+
           <div class="weather-temperature">
             ${Math.round(current.temperature_2m)}°C
           </div>
+
           <div class="weather-details">
-            Feels like ${Math.round(current.apparent_temperature)}°C
-            · Wind ${Math.round(current.wind_speed_10m)} km/h
+            Feels like
+            ${Math.round(current.apparent_temperature)}°C
+            · Wind
+            ${Math.round(current.wind_speed_10m)}
+            km/h
           </div>
+
         </div>
         `,
         "success"
       );
 
     } catch {
+
       addResponse(
         "Unable to retrieve weather data right now.",
         "error"
       );
+
     }
+
   }
 
 
+  /* ============================================================
+     MOVIES
+     ============================================================ */
+
   const RANKED_MOVIES = [
+
     {
       title: "Interstellar",
       rating: "10/10",
     },
+
     {
       title: "Ford v Ferrari",
       rating: "10/10",
     },
+
     {
       title: "Your Name",
       rating: "10/10",
     },
+
     {
-      title: "Kimetsu no Yaiba: Infinity Castle",
+      title:
+        "Kimetsu no Yaiba: Infinity Castle",
       rating: "9.5/10",
     },
+
     {
-      title: "Avengers: Infinity War",
+      title:
+        "Avengers: Infinity War",
       rating: "9/10",
     },
+
   ];
 
+
+  /* ============================================================
+     COMMANDS
+     ============================================================ */
 
   const commands: Record<string, () => void> = {
 
     help: () => {
+
       addResponse(
         `
         <div class="command-list">
-          <div><strong>whoami</strong><span>About Aymane</span></div>
-          <div><strong>skills</strong><span>Skills & technologies</span></div>
-          <div><strong>projects</strong><span>Projects overview</span></div>
-          <div><strong>visualizer</strong><span>Algorithm Visualizer</span></div>
-          <div><strong>weather</strong><span>Live weather</span></div>
-          <div><strong>movie-ranking</strong><span>Movie rankings</span></div>
-          <div><strong>cpu</strong><span>CPU project</span></div>
-          <div><strong>network</strong><span>Network project</span></div>
-          <div><strong>expense-splitter</strong><span>Expense Splitter</span></div>
-          <div><strong>contact</strong><span>Contact information</span></div>
-          <div><strong>status</strong><span>Current status</span></div>
-          <div><strong>date</strong><span>Current date</span></div>
-          <div><strong>open github</strong><span>GitHub profile</span></div>
-          <div><strong>open linkedin</strong><span>LinkedIn profile</span></div>
-          <div><strong>open email</strong><span>Contact Aymane</span></div>
-          <div><strong>clear</strong><span>Clear terminal</span></div>
+
+          <div>
+            <strong>whoami</strong>
+            <span>About Aymane</span>
+          </div>
+
+          <div>
+            <strong>skills</strong>
+            <span>Skills & technologies</span>
+          </div>
+
+          <div>
+            <strong>projects</strong>
+            <span>Projects overview</span>
+          </div>
+
+          <div>
+            <strong>visualizer</strong>
+            <span>Algorithm Visualizer</span>
+          </div>
+
+          <div>
+            <strong>weather</strong>
+            <span>Live weather</span>
+          </div>
+
+          <div>
+            <strong>movie-ranking</strong>
+            <span>Movie rankings</span>
+          </div>
+
+          <div>
+            <strong>cpu</strong>
+            <span>CPU project</span>
+          </div>
+
+          <div>
+            <strong>network</strong>
+            <span>Network project</span>
+          </div>
+
+          <div>
+            <strong>expense-splitter</strong>
+            <span>Expense Splitter</span>
+          </div>
+
+          <div>
+            <strong>contact</strong>
+            <span>Contact information</span>
+          </div>
+
+          <div>
+            <strong>status</strong>
+            <span>Current status</span>
+          </div>
+
+          <div>
+            <strong>date</strong>
+            <span>Current date</span>
+          </div>
+
+          <div>
+            <strong>open github</strong>
+            <span>GitHub profile</span>
+          </div>
+
+          <div>
+            <strong>open linkedin</strong>
+            <span>LinkedIn profile</span>
+          </div>
+
+          <div>
+            <strong>open email</strong>
+            <span>Contact Aymane</span>
+          </div>
+
+          <div>
+            <strong>clear</strong>
+            <span>Clear terminal</span>
+          </div>
+
         </div>
         `,
         "info"
       );
+
     },
 
 
     whoami: () => {
+
       addResponse(
         `
         <div>
-          <strong>Aymane Jabrane</strong><br />
-          <span class="terminal-muted">
-            Computer Science student · Software Developer
-          </span>
+
+          <strong>
+            Aymane Jabrane
+          </strong>
+
           <br />
+
           <span class="terminal-muted">
-            Interested in software, systems and building useful things.
+            Computer Science student ·
+            Software Developer
           </span>
+
+          <br />
+
+          <span class="terminal-muted">
+            Interested in software, systems
+            and building useful things.
+          </span>
+
         </div>
         `,
         "output"
       );
+
     },
 
 
     skills: () => {
+
       addResponse(
         `
         <div class="command-list">
-          <div><strong>Languages</strong><span>C · C++ · Java · Dart · JavaScript · TypeScript</span></div>
-          <div><strong>Web</strong><span>Astro · React · HTML · CSS · Tailwind</span></div>
-          <div><strong>Mobile</strong><span>Flutter</span></div>
-          <div><strong>Systems</strong><span>Algorithms · Networks · Computer Architecture</span></div>
-          <div><strong>Tools</strong><span>Git · GitHub · VS Code · Linux</span></div>
+
+          <div>
+            <strong>Languages</strong>
+            <span>
+              C · C++ · Java · Dart ·
+              JavaScript · TypeScript
+            </span>
+          </div>
+
+          <div>
+            <strong>Web</strong>
+            <span>
+              Astro · React · HTML · CSS · Tailwind
+            </span>
+          </div>
+
+          <div>
+            <strong>Mobile</strong>
+            <span>
+              Flutter
+            </span>
+          </div>
+
+          <div>
+            <strong>Systems</strong>
+            <span>
+              Algorithms · Networks ·
+              Computer Architecture
+            </span>
+          </div>
+
+          <div>
+            <strong>Tools</strong>
+            <span>
+              Git · GitHub · VS Code · Linux
+            </span>
+          </div>
+
         </div>
         `,
         "output"
       );
+
     },
 
 
     projects: () => {
+
       addResponse(
         `
         <div class="command-list">
-          <div><strong>01</strong><span>Algorithm Visualizer</span></div>
-          <div><strong>02</strong><span>Weather Dashboard</span></div>
-          <div><strong>03</strong><span>Movie Ranking</span></div>
-          <div><strong>04</strong><span>CPU Project</span></div>
-          <div><strong>05</strong><span>Network Protocol Simulator</span></div>
-          <div><strong>06</strong><span>Expense Splitter</span></div>
+
+          <div>
+            <strong>01</strong>
+            <span>Algorithm Visualizer</span>
+          </div>
+
+          <div>
+            <strong>02</strong>
+            <span>Weather Dashboard</span>
+          </div>
+
+          <div>
+            <strong>03</strong>
+            <span>Movie Ranking</span>
+          </div>
+
+          <div>
+            <strong>04</strong>
+            <span>CPU Project</span>
+          </div>
+
+          <div>
+            <strong>05</strong>
+            <span>Network Protocol Simulator</span>
+          </div>
+
+          <div>
+            <strong>06</strong>
+            <span>Expense Splitter</span>
+          </div>
+
         </div>
         `,
         "output"
       );
+
     },
 
 
@@ -980,17 +1351,33 @@ import SkillsList from "../React/SkillsList.tsx";
 
 
     "movie-ranking": () => {
-      const ranking = RANKED_MOVIES
-        .map(
-          (movie, index) =>
-            `<div><strong>${index + 1}.</strong><span>${escapeHTML(movie.title)} — ${movie.rating}</span></div>`
-        )
-        .join("");
+
+      const ranking =
+        RANKED_MOVIES
+          .map(
+            (movie, index) =>
+              `
+              <div>
+                <strong>
+                  ${index + 1}.
+                </strong>
+
+                <span>
+                  ${escapeHTML(movie.title)}
+                  —
+                  ${movie.rating}
+                </span>
+              </div>
+              `
+          )
+          .join("");
+
 
       addResponse(
         `<div class="command-list">${ranking}</div>`,
         "output"
       );
+
     },
 
 
@@ -1010,61 +1397,106 @@ import SkillsList from "../React/SkillsList.tsx";
 
 
     contact: () => {
+
       addResponse(
         `
         <div class="command-list">
+
           <div>
             <strong>Email</strong>
-            <span>aymanejabranesm@gmail.com</span>
+            <span>
+              aymanejabranesm@gmail.com
+            </span>
           </div>
+
           <div>
             <strong>GitHub</strong>
-            <span>github.com/AymaneJab01</span>
+            <span>
+              github.com/AymaneJab01
+            </span>
           </div>
+
           <div>
             <strong>LinkedIn</strong>
-            <span>linkedin.com/in/aymane-jabrane-73025726a</span>
+            <span>
+              linkedin.com/in/aymane-jabrane-73025726a
+            </span>
           </div>
+
         </div>
         `,
         "output"
       );
+
     },
 
 
     status: () => {
+
       addResponse(
         `
         <div class="command-list">
-          <div><strong>Status</strong><span class="status-online">Available</span></div>
-          <div><strong>Focus</strong><span>Software Development</span></div>
-          <div><strong>Environment</strong><span>Astro · React · Flutter · C · Java</span></div>
+
+          <div>
+            <strong>Status</strong>
+            <span class="status-online">
+              Available
+            </span>
+          </div>
+
+          <div>
+            <strong>Focus</strong>
+            <span>
+              Software Development
+            </span>
+          </div>
+
+          <div>
+            <strong>Environment</strong>
+            <span>
+              Astro · React · Flutter · C · Java
+            </span>
+          </div>
+
         </div>
         `,
         "success"
       );
+
     },
 
 
     date: () => {
+
       addResponse(
         new Date().toString(),
         "output"
       );
+
     },
 
   };
 
 
-  function executeCommand(rawCommand: string) {
+  /* ============================================================
+     COMMAND EXECUTION
+     ============================================================ */
+
+  function executeCommand(
+    rawCommand: string
+  ) {
 
     const command =
-      rawCommand.trim().toLowerCase();
+      rawCommand
+        .trim()
+        .toLowerCase();
+
 
     if (!command) return;
 
 
     if (command === "clear") {
+
       if (terminalOutput) {
         terminalOutput.innerHTML = "";
       }
@@ -1103,38 +1535,50 @@ import SkillsList from "../React/SkillsList.tsx";
     }
 
 
-    if (command === "open expense-splitter") {
-      goTo("/projects/expense-splitter/");
+    if (
+      command ===
+      "open expense-splitter"
+    ) {
+      goTo(
+        "/projects/expense-splitter/"
+      );
+
       return;
     }
 
 
     if (command === "open github") {
+
       window.open(
         "https://github.com/AymaneJab01",
         "_blank",
         "noopener,noreferrer"
       );
+
       return;
     }
 
 
     if (command === "open linkedin") {
+
       window.open(
         "https://www.linkedin.com/in/aymane-jabrane-73025726a/",
         "_blank",
         "noopener,noreferrer"
       );
+
       return;
     }
 
 
     if (command === "open email") {
+
       window.open(
         "https://mail.google.com/mail/?view=cm&fs=1&to=aymanejabranesm@gmail.com&su=Hey%20Jabrane!",
         "_blank",
         "noopener,noreferrer"
       );
+
       return;
     }
 
@@ -1143,38 +1587,56 @@ import SkillsList from "../React/SkillsList.tsx";
       command === "weather alcoi" ||
       command === "weather alcoy"
     ) {
+
       void getWeather("alcoi");
+
       return;
     }
 
 
-    if (command === "weather valencia") {
+    if (
+      command === "weather valencia"
+    ) {
+
       void getWeather("valencia");
+
       return;
     }
 
 
-    if (command === "weather torrevieja") {
-      void getWeather("torrevieja");
-      return;
-    }
+    if (
+      command === "weather torrevieja"
+    ) {
 
+      void getWeather(
+        "torrevieja"
+      );
 
-    const handler = commands[command];
-
-    if (handler) {
-      handler();
       return;
     }
 
 
     if (command === "weather") {
+
       addResponse(
         `
         Usage:
-        <strong>weather valencia</strong><br />
-        <strong>weather alcoi</strong><br />
-        <strong>weather torrevieja</strong>
+
+        <strong>
+          weather valencia
+        </strong>
+
+        <br />
+
+        <strong>
+          weather alcoi
+        </strong>
+
+        <br />
+
+        <strong>
+          weather torrevieja
+        </strong>
         `,
         "info"
       );
@@ -1183,12 +1645,37 @@ import SkillsList from "../React/SkillsList.tsx";
     }
 
 
+    const handler =
+      commands[command];
+
+
+    if (handler) {
+
+      handler();
+
+      return;
+    }
+
+
     addResponse(
-      `Command not found: <strong>${escapeHTML(rawCommand)}</strong>. Type <strong>help</strong>.`,
+      `
+      Command not found:
+      <strong>
+        ${escapeHTML(rawCommand)}
+      </strong>.
+
+      Type
+      <strong>help</strong>.
+      `,
       "error"
     );
+
   }
 
+
+  /* ============================================================
+     FORM
+     ============================================================ */
 
   terminalForm?.addEventListener(
     "submit",
@@ -1196,50 +1683,82 @@ import SkillsList from "../React/SkillsList.tsx";
 
       event.preventDefault();
 
+
       const value =
         terminalInput?.value.trim() ?? "";
 
+
       if (!value) return;
 
+
       addCommand(value);
+
 
       commandHistory.push(value);
 
       historyIndex =
         commandHistory.length;
 
+
       executeCommand(value);
+
 
       if (terminalInput) {
         terminalInput.value = "";
       }
+
     }
   );
 
+
+  /* ============================================================
+     TERMINAL KEYBOARD
+     ============================================================ */
 
   terminalInput?.addEventListener(
     "keydown",
     (event) => {
 
-      if (event.key === "ArrowUp") {
+      if (
+        event.key ===
+        "ArrowUp"
+      ) {
 
         event.preventDefault();
 
-        if (!commandHistory.length) return;
+
+        if (!commandHistory.length) {
+          return;
+        }
+
 
         historyIndex =
-          Math.max(0, historyIndex - 1);
+          Math.max(
+            0,
+            historyIndex - 1
+          );
+
 
         terminalInput.value =
-          commandHistory[historyIndex] ?? "";
+          commandHistory[
+            historyIndex
+          ] ?? "";
+
       }
 
 
-      if (event.key === "ArrowDown") {
+      if (
+        event.key ===
+        "ArrowDown"
+      ) {
 
         event.preventDefault();
 
-        if (!commandHistory.length) return;
+
+        if (!commandHistory.length) {
+          return;
+        }
+
 
         historyIndex =
           Math.min(
@@ -1247,17 +1766,31 @@ import SkillsList from "../React/SkillsList.tsx";
             historyIndex + 1
           );
 
+
         terminalInput.value =
-          commandHistory[historyIndex] ?? "";
+          commandHistory[
+            historyIndex
+          ] ?? "";
+
       }
 
 
-      if (event.key === "Escape") {
+      if (
+        event.key ===
+        "Escape"
+      ) {
+
         terminalInput.value = "";
+
       }
+
     }
   );
 
+
+  /* ============================================================
+     TERMINAL FOCUS
+     ============================================================ */
 
   terminalShell?.addEventListener(
     "click",
@@ -1267,16 +1800,24 @@ import SkillsList from "../React/SkillsList.tsx";
   );
 
 
+  /* ============================================================
+     "/" SHORTCUT
+     ============================================================ */
+
   document.addEventListener(
     "keydown",
     (event) => {
 
       if (
         event.key === "/" &&
-        document.activeElement !== terminalInput
+        document.activeElement !==
+          terminalInput
       ) {
+
         event.preventDefault();
+
         terminalInput?.focus();
+
       }
 
     }
@@ -1290,50 +1831,351 @@ import SkillsList from "../React/SkillsList.tsx";
      ============================================================ */
 
   .apple-home {
+
     --apple-blue: #2997ff;
-    --apple-blue-soft: rgba(41, 151, 255, 0.14);
+
+    --apple-blue-soft:
+      rgba(41,151,255,0.14);
+
     --apple-white: #f5f5f7;
+
     --apple-secondary: #86868b;
+
     --apple-muted: #6e6e73;
-    --apple-border: rgba(255, 255, 255, 0.08);
-    --apple-border-soft: rgba(255, 255, 255, 0.055);
-    --apple-surface: rgba(255, 255, 255, 0.035);
-    --apple-surface-hover: rgba(255, 255, 255, 0.055);
+
+    --apple-border:
+      rgba(255,255,255,0.08);
+
+    --apple-border-soft:
+      rgba(255,255,255,0.055);
+
+    --apple-surface:
+      rgba(255,255,255,0.035);
+
+    --apple-surface-hover:
+      rgba(255,255,255,0.055);
+
   }
 
 
   /* ============================================================
-     BACKGROUND
+     AMBIENT BACKGROUND
      ============================================================ */
 
-  .ambient-light {
+  .ambient-base {
+
     position: absolute;
-    width: 700px;
-    height: 700px;
-    border-radius: 50%;
-    filter: blur(130px);
-    opacity: 0.11;
-    pointer-events: none;
-  }
 
-
-  .ambient-light-one {
-    top: -300px;
-    right: 2%;
-    background: rgba(41, 151, 255, 0.7);
-  }
-
-
-  .ambient-light-two {
-    top: 600px;
-    left: -400px;
-    background: rgba(50, 80, 180, 0.28);
-  }
-
-
-  .grid-light {
-    position: absolute;
     inset: 0;
+
+    background:
+      radial-gradient(
+        ellipse 90% 60% at 50% 0%,
+        rgba(24,54,105,0.18),
+        transparent 65%
+      ),
+      linear-gradient(
+        180deg,
+        #050506 0%,
+        #06070a 45%,
+        #050506 100%
+      );
+
+  }
+
+
+  /* ------------------------------------------------------------
+     ATMOSPHERIC ORBS
+     ------------------------------------------------------------ */
+
+  .ambient-orb {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    filter: blur(90px);
+
+    will-change:
+      transform,
+      opacity;
+
+  }
+
+
+  .orb-primary {
+
+    width: 650px;
+
+    height: 650px;
+
+    top: -330px;
+
+    left: 50%;
+
+    background:
+      radial-gradient(
+        circle,
+        rgba(41,151,255,0.16) 0%,
+        rgba(41,151,255,0.055) 35%,
+        transparent 70%
+      );
+
+    transform:
+      translateX(-50%);
+
+    animation:
+      primaryOrb
+      18s
+      cubic-bezier(.45,0,.55,1)
+      infinite;
+
+  }
+
+
+  .orb-secondary {
+
+    width: 500px;
+
+    height: 500px;
+
+    top: 260px;
+
+    right: -280px;
+
+    background:
+      radial-gradient(
+        circle,
+        rgba(45,105,210,0.11),
+        transparent 70%
+      );
+
+    animation:
+      secondaryOrb
+      24s
+      cubic-bezier(.45,0,.55,1)
+      infinite;
+
+  }
+
+
+  .orb-tertiary {
+
+    width: 460px;
+
+    height: 460px;
+
+    top: 780px;
+
+    left: -300px;
+
+    background:
+      radial-gradient(
+        circle,
+        rgba(31,75,150,0.08),
+        transparent 70%
+      );
+
+    animation:
+      tertiaryOrb
+      28s
+      cubic-bezier(.45,0,.55,1)
+      infinite;
+
+  }
+
+
+  /* ------------------------------------------------------------
+     ORB MOTION
+     ------------------------------------------------------------ */
+
+  @keyframes primaryOrb {
+
+    0%,
+    100% {
+
+      transform:
+        translateX(-50%)
+        translateY(0)
+        scale(1);
+
+    }
+
+    50% {
+
+      transform:
+        translateX(-50%)
+        translateY(55px)
+        scale(1.08);
+
+    }
+
+  }
+
+
+  @keyframes secondaryOrb {
+
+    0%,
+    100% {
+
+      transform:
+        translate3d(0,0,0)
+        scale(1);
+
+    }
+
+    50% {
+
+      transform:
+        translate3d(-80px,55px,0)
+        scale(1.12);
+
+    }
+
+  }
+
+
+  @keyframes tertiaryOrb {
+
+    0%,
+    100% {
+
+      transform:
+        translate3d(0,0,0)
+        scale(1);
+
+    }
+
+    50% {
+
+      transform:
+        translate3d(70px,-45px,0)
+        scale(1.1);
+
+    }
+
+  }
+
+
+  /* ------------------------------------------------------------
+     VERTICAL LIGHT BEAMS
+     ------------------------------------------------------------ */
+
+  .ambient-beam {
+
+    position: absolute;
+
+    top: -20%;
+
+    bottom: -20%;
+
+    width: 1px;
+
+    background:
+      linear-gradient(
+        180deg,
+        transparent,
+        rgba(41,151,255,0.045),
+        rgba(255,255,255,0.025),
+        transparent
+      );
+
+    filter: blur(0.5px);
+
+    opacity: 0.7;
+
+  }
+
+
+  .beam-one {
+
+    left: 31%;
+
+    animation:
+      beamMoveOne
+      15s
+      ease-in-out
+      infinite;
+
+  }
+
+
+  .beam-two {
+
+    right: 27%;
+
+    opacity: 0.45;
+
+    animation:
+      beamMoveTwo
+      19s
+      ease-in-out
+      infinite;
+
+  }
+
+
+  @keyframes beamMoveOne {
+
+    0%,
+    100% {
+
+      transform:
+        translateX(0)
+        scaleY(1);
+
+      opacity: 0.35;
+
+    }
+
+    50% {
+
+      transform:
+        translateX(45px)
+        scaleY(1.05);
+
+      opacity: 0.75;
+
+    }
+
+  }
+
+
+  @keyframes beamMoveTwo {
+
+    0%,
+    100% {
+
+      transform:
+        translateX(0);
+
+      opacity: 0.25;
+
+    }
+
+    50% {
+
+      transform:
+        translateX(-55px);
+
+      opacity: 0.55;
+
+    }
+
+  }
+
+
+  /* ------------------------------------------------------------
+     MOVING GRID
+     ------------------------------------------------------------ */
+
+  .ambient-grid {
+
+    position: absolute;
+
+    inset: -100px;
 
     background-image:
       linear-gradient(
@@ -1346,37 +2188,153 @@ import SkillsList from "../React/SkillsList.tsx";
         transparent 1px
       );
 
-    background-size: 72px 72px;
+    background-size:
+      72px 72px;
 
     mask-image:
-      linear-gradient(
-        to bottom,
-        black,
-        transparent 45%
+      radial-gradient(
+        ellipse 75% 55% at 50% 10%,
+        black 0%,
+        rgba(0,0,0,0.7) 35%,
+        transparent 85%
       );
 
     opacity: 0.35;
+
+    animation:
+      gridDrift
+      32s
+      linear
+      infinite;
+
   }
 
 
-  .edge-vignette {
+  @keyframes gridDrift {
+
+    from {
+
+      transform:
+        translate3d(0,0,0);
+
+    }
+
+    to {
+
+      transform:
+        translate3d(0,72px,0);
+
+    }
+
+  }
+
+
+  /* ------------------------------------------------------------
+     HORIZON
+     ------------------------------------------------------------ */
+
+  .ambient-horizon {
+
     position: absolute;
+
+    top: 0;
+
+    left: 50%;
+
+    width: 900px;
+
+    height: 320px;
+
+    transform:
+      translateX(-50%);
+
+    background:
+      radial-gradient(
+        ellipse,
+        rgba(41,151,255,0.065) 0%,
+        rgba(41,151,255,0.025) 30%,
+        transparent 72%
+      );
+
+    filter: blur(30px);
+
+    animation:
+      horizonPulse
+      10s
+      ease-in-out
+      infinite;
+
+  }
+
+
+  @keyframes horizonPulse {
+
+    0%,
+    100% {
+
+      opacity: 0.65;
+
+      transform:
+        translateX(-50%)
+        scaleX(1);
+
+    }
+
+    50% {
+
+      opacity: 1;
+
+      transform:
+        translateX(-50%)
+        scaleX(1.08);
+
+    }
+
+  }
+
+
+  /* ------------------------------------------------------------
+     VIGNETTE
+     ------------------------------------------------------------ */
+
+  .edge-vignette {
+
+    position: absolute;
+
     inset: 0;
 
     background:
       radial-gradient(
-        ellipse at center,
-        transparent 20%,
-        rgba(0,0,0,0.45) 100%
+        ellipse at center top,
+        transparent 0%,
+        transparent 38%,
+        rgba(0,0,0,0.35) 78%,
+        rgba(0,0,0,0.7) 100%
       );
+
+    pointer-events: none;
+
   }
 
 
+  /* ------------------------------------------------------------
+     GRAIN
+     ------------------------------------------------------------ */
+
   .grain {
+
     position: absolute;
+
     inset: 0;
-    opacity: 0.025;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+
+    opacity: 0.018;
+
+    background-image:
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+
+    mix-blend-mode:
+      soft-light;
+
   }
 
 
@@ -1385,96 +2343,144 @@ import SkillsList from "../React/SkillsList.tsx";
      ============================================================ */
 
   .hero {
-    border-bottom: 1px solid var(--apple-border-soft);
+
+    border-bottom:
+      1px solid
+      var(--apple-border-soft);
+
   }
 
 
   .hero-status {
+
     display: inline-flex;
+
     align-items: center;
+
     gap: 9px;
 
-    padding: 7px 11px;
+    padding:
+      7px 11px;
 
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 999px;
+    border:
+      1px solid
+      rgba(255,255,255,0.08);
 
-    background: rgba(255,255,255,0.025);
+    border-radius:
+      999px;
 
-    color: rgba(245,245,247,0.55);
+    background:
+      rgba(255,255,255,0.025);
 
-    font-size: 11px;
-    letter-spacing: 0.02em;
+    color:
+      rgba(245,245,247,0.55);
 
-    backdrop-filter: blur(20px);
+    font-size:
+      11px;
+
+    letter-spacing:
+      0.02em;
+
+    backdrop-filter:
+      blur(20px);
+
   }
 
 
   .status-dot {
+
     width: 6px;
+
     height: 6px;
 
     border-radius: 50%;
 
-    background: var(--apple-blue);
+    background:
+      var(--apple-blue);
 
     box-shadow:
-      0 0 0 3px rgba(41,151,255,0.08),
-      0 0 14px rgba(41,151,255,0.4);
+      0 0 0 3px
+      rgba(41,151,255,0.08),
 
-    animation: statusPulse 3s ease-in-out infinite;
+      0 0 14px
+      rgba(41,151,255,0.4);
+
+    animation:
+      statusPulse
+      3s
+      ease-in-out
+      infinite;
+
   }
 
 
   @keyframes statusPulse {
-    0%, 100% {
+
+    0%,
+    100% {
       opacity: 0.7;
     }
 
     50% {
       opacity: 1;
     }
+
   }
 
 
   .hero-kicker {
+
     margin-top: 30px;
+
     margin-bottom: 20px;
 
-    color: rgba(245,245,247,0.5);
+    color:
+      rgba(245,245,247,0.5);
 
     font-size: 15px;
-    letter-spacing: -0.01em;
+
+    letter-spacing:
+      -0.01em;
+
   }
 
 
   .hero-kicker span {
-    color: rgba(245,245,247,0.88);
+
+    color:
+      rgba(245,245,247,0.88);
+
   }
 
 
   .hero-title {
+
     margin: 0;
 
     max-width: 900px;
 
-    font-size: clamp(
-      4rem,
-      9vw,
-      8.5rem
-    );
+    font-size:
+      clamp(
+        4rem,
+        9vw,
+        8.5rem
+      );
 
     font-weight: 600;
 
     line-height: 0.91;
 
-    letter-spacing: -0.075em;
+    letter-spacing:
+      -0.075em;
 
-    color: #f5f5f7;
+    color:
+      #f5f5f7;
+
   }
 
 
   .hero-title span {
+
     display: block;
 
     background:
@@ -1484,44 +2490,62 @@ import SkillsList from "../React/SkillsList.tsx";
         #a8a8ad 100%
       );
 
-    -webkit-background-clip: text;
-    background-clip: text;
+    -webkit-background-clip:
+      text;
 
-    color: transparent;
+    background-clip:
+      text;
+
+    color:
+      transparent;
+
   }
 
 
   .hero-description {
+
     max-width: 590px;
 
     margin-top: 35px;
 
-    color: rgba(245,245,247,0.55);
+    color:
+      rgba(245,245,247,0.55);
 
-    font-size: clamp(
-      17px,
-      2vw,
-      21px
-    );
+    font-size:
+      clamp(
+        17px,
+        2vw,
+        21px
+      );
 
     line-height: 1.55;
 
-    letter-spacing: -0.02em;
+    letter-spacing:
+      -0.02em;
+
   }
 
 
   .hero-description span {
-    color: rgba(245,245,247,0.9);
+
+    color:
+      rgba(245,245,247,0.9);
+
   }
 
 
   .hero-actions {
+
     display: flex;
+
     align-items: center;
+
     flex-wrap: wrap;
+
     gap: 16px;
 
     margin-top: 38px;
+
   }
 
 
@@ -1530,44 +2554,63 @@ import SkillsList from "../React/SkillsList.tsx";
      ============================================================ */
 
   .apple-button {
+
     display: inline-flex;
+
     align-items: center;
+
     justify-content: center;
+
     gap: 9px;
 
     min-height: 44px;
 
-    padding: 0 18px;
+    padding:
+      0 18px;
 
-    border-radius: 980px;
+    border-radius:
+      980px;
 
     font-size: 14px;
+
     font-weight: 500;
 
-    letter-spacing: -0.01em;
+    letter-spacing:
+      -0.01em;
 
     transition:
-      transform 0.35s cubic-bezier(.22,.61,.36,1),
+      transform 0.35s
+      cubic-bezier(.22,.61,.36,1),
+
       background 0.35s ease,
+
       box-shadow 0.35s ease;
+
   }
 
 
   .apple-button svg {
+
     width: 15px;
+
     height: 15px;
 
     transition:
       transform 0.35s ease;
+
   }
 
 
   .apple-button:hover svg {
-    transform: translateX(2px);
+
+    transform:
+      translateX(2px);
+
   }
 
 
   .apple-button.primary {
+
     color: #fff;
 
     background:
@@ -1578,102 +2621,153 @@ import SkillsList from "../React/SkillsList.tsx";
       );
 
     box-shadow:
-      0 1px 2px rgba(0,0,0,0.4),
-      inset 0 1px 0 rgba(255,255,255,0.25);
+      0 1px 2px
+      rgba(0,0,0,0.4),
+
+      inset 0 1px 0
+      rgba(255,255,255,0.25);
+
   }
 
 
   .apple-button.primary:hover {
-    transform: translateY(-1px);
+
+    transform:
+      translateY(-1px);
 
     box-shadow:
-      0 10px 30px rgba(41,151,255,0.2),
-      inset 0 1px 0 rgba(255,255,255,0.3);
+      0 10px 30px
+      rgba(41,151,255,0.2),
+
+      inset 0 1px 0
+      rgba(255,255,255,0.3);
+
   }
 
 
   .social-actions {
+
     display: flex;
+
     gap: 7px;
+
   }
 
 
   .social-button {
+
     display: grid;
+
     place-items: center;
 
     width: 43px;
+
     height: 43px;
 
-    border: 1px solid var(--apple-border);
+    border:
+      1px solid
+      var(--apple-border);
+
     border-radius: 50%;
 
-    color: rgba(245,245,247,0.55);
+    color:
+      rgba(245,245,247,0.55);
 
-    background: rgba(255,255,255,0.025);
+    background:
+      rgba(255,255,255,0.025);
 
     transition:
       color 0.25s ease,
+
       background 0.25s ease,
+
       border-color 0.25s ease,
+
       transform 0.3s ease;
+
   }
 
 
   .social-button svg {
+
     width: 17px;
+
     height: 17px;
+
   }
 
 
   .social-button:hover {
+
     color: white;
 
-    background: rgba(255,255,255,0.07);
+    background:
+      rgba(255,255,255,0.07);
 
-    border-color: rgba(255,255,255,0.15);
+    border-color:
+      rgba(255,255,255,0.15);
 
-    transform: translateY(-2px);
+    transform:
+      translateY(-2px);
+
   }
 
 
   .hero-meta {
+
     display: flex;
+
     align-items: center;
+
     gap: 15px;
 
     margin-top: 38px;
 
-    color: rgba(245,245,247,0.28);
+    color:
+      rgba(245,245,247,0.28);
 
     font-size: 11px;
 
-    letter-spacing: 0.03em;
+    letter-spacing:
+      0.03em;
+
   }
 
 
   .hero-meta span:first-child {
+
     display: inline-flex;
+
     align-items: center;
+
     gap: 7px;
+
   }
 
 
   .hero-meta i {
+
     width: 5px;
+
     height: 5px;
 
     border-radius: 50%;
 
-    background: var(--apple-blue);
+    background:
+      var(--apple-blue);
+
   }
 
 
   .meta-divider {
+
     width: 1px;
+
     height: 13px;
 
-    background: rgba(255,255,255,0.1);
+    background:
+      rgba(255,255,255,0.1);
+
   }
 
 
@@ -1682,28 +2776,34 @@ import SkillsList from "../React/SkillsList.tsx";
      ============================================================ */
 
   .developer-object {
+
     position: relative;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     min-height: 570px;
+
   }
 
 
   .developer-window {
+
     position: relative;
+
     z-index: 3;
 
-    width: min(
-      100%,
-      460px
-    );
+    width:
+      min(100%,460px);
 
     overflow: hidden;
 
-    border: 1px solid rgba(255,255,255,0.1);
+    border:
+      1px solid
+      rgba(255,255,255,0.1);
 
     border-radius: 24px;
 
@@ -1715,11 +2815,17 @@ import SkillsList from "../React/SkillsList.tsx";
       );
 
     box-shadow:
-      0 40px 100px rgba(0,0,0,0.55),
-      0 0 0 1px rgba(0,0,0,0.3),
-      inset 0 1px 0 rgba(255,255,255,0.08);
+      0 40px 100px
+      rgba(0,0,0,0.55),
 
-    backdrop-filter: blur(30px);
+      0 0 0 1px
+      rgba(0,0,0,0.3),
+
+      inset 0 1px 0
+      rgba(255,255,255,0.08);
+
+    backdrop-filter:
+      blur(30px);
 
     transform:
       perspective(1200px)
@@ -1727,12 +2833,16 @@ import SkillsList from "../React/SkillsList.tsx";
       rotateX(2deg);
 
     transition:
-      transform 0.7s cubic-bezier(.22,.61,.36,1),
+      transform 0.7s
+      cubic-bezier(.22,.61,.36,1),
+
       box-shadow 0.7s ease;
+
   }
 
 
   .developer-window:hover {
+
     transform:
       perspective(1200px)
       rotateY(0deg)
@@ -1740,45 +2850,69 @@ import SkillsList from "../React/SkillsList.tsx";
       translateY(-5px);
 
     box-shadow:
-      0 50px 120px rgba(0,0,0,0.6),
-      0 0 60px rgba(41,151,255,0.07),
-      inset 0 1px 0 rgba(255,255,255,0.1);
+      0 50px 120px
+      rgba(0,0,0,0.6),
+
+      0 0 60px
+      rgba(41,151,255,0.07),
+
+      inset 0 1px 0
+      rgba(255,255,255,0.1);
+
   }
 
 
   .window-header {
+
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+
+    grid-template-columns:
+      1fr auto 1fr;
+
     align-items: center;
 
     height: 46px;
 
-    padding: 0 16px;
+    padding:
+      0 16px;
 
-    border-bottom: 1px solid rgba(255,255,255,0.07);
+    border-bottom:
+      1px solid
+      rgba(255,255,255,0.07);
 
-    background: rgba(0,0,0,0.18);
+    background:
+      rgba(0,0,0,0.18);
+
   }
 
 
   .window-controls {
+
     display: flex;
+
     gap: 6px;
+
   }
 
 
   .window-controls span {
+
     width: 7px;
+
     height: 7px;
 
     border-radius: 50%;
 
-    background: rgba(255,255,255,0.18);
+    background:
+      rgba(255,255,255,0.18);
+
   }
 
 
   .window-title {
-    color: rgba(255,255,255,0.42);
+
+    color:
+      rgba(255,255,255,0.42);
 
     font-family:
       ui-monospace,
@@ -1790,35 +2924,48 @@ import SkillsList from "../React/SkillsList.tsx";
 
     font-size: 10px;
 
-    letter-spacing: 0.04em;
+    letter-spacing:
+      0.04em;
+
   }
 
 
   .window-status {
+
     justify-self: end;
 
-    color: rgba(41,151,255,0.7);
+    color:
+      rgba(41,151,255,0.7);
 
-    font-family: monospace;
+    font-family:
+      monospace;
 
     font-size: 9px;
 
-    text-transform: uppercase;
+    text-transform:
+      uppercase;
 
-    letter-spacing: 0.12em;
+    letter-spacing:
+      0.12em;
+
   }
 
 
   .window-content {
+
     position: relative;
 
     padding: 15px;
+
   }
 
 
   .code-line {
+
     display: flex;
+
     align-items: center;
+
     gap: 6px;
 
     height: 28px;
@@ -1834,36 +2981,52 @@ import SkillsList from "../React/SkillsList.tsx";
       monospace;
 
     font-size: 9px;
+
   }
 
 
   .line-number {
+
     margin-right: 8px;
 
-    color: rgba(255,255,255,0.18);
+    color:
+      rgba(255,255,255,0.18);
+
   }
 
 
   .code-muted {
-    color: rgba(255,255,255,0.3);
+
+    color:
+      rgba(255,255,255,0.3);
+
   }
 
 
   .code-blue {
-    color: #58a6ff;
+
+    color:
+      #58a6ff;
+
   }
 
 
   .code-white {
-    color: rgba(255,255,255,0.65);
+
+    color:
+      rgba(255,255,255,0.65);
+
   }
 
 
   .glitch-container {
+
     position: relative;
 
     width: 100%;
-    aspect-ratio: 1 / 0.86;
+
+    aspect-ratio:
+      1 / 0.86;
 
     margin-top: 5px;
 
@@ -1871,18 +3034,25 @@ import SkillsList from "../React/SkillsList.tsx";
 
     border-radius: 17px;
 
-    background: #07080b;
+    background:
+      #07080b;
+
   }
 
 
   .glitch-container > * {
+
     width: 100%;
+
     height: 100%;
+
   }
 
 
   .glitch-overlay {
+
     position: absolute;
+
     inset: 0;
 
     pointer-events: none;
@@ -1897,126 +3067,179 @@ import SkillsList from "../React/SkillsList.tsx";
       );
 
     box-shadow:
-      inset 0 0 0 1px rgba(255,255,255,0.04);
+      inset 0 0 0 1px
+      rgba(255,255,255,0.04);
+
   }
 
 
   .object-footer {
+
     display: flex;
+
     align-items: flex-end;
+
     justify-content: space-between;
 
-    padding: 15px 4px 2px;
+    padding:
+      15px 4px 2px;
+
   }
 
 
   .object-footer > div:first-child {
+
     display: flex;
+
     flex-direction: column;
+
     gap: 5px;
+
   }
 
 
   .object-label {
-    color: rgba(255,255,255,0.22);
+
+    color:
+      rgba(255,255,255,0.22);
 
     font-size: 8px;
 
-    letter-spacing: 0.16em;
+    letter-spacing:
+      0.16em;
+
   }
 
 
   .object-value {
+
     display: flex;
+
     align-items: center;
+
     gap: 6px;
 
-    color: rgba(255,255,255,0.55);
+    color:
+      rgba(255,255,255,0.55);
 
-    font-family: monospace;
+    font-family:
+      monospace;
 
     font-size: 10px;
+
   }
 
 
   .object-value i {
+
     width: 5px;
+
     height: 5px;
 
     border-radius: 50%;
 
-    background: var(--apple-blue);
+    background:
+      var(--apple-blue);
 
     box-shadow:
-      0 0 8px rgba(41,151,255,0.5);
+      0 0 8px
+      rgba(41,151,255,0.5);
+
   }
 
 
   .object-index {
-    color: rgba(255,255,255,0.18);
 
-    font-family: monospace;
+    color:
+      rgba(255,255,255,0.18);
+
+    font-family:
+      monospace;
 
     font-size: 9px;
 
-    letter-spacing: 0.1em;
+    letter-spacing:
+      0.1em;
+
   }
 
 
   .object-orbit {
+
     position: absolute;
 
-    border: 1px solid rgba(255,255,255,0.035);
+    border:
+      1px solid
+      rgba(255,255,255,0.035);
 
     border-radius: 50%;
+
   }
 
 
   .orbit-one {
+
     width: 530px;
+
     height: 530px;
 
     transform:
       rotateX(65deg)
       rotateY(-12deg);
+
   }
 
 
   .orbit-two {
+
     width: 430px;
+
     height: 430px;
 
     transform:
       rotateX(65deg)
       rotateY(55deg);
 
-    border-color: rgba(41,151,255,0.055);
+    border-color:
+      rgba(41,151,255,0.055);
+
   }
 
 
   .object-caption {
+
     position: absolute;
 
     right: 4%;
+
     bottom: 40px;
 
     display: flex;
+
     align-items: center;
+
     gap: 10px;
 
-    color: rgba(255,255,255,0.2);
+    color:
+      rgba(255,255,255,0.2);
 
     font-size: 9px;
 
-    letter-spacing: 0.05em;
+    letter-spacing:
+      0.05em;
+
   }
 
 
   .caption-line {
+
     width: 40px;
+
     height: 1px;
 
-    background: rgba(255,255,255,0.12);
+    background:
+      rgba(255,255,255,0.12);
+
   }
 
 
@@ -2025,29 +3248,41 @@ import SkillsList from "../React/SkillsList.tsx";
      ============================================================ */
 
   .apple-section {
-    padding: 130px 0;
 
-    border-bottom: 1px solid var(--apple-border-soft);
+    padding:
+      130px 0;
+
+    border-bottom:
+      1px solid
+      var(--apple-border-soft);
+
   }
 
 
   .section-heading-row,
   .notes-heading,
   .terminal-heading {
+
     display: grid;
-    grid-template-columns: 1fr 0.65fr;
+
+    grid-template-columns:
+      1fr 0.65fr;
+
     gap: 80px;
 
     align-items: end;
 
     margin-bottom: 58px;
+
   }
 
 
   .eyebrow {
+
     margin-bottom: 14px;
 
-    color: rgba(41,151,255,0.8);
+    color:
+      rgba(41,151,255,0.8);
 
     font-family:
       ui-monospace,
@@ -2059,63 +3294,81 @@ import SkillsList from "../React/SkillsList.tsx";
 
     font-size: 10px;
 
-    text-transform: uppercase;
+    text-transform:
+      uppercase;
 
-    letter-spacing: 0.18em;
+    letter-spacing:
+      0.18em;
+
   }
 
 
   .section-title {
+
     margin: 0;
 
-    color: var(--apple-white);
+    color:
+      var(--apple-white);
 
-    font-size: clamp(
-      2.5rem,
-      5vw,
-      4.7rem
-    );
+    font-size:
+      clamp(
+        2.5rem,
+        5vw,
+        4.7rem
+      );
 
     font-weight: 600;
 
     line-height: 0.98;
 
-    letter-spacing: -0.055em;
+    letter-spacing:
+      -0.055em;
+
   }
 
 
   .section-title span {
+
     display: block;
 
-    color: rgba(245,245,247,0.4);
+    color:
+      rgba(245,245,247,0.4);
+
   }
 
 
   .section-side-copy {
+
     max-width: 380px;
 
     margin-left: auto;
 
-    color: rgba(245,245,247,0.38);
+    color:
+      rgba(245,245,247,0.38);
 
     font-size: 15px;
 
     line-height: 1.65;
 
-    letter-spacing: -0.01em;
+    letter-spacing:
+      -0.01em;
+
   }
 
 
   .section-copy {
+
     max-width: 480px;
 
     margin-top: 25px;
 
-    color: rgba(245,245,247,0.42);
+    color:
+      rgba(245,245,247,0.42);
 
     font-size: 15px;
 
     line-height: 1.7;
+
   }
 
 
@@ -2124,14 +3377,22 @@ import SkillsList from "../React/SkillsList.tsx";
      ============================================================ */
 
   .technology-surface {
+
     min-height: 150px;
 
-    padding: 30px 10px;
+    padding:
+      30px 10px;
 
-    border-top: 1px solid var(--apple-border);
-    border-bottom: 1px solid var(--apple-border);
+    border-top:
+      1px solid
+      var(--apple-border);
+
+    border-bottom:
+      1px solid
+      var(--apple-border);
 
     opacity: 0.82;
+
   }
 
 
@@ -2140,19 +3401,22 @@ import SkillsList from "../React/SkillsList.tsx";
      ============================================================ */
 
   .skills-layout {
+
     display: grid;
 
     grid-template-columns:
-      minmax(280px, 0.7fr)
-      minmax(0, 1.3fr);
+      minmax(280px,0.7fr)
+      minmax(0,1.3fr);
 
     gap: 90px;
 
     align-items: start;
+
   }
 
 
   .minimal-spec {
+
     display: grid;
 
     gap: 12px;
@@ -2160,46 +3424,64 @@ import SkillsList from "../React/SkillsList.tsx";
     max-width: 350px;
 
     margin-top: 45px;
+
   }
 
 
   .minimal-spec div {
+
     display: flex;
+
     align-items: center;
+
     gap: 15px;
 
-    padding: 11px 0;
+    padding:
+      11px 0;
 
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom:
+      1px solid
+      rgba(255,255,255,0.06);
+
   }
 
 
   .minimal-spec span {
+
     width: 22px;
 
-    color: rgba(41,151,255,0.65);
+    color:
+      rgba(41,151,255,0.65);
 
-    font-family: monospace;
+    font-family:
+      monospace;
 
     font-size: 9px;
+
   }
 
 
   .minimal-spec strong {
-    color: rgba(245,245,247,0.5);
+
+    color:
+      rgba(245,245,247,0.5);
 
     font-size: 12px;
 
     font-weight: 500;
+
   }
 
 
   .skills-surface {
+
     min-height: 420px;
 
     padding: 28px;
 
-    border: 1px solid var(--apple-border);
+    border:
+      1px solid
+      var(--apple-border);
 
     border-radius: 24px;
 
@@ -2211,7 +3493,9 @@ import SkillsList from "../React/SkillsList.tsx";
       );
 
     box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.04);
+      inset 0 1px 0
+      rgba(255,255,255,0.04);
+
   }
 
 
@@ -2220,19 +3504,23 @@ import SkillsList from "../React/SkillsList.tsx";
      ============================================================ */
 
   .notes-grid {
+
     display: grid;
 
     grid-template-columns:
-      repeat(3, 1fr);
+      repeat(3,1fr);
 
     gap: 12px;
+
   }
 
 
   .note-card {
+
     position: relative;
 
     display: flex;
+
     flex-direction: column;
 
     min-height: 270px;
@@ -2241,7 +3529,9 @@ import SkillsList from "../React/SkillsList.tsx";
 
     overflow: hidden;
 
-    border: 1px solid var(--apple-border);
+    border:
+      1px solid
+      var(--apple-border);
 
     border-radius: 20px;
 
@@ -2253,39 +3543,53 @@ import SkillsList from "../React/SkillsList.tsx";
       );
 
     transition:
-      transform 0.45s cubic-bezier(.22,.61,.36,1),
+      transform 0.45s
+      cubic-bezier(.22,.61,.36,1),
+
       border-color 0.35s ease,
+
       background 0.35s ease;
+
   }
 
 
   .note-card::after {
+
     content: "";
 
     position: absolute;
 
     width: 160px;
+
     height: 160px;
 
     right: -90px;
+
     top: -90px;
 
     border-radius: 50%;
 
-    background: rgba(41,151,255,0.08);
+    background:
+      rgba(41,151,255,0.08);
 
-    filter: blur(50px);
+    filter:
+      blur(50px);
 
     opacity: 0;
 
-    transition: opacity 0.45s ease;
+    transition:
+      opacity 0.45s ease;
+
   }
 
 
   .note-card:hover {
-    transform: translateY(-5px);
 
-    border-color: rgba(255,255,255,0.13);
+    transform:
+      translateY(-5px);
+
+    border-color:
+      rgba(255,255,255,0.13);
 
     background:
       linear-gradient(
@@ -2293,43 +3597,60 @@ import SkillsList from "../React/SkillsList.tsx";
         rgba(255,255,255,0.065),
         rgba(255,255,255,0.025)
       );
+
   }
 
 
   .note-card:hover::after {
+
     opacity: 1;
+
   }
 
 
   .note-top,
   .note-bottom {
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
   }
 
 
   .note-top {
-    color: rgba(255,255,255,0.25);
 
-    font-family: monospace;
+    color:
+      rgba(255,255,255,0.25);
+
+    font-family:
+      monospace;
 
     font-size: 9px;
 
-    text-transform: uppercase;
+    text-transform:
+      uppercase;
 
-    letter-spacing: 0.1em;
+    letter-spacing:
+      0.1em;
+
   }
 
 
   .note-card h3 {
+
     position: relative;
+
     z-index: 2;
 
     margin-top: auto;
+
     margin-bottom: auto;
 
-    color: rgba(245,245,247,0.86);
+    color:
+      rgba(245,245,247,0.86);
 
     font-size: 22px;
 
@@ -2337,32 +3658,45 @@ import SkillsList from "../React/SkillsList.tsx";
 
     line-height: 1.18;
 
-    letter-spacing: -0.035em;
+    letter-spacing:
+      -0.035em;
+
   }
 
 
   .note-bottom {
-    color: rgba(255,255,255,0.23);
+
+    color:
+      rgba(255,255,255,0.23);
 
     font-size: 10px;
+
   }
 
 
   .note-arrow {
-    color: rgba(255,255,255,0.4);
+
+    color:
+      rgba(255,255,255,0.4);
 
     font-size: 16px;
 
     transition:
       transform 0.35s ease,
+
       color 0.35s ease;
+
   }
 
 
   .note-card:hover .note-arrow {
-    color: var(--apple-blue);
 
-    transform: translate(2px,-2px);
+    color:
+      var(--apple-blue);
+
+    transform:
+      translate(2px,-2px);
+
   }
 
 
@@ -2371,98 +3705,145 @@ import SkillsList from "../React/SkillsList.tsx";
      ============================================================ */
 
   .terminal-shell {
+
     overflow: hidden;
 
-    border: 1px solid rgba(255,255,255,0.09);
+    border:
+      1px solid
+      rgba(255,255,255,0.09);
 
     border-radius: 20px;
 
-    background: #09090b;
+    background:
+      #09090b;
 
     box-shadow:
-      0 30px 80px rgba(0,0,0,0.35),
-      inset 0 1px 0 rgba(255,255,255,0.04);
+      0 30px 80px
+      rgba(0,0,0,0.35),
+
+      inset 0 1px 0
+      rgba(255,255,255,0.04);
+
   }
 
 
   .terminal-topbar {
+
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+
+    grid-template-columns:
+      1fr auto 1fr;
+
     align-items: center;
 
     height: 46px;
 
-    padding: 0 17px;
+    padding:
+      0 17px;
 
-    border-bottom: 1px solid rgba(255,255,255,0.07);
+    border-bottom:
+      1px solid
+      rgba(255,255,255,0.07);
 
-    background: #0d0d0f;
+    background:
+      #0d0d0f;
+
   }
 
 
   .terminal-controls {
+
     display: flex;
+
     gap: 6px;
+
   }
 
 
   .terminal-controls span {
+
     width: 7px;
+
     height: 7px;
 
     border-radius: 50%;
 
-    background: rgba(255,255,255,0.16);
+    background:
+      rgba(255,255,255,0.16);
+
   }
 
 
   .terminal-window-title {
+
     display: flex;
+
     align-items: center;
+
     gap: 7px;
 
-    color: rgba(255,255,255,0.38);
+    color:
+      rgba(255,255,255,0.38);
 
-    font-family: monospace;
+    font-family:
+      monospace;
 
     font-size: 10px;
+
   }
 
 
   .terminal-icon {
-    color: rgba(255,255,255,0.25);
+
+    color:
+      rgba(255,255,255,0.25);
+
   }
 
 
   .terminal-online {
+
     display: flex;
+
     justify-self: end;
+
     align-items: center;
+
     gap: 6px;
 
-    color: rgba(255,255,255,0.25);
+    color:
+      rgba(255,255,255,0.25);
 
-    font-family: monospace;
+    font-family:
+      monospace;
 
     font-size: 9px;
 
-    text-transform: uppercase;
+    text-transform:
+      uppercase;
 
-    letter-spacing: 0.1em;
+    letter-spacing:
+      0.1em;
+
   }
 
 
   .terminal-online span {
+
     width: 5px;
+
     height: 5px;
 
     border-radius: 50%;
 
-    background: #34c759;
+    background:
+      #34c759;
+
   }
 
 
   .terminal-body {
+
     min-height: 430px;
 
     padding: 25px;
@@ -2478,79 +3859,118 @@ import SkillsList from "../React/SkillsList.tsx";
     font-size: 12px;
 
     line-height: 1.75;
+
   }
 
 
   .terminal-output {
+
     height: 345px;
 
     overflow-y: auto;
 
     scrollbar-width: thin;
-    scrollbar-color: rgba(255,255,255,0.1) transparent;
+
+    scrollbar-color:
+      rgba(255,255,255,0.1)
+      transparent;
+
   }
 
 
   .terminal-line {
+
     margin-bottom: 5px;
 
-    color: rgba(255,255,255,0.52);
+    color:
+      rgba(255,255,255,0.52);
+
   }
 
 
   .terminal-prefix {
+
     margin-right: 8px;
 
-    color: rgba(255,255,255,0.18);
+    color:
+      rgba(255,255,255,0.18);
+
   }
 
 
   .terminal-command {
-    color: rgba(255,255,255,0.8);
+
+    color:
+      rgba(255,255,255,0.8);
+
   }
 
 
   .terminal-prompt {
+
     margin-right: 9px;
 
-    color: rgba(41,151,255,0.7);
+    color:
+      rgba(41,151,255,0.7);
+
   }
 
 
   .terminal-system {
-    color: rgba(255,255,255,0.42);
+
+    color:
+      rgba(255,255,255,0.42);
+
   }
 
 
   .terminal-success {
-    color: rgba(52,199,89,0.72);
+
+    color:
+      rgba(52,199,89,0.72);
+
   }
 
 
   .terminal-error {
-    color: rgba(255,99,99,0.78);
+
+    color:
+      rgba(255,99,99,0.78);
+
   }
 
 
   .terminal-info {
-    color: rgba(255,255,255,0.4);
+
+    color:
+      rgba(255,255,255,0.4);
+
   }
 
 
   .terminal-muted {
-    color: rgba(255,255,255,0.27);
+
+    color:
+      rgba(255,255,255,0.27);
+
   }
 
 
   .terminal-line strong {
-    color: rgba(255,255,255,0.78);
 
-    font-weight: 500;
+    color:
+      rgba(255,255,255,0.78);
+
+    font-weight:
+      500;
+
   }
 
 
   .terminal-form {
+
     display: flex;
+
     align-items: center;
 
     min-height: 35px;
@@ -2559,11 +3979,15 @@ import SkillsList from "../React/SkillsList.tsx";
 
     padding-top: 12px;
 
-    border-top: 1px solid rgba(255,255,255,0.06);
+    border-top:
+      1px solid
+      rgba(255,255,255,0.06);
+
   }
 
 
   .terminal-form input {
+
     flex: 1;
 
     min-width: 0;
@@ -2571,119 +3995,164 @@ import SkillsList from "../React/SkillsList.tsx";
     padding: 0;
 
     border: 0;
+
     outline: 0;
 
-    color: rgba(255,255,255,0.85);
+    color:
+      rgba(255,255,255,0.85);
 
-    background: transparent;
+    background:
+      transparent;
 
     font: inherit;
+
   }
 
 
   .terminal-footer {
+
     display: flex;
+
     align-items: center;
+
     gap: 20px;
 
     min-height: 38px;
 
-    padding: 0 17px;
+    padding:
+      0 17px;
 
-    border-top: 1px solid rgba(255,255,255,0.06);
+    border-top:
+      1px solid
+      rgba(255,255,255,0.06);
 
-    color: rgba(255,255,255,0.18);
+    color:
+      rgba(255,255,255,0.18);
 
-    font-family: monospace;
+    font-family:
+      monospace;
 
     font-size: 9px;
+
   }
 
 
   .terminal-footer-status {
+
     margin-left: auto;
 
-    color: rgba(41,151,255,0.45);
+    color:
+      rgba(41,151,255,0.45);
+
   }
 
 
   .command-list {
+
     display: grid;
 
     gap: 4px;
 
     max-width: 800px;
+
   }
 
 
   .command-list div {
+
     display: grid;
 
     grid-template-columns:
-      minmax(120px, 0.35fr)
+      minmax(120px,0.35fr)
       1fr;
 
     gap: 15px;
+
   }
 
 
   .command-list strong {
-    color: rgba(255,255,255,0.75);
+
+    color:
+      rgba(255,255,255,0.75);
+
   }
 
 
   .command-list span {
-    color: rgba(255,255,255,0.34);
+
+    color:
+      rgba(255,255,255,0.34);
+
   }
 
 
   .terminal-weather {
+
     display: grid;
 
     grid-template-columns:
       1fr auto;
 
-    gap: 5px 30px;
+    gap:
+      5px 30px;
 
     max-width: 450px;
 
-    padding: 8px 0;
+    padding:
+      8px 0;
+
   }
 
 
   .terminal-weather > div:first-child {
+
     display: flex;
+
     flex-direction: column;
+
   }
 
 
   .terminal-weather > div:first-child span {
-    color: rgba(255,255,255,0.35);
+
+    color:
+      rgba(255,255,255,0.35);
+
   }
 
 
   .weather-temperature {
+
     grid-column: 2;
 
     grid-row: 1 / 3;
 
     align-self: center;
 
-    color: rgba(255,255,255,0.8);
+    color:
+      rgba(255,255,255,0.8);
 
     font-size: 22px;
+
   }
 
 
   .weather-details {
-    color: rgba(255,255,255,0.25);
+
+    color:
+      rgba(255,255,255,0.25);
 
     font-size: 10px;
+
   }
 
 
   .status-online {
-    color: #34c759 !important;
+
+    color:
+      #34c759 !important;
+
   }
 
 
@@ -2692,84 +4161,153 @@ import SkillsList from "../React/SkillsList.tsx";
      ============================================================ */
 
   .final-cta {
+
     position: relative;
 
-    padding: 180px 20px;
+    padding:
+      180px 20px;
 
-    text-align: center;
+    text-align:
+      center;
 
-    overflow: hidden;
+    overflow:
+      hidden;
+
   }
 
 
   .cta-glow {
+
     position: absolute;
 
     left: 50%;
+
     top: 45%;
 
     width: 500px;
+
     height: 280px;
 
-    transform: translate(-50%, -50%);
+    transform:
+      translate(-50%,-50%);
 
     border-radius: 50%;
 
-    background: rgba(41,151,255,0.06);
+    background:
+      rgba(41,151,255,0.06);
 
-    filter: blur(100px);
+    filter:
+      blur(100px);
 
-    pointer-events: none;
+    pointer-events:
+      none;
+
+    animation:
+      ctaBreath
+      12s
+      ease-in-out
+      infinite;
+
+  }
+
+
+  @keyframes ctaBreath {
+
+    0%,
+    100% {
+
+      opacity: 0.55;
+
+      transform:
+        translate(-50%,-50%)
+        scale(1);
+
+    }
+
+    50% {
+
+      opacity: 0.9;
+
+      transform:
+        translate(-50%,-50%)
+        scale(1.12);
+
+    }
+
   }
 
 
   .final-cta h2 {
+
     position: relative;
 
-    margin: 0 auto;
+    margin:
+      0 auto;
 
-    max-width: 900px;
+    max-width:
+      900px;
 
-    color: #f5f5f7;
+    color:
+      #f5f5f7;
 
-    font-size: clamp(
-      3rem,
-      7vw,
-      6.8rem
-    );
+    font-size:
+      clamp(
+        3rem,
+        7vw,
+        6.8rem
+      );
 
-    font-weight: 600;
+    font-weight:
+      600;
 
-    line-height: 0.95;
+    line-height:
+      0.95;
 
-    letter-spacing: -0.065em;
+    letter-spacing:
+      -0.065em;
+
   }
 
 
   .final-cta h2 span {
-    display: block;
 
-    color: rgba(245,245,247,0.38);
+    display:
+      block;
+
+    color:
+      rgba(245,245,247,0.38);
+
   }
 
 
   .cta-description {
-    position: relative;
 
-    max-width: 470px;
+    position:
+      relative;
 
-    margin: 28px auto 35px;
+    max-width:
+      470px;
 
-    color: rgba(245,245,247,0.38);
+    margin:
+      28px auto 35px;
 
-    font-size: 15px;
+    color:
+      rgba(245,245,247,0.38);
 
-    line-height: 1.65;
+    font-size:
+      15px;
+
+    line-height:
+      1.65;
+
   }
 
 
   .cta-button {
-    position: relative;
+
+    position:
+      relative;
+
   }
 
 
@@ -2780,156 +4318,289 @@ import SkillsList from "../React/SkillsList.tsx";
   @media (max-width: 1024px) {
 
     .hero {
-      grid-template-columns: 1fr;
-      min-height: auto;
+
+      grid-template-columns:
+        1fr;
+
+      min-height:
+        auto;
+
     }
 
 
     .developer-object {
-      min-height: 560px;
+
+      min-height:
+        560px;
+
     }
 
 
     .section-heading-row,
     .notes-heading,
     .terminal-heading {
-      grid-template-columns: 1fr;
 
-      gap: 20px;
+      grid-template-columns:
+        1fr;
+
+      gap:
+        20px;
+
     }
 
 
     .section-side-copy {
-      margin-left: 0;
+
+      margin-left:
+        0;
+
     }
 
 
     .skills-layout {
-      grid-template-columns: 1fr;
 
-      gap: 55px;
+      grid-template-columns:
+        1fr;
+
+      gap:
+        55px;
+
     }
 
 
     .notes-grid {
+
       grid-template-columns:
-        repeat(2, 1fr);
+        repeat(2,1fr);
+
     }
+
   }
 
 
   @media (max-width: 640px) {
 
     .apple-section {
-      padding: 90px 0;
+
+      padding:
+        90px 0;
+
     }
 
 
     .hero {
-      padding-top: 100px;
-      padding-bottom: 80px;
+
+      padding-top:
+        100px;
+
+      padding-bottom:
+        80px;
+
     }
 
 
     .hero-title {
-      font-size: clamp(
-        3.6rem,
-        18vw,
-        5.4rem
-      );
+
+      font-size:
+        clamp(
+          3.6rem,
+          18vw,
+          5.4rem
+        );
+
     }
 
 
     .hero-description {
-      font-size: 17px;
+
+      font-size:
+        17px;
+
     }
 
 
     .hero-actions {
-      align-items: stretch;
-      flex-direction: column;
+
+      align-items:
+        stretch;
+
+      flex-direction:
+        column;
+
     }
 
 
     .social-actions {
-      margin-top: 2px;
+
+      margin-top:
+        2px;
+
     }
 
 
     .hero-meta {
-      flex-wrap: wrap;
+
+      flex-wrap:
+        wrap;
+
     }
 
 
     .developer-object {
-      min-height: 460px;
+
+      min-height:
+        460px;
+
     }
 
 
     .developer-window {
-      width: 100%;
 
-      border-radius: 18px;
+      width:
+        100%;
+
+      border-radius:
+        18px;
+
     }
 
 
     .object-orbit {
-      display: none;
+
+      display:
+        none;
+
     }
 
 
     .object-caption {
-      display: none;
+
+      display:
+        none;
+
     }
 
 
     .notes-grid {
-      grid-template-columns: 1fr;
+
+      grid-template-columns:
+        1fr;
+
     }
 
 
     .note-card {
-      min-height: 230px;
+
+      min-height:
+        230px;
+
     }
 
 
     .skills-surface {
-      padding: 18px;
 
-      border-radius: 18px;
+      padding:
+        18px;
+
+      border-radius:
+        18px;
+
     }
 
 
     .terminal-body {
-      min-height: 420px;
 
-      padding: 18px;
+      min-height:
+        420px;
 
-      font-size: 11px;
+      padding:
+        18px;
+
+      font-size:
+        11px;
+
     }
 
 
     .terminal-output {
-      height: 340px;
+
+      height:
+        340px;
+
     }
 
 
     .terminal-footer {
-      gap: 12px;
 
-      font-size: 8px;
+      gap:
+        12px;
+
+      font-size:
+        8px;
+
     }
 
 
     .command-list div {
-      grid-template-columns: 100px 1fr;
 
-      gap: 8px;
+      grid-template-columns:
+        100px 1fr;
+
+      gap:
+        8px;
+
     }
 
 
     .final-cta {
-      padding: 120px 10px;
+
+      padding:
+        120px 10px;
+
+    }
+
+
+    /* Reduce background on small screens */
+
+    .orb-primary {
+
+      width:
+        450px;
+
+      height:
+        450px;
+
+    }
+
+
+    .orb-secondary,
+    .orb-tertiary {
+
+      width:
+        320px;
+
+      height:
+        320px;
+
+    }
+
+
+    .ambient-beam {
+
+      opacity:
+        0.35;
+
+    }
+
+
+    .ambient-grid {
+
+      opacity:
+        0.2;
+
+      background-size:
+        55px 55px;
+
     }
 
   }
@@ -2941,14 +4612,31 @@ import SkillsList from "../React/SkillsList.tsx";
 
   @media (prefers-reduced-motion: reduce) {
 
+    .ambient-orb,
+    .ambient-beam,
+    .ambient-grid,
+    .ambient-horizon,
+    .cta-glow,
+    .status-dot {
+
+      animation:
+        none !important;
+
+    }
+
+
     *,
     *::before,
     *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
+
+      transition-duration:
+        0.01ms !important;
+
+      scroll-behavior:
+        auto !important;
+
     }
 
   }
+
 </style>
