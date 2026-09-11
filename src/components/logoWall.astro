@@ -223,9 +223,6 @@ const getTechnologyName = (tech: string) => {
 
         <!-- ================================================= -->
         <!-- LARGE UPV LOGO -->
-        <!-- No border -->
-        <!-- No background -->
-        <!-- No box -->
         <!-- ================================================= -->
 
         <div
@@ -240,8 +237,6 @@ const getTechnologyName = (tech: string) => {
             transition-all
             duration-500
             group-hover:scale-105
-            md:h-72
-            md:w-[26rem]
           "
         >
           <img
@@ -256,8 +251,8 @@ const getTechnologyName = (tech: string) => {
               duration-500
               group-hover:scale-110
             "
-            width="416"
-            height="288"
+            width="384"
+            height="256"
             loading="lazy"
             decoding="async"
           />
@@ -380,8 +375,8 @@ const getTechnologyName = (tech: string) => {
     }
 
     /*
-     * Keep the UPV logo larger while
-     * keeping the card responsive.
+     * Larger UPV logo on mobile
+     * while keeping the card responsive.
      */
     section[aria-label="Organizations"] .group.relative.flex {
       flex-direction: column;
@@ -400,3 +395,4 @@ const getTechnologyName = (tech: string) => {
   }
 </style>
 ```
+
