@@ -1,6 +1,5 @@
 ---
 const technologies = [
-  "UPV.jpg",
   "astro",
   "Java",
   "C",
@@ -22,9 +21,7 @@ const technologies = [
   "bash",
 ];
 
-// Nombres que se mostrarán en pantalla
 const technologyNames: Record<string, string> = {
-  "UPV.jpg": "UPV",
   astro: "Astro",
   Java: "Java",
   C: "C",
@@ -46,8 +43,6 @@ const technologyNames: Record<string, string> = {
   bash: "Bash",
 };
 
-// Permite utilizar SVG, PNG, WEBP, etc.
-// Si el nombre ya tiene extensión, no añade .svg.
 const getIconPath = (tech: string) => {
   return `/svg/${tech.includes(".") ? tech : `${tech}.svg`}`;
 };
@@ -57,56 +52,292 @@ const getTechnologyName = (tech: string) => {
 };
 ---
 
+<!-- ========================================================= -->
+<!-- TECHNOLOGIES -->
+<!-- ========================================================= -->
+
 <section
-  class="relative overflow-hidden py-8"
+  class="relative overflow-hidden py-10"
   aria-label="Technologies and tools"
 >
-  <!-- Left fade -->
-  <div
-    class="pointer-events-none absolute inset-y-0 left-0 z-20 w-24 md:w-40 bg-gradient-to-r from-[var(--background)] via-[var(--background)]/80 to-transparent"
-    aria-hidden="true"
-  ></div>
+  <!-- Section heading -->
+  <div class="mx-auto mb-8 max-w-6xl px-6">
+    <div class="flex items-center justify-center gap-4">
+      <div class="h-px w-12 bg-white/10"></div>
 
-  <!-- Right fade -->
-  <div
-    class="pointer-events-none absolute inset-y-0 right-0 z-20 w-24 md:w-40 bg-gradient-to-l from-[var(--background)] via-[var(--background)]/80 to-transparent"
-    aria-hidden="true"
-  ></div>
+      <p
+        class="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--white-icon)] opacity-50"
+      >
+        Technologies
+      </p>
 
-  <!-- Scrolling container -->
-  <div
-    class="flex w-max animate-scroll will-change-transform"
-  >
-    {
-      [...technologies, ...technologies].map((tech, index) => (
-        <div
-          class="group flex shrink-0 items-center gap-3 pr-12 md:pr-20 transition-all duration-300"
-          aria-hidden={index >= technologies.length ? "true" : "false"}
-        >
+      <div class="h-px w-12 bg-white/10"></div>
+    </div>
+  </div>
+
+  <!-- Scrolling logo wall -->
+  <div class="relative overflow-x-hidden py-6">
+
+    <!-- Left fade -->
+    <div
+      class="pointer-events-none absolute inset-y-0 left-0 z-20 w-24 md:w-40 bg-gradient-to-r from-[var(--background)] via-[var(--background)]/80 to-transparent"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Right fade -->
+    <div
+      class="pointer-events-none absolute inset-y-0 right-0 z-20 w-24 md:w-40 bg-gradient-to-l from-[var(--background)] via-[var(--background)]/80 to-transparent"
+      aria-hidden="true"
+    ></div>
+
+    <div
+      class="flex w-max animate-scroll will-change-transform"
+    >
+      {
+        [...technologies, ...technologies].map((tech, index) => (
           <div
-            class="flex h-8 w-8 items-center justify-center transition-transform duration-300 group-hover:scale-110"
+            class="group flex shrink-0 items-center gap-3 pr-12 md:pr-20 transition-all duration-300"
+            aria-hidden={index >= technologies.length ? "true" : "false"}
           >
-            <img
-              src={getIconPath(tech)}
-              alt={index < technologies.length ? getTechnologyName(tech) : ""}
-              class="h-7 w-7 object-contain opacity-60 transition-all duration-300 group-hover:opacity-100"
-              width="28"
-              height="28"
-              loading={index < technologies.length ? "eager" : "lazy"}
-              decoding="async"
-            />
-          </div>
+            <!-- Technology icon -->
+            <div
+              class="flex h-8 w-8 items-center justify-center"
+            >
+              <img
+                src={getIconPath(tech)}
+                alt={
+                  index < technologies.length
+                    ? getTechnologyName(tech)
+                    : ""
+                }
+                class="h-7 w-7 object-contain opacity-60 transition-all duration-300 group-hover:scale-110 group-hover:opacity-100"
+                width="28"
+                height="28"
+                loading={
+                  index < technologies.length
+                    ? "eager"
+                    : "lazy"
+                }
+                decoding="async"
+              />
+            </div>
 
-          <span
-            class="whitespace-nowrap text-lg font-medium text-[var(--white-icon)] opacity-70 transition-opacity duration-300 group-hover:opacity-100"
-          >
-            {getTechnologyName(tech)}
-          </span>
-        </div>
-      ))
-    }
+            <!-- Technology name -->
+            <span
+              class="whitespace-nowrap text-lg font-medium text-[var(--white-icon)] opacity-70 transition-opacity duration-300 group-hover:opacity-100"
+            >
+              {getTechnologyName(tech)}
+            </span>
+          </div>
+        ))
+      }
+    </div>
   </div>
 </section>
+
+
+<!-- ========================================================= -->
+<!-- ORGANIZATIONS -->
+<!-- ========================================================= -->
+
+<section
+  class="relative overflow-hidden py-14 md:py-20"
+  aria-label="Organizations"
+>
+  <div class="mx-auto max-w-6xl px-6">
+
+    <!-- Section heading -->
+    <div class="mb-10 text-center">
+
+      <div class="mb-4 flex items-center justify-center gap-4">
+        <div class="h-px w-12 bg-white/10"></div>
+
+        <p
+          class="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--white-icon)] opacity-50"
+        >
+          Organizations
+        </p>
+
+        <div class="h-px w-12 bg-white/10"></div>
+      </div>
+
+      <p
+        class="mx-auto max-w-xl text-sm leading-relaxed text-[var(--white-icon)] opacity-40"
+      >
+        Organizations and institutions I'm part of.
+      </p>
+    </div>
+
+
+    <!-- UPV Organization Card -->
+    <div class="flex justify-center">
+
+      <div
+        class="
+          group relative
+          flex w-full max-w-xl
+          items-center
+          gap-6
+          overflow-hidden
+          rounded-3xl
+          border border-white/10
+          bg-white/[0.035]
+          px-7 py-6
+          backdrop-blur-2xl
+          transition-all duration-500
+          hover:border-white/20
+          hover:bg-white/[0.06]
+          hover:shadow-[0_20px_60px_rgba(0,0,0,0.25)]
+          md:px-9 md:py-7
+        "
+      >
+
+        <!-- Subtle glow -->
+        <div
+          class="
+            pointer-events-none
+            absolute -left-16 -top-16
+            h-40 w-40
+            rounded-full
+            bg-blue-500/10
+            blur-3xl
+            opacity-0
+            transition-opacity duration-500
+            group-hover:opacity-100
+          "
+          aria-hidden="true"
+        ></div>
+
+
+        <!-- UPV Logo -->
+        <div
+          class="
+            relative
+            flex
+            h-24 w-28
+            shrink-0
+            items-center
+            justify-center
+            rounded-2xl
+            border border-white/10
+            bg-white/[0.06]
+            p-3
+            shadow-inner
+            transition-all duration-500
+            group-hover:scale-105
+            group-hover:border-white/20
+            group-hover:bg-white/[0.09]
+          "
+        >
+          <img
+            src="/svg/upv.jpg"
+            alt="Universitat Politècnica de València"
+            class="
+              max-h-full
+              max-w-full
+              object-contain
+              transition-transform
+              duration-500
+              group-hover:scale-105
+            "
+            width="100"
+            height="80"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+
+        <!-- UPV Information -->
+        <div class="relative min-w-0">
+
+          <p
+            class="
+              mb-1
+              text-xs
+              font-semibold
+              uppercase
+              tracking-[0.2em]
+              text-[var(--white-icon)]
+              opacity-40
+            "
+          >
+            University
+          </p>
+
+          <h3
+            class="
+              text-lg
+              font-semibold
+              leading-snug
+              text-[var(--white)]
+              transition-opacity
+              duration-300
+              group-hover:opacity-100
+            "
+          >
+            Universitat Politècnica
+            <br class="hidden sm:block" />
+            de València
+          </h3>
+
+          <p
+            class="
+              mt-2
+              text-sm
+              font-medium
+              text-[var(--white-icon)]
+              opacity-50
+            "
+          >
+            UPV
+          </p>
+
+        </div>
+
+        <!-- Arrow -->
+        <div
+          class="
+            absolute
+            right-5
+            top-1/2
+            -translate-y-1/2
+            opacity-0
+            transition-all
+            duration-300
+            group-hover:translate-x-0
+            group-hover:opacity-50
+          "
+          aria-hidden="true"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            class="text-[var(--white)]"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M5 12h14m-6-6 6 6-6 6"
+            />
+          </svg>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ========================================================= -->
+<!-- ANIMATION -->
+<!-- ========================================================= -->
 
 <style is:global>
   @keyframes scroll {
@@ -129,7 +360,6 @@ const getTechnologyName = (tech: string) => {
     }
   }
 
-  /* Reduce animation for users who prefer less motion */
   @media (prefers-reduced-motion: reduce) {
     .animate-scroll {
       animation-play-state: paused;
