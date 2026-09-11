@@ -1,100 +1,43 @@
----
+*---
 import LetterGlitch from "../React/LetterGlitch.tsx";
 import LogoWall from "../components/logoWall.astro";
 import SkillsList from "../React/SkillsList.tsx";
 ---
 
-<section
-  id="home"
-  class="apple-home relative overflow-hidden bg-[#050506] text-[var(--white)]"
->
-  <!-- ========================================================= -->
-  <!-- AMBIENT BACKGROUND -->
-  <!-- ========================================================= -->
-
-  <div class="ambient-background pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-    <div class="ambient-base"></div>
-
-    <div class="ambient-orb orb-primary"></div>
-    <div class="ambient-orb orb-secondary"></div>
-    <div class="ambient-orb orb-tertiary"></div>
-
-    <div class="ambient-beam beam-one"></div>
-    <div class="ambient-beam beam-two"></div>
-
-    <div class="ambient-grid"></div>
-
-    <div class="ambient-horizon"></div>
-
-    <div class="edge-vignette"></div>
-
-    <div class="grain"></div>
-  </div>
+<div class="apple-page">
 
   <!-- ========================================================= -->
   <!-- HERO -->
   <!-- ========================================================= -->
 
-  <section
-    id="hero"
-    class="relative mx-auto flex min-h-screen max-w-7xl items-center px-6 pb-24 pt-32 md:px-10 lg:px-12"
-  >
-    <div class="grid w-full items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+  <section id="home" class="hero">
 
-      <!-- HERO COPY -->
-      <div class="relative z-10 max-w-3xl">
+    <div class="hero-inner">
 
-        <!-- Status -->
-        <div class="mb-8 flex items-center gap-3">
-          <span class="status-indicator"></span>
+      <div class="hero-copy">
 
-          <span class="status-text">
-            Open to opportunities
-          </span>
+        <div class="availability">
+          <span class="availability-dot"></span>
+          <span>Open to opportunities</span>
         </div>
 
-        <!-- Name -->
-        <p class="hero-intro">
-          Hi, I’m Aymane Jabrane.
-        </p>
-
-        <!-- Main title -->
-        <h1 class="hero-title">
-          Software
-          <span class="hero-title-accent">Developer.</span>
+        <h1>
+          Hi, I’m Aymane.
+          <span>Software Developer.</span>
         </h1>
 
-        <!-- Description -->
-        <p class="hero-description">
-          Building thoughtful software through computer science,
-          systems and creative ideas.
+        <p class="hero-lead">
+          I build thoughtful software at the intersection of
+          computer science, systems and creative ideas.
         </p>
 
-        <!-- Actions -->
-        <div class="mt-10 flex flex-wrap items-center gap-4">
-          <a href="#projects" class="hero-primary-button">
-            Explore my work
+        <div class="hero-actions">
 
-            <svg
-              width="17"
-              height="17"
-              viewBox="0 0 20 20"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M4 10h11"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-              />
-              <path
-                d="m11 5 5 5-5 5"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
+          <a href="#projects" class="button button-primary">
+            Explore my work
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M4 10h11" />
+              <path d="m11 5 5 5-5 5" />
             </svg>
           </a>
 
@@ -102,7 +45,7 @@ import SkillsList from "../React/SkillsList.tsx";
             href="https://github.com/AymaneJab01"
             target="_blank"
             rel="noopener noreferrer"
-            class="hero-secondary-button"
+            class="button button-secondary"
           >
             GitHub
           </a>
@@ -111,68 +54,58 @@ import SkillsList from "../React/SkillsList.tsx";
             href="https://www.linkedin.com/in/aymane-jabrane-73025726a/"
             target="_blank"
             rel="noopener noreferrer"
-            class="hero-secondary-button"
+            class="button button-secondary"
           >
             LinkedIn
           </a>
+
         </div>
 
-        <!-- Metadata -->
         <div class="hero-meta">
           <span>Computer Science</span>
-
-          <span class="hero-meta-separator"></span>
-
+          <i></i>
           <span>Software</span>
-
-          <span class="hero-meta-separator"></span>
-
+          <i></i>
           <span>Systems</span>
-
-          <span class="hero-meta-separator"></span>
-
-          <span>Code</span>
+          <i></i>
+          <span>Spain</span>
         </div>
+
       </div>
 
-      <!-- ===================================================== -->
-      <!-- DEVELOPER WINDOW -->
-      <!-- ===================================================== -->
+      <!-- Developer visual -->
 
-      <div class="developer-window-wrapper">
-        <div class="developer-window">
+      <div class="hero-visual">
 
-          <!-- Window header -->
-          <div class="developer-window-header">
+        <div class="developer-card">
+
+          <div class="developer-topbar">
+
             <div class="window-controls">
-              <span class="window-control window-red"></span>
-              <span class="window-control window-yellow"></span>
-              <span class="window-control window-green"></span>
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
 
-            <div class="window-title">
-              <span class="window-title-icon">
-                &lt;/&gt;
-              </span>
-
-              <span>developer</span>
+            <div class="developer-title">
+              developer
             </div>
 
-            <div class="window-header-space"></div>
+            <div></div>
+
           </div>
 
-          <!-- Window body -->
-          <div class="developer-window-body">
+          <div class="developer-content">
 
-            <div class="code-label">
-              <span class="code-label-dot"></span>
-              <span>&lt; build /&gt;</span>
+            <div class="developer-label">
+              <span></span>
+              &lt; build /&gt;
             </div>
 
-            <div class="letter-glitch-container">
+            <div class="glitch-wrapper">
               <LetterGlitch
                 client:load
-                glitchColors={["#1e3a8a", "#2563eb", "#0f172a"]}
+                glitchColors={["#1d4ed8", "#2563eb", "#172554"]}
                 glitchSpeed={33}
                 centerVignette={false}
                 outerVignette={true}
@@ -180,966 +113,699 @@ import SkillsList from "../React/SkillsList.tsx";
               />
             </div>
 
-            <div class="terminal-status">
-              <span class="terminal-status-dot"></span>
-              <span>system ready</span>
+            <div class="developer-footer">
+              <span class="online-dot"></span>
+              system ready
             </div>
+
           </div>
+
         </div>
+
       </div>
+
     </div>
 
-    <!-- Scroll indicator -->
-    <a href="#technologies" class="scroll-indicator" aria-label="Scroll down">
-      <span>Scroll</span>
+    <div class="hero-scroll">
+      <span>Scroll to explore</span>
 
-      <svg
-        width="16"
-        height="16"
-        viewBox="0 0 20 20"
-        fill="none"
-        aria-hidden="true"
-      >
-        <path
-          d="M10 4v11"
-          stroke="currentColor"
-          stroke-width="1.4"
-          stroke-linecap="round"
-        />
-        <path
-          d="m5 11 5 5 5-5"
-          stroke="currentColor"
-          stroke-width="1.4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
+      <svg viewBox="0 0 20 20" aria-hidden="true">
+        <path d="M10 4v11" />
+        <path d="m5 11 5 5 5-5" />
       </svg>
-    </a>
+    </div>
+
   </section>
+
 
   <!-- ========================================================= -->
   <!-- TECHNOLOGIES -->
   <!-- ========================================================= -->
 
-  <section
-    id="technologies"
-    class="relative mx-auto max-w-7xl px-6 py-28 md:px-10 md:py-36 lg:px-12"
-  >
-    <div class="section-heading">
-      <p class="section-eyebrow">
-        Technologies
-      </p>
+  <section id="technologies" class="section technologies-section">
 
-      <h2 class="section-title">
-        Tools for building.
-      </h2>
+    <div class="section-inner">
 
-      <p class="section-description">
-        Technologies I use to turn ideas into reliable,
-        interactive and maintainable software.
-      </p>
+      <div class="section-intro">
+
+        <p class="eyebrow">
+          Technologies
+        </p>
+
+        <h2>
+          The tools behind
+          <span>the work.</span>
+        </h2>
+
+        <p>
+          A practical stack built around modern web development,
+          programming, systems and software engineering.
+        </p>
+
+      </div>
+
+      <div class="technology-wall">
+        <LogoWall />
+      </div>
+
     </div>
 
-    <div class="mt-16">
-      <LogoWall />
-    </div>
   </section>
+
 
   <!-- ========================================================= -->
   <!-- SKILLS -->
   <!-- ========================================================= -->
 
-  <section
-    id="skills"
-    class="relative mx-auto max-w-7xl px-6 py-28 md:px-10 md:py-36 lg:px-12"
-  >
-    <div class="section-heading">
-      <p class="section-eyebrow">
-        Capabilities
-      </p>
+  <section id="skills" class="section skills-section">
 
-      <h2 class="section-title">
-        From concept to software.
-      </h2>
+    <div class="section-inner">
 
-      <p class="section-description">
-        A combination of programming, systems thinking,
-        problem solving and product-focused development.
-      </p>
+      <div class="section-intro">
+
+        <p class="eyebrow">
+          Capabilities
+        </p>
+
+        <h2>
+          From an idea
+          <span>to something real.</span>
+        </h2>
+
+        <p>
+          I enjoy understanding how things work,
+          solving difficult problems and turning those ideas
+          into software people can actually use.
+        </p>
+
+      </div>
+
+      <div class="skills-container">
+        <SkillsList client:visible />
+      </div>
+
     </div>
 
-    <div class="mt-16">
-      <SkillsList client:visible />
-    </div>
   </section>
+
 
   <!-- ========================================================= -->
   <!-- NOTES -->
   <!-- ========================================================= -->
 
-  <section
-    id="notes"
-    class="relative mx-auto max-w-7xl px-6 py-28 md:px-10 md:py-36 lg:px-12"
-  >
-    <div class="section-heading">
-      <p class="section-eyebrow">
-        Notes
-      </p>
+  <section id="notes" class="section notes-section">
 
-      <h2 class="section-title">
-        Things I’ve studied.
-      </h2>
+    <div class="section-inner">
 
-      <p class="section-description">
-        A growing collection of notes covering computer science,
-        software engineering, systems and development.
-      </p>
+      <div class="section-intro">
+
+        <p class="eyebrow">
+          Notes
+        </p>
+
+        <h2>
+          Always
+          <span>learning.</span>
+        </h2>
+
+        <p>
+          Notes and references from the subjects,
+          technologies and concepts I’ve been exploring.
+        </p>
+
+      </div>
+
+
+      <div class="notes-list">
+
+        <a
+          href="https://app.notion.com/p/Tablas-Hash-Vista-Practica-3a762e0580cb80de84eee02fade92863?source=copy_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="note-row"
+        >
+          <span class="note-index">01</span>
+
+          <div class="note-main">
+            <span>Data Structures</span>
+            <h3>Hash Tables</h3>
+          </div>
+
+          <p>
+            Hashing, collisions and efficient lookup.
+          </p>
+
+          <span class="note-arrow">↗</span>
+        </a>
+
+
+        <a
+          href="https://app.notion.com/p/Computer-from-hardware-perspective-3a362e0580cb80cfbfa5f1228d060bcc?source=copy_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="note-row"
+        >
+          <span class="note-index">02</span>
+
+          <div class="note-main">
+            <span>Computer Architecture</span>
+            <h3>Computer from Hardware Perspective</h3>
+          </div>
+
+          <p>
+            Understanding computers from the hardware up.
+          </p>
+
+          <span class="note-arrow">↗</span>
+        </a>
+
+
+        <a
+          href="https://app.notion.com/p/Tablas-Hash-Definiciones-3a662e0580cb80089dd9c287f8864a93?source=copy_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="note-row"
+        >
+          <span class="note-index">03</span>
+
+          <div class="note-main">
+            <span>Data Structures</span>
+            <h3>Hash Tables — Definitions</h3>
+          </div>
+
+          <p>
+            Core concepts behind hash-based structures.
+          </p>
+
+          <span class="note-arrow">↗</span>
+        </a>
+
+
+        <a
+          href="https://app.notion.com/p/Git-Github-3a562e0580cb801089e5d47fbbaa221f?source=copy_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="note-row"
+        >
+          <span class="note-index">04</span>
+
+          <div class="note-main">
+            <span>Development</span>
+            <h3>Git & GitHub</h3>
+          </div>
+
+          <p>
+            Version control and modern workflows.
+          </p>
+
+          <span class="note-arrow">↗</span>
+        </a>
+
+
+        <a
+          href="https://app.notion.com/p/Syst-me-Signaux-Analogue-vs-Digitale-3b062e0580cb80d3ba80cb3e8232dee1?source=copy_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="note-row"
+        >
+          <span class="note-index">05</span>
+
+          <div class="note-main">
+            <span>Systems</span>
+            <h3>Analog vs Digital Signals</h3>
+          </div>
+
+          <p>
+            How information is represented and transmitted.
+          </p>
+
+          <span class="note-arrow">↗</span>
+        </a>
+
+
+        <a
+          href="https://app.notion.com/p/Java-3a262e0580cb8037bee0c0e9aa4b480c?source=copy_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="note-row"
+        >
+          <span class="note-index">06</span>
+
+          <div class="note-main">
+            <span>Programming</span>
+            <h3>Java</h3>
+          </div>
+
+          <p>
+            Object-oriented programming and abstractions.
+          </p>
+
+          <span class="note-arrow">↗</span>
+        </a>
+
+      </div>
+
     </div>
 
-    <div class="notes-grid">
-
-      <!-- Hash Tables -->
-      <a
-        href="https://app.notion.com/p/Tablas-Hash-Vista-Practica-3a762e0580cb80de84eee02fade92863?source=copy_link"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="note-card"
-      >
-        <div class="note-number">01</div>
-
-        <div>
-          <p class="note-category">Data Structures</p>
-
-          <h3>Hash Tables</h3>
-
-          <p>
-            Practical exploration of hashing,
-            collisions and efficient lookup.
-          </p>
-        </div>
-
-        <span class="note-arrow">↗</span>
-      </a>
-
-      <!-- Computer Architecture -->
-      <a
-        href="https://app.notion.com/p/Computer-from-hardware-perspective-3a362e0580cb80cfbfa5f1228d060bcc?source=copy_link"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="note-card"
-      >
-        <div class="note-number">02</div>
-
-        <div>
-          <p class="note-category">Computer Architecture</p>
-
-          <h3>Computer from hardware perspective</h3>
-
-          <p>
-            Understanding computers from hardware
-            and system-level perspectives.
-          </p>
-        </div>
-
-        <span class="note-arrow">↗</span>
-      </a>
-
-      <!-- Hash Definitions -->
-      <a
-        href="https://app.notion.com/p/Tablas-Hash-Definiciones-3a662e0580cb80089dd9c287f8864a93?source=copy_link"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="note-card"
-      >
-        <div class="note-number">03</div>
-
-        <div>
-          <p class="note-category">Data Structures</p>
-
-          <h3>Hash Tables — Definitions</h3>
-
-          <p>
-            Core concepts and terminology behind
-            hash-based data structures.
-          </p>
-        </div>
-
-        <span class="note-arrow">↗</span>
-      </a>
-
-      <!-- Git -->
-      <a
-        href="https://app.notion.com/p/Git-Github-3a562e0580cb801089e5d47fbbaa221f?source=copy_link"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="note-card"
-      >
-        <div class="note-number">04</div>
-
-        <div>
-          <p class="note-category">Development</p>
-
-          <h3>Git & GitHub</h3>
-
-          <p>
-            Version control, collaboration,
-            branches and development workflows.
-          </p>
-        </div>
-
-        <span class="note-arrow">↗</span>
-      </a>
-
-      <!-- Signals -->
-      <a
-        href="https://app.notion.com/p/Syst-me-Signaux-Analogue-vs-Digitale-3b062e0580cb80d3ba80cb3e8232dee1?source=copy_link"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="note-card"
-      >
-        <div class="note-number">05</div>
-
-        <div>
-          <p class="note-category">Systems</p>
-
-          <h3>Analog vs Digital Signals</h3>
-
-          <p>
-            Exploring how information is represented,
-            transmitted and processed.
-          </p>
-        </div>
-
-        <span class="note-arrow">↗</span>
-      </a>
-
-      <!-- Java -->
-      <a
-        href="https://app.notion.com/p/Java-3a262e0580cb8037bee0c0e9aa4b480c?source=copy_link"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="note-card"
-      >
-        <div class="note-number">06</div>
-
-        <div>
-          <p class="note-category">Programming</p>
-
-          <h3>Java</h3>
-
-          <p>
-            Object-oriented programming,
-            abstractions and core Java concepts.
-          </p>
-        </div>
-
-        <span class="note-arrow">↗</span>
-      </a>
-    </div>
   </section>
+
 
   <!-- ========================================================= -->
   <!-- TERMINAL -->
   <!-- ========================================================= -->
 
-  <section
-    id="terminal"
-    class="relative mx-auto max-w-7xl px-6 py-28 md:px-10 md:py-36 lg:px-12"
-  >
-    <div class="section-heading">
-      <p class="section-eyebrow">
-        Interactive
-      </p>
+  <section id="terminal" class="terminal-section">
 
-      <h2 class="section-title">
-        Explore through the terminal.
-      </h2>
+    <div class="terminal-inner">
 
-      <p class="section-description">
-        A different way to explore my work, projects,
-        skills and experience.
-      </p>
-    </div>
+      <div class="terminal-copy">
 
-    <div class="terminal-preview mt-16">
-
-      <div class="terminal-preview-header">
-        <div class="terminal-preview-controls">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
-        <div class="terminal-preview-title">
-          aymane@portfolio
-        </div>
-
-        <div></div>
-      </div>
-
-      <div class="terminal-preview-body">
-        <div class="terminal-line">
-          <span class="terminal-prompt">
-            aymane@portfolio
-          </span>
-
-          <span class="terminal-symbol">
-            :
-          </span>
-
-          <span class="terminal-path">
-            ~
-          </span>
-
-          <span class="terminal-symbol">
-            $
-          </span>
-
-          <span class="terminal-command">
-            help
-          </span>
-        </div>
-
-        <div class="terminal-output">
-          Welcome to Aymane's interactive terminal.
-        </div>
-
-        <div class="terminal-output">
-          Type
-          <span class="terminal-highlight">
-            "help"
-          </span>
-          to explore available commands.
-        </div>
-
-        <a
-          href="#terminal"
-          class="terminal-launch"
-        >
-          Open terminal
-          <span>↗</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================= -->
-  <!-- CTA -->
-  <!-- ========================================================= -->
-
-  <section
-    id="contact"
-    class="cta-section relative overflow-hidden text-[var(--white)]"
-  >
-    <div class="cta-ambient" aria-hidden="true">
-      <div class="cta-glow cta-glow-main"></div>
-      <div class="cta-glow cta-glow-left"></div>
-      <div class="cta-glow cta-glow-right"></div>
-
-      <div class="cta-grid"></div>
-      <div class="cta-horizon"></div>
-      <div class="cta-vignette"></div>
-    </div>
-
-    <div class="relative z-10 mx-auto max-w-6xl px-6 py-32 md:py-44">
-      <div class="cta-content mx-auto max-w-4xl text-center">
-
-        <!-- Eyebrow -->
-        <div class="mb-8 flex items-center justify-center gap-3">
-          <span class="cta-status-dot"></span>
-
-          <span class="cta-eyebrow">
-            Let’s build
-          </span>
-        </div>
-
-        <!-- CTA heading -->
-        <h2 class="cta-title">
-          <span class="cta-title-line">
-            Have an idea?
-          </span>
-
-          <span class="cta-title-line cta-gradient-text">
-            Let’s make it real.
-          </span>
-        </h2>
-
-        <!-- CTA description -->
-        <p class="cta-description">
-          Great software starts with a good idea.
-          Whether it’s a project, an opportunity, or a problem worth solving,
-          I’m always interested in building something meaningful.
+        <p class="eyebrow">
+          Interactive
         </p>
 
-        <!-- CTA button -->
-        <div class="mt-10 flex justify-center">
-          <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=aymanejabranesm@gmail.com&su=Hey%20Jabrane!"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="cta-button group"
-          >
-            <span>Let’s talk</span>
+        <h2>
+          A different way
+          <span>to explore.</span>
+        </h2>
 
-            <svg
-              class="cta-arrow"
-              viewBox="0 0 20 20"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M4 10h11"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-              />
+        <p>
+          Discover my projects, skills and background
+          through an interactive developer terminal.
+        </p>
 
-              <path
-                d="m11 5 5 5-5 5"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </a>
-        </div>
+        <a href="#terminal" class="terminal-link">
+          Open terminal
 
-        <!-- Metadata -->
-        <div class="cta-meta">
-          <span>Software Developer</span>
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M4 10h11" />
+            <path d="m11 5 5 5-5 5" />
+          </svg>
+        </a>
 
-          <span class="cta-meta-separator"></span>
-
-          <span>Computer Science</span>
-
-          <span class="cta-meta-separator"></span>
-
-          <span>Spain</span>
-        </div>
       </div>
+
+
+      <div class="terminal-window">
+
+        <div class="terminal-bar">
+
+          <div class="window-controls">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <span>aymane@portfolio</span>
+
+          <div></div>
+
+        </div>
+
+
+        <div class="terminal-body">
+
+          <div class="terminal-command">
+            <span class="terminal-user">
+              aymane@portfolio
+            </span>
+
+            <span class="terminal-colon">:</span>
+
+            <span class="terminal-path">~</span>
+
+            <span class="terminal-dollar">$</span>
+
+            <span class="terminal-input">
+              help
+            </span>
+          </div>
+
+          <p>
+            Welcome to Aymane's interactive terminal.
+          </p>
+
+          <p>
+            Type
+            <strong>"help"</strong>
+            to explore available commands.
+          </p>
+
+          <div class="terminal-cursor"></div>
+
+        </div>
+
+      </div>
+
     </div>
+
   </section>
-</section>
+
+
+  <!-- ========================================================= -->
+  <!-- FINAL CTA -->
+  <!-- ========================================================= -->
+
+  <section id="contact" class="final-section">
+
+    <div class="final-light"></div>
+
+    <div class="final-inner">
+
+      <p class="eyebrow final-eyebrow">
+        Let’s build
+      </p>
+
+      <h2>
+        Have an idea?
+        <span>Let’s make it real.</span>
+      </h2>
+
+      <p class="final-description">
+        Great software starts with a good idea.
+        Whether it’s a project, an opportunity, or a problem worth solving,
+        I’m interested in building something meaningful.
+      </p>
+
+      <a
+        href="https://mail.google.com/mail/?view=cm&fs=1&to=aymanejabranesm@gmail.com&su=Hey%20Jabrane!"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="final-button"
+      >
+        <span>Let’s talk</span>
+
+        <svg viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M4 10h11" />
+          <path d="m11 5 5 5-5 5" />
+        </svg>
+      </a>
+
+      <div class="final-meta">
+        <span>Software Developer</span>
+        <i></i>
+        <span>Computer Science</span>
+        <i></i>
+        <span>Spain</span>
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
 
 <style>
+
   /* ========================================================= */
-  /* ROOT / APPLE DESIGN TOKENS */
+  /* APPLE DESIGN SYSTEM */
   /* ========================================================= */
 
-  .apple-home {
-    --apple-blue: #2997ff;
-    --apple-blue-soft: rgba(41, 151, 255, 0.14);
+  .apple-page {
 
-    --apple-white: #f5f5f7;
-    --apple-secondary: #86868b;
-    --apple-muted: #6e6e73;
-
-    --apple-border: rgba(255, 255, 255, 0.08);
-    --apple-border-soft: rgba(255, 255, 255, 0.055);
-
-    --apple-surface: rgba(255, 255, 255, 0.035);
-    --apple-surface-hover: rgba(255, 255, 255, 0.055);
+    --black: #000000;
+    --graphite: #050506;
+    --graphite-2: #08090b;
 
     --white: #f5f5f7;
+    --white-soft: #d2d2d7;
+
+    --gray: #86868b;
+    --gray-dark: #6e6e73;
+    --gray-darker: #424245;
+
+    --blue: #2997ff;
+    --blue-light: #60a5fa;
+
+    --line: rgba(255,255,255,0.09);
+    --line-soft: rgba(255,255,255,0.055);
+
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    background: var(--black);
+
+    color: var(--white);
+
+    font-family:
+      -apple-system,
+      BlinkMacSystemFont,
+      "SF Pro Display",
+      "SF Pro Text",
+      "Helvetica Neue",
+      Arial,
+      sans-serif;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
+
   /* ========================================================= */
-  /* BASE */
+  /* GLOBAL */
   /* ========================================================= */
 
-  .apple-home {
-    background: #050506;
+  .apple-page *,
+  .apple-page *::before,
+  .apple-page *::after {
+    box-sizing: border-box;
   }
 
-  .apple-home a {
+  .apple-page a {
+    color: inherit;
     text-decoration: none;
   }
 
-  /* ========================================================= */
-  /* AMBIENT BASE */
-  /* ========================================================= */
-
-  .ambient-background {
-    position: absolute;
-    inset: 0;
-  }
-
-  .ambient-base {
-    position: absolute;
-    inset: 0;
-
-    background:
-      radial-gradient(
-        ellipse 90% 60% at 50% 0%,
-        rgba(24, 54, 105, 0.18),
-        transparent 65%
-      ),
-      linear-gradient(
-        180deg,
-        #050506 0%,
-        #06070a 45%,
-        #050506 100%
-      );
-  }
-
-  /* ========================================================= */
-  /* ORBS */
-  /* ========================================================= */
-
-  .ambient-orb {
-    position: absolute;
-
-    border-radius: 50%;
-
-    pointer-events: none;
-
-    filter: blur(90px);
-
-    will-change: transform, opacity;
-  }
-
-  .orb-primary {
-    width: 650px;
-    height: 650px;
-
-    top: -330px;
-    left: 50%;
-
-    background:
-      radial-gradient(
-        circle,
-        rgba(41, 151, 255, 0.16) 0%,
-        rgba(41, 151, 255, 0.055) 35%,
-        transparent 70%
-      );
-
-    transform: translateX(-50%);
-
-    animation:
-      primaryOrb
-      18s
-      cubic-bezier(0.45, 0, 0.55, 1)
-      infinite;
-  }
-
-  .orb-secondary {
-    width: 500px;
-    height: 500px;
-
-    top: 260px;
-    right: -280px;
-
-    background:
-      radial-gradient(
-        circle,
-        rgba(45, 105, 210, 0.11),
-        transparent 70%
-      );
-
-    animation:
-      secondaryOrb
-      24s
-      cubic-bezier(0.45, 0, 0.55, 1)
-      infinite;
-  }
-
-  .orb-tertiary {
-    width: 460px;
-    height: 460px;
-
-    top: 780px;
-    left: -300px;
-
-    background:
-      radial-gradient(
-        circle,
-        rgba(31, 75, 150, 0.08),
-        transparent 70%
-      );
-
-    animation:
-      tertiaryOrb
-      28s
-      cubic-bezier(0.45, 0, 0.55, 1)
-      infinite;
-  }
-
-  @keyframes primaryOrb {
-    0%,
-    100% {
-      transform: translateX(-50%) translateY(0) scale(1);
-    }
-
-    50% {
-      transform: translateX(-50%) translateY(55px) scale(1.08);
-    }
-  }
-
-  @keyframes secondaryOrb {
-    0%,
-    100% {
-      transform: translate3d(0, 0, 0) scale(1);
-    }
-
-    50% {
-      transform: translate3d(-80px, 55px, 0) scale(1.12);
-    }
-  }
-
-  @keyframes tertiaryOrb {
-    0%,
-    100% {
-      transform: translate3d(0, 0, 0) scale(1);
-    }
-
-    50% {
-      transform: translate3d(70px, -45px, 0) scale(1.1);
-    }
-  }
-
-  /* ========================================================= */
-  /* LIGHT BEAMS */
-  /* ========================================================= */
-
-  .ambient-beam {
-    position: absolute;
-
-    top: -20%;
-    bottom: -20%;
-
-    width: 1px;
-
-    background:
-      linear-gradient(
-        180deg,
-        transparent,
-        rgba(41, 151, 255, 0.045),
-        rgba(255, 255, 255, 0.025),
-        transparent
-      );
-
-    filter: blur(0.5px);
-
-    opacity: 0.7;
-  }
-
-  .beam-one {
-    left: 31%;
-
-    animation:
-      beamMoveOne
-      15s
-      ease-in-out
-      infinite;
-  }
-
-  .beam-two {
-    right: 27%;
-
-    opacity: 0.45;
-
-    animation:
-      beamMoveTwo
-      19s
-      ease-in-out
-      infinite;
-  }
-
-  @keyframes beamMoveOne {
-    0%,
-    100% {
-      transform: translateX(0) scaleY(1);
-      opacity: 0.35;
-    }
-
-    50% {
-      transform: translateX(45px) scaleY(1.05);
-      opacity: 0.75;
-    }
-  }
-
-  @keyframes beamMoveTwo {
-    0%,
-    100% {
-      transform: translateX(0);
-      opacity: 0.25;
-    }
-
-    50% {
-      transform: translateX(-55px);
-      opacity: 0.55;
-    }
-  }
-
-  /* ========================================================= */
-  /* GRID */
-  /* ========================================================= */
-
-  .ambient-grid {
-    position: absolute;
-    inset: -100px;
-
-    background-image:
-      linear-gradient(
-        rgba(255, 255, 255, 0.018) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0.018) 1px,
-        transparent 1px
-      );
-
-    background-size: 72px 72px;
-
-    mask-image:
-      radial-gradient(
-        ellipse 75% 55% at 50% 10%,
-        black 0%,
-        rgba(0, 0, 0, 0.7) 35%,
-        transparent 85%
-      );
-
-    opacity: 0.35;
-
-    animation:
-      gridDrift
-      32s
-      linear
-      infinite;
-  }
-
-  @keyframes gridDrift {
-    from {
-      transform: translate3d(0, 0, 0);
-    }
-
-    to {
-      transform: translate3d(0, 72px, 0);
-    }
-  }
-
-  /* ========================================================= */
-  /* HORIZON */
-  /* ========================================================= */
-
-  .ambient-horizon {
-    position: absolute;
-
-    top: 0;
-    left: 50%;
-
-    width: 900px;
-    height: 320px;
-
-    transform: translateX(-50%);
-
-    background:
-      radial-gradient(
-        ellipse,
-        rgba(41, 151, 255, 0.065) 0%,
-        rgba(41, 151, 255, 0.025) 30%,
-        transparent 72%
-      );
-
-    filter: blur(30px);
-
-    animation:
-      horizonPulse
-      10s
-      ease-in-out
-      infinite;
-  }
-
-  @keyframes horizonPulse {
-    0%,
-    100% {
-      opacity: 0.65;
-      transform: translateX(-50%) scaleX(1);
-    }
-
-    50% {
-      opacity: 1;
-      transform: translateX(-50%) scaleX(1.08);
-    }
-  }
-
-  /* ========================================================= */
-  /* VIGNETTE */
-  /* ========================================================= */
-
-  .edge-vignette {
-    position: absolute;
-    inset: 0;
-
-    background:
-      radial-gradient(
-        ellipse at center top,
-        transparent 0%,
-        transparent 38%,
-        rgba(0, 0, 0, 0.35) 78%,
-        rgba(0, 0, 0, 0.7) 100%
-      );
-
-    pointer-events: none;
-  }
-
-  /* ========================================================= */
-  /* GRAIN */
-  /* ========================================================= */
-
-  .grain {
-    position: absolute;
-    inset: 0;
-
-    opacity: 0.018;
-
-    background-image:
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
-
-    mix-blend-mode: soft-light;
-  }
 
   /* ========================================================= */
   /* HERO */
   /* ========================================================= */
 
-  .hero-intro {
-    margin-bottom: 1rem;
+  .hero {
 
-    color: var(--apple-secondary);
+    position: relative;
 
-    font-size: clamp(
-      1.05rem,
-      1.5vw,
-      1.25rem
-    );
+    min-height: 100vh;
 
-    font-weight: 450;
+    display: flex;
 
-    letter-spacing: -0.015em;
+    align-items: center;
+
+    background:
+
+      radial-gradient(
+        ellipse 70% 55% at 50% -10%,
+        rgba(30, 64, 175, 0.18),
+        transparent 65%
+      ),
+
+      linear-gradient(
+        180deg,
+        #050506 0%,
+        #050506 70%,
+        #000 100%
+      );
+
+    overflow: hidden;
   }
 
-  .hero-title {
-    max-width: 850px;
+
+  .hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 220px;
+
+    pointer-events: none;
+
+    background:
+      linear-gradient(
+        to bottom,
+        transparent,
+        rgba(0,0,0,0.65)
+      );
+  }
+
+
+  .hero-inner {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(1320px, calc(100% - 64px));
+
+    margin: 0 auto;
+
+    padding:
+      150px 0
+      120px;
+
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1.05fr)
+      minmax(420px, 0.95fr);
+
+    align-items: center;
+
+    gap: 100px;
+  }
+
+
+  /* ========================================================= */
+  /* HERO COPY */
+  /* ========================================================= */
+
+  .hero-copy {
+    max-width: 760px;
+  }
+
+
+  .availability {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 30px;
+
+    color: var(--gray);
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.01em;
+  }
+
+
+  .availability-dot {
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #30d158;
+
+    box-shadow:
+      0 0 0 4px rgba(48,209,88,0.08);
+  }
+
+
+  .hero h1 {
 
     margin: 0;
 
-    color: var(--apple-white);
+    max-width: 850px;
+
+    color: var(--white);
 
     font-size: clamp(
-      4rem,
-      8.8vw,
-      8.7rem
+      64px,
+      8vw,
+      122px
     );
 
-    line-height: 0.92;
-
     font-weight: 600;
+
+    line-height: 0.94;
 
     letter-spacing: -0.065em;
   }
 
-  .hero-title-accent {
+
+  .hero h1 span {
+
     display: block;
+
+    margin-top: 10px;
+
+    color: transparent;
 
     background:
       linear-gradient(
-        100deg,
+        105deg,
         #f5f5f7 0%,
-        #c9dfff 45%,
-        #2997ff 100%
+        #cbd5e1 45%,
+        #60a5fa 100%
       );
 
-    -webkit-background-clip: text;
     background-clip: text;
+    -webkit-background-clip: text;
 
     -webkit-text-fill-color: transparent;
   }
 
-  .hero-description {
-    max-width: 590px;
 
-    margin-top: 2rem;
+  .hero-lead {
 
-    color: var(--apple-secondary);
+    max-width: 610px;
+
+    margin:
+      34px 0 0;
+
+    color: var(--gray);
 
     font-size: clamp(
-      1.1rem,
-      1.7vw,
-      1.35rem
+      20px,
+      2vw,
+      25px
     );
 
-    line-height: 1.65;
+    line-height: 1.45;
 
-    letter-spacing: -0.015em;
+    letter-spacing: -0.02em;
   }
 
+
   /* ========================================================= */
-  /* STATUS */
+  /* BUTTONS */
   /* ========================================================= */
 
-  .status-indicator {
-    width: 7px;
-    height: 7px;
+  .hero-actions {
 
-    border-radius: 999px;
+    display: flex;
 
-    background: var(--apple-blue);
+    align-items: center;
 
-    box-shadow:
-      0 0 0 4px rgba(41, 151, 255, 0.08),
-      0 0 18px rgba(41, 151, 255, 0.3);
+    flex-wrap: wrap;
 
-    animation:
-      statusPulse
-      3s
-      ease-in-out
-      infinite;
+    gap: 10px;
+
+    margin-top: 38px;
   }
 
-  .status-text {
-    color: var(--apple-secondary);
 
-    font-size: 0.76rem;
+  .button {
 
-    font-weight: 500;
+    min-height: 46px;
 
-    letter-spacing: 0.08em;
-
-    text-transform: uppercase;
-  }
-
-  @keyframes statusPulse {
-    0%,
-    100% {
-      opacity: 0.65;
-      transform: scale(1);
-    }
-
-    50% {
-      opacity: 1;
-      transform: scale(1.12);
-    }
-  }
-
-  /* ========================================================= */
-  /* HERO BUTTONS */
-  /* ========================================================= */
-
-  .hero-primary-button,
-  .hero-secondary-button {
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
-    min-height: 48px;
+    gap: 8px;
+
+    padding:
+      0 20px;
 
     border-radius: 999px;
 
-    font-size: 0.9rem;
+    font-size: 14px;
 
     font-weight: 500;
 
@@ -1148,511 +814,429 @@ import SkillsList from "../React/SkillsList.tsx";
     transition:
       transform 0.3s ease,
       background 0.3s ease,
-      border-color 0.3s ease,
-      box-shadow 0.3s ease;
+      border-color 0.3s ease;
   }
 
-  .hero-primary-button {
-    gap: 0.55rem;
 
-    padding: 0.8rem 1.25rem 0.8rem 1.35rem;
+  .button svg {
 
-    background: var(--apple-white);
+    width: 16px;
+    height: 16px;
 
-    color: #050506;
+    fill: none;
 
-    box-shadow:
-      0 8px 25px rgba(0, 0, 0, 0.18);
+    stroke: currentColor;
+
+    stroke-width: 1.5;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
   }
 
-  .hero-primary-button:hover {
+
+  .button-primary {
+
+    background: var(--white);
+
+    color: #000;
+
+    padding-left: 22px;
+  }
+
+
+  .button-primary:hover {
+
     transform: translateY(-2px);
 
-    box-shadow:
-      0 14px 35px rgba(0, 0, 0, 0.25);
+    background: #fff;
   }
 
-  .hero-secondary-button {
-    padding: 0.8rem 1.15rem;
 
-    border: 1px solid var(--apple-border);
+  .button-secondary {
 
-    background: var(--apple-surface);
+    border:
+      1px solid var(--line);
 
-    color: var(--apple-secondary);
+    background:
+      rgba(255,255,255,0.04);
 
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    color: var(--white-soft);
+
+    backdrop-filter: blur(15px);
   }
 
-  .hero-secondary-button:hover {
+
+  .button-secondary:hover {
+
     transform: translateY(-2px);
 
     border-color:
-      rgba(41, 151, 255, 0.25);
+      rgba(255,255,255,0.18);
 
     background:
-      rgba(41, 151, 255, 0.07);
-
-    color: var(--apple-white);
+      rgba(255,255,255,0.075);
   }
 
-  /* ========================================================= */
-  /* HERO META */
-  /* ========================================================= */
 
   .hero-meta {
+
     display: flex;
 
     align-items: center;
 
     flex-wrap: wrap;
 
-    gap: 0.8rem;
+    gap: 11px;
 
-    margin-top: 2.7rem;
+    margin-top: 34px;
 
-    color: var(--apple-muted);
+    color: #5f6065;
 
-    font-size: 0.7rem;
+    font-size: 11px;
 
     letter-spacing: 0.08em;
 
     text-transform: uppercase;
   }
 
-  .hero-meta-separator {
+
+  .hero-meta i,
+  .final-meta i {
+
     width: 3px;
     height: 3px;
 
     border-radius: 50%;
 
-    background:
-      rgba(255, 255, 255, 0.2);
+    background: #3c3c40;
   }
 
+
   /* ========================================================= */
-  /* DEVELOPER WINDOW */
+  /* DEVELOPER CARD */
   /* ========================================================= */
 
-  .developer-window-wrapper {
+  .hero-visual {
+
     position: relative;
 
-    perspective: 1200px;
+    display: flex;
+
+    justify-content: center;
   }
 
-  .developer-window {
-    position: relative;
+
+  .developer-card {
+
+    width: 100%;
+
+    max-width: 610px;
 
     overflow: hidden;
 
     border:
       1px solid
-      rgba(255, 255, 255, 0.1);
+      rgba(255,255,255,0.10);
 
-    border-radius: 18px;
+    border-radius: 22px;
 
     background:
-      rgba(10, 11, 15, 0.72);
+      rgba(20,20,22,0.68);
 
     box-shadow:
-      0 35px 90px rgba(0, 0, 0, 0.42),
-      inset 0 1px 0 rgba(255, 255, 255, 0.055);
+      0 40px 100px rgba(0,0,0,0.45),
+      inset 0 1px 0 rgba(255,255,255,0.05);
 
-    backdrop-filter: blur(28px);
-    -webkit-backdrop-filter: blur(28px);
+    backdrop-filter:
+      blur(30px)
+      saturate(120%);
+
+    -webkit-backdrop-filter:
+      blur(30px)
+      saturate(120%);
 
     transform:
-      rotateY(-2deg)
-      rotateX(1deg);
+      perspective(1400px)
+      rotateY(-4deg);
 
     transition:
-      transform 0.6s
-      cubic-bezier(0.2, 0.8, 0.2, 1),
-      border-color 0.4s ease;
+      transform 0.7s
+      cubic-bezier(0.2,0.8,0.2,1);
   }
 
-  .developer-window:hover {
+
+  .developer-card:hover {
+
     transform:
+      perspective(1400px)
       rotateY(0deg)
-      rotateX(0deg)
       translateY(-4px);
-
-    border-color:
-      rgba(41, 151, 255, 0.18);
   }
 
-  .developer-window-header {
+
+  .developer-topbar,
+  .terminal-bar {
+
+    height: 48px;
+
     display: grid;
 
     grid-template-columns: 1fr auto 1fr;
 
     align-items: center;
 
-    height: 48px;
-
-    padding: 0 16px;
+    padding: 0 17px;
 
     border-bottom:
-      1px solid
-      rgba(255, 255, 255, 0.06);
+      1px solid var(--line-soft);
 
     background:
-      rgba(255, 255, 255, 0.025);
+      rgba(255,255,255,0.025);
   }
 
-  .window-controls {
-    display: flex;
 
-    align-items: center;
+  .window-controls {
+
+    display: flex;
 
     gap: 7px;
   }
 
-  .window-control {
+
+  .window-controls span {
+
     width: 10px;
     height: 10px;
 
     border-radius: 50%;
+
+    background: #3a3a3d;
   }
 
-  .window-red {
+
+  .window-controls span:nth-child(1) {
     background: #ff5f57;
   }
 
-  .window-yellow {
+  .window-controls span:nth-child(2) {
     background: #febc2e;
   }
 
-  .window-green {
+  .window-controls span:nth-child(3) {
     background: #28c840;
   }
 
-  .window-title {
-    display: flex;
 
-    align-items: center;
+  .developer-title {
 
-    gap: 7px;
+    color: #77777c;
 
-    color: #73757c;
-
-    font-size: 0.68rem;
-
-    letter-spacing: 0.03em;
-  }
-
-  .window-title-icon {
-    color: var(--apple-blue);
-
-    font-family:
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      Monaco,
-      Consolas,
-      monospace;
-  }
-
-  .window-header-space {
-    min-width: 1px;
-  }
-
-  .developer-window-body {
-    position: relative;
-
-    min-height: 460px;
-
-    padding: 22px;
-  }
-
-  .code-label {
-    position: absolute;
-
-    top: 22px;
-    left: 22px;
-
-    z-index: 5;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    color: #7c8390;
-
-    font-family:
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      Monaco,
-      Consolas,
-      monospace;
-
-    font-size: 0.72rem;
-  }
-
-  .code-label-dot {
-    width: 5px;
-    height: 5px;
-
-    border-radius: 50%;
-
-    background: var(--apple-blue);
-  }
-
-  .letter-glitch-container {
-    position: absolute;
-
-    inset: 0;
-
-    overflow: hidden;
-  }
-
-  .terminal-status {
-    position: absolute;
-
-    right: 22px;
-    bottom: 20px;
-
-    z-index: 5;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    color: #686d77;
-
-    font-family:
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      Monaco,
-      Consolas,
-      monospace;
-
-    font-size: 0.66rem;
-  }
-
-  .terminal-status-dot {
-    width: 5px;
-    height: 5px;
-
-    border-radius: 50%;
-
-    background: #34d399;
-
-    box-shadow:
-      0 0 10px rgba(52, 211, 153, 0.35);
-  }
-
-  /* ========================================================= */
-  /* SCROLL INDICATOR */
-  /* ========================================================= */
-
-  .scroll-indicator {
-    position: absolute;
-
-    bottom: 42px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    color: #666970;
-
-    font-size: 0.66rem;
-
-    letter-spacing: 0.1em;
-
-    text-transform: uppercase;
-
-    transition:
-      color 0.3s ease,
-      transform 0.3s ease;
-  }
-
-  .scroll-indicator:hover {
-    color: var(--apple-secondary);
-
-    transform:
-      translateX(-50%)
-      translateY(3px);
-  }
-
-  /* ========================================================= */
-  /* SECTION HEADINGS */
-  /* ========================================================= */
-
-  .section-heading {
-    max-width: 720px;
-  }
-
-  .section-eyebrow {
-    margin-bottom: 1rem;
-
-    color: var(--apple-blue);
-
-    font-size: 0.72rem;
-
-    font-weight: 500;
-
-    letter-spacing: 0.12em;
-
-    text-transform: uppercase;
-  }
-
-  .section-title {
-    margin: 0;
-
-    color: var(--apple-white);
-
-    font-size: clamp(
-      2.6rem,
-      5.5vw,
-      5.2rem
-    );
-
-    line-height: 0.98;
-
-    font-weight: 600;
-
-    letter-spacing: -0.055em;
-  }
-
-  .section-description {
-    max-width: 620px;
-
-    margin-top: 1.5rem;
-
-    color: var(--apple-secondary);
-
-    font-size: 1.05rem;
-
-    line-height: 1.7;
+    font-size: 12px;
 
     letter-spacing: -0.01em;
   }
 
-  /* ========================================================= */
-  /* NOTES */
-  /* ========================================================= */
 
-  .notes-grid {
-    display: grid;
+  .developer-content {
 
-    grid-template-columns:
-      repeat(
-        2,
-        minmax(0, 1fr)
-      );
-
-    gap: 14px;
-
-    margin-top: 4rem;
-  }
-
-  .note-card {
     position: relative;
 
-    display: grid;
-
-    grid-template-columns: 45px 1fr auto;
-
-    gap: 1rem;
-
-    min-height: 190px;
-
-    padding: 1.5rem;
+    height: 500px;
 
     overflow: hidden;
-
-    border:
-      1px solid
-      var(--apple-border);
-
-    border-radius: 18px;
-
-    background:
-      var(--apple-surface);
-
-    color: var(--apple-white);
-
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-
-    transition:
-      transform 0.4s
-      cubic-bezier(0.2, 0.8, 0.2, 1),
-      border-color 0.4s ease,
-      background 0.4s ease;
   }
 
-  .note-card::before {
+
+  .developer-content::after {
+
     content: "";
 
     position: absolute;
 
     inset: 0;
 
+    pointer-events: none;
+
     background:
       radial-gradient(
-        circle at 0% 0%,
-        rgba(41, 151, 255, 0.08),
-        transparent 45%
+        circle at center,
+        transparent 35%,
+        rgba(0,0,0,0.28) 100%
       );
-
-    opacity: 0;
-
-    transition: opacity 0.4s ease;
   }
 
-  .note-card:hover {
-    transform: translateY(-5px);
 
-    border-color:
-      rgba(41, 151, 255, 0.2);
+  .developer-label {
 
-    background:
-      var(--apple-surface-hover);
-  }
+    position: absolute;
 
-  .note-card:hover::before {
-    opacity: 1;
-  }
+    z-index: 4;
 
-  .note-number {
-    position: relative;
+    top: 20px;
+    left: 22px;
 
-    color: #50545c;
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #70727a;
 
     font-family:
       ui-monospace,
       SFMono-Regular,
       Menlo,
-      Monaco,
-      Consolas,
       monospace;
 
-    font-size: 0.72rem;
+    font-size: 11px;
   }
 
-  .note-category {
+
+  .developer-label span {
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: var(--blue);
+  }
+
+
+  .glitch-wrapper {
+
+    position: absolute;
+
+    inset: 0;
+  }
+
+
+  .developer-footer {
+
+    position: absolute;
+
+    z-index: 4;
+
+    right: 20px;
+    bottom: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #64666c;
+
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      monospace;
+
+    font-size: 10px;
+  }
+
+
+  .online-dot {
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #30d158;
+  }
+
+
+  /* ========================================================= */
+  /* SCROLL */
+  /* ========================================================= */
+
+  .hero-scroll {
+
+    position: absolute;
+
+    z-index: 5;
+
+    bottom: 32px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #55565a;
+
+    font-size: 10px;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+  }
+
+
+  .hero-scroll svg {
+
+    width: 15px;
+    height: 15px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.4;
+  }
+
+
+  /* ========================================================= */
+  /* GENERIC SECTIONS */
+  /* ========================================================= */
+
+  .section {
+
     position: relative;
 
-    margin-bottom: 0.65rem;
+    background: var(--black);
+  }
 
-    color: var(--apple-blue);
 
-    font-size: 0.67rem;
+  .section-inner {
+
+    width: min(
+      1180px,
+      calc(100% - 64px)
+    );
+
+    margin: 0 auto;
+
+    padding:
+      170px 0;
+  }
+
+
+  .section-intro {
+
+    max-width: 780px;
+  }
+
+
+  .eyebrow {
+
+    margin: 0 0 20px;
+
+    color: var(--blue);
+
+    font-size: 12px;
 
     font-weight: 500;
 
@@ -1661,117 +1245,344 @@ import SkillsList from "../React/SkillsList.tsx";
     text-transform: uppercase;
   }
 
-  .note-card h3 {
-    position: relative;
+
+  .section-intro h2,
+  .terminal-copy h2 {
 
     margin: 0;
 
-    color: var(--apple-white);
+    color: var(--white);
 
-    font-size: 1.25rem;
+    font-size: clamp(
+      48px,
+      6vw,
+      78px
+    );
 
-    line-height: 1.15;
+    font-weight: 600;
+
+    line-height: 0.98;
+
+    letter-spacing: -0.055em;
+  }
+
+
+  .section-intro h2 span,
+  .terminal-copy h2 span {
+
+    color: var(--gray-dark);
+  }
+
+
+  .section-intro > p:last-child,
+  .terminal-copy > p {
+
+    max-width: 610px;
+
+    margin-top: 25px;
+
+    color: var(--gray);
+
+    font-size: 19px;
+
+    line-height: 1.55;
+
+    letter-spacing: -0.015em;
+  }
+
+
+  /* ========================================================= */
+  /* TECHNOLOGIES */
+  /* ========================================================= */
+
+  .technologies-section {
+
+    border-top:
+      1px solid var(--line-soft);
+  }
+
+
+  .technology-wall {
+
+    margin-top: 90px;
+
+    padding: 20px 0;
+  }
+
+
+  /* ========================================================= */
+  /* SKILLS */
+  /* ========================================================= */
+
+  .skills-section {
+
+    border-top:
+      1px solid var(--line-soft);
+  }
+
+
+  .skills-container {
+
+    margin-top: 90px;
+  }
+
+
+  /* ========================================================= */
+  /* NOTES */
+  /* ========================================================= */
+
+  .notes-section {
+
+    border-top:
+      1px solid var(--line-soft);
+  }
+
+
+  .notes-list {
+
+    margin-top: 80px;
+
+    border-top:
+      1px solid var(--line);
+  }
+
+
+  .note-row {
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+      60px
+      minmax(280px, 1fr)
+      minmax(220px, 0.7fr)
+      30px;
+
+    align-items: center;
+
+    gap: 30px;
+
+    min-height: 125px;
+
+    padding: 24px 8px;
+
+    border-bottom:
+      1px solid var(--line);
+
+    transition:
+      background 0.35s ease,
+      padding 0.35s ease;
+  }
+
+
+  .note-row:hover {
+
+    padding-left: 18px;
+    padding-right: 18px;
+
+    background:
+      rgba(255,255,255,0.025);
+  }
+
+
+  .note-index {
+
+    color: #4d4e52;
+
+    font-size: 12px;
+
+    font-variant-numeric: tabular-nums;
+  }
+
+
+  .note-main > span {
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: var(--blue);
+
+    font-size: 11px;
+
+    letter-spacing: 0.06em;
+
+    text-transform: uppercase;
+  }
+
+
+  .note-main h3 {
+
+    margin: 0;
+
+    color: var(--white);
+
+    font-size: 20px;
 
     font-weight: 500;
 
     letter-spacing: -0.025em;
   }
 
-  .note-card p:last-of-type {
-    position: relative;
 
-    max-width: 400px;
+  .note-row > p {
 
-    margin-top: 0.75rem;
+    margin: 0;
 
-    color: var(--apple-muted);
+    color: var(--gray-dark);
 
-    font-size: 0.86rem;
+    font-size: 14px;
 
-    line-height: 1.6;
+    line-height: 1.5;
   }
+
 
   .note-arrow {
-    position: relative;
 
-    color: #5d626b;
+    color: #55565a;
 
-    font-size: 1rem;
+    font-size: 17px;
 
     transition:
-      color 0.3s ease,
-      transform 0.3s ease;
+      color 0.25s ease,
+      transform 0.25s ease;
   }
 
-  .note-card:hover .note-arrow {
-    color: var(--apple-blue);
 
-    transform: translate(2px, -2px);
+  .note-row:hover .note-arrow {
+
+    color: var(--white);
+
+    transform:
+      translate(2px,-2px);
   }
+
 
   /* ========================================================= */
   /* TERMINAL */
   /* ========================================================= */
 
-  .terminal-preview {
+  .terminal-section {
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+      #050506;
+
+    border-top:
+      1px solid var(--line-soft);
+  }
+
+
+  .terminal-inner {
+
+    width: min(
+      1180px,
+      calc(100% - 64px)
+    );
+
+    margin: auto;
+
+    padding:
+      180px 0;
+
+    display: grid;
+
+    grid-template-columns:
+      0.8fr 1.2fr;
+
+    align-items: center;
+
+    gap: 100px;
+  }
+
+
+  .terminal-link {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 32px;
+
+    color: var(--white);
+
+    font-size: 14px;
+
+    font-weight: 500;
+  }
+
+
+  .terminal-link svg {
+
+    width: 16px;
+    height: 16px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.5;
+
+    transition:
+      transform 0.25s ease;
+  }
+
+
+  .terminal-link:hover svg {
+
+    transform:
+      translateX(4px);
+  }
+
+
+  .terminal-window {
+
     overflow: hidden;
 
     border:
       1px solid
-      var(--apple-border);
+      rgba(255,255,255,0.09);
 
-    border-radius: 20px;
+    border-radius: 18px;
 
     background:
-      rgba(9, 10, 13, 0.82);
+      rgba(255,255,255,0.025);
 
     box-shadow:
-      0 30px 80px
-      rgba(0, 0, 0, 0.3),
+      0 35px 90px rgba(0,0,0,0.35);
 
-      inset 0 1px 0
-      rgba(255, 255, 255, 0.04);
-
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
+    backdrop-filter:
+      blur(25px);
   }
 
-  .terminal-preview-header {
-    display: grid;
 
-    grid-template-columns: 1fr auto 1fr;
+  .terminal-bar > span {
 
-    align-items: center;
+    color: #65666b;
 
-    height: 48px;
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      monospace;
 
-    padding: 0 16px;
-
-    border-bottom:
-      1px solid
-      rgba(255, 255, 255, 0.055);
-
-    background:
-      rgba(255, 255, 255, 0.02);
+    font-size: 11px;
   }
 
-  .terminal-preview-controls {
-    display: flex;
 
-    gap: 7px;
-  }
+  .terminal-body {
 
-  .terminal-preview-controls span {
-    width: 10px;
-    height: 10px;
+    min-height: 320px;
 
-    border-radius: 50%;
+    padding: 40px;
 
-    background: #3a3d42;
-  }
-
-  .terminal-preview-title {
-    color: #656971;
+    color: #73757a;
 
     font-family:
       ui-monospace,
@@ -1781,744 +1592,618 @@ import SkillsList from "../React/SkillsList.tsx";
       Consolas,
       monospace;
 
-    font-size: 0.67rem;
+    font-size: 13px;
+
+    line-height: 1.8;
   }
 
-  .terminal-preview-body {
-    min-height: 300px;
 
-    padding: 2.5rem;
+  .terminal-command {
 
-    font-family:
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      Monaco,
-      Consolas,
-      monospace;
-  }
-
-  .terminal-line {
     display: flex;
 
     flex-wrap: wrap;
 
-    gap: 0.25rem;
+    gap: 5px;
 
-    color: #c6cad1;
-
-    font-size: 0.82rem;
+    color: #d2d2d7;
   }
 
-  .terminal-prompt {
-    color: #5dd6a0;
+
+  .terminal-user {
+    color: #5ac18e;
   }
 
-  .terminal-symbol {
-    color: #555b64;
+
+  .terminal-colon,
+  .terminal-dollar {
+    color: #55565a;
   }
+
 
   .terminal-path {
-    color: var(--apple-blue);
+    color: var(--blue);
   }
 
-  .terminal-command {
-    color: #e5e7eb;
+
+  .terminal-body p {
+
+    margin: 10px 0 0;
   }
 
-  .terminal-output {
-    margin-top: 0.75rem;
 
-    color: #707680;
+  .terminal-body strong {
 
-    font-size: 0.78rem;
+    color: var(--blue);
 
-    line-height: 1.7;
+    font-weight: 400;
   }
 
-  .terminal-highlight {
-    color: var(--apple-blue);
-  }
 
-  .terminal-launch {
-    display: inline-flex;
+  .terminal-cursor {
 
-    align-items: center;
+    display: inline-block;
 
-    gap: 0.55rem;
-
-    margin-top: 2rem;
-
-    color: var(--apple-secondary);
-
-    font-size: 0.76rem;
-
-    transition:
-      color 0.3s ease;
-  }
-
-  .terminal-launch:hover {
-    color: var(--apple-blue);
-  }
-
-  /* ========================================================= */
-  /* CTA */
-  /* ========================================================= */
-
-  .cta-section {
-    --cta-blue: #2997ff;
-    --cta-blue-light: #60a5fa;
-    --cta-blue-pale: #dbeafe;
-
-    --cta-white: #f5f5f7;
-    --cta-secondary: #86868b;
-    --cta-muted: #6e6e73;
-
-    position: relative;
-
-    background:
-      linear-gradient(
-        180deg,
-        #050506 0%,
-        #06080c 45%,
-        #050506 100%
-      );
-  }
-
-  .cta-ambient {
-    position: absolute;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    overflow: hidden;
-  }
-
-  .cta-glow {
-    position: absolute;
-
-    border-radius: 50%;
-
-    filter: blur(90px);
-
-    will-change: transform, opacity;
-  }
-
-  .cta-glow-main {
-    width: 720px;
-    height: 520px;
-
-    top: -280px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    background:
-      radial-gradient(
-        ellipse,
-        rgba(41, 151, 255, 0.15) 0%,
-        rgba(41, 151, 255, 0.06) 38%,
-        transparent 72%
-      );
-
-    animation:
-      ctaMainGlow
-      12s
-      ease-in-out
-      infinite;
-  }
-
-  .cta-glow-left {
-    width: 420px;
-    height: 420px;
-
-    left: -280px;
-    bottom: -220px;
-
-    background:
-      radial-gradient(
-        circle,
-        rgba(37, 99, 235, 0.07),
-        transparent 70%
-      );
-
-    animation:
-      ctaSideGlowLeft
-      18s
-      ease-in-out
-      infinite;
-  }
-
-  .cta-glow-right {
-    width: 420px;
-    height: 420px;
-
-    right: -280px;
-    bottom: -180px;
-
-    background:
-      radial-gradient(
-        circle,
-        rgba(59, 130, 246, 0.06),
-        transparent 70%
-      );
-
-    animation:
-      ctaSideGlowRight
-      21s
-      ease-in-out
-      infinite;
-  }
-
-  @keyframes ctaMainGlow {
-    0%,
-    100% {
-      opacity: 0.65;
-
-      transform:
-        translateX(-50%)
-        scale(1);
-    }
-
-    50% {
-      opacity: 1;
-
-      transform:
-        translateX(-50%)
-        scale(1.08);
-    }
-  }
-
-  @keyframes ctaSideGlowLeft {
-    0%,
-    100% {
-      transform:
-        translate3d(0, 0, 0);
-    }
-
-    50% {
-      transform:
-        translate3d(50px, -30px, 0);
-    }
-  }
-
-  @keyframes ctaSideGlowRight {
-    0%,
-    100% {
-      transform:
-        translate3d(0, 0, 0);
-    }
-
-    50% {
-      transform:
-        translate3d(-45px, -25px, 0);
-    }
-  }
-
-  .cta-grid {
-    position: absolute;
-
-    inset: -100px;
-
-    background-image:
-      linear-gradient(
-        rgba(255, 255, 255, 0.018) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0.018) 1px,
-        transparent 1px
-      );
-
-    background-size: 72px 72px;
-
-    mask-image:
-      radial-gradient(
-        ellipse 70% 70% at 50% 50%,
-        black 0%,
-        rgba(0, 0, 0, 0.65) 40%,
-        transparent 82%
-      );
-
-    opacity: 0.35;
-
-    animation:
-      ctaGridMove
-      30s
-      linear
-      infinite;
-  }
-
-  @keyframes ctaGridMove {
-    from {
-      transform:
-        translate3d(0, 0, 0);
-    }
-
-    to {
-      transform:
-        translate3d(0, 72px, 0);
-    }
-  }
-
-  .cta-horizon {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    width: 900px;
-    height: 220px;
-
-    transform:
-      translate(-50%, -50%);
-
-    background:
-      radial-gradient(
-        ellipse,
-        rgba(41, 151, 255, 0.045) 0%,
-        transparent 70%
-      );
-
-    filter: blur(30px);
-  }
-
-  .cta-vignette {
-    position: absolute;
-
-    inset: 0;
-
-    background:
-      radial-gradient(
-        ellipse at center,
-        transparent 0%,
-        transparent 45%,
-        rgba(0, 0, 0, 0.28) 75%,
-        rgba(0, 0, 0, 0.62) 100%
-      );
-  }
-
-  .cta-content {
-    position: relative;
-  }
-
-  .cta-eyebrow {
-    color: var(--cta-secondary);
-
-    font-size: 0.78rem;
-
-    line-height: 1;
-
-    font-weight: 500;
-
-    letter-spacing: 0.08em;
-
-    text-transform: uppercase;
-  }
-
-  .cta-status-dot {
     width: 7px;
-    height: 7px;
+    height: 15px;
 
-    border-radius: 999px;
+    margin-top: 12px;
 
-    background: var(--cta-blue);
-
-    box-shadow:
-      0 0 0 4px
-        rgba(41, 151, 255, 0.08),
-
-      0 0 18px
-        rgba(41, 151, 255, 0.3);
+    background:
+      rgba(41,151,255,0.65);
 
     animation:
-      ctaDotPulse
-      3s
-      ease-in-out
+      blink 1.1s
+      steps(2)
       infinite;
   }
 
-  @keyframes ctaDotPulse {
-    0%,
-    100% {
-      opacity: 0.65;
 
-      transform: scale(1);
-    }
+  @keyframes blink {
 
     50% {
-      opacity: 1;
-
-      transform: scale(1.12);
+      opacity: 0;
     }
   }
 
-  /* ========================================================= */
-  /* CTA TITLE — PREMIUM BLUE GRADIENT */
-  /* ========================================================= */
-
-  .cta-title {
-    margin: 0;
-
-    color: var(--cta-white);
-
-    font-size: clamp(
-      3.1rem,
-      8vw,
-      7.4rem
-    );
-
-    line-height: 0.94;
-
-    font-weight: 600;
-
-    letter-spacing: -0.055em;
-  }
-
-  .cta-title-line {
-    display: block;
-  }
-
-  .cta-gradient-text {
-    margin-top: 0.08em;
-
-    background:
-      linear-gradient(
-        110deg,
-        #2997ff 0%,
-        #60a5fa 34%,
-        #dbeafe 55%,
-        #60a5fa 72%,
-        #2997ff 100%
-      );
-
-    background-size: 250% 100%;
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    -webkit-text-fill-color: transparent;
-
-    color: transparent;
-
-    filter:
-      drop-shadow(
-        0 0 28px
-        rgba(41, 151, 255, 0.13)
-      );
-
-    animation:
-      ctaGradientMove
-      9s
-      ease-in-out
-      infinite;
-  }
-
-  .cta-description {
-    max-width: 650px;
-
-    margin: 2rem auto 0;
-
-    color: var(--cta-secondary);
-
-    font-size: clamp(
-      1rem,
-      1.5vw,
-      1.18rem
-    );
-
-    line-height: 1.75;
-
-    letter-spacing: -0.01em;
-  }
 
   /* ========================================================= */
-  /* CTA BUTTON */
+  /* FINAL CTA */
   /* ========================================================= */
 
-  .cta-button {
-    display: inline-flex;
+  .final-section {
 
-    align-items: center;
+    position: relative;
 
-    gap: 0.7rem;
+    min-height: 800px;
 
-    min-height: 52px;
-
-    padding:
-      0.85rem
-      1.25rem
-      0.85rem
-      1.4rem;
-
-    border:
-      1px solid
-      rgba(255, 255, 255, 0.12);
-
-    border-radius: 999px;
-
-    background:
-      rgba(255, 255, 255, 0.055);
-
-    color: var(--cta-white);
-
-    font-size: 0.95rem;
-
-    font-weight: 500;
-
-    letter-spacing: -0.01em;
-
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-
-    box-shadow:
-      inset 0 1px 0
-        rgba(255, 255, 255, 0.07),
-
-      0 12px 35px
-        rgba(0, 0, 0, 0.18);
-
-    transition:
-      transform 0.35s
-        cubic-bezier(0.2, 0.8, 0.2, 1),
-
-      background 0.35s ease,
-
-      border-color 0.35s ease,
-
-      box-shadow 0.35s ease;
-  }
-
-  .cta-button:hover {
-    transform: translateY(-3px);
-
-    background:
-      rgba(41, 151, 255, 0.11);
-
-    border-color:
-      rgba(41, 151, 255, 0.32);
-
-    box-shadow:
-      inset 0 1px 0
-        rgba(255, 255, 255, 0.09),
-
-      0 18px 45px
-        rgba(41, 151, 255, 0.09);
-  }
-
-  .cta-arrow {
-    width: 18px;
-    height: 18px;
-
-    color: var(--cta-blue);
-
-    transition:
-      transform 0.35s
-        cubic-bezier(0.2, 0.8, 0.2, 1);
-  }
-
-  .cta-button:hover .cta-arrow {
-    transform: translateX(4px);
-  }
-
-  /* ========================================================= */
-  /* CTA META */
-  /* ========================================================= */
-
-  .cta-meta {
     display: flex;
 
     align-items: center;
 
     justify-content: center;
 
+    overflow: hidden;
+
+    background:
+      linear-gradient(
+        180deg,
+        #050506 0%,
+        #08090c 50%,
+        #050506 100%
+      );
+
+    border-top:
+      1px solid var(--line-soft);
+  }
+
+
+  .final-light {
+
+    position: absolute;
+
+    width: 900px;
+    height: 500px;
+
+    top: -250px;
+    left: 50%;
+
+    transform:
+      translateX(-50%);
+
+    pointer-events: none;
+
+    background:
+      radial-gradient(
+        ellipse,
+        rgba(41,151,255,0.13) 0%,
+        rgba(41,151,255,0.045) 32%,
+        transparent 72%
+      );
+
+    filter:
+      blur(45px);
+  }
+
+
+  .final-inner {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(
+      1000px,
+      calc(100% - 64px)
+    );
+
+    padding:
+      160px 0;
+
+    text-align: center;
+  }
+
+
+  .final-eyebrow {
+
+    margin-bottom: 28px;
+  }
+
+
+  .final-inner h2 {
+
+    margin: 0;
+
+    color: var(--white);
+
+    font-size: clamp(
+      58px,
+      8vw,
+      112px
+    );
+
+    font-weight: 600;
+
+    line-height: 0.94;
+
+    letter-spacing: -0.065em;
+  }
+
+
+  /*
+   * THIS is the accent:
+   * Apple-style blue, but restrained.
+   */
+
+  .final-inner h2 span {
+
+    display: block;
+
+    margin-top: 8px;
+
+    color: transparent;
+
+    background:
+      linear-gradient(
+        100deg,
+        #2997ff 0%,
+        #60a5fa 38%,
+        #dbeafe 55%,
+        #2997ff 100%
+      );
+
+    background-size:
+      220% 100%;
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    animation:
+      appleBlue 10s
+      ease-in-out
+      infinite;
+  }
+
+
+  @keyframes appleBlue {
+
+    0%,
+    100% {
+      background-position:
+        0% 50%;
+    }
+
+    50% {
+      background-position:
+        100% 50%;
+    }
+  }
+
+
+  .final-description {
+
+    max-width: 650px;
+
+    margin:
+      30px auto 0;
+
+    color: var(--gray);
+
+    font-size: 19px;
+
+    line-height: 1.6;
+
+    letter-spacing: -0.015em;
+  }
+
+
+  .final-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 38px;
+
+    min-height: 50px;
+
+    padding:
+      0 23px;
+
+    border-radius: 999px;
+
+    background: var(--white);
+
+    color: #000;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+
+  .final-button:hover {
+
+    transform:
+      translateY(-3px);
+
+    box-shadow:
+      0 14px 40px
+      rgba(255,255,255,0.10);
+  }
+
+
+  .final-button svg {
+
+    width: 16px;
+    height: 16px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.5;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+
+    transition:
+      transform 0.25s ease;
+  }
+
+
+  .final-button:hover svg {
+
+    transform:
+      translateX(4px);
+  }
+
+
+  .final-meta {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
     flex-wrap: wrap;
 
-    gap: 0.85rem;
+    gap: 11px;
 
-    margin-top: 2.5rem;
+    margin-top: 34px;
 
-    color: var(--cta-muted);
+    color: #55565a;
 
-    font-size: 0.72rem;
+    font-size: 10px;
 
-    letter-spacing: 0.08em;
+    letter-spacing: 0.09em;
 
     text-transform: uppercase;
   }
 
-  .cta-meta-separator {
-    width: 3px;
-    height: 3px;
-
-    border-radius: 50%;
-
-    background:
-      rgba(255, 255, 255, 0.25);
-  }
 
   /* ========================================================= */
-  /* RESPONSIVE */
+  /* TABLET */
   /* ========================================================= */
 
-  @media (max-width: 1024px) {
-    .hero-title {
-      font-size: clamp(
-        4rem,
-        10vw,
-        7rem
-      );
+  @media (max-width: 1050px) {
+
+    .hero-inner {
+
+      grid-template-columns: 1fr;
+
+      gap: 70px;
+
+      padding-top: 130px;
     }
 
-    .developer-window-body {
-      min-height: 400px;
-    }
-  }
 
-  @media (max-width: 768px) {
-    .hero-title {
-      font-size: clamp(
-        3.8rem,
-        14vw,
-        6rem
-      );
+    .hero-copy {
+
+      max-width: 850px;
     }
 
-    .developer-window {
+
+    .hero-visual {
+
+      justify-content: flex-start;
+    }
+
+
+    .developer-card {
+
+      max-width: 700px;
+
       transform: none;
     }
 
-    .developer-window-body {
-      min-height: 350px;
-    }
 
-    .notes-grid {
+    .terminal-inner {
+
       grid-template-columns: 1fr;
+
+      gap: 60px;
     }
 
-    .scroll-indicator {
-      display: none;
-    }
   }
 
-  @media (max-width: 640px) {
-    .hero-title {
-      font-size: clamp(
-        3.5rem,
-        16vw,
-        5.5rem
-      );
 
-      letter-spacing: -0.065em;
+  /* ========================================================= */
+  /* MOBILE */
+  /* ========================================================= */
+
+  @media (max-width: 700px) {
+
+    .hero-inner,
+    .section-inner,
+    .terminal-inner {
+
+      width:
+        calc(100% - 40px);
     }
 
-    .hero-description {
-      font-size: 1rem;
+
+    .hero-inner {
+
+      padding:
+        120px 0
+        100px;
+
+      gap: 55px;
     }
+
+
+    .hero h1 {
+
+      font-size:
+        clamp(
+          54px,
+          16vw,
+          82px
+        );
+    }
+
+
+    .hero-lead {
+
+      font-size: 19px;
+    }
+
+
+    .hero-actions {
+
+      gap: 8px;
+    }
+
+
+    .button {
+
+      min-height: 44px;
+
+      padding:
+        0 16px;
+
+      font-size: 13px;
+    }
+
 
     .hero-meta {
-      gap: 0.6rem;
 
-      font-size: 0.62rem;
+      font-size: 9px;
     }
 
-    .developer-window-header {
-      height: 44px;
+
+    .developer-card {
+
+      border-radius: 17px;
     }
 
-    .developer-window-body {
-      min-height: 310px;
+
+    .developer-content {
+
+      height: 350px;
     }
 
-    .section-title {
-      font-size: clamp(
-        2.7rem,
-        13vw,
-        4.5rem
-      );
+
+    .section-inner {
+
+      padding:
+        120px 0;
     }
 
-    .section-description {
-      font-size: 0.98rem;
+
+    .section-intro h2,
+    .terminal-copy h2 {
+
+      font-size:
+        clamp(
+          45px,
+          13vw,
+          65px
+        );
     }
 
-    .notes-grid {
-      gap: 10px;
+
+    .section-intro > p:last-child,
+    .terminal-copy > p,
+    .final-description {
+
+      font-size: 17px;
     }
 
-    .note-card {
-      grid-template-columns: 32px 1fr auto;
 
-      min-height: 170px;
+    .technology-wall {
 
-      padding: 1.25rem;
+      margin-top: 60px;
     }
 
-    .note-card h3 {
-      font-size: 1.1rem;
+
+    .skills-container {
+
+      margin-top: 60px;
     }
 
-    .terminal-preview-body {
-      min-height: 260px;
 
-      padding: 1.5rem;
+    .notes-list {
+
+      margin-top: 60px;
     }
 
-    .cta-title {
-      font-size: clamp(
-        3rem,
-        14vw,
-        5rem
-      );
 
-      letter-spacing: -0.06em;
+    .note-row {
+
+      grid-template-columns:
+        35px
+        1fr
+        25px;
+
+      gap: 12px;
+
+      min-height: 120px;
     }
 
-    .cta-description {
-      font-size: 0.98rem;
 
-      line-height: 1.7;
+    .note-row > p {
 
-      padding: 0 0.5rem;
+      display: none;
     }
 
-    .cta-meta {
-      gap: 0.65rem;
 
-      font-size: 0.64rem;
+    .note-main h3 {
+
+      font-size: 17px;
     }
 
-    .cta-grid {
-      background-size: 52px 52px;
+
+    .terminal-inner {
+
+      padding:
+        120px 0;
     }
+
+
+    .terminal-body {
+
+      min-height: 280px;
+
+      padding: 28px 22px;
+    }
+
+
+    .final-section {
+
+      min-height: 650px;
+    }
+
+
+    .final-inner {
+
+      width:
+        calc(100% - 40px);
+
+      padding:
+        120px 0;
+    }
+
+
+    .final-inner h2 {
+
+      font-size:
+        clamp(
+          52px,
+          15vw,
+          78px
+        );
+    }
+
+
+    .final-meta {
+
+      font-size: 8px;
+    }
+
   }
+
 
   /* ========================================================= */
   /* REDUCED MOTION */
   /* ========================================================= */
 
   @media (prefers-reduced-motion: reduce) {
-    .ambient-orb,
-    .ambient-beam,
-    .ambient-grid,
-    .ambient-horizon,
-    .status-indicator,
-    .cta-glow,
-    .cta-grid,
-    .cta-gradient-text,
-    .cta-status-dot {
+
+    .apple-page *,
+    .apple-page *::before,
+    .apple-page *::after {
+
+      scroll-behavior: auto !important;
+    }
+
+
+    .final-inner h2 span,
+    .terminal-cursor {
+
       animation: none !important;
     }
 
-    .developer-window,
-    .hero-primary-button,
-    .hero-secondary-button,
-    .note-card,
-    .cta-button,
-    .cta-arrow {
+
+    .developer-card,
+    .button,
+    .final-button,
+    .note-row {
+
       transition: none !important;
     }
+
   }
+
 </style>
