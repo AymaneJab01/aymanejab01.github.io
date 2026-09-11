@@ -92,7 +92,7 @@ const getTechnologyName = (tech: string) => {
       aria-hidden="true"
     ></div>
 
-    <!-- Scrolling content -->
+    <!-- Scrolling technology list -->
     <div class="flex w-max animate-scroll will-change-transform">
       {
         [...technologies, ...technologies].map((tech, index) => (
@@ -100,7 +100,7 @@ const getTechnologyName = (tech: string) => {
             class="group flex shrink-0 items-center gap-3 pr-12 transition-all duration-300 md:pr-20"
             aria-hidden={index >= technologies.length ? "true" : "false"}
           >
-            <!-- Technology icon -->
+            <!-- Icon -->
             <div class="flex h-8 w-8 items-center justify-center">
               <img
                 src={getIconPath(tech)}
@@ -117,7 +117,7 @@ const getTechnologyName = (tech: string) => {
               />
             </div>
 
-            <!-- Technology name -->
+            <!-- Name -->
             <span
               class="whitespace-nowrap text-lg font-medium text-[var(--white-icon)] opacity-70 transition-opacity duration-300 group-hover:opacity-100"
             >
@@ -140,9 +140,9 @@ const getTechnologyName = (tech: string) => {
 >
   <div class="mx-auto max-w-6xl px-6">
 
-    <!-- ===================================================== -->
+    <!-- ======================================================= -->
     <!-- SECTION HEADER -->
-    <!-- ===================================================== -->
+    <!-- ======================================================= -->
 
     <div class="mb-10 text-center">
       <div class="mb-4 flex items-center justify-center gap-4">
@@ -164,9 +164,9 @@ const getTechnologyName = (tech: string) => {
       </p>
     </div>
 
-    <!-- ===================================================== -->
+    <!-- ======================================================= -->
     <!-- UPV CARD -->
-    <!-- ===================================================== -->
+    <!-- ======================================================= -->
 
     <div class="flex justify-center">
       <div
@@ -191,52 +191,49 @@ const getTechnologyName = (tech: string) => {
           duration-700
           hover:border-white/20
           hover:bg-white/[0.055]
-          hover:shadow-[0_25px_80px_rgba(0,0,0,0.45)]
+          hover:shadow-[0_25px_70px_rgba(0,0,0,0.40)]
           md:gap-16
           md:px-12
           md:py-10
         "
       >
 
-        <!-- ================================================= -->
-        <!-- LARGE SOFT CARD GLOW -->
-        <!-- ================================================= -->
+        <!-- =================================================== -->
+        <!-- SUBTLE CARD LIGHT -->
+        <!-- =================================================== -->
 
         <div
           class="
             pointer-events-none
             absolute
-            -left-32
-            -top-32
-            h-80
-            w-80
+            -left-24
+            -top-24
+            h-56
+            w-56
             rounded-full
-            bg-white/[0.035]
+            bg-white/[0.025]
             blur-3xl
             opacity-0
             transition-all
             duration-700
-            group-hover:scale-125
+            group-hover:scale-110
             group-hover:opacity-100
           "
           aria-hidden="true"
         ></div>
 
-        <!-- ================================================= -->
-        <!-- SECONDARY CARD LIGHT -->
-        <!-- ================================================= -->
-
+        <!-- Small central glass reflection -->
         <div
           class="
             pointer-events-none
             absolute
             left-1/3
             top-1/2
-            h-48
-            w-72
+            h-32
+            w-48
             -translate-y-1/2
             rounded-full
-            bg-white/[0.025]
+            bg-white/[0.018]
             blur-3xl
             opacity-0
             transition-opacity
@@ -246,9 +243,9 @@ const getTechnologyName = (tech: string) => {
           aria-hidden="true"
         ></div>
 
-        <!-- ================================================= -->
+        <!-- =================================================== -->
         <!-- UPV LOGO AREA -->
-        <!-- ================================================= -->
+        <!-- =================================================== -->
 
         <div
           class="
@@ -264,7 +261,7 @@ const getTechnologyName = (tech: string) => {
         >
 
           <!-- ================================================= -->
-          <!-- LARGE WHITE AURA -->
+          <!-- TIGHT WHITE AURA -->
           <!-- ================================================= -->
 
           <div
@@ -273,25 +270,50 @@ const getTechnologyName = (tech: string) => {
               absolute
               left-1/2
               top-1/2
-              h-48
-              w-64
+              h-28
+              w-44
               -translate-x-1/2
               -translate-y-1/2
               rounded-full
-              bg-white/[0.07]
-              blur-[55px]
+              bg-white/[0.055]
+              blur-2xl
+              opacity-60
+              transition-all
+              duration-700
+              group-hover:scale-110
+              group-hover:bg-white/[0.08]
+              group-hover:opacity-90
+            "
+            aria-hidden="true"
+          ></div>
+
+          <!-- ================================================= -->
+          <!-- SMALL INNER GLOW -->
+          <!-- ================================================= -->
+
+          <div
+            class="
+              pointer-events-none
+              absolute
+              left-1/2
+              top-1/2
+              h-20
+              w-32
+              -translate-x-1/2
+              -translate-y-1/2
+              rounded-full
+              bg-white/[0.04]
+              blur-xl
               opacity-70
               transition-all
               duration-700
-              group-hover:scale-125
-              group-hover:bg-white/[0.11]
-              group-hover:opacity-100
+              group-hover:scale-105
             "
             aria-hidden="true"
           ></div>
 
           <!-- ================================================= -->
-          <!-- INNER WHITE GLOW -->
+          <!-- TIGHT BLACK DEPTH -->
           <!-- ================================================= -->
 
           <div
@@ -299,48 +321,21 @@ const getTechnologyName = (tech: string) => {
               pointer-events-none
               absolute
               left-1/2
-              top-1/2
-              h-32
-              w-52
+              top-[55%]
+              h-20
+              w-36
               -translate-x-1/2
               -translate-y-1/2
               rounded-full
-              bg-white/[0.045]
-              blur-3xl
-              transition-all
-              duration-700
-              group-hover:scale-110
+              bg-black/70
+              blur-2xl
+              opacity-70
             "
             aria-hidden="true"
           ></div>
 
           <!-- ================================================= -->
-          <!-- BLACK DEPTH -->
-          <!-- ================================================= -->
-
-          <div
-            class="
-              pointer-events-none
-              absolute
-              left-1/2
-              top-[54%]
-              h-32
-              w-60
-              -translate-x-1/2
-              -translate-y-1/2
-              rounded-full
-              bg-black/60
-              blur-3xl
-              opacity-80
-              transition-all
-              duration-700
-              group-hover:scale-110
-            "
-            aria-hidden="true"
-          ></div>
-
-          <!-- ================================================= -->
-          <!-- UPV IMAGE -->
+          <!-- UPV LOGO -->
           <!-- ================================================= -->
 
           <img
@@ -358,14 +353,14 @@ const getTechnologyName = (tech: string) => {
               grayscale
               contrast-125
               brightness-105
-              drop-shadow-[0_12px_30px_rgba(0,0,0,0.65)]
+              drop-shadow-[0_10px_24px_rgba(0,0,0,0.65)]
               transition-all
               duration-700
-              group-hover:scale-[1.045]
+              group-hover:scale-[1.04]
               group-hover:opacity-100
-              group-hover:contrast-[1.35]
+              group-hover:contrast-[1.3]
               group-hover:brightness-110
-              group-hover:drop-shadow-[0_18px_45px_rgba(255,255,255,0.14)]
+              group-hover:drop-shadow-[0_14px_32px_rgba(255,255,255,0.12)]
             "
             width="320"
             height="240"
@@ -374,7 +369,7 @@ const getTechnologyName = (tech: string) => {
           />
 
           <!-- ================================================= -->
-          <!-- SILVER HIGHLIGHT -->
+          <!-- SMALL SILVER LINE -->
           <!-- ================================================= -->
 
           <div
@@ -385,22 +380,25 @@ const getTechnologyName = (tech: string) => {
               left-1/2
               z-20
               h-px
-              w-44
+              w-32
               -translate-x-1/2
               bg-gradient-to-r
               from-transparent
-              via-white/30
+              via-white/25
               to-transparent
-              opacity-50
+              opacity-40
               transition-all
               duration-700
-              group-hover:w-56
-              group-hover:opacity-80
+              group-hover:w-44
+              group-hover:opacity-70
             "
             aria-hidden="true"
           ></div>
 
-          <!-- Tiny central light -->
+          <!-- ================================================= -->
+          <!-- SMALL LIGHT POINT -->
+          <!-- ================================================= -->
+
           <div
             class="
               pointer-events-none
@@ -412,9 +410,9 @@ const getTechnologyName = (tech: string) => {
               w-1
               -translate-x-1/2
               rounded-full
-              bg-white/60
-              blur-[2px]
-              opacity-60
+              bg-white/50
+              blur-[1px]
+              opacity-50
               transition-all
               duration-500
               group-hover:scale-150
@@ -426,13 +424,13 @@ const getTechnologyName = (tech: string) => {
 
         </div>
 
-        <!-- ================================================= -->
+        <!-- =================================================== -->
         <!-- UPV INFORMATION -->
-        <!-- ================================================= -->
+        <!-- =================================================== -->
 
         <div class="relative min-w-0">
 
-          <!-- Category -->
+          <!-- Label -->
           <p
             class="
               mb-3
@@ -447,7 +445,7 @@ const getTechnologyName = (tech: string) => {
             University
           </p>
 
-          <!-- University name -->
+          <!-- University -->
           <h3
             class="
               text-2xl
@@ -462,7 +460,7 @@ const getTechnologyName = (tech: string) => {
             de València
           </h3>
 
-          <!-- Short name -->
+          <!-- Abbreviation -->
           <p
             class="
               mt-3
@@ -475,14 +473,14 @@ const getTechnologyName = (tech: string) => {
             UPV
           </p>
 
-          <!-- Elegant accent -->
+          <!-- Accent -->
           <div
             class="
               mt-6
               h-px
               w-16
               bg-gradient-to-r
-              from-white/50
+              from-white/45
               via-white/20
               to-transparent
               transition-all
@@ -494,9 +492,9 @@ const getTechnologyName = (tech: string) => {
 
         </div>
 
-        <!-- ================================================= -->
-        <!-- TOP GLASS HIGHLIGHT -->
-        <!-- ================================================= -->
+        <!-- =================================================== -->
+        <!-- TOP GLASS REFLECTION -->
+        <!-- =================================================== -->
 
         <div
           class="
@@ -514,9 +512,9 @@ const getTechnologyName = (tech: string) => {
           aria-hidden="true"
         ></div>
 
-        <!-- ================================================= -->
-        <!-- BOTTOM GLASS HIGHLIGHT -->
-        <!-- ================================================= -->
+        <!-- =================================================== -->
+        <!-- BOTTOM GLASS REFLECTION -->
+        <!-- =================================================== -->
 
         <div
           class="
@@ -540,12 +538,12 @@ const getTechnologyName = (tech: string) => {
 </section>
 
 <!-- ========================================================= -->
-<!-- ANIMATIONS -->
+<!-- STYLES -->
 <!-- ========================================================= -->
 
 <style is:global>
   /* ========================================================= */
-  /* TECHNOLOGY SCROLL */
+  /* TECHNOLOGY MARQUEE */
   /* ========================================================= */
 
   @keyframes scroll {
@@ -562,12 +560,12 @@ const getTechnologyName = (tech: string) => {
     animation: scroll 60s linear infinite;
   }
 
-  /* Pause when hovering the technology wall */
+  /* Pause marquee on hover */
   .technology-wall:hover .animate-scroll {
     animation-play-state: paused;
   }
 
-  /* Normal cursor */
+  /* Keep default cursor */
   .technology-wall,
   .technology-wall * {
     cursor: default !important;
@@ -584,7 +582,7 @@ const getTechnologyName = (tech: string) => {
   }
 
   /* ========================================================= */
-  /* REDUCED MOTION */
+  /* ACCESSIBILITY */
   /* ========================================================= */
 
   @media (prefers-reduced-motion: reduce) {
@@ -617,7 +615,7 @@ const getTechnologyName = (tech: string) => {
   }
 
   /* ========================================================= */
-  /* SMALL MOBILE */
+  /* SMALL PHONES */
   /* ========================================================= */
 
   @media (max-width: 420px) {
