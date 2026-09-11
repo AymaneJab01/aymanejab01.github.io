@@ -1,61 +1,59 @@
----
----
-
 <section
   id="projects"
-  class="projects-section text-[var(--white)]"
+  class="projects-section relative overflow-hidden text-[var(--white)]"
 >
+  <div class="mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-14">
 
-  <div class="projects-container">
-
-    <!-- ======================================================= -->
+    <!-- ========================================================= -->
     <!-- HEADER -->
-    <!-- ======================================================= -->
+    <!-- ========================================================= -->
 
     <header class="projects-header">
-
       <div class="projects-eyebrow">
-        <span>Selected work</span>
+        Selected work
       </div>
 
-      <div class="projects-header-grid">
-
-        <h2 class="projects-heading">
+      <div class="projects-heading">
+        <h2>
           Things I've
           <span>built.</span>
         </h2>
 
-        <p class="projects-intro">
-          Software projects, experiments and interactive systems
-          developed throughout my computer science journey.
+        <p>
+          A collection of software projects, interactive systems and
+          experiments built throughout my computer science journey.
         </p>
-
       </div>
-
     </header>
 
 
-    <!-- ======================================================= -->
-    <!-- PROJECT 01 -->
-    <!-- ======================================================= -->
+    <!-- ========================================================= -->
+    <!-- PROJECTS -->
+    <!-- ========================================================= -->
 
-    <article class="project project-featured">
+    <div class="projects-list">
 
-      <div class="project-index">
-        <span>01</span>
-        <span>08</span>
-      </div>
+      <!-- ======================================================= -->
+      <!-- 01 — DEVELOPER TERMINAL -->
+      <!-- ======================================================= -->
 
-      <div class="project-content">
+      <article class="project-card project-card-featured">
 
-        <div class="project-copy">
+        <div class="project-index">
+          01
+          <span>/ 08</span>
+        </div>
 
-          <div class="project-category">
-            Interactive · Portfolio
+        <div class="project-content">
+
+          <div class="project-meta">
+            Interactive
+            <span>•</span>
+            Portfolio
           </div>
 
           <h3>
-            Developer Terminal
+            Developer Terminal<span>.</span>
           </h3>
 
           <p class="project-description">
@@ -64,96 +62,47 @@
             skills, projects and information.
           </p>
 
-          <div class="project-tech">
+          <p class="project-note">
+            Continuously evolving with new commands, features and ideas.
+          </p>
+
+          <div class="project-technologies">
             <span>Astro</span>
             <span>TypeScript</span>
             <span>Interactive UI</span>
           </div>
 
-          <a
-            href="/#terminal"
-            class="project-link"
-          >
-            <span>Open terminal</span>
-
-            <svg viewBox="0 0 20 20" aria-hidden="true">
-              <path d="M4 10h11" />
-              <path d="m11 5 5 5-5 5" />
-            </svg>
-          </a>
-
         </div>
 
+        <a href="/#terminal" class="project-link">
+          Open terminal
+          <span>→</span>
+        </a>
 
-        <div class="project-visual terminal-visual">
+      </article>
 
-          <div class="mini-window">
 
-            <div class="mini-window-header">
+      <!-- ======================================================= -->
+      <!-- 02 — MOVIE RANKING -->
+      <!-- ======================================================= -->
 
-              <div class="window-dots">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
+      <article class="project-card">
 
-              <span>aymane@portfolio</span>
-
-            </div>
-
-            <div class="mini-terminal">
-
-              <div>
-                <span class="terminal-green">aymane</span>
-                <span class="terminal-muted">@portfolio</span>
-                <span class="terminal-blue">~</span>
-                <span class="terminal-muted">$</span>
-                <span> help</span>
-              </div>
-
-              <div class="terminal-output">
-                Welcome to Aymane's interactive terminal.
-              </div>
-
-              <div class="terminal-output">
-                Type <span class="terminal-blue">"help"</span>
-                to explore available commands.
-              </div>
-
-              <span class="terminal-cursor"></span>
-
-            </div>
-
-          </div>
-
+        <div class="project-index">
+          02
+          <span>/ 08</span>
         </div>
 
-      </div>
+        <div class="project-content">
 
-    </article>
-
-
-    <!-- ======================================================= -->
-    <!-- PROJECT 02 -->
-    <!-- ======================================================= -->
-
-    <article class="project">
-
-      <div class="project-index">
-        <span>02</span>
-        <span>08</span>
-      </div>
-
-      <div class="project-content">
-
-        <div class="project-copy">
-
-          <div class="project-category">
-            Web App · Entertainment
+          <div class="project-meta">
+            Web App
+            <span>•</span>
+            Entertainment
           </div>
 
           <h3>
-            Movie Ranking
+            Movie Ranking<span>.</span>
           </h3>
 
           <p class="project-description">
@@ -161,206 +110,161 @@
             discovering films through covers, ratings and reviews.
           </p>
 
-          <div class="project-stat-row">
+          <div class="project-data">
 
             <div>
-              <span>Featured</span>
+              <span>Featured movie</span>
               <strong>Avengers: Infinity War</strong>
             </div>
 
             <div>
               <span>Rating</span>
-              <strong class="blue-value">9/10</strong>
+              <strong class="blue-value">
+                9<span>/10</span>
+              </strong>
             </div>
 
           </div>
 
-          <div class="project-tech">
+          <div class="project-technologies">
             <span>Astro</span>
             <span>UI</span>
             <span>Movies</span>
           </div>
 
-          <a
-            href="/projects/movie-ranking"
-            class="project-link"
-          >
-            <span>View project</span>
-
-            <svg viewBox="0 0 20 20" aria-hidden="true">
-              <path d="M4 10h11" />
-              <path d="m11 5 5 5-5 5" />
-            </svg>
-          </a>
-
         </div>
 
+        <a href="/projects/movie-ranking" class="project-link">
+          View project
+          <span>→</span>
+        </a>
 
-        <div class="project-visual movie-visual">
+      </article>
 
-          <div class="movie-display">
 
-            <div class="movie-rating">
-              <span>9</span>
-              <small>/10</small>
-            </div>
+      <!-- ======================================================= -->
+      <!-- 03 — WEATHER -->
+      <!-- ======================================================= -->
 
-            <div class="movie-caption">
-              <span>Featured movie</span>
-              <strong>Avengers: Infinity War</strong>
-            </div>
+      <article class="project-card">
 
-          </div>
-
+        <div class="project-index">
+          03
+          <span>/ 08</span>
         </div>
 
-      </div>
+        <div class="project-content">
 
-    </article>
-
-
-    <!-- ======================================================= -->
-    <!-- PROJECT 03 -->
-    <!-- ======================================================= -->
-
-    <article class="project">
-
-      <div class="project-index">
-        <span>03</span>
-        <span>08</span>
-      </div>
-
-      <div class="project-content">
-
-        <div class="project-copy">
-
-          <div class="project-category">
-            Live Data · Weather
+          <div class="project-meta">
+            Live Data
+            <span>•</span>
+            Weather
           </div>
 
           <h3>
-            Weather Dashboard
+            Weather Dashboard<span>.</span>
           </h3>
 
           <p class="project-description">
             A dynamic weather dashboard using live data to display
-            current conditions across Spanish cities through a
-            clean, responsive interface.
+            current conditions across Spanish cities through a clean,
+            responsive interface.
           </p>
 
           <div class="weather-data">
 
-            <div class="weather-city">
-
+            <div class="weather-item">
               <div>
-                <span>Alcoi</span>
-                <small id="weather-alcoi-status">
-                  Loading...
-                </small>
+                <span>Location</span>
+                <strong>Alcoi</strong>
               </div>
 
-              <strong id="weather-alcoi-temperature">
-                --°C
-              </strong>
+              <div class="weather-reading">
+                <strong id="weather-alcoi-temperature">
+                  --°C
+                </strong>
 
+                <span id="weather-alcoi-status">
+                  Loading...
+                </span>
+              </div>
             </div>
 
 
-            <div class="weather-city">
-
+            <div class="weather-item">
               <div>
-                <span>Valencia</span>
-                <small id="weather-valencia-status">
-                  Loading...
-                </small>
+                <span>Location</span>
+                <strong>Valencia</strong>
               </div>
 
-              <strong id="weather-valencia-temperature">
-                --°C
-              </strong>
+              <div class="weather-reading">
+                <strong id="weather-valencia-temperature">
+                  --°C
+                </strong>
 
+                <span id="weather-valencia-status">
+                  Loading...
+                </span>
+              </div>
             </div>
 
           </div>
 
-          <div class="project-tech">
+          <div class="project-technologies">
             <span>Astro</span>
             <span>Open-Meteo API</span>
             <span>Live Data</span>
           </div>
 
-          <a
-            href="/projects/weather"
-            class="project-link"
-          >
-            <span>View weather</span>
-
-            <svg viewBox="0 0 20 20" aria-hidden="true">
-              <path d="M4 10h11" />
-              <path d="m11 5 5 5-5 5" />
-            </svg>
-          </a>
-
         </div>
 
+        <a href="/projects/weather" class="project-link">
+          View weather
+          <span>→</span>
+        </a>
 
-        <div class="project-visual weather-visual">
+      </article>
 
-          <div class="weather-sphere">
 
-            <div class="weather-orbit orbit-one"></div>
-            <div class="weather-orbit orbit-two"></div>
+      <!-- ======================================================= -->
+      <!-- 04 — ALGORITHM VISUALIZER -->
+      <!-- ======================================================= -->
 
-            <div class="weather-sun"></div>
+      <article class="project-card">
 
-          </div>
-
+        <div class="project-index">
+          04
+          <span>/ 08</span>
         </div>
 
-      </div>
+        <div class="project-content">
 
-    </article>
-
-
-    <!-- ======================================================= -->
-    <!-- PROJECT 04 -->
-    <!-- ======================================================= -->
-
-    <article class="project">
-
-      <div class="project-index">
-        <span>04</span>
-        <span>08</span>
-      </div>
-
-      <div class="project-content">
-
-        <div class="project-copy">
-
-          <div class="project-category">
-            Computer Science · Algorithms
+          <div class="project-meta">
+            Computer Science
+            <span>•</span>
+            Algorithms
           </div>
 
           <h3>
-            Algorithm Visualizer
+            Algorithm Visualizer<span>.</span>
           </h3>
 
           <p class="project-description">
-            An interactive playground for exploring algorithms
-            through visual execution. Sorting, hashing and
-            pathfinding become easier to understand step by step.
+            An interactive playground for exploring algorithms through
+            visual execution. Sorting, hashing and pathfinding become
+            easier to understand step by step.
           </p>
 
-          <div class="project-stat-row three">
+          <div class="project-data">
 
             <div>
-              <span>Sorting</span>
-              <strong>Visual execution</strong>
+              <span>Algorithms</span>
+              <strong>Sorting</strong>
             </div>
 
             <div>
-              <span>Hashing</span>
-              <strong>Data structures</strong>
+              <span>Structures</span>
+              <strong>Hashing</strong>
             </div>
 
             <div>
@@ -370,83 +274,52 @@
 
           </div>
 
-          <div class="project-tech">
+          <div class="project-technologies">
             <span>Astro</span>
             <span>TypeScript</span>
             <span>Data Structures</span>
           </div>
 
-          <a
-            href="/projects/visualizer"
-            class="project-link"
-          >
-            <span>Open visualizer</span>
-
-            <svg viewBox="0 0 20 20" aria-hidden="true">
-              <path d="M4 10h11" />
-              <path d="m11 5 5 5-5 5" />
-            </svg>
-          </a>
-
         </div>
 
+        <a href="/projects/visualizer" class="project-link">
+          Open visualizer
+          <span>→</span>
+        </a>
 
-        <div class="project-visual algorithm-visual">
+      </article>
 
-          <div class="algorithm-bars">
 
-            <span style="height: 28%"></span>
-            <span style="height: 52%"></span>
-            <span style="height: 39%"></span>
-            <span style="height: 75%"></span>
-            <span style="height: 60%"></span>
-            <span style="height: 91%"></span>
-            <span style="height: 46%"></span>
-            <span style="height: 68%"></span>
-            <span style="height: 82%"></span>
-            <span style="height: 35%"></span>
-            <span style="height: 96%"></span>
-            <span style="height: 55%"></span>
+      <!-- ======================================================= -->
+      <!-- 05 — NETWORK -->
+      <!-- ======================================================= -->
 
-          </div>
+      <article class="project-card">
 
+        <div class="project-index">
+          05
+          <span>/ 08</span>
         </div>
 
-      </div>
+        <div class="project-content">
 
-    </article>
-
-
-    <!-- ======================================================= -->
-    <!-- PROJECT 05 -->
-    <!-- ======================================================= -->
-
-    <article class="project">
-
-      <div class="project-index">
-        <span>05</span>
-        <span>08</span>
-      </div>
-
-      <div class="project-content">
-
-        <div class="project-copy">
-
-          <div class="project-category">
-            Systems · Networking
+          <div class="project-meta">
+            Systems
+            <span>•</span>
+            Networking
           </div>
 
           <h3>
-            Network Protocol Simulator
+            Network Protocol Simulator<span>.</span>
           </h3>
 
           <p class="project-description">
-            An interactive transport-layer simulator exploring
-            TCP handshakes, packet loss, retransmission and
-            message framing over a byte stream.
+            An interactive transport-layer simulator exploring TCP
+            handshakes, packet loss, retransmission and message
+            framing over a byte stream.
           </p>
 
-          <div class="project-stat-row three">
+          <div class="project-data">
 
             <div>
               <span>Protocol</span>
@@ -454,8 +327,8 @@
             </div>
 
             <div>
-              <span>Reliability</span>
-              <strong>Retransmission</strong>
+              <span>Concept</span>
+              <strong>Packet Loss</strong>
             </div>
 
             <div>
@@ -465,87 +338,53 @@
 
           </div>
 
-          <div class="project-tech">
+          <div class="project-technologies">
             <span>Astro</span>
             <span>TypeScript</span>
             <span>TCP / UDP</span>
           </div>
 
-          <a
-            href="/projects/network"
-            class="project-link"
-          >
-            <span>Open simulator</span>
-
-            <svg viewBox="0 0 20 20" aria-hidden="true">
-              <path d="M4 10h11" />
-              <path d="m11 5 5 5-5 5" />
-            </svg>
-          </a>
-
         </div>
 
+        <a href="/projects/network" class="project-link">
+          Open simulator
+          <span>→</span>
+        </a>
 
-        <div class="project-visual network-visual">
+      </article>
 
-          <div class="network-stage">
 
-            <div class="network-node node-a">
-              A
-            </div>
+      <!-- ======================================================= -->
+      <!-- 06 — CPU -->
+      <!-- ======================================================= -->
 
-            <div class="network-line line-a"></div>
+      <article class="project-card">
 
-            <div class="network-node node-b">
-              B
-            </div>
-
-            <div class="network-line line-b"></div>
-
-            <div class="network-node node-c">
-              C
-            </div>
-
-          </div>
-
+        <div class="project-index">
+          06
+          <span>/ 08</span>
         </div>
 
-      </div>
+        <div class="project-content">
 
-    </article>
-
-
-    <!-- ======================================================= -->
-    <!-- PROJECT 06 -->
-    <!-- ======================================================= -->
-
-    <article class="project">
-
-      <div class="project-index">
-        <span>06</span>
-        <span>08</span>
-      </div>
-
-      <div class="project-content">
-
-        <div class="project-copy">
-
-          <div class="project-category">
-            Computer Architecture · Systems
+          <div class="project-meta">
+            Computer Architecture
+            <span>•</span>
+            Systems
           </div>
 
           <h3>
-            CPU Simulator
+            CPU Simulator<span>.</span>
           </h3>
 
           <p class="project-description">
             A small simulated CPU with its own instruction set,
             registers and memory. Programs can be executed one
-            instruction at a time to reveal the
-            fetch-decode-execute cycle.
+            instruction at a time to reveal the fetch-decode-execute
+            cycle.
           </p>
 
-          <div class="project-stat-row three">
+          <div class="project-data">
 
             <div>
               <span>Registers</span>
@@ -564,73 +403,43 @@
 
           </div>
 
-          <div class="project-tech">
+          <div class="project-technologies">
             <span>Astro</span>
             <span>TypeScript</span>
             <span>Assembly</span>
           </div>
 
-          <a
-            href="/projects/Cpu"
-            class="project-link"
-          >
-            <span>Open simulator</span>
-
-            <svg viewBox="0 0 20 20" aria-hidden="true">
-              <path d="M4 10h11" />
-              <path d="m11 5 5 5-5 5" />
-            </svg>
-          </a>
-
         </div>
 
+        <a href="/projects/Cpu" class="project-link">
+          Open simulator
+          <span>→</span>
+        </a>
 
-        <div class="project-visual cpu-visual">
+      </article>
 
-          <div class="cpu-chip">
 
-            <div class="cpu-core">
+      <!-- ======================================================= -->
+      <!-- 07 — EXPENSE SPLITTER -->
+      <!-- ======================================================= -->
 
-              <span>CPU</span>
-              <small>ISA</small>
+      <article class="project-card">
 
-            </div>
-
-            <div class="cpu-pin pin-1"></div>
-            <div class="cpu-pin pin-2"></div>
-            <div class="cpu-pin pin-3"></div>
-            <div class="cpu-pin pin-4"></div>
-
-          </div>
-
+        <div class="project-index">
+          07
+          <span>/ 08</span>
         </div>
 
-      </div>
+        <div class="project-content">
 
-    </article>
-
-
-    <!-- ======================================================= -->
-    <!-- PROJECT 07 -->
-    <!-- ======================================================= -->
-
-    <article class="project">
-
-      <div class="project-index">
-        <span>07</span>
-        <span>08</span>
-      </div>
-
-      <div class="project-content">
-
-        <div class="project-copy">
-
-          <div class="project-category">
-            Mobile · Flutter
+          <div class="project-meta">
+            Mobile
+            <span>•</span>
+            Flutter
           </div>
 
           <h3>
-            Expense Splitter
+            Expense Splitter<span>.</span>
           </h3>
 
           <p class="project-description">
@@ -639,7 +448,7 @@
             the number of transfers required to settle group costs.
           </p>
 
-          <div class="project-stat-row">
+          <div class="project-data">
 
             <div>
               <span>Platform</span>
@@ -653,75 +462,44 @@
 
           </div>
 
-          <div class="project-tech">
+          <div class="project-technologies">
             <span>Flutter</span>
             <span>Dart</span>
             <span>Mobile</span>
-          </div>
-
-          <a
-            href="/projects/expense-splitter/"
-            class="project-link"
-          >
-            <span>Open application</span>
-
-            <svg viewBox="0 0 20 20" aria-hidden="true">
-              <path d="M4 10h11" />
-              <path d="m11 5 5 5-5 5" />
-            </svg>
-          </a>
-
-        </div>
-
-
-        <div class="project-visual finance-visual">
-
-          <div class="finance-card">
-
-            <span>Group balance</span>
-
-            <strong>
-              € 248.60
-            </strong>
-
-            <div class="finance-line">
-              <span></span>
-            </div>
-
-            <small>
-              4 participants
-            </small>
-
+            <span>Expense Management</span>
           </div>
 
         </div>
 
-      </div>
+        <a href="/projects/expense-splitter/" class="project-link">
+          Open application
+          <span>→</span>
+        </a>
 
-    </article>
+      </article>
 
 
-    <!-- ======================================================= -->
-    <!-- PROJECT 08 -->
-    <!-- ======================================================= -->
+      <!-- ======================================================= -->
+      <!-- 08 — FINTRACK -->
+      <!-- ======================================================= -->
 
-    <article class="project project-last">
+      <article class="project-card project-card-fintrack">
 
-      <div class="project-index">
-        <span>08</span>
-        <span>08</span>
-      </div>
+        <div class="project-index">
+          08
+          <span>/ 08</span>
+        </div>
 
-      <div class="project-content">
+        <div class="project-content">
 
-        <div class="project-copy">
-
-          <div class="project-category">
-            Product · Personal Finance
+          <div class="project-meta">
+            Product
+            <span>•</span>
+            Personal Finance
           </div>
 
           <h3>
-            FinTrack
+            FinTrack<span>.</span>
           </h3>
 
           <p class="project-description">
@@ -731,7 +509,7 @@
             analytics and savings goals.
           </p>
 
-          <div class="project-stat-row">
+          <div class="project-data">
 
             <div>
               <span>Platform</span>
@@ -740,77 +518,33 @@
 
             <div>
               <span>Technology</span>
-              <strong>Flutter · Dart · Riverpod</strong>
+              <strong>Flutter · Dart</strong>
             </div>
 
           </div>
 
-          <div class="project-tech">
+          <div class="project-technologies">
             <span>Flutter</span>
             <span>Dart</span>
-            <span>Riverpod</span>
             <span>Finance</span>
-          </div>
-
-          <a
-            href="/projects/fintrack_app/"
-            class="project-link"
-          >
-            <span>Open FinTrack</span>
-
-            <svg viewBox="0 0 20 20" aria-hidden="true">
-              <path d="M4 10h11" />
-              <path d="m11 5 5 5-5 5" />
-            </svg>
-          </a>
-
-        </div>
-
-
-        <div class="project-visual fintrack-visual">
-
-          <div class="fintrack-screen">
-
-            <div class="fintrack-top">
-
-              <span>FinTrack</span>
-
-              <span>Overview</span>
-
-            </div>
-
-            <div class="fintrack-balance">
-
-              <small>Total balance</small>
-
-              <strong>€ 4,280.40</strong>
-
-            </div>
-
-            <div class="fintrack-bars">
-
-              <span style="height: 42%"></span>
-              <span style="height: 61%"></span>
-              <span style="height: 50%"></span>
-              <span style="height: 78%"></span>
-              <span style="height: 65%"></span>
-              <span style="height: 88%"></span>
-              <span style="height: 73%"></span>
-
-            </div>
-
+            <span>Riverpod</span>
           </div>
 
         </div>
 
-      </div>
+        <a href="/projects/fintrack_app/" class="project-link">
+          Open FinTrack
+          <span>→</span>
+        </a>
 
-    </article>
+      </article>
+
+    </div>
 
 
-    <!-- ======================================================= -->
+    <!-- ========================================================= -->
     <!-- FOOTER -->
-    <!-- ======================================================= -->
+    <!-- ========================================================= -->
 
     <footer class="projects-footer">
 
@@ -823,12 +557,10 @@
     </footer>
 
   </div>
-
 </section>
 
 
 <script>
-
   interface WeatherData {
     current: {
       temperature_2m: number;
@@ -836,133 +568,56 @@
     };
   }
 
-
   interface WeatherLocation {
-
     latitude: number;
-
     longitude: number;
-
     temperatureElement: string;
-
     statusElement: string;
-
   }
 
+  const weatherLocations: WeatherLocation[] = [
+    {
+      latitude: 38.6983,
+      longitude: -0.4743,
+      temperatureElement: "weather-alcoi-temperature",
+      statusElement: "weather-alcoi-status",
+    },
+    {
+      latitude: 39.4699,
+      longitude: -0.3763,
+      temperatureElement: "weather-valencia-temperature",
+      statusElement: "weather-valencia-status",
+    },
+  ];
 
-  const weatherLocations:
-    WeatherLocation[] = [
-
-      {
-        latitude: 38.6983,
-        longitude: -0.4743,
-        temperatureElement:
-          "weather-alcoi-temperature",
-        statusElement:
-          "weather-alcoi-status",
-      },
-
-      {
-        latitude: 39.4699,
-        longitude: -0.3763,
-        temperatureElement:
-          "weather-valencia-temperature",
-        statusElement:
-          "weather-valencia-status",
-      },
-
-    ];
-
-
-  function getWeatherDescription(
-    code: number
-  ): string {
-
-    if (code === 0)
-      return "Clear";
-
-    if (code === 1)
-      return "Mainly clear";
-
-    if (code === 2)
-      return "Partly cloudy";
-
-    if (code === 3)
-      return "Cloudy";
-
-    if (
-      code === 45 ||
-      code === 48
-    )
-      return "Fog";
-
-    if (
-      code >= 51 &&
-      code <= 57
-    )
-      return "Drizzle";
-
-    if (
-      code >= 61 &&
-      code <= 67
-    )
-      return "Rain";
-
-    if (
-      code >= 71 &&
-      code <= 77
-    )
-      return "Snow";
-
-    if (
-      code >= 80 &&
-      code <= 82
-    )
-      return "Showers";
-
-    if (
-      code >= 85 &&
-      code <= 86
-    )
-      return "Snow showers";
-
-    if (
-      code >= 95 &&
-      code <= 99
-    )
-      return "Thunderstorm";
+  function getWeatherDescription(code: number): string {
+    if (code === 0) return "Clear";
+    if (code === 1) return "Mainly clear";
+    if (code === 2) return "Partly cloudy";
+    if (code === 3) return "Cloudy";
+    if (code === 45 || code === 48) return "Fog";
+    if (code >= 51 && code <= 57) return "Drizzle";
+    if (code >= 61 && code <= 67) return "Rain";
+    if (code >= 71 && code <= 77) return "Snow";
+    if (code >= 80 && code <= 82) return "Showers";
+    if (code >= 85 && code <= 86) return "Snow showers";
+    if (code >= 95 && code <= 99) return "Thunderstorm";
 
     return "Unknown";
   }
 
+  async function loadWeather(location: WeatherLocation) {
+    const temperatureElement = document.getElementById(
+      location.temperatureElement
+    );
 
-  async function loadWeather(
-    location: WeatherLocation
-  ) {
+    const statusElement = document.getElementById(
+      location.statusElement
+    );
 
-    const temperatureElement =
-      document.getElementById(
-        location.temperatureElement
-      );
-
-    const statusElement =
-      document.getElementById(
-        location.statusElement
-      );
-
-
-    if (
-      !temperatureElement ||
-      !statusElement
-    ) {
-
-      return;
-
-    }
-
+    if (!temperatureElement || !statusElement) return;
 
     try {
-
       const url =
         `https://api.open-meteo.com/v1/forecast` +
         `?latitude=${location.latitude}` +
@@ -970,2016 +625,218 @@
         `&current=temperature_2m,weather_code` +
         `&timezone=Europe%2FMadrid`;
 
-
-      const response =
-        await fetch(url);
-
+      const response = await fetch(url);
 
       if (!response.ok) {
-
-        throw new Error(
-          "Weather request failed"
-        );
-
+        throw new Error("Weather request failed");
       }
 
+      const data = (await response.json()) as WeatherData;
 
-      const data =
-        (await response.json())
-        as WeatherData;
-
+      const temperature = data.current.temperature_2m;
+      const weatherCode = data.current.weather_code;
 
       temperatureElement.textContent =
-        `${Math.round(
-          data.current.temperature_2m
-        )}°C`;
-
+        `${Math.round(temperature)}°C`;
 
       statusElement.textContent =
-        getWeatherDescription(
-          data.current.weather_code
-        );
+        getWeatherDescription(weatherCode);
 
     } catch {
-
-      temperatureElement.textContent =
-        "--°C";
-
-      statusElement.textContent =
-        "Unavailable";
-
+      temperatureElement.textContent = "--°C";
+      statusElement.textContent = "Unavailable";
     }
-
   }
-
 
   function loadAllWeather() {
-
-    weatherLocations.forEach(
-      (location) => {
-        void loadWeather(location);
-      }
-    );
-
+    weatherLocations.forEach((location) => {
+      void loadWeather(location);
+    });
   }
 
-
-  if (
-    document.readyState ===
-    "loading"
-  ) {
-
+  if (document.readyState === "loading") {
     document.addEventListener(
       "DOMContentLoaded",
       loadAllWeather
     );
-
   } else {
-
     loadAllWeather();
-
   }
-
 </script>
 
 
 <style>
 
-  /* ============================================================ */
-  /* SYSTEM */
-  /* ============================================================ */
+  /* ==============================================================
+     APPLE-STYLE PROJECTS
+     ============================================================== */
 
   .projects-section {
-
-    --apple-black: #000;
-    --apple-graphite: #050506;
-
-    --apple-white: #f5f5f7;
-    --apple-secondary: #86868b;
-    --apple-tertiary: #6e6e73;
-
     --apple-blue: #2997ff;
-
-    --apple-border:
-      rgba(255,255,255,0.09);
-
-    --apple-border-soft:
-      rgba(255,255,255,0.055);
+    --apple-white: #f5f5f7;
+    --apple-secondary: #a1a1a6;
+    --apple-muted: #6e6e73;
+    --apple-border: rgba(255, 255, 255, 0.09);
 
     position: relative;
-
-    overflow: hidden;
 
     background:
       linear-gradient(
         180deg,
-        #000 0%,
-        #050506 100%
+        #000000 0%,
+        #050505 45%,
+        #000000 100%
       );
 
-    color:
-      var(--apple-white);
-
+    font-family:
+      -apple-system,
+      BlinkMacSystemFont,
+      "SF Pro Display",
+      "SF Pro Text",
+      "Helvetica Neue",
+      Arial,
+      sans-serif;
   }
 
 
-  /* ============================================================ */
-  /* CONTAINER */
-  /* ============================================================ */
-
-  .projects-container {
-
-    width:
-      min(
-        1280px,
-        calc(100% - 64px)
-      );
-
-    margin:
-      0 auto;
-
-  }
-
-
-  /* ============================================================ */
-  /* HEADER */
-  /* ============================================================ */
+  /* ==============================================================
+     HEADER
+     ============================================================== */
 
   .projects-header {
-
-    padding:
-      180px 0
-      110px;
-
+    padding-top: 10rem;
+    padding-bottom: 7rem;
   }
-
 
   .projects-eyebrow {
+    margin-bottom: 2rem;
 
-    margin-bottom:
-      28px;
+    color: var(--apple-blue);
 
-    color:
-      var(--apple-blue);
+    font-size: 14px;
+    font-weight: 500;
 
-    font-size:
-      12px;
-
-    font-weight:
-      500;
-
-    letter-spacing:
-      0.08em;
-
-    text-transform:
-      uppercase;
-
+    letter-spacing: -0.01em;
   }
-
-
-  .projects-header-grid {
-
-    display:
-      grid;
-
-    grid-template-columns:
-      minmax(0, 1.2fr)
-      minmax(280px, 0.8fr);
-
-    align-items:
-      end;
-
-    gap:
-      100px;
-
-  }
-
 
   .projects-heading {
-
-    margin:
-      0;
-
-    font-size:
-      clamp(
-        64px,
-        8vw,
-        118px
-      );
-
-    line-height:
-      0.91;
-
-    font-weight:
-      600;
-
-    letter-spacing:
-      -0.065em;
-
-  }
-
-
-  .projects-heading span {
-
-    display:
-      block;
-
-    color:
-      var(--apple-secondary);
-
-  }
-
-
-  .projects-intro {
-
-    max-width:
-      450px;
-
-    margin:
-      0;
-
-    color:
-      var(--apple-secondary);
-
-    font-size:
-      18px;
-
-    line-height:
-      1.55;
-
-    letter-spacing:
-      -0.015em;
-
-  }
-
-
-  /* ============================================================ */
-  /* PROJECT */
-  /* ============================================================ */
-
-  .project {
-
-    position:
-      relative;
-
-    min-height:
-      600px;
-
-    padding:
-      100px 0;
-
-    border-top:
-      1px solid
-      var(--apple-border);
-
-  }
-
-
-  .project-last {
-
-    border-bottom:
-      1px solid
-      var(--apple-border);
-
-  }
-
-
-  .project-index {
-
-    position:
-      absolute;
-
-    top:
-      106px;
-
-    left:
-      0;
-
-    display:
-      flex;
-
-    align-items:
-      center;
-
-    gap:
-      7px;
-
-    color:
-      rgba(255,255,255,0.32);
-
-    font-family:
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      Monaco,
-      Consolas,
-      monospace;
-
-    font-size:
-      10px;
-
-    letter-spacing:
-      0.05em;
-
-  }
-
-
-  .project-index span:last-child {
-
-    color:
-      rgba(255,255,255,0.14);
-
-  }
-
-
-  .project-content {
-
-    display:
-      grid;
+    display: grid;
 
     grid-template-columns:
-      minmax(0, 0.9fr)
-      minmax(420px, 1.1fr);
+      minmax(0, 1.4fr)
+      minmax(280px, 0.6fr);
 
-    align-items:
-      center;
+    align-items: end;
 
-    gap:
-      110px;
+    gap: 5rem;
+  }
 
-    padding-left:
-      75px;
+  .projects-heading h2 {
+    margin: 0;
 
+    color: var(--apple-white);
+
+    font-size: clamp(
+      4rem,
+      8vw,
+      8.5rem
+    );
+
+    line-height: 0.9;
+
+    font-weight: 600;
+
+    letter-spacing: -0.075em;
+  }
+
+  .projects-heading h2 span {
+    color: var(--apple-blue);
+  }
+
+  .projects-heading p {
+    max-width: 460px;
+
+    margin: 0 0 0 auto;
+
+    color: var(--apple-secondary);
+
+    font-size: 18px;
+
+    line-height: 1.55;
+
+    letter-spacing: -0.015em;
   }
 
 
-  /* ============================================================ */
-  /* COPY */
-  /* ============================================================ */
+  /* ==============================================================
+     PROJECT LIST
+     ============================================================== */
 
-  .project-copy {
+  .projects-list {
+    display: flex;
 
-    max-width:
-      620px;
+    flex-direction: column;
 
-  }
-
-
-  .project-category {
-
-    margin-bottom:
-      22px;
-
-    color:
-      var(--apple-blue);
-
-    font-size:
-      11px;
-
-    font-weight:
-      500;
-
-    letter-spacing:
-      0.07em;
-
-    text-transform:
-      uppercase;
-
-  }
-
-
-  .project h3 {
-
-    margin:
-      0;
-
-    color:
-      var(--apple-white);
-
-    font-size:
-      clamp(
-        42px,
-        4.4vw,
-        67px
-      );
-
-    line-height:
-      0.98;
-
-    font-weight:
-      600;
-
-    letter-spacing:
-      -0.055em;
-
-  }
-
-
-  .project-description {
-
-    max-width:
-      570px;
-
-    margin:
-      26px 0 0;
-
-    color:
-      var(--apple-secondary);
-
-    font-size:
-      17px;
-
-    line-height:
-      1.6;
-
-    letter-spacing:
-      -0.012em;
-
-  }
-
-
-  /* ============================================================ */
-  /* TECHNOLOGY */
-  /* ============================================================ */
-
-  .project-tech {
-
-    display:
-      flex;
-
-    flex-wrap:
-      wrap;
-
-    gap:
-      8px;
-
-    margin-top:
-      28px;
-
-  }
-
-
-  .project-tech span {
-
-    color:
-      var(--apple-tertiary);
-
-    font-family:
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      Monaco,
-      Consolas,
-      monospace;
-
-    font-size:
-      10px;
-
-    letter-spacing:
-      0.02em;
-
-  }
-
-
-  .project-tech span:not(:last-child)::after {
-
-    content:
-      " · ";
-
-    margin-left:
-      8px;
-
-    color:
-      rgba(255,255,255,0.16);
-
-  }
-
-
-  /* ============================================================ */
-  /* LINK */
-  /* ============================================================ */
-
-  .project-link {
-
-    display:
-      inline-flex;
-
-    align-items:
-      center;
-
-    gap:
-      8px;
-
-    margin-top:
-      34px;
-
-    color:
-      var(--apple-blue);
-
-    font-size:
-      14px;
-
-    font-weight:
-      500;
-
-    transition:
-      opacity 250ms ease;
-
-  }
-
-
-  .project-link svg {
-
-    width:
-      17px;
-
-    height:
-      17px;
-
-    fill:
-      none;
-
-    stroke:
-      currentColor;
-
-    stroke-width:
-      1.5;
-
-    stroke-linecap:
-      round;
-
-    stroke-linejoin:
-      round;
-
-    transition:
-      transform 250ms ease;
-
-  }
-
-
-  .project-link:hover svg {
-
-    transform:
-      translateX(5px);
-
-  }
-
-
-  .project-link:hover {
-
-    opacity:
-      0.75;
-
-  }
-
-
-  /* ============================================================ */
-  /* STATISTICS */
-  /* ============================================================ */
-
-  .project-stat-row {
-
-    display:
-      flex;
-
-    flex-wrap:
-      wrap;
-
-    gap:
-      42px;
-
-    margin-top:
-      34px;
-
-    padding-top:
-      24px;
+    gap: 1px;
 
     border-top:
-      1px solid
-      var(--apple-border-soft);
-
+      1px solid var(--apple-border);
   }
 
 
-  .project-stat-row > div {
+  /* ==============================================================
+     PROJECT CARD
+     ============================================================== */
 
-    display:
-      flex;
+  .project-card {
+    position: relative;
 
-    flex-direction:
-      column;
+    display: grid;
 
-    gap:
-      6px;
+    grid-template-columns:
+      80px
+      minmax(0, 1fr)
+      auto;
 
-  }
-
-
-  .project-stat-row span {
-
-    color:
-      var(--apple-tertiary);
-
-    font-size:
-      10px;
-
-    letter-spacing:
-      0.08em;
-
-    text-transform:
-      uppercase;
-
-  }
-
-
-  .project-stat-row strong {
-
-    color:
-      var(--apple-white);
-
-    font-size:
-      13px;
-
-    font-weight:
-      500;
-
-  }
-
-
-  .project-stat-row .blue-value {
-
-    color:
-      var(--apple-blue);
-
-  }
-
-
-  .project-stat-row.three {
-
-    gap:
-      25px;
-
-  }
-
-
-  /* ============================================================ */
-  /* VISUAL STAGE */
-  /* ============================================================ */
-
-  .project-visual {
-
-    position:
-      relative;
-
-    min-height:
-      410px;
-
-    display:
-      flex;
-
-    align-items:
-      center;
-
-    justify-content:
-      center;
-
-    overflow:
-      hidden;
-
-  }
-
-
-  /* ============================================================ */
-  /* TERMINAL */
-  /* ============================================================ */
-
-  .mini-window {
-
-    width:
-      min(
-        100%,
-        580px
-      );
-
-    overflow:
-      hidden;
-
-    border:
-      1px solid
-      rgba(255,255,255,0.10);
-
-    border-radius:
-      18px;
-
-    background:
-      #0b0b0d;
-
-    box-shadow:
-      0 35px 90px
-      rgba(0,0,0,0.45);
-
-    transform:
-      perspective(1000px)
-      rotateY(-4deg);
-
-    transition:
-      transform 600ms
-      cubic-bezier(.22,.61,.36,1);
-
-  }
-
-
-  .project:hover .mini-window {
-
-    transform:
-      perspective(1000px)
-      rotateY(0)
-      translateY(-5px);
-
-  }
-
-
-  .mini-window-header {
-
-    height:
-      42px;
-
-    display:
-      flex;
-
-    align-items:
-      center;
-
-    gap:
-      18px;
+    gap: 3rem;
 
     padding:
-      0 15px;
+      4.5rem
+      0;
 
     border-bottom:
-      1px solid
-      rgba(255,255,255,0.07);
+      1px solid var(--apple-border);
 
-    color:
-      #55565a;
-
-    font-family:
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      monospace;
-
-    font-size:
-      9px;
-
-  }
-
-
-  .window-dots {
-
-    display:
-      flex;
-
-    gap:
-      6px;
-
-  }
-
-
-  .window-dots span {
-
-    width:
-      8px;
-
-    height:
-      8px;
-
-    border-radius:
-      50%;
-
-    background:
-      #38383c;
-
-  }
-
-
-  .window-dots span:first-child {
-
-    background:
-      #ff5f57;
-
-  }
-
-
-  .window-dots span:nth-child(2) {
-
-    background:
-      #febc2e;
-
-  }
-
-
-  .window-dots span:last-child {
-
-    background:
-      #28c840;
-
-  }
-
-
-  .mini-terminal {
-
-    min-height:
-      310px;
-
-    padding:
-      35px;
-
-    color:
-      #d2d2d7;
-
-    font-family:
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      Monaco,
-      Consolas,
-      monospace;
-
-    font-size:
-      12px;
-
-    line-height:
-      1.9;
-
-  }
-
-
-  .terminal-green {
-
-    color:
-      #5ac18e;
-
-  }
-
-
-  .terminal-blue {
-
-    color:
-      var(--apple-blue);
-
-  }
-
-
-  .terminal-muted {
-
-    color:
-      #55565a;
-
-  }
-
-
-  .terminal-output {
-
-    margin-top:
-      8px;
-
-    color:
-      #66676c;
-
-  }
-
-
-  .terminal-cursor {
-
-    display:
-      inline-block;
-
-    width:
-      6px;
-
-    height:
-      14px;
-
-    margin-top:
-      13px;
-
-    background:
-      var(--apple-blue);
-
-    animation:
-      terminalBlink 1s
-      steps(2)
-      infinite;
-
-  }
-
-
-  @keyframes terminalBlink {
-
-    50% {
-      opacity:
-        0;
-    }
-
-  }
-
-
-  /* ============================================================ */
-  /* MOVIE */
-  /* ============================================================ */
-
-  .movie-display {
-
-    position:
-      relative;
-
-    width:
-      310px;
-
-    height:
-      410px;
-
-    overflow:
-      hidden;
-
-    border-radius:
-      20px;
-
-    background:
-      linear-gradient(
-        145deg,
-        #111827,
-        #050505 60%,
-        #172554
-      );
-
-    box-shadow:
-      0 35px 80px
-      rgba(0,0,0,0.45);
-
-    transform:
-      rotate(3deg);
+    background: transparent;
 
     transition:
-      transform 600ms
-      cubic-bezier(.22,.61,.36,1);
-
+      background 350ms ease;
   }
 
-
-  .project:hover .movie-display {
-
-    transform:
-      rotate(0)
-      translateY(-8px);
-
-  }
-
-
-  .movie-display::before {
-
-    content:
-      "";
-
-    position:
-      absolute;
-
-    inset:
-      0;
-
-    background:
-      radial-gradient(
-        circle at 65% 25%,
-        rgba(41,151,255,0.35),
-        transparent 32%
-      );
-
-  }
-
-
-  .movie-rating {
-
-    position:
-      absolute;
-
-    top:
-      30px;
-
-    right:
-      28px;
-
-    color:
-      #fff;
-
-  }
-
-
-  .movie-rating span {
-
-    font-size:
-      54px;
-
-    font-weight:
-      600;
-
-    letter-spacing:
-      -0.06em;
-
-  }
-
-
-  .movie-rating small {
-
-    color:
-      rgba(255,255,255,0.45);
-
-    font-size:
-      16px;
-
-  }
-
-
-  .movie-caption {
-
-    position:
-      absolute;
-
-    right:
-      25px;
-
-    bottom:
-      28px;
-
-    left:
-      25px;
-
-    display:
-      flex;
-
-    flex-direction:
-      column;
-
-    gap:
-      6px;
-
-  }
-
-
-  .movie-caption span {
-
-    color:
-      rgba(255,255,255,0.45);
-
-    font-size:
-      9px;
-
-    text-transform:
-      uppercase;
-
-    letter-spacing:
-      0.1em;
-
-  }
-
-
-  .movie-caption strong {
-
-    color:
-      #fff;
-
-    font-size:
-      16px;
-
-    font-weight:
-      500;
-
-  }
-
-
-  /* ============================================================ */
-  /* WEATHER */
-  /* ============================================================ */
-
-  .weather-sphere {
-
-    position:
-      relative;
-
-    width:
-      340px;
-
-    height:
-      340px;
-
-    display:
-      flex;
-
-    align-items:
-      center;
-
-    justify-content:
-      center;
-
-  }
-
-
-  .weather-sun {
-
-    width:
-      145px;
-
-    height:
-      145px;
-
-    border-radius:
-      50%;
-
-    background:
-      radial-gradient(
-        circle at 35% 30%,
-        #fff,
-        #93c5fd 35%,
-        #2997ff 75%
-      );
-
-    box-shadow:
-      0 0 100px
-      rgba(41,151,255,0.25);
-
-    animation:
-      weatherPulse 6s ease-in-out infinite;
-
-  }
-
-
-  @keyframes weatherPulse {
-
-    0%,
-    100% {
-
-      transform:
-        scale(1);
-
-    }
-
-    50% {
-
-      transform:
-        scale(1.04);
-
-    }
-
-  }
-
-
-  .weather-orbit {
-
-    position:
-      absolute;
-
-    width:
-      260px;
-
-    height:
-      95px;
-
-    border:
-      1px solid
-      rgba(41,151,255,0.24);
-
-    border-radius:
-      50%;
-
-    transform:
-      rotate(-20deg);
-
-  }
-
-
-  .orbit-two {
-
-    width:
-      310px;
-
-    height:
-      130px;
-
-    transform:
-      rotate(35deg);
-
-    border-color:
-      rgba(255,255,255,0.10);
-
-  }
-
-
-  /* ============================================================ */
-  /* ALGORITHM */
-  /* ============================================================ */
-
-  .algorithm-bars {
-
-    width:
-      440px;
-
-    height:
-      260px;
-
-    display:
-      flex;
-
-    align-items:
-      flex-end;
-
-    justify-content:
-      center;
-
-    gap:
-      7px;
-
-    padding:
-      30px;
-
-    border-bottom:
-      1px solid
-      rgba(255,255,255,0.1);
-
-  }
-
-
-  .algorithm-bars span {
-
-    width:
-      18px;
-
-    border-radius:
-      4px 4px 0 0;
-
-    background:
-      linear-gradient(
-        to top,
-        rgba(41,151,255,0.18),
-        rgba(41,151,255,0.85)
-      );
-
-    box-shadow:
-      0 0 18px
-      rgba(41,151,255,0.06);
-
-    transform-origin:
-      bottom;
-
-    animation:
-      algorithmBars 4s
-      ease-in-out
-      infinite alternate;
-
-  }
-
-
-  .algorithm-bars span:nth-child(2n) {
-
-    animation-delay:
-      -1s;
-
-  }
-
-
-  .algorithm-bars span:nth-child(3n) {
-
-    animation-delay:
-      -2s;
-
-  }
-
-
-  @keyframes algorithmBars {
-
-    from {
-      transform:
-        scaleY(0.75);
-    }
-
-    to {
-      transform:
-        scaleY(1);
-    }
-
-  }
-
-
-  /* ============================================================ */
-  /* NETWORK */
-  /* ============================================================ */
-
-  .network-stage {
-
-    position:
-      relative;
-
-    width:
-      460px;
-
-    height:
-      250px;
-
-  }
-
-
-  .network-node {
-
-    position:
-      absolute;
-
-    width:
-      64px;
-
-    height:
-      64px;
-
-    display:
-      flex;
-
-    align-items:
-      center;
-
-    justify-content:
-      center;
-
-    border:
-      1px solid
-      rgba(41,151,255,0.35);
-
-    border-radius:
-      50%;
-
-    background:
-      rgba(41,151,255,0.04);
-
-    color:
-      var(--apple-blue);
-
-    font-family:
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      monospace;
-
-    font-size:
-      13px;
-
-    box-shadow:
-      0 0 40px
-      rgba(41,151,255,0.08);
-
-  }
-
-
-  .node-a {
-
-    top:
-      50%;
-
-    left:
-      0;
-
-    transform:
-      translateY(-50%);
-
-  }
-
-
-  .node-b {
-
-    top:
-      20%;
-
-    left:
-      50%;
-
-    transform:
-      translateX(-50%);
-
-  }
-
-
-  .node-c {
-
-    right:
-      0;
-
-    bottom:
-      0;
-
-  }
-
-
-  .network-line {
-
-    position:
-      absolute;
-
-    height:
-      1px;
-
-    transform-origin:
-      left center;
-
+  .project-card:hover {
     background:
       linear-gradient(
         90deg,
-        rgba(41,151,255,0.15),
-        rgba(41,151,255,0.7),
-        rgba(41,151,255,0.15)
+        rgba(255, 255, 255, 0.025),
+        rgba(255, 255, 255, 0.008)
       );
+  }
 
-    animation:
-      networkPulse 2.8s
-      ease-in-out
-      infinite;
-
+  .project-card-featured {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 
 
-  .line-a {
+  /* ==============================================================
+     INDEX
+     ============================================================== */
 
-    top:
-      44%;
-
-    left:
-      62px;
-
-    width:
-      210px;
-
-    transform:
-      rotate(-22deg);
-
-  }
-
-
-  .line-b {
-
-    top:
-      41%;
-
-    left:
-      245px;
-
-    width:
-      170px;
-
-    transform:
-      rotate(34deg);
-
-    animation-delay:
-      -1.3s;
-
-  }
-
-
-  @keyframes networkPulse {
-
-    0%,
-    100% {
-
-      opacity:
-        0.3;
-
-    }
-
-    50% {
-
-      opacity:
-        1;
-
-    }
-
-  }
-
-
-  /* ============================================================ */
-  /* CPU */
-  /* ============================================================ */
-
-  .cpu-chip {
-
-    position:
-      relative;
-
-    width:
-      260px;
-
-    height:
-      260px;
-
-    display:
-      flex;
-
-    align-items:
-      center;
-
-    justify-content:
-      center;
-
-    border:
-      1px solid
-      rgba(41,151,255,0.25);
-
-    border-radius:
-      30px;
-
-    background:
-      linear-gradient(
-        145deg,
-        rgba(255,255,255,0.07),
-        rgba(255,255,255,0.015)
-      );
-
-    box-shadow:
-      0 30px 70px
-      rgba(0,0,0,0.4);
-
-    transform:
-      rotate(8deg);
-
-    transition:
-      transform 600ms
-      cubic-bezier(.22,.61,.36,1);
-
-  }
-
-
-  .project:hover .cpu-chip {
-
-    transform:
-      rotate(0)
-      translateY(-7px);
-
-  }
-
-
-  .cpu-core {
-
-    width:
-      125px;
-
-    height:
-      125px;
-
-    display:
-      flex;
-
-    flex-direction:
-      column;
-
-    align-items:
-      center;
-
-    justify-content:
-      center;
-
-    gap:
-      4px;
-
-    border:
-      1px solid
-      rgba(41,151,255,0.3);
-
-    border-radius:
-      20px;
-
-    background:
-      #090a0c;
+  .project-index {
+    padding-top: 8px;
 
     color:
-      var(--apple-blue);
-
-    box-shadow:
-      inset 0 0 35px
-      rgba(41,151,255,0.06);
-
-  }
-
-
-  .cpu-core span {
-
-    font-family:
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      monospace;
-
-    font-size:
-      18px;
-
-  }
-
-
-  .cpu-core small {
-
-    color:
-      rgba(255,255,255,0.3);
-
-    font-family:
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      monospace;
-
-    font-size:
-      8px;
-
-  }
-
-
-  .cpu-pin {
-
-    position:
-      absolute;
-
-    width:
-      22px;
-
-    height:
-      1px;
-
-    background:
-      rgba(41,151,255,0.35);
-
-  }
-
-
-  .pin-1 {
-
-    top:
-      48px;
-
-    left:
-      -22px;
-
-  }
-
-
-  .pin-2 {
-
-    bottom:
-      48px;
-
-    left:
-      -22px;
-
-  }
-
-
-  .pin-3 {
-
-    top:
-      48px;
-
-    right:
-      -22px;
-
-  }
-
-
-  .pin-4 {
-
-    bottom:
-      48px;
-
-    right:
-      -22px;
-
-  }
-
-
-  /* ============================================================ */
-  /* FINANCE */
-  /* ============================================================ */
-
-  .finance-card {
-
-    width:
-      380px;
-
-    padding:
-      30px;
-
-    border:
-      1px solid
-      rgba(255,255,255,0.10);
-
-    border-radius:
-      22px;
-
-    background:
-      linear-gradient(
-        145deg,
-        rgba(255,255,255,0.07),
-        rgba(255,255,255,0.015)
-      );
-
-    box-shadow:
-      0 30px 80px
-      rgba(0,0,0,0.4);
-
-    transform:
-      rotate(-3deg);
-
-    transition:
-      transform 600ms
-      cubic-bezier(.22,.61,.36,1);
-
-  }
-
-
-  .project:hover .finance-card {
-
-    transform:
-      rotate(0)
-      translateY(-7px);
-
-  }
-
-
-  .finance-card > span {
-
-    color:
-      var(--apple-tertiary);
-
-    font-size:
-      10px;
-
-    text-transform:
-      uppercase;
-
-    letter-spacing:
-      0.1em;
-
-  }
-
-
-  .finance-card > strong {
-
-    display:
-      block;
-
-    margin-top:
-      15px;
-
-    color:
-      var(--apple-white);
-
-    font-size:
-      40px;
-
-    font-weight:
-      500;
-
-    letter-spacing:
-      -0.04em;
-
-  }
-
-
-  .finance-line {
-
-    height:
-      4px;
-
-    margin:
-      30px 0 15px;
-
-    overflow:
-      hidden;
-
-    border-radius:
-      999px;
-
-    background:
-      rgba(255,255,255,0.07);
-
-  }
-
-
-  .finance-line span {
-
-    display:
-      block;
-
-    width:
-      68%;
-
-    height:
-      100%;
-
-    border-radius:
-      inherit;
-
-    background:
-      var(--apple-blue);
-
-  }
-
-
-  .finance-card small {
-
-    color:
-      var(--apple-tertiary);
-
-    font-size:
-      10px;
-
-  }
-
-
-  /* ============================================================ */
-  /* FINTRACK */
-  /* ============================================================ */
-
-  .fintrack-screen {
-
-    width:
-      450px;
-
-    min-height:
-      300px;
-
-    padding:
-      25px;
-
-    border:
-      1px solid
-      rgba(255,255,255,0.1);
-
-    border-radius:
-      22px;
-
-    background:
-      linear-gradient(
-        145deg,
-        rgba(255,255,255,0.065),
-        rgba(255,255,255,0.012)
-      );
-
-    box-shadow:
-      0 35px 80px
-      rgba(0,0,0,0.4);
-
-    transform:
-      perspective(900px)
-      rotateY(4deg);
-
-    transition:
-      transform 600ms
-      cubic-bezier(.22,.61,.36,1);
-
-  }
-
-
-  .project:hover .fintrack-screen {
-
-    transform:
-      perspective(900px)
-      rotateY(0)
-      translateY(-7px);
-
-  }
-
-
-  .fintrack-top {
-
-    display:
-      flex;
-
-    justify-content:
-      space-between;
-
-    color:
-      var(--apple-tertiary);
-
-    font-size:
-      10px;
-
-  }
-
-
-  .fintrack-top span:first-child {
-
-    color:
-      var(--apple-white);
-
-    font-size:
-      13px;
-
-    font-weight:
-      500;
-
-  }
-
-
-  .fintrack-balance {
-
-    margin-top:
-      45px;
-
-  }
-
-
-  .fintrack-balance small {
-
-    color:
-      var(--apple-tertiary);
-
-    font-size:
-      10px;
-
-  }
-
-
-  .fintrack-balance strong {
-
-    display:
-      block;
-
-    margin-top:
-      8px;
-
-    color:
-      var(--apple-white);
-
-    font-size:
-      34px;
-
-    font-weight:
-      500;
-
-    letter-spacing:
-      -0.04em;
-
-  }
-
-
-  .fintrack-bars {
-
-    height:
-      90px;
-
-    display:
-      flex;
-
-    align-items:
-      flex-end;
-
-    gap:
-      8px;
-
-    margin-top:
-      25px;
-
-  }
-
-
-  .fintrack-bars span {
-
-    flex:
-      1;
-
-    border-radius:
-      3px 3px 0 0;
-
-    background:
-      linear-gradient(
-        to top,
-        rgba(41,151,255,0.2),
-        rgba(41,151,255,0.8)
-      );
-
-  }
-
-
-  /* ============================================================ */
-  /* FOOTER */
-  /* ============================================================ */
-
-  .projects-footer {
-
-    display:
-      flex;
-
-    align-items:
-      center;
-
-    gap:
-      18px;
-
-    padding:
-      35px 0 120px;
-
-    color:
-      rgba(255,255,255,0.28);
+      rgba(255, 255, 255, 0.38);
 
     font-family:
       ui-monospace,
@@ -2989,312 +846,601 @@
       Consolas,
       monospace;
 
-    font-size:
-      10px;
+    font-size: 11px;
 
-    letter-spacing:
-      0.08em;
+    letter-spacing: 0.04em;
+  }
 
-    text-transform:
-      uppercase;
-
+  .project-index span {
+    color:
+      rgba(255, 255, 255, 0.17);
   }
 
 
-  .footer-rule {
+  /* ==============================================================
+     CONTENT
+     ============================================================== */
 
-    width:
-      50px;
+  .project-content {
+    min-width: 0;
 
-    height:
-      1px;
+    max-width: 900px;
+  }
+
+
+  /* ==============================================================
+     META
+     ============================================================== */
+
+  .project-meta {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 1.25rem;
+
+    color: var(--apple-blue);
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.01em;
+  }
+
+  .project-meta span {
+    color:
+      rgba(255, 255, 255, 0.2);
+  }
+
+
+  /* ==============================================================
+     TITLE
+     ============================================================== */
+
+  .project-content h3 {
+    margin: 0;
+
+    color: var(--apple-white);
+
+    font-size: clamp(
+      2.2rem,
+      4vw,
+      4rem
+    );
+
+    line-height: 1;
+
+    font-weight: 600;
+
+    letter-spacing: -0.055em;
+
+    transition:
+      color 300ms ease;
+  }
+
+  .project-content h3 span {
+    color: var(--apple-blue);
+  }
+
+
+  /* ==============================================================
+     DESCRIPTION
+     ============================================================== */
+
+  .project-description {
+    max-width: 720px;
+
+    margin:
+      1.5rem
+      0
+      0;
+
+    color: var(--apple-secondary);
+
+    font-size: 17px;
+
+    line-height: 1.65;
+
+    letter-spacing: -0.012em;
+  }
+
+  .project-note {
+    max-width: 650px;
+
+    margin:
+      0.8rem
+      0
+      0;
+
+    color: var(--apple-muted);
+
+    font-size: 14px;
+
+    line-height: 1.5;
+  }
+
+
+  /* ==============================================================
+     DATA
+     ============================================================== */
+
+  .project-data {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 0;
+
+    margin-top: 2.5rem;
+
+    padding-top: 1.5rem;
+
+    border-top:
+      1px solid
+      rgba(255, 255, 255, 0.07);
+  }
+
+  .project-data > div {
+    min-width: 150px;
+
+    padding:
+      0
+      2rem;
+
+    border-right:
+      1px solid
+      rgba(255, 255, 255, 0.08);
+  }
+
+  .project-data > div:first-child {
+    padding-left: 0;
+  }
+
+  .project-data > div:last-child {
+    border-right: 0;
+  }
+
+  .project-data span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--apple-muted);
+
+    font-size: 11px;
+
+    letter-spacing: 0.01em;
+  }
+
+  .project-data strong {
+    display: block;
+
+    color: var(--apple-white);
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    line-height: 1.35;
+  }
+
+  .blue-value {
+    color: var(--apple-blue) !important;
+
+    font-size: 18px !important;
+  }
+
+  .blue-value span {
+    display: inline;
+
+    margin: 0;
+
+    color: var(--apple-muted);
+
+    font-size: 13px;
+  }
+
+
+  /* ==============================================================
+     WEATHER
+     ============================================================== */
+
+  .weather-data {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 1px;
+
+    max-width: 700px;
+
+    margin-top: 2.5rem;
+
+    border:
+      1px solid
+      rgba(255, 255, 255, 0.08);
 
     background:
-      rgba(255,255,255,0.12);
+      rgba(255, 255, 255, 0.08);
+  }
+
+  .weather-item {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 2rem;
+
+    padding: 1.25rem 1.4rem;
+
+    background:
+      rgba(255, 255, 255, 0.025);
+  }
+
+  .weather-item > div:first-child span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--apple-muted);
+
+    font-size: 11px;
+  }
+
+  .weather-item > div:first-child strong {
+    color: var(--apple-white);
+
+    font-size: 15px;
+
+    font-weight: 500;
+  }
+
+  .weather-reading {
+    text-align: right;
+  }
+
+  .weather-reading strong {
+    display: block;
+
+    color: var(--apple-white);
+
+    font-size: 18px;
+
+    font-weight: 500;
+
+    letter-spacing: -0.02em;
+  }
+
+  .weather-reading span {
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--apple-muted);
+
+    font-size: 11px;
+  }
+
+
+  /* ==============================================================
+     TECHNOLOGIES
+     ============================================================== */
+
+  .project-technologies {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 0;
+
+    margin-top: 2rem;
+  }
+
+  .project-technologies span {
+    color: var(--apple-muted);
+
+    font-size: 12px;
+
+    line-height: 1.4;
+  }
+
+  .project-technologies span:not(:last-child)::after {
+    content: "·";
+
+    margin:
+      0
+      10px;
+
+    color:
+      rgba(255, 255, 255, 0.22);
+  }
+
+
+  /* ==============================================================
+     LINK
+     ============================================================== */
+
+  .project-link {
+    align-self: center;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding-top: 8px;
+
+    color: var(--apple-blue);
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    transition:
+      color 250ms ease;
+  }
+
+  .project-link span {
+    display: inline-block;
+
+    font-size: 18px;
+
+    line-height: 1;
+
+    transition:
+      transform 250ms
+      cubic-bezier(.22,.61,.36,1);
+  }
+
+  .project-link:hover span {
+    transform:
+      translateX(4px);
+  }
+
+
+  /* ==============================================================
+     FEATURED
+     ============================================================== */
+
+  .project-card-featured .project-content h3 {
+    font-size: clamp(
+      2.8rem,
+      5vw,
+      5rem
+    );
+  }
+
+  .project-card-featured {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(41, 151, 255, 0.035),
+        transparent 65%
+      );
+  }
+
+
+  /* ==============================================================
+     FINTRACK
+     ============================================================== */
+
+  .project-card-fintrack {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.018),
+        transparent 65%
+      );
+  }
+
+
+  /* ==============================================================
+     FOOTER
+     ============================================================== */
+
+  .projects-footer {
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    padding:
+      2rem
+      0
+      8rem;
+
+    color:
+      rgba(255, 255, 255, 0.35);
+
+    font-size: 12px;
+
+    letter-spacing: -0.01em;
+  }
+
+  .footer-rule {
+    width: 40px;
+
+    height: 1px;
+
+    background:
+      rgba(255, 255, 255, 0.16);
+  }
+
+
+  /* ==============================================================
+     TABLET
+     ============================================================== */
+
+  @media (max-width: 900px) {
+
+    .projects-header {
+      padding-top: 8rem;
+
+      padding-bottom: 5rem;
+    }
+
+    .projects-heading {
+      grid-template-columns: 1fr;
+
+      gap: 2rem;
+    }
+
+    .projects-heading p {
+      margin: 0;
+
+      max-width: 600px;
+    }
+
+    .project-card {
+      grid-template-columns:
+        55px
+        minmax(0, 1fr);
+
+      gap: 1.5rem;
+
+      padding:
+        3.5rem
+        0;
+    }
+
+    .project-link {
+      grid-column: 2;
+
+      justify-self: start;
+
+      margin-top: -1rem;
+    }
 
   }
 
 
-  /* ============================================================ */
-  /* TABLET */
-  /* ============================================================ */
-
-  @media (max-width: 1000px) {
-
-    .projects-header-grid {
-
-      grid-template-columns:
-        1fr;
-
-      gap:
-        30px;
-
-    }
-
-
-    .project-content {
-
-      grid-template-columns:
-        1fr;
-
-      gap:
-        70px;
-
-      padding-left:
-        70px;
-
-    }
-
-
-    .project-visual {
-
-      min-height:
-        360px;
-
-    }
-
-  }
-
-
-  /* ============================================================ */
-  /* MOBILE */
-  /* ============================================================ */
+  /* ==============================================================
+     MOBILE
+     ============================================================== */
 
   @media (max-width: 640px) {
 
-    .projects-container {
-
-      width:
-        calc(100% - 40px);
-
-    }
-
-
     .projects-header {
+      padding-top: 6rem;
+
+      padding-bottom: 4rem;
+    }
+
+    .projects-eyebrow {
+      margin-bottom: 1.5rem;
+
+      font-size: 13px;
+    }
+
+    .projects-heading h2 {
+      font-size: 4rem;
+
+      letter-spacing: -0.065em;
+    }
+
+    .projects-heading p {
+      font-size: 16px;
+
+      line-height: 1.6;
+    }
+
+    .project-card,
+    .project-card-featured {
+      grid-template-columns: 1fr;
+
+      gap: 1rem;
 
       padding:
-        120px 0
-        80px;
-
+        3rem
+        0;
     }
-
-
-    .projects-heading {
-
-      font-size:
-        clamp(
-          58px,
-          17vw,
-          82px
-        );
-
-    }
-
-
-    .projects-intro {
-
-      font-size:
-        16px;
-
-    }
-
-
-    .project {
-
-      min-height:
-        auto;
-
-      padding:
-        75px 0;
-
-    }
-
 
     .project-index {
+      padding: 0;
 
-      position:
-        static;
-
-      margin-bottom:
-        35px;
-
+      margin-bottom: 0.5rem;
     }
 
-
-    .project-content {
-
-      padding-left:
-        0;
-
-      gap:
-        50px;
-
+    .project-content h3,
+    .project-card-featured .project-content h3 {
+      font-size: 2.35rem;
     }
-
-
-    .project h3 {
-
-      font-size:
-        42px;
-
-    }
-
 
     .project-description {
-
-      font-size:
-        16px;
-
+      font-size: 16px;
     }
 
+    .project-data {
+      display: flex;
 
-    .project-visual {
+      flex-direction: column;
 
-      min-height:
-        300px;
-
+      gap: 1.25rem;
     }
 
-
-    .mini-window {
-
-      width:
-        100%;
-
-    }
-
-
-    .mini-terminal {
-
+    .project-data > div,
+    .project-data > div:first-child {
       padding:
-        25px;
+        0
+        0
+        1.25rem;
 
+      border-right: 0;
+
+      border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.07);
     }
 
+    .project-data > div:last-child {
+      padding-bottom: 0;
 
-    .movie-display {
-
-      width:
-        250px;
-
-      height:
-        330px;
-
+      border-bottom: 0;
     }
 
-
-    .weather-sphere {
-
-      transform:
-        scale(0.8);
-
+    .weather-data {
+      grid-template-columns: 1fr;
     }
 
-
-    .algorithm-bars {
-
-      width:
-        100%;
-
-      padding:
-        20px;
-
+    .project-technologies {
+      margin-top: 1.75rem;
     }
 
+    .project-link {
+      grid-column: auto;
 
-    .algorithm-bars span {
-
-      width:
-        12px;
-
+      margin-top: 0;
     }
-
-
-    .network-stage {
-
-      transform:
-        scale(0.78);
-
-    }
-
-
-    .cpu-chip {
-
-      transform:
-        scale(0.82)
-        rotate(8deg);
-
-    }
-
-
-    .project:hover .cpu-chip {
-
-      transform:
-        scale(0.82)
-        rotate(0)
-        translateY(-5px);
-
-    }
-
-
-    .finance-card,
-    .fintrack-screen {
-
-      width:
-        100%;
-
-    }
-
-
-    .fintrack-screen {
-
-      transform:
-        none;
-
-    }
-
-
-    .project:hover .fintrack-screen {
-
-      transform:
-        translateY(-5px);
-
-    }
-
 
     .projects-footer {
-
-      padding-bottom:
-        80px;
-
+      padding-bottom: 5rem;
     }
 
   }
 
 
-  /* ============================================================ */
-  /* REDUCED MOTION */
-  /* ============================================================ */
+  /* ==============================================================
+     REDUCED MOTION
+     ============================================================== */
 
   @media (prefers-reduced-motion: reduce) {
 
-    .terminal-cursor,
-    .weather-sun,
-    .algorithm-bars span,
-    .network-line {
-
-      animation:
-        none !important;
-
-    }
-
-
-    .project *,
-    .project::before {
-
-      transition:
-        none !important;
-
+    .project-card,
+    .project-link,
+    .project-link span {
+      transition: none !important;
     }
 
   }
