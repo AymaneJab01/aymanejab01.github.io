@@ -80,16 +80,19 @@ const getTechnologyName = (tech: string) => {
   <!-- ========================================================= -->
 
   <div class="technology-wall relative overflow-x-hidden py-6">
+    <!-- Left fade -->
     <div
       class="pointer-events-none absolute inset-y-0 left-0 z-20 w-24 bg-gradient-to-r from-[var(--background)] via-[var(--background)]/80 to-transparent md:w-40"
       aria-hidden="true"
     ></div>
 
+    <!-- Right fade -->
     <div
       class="pointer-events-none absolute inset-y-0 right-0 z-20 w-24 bg-gradient-to-l from-[var(--background)] via-[var(--background)]/80 to-transparent md:w-40"
       aria-hidden="true"
     ></div>
 
+    <!-- Scrolling technology list -->
     <div class="flex w-max animate-scroll will-change-transform">
       {
         [...technologies, ...technologies].map((tech, index) => (
@@ -97,6 +100,7 @@ const getTechnologyName = (tech: string) => {
             class="group flex shrink-0 items-center gap-3 pr-12 transition-all duration-300 md:pr-20"
             aria-hidden={index >= technologies.length ? "true" : "false"}
           >
+            <!-- Technology icon -->
             <div class="flex h-8 w-8 items-center justify-center">
               <img
                 src={getIconPath(tech)}
@@ -113,6 +117,7 @@ const getTechnologyName = (tech: string) => {
               />
             </div>
 
+            <!-- Technology name -->
             <span
               class="whitespace-nowrap text-lg font-medium text-[var(--white-icon)] opacity-70 transition-opacity duration-300 group-hover:opacity-100"
             >
@@ -185,8 +190,8 @@ const getTechnologyName = (tech: string) => {
           transition-all
           duration-700
           hover:border-white/20
-          hover:bg-white/[0.055]
-          hover:shadow-[0_25px_70px_rgba(0,0,0,0.40)]
+          hover:bg-white/[0.05]
+          hover:shadow-[0_25px_70px_rgba(0,0,0,0.4)]
           md:gap-16
           md:px-12
           md:py-10
@@ -194,45 +199,21 @@ const getTechnologyName = (tech: string) => {
       >
 
         <!-- =================================================== -->
-        <!-- SUBTLE CARD LIGHT -->
+        <!-- VERY SUBTLE CARD REFLECTION -->
         <!-- =================================================== -->
 
         <div
           class="
             pointer-events-none
             absolute
-            -left-24
-            -top-24
-            h-56
-            w-56
-            rounded-full
-            bg-white/[0.025]
-            blur-3xl
-            opacity-0
-            transition-all
-            duration-700
-            group-hover:scale-110
-            group-hover:opacity-100
-          "
-          aria-hidden="true"
-        ></div>
-
-        <div
-          class="
-            pointer-events-none
-            absolute
-            left-1/3
-            top-1/2
-            h-32
-            w-48
-            -translate-y-1/2
-            rounded-full
-            bg-white/[0.018]
-            blur-3xl
-            opacity-0
-            transition-opacity
-            duration-700
-            group-hover:opacity-100
+            left-0
+            top-0
+            h-px
+            w-1/2
+            bg-gradient-to-r
+            from-white/20
+            to-transparent
+            opacity-50
           "
           aria-hidden="true"
         ></div>
@@ -254,72 +235,35 @@ const getTechnologyName = (tech: string) => {
           "
         >
 
-          <!-- Tight white aura -->
-          <div
-            class="
-              pointer-events-none
-              absolute
-              left-1/2
-              top-1/2
-              h-28
-              w-44
-              -translate-x-1/2
-              -translate-y-1/2
-              rounded-full
-              bg-white/[0.055]
-              blur-2xl
-              opacity-60
-              transition-all
-              duration-700
-              group-hover:scale-110
-              group-hover:bg-white/[0.08]
-              group-hover:opacity-90
-            "
-            aria-hidden="true"
-          ></div>
+          <!-- ================================================= -->
+          <!-- TIGHT LOCAL GLOW -->
+          <!-- ================================================= -->
 
-          <!-- Small inner glow -->
           <div
             class="
+              upv-local-glow
               pointer-events-none
               absolute
               left-1/2
               top-1/2
-              h-20
-              w-32
+              h-24
+              w-40
               -translate-x-1/2
               -translate-y-1/2
               rounded-full
-              bg-white/[0.04]
-              blur-xl
-              opacity-70
+              opacity-30
               transition-all
               duration-700
               group-hover:scale-105
+              group-hover:opacity-45
             "
             aria-hidden="true"
           ></div>
 
-          <!-- Tight black depth -->
-          <div
-            class="
-              pointer-events-none
-              absolute
-              left-1/2
-              top-[55%]
-              h-20
-              w-36
-              -translate-x-1/2
-              -translate-y-1/2
-              rounded-full
-              bg-black/70
-              blur-2xl
-              opacity-70
-            "
-            aria-hidden="true"
-          ></div>
+          <!-- ================================================= -->
+          <!-- UPV LOGO -->
+          <!-- ================================================= -->
 
-          <!-- UPV logo -->
           <img
             src="/svg/UPV.jpg"
             alt="Universitat Politècnica de València"
@@ -331,18 +275,16 @@ const getTechnologyName = (tech: string) => {
               h-full
               w-full
               object-contain
-              opacity-90
               grayscale
               contrast-125
               brightness-105
-              drop-shadow-[0_10px_24px_rgba(0,0,0,0.65)]
+              opacity-90
               transition-all
               duration-700
-              group-hover:scale-[1.04]
+              group-hover:scale-[1.035]
               group-hover:opacity-100
               group-hover:contrast-[1.3]
               group-hover:brightness-110
-              group-hover:drop-shadow-[0_14px_32px_rgba(255,255,255,0.12)]
             "
             width="320"
             height="240"
@@ -350,7 +292,10 @@ const getTechnologyName = (tech: string) => {
             decoding="async"
           />
 
-          <!-- Silver line -->
+          <!-- ================================================= -->
+          <!-- SMALL SILVER REFLECTION -->
+          <!-- ================================================= -->
+
           <div
             class="
               pointer-events-none
@@ -359,22 +304,22 @@ const getTechnologyName = (tech: string) => {
               left-1/2
               z-20
               h-px
-              w-32
+              w-28
               -translate-x-1/2
               bg-gradient-to-r
               from-transparent
               via-white/25
               to-transparent
-              opacity-40
+              opacity-35
               transition-all
               duration-700
-              group-hover:w-44
-              group-hover:opacity-70
+              group-hover:w-36
+              group-hover:opacity-60
             "
             aria-hidden="true"
           ></div>
 
-          <!-- Small central light -->
+          <!-- Tiny light -->
           <div
             class="
               pointer-events-none
@@ -387,13 +332,12 @@ const getTechnologyName = (tech: string) => {
               -translate-x-1/2
               rounded-full
               bg-white/50
-              blur-[1px]
-              opacity-50
+              opacity-40
               transition-all
               duration-500
-              group-hover:scale-150
+              group-hover:scale-125
               group-hover:bg-white
-              group-hover:opacity-100
+              group-hover:opacity-80
             "
             aria-hidden="true"
           ></div>
@@ -406,7 +350,7 @@ const getTechnologyName = (tech: string) => {
 
         <div class="relative min-w-0">
 
-          <!-- Status -->
+          <!-- Student -->
           <p
             class="
               mb-3
@@ -449,15 +393,15 @@ const getTechnologyName = (tech: string) => {
             UPV
           </p>
 
-          <!-- Elegant accent -->
+          <!-- Elegant silver accent -->
           <div
             class="
               mt-6
               h-px
               w-16
               bg-gradient-to-r
-              from-white/45
-              via-white/20
+              from-white/40
+              via-white/15
               to-transparent
               transition-all
               duration-700
@@ -469,7 +413,7 @@ const getTechnologyName = (tech: string) => {
         </div>
 
         <!-- =================================================== -->
-        <!-- TOP GLASS REFLECTION -->
+        <!-- TOP GLASS LINE -->
         <!-- =================================================== -->
 
         <div
@@ -481,7 +425,7 @@ const getTechnologyName = (tech: string) => {
             h-px
             bg-gradient-to-r
             from-transparent
-            via-white/20
+            via-white/15
             to-transparent
             opacity-60
           "
@@ -489,7 +433,7 @@ const getTechnologyName = (tech: string) => {
         ></div>
 
         <!-- =================================================== -->
-        <!-- BOTTOM GLASS REFLECTION -->
+        <!-- BOTTOM GLASS LINE -->
         <!-- =================================================== -->
 
         <div
@@ -503,7 +447,7 @@ const getTechnologyName = (tech: string) => {
             from-transparent
             via-white/10
             to-transparent
-            opacity-50
+            opacity-40
           "
           aria-hidden="true"
         ></div>
@@ -518,6 +462,11 @@ const getTechnologyName = (tech: string) => {
 <!-- ========================================================= -->
 
 <style is:global>
+
+  /* ========================================================= */
+  /* TECHNOLOGY MARQUEE */
+  /* ========================================================= */
+
   @keyframes scroll {
     from {
       transform: translate3d(0, 0, 0);
@@ -536,10 +485,64 @@ const getTechnologyName = (tech: string) => {
     animation-play-state: paused;
   }
 
+  /* Normal cursor */
   .technology-wall,
   .technology-wall * {
     cursor: default !important;
   }
+
+  /* ========================================================= */
+  /* UPV LOCAL GLOW */
+  /* ========================================================= */
+
+  .upv-local-glow {
+    /*
+      Small radial light.
+      Unlike the previous version, this does NOT use a huge
+      blurred element, so the glow stays close to the logo.
+    */
+    background:
+      radial-gradient(
+        ellipse at center,
+        rgba(255, 255, 255, 0.18) 0%,
+        rgba(255, 255, 255, 0.08) 35%,
+        rgba(255, 255, 255, 0.02) 58%,
+        transparent 72%
+      );
+
+    filter: blur(14px);
+  }
+
+  /* ========================================================= */
+  /* LOGO MICRO GLOW */
+  /* ========================================================= */
+
+  .upv-logo {
+    filter:
+      grayscale(1)
+      contrast(1.25)
+      brightness(1.05)
+      drop-shadow(0 8px 14px rgba(0, 0, 0, 0.55))
+      drop-shadow(0 0 4px rgba(255, 255, 255, 0.06));
+
+    transition:
+      transform 700ms ease,
+      opacity 700ms ease,
+      filter 700ms ease;
+  }
+
+  .upv-card:hover .upv-logo {
+    filter:
+      grayscale(1)
+      contrast(1.3)
+      brightness(1.1)
+      drop-shadow(0 10px 18px rgba(0, 0, 0, 0.6))
+      drop-shadow(0 0 5px rgba(255, 255, 255, 0.1));
+  }
+
+  /* ========================================================= */
+  /* DESKTOP */
+  /* ========================================================= */
 
   @media (min-width: 768px) {
     .animate-scroll {
@@ -547,11 +550,24 @@ const getTechnologyName = (tech: string) => {
     }
   }
 
+  /* ========================================================= */
+  /* REDUCED MOTION */
+  /* ========================================================= */
+
   @media (prefers-reduced-motion: reduce) {
     .animate-scroll {
       animation-play-state: paused;
     }
+
+    .upv-logo,
+    .upv-local-glow {
+      transition: none;
+    }
   }
+
+  /* ========================================================= */
+  /* MOBILE */
+  /* ========================================================= */
 
   @media (max-width: 640px) {
     section[aria-label="Organizations"] .upv-card {
@@ -572,6 +588,10 @@ const getTechnologyName = (tech: string) => {
     }
   }
 
+  /* ========================================================= */
+  /* SMALL PHONES */
+  /* ========================================================= */
+
   @media (max-width: 420px) {
     section[aria-label="Organizations"] .upv-logo-area {
       height: 12rem;
@@ -583,4 +603,5 @@ const getTechnologyName = (tech: string) => {
       padding-right: 1rem;
     }
   }
+
 </style>
