@@ -3,753 +3,832 @@
 
 <section
   id="projects"
-  class="projects-section relative overflow-hidden text-[var(--white)]"
+  class="projects-section text-[var(--white)]"
 >
-  <!-- ========================================================= -->
-  <!-- AMBIENT BACKGROUND -->
-  <!-- ========================================================= -->
 
-  <div class="projects-background pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-    <div class="projects-glow projects-glow-top"></div>
-    <div class="projects-glow projects-glow-right"></div>
-    <div class="projects-glow projects-glow-bottom"></div>
+  <div class="projects-container">
 
-    <div class="projects-grid"></div>
+    <!-- ======================================================= -->
+    <!-- HEADER -->
+    <!-- ======================================================= -->
 
-    <div class="projects-vignette"></div>
-  </div>
+    <header class="projects-header">
 
-
-  <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-
-    <!-- ========================================================= -->
-    <!-- SECTION HEADER -->
-    <!-- ========================================================= -->
-
-    <div class="projects-header">
-
-      <div class="section-eyebrow">
-        <span class="eyebrow-line"></span>
-
-        <span>
-          Selected work
-        </span>
+      <div class="projects-eyebrow">
+        <span>Selected work</span>
       </div>
 
-      <div class="projects-heading-layout">
+      <div class="projects-header-grid">
 
-        <div>
-          <h2 class="projects-title">
-            Things I've
-            <span>built.</span>
-          </h2>
-        </div>
+        <h2 class="projects-heading">
+          Things I've
+          <span>built.</span>
+        </h2>
 
-        <p class="projects-introduction">
-          A collection of software projects, experiments and
-          interactive systems built throughout my computer
-          science journey.
+        <p class="projects-intro">
+          Software projects, experiments and interactive systems
+          developed throughout my computer science journey.
         </p>
 
       </div>
 
-    </div>
+    </header>
 
 
-    <!-- ========================================================= -->
-    <!-- PROJECTS -->
-    <!-- ========================================================= -->
+    <!-- ======================================================= -->
+    <!-- PROJECT 01 -->
+    <!-- ======================================================= -->
 
-    <div class="projects-list">
+    <article class="project project-featured">
 
+      <div class="project-index">
+        <span>01</span>
+        <span>08</span>
+      </div>
 
-      <!-- ======================================================= -->
-      <!-- PROJECT 01 — DEVELOPER TERMINAL -->
-      <!-- ======================================================= -->
+      <div class="project-content">
 
-      <article class="project-card project-card-featured">
+        <div class="project-copy">
 
-        <div class="project-number">
-          01
-          <span>/ 08</span>
-        </div>
+          <div class="project-category">
+            Interactive · Portfolio
+          </div>
 
-        <div class="project-card-inner">
+          <h3>
+            Developer Terminal
+          </h3>
 
-          <div class="project-main">
+          <p class="project-description">
+            An interactive terminal built directly into my portfolio,
+            providing a developer-focused way to explore my work,
+            skills, projects and information.
+          </p>
 
-            <div class="project-meta">
-              <span>Interactive</span>
-              <span class="meta-separator"></span>
-              <span>Portfolio</span>
-            </div>
-
-            <h3 class="project-title">
-              Developer Terminal
-              <span>.</span>
-            </h3>
-
-            <p class="project-description">
-              An interactive terminal built directly into my portfolio,
-              providing a developer-focused way to explore my work,
-              skills, projects and information.
-            </p>
-
-            <p class="project-secondary">
-              Continuously evolving with new commands, features
-              and ideas.
-            </p>
-
-            <div class="project-tags">
-              <span>Astro</span>
-              <span>TypeScript</span>
-              <span>Interactive UI</span>
-            </div>
-
+          <div class="project-tech">
+            <span>Astro</span>
+            <span>TypeScript</span>
+            <span>Interactive UI</span>
           </div>
 
           <a
             href="/#terminal"
-            class="project-action"
+            class="project-link"
           >
             <span>Open terminal</span>
 
-            <span class="project-arrow">
-              →
-            </span>
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M4 10h11" />
+              <path d="m11 5 5 5-5 5" />
+            </svg>
           </a>
 
         </div>
 
-      </article>
 
+        <div class="project-visual terminal-visual">
 
-      <!-- ======================================================= -->
-      <!-- PROJECT 02 — MOVIE RANKING -->
-      <!-- ======================================================= -->
+          <div class="mini-window">
 
-      <article class="project-card">
+            <div class="mini-window-header">
 
-        <div class="project-number">
-          02
-          <span>/ 08</span>
+              <div class="window-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              <span>aymane@portfolio</span>
+
+            </div>
+
+            <div class="mini-terminal">
+
+              <div>
+                <span class="terminal-green">aymane</span>
+                <span class="terminal-muted">@portfolio</span>
+                <span class="terminal-blue">~</span>
+                <span class="terminal-muted">$</span>
+                <span> help</span>
+              </div>
+
+              <div class="terminal-output">
+                Welcome to Aymane's interactive terminal.
+              </div>
+
+              <div class="terminal-output">
+                Type <span class="terminal-blue">"help"</span>
+                to explore available commands.
+              </div>
+
+              <span class="terminal-cursor"></span>
+
+            </div>
+
+          </div>
+
         </div>
 
-        <div class="project-card-inner">
+      </div>
 
-          <div class="project-main">
+    </article>
 
-            <div class="project-meta">
-              <span>Web App</span>
-              <span class="meta-separator"></span>
-              <span>Entertainment</span>
+
+    <!-- ======================================================= -->
+    <!-- PROJECT 02 -->
+    <!-- ======================================================= -->
+
+    <article class="project">
+
+      <div class="project-index">
+        <span>02</span>
+        <span>08</span>
+      </div>
+
+      <div class="project-content">
+
+        <div class="project-copy">
+
+          <div class="project-category">
+            Web App · Entertainment
+          </div>
+
+          <h3>
+            Movie Ranking
+          </h3>
+
+          <p class="project-description">
+            A personal movie ranking interface designed around
+            discovering films through covers, ratings and reviews.
+          </p>
+
+          <div class="project-stat-row">
+
+            <div>
+              <span>Featured</span>
+              <strong>Avengers: Infinity War</strong>
             </div>
 
-            <h3 class="project-title">
-              Movie Ranking
-              <span>.</span>
-            </h3>
-
-            <p class="project-description">
-              A personal movie ranking interface designed around
-              discovering films through covers, ratings and reviews.
-            </p>
-
-            <div class="project-highlight">
-
-              <div>
-                <span>Featured movie</span>
-
-                <strong>
-                  Avengers: Infinity War
-                </strong>
-              </div>
-
-              <div class="highlight-divider"></div>
-
-              <div>
-                <span>Rating</span>
-
-                <strong class="rating">
-                  9<span>/10</span>
-                </strong>
-              </div>
-
+            <div>
+              <span>Rating</span>
+              <strong class="blue-value">9/10</strong>
             </div>
 
-            <div class="project-tags">
-              <span>Astro</span>
-              <span>UI</span>
-              <span>Movies</span>
-            </div>
+          </div>
 
+          <div class="project-tech">
+            <span>Astro</span>
+            <span>UI</span>
+            <span>Movies</span>
           </div>
 
           <a
             href="/projects/movie-ranking"
-            class="project-action"
+            class="project-link"
           >
             <span>View project</span>
 
-            <span class="project-arrow">
-              →
-            </span>
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M4 10h11" />
+              <path d="m11 5 5 5-5 5" />
+            </svg>
           </a>
 
         </div>
 
-      </article>
 
+        <div class="project-visual movie-visual">
 
-      <!-- ======================================================= -->
-      <!-- PROJECT 03 — WEATHER -->
-      <!-- ======================================================= -->
+          <div class="movie-display">
 
-      <article class="project-card weather-card">
+            <div class="movie-rating">
+              <span>9</span>
+              <small>/10</small>
+            </div>
 
-        <div class="project-number">
-          03
-          <span>/ 08</span>
+            <div class="movie-caption">
+              <span>Featured movie</span>
+              <strong>Avengers: Infinity War</strong>
+            </div>
+
+          </div>
+
         </div>
 
-        <div class="project-card-inner">
+      </div>
 
-          <div class="project-main">
+    </article>
 
-            <div class="project-meta">
-              <span>Live Data</span>
-              <span class="meta-separator"></span>
-              <span>Weather</span>
-            </div>
 
-            <h3 class="project-title">
-              Weather Dashboard
-              <span>.</span>
-            </h3>
+    <!-- ======================================================= -->
+    <!-- PROJECT 03 -->
+    <!-- ======================================================= -->
 
-            <p class="project-description">
-              A dynamic weather dashboard using live data to display
-              current conditions across Spanish cities through a
-              clean, responsive interface.
-            </p>
+    <article class="project">
 
-            <div class="weather-preview">
+      <div class="project-index">
+        <span>03</span>
+        <span>08</span>
+      </div>
 
-              <div class="weather-location">
+      <div class="project-content">
 
-                <div>
-                  <span>Location</span>
-                  <strong>Alcoi</strong>
-                </div>
+        <div class="project-copy">
 
-                <div class="weather-value">
-                  <strong id="weather-alcoi-temperature">
-                    --°C
-                  </strong>
+          <div class="project-category">
+            Live Data · Weather
+          </div>
 
-                  <span id="weather-alcoi-status">
-                    Loading...
-                  </span>
-                </div>
+          <h3>
+            Weather Dashboard
+          </h3>
 
+          <p class="project-description">
+            A dynamic weather dashboard using live data to display
+            current conditions across Spanish cities through a
+            clean, responsive interface.
+          </p>
+
+          <div class="weather-data">
+
+            <div class="weather-city">
+
+              <div>
+                <span>Alcoi</span>
+                <small id="weather-alcoi-status">
+                  Loading...
+                </small>
               </div>
 
+              <strong id="weather-alcoi-temperature">
+                --°C
+              </strong>
 
-              <div class="weather-location">
+            </div>
 
-                <div>
-                  <span>Location</span>
-                  <strong>Valencia</strong>
-                </div>
 
-                <div class="weather-value">
-                  <strong id="weather-valencia-temperature">
-                    --°C
-                  </strong>
+            <div class="weather-city">
 
-                  <span id="weather-valencia-status">
-                    Loading...
-                  </span>
-                </div>
-
+              <div>
+                <span>Valencia</span>
+                <small id="weather-valencia-status">
+                  Loading...
+                </small>
               </div>
 
+              <strong id="weather-valencia-temperature">
+                --°C
+              </strong>
+
             </div>
 
-            <div class="project-tags">
-              <span>Astro</span>
-              <span>Open-Meteo API</span>
-              <span>Live Data</span>
-            </div>
+          </div>
 
+          <div class="project-tech">
+            <span>Astro</span>
+            <span>Open-Meteo API</span>
+            <span>Live Data</span>
           </div>
 
           <a
             href="/projects/weather"
-            class="project-action"
+            class="project-link"
           >
             <span>View weather</span>
 
-            <span class="project-arrow">
-              →
-            </span>
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M4 10h11" />
+              <path d="m11 5 5 5-5 5" />
+            </svg>
           </a>
 
         </div>
 
-      </article>
 
+        <div class="project-visual weather-visual">
 
-      <!-- ======================================================= -->
-      <!-- PROJECT 04 — ALGORITHM VISUALIZER -->
-      <!-- ======================================================= -->
+          <div class="weather-sphere">
 
-      <article class="project-card">
+            <div class="weather-orbit orbit-one"></div>
+            <div class="weather-orbit orbit-two"></div>
 
-        <div class="project-number">
-          04
-          <span>/ 08</span>
+            <div class="weather-sun"></div>
+
+          </div>
+
         </div>
 
-        <div class="project-card-inner">
+      </div>
 
-          <div class="project-main">
+    </article>
 
-            <div class="project-meta">
-              <span>Computer Science</span>
-              <span class="meta-separator"></span>
-              <span>Algorithms</span>
+
+    <!-- ======================================================= -->
+    <!-- PROJECT 04 -->
+    <!-- ======================================================= -->
+
+    <article class="project">
+
+      <div class="project-index">
+        <span>04</span>
+        <span>08</span>
+      </div>
+
+      <div class="project-content">
+
+        <div class="project-copy">
+
+          <div class="project-category">
+            Computer Science · Algorithms
+          </div>
+
+          <h3>
+            Algorithm Visualizer
+          </h3>
+
+          <p class="project-description">
+            An interactive playground for exploring algorithms
+            through visual execution. Sorting, hashing and
+            pathfinding become easier to understand step by step.
+          </p>
+
+          <div class="project-stat-row three">
+
+            <div>
+              <span>Sorting</span>
+              <strong>Visual execution</strong>
             </div>
 
-            <h3 class="project-title">
-              Algorithm Visualizer
-              <span>.</span>
-            </h3>
-
-            <p class="project-description">
-              An interactive playground for exploring algorithms
-              through visual execution. Sorting, hashing and
-              pathfinding become easier to understand step by step.
-            </p>
-
-            <div class="project-highlight">
-
-              <div>
-                <span>Algorithms</span>
-
-                <strong>
-                  Sorting
-                </strong>
-              </div>
-
-              <div class="highlight-divider"></div>
-
-              <div>
-                <span>Structures</span>
-
-                <strong>
-                  Hashing
-                </strong>
-              </div>
-
-              <div class="highlight-divider"></div>
-
-              <div>
-                <span>Pathfinding</span>
-
-                <strong>
-                  Dijkstra · A*
-                </strong>
-              </div>
-
+            <div>
+              <span>Hashing</span>
+              <strong>Data structures</strong>
             </div>
 
-            <div class="project-tags">
-              <span>Astro</span>
-              <span>TypeScript</span>
-              <span>Data Structures</span>
+            <div>
+              <span>Pathfinding</span>
+              <strong>Dijkstra · A*</strong>
             </div>
 
+          </div>
+
+          <div class="project-tech">
+            <span>Astro</span>
+            <span>TypeScript</span>
+            <span>Data Structures</span>
           </div>
 
           <a
             href="/projects/visualizer"
-            class="project-action"
+            class="project-link"
           >
             <span>Open visualizer</span>
 
-            <span class="project-arrow">
-              →
-            </span>
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M4 10h11" />
+              <path d="m11 5 5 5-5 5" />
+            </svg>
           </a>
 
         </div>
 
-      </article>
 
+        <div class="project-visual algorithm-visual">
 
-      <!-- ======================================================= -->
-      <!-- PROJECT 05 — NETWORK PROTOCOL SIMULATOR -->
-      <!-- ======================================================= -->
+          <div class="algorithm-bars">
 
-      <article class="project-card">
+            <span style="height: 28%"></span>
+            <span style="height: 52%"></span>
+            <span style="height: 39%"></span>
+            <span style="height: 75%"></span>
+            <span style="height: 60%"></span>
+            <span style="height: 91%"></span>
+            <span style="height: 46%"></span>
+            <span style="height: 68%"></span>
+            <span style="height: 82%"></span>
+            <span style="height: 35%"></span>
+            <span style="height: 96%"></span>
+            <span style="height: 55%"></span>
 
-        <div class="project-number">
-          05
-          <span>/ 08</span>
+          </div>
+
         </div>
 
-        <div class="project-card-inner">
+      </div>
 
-          <div class="project-main">
+    </article>
 
-            <div class="project-meta">
-              <span>Systems</span>
-              <span class="meta-separator"></span>
-              <span>Networking</span>
+
+    <!-- ======================================================= -->
+    <!-- PROJECT 05 -->
+    <!-- ======================================================= -->
+
+    <article class="project">
+
+      <div class="project-index">
+        <span>05</span>
+        <span>08</span>
+      </div>
+
+      <div class="project-content">
+
+        <div class="project-copy">
+
+          <div class="project-category">
+            Systems · Networking
+          </div>
+
+          <h3>
+            Network Protocol Simulator
+          </h3>
+
+          <p class="project-description">
+            An interactive transport-layer simulator exploring
+            TCP handshakes, packet loss, retransmission and
+            message framing over a byte stream.
+          </p>
+
+          <div class="project-stat-row three">
+
+            <div>
+              <span>Protocol</span>
+              <strong>TCP / UDP</strong>
             </div>
 
-            <h3 class="project-title">
-              Network Protocol Simulator
-              <span>.</span>
-            </h3>
-
-            <p class="project-description">
-              An interactive transport-layer simulator exploring
-              TCP handshakes, packet loss, retransmission and
-              message framing over a byte stream.
-            </p>
-
-            <div class="project-highlight">
-
-              <div>
-                <span>Protocol</span>
-
-                <strong>
-                  TCP / UDP
-                </strong>
-              </div>
-
-              <div class="highlight-divider"></div>
-
-              <div>
-                <span>Concept</span>
-
-                <strong>
-                  Packet Loss
-                </strong>
-              </div>
-
-              <div class="highlight-divider"></div>
-
-              <div>
-                <span>Data</span>
-
-                <strong>
-                  Framing
-                </strong>
-              </div>
-
+            <div>
+              <span>Reliability</span>
+              <strong>Retransmission</strong>
             </div>
 
-            <div class="project-tags">
-              <span>Astro</span>
-              <span>TypeScript</span>
-              <span>TCP / UDP</span>
+            <div>
+              <span>Data</span>
+              <strong>Framing</strong>
             </div>
 
+          </div>
+
+          <div class="project-tech">
+            <span>Astro</span>
+            <span>TypeScript</span>
+            <span>TCP / UDP</span>
           </div>
 
           <a
             href="/projects/network"
-            class="project-action"
+            class="project-link"
           >
             <span>Open simulator</span>
 
-            <span class="project-arrow">
-              →
-            </span>
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M4 10h11" />
+              <path d="m11 5 5 5-5 5" />
+            </svg>
           </a>
 
         </div>
 
-      </article>
 
+        <div class="project-visual network-visual">
 
-      <!-- ======================================================= -->
-      <!-- PROJECT 06 — CPU SIMULATOR -->
-      <!-- ======================================================= -->
+          <div class="network-stage">
 
-      <article class="project-card">
+            <div class="network-node node-a">
+              A
+            </div>
 
-        <div class="project-number">
-          06
-          <span>/ 08</span>
+            <div class="network-line line-a"></div>
+
+            <div class="network-node node-b">
+              B
+            </div>
+
+            <div class="network-line line-b"></div>
+
+            <div class="network-node node-c">
+              C
+            </div>
+
+          </div>
+
         </div>
 
-        <div class="project-card-inner">
+      </div>
 
-          <div class="project-main">
+    </article>
 
-            <div class="project-meta">
-              <span>Computer Architecture</span>
-              <span class="meta-separator"></span>
-              <span>Systems</span>
+
+    <!-- ======================================================= -->
+    <!-- PROJECT 06 -->
+    <!-- ======================================================= -->
+
+    <article class="project">
+
+      <div class="project-index">
+        <span>06</span>
+        <span>08</span>
+      </div>
+
+      <div class="project-content">
+
+        <div class="project-copy">
+
+          <div class="project-category">
+            Computer Architecture · Systems
+          </div>
+
+          <h3>
+            CPU Simulator
+          </h3>
+
+          <p class="project-description">
+            A small simulated CPU with its own instruction set,
+            registers and memory. Programs can be executed one
+            instruction at a time to reveal the
+            fetch-decode-execute cycle.
+          </p>
+
+          <div class="project-stat-row three">
+
+            <div>
+              <span>Registers</span>
+              <strong>8</strong>
             </div>
 
-            <h3 class="project-title">
-              CPU Simulator
-              <span>.</span>
-            </h3>
-
-            <p class="project-description">
-              A small simulated CPU with its own instruction set,
-              registers and memory. Programs can be executed one
-              instruction at a time to reveal the fetch-decode-execute
-              cycle.
-            </p>
-
-            <div class="project-highlight">
-
-              <div>
-                <span>Registers</span>
-
-                <strong>
-                  8
-                </strong>
-              </div>
-
-              <div class="highlight-divider"></div>
-
-              <div>
-                <span>Architecture</span>
-
-                <strong>
-                  Custom ISA
-                </strong>
-              </div>
-
-              <div class="highlight-divider"></div>
-
-              <div>
-                <span>Cycle</span>
-
-                <strong>
-                  Fetch · Decode · Execute
-                </strong>
-              </div>
-
+            <div>
+              <span>Architecture</span>
+              <strong>Custom ISA</strong>
             </div>
 
-            <div class="project-tags">
-              <span>Astro</span>
-              <span>TypeScript</span>
-              <span>Assembly</span>
+            <div>
+              <span>Cycle</span>
+              <strong>Fetch · Decode · Execute</strong>
             </div>
 
+          </div>
+
+          <div class="project-tech">
+            <span>Astro</span>
+            <span>TypeScript</span>
+            <span>Assembly</span>
           </div>
 
           <a
             href="/projects/Cpu"
-            class="project-action"
+            class="project-link"
           >
             <span>Open simulator</span>
 
-            <span class="project-arrow">
-              →
-            </span>
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M4 10h11" />
+              <path d="m11 5 5 5-5 5" />
+            </svg>
           </a>
 
         </div>
 
-      </article>
 
+        <div class="project-visual cpu-visual">
 
-      <!-- ======================================================= -->
-      <!-- PROJECT 07 — EXPENSE SPLITTER -->
-      <!-- ======================================================= -->
+          <div class="cpu-chip">
 
-      <article class="project-card">
+            <div class="cpu-core">
 
-        <div class="project-number">
-          07
-          <span>/ 08</span>
+              <span>CPU</span>
+              <small>ISA</small>
+
+            </div>
+
+            <div class="cpu-pin pin-1"></div>
+            <div class="cpu-pin pin-2"></div>
+            <div class="cpu-pin pin-3"></div>
+            <div class="cpu-pin pin-4"></div>
+
+          </div>
+
         </div>
 
-        <div class="project-card-inner">
+      </div>
 
-          <div class="project-main">
+    </article>
 
-            <div class="project-meta">
-              <span>Mobile</span>
-              <span class="meta-separator"></span>
-              <span>Flutter</span>
+
+    <!-- ======================================================= -->
+    <!-- PROJECT 07 -->
+    <!-- ======================================================= -->
+
+    <article class="project">
+
+      <div class="project-index">
+        <span>07</span>
+        <span>08</span>
+      </div>
+
+      <div class="project-content">
+
+        <div class="project-copy">
+
+          <div class="project-category">
+            Mobile · Flutter
+          </div>
+
+          <h3>
+            Expense Splitter
+          </h3>
+
+          <p class="project-description">
+            A Flutter application for splitting shared expenses,
+            calculating balances between participants and reducing
+            the number of transfers required to settle group costs.
+          </p>
+
+          <div class="project-stat-row">
+
+            <div>
+              <span>Platform</span>
+              <strong>Android · iOS · Web</strong>
             </div>
 
-            <h3 class="project-title">
-              Expense Splitter
-              <span>.</span>
-            </h3>
-
-            <p class="project-description">
-              A Flutter application for splitting shared expenses,
-              calculating balances between participants and reducing
-              the number of transfers required to settle group costs.
-            </p>
-
-            <div class="project-highlight">
-
-              <div>
-                <span>Platform</span>
-
-                <strong>
-                  Android · iOS · Web
-                </strong>
-              </div>
-
-              <div class="highlight-divider"></div>
-
-              <div>
-                <span>Technology</span>
-
-                <strong>
-                  Flutter · Dart
-                </strong>
-              </div>
-
+            <div>
+              <span>Technology</span>
+              <strong>Flutter · Dart</strong>
             </div>
 
-            <div class="project-tags">
-              <span>Flutter</span>
-              <span>Dart</span>
-              <span>Mobile</span>
-              <span>Expense Management</span>
-            </div>
+          </div>
 
+          <div class="project-tech">
+            <span>Flutter</span>
+            <span>Dart</span>
+            <span>Mobile</span>
           </div>
 
           <a
             href="/projects/expense-splitter/"
-            class="project-action"
+            class="project-link"
           >
             <span>Open application</span>
 
-            <span class="project-arrow">
-              →
-            </span>
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M4 10h11" />
+              <path d="m11 5 5 5-5 5" />
+            </svg>
           </a>
 
         </div>
 
-      </article>
 
+        <div class="project-visual finance-visual">
 
-      <!-- ======================================================= -->
-      <!-- PROJECT 08 — FINTRACK -->
-      <!-- ======================================================= -->
+          <div class="finance-card">
 
-      <article class="project-card project-card-fintrack">
+            <span>Group balance</span>
 
-        <div class="project-number">
-          08
-          <span>/ 08</span>
+            <strong>
+              € 248.60
+            </strong>
+
+            <div class="finance-line">
+              <span></span>
+            </div>
+
+            <small>
+              4 participants
+            </small>
+
+          </div>
+
         </div>
 
-        <div class="project-card-inner">
+      </div>
 
-          <div class="project-main">
+    </article>
 
-            <div class="project-meta">
-              <span>Product</span>
-              <span class="meta-separator"></span>
-              <span>Personal Finance</span>
+
+    <!-- ======================================================= -->
+    <!-- PROJECT 08 -->
+    <!-- ======================================================= -->
+
+    <article class="project project-last">
+
+      <div class="project-index">
+        <span>08</span>
+        <span>08</span>
+      </div>
+
+      <div class="project-content">
+
+        <div class="project-copy">
+
+          <div class="project-category">
+            Product · Personal Finance
+          </div>
+
+          <h3>
+            FinTrack
+          </h3>
+
+          <p class="project-description">
+            A personal finance application designed around making
+            financial information easier to add, understand and
+            manage. Built with dashboards, transactions, budgets,
+            analytics and savings goals.
+          </p>
+
+          <div class="project-stat-row">
+
+            <div>
+              <span>Platform</span>
+              <strong>Android · iOS · Web · Desktop</strong>
             </div>
 
-            <h3 class="project-title">
-              FinTrack
-              <span>.</span>
-            </h3>
+            <div>
+              <span>Technology</span>
+              <strong>Flutter · Dart · Riverpod</strong>
+            </div>
 
-            <p class="project-description">
-              A personal finance application designed around making
-              financial information easier to add, understand and
-              manage. Built with dashboards, transactions, budgets,
-              analytics and savings goals.
-            </p>
+          </div>
 
-            <div class="project-highlight">
+          <div class="project-tech">
+            <span>Flutter</span>
+            <span>Dart</span>
+            <span>Riverpod</span>
+            <span>Finance</span>
+          </div>
 
-              <div>
-                <span>Platform</span>
+          <a
+            href="/projects/fintrack_app/"
+            class="project-link"
+          >
+            <span>Open FinTrack</span>
 
-                <strong>
-                  Android · iOS · Web · Desktop
-                </strong>
-              </div>
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M4 10h11" />
+              <path d="m11 5 5 5-5 5" />
+            </svg>
+          </a>
 
-              <div class="highlight-divider"></div>
+        </div>
 
-              <div>
-                <span>Technology</span>
 
-                <strong>
-                  Flutter · Dart
-                </strong>
-              </div>
+        <div class="project-visual fintrack-visual">
+
+          <div class="fintrack-screen">
+
+            <div class="fintrack-top">
+
+              <span>FinTrack</span>
+
+              <span>Overview</span>
 
             </div>
 
-            <div class="project-tags">
-              <span>Flutter</span>
-              <span>Dart</span>
-              <span>Finance</span>
-              <span>Riverpod</span>
+            <div class="fintrack-balance">
+
+              <small>Total balance</small>
+
+              <strong>€ 4,280.40</strong>
+
+            </div>
+
+            <div class="fintrack-bars">
+
+              <span style="height: 42%"></span>
+              <span style="height: 61%"></span>
+              <span style="height: 50%"></span>
+              <span style="height: 78%"></span>
+              <span style="height: 65%"></span>
+              <span style="height: 88%"></span>
+              <span style="height: 73%"></span>
 
             </div>
 
           </div>
 
-          <a
-            href="/projects/fintrack_app/"
-            class="project-action"
-          >
-            <span>Open FinTrack</span>
-
-            <span class="project-arrow">
-              →
-            </span>
-          </a>
-
         </div>
 
-      </article>
+      </div>
 
-    </div>
+    </article>
 
 
-    <!-- ========================================================= -->
-    <!-- PROJECT FOOTER -->
-    <!-- ========================================================= -->
+    <!-- ======================================================= -->
+    <!-- FOOTER -->
+    <!-- ======================================================= -->
 
-    <div class="projects-footer">
+    <footer class="projects-footer">
 
-      <span>
-        08 projects
-      </span>
+      <span>08 projects</span>
 
-      <span class="footer-line"></span>
+      <span class="footer-rule"></span>
 
-      <span>
-        Always building
-      </span>
+      <span>Always building</span>
 
-    </div>
+    </footer>
 
   </div>
+
 </section>
 
 
 <script>
+
   interface WeatherData {
     current: {
       temperature_2m: number;
@@ -757,63 +836,101 @@
     };
   }
 
+
   interface WeatherLocation {
+
     latitude: number;
+
     longitude: number;
+
     temperatureElement: string;
+
     statusElement: string;
+
   }
 
-  const weatherLocations: WeatherLocation[] = [
-    {
-      latitude: 38.6983,
-      longitude: -0.4743,
-      temperatureElement: "weather-alcoi-temperature",
-      statusElement: "weather-alcoi-status",
-    },
-    {
-      latitude: 39.4699,
-      longitude: -0.3763,
-      temperatureElement: "weather-valencia-temperature",
-      statusElement: "weather-valencia-status",
-    },
-  ];
+
+  const weatherLocations:
+    WeatherLocation[] = [
+
+      {
+        latitude: 38.6983,
+        longitude: -0.4743,
+        temperatureElement:
+          "weather-alcoi-temperature",
+        statusElement:
+          "weather-alcoi-status",
+      },
+
+      {
+        latitude: 39.4699,
+        longitude: -0.3763,
+        temperatureElement:
+          "weather-valencia-temperature",
+        statusElement:
+          "weather-valencia-status",
+      },
+
+    ];
 
 
-  function getWeatherDescription(code: number): string {
+  function getWeatherDescription(
+    code: number
+  ): string {
 
-    if (code === 0) return "Clear";
-    if (code === 1) return "Mainly clear";
-    if (code === 2) return "Partly cloudy";
-    if (code === 3) return "Cloudy";
+    if (code === 0)
+      return "Clear";
 
-    if (code === 45 || code === 48) {
+    if (code === 1)
+      return "Mainly clear";
+
+    if (code === 2)
+      return "Partly cloudy";
+
+    if (code === 3)
+      return "Cloudy";
+
+    if (
+      code === 45 ||
+      code === 48
+    )
       return "Fog";
-    }
 
-    if (code >= 51 && code <= 57) {
+    if (
+      code >= 51 &&
+      code <= 57
+    )
       return "Drizzle";
-    }
 
-    if (code >= 61 && code <= 67) {
+    if (
+      code >= 61 &&
+      code <= 67
+    )
       return "Rain";
-    }
 
-    if (code >= 71 && code <= 77) {
+    if (
+      code >= 71 &&
+      code <= 77
+    )
       return "Snow";
-    }
 
-    if (code >= 80 && code <= 82) {
+    if (
+      code >= 80 &&
+      code <= 82
+    )
       return "Showers";
-    }
 
-    if (code >= 85 && code <= 86) {
+    if (
+      code >= 85 &&
+      code <= 86
+    )
       return "Snow showers";
-    }
 
-    if (code >= 95 && code <= 99) {
+    if (
+      code >= 95 &&
+      code <= 99
+    )
       return "Thunderstorm";
-    }
 
     return "Unknown";
   }
@@ -833,8 +950,14 @@
         location.statusElement
       );
 
-    if (!temperatureElement || !statusElement) {
+
+    if (
+      !temperatureElement ||
+      !statusElement
+    ) {
+
       return;
+
     }
 
 
@@ -848,34 +971,33 @@
         `&timezone=Europe%2FMadrid`;
 
 
-      const response = await fetch(url);
+      const response =
+        await fetch(url);
 
 
       if (!response.ok) {
+
         throw new Error(
           "Weather request failed"
         );
+
       }
 
 
       const data =
-        (await response.json()) as WeatherData;
-
-
-      const temperature =
-        data.current.temperature_2m;
-
-      const weatherCode =
-        data.current.weather_code;
+        (await response.json())
+        as WeatherData;
 
 
       temperatureElement.textContent =
-        `${Math.round(temperature)}°C`;
+        `${Math.round(
+          data.current.temperature_2m
+        )}°C`;
 
 
       statusElement.textContent =
         getWeatherDescription(
-          weatherCode
+          data.current.weather_code
         );
 
     } catch {
@@ -885,7 +1007,9 @@
 
       statusElement.textContent =
         "Unavailable";
+
     }
+
   }
 
 
@@ -896,11 +1020,13 @@
         void loadWeather(location);
       }
     );
+
   }
 
 
   if (
-    document.readyState === "loading"
+    document.readyState ===
+    "loading"
   ) {
 
     document.addEventListener(
@@ -913,977 +1039,233 @@
     loadAllWeather();
 
   }
+
 </script>
 
 
 <style>
 
-  /* ============================================================= */
-  /* BASE */
-  /* ============================================================= */
+  /* ============================================================ */
+  /* SYSTEM */
+  /* ============================================================ */
 
   .projects-section {
 
-    --projects-blue: #2997ff;
-    --projects-blue-soft: rgba(41, 151, 255, 0.12);
+    --apple-black: #000;
+    --apple-graphite: #050506;
 
-    --projects-white: #f5f5f7;
-    --projects-secondary: #86868b;
-    --projects-muted: #6e6e73;
+    --apple-white: #f5f5f7;
+    --apple-secondary: #86868b;
+    --apple-tertiary: #6e6e73;
 
-    --projects-border:
-      rgba(255, 255, 255, 0.085);
+    --apple-blue: #2997ff;
 
-    --projects-border-hover:
-      rgba(41, 151, 255, 0.28);
+    --apple-border:
+      rgba(255,255,255,0.09);
 
-    --projects-surface:
-      rgba(255, 255, 255, 0.035);
-
-    --projects-surface-hover:
-      rgba(255, 255, 255, 0.052);
-
-    position: relative;
-
-    background:
-      linear-gradient(
-        180deg,
-        #050506 0%,
-        #06070a 50%,
-        #050506 100%
-      );
-
-  }
-
-
-  /* ============================================================= */
-  /* BACKGROUND */
-  /* ============================================================= */
-
-  .projects-glow {
-
-    position: absolute;
-
-    border-radius: 999px;
-
-    filter: blur(110px);
-
-    pointer-events: none;
-
-  }
-
-
-  .projects-glow-top {
-
-    width: 720px;
-    height: 420px;
-
-    top: -260px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    background:
-      radial-gradient(
-        ellipse,
-        rgba(41, 151, 255, 0.12),
-        transparent 70%
-      );
-
-  }
-
-
-  .projects-glow-right {
-
-    width: 480px;
-    height: 480px;
-
-    top: 850px;
-    right: -300px;
-
-    background:
-      radial-gradient(
-        circle,
-        rgba(41, 151, 255, 0.07),
-        transparent 70%
-      );
-
-    animation:
-      projectsFloatRight 20s ease-in-out infinite;
-
-  }
-
-
-  .projects-glow-bottom {
-
-    width: 520px;
-    height: 420px;
-
-    bottom: -260px;
-    left: -260px;
-
-    background:
-      radial-gradient(
-        circle,
-        rgba(31, 75, 150, 0.06),
-        transparent 70%
-      );
-
-    animation:
-      projectsFloatBottom 25s ease-in-out infinite;
-
-  }
-
-
-  @keyframes projectsFloatRight {
-
-    0%,
-    100% {
-
-      transform:
-        translate3d(0, 0, 0)
-        scale(1);
-
-    }
-
-    50% {
-
-      transform:
-        translate3d(-60px, 50px, 0)
-        scale(1.08);
-
-    }
-
-  }
-
-
-  @keyframes projectsFloatBottom {
-
-    0%,
-    100% {
-
-      transform:
-        translate3d(0, 0, 0)
-        scale(1);
-
-    }
-
-    50% {
-
-      transform:
-        translate3d(70px, -40px, 0)
-        scale(1.1);
-
-    }
-
-  }
-
-
-  .projects-grid {
-
-    position: absolute;
-
-    inset: -100px;
-
-    background-image:
-      linear-gradient(
-        rgba(255,255,255,0.014) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        90deg,
-        rgba(255,255,255,0.014) 1px,
-        transparent 1px
-      );
-
-    background-size: 72px 72px;
-
-    opacity: 0.28;
-
-    mask-image:
-      radial-gradient(
-        ellipse 80% 55% at 50% 20%,
-        black 0%,
-        rgba(0,0,0,0.7) 35%,
-        transparent 85%
-      );
-
-  }
-
-
-  .projects-vignette {
-
-    position: absolute;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    background:
-      radial-gradient(
-        ellipse at center,
-        transparent 35%,
-        rgba(0,0,0,0.38) 100%
-      );
-
-  }
-
-
-  /* ============================================================= */
-  /* HEADER */
-  /* ============================================================= */
-
-  .projects-header {
-
-    padding-top: 8rem;
-    padding-bottom: 5rem;
-
-  }
-
-
-  .section-eyebrow {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    margin-bottom: 24px;
-
-    color: var(--projects-blue);
-
-    font-size: 12px;
-
-    font-weight: 500;
-
-    letter-spacing: 0.18em;
-
-    text-transform: uppercase;
-
-  }
-
-
-  .eyebrow-line {
-
-    width: 28px;
-
-    height: 1px;
-
-    background:
-      rgba(41, 151, 255, 0.55);
-
-  }
-
-
-  .projects-heading-layout {
-
-    display: grid;
-
-    grid-template-columns:
-      minmax(0, 1.15fr)
-      minmax(280px, 0.85fr);
-
-    gap: 5rem;
-
-    align-items: end;
-
-  }
-
-
-  .projects-title {
-
-    margin: 0;
-
-    color: var(--projects-white);
-
-    font-size: clamp(
-      3rem,
-      7vw,
-      6.8rem
-    );
-
-    line-height: 0.95;
-
-    font-weight: 500;
-
-    letter-spacing: -0.055em;
-
-  }
-
-
-  .projects-title span {
-
-    color: var(--projects-blue);
-
-  }
-
-
-  .projects-introduction {
-
-    max-width: 520px;
-
-    margin: 0;
-
-    color: var(--projects-secondary);
-
-    font-size: 17px;
-
-    line-height: 1.65;
-
-    letter-spacing: -0.01em;
-
-  }
-
-
-  /* ============================================================= */
-  /* PROJECT LIST */
-  /* ============================================================= */
-
-  .projects-list {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 18px;
-
-  }
-
-
-  /* ============================================================= */
-  /* PROJECT CARD */
-  /* ============================================================= */
-
-  .project-card {
+    --apple-border-soft:
+      rgba(255,255,255,0.055);
 
     position: relative;
 
     overflow: hidden;
 
-    border:
-      1px solid
-      var(--projects-border);
-
-    border-radius: 24px;
-
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255,255,255,0.038),
-        rgba(255,255,255,0.018)
-      );
-
-    backdrop-filter: blur(18px);
-
-    -webkit-backdrop-filter: blur(18px);
-
-    transition:
-      border-color 500ms ease,
-      background 500ms ease,
-      transform 500ms
-        cubic-bezier(.22,.61,.36,1),
-      box-shadow 500ms ease;
-
-  }
-
-
-  .project-card::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    background:
-      radial-gradient(
-        circle at 90% 0%,
-        rgba(41,151,255,0.065),
-        transparent 35%
-      );
-
-    opacity: 0.6;
-
-    transition:
-      opacity 500ms ease;
-
-  }
-
-
-  .project-card::after {
-
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-
-    left: 0;
-
-    width: 1px;
-
-    height: 100%;
-
     background:
       linear-gradient(
         180deg,
-        transparent,
-        rgba(41,151,255,0.35),
-        transparent
+        #000 0%,
+        #050506 100%
       );
-
-    opacity: 0;
-
-    transition:
-      opacity 500ms ease;
-
-  }
-
-
-  .project-card:hover {
-
-    border-color:
-      var(--projects-border-hover);
-
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255,255,255,0.052),
-        rgba(255,255,255,0.022)
-      );
-
-    transform:
-      translateY(-3px);
-
-    box-shadow:
-      0 24px 70px
-      rgba(0,0,0,0.25);
-
-  }
-
-
-  .project-card:hover::before {
-
-    opacity: 1;
-
-  }
-
-
-  .project-card:hover::after {
-
-    opacity: 1;
-
-  }
-
-
-  /* ============================================================= */
-  /* FEATURED PROJECT */
-  /* ============================================================= */
-
-  .project-card-featured {
-
-    border-color:
-      rgba(41,151,255,0.15);
-
-    background:
-      linear-gradient(
-        135deg,
-        rgba(41,151,255,0.055),
-        rgba(255,255,255,0.018)
-      );
-
-  }
-
-
-  .project-card-featured::before {
-
-    background:
-      radial-gradient(
-        circle at 92% 0%,
-        rgba(41,151,255,0.12),
-        transparent 38%
-      );
-
-  }
-
-
-  /* ============================================================= */
-  /* NUMBER */
-  /* ============================================================= */
-
-  .project-number {
-
-    position: absolute;
-
-    top: 28px;
-
-    right: 32px;
 
     color:
-      rgba(255,255,255,0.22);
-
-    font-family:
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      Monaco,
-      Consolas,
-      monospace;
-
-    font-size: 11px;
-
-    letter-spacing: 0.08em;
+      var(--apple-white);
 
   }
 
 
-  .project-number span {
+  /* ============================================================ */
+  /* CONTAINER */
+  /* ============================================================ */
 
-    color:
-      rgba(255,255,255,0.11);
+  .projects-container {
+
+    width:
+      min(
+        1280px,
+        calc(100% - 64px)
+      );
+
+    margin:
+      0 auto;
 
   }
 
 
-  /* ============================================================= */
-  /* CARD CONTENT */
-  /* ============================================================= */
+  /* ============================================================ */
+  /* HEADER */
+  /* ============================================================ */
 
-  .project-card-inner {
-
-    position: relative;
-
-    z-index: 2;
-
-    display: flex;
-
-    align-items: flex-end;
-
-    justify-content: space-between;
-
-    gap: 60px;
+  .projects-header {
 
     padding:
-      42px
-      42px
-      38px;
+      180px 0
+      110px;
 
   }
 
 
-  .project-main {
+  .projects-eyebrow {
 
-    min-width: 0;
-
-    flex: 1;
-
-  }
-
-
-  /* ============================================================= */
-  /* PROJECT META */
-  /* ============================================================= */
-
-  .project-meta {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 11px;
-
-    margin-bottom: 20px;
+    margin-bottom:
+      28px;
 
     color:
-      var(--projects-blue);
+      var(--apple-blue);
 
-    font-size: 11px;
+    font-size:
+      12px;
 
-    font-weight: 500;
+    font-weight:
+      500;
 
-    letter-spacing: 0.15em;
+    letter-spacing:
+      0.08em;
 
-    text-transform: uppercase;
-
-  }
-
-
-  .meta-separator {
-
-    width: 22px;
-
-    height: 1px;
-
-    background:
-      rgba(41,151,255,0.45);
+    text-transform:
+      uppercase;
 
   }
 
 
-  /* ============================================================= */
-  /* TITLE */
-  /* ============================================================= */
+  .projects-header-grid {
 
-  .project-title {
+    display:
+      grid;
 
-    margin: 0;
+    grid-template-columns:
+      minmax(0, 1.2fr)
+      minmax(280px, 0.8fr);
 
-    max-width: 900px;
+    align-items:
+      end;
+
+    gap:
+      100px;
+
+  }
+
+
+  .projects-heading {
+
+    margin:
+      0;
+
+    font-size:
+      clamp(
+        64px,
+        8vw,
+        118px
+      );
+
+    line-height:
+      0.91;
+
+    font-weight:
+      600;
+
+    letter-spacing:
+      -0.065em;
+
+  }
+
+
+  .projects-heading span {
+
+    display:
+      block;
 
     color:
-      var(--projects-white);
-
-    font-size: clamp(
-      1.8rem,
-      3.2vw,
-      3rem
-    );
-
-    line-height: 1.04;
-
-    font-weight: 500;
-
-    letter-spacing: -0.04em;
-
-    transition:
-      color 300ms ease;
+      var(--apple-secondary);
 
   }
 
 
-  .project-title span {
+  .projects-intro {
+
+    max-width:
+      450px;
+
+    margin:
+      0;
 
     color:
-      var(--projects-blue);
+      var(--apple-secondary);
+
+    font-size:
+      18px;
+
+    line-height:
+      1.55;
+
+    letter-spacing:
+      -0.015em;
 
   }
 
 
-  .project-card:hover
-  .project-title {
+  /* ============================================================ */
+  /* PROJECT */
+  /* ============================================================ */
 
-    color:
-      #ffffff;
+  .project {
 
-  }
+    position:
+      relative;
 
+    min-height:
+      600px;
 
-  /* ============================================================= */
-  /* DESCRIPTION */
-  /* ============================================================= */
-
-  .project-description {
-
-    max-width: 780px;
-
-    margin-top: 18px;
-
-    margin-bottom: 0;
-
-    color:
-      var(--projects-secondary);
-
-    font-size: 16px;
-
-    line-height: 1.7;
-
-  }
-
-
-  .project-secondary {
-
-    max-width: 650px;
-
-    margin-top: 10px;
-
-    color:
-      var(--projects-muted);
-
-    font-size: 14px;
-
-    line-height: 1.6;
-
-  }
-
-
-  /* ============================================================= */
-  /* HIGHLIGHTS */
-  /* ============================================================= */
-
-  .project-highlight {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    align-items: center;
-
-    gap: 22px;
-
-    margin-top: 28px;
-
-    padding-top: 24px;
+    padding:
+      100px 0;
 
     border-top:
       1px solid
-      rgba(255,255,255,0.055);
+      var(--apple-border);
 
   }
 
 
-  .project-highlight > div:not(
-    .highlight-divider
-  ) {
+  .project-last {
 
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 5px;
-
-  }
-
-
-  .project-highlight span {
-
-    color:
-      var(--projects-muted);
-
-    font-size: 10px;
-
-    letter-spacing: 0.13em;
-
-    text-transform: uppercase;
-
-  }
-
-
-  .project-highlight strong {
-
-    color:
-      var(--projects-white);
-
-    font-size: 14px;
-
-    font-weight: 500;
-
-  }
-
-
-  .project-highlight .rating {
-
-    color:
-      var(--projects-blue);
-
-    font-family:
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      monospace;
-
-  }
-
-
-  .rating span {
-
-    color:
-      var(--projects-muted);
-
-    font-weight: 400;
-
-  }
-
-
-  .highlight-divider {
-
-    width: 1px;
-
-    height: 32px;
-
-    background:
-      rgba(255,255,255,0.08);
-
-  }
-
-
-  /* ============================================================= */
-  /* WEATHER */
-  /* ============================================================= */
-
-  .weather-preview {
-
-    display: grid;
-
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-
-    gap: 10px;
-
-    max-width: 720px;
-
-    margin-top: 28px;
-
-  }
-
-
-  .weather-location {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 20px;
-
-    padding:
-      17px
-      18px;
-
-    border:
+    border-bottom:
       1px solid
-      rgba(255,255,255,0.065);
-
-    border-radius: 15px;
-
-    background:
-      rgba(255,255,255,0.025);
-
-    transition:
-      border-color 300ms ease,
-      background 300ms ease;
+      var(--apple-border);
 
   }
 
 
-  .weather-location:hover {
+  .project-index {
 
-    border-color:
-      rgba(41,151,255,0.18);
+    position:
+      absolute;
 
-    background:
-      rgba(41,151,255,0.035);
+    top:
+      106px;
 
-  }
+    left:
+      0;
 
+    display:
+      flex;
 
-  .weather-location > div:first-child {
+    align-items:
+      center;
 
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 4px;
-
-  }
-
-
-  .weather-location span {
+    gap:
+      7px;
 
     color:
-      var(--projects-muted);
-
-    font-size: 10px;
-
-    letter-spacing: 0.12em;
-
-    text-transform: uppercase;
-
-  }
-
-
-  .weather-location strong {
-
-    color:
-      var(--projects-white);
-
-    font-size: 16px;
-
-    font-weight: 500;
-
-  }
-
-
-  .weather-value {
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: flex-end;
-
-    gap: 3px;
-
-  }
-
-
-  .weather-value strong {
-
-    color:
-      var(--projects-blue);
-
-    font-family:
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      monospace;
-
-    font-size: 19px;
-
-  }
-
-
-  .weather-value span {
-
-    text-align: right;
-
-    font-size: 9px;
-
-  }
-
-
-  /* ============================================================= */
-  /* TAGS */
-  /* ============================================================= */
-
-  .project-tags {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 7px;
-
-    margin-top: 30px;
-
-  }
-
-
-  .project-tags span {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    min-height: 28px;
-
-    padding:
-      0 11px;
-
-    border:
-      1px solid
-      rgba(255,255,255,0.075);
-
-    border-radius: 999px;
-
-    color:
-      var(--projects-secondary);
-
-    background:
-      rgba(255,255,255,0.018);
+      rgba(255,255,255,0.32);
 
     font-family:
       ui-monospace,
@@ -1893,83 +1275,249 @@
       Consolas,
       monospace;
 
-    font-size: 10px;
+    font-size:
+      10px;
 
-    transition:
-      border-color 300ms ease,
-      color 300ms ease,
-      background 300ms ease;
-
-  }
-
-
-  .project-card:hover
-  .project-tags span {
-
-    border-color:
-      rgba(41,151,255,0.13);
+    letter-spacing:
+      0.05em;
 
   }
 
 
-  /* ============================================================= */
-  /* ACTION */
-  /* ============================================================= */
-
-  .project-action {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 9px;
-
-    flex-shrink: 0;
+  .project-index span:last-child {
 
     color:
-      var(--projects-blue);
+      rgba(255,255,255,0.14);
 
-    font-size: 13px;
+  }
 
-    font-weight: 500;
 
-    text-decoration: none;
+  .project-content {
 
-    white-space: nowrap;
+    display:
+      grid;
+
+    grid-template-columns:
+      minmax(0, 0.9fr)
+      minmax(420px, 1.1fr);
+
+    align-items:
+      center;
+
+    gap:
+      110px;
+
+    padding-left:
+      75px;
+
+  }
+
+
+  /* ============================================================ */
+  /* COPY */
+  /* ============================================================ */
+
+  .project-copy {
+
+    max-width:
+      620px;
+
+  }
+
+
+  .project-category {
+
+    margin-bottom:
+      22px;
+
+    color:
+      var(--apple-blue);
+
+    font-size:
+      11px;
+
+    font-weight:
+      500;
+
+    letter-spacing:
+      0.07em;
+
+    text-transform:
+      uppercase;
+
+  }
+
+
+  .project h3 {
+
+    margin:
+      0;
+
+    color:
+      var(--apple-white);
+
+    font-size:
+      clamp(
+        42px,
+        4.4vw,
+        67px
+      );
+
+    line-height:
+      0.98;
+
+    font-weight:
+      600;
+
+    letter-spacing:
+      -0.055em;
+
+  }
+
+
+  .project-description {
+
+    max-width:
+      570px;
+
+    margin:
+      26px 0 0;
+
+    color:
+      var(--apple-secondary);
+
+    font-size:
+      17px;
+
+    line-height:
+      1.6;
+
+    letter-spacing:
+      -0.012em;
+
+  }
+
+
+  /* ============================================================ */
+  /* TECHNOLOGY */
+  /* ============================================================ */
+
+  .project-tech {
+
+    display:
+      flex;
+
+    flex-wrap:
+      wrap;
+
+    gap:
+      8px;
+
+    margin-top:
+      28px;
+
+  }
+
+
+  .project-tech span {
+
+    color:
+      var(--apple-tertiary);
+
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
+
+    font-size:
+      10px;
+
+    letter-spacing:
+      0.02em;
+
+  }
+
+
+  .project-tech span:not(:last-child)::after {
+
+    content:
+      " · ";
+
+    margin-left:
+      8px;
+
+    color:
+      rgba(255,255,255,0.16);
+
+  }
+
+
+  /* ============================================================ */
+  /* LINK */
+  /* ============================================================ */
+
+  .project-link {
+
+    display:
+      inline-flex;
+
+    align-items:
+      center;
+
+    gap:
+      8px;
+
+    margin-top:
+      34px;
+
+    color:
+      var(--apple-blue);
+
+    font-size:
+      14px;
+
+    font-weight:
+      500;
 
     transition:
-      transform 300ms
-      cubic-bezier(.22,.61,.36,1);
+      opacity 250ms ease;
 
   }
 
 
-  .project-arrow {
+  .project-link svg {
 
-    display: inline-block;
+    width:
+      17px;
 
-    font-size: 19px;
+    height:
+      17px;
 
-    line-height: 1;
+    fill:
+      none;
+
+    stroke:
+      currentColor;
+
+    stroke-width:
+      1.5;
+
+    stroke-linecap:
+      round;
+
+    stroke-linejoin:
+      round;
 
     transition:
-      transform 300ms
-      cubic-bezier(.22,.61,.36,1);
+      transform 250ms ease;
 
   }
 
 
-  .project-card:hover
-  .project-action {
-
-    transform:
-      translateX(2px);
-
-  }
-
-
-  .project-card:hover
-  .project-arrow {
+  .project-link:hover svg {
 
     transform:
       translateX(5px);
@@ -1977,25 +1525,278 @@
   }
 
 
-  /* ============================================================= */
-  /* FOOTER */
-  /* ============================================================= */
+  .project-link:hover {
 
-  .projects-footer {
+    opacity:
+      0.75;
 
-    display: flex;
+  }
 
-    align-items: center;
 
-    gap: 18px;
+  /* ============================================================ */
+  /* STATISTICS */
+  /* ============================================================ */
 
-    padding:
-      28px
-      4px
-      100px;
+  .project-stat-row {
+
+    display:
+      flex;
+
+    flex-wrap:
+      wrap;
+
+    gap:
+      42px;
+
+    margin-top:
+      34px;
+
+    padding-top:
+      24px;
+
+    border-top:
+      1px solid
+      var(--apple-border-soft);
+
+  }
+
+
+  .project-stat-row > div {
+
+    display:
+      flex;
+
+    flex-direction:
+      column;
+
+    gap:
+      6px;
+
+  }
+
+
+  .project-stat-row span {
 
     color:
-      rgba(255,255,255,0.25);
+      var(--apple-tertiary);
+
+    font-size:
+      10px;
+
+    letter-spacing:
+      0.08em;
+
+    text-transform:
+      uppercase;
+
+  }
+
+
+  .project-stat-row strong {
+
+    color:
+      var(--apple-white);
+
+    font-size:
+      13px;
+
+    font-weight:
+      500;
+
+  }
+
+
+  .project-stat-row .blue-value {
+
+    color:
+      var(--apple-blue);
+
+  }
+
+
+  .project-stat-row.three {
+
+    gap:
+      25px;
+
+  }
+
+
+  /* ============================================================ */
+  /* VISUAL STAGE */
+  /* ============================================================ */
+
+  .project-visual {
+
+    position:
+      relative;
+
+    min-height:
+      410px;
+
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    justify-content:
+      center;
+
+    overflow:
+      hidden;
+
+  }
+
+
+  /* ============================================================ */
+  /* TERMINAL */
+  /* ============================================================ */
+
+  .mini-window {
+
+    width:
+      min(
+        100%,
+        580px
+      );
+
+    overflow:
+      hidden;
+
+    border:
+      1px solid
+      rgba(255,255,255,0.10);
+
+    border-radius:
+      18px;
+
+    background:
+      #0b0b0d;
+
+    box-shadow:
+      0 35px 90px
+      rgba(0,0,0,0.45);
+
+    transform:
+      perspective(1000px)
+      rotateY(-4deg);
+
+    transition:
+      transform 600ms
+      cubic-bezier(.22,.61,.36,1);
+
+  }
+
+
+  .project:hover .mini-window {
+
+    transform:
+      perspective(1000px)
+      rotateY(0)
+      translateY(-5px);
+
+  }
+
+
+  .mini-window-header {
+
+    height:
+      42px;
+
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    gap:
+      18px;
+
+    padding:
+      0 15px;
+
+    border-bottom:
+      1px solid
+      rgba(255,255,255,0.07);
+
+    color:
+      #55565a;
+
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      monospace;
+
+    font-size:
+      9px;
+
+  }
+
+
+  .window-dots {
+
+    display:
+      flex;
+
+    gap:
+      6px;
+
+  }
+
+
+  .window-dots span {
+
+    width:
+      8px;
+
+    height:
+      8px;
+
+    border-radius:
+      50%;
+
+    background:
+      #38383c;
+
+  }
+
+
+  .window-dots span:first-child {
+
+    background:
+      #ff5f57;
+
+  }
+
+
+  .window-dots span:nth-child(2) {
+
+    background:
+      #febc2e;
+
+  }
+
+
+  .window-dots span:last-child {
+
+    background:
+      #28c840;
+
+  }
+
+
+  .mini-terminal {
+
+    min-height:
+      310px;
+
+    padding:
+      35px;
+
+    color:
+      #d2d2d7;
 
     font-family:
       ui-monospace,
@@ -2005,20 +1806,1208 @@
       Consolas,
       monospace;
 
-    font-size: 10px;
+    font-size:
+      12px;
 
-    letter-spacing: 0.12em;
-
-    text-transform: uppercase;
+    line-height:
+      1.9;
 
   }
 
 
-  .footer-line {
+  .terminal-green {
 
-    width: 48px;
+    color:
+      #5ac18e;
 
-    height: 1px;
+  }
+
+
+  .terminal-blue {
+
+    color:
+      var(--apple-blue);
+
+  }
+
+
+  .terminal-muted {
+
+    color:
+      #55565a;
+
+  }
+
+
+  .terminal-output {
+
+    margin-top:
+      8px;
+
+    color:
+      #66676c;
+
+  }
+
+
+  .terminal-cursor {
+
+    display:
+      inline-block;
+
+    width:
+      6px;
+
+    height:
+      14px;
+
+    margin-top:
+      13px;
+
+    background:
+      var(--apple-blue);
+
+    animation:
+      terminalBlink 1s
+      steps(2)
+      infinite;
+
+  }
+
+
+  @keyframes terminalBlink {
+
+    50% {
+      opacity:
+        0;
+    }
+
+  }
+
+
+  /* ============================================================ */
+  /* MOVIE */
+  /* ============================================================ */
+
+  .movie-display {
+
+    position:
+      relative;
+
+    width:
+      310px;
+
+    height:
+      410px;
+
+    overflow:
+      hidden;
+
+    border-radius:
+      20px;
+
+    background:
+      linear-gradient(
+        145deg,
+        #111827,
+        #050505 60%,
+        #172554
+      );
+
+    box-shadow:
+      0 35px 80px
+      rgba(0,0,0,0.45);
+
+    transform:
+      rotate(3deg);
+
+    transition:
+      transform 600ms
+      cubic-bezier(.22,.61,.36,1);
+
+  }
+
+
+  .project:hover .movie-display {
+
+    transform:
+      rotate(0)
+      translateY(-8px);
+
+  }
+
+
+  .movie-display::before {
+
+    content:
+      "";
+
+    position:
+      absolute;
+
+    inset:
+      0;
+
+    background:
+      radial-gradient(
+        circle at 65% 25%,
+        rgba(41,151,255,0.35),
+        transparent 32%
+      );
+
+  }
+
+
+  .movie-rating {
+
+    position:
+      absolute;
+
+    top:
+      30px;
+
+    right:
+      28px;
+
+    color:
+      #fff;
+
+  }
+
+
+  .movie-rating span {
+
+    font-size:
+      54px;
+
+    font-weight:
+      600;
+
+    letter-spacing:
+      -0.06em;
+
+  }
+
+
+  .movie-rating small {
+
+    color:
+      rgba(255,255,255,0.45);
+
+    font-size:
+      16px;
+
+  }
+
+
+  .movie-caption {
+
+    position:
+      absolute;
+
+    right:
+      25px;
+
+    bottom:
+      28px;
+
+    left:
+      25px;
+
+    display:
+      flex;
+
+    flex-direction:
+      column;
+
+    gap:
+      6px;
+
+  }
+
+
+  .movie-caption span {
+
+    color:
+      rgba(255,255,255,0.45);
+
+    font-size:
+      9px;
+
+    text-transform:
+      uppercase;
+
+    letter-spacing:
+      0.1em;
+
+  }
+
+
+  .movie-caption strong {
+
+    color:
+      #fff;
+
+    font-size:
+      16px;
+
+    font-weight:
+      500;
+
+  }
+
+
+  /* ============================================================ */
+  /* WEATHER */
+  /* ============================================================ */
+
+  .weather-sphere {
+
+    position:
+      relative;
+
+    width:
+      340px;
+
+    height:
+      340px;
+
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    justify-content:
+      center;
+
+  }
+
+
+  .weather-sun {
+
+    width:
+      145px;
+
+    height:
+      145px;
+
+    border-radius:
+      50%;
+
+    background:
+      radial-gradient(
+        circle at 35% 30%,
+        #fff,
+        #93c5fd 35%,
+        #2997ff 75%
+      );
+
+    box-shadow:
+      0 0 100px
+      rgba(41,151,255,0.25);
+
+    animation:
+      weatherPulse 6s ease-in-out infinite;
+
+  }
+
+
+  @keyframes weatherPulse {
+
+    0%,
+    100% {
+
+      transform:
+        scale(1);
+
+    }
+
+    50% {
+
+      transform:
+        scale(1.04);
+
+    }
+
+  }
+
+
+  .weather-orbit {
+
+    position:
+      absolute;
+
+    width:
+      260px;
+
+    height:
+      95px;
+
+    border:
+      1px solid
+      rgba(41,151,255,0.24);
+
+    border-radius:
+      50%;
+
+    transform:
+      rotate(-20deg);
+
+  }
+
+
+  .orbit-two {
+
+    width:
+      310px;
+
+    height:
+      130px;
+
+    transform:
+      rotate(35deg);
+
+    border-color:
+      rgba(255,255,255,0.10);
+
+  }
+
+
+  /* ============================================================ */
+  /* ALGORITHM */
+  /* ============================================================ */
+
+  .algorithm-bars {
+
+    width:
+      440px;
+
+    height:
+      260px;
+
+    display:
+      flex;
+
+    align-items:
+      flex-end;
+
+    justify-content:
+      center;
+
+    gap:
+      7px;
+
+    padding:
+      30px;
+
+    border-bottom:
+      1px solid
+      rgba(255,255,255,0.1);
+
+  }
+
+
+  .algorithm-bars span {
+
+    width:
+      18px;
+
+    border-radius:
+      4px 4px 0 0;
+
+    background:
+      linear-gradient(
+        to top,
+        rgba(41,151,255,0.18),
+        rgba(41,151,255,0.85)
+      );
+
+    box-shadow:
+      0 0 18px
+      rgba(41,151,255,0.06);
+
+    transform-origin:
+      bottom;
+
+    animation:
+      algorithmBars 4s
+      ease-in-out
+      infinite alternate;
+
+  }
+
+
+  .algorithm-bars span:nth-child(2n) {
+
+    animation-delay:
+      -1s;
+
+  }
+
+
+  .algorithm-bars span:nth-child(3n) {
+
+    animation-delay:
+      -2s;
+
+  }
+
+
+  @keyframes algorithmBars {
+
+    from {
+      transform:
+        scaleY(0.75);
+    }
+
+    to {
+      transform:
+        scaleY(1);
+    }
+
+  }
+
+
+  /* ============================================================ */
+  /* NETWORK */
+  /* ============================================================ */
+
+  .network-stage {
+
+    position:
+      relative;
+
+    width:
+      460px;
+
+    height:
+      250px;
+
+  }
+
+
+  .network-node {
+
+    position:
+      absolute;
+
+    width:
+      64px;
+
+    height:
+      64px;
+
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    justify-content:
+      center;
+
+    border:
+      1px solid
+      rgba(41,151,255,0.35);
+
+    border-radius:
+      50%;
+
+    background:
+      rgba(41,151,255,0.04);
+
+    color:
+      var(--apple-blue);
+
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      monospace;
+
+    font-size:
+      13px;
+
+    box-shadow:
+      0 0 40px
+      rgba(41,151,255,0.08);
+
+  }
+
+
+  .node-a {
+
+    top:
+      50%;
+
+    left:
+      0;
+
+    transform:
+      translateY(-50%);
+
+  }
+
+
+  .node-b {
+
+    top:
+      20%;
+
+    left:
+      50%;
+
+    transform:
+      translateX(-50%);
+
+  }
+
+
+  .node-c {
+
+    right:
+      0;
+
+    bottom:
+      0;
+
+  }
+
+
+  .network-line {
+
+    position:
+      absolute;
+
+    height:
+      1px;
+
+    transform-origin:
+      left center;
+
+    background:
+      linear-gradient(
+        90deg,
+        rgba(41,151,255,0.15),
+        rgba(41,151,255,0.7),
+        rgba(41,151,255,0.15)
+      );
+
+    animation:
+      networkPulse 2.8s
+      ease-in-out
+      infinite;
+
+  }
+
+
+  .line-a {
+
+    top:
+      44%;
+
+    left:
+      62px;
+
+    width:
+      210px;
+
+    transform:
+      rotate(-22deg);
+
+  }
+
+
+  .line-b {
+
+    top:
+      41%;
+
+    left:
+      245px;
+
+    width:
+      170px;
+
+    transform:
+      rotate(34deg);
+
+    animation-delay:
+      -1.3s;
+
+  }
+
+
+  @keyframes networkPulse {
+
+    0%,
+    100% {
+
+      opacity:
+        0.3;
+
+    }
+
+    50% {
+
+      opacity:
+        1;
+
+    }
+
+  }
+
+
+  /* ============================================================ */
+  /* CPU */
+  /* ============================================================ */
+
+  .cpu-chip {
+
+    position:
+      relative;
+
+    width:
+      260px;
+
+    height:
+      260px;
+
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    justify-content:
+      center;
+
+    border:
+      1px solid
+      rgba(41,151,255,0.25);
+
+    border-radius:
+      30px;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255,255,255,0.07),
+        rgba(255,255,255,0.015)
+      );
+
+    box-shadow:
+      0 30px 70px
+      rgba(0,0,0,0.4);
+
+    transform:
+      rotate(8deg);
+
+    transition:
+      transform 600ms
+      cubic-bezier(.22,.61,.36,1);
+
+  }
+
+
+  .project:hover .cpu-chip {
+
+    transform:
+      rotate(0)
+      translateY(-7px);
+
+  }
+
+
+  .cpu-core {
+
+    width:
+      125px;
+
+    height:
+      125px;
+
+    display:
+      flex;
+
+    flex-direction:
+      column;
+
+    align-items:
+      center;
+
+    justify-content:
+      center;
+
+    gap:
+      4px;
+
+    border:
+      1px solid
+      rgba(41,151,255,0.3);
+
+    border-radius:
+      20px;
+
+    background:
+      #090a0c;
+
+    color:
+      var(--apple-blue);
+
+    box-shadow:
+      inset 0 0 35px
+      rgba(41,151,255,0.06);
+
+  }
+
+
+  .cpu-core span {
+
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      monospace;
+
+    font-size:
+      18px;
+
+  }
+
+
+  .cpu-core small {
+
+    color:
+      rgba(255,255,255,0.3);
+
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      monospace;
+
+    font-size:
+      8px;
+
+  }
+
+
+  .cpu-pin {
+
+    position:
+      absolute;
+
+    width:
+      22px;
+
+    height:
+      1px;
+
+    background:
+      rgba(41,151,255,0.35);
+
+  }
+
+
+  .pin-1 {
+
+    top:
+      48px;
+
+    left:
+      -22px;
+
+  }
+
+
+  .pin-2 {
+
+    bottom:
+      48px;
+
+    left:
+      -22px;
+
+  }
+
+
+  .pin-3 {
+
+    top:
+      48px;
+
+    right:
+      -22px;
+
+  }
+
+
+  .pin-4 {
+
+    bottom:
+      48px;
+
+    right:
+      -22px;
+
+  }
+
+
+  /* ============================================================ */
+  /* FINANCE */
+  /* ============================================================ */
+
+  .finance-card {
+
+    width:
+      380px;
+
+    padding:
+      30px;
+
+    border:
+      1px solid
+      rgba(255,255,255,0.10);
+
+    border-radius:
+      22px;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255,255,255,0.07),
+        rgba(255,255,255,0.015)
+      );
+
+    box-shadow:
+      0 30px 80px
+      rgba(0,0,0,0.4);
+
+    transform:
+      rotate(-3deg);
+
+    transition:
+      transform 600ms
+      cubic-bezier(.22,.61,.36,1);
+
+  }
+
+
+  .project:hover .finance-card {
+
+    transform:
+      rotate(0)
+      translateY(-7px);
+
+  }
+
+
+  .finance-card > span {
+
+    color:
+      var(--apple-tertiary);
+
+    font-size:
+      10px;
+
+    text-transform:
+      uppercase;
+
+    letter-spacing:
+      0.1em;
+
+  }
+
+
+  .finance-card > strong {
+
+    display:
+      block;
+
+    margin-top:
+      15px;
+
+    color:
+      var(--apple-white);
+
+    font-size:
+      40px;
+
+    font-weight:
+      500;
+
+    letter-spacing:
+      -0.04em;
+
+  }
+
+
+  .finance-line {
+
+    height:
+      4px;
+
+    margin:
+      30px 0 15px;
+
+    overflow:
+      hidden;
+
+    border-radius:
+      999px;
+
+    background:
+      rgba(255,255,255,0.07);
+
+  }
+
+
+  .finance-line span {
+
+    display:
+      block;
+
+    width:
+      68%;
+
+    height:
+      100%;
+
+    border-radius:
+      inherit;
+
+    background:
+      var(--apple-blue);
+
+  }
+
+
+  .finance-card small {
+
+    color:
+      var(--apple-tertiary);
+
+    font-size:
+      10px;
+
+  }
+
+
+  /* ============================================================ */
+  /* FINTRACK */
+  /* ============================================================ */
+
+  .fintrack-screen {
+
+    width:
+      450px;
+
+    min-height:
+      300px;
+
+    padding:
+      25px;
+
+    border:
+      1px solid
+      rgba(255,255,255,0.1);
+
+    border-radius:
+      22px;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255,255,255,0.065),
+        rgba(255,255,255,0.012)
+      );
+
+    box-shadow:
+      0 35px 80px
+      rgba(0,0,0,0.4);
+
+    transform:
+      perspective(900px)
+      rotateY(4deg);
+
+    transition:
+      transform 600ms
+      cubic-bezier(.22,.61,.36,1);
+
+  }
+
+
+  .project:hover .fintrack-screen {
+
+    transform:
+      perspective(900px)
+      rotateY(0)
+      translateY(-7px);
+
+  }
+
+
+  .fintrack-top {
+
+    display:
+      flex;
+
+    justify-content:
+      space-between;
+
+    color:
+      var(--apple-tertiary);
+
+    font-size:
+      10px;
+
+  }
+
+
+  .fintrack-top span:first-child {
+
+    color:
+      var(--apple-white);
+
+    font-size:
+      13px;
+
+    font-weight:
+      500;
+
+  }
+
+
+  .fintrack-balance {
+
+    margin-top:
+      45px;
+
+  }
+
+
+  .fintrack-balance small {
+
+    color:
+      var(--apple-tertiary);
+
+    font-size:
+      10px;
+
+  }
+
+
+  .fintrack-balance strong {
+
+    display:
+      block;
+
+    margin-top:
+      8px;
+
+    color:
+      var(--apple-white);
+
+    font-size:
+      34px;
+
+    font-weight:
+      500;
+
+    letter-spacing:
+      -0.04em;
+
+  }
+
+
+  .fintrack-bars {
+
+    height:
+      90px;
+
+    display:
+      flex;
+
+    align-items:
+      flex-end;
+
+    gap:
+      8px;
+
+    margin-top:
+      25px;
+
+  }
+
+
+  .fintrack-bars span {
+
+    flex:
+      1;
+
+    border-radius:
+      3px 3px 0 0;
+
+    background:
+      linear-gradient(
+        to top,
+        rgba(41,151,255,0.2),
+        rgba(41,151,255,0.8)
+      );
+
+  }
+
+
+  /* ============================================================ */
+  /* FOOTER */
+  /* ============================================================ */
+
+  .projects-footer {
+
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    gap:
+      18px;
+
+    padding:
+      35px 0 120px;
+
+    color:
+      rgba(255,255,255,0.28);
+
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
+
+    font-size:
+      10px;
+
+    letter-spacing:
+      0.08em;
+
+    text-transform:
+      uppercase;
+
+  }
+
+
+  .footer-rule {
+
+    width:
+      50px;
+
+    height:
+      1px;
 
     background:
       rgba(255,255,255,0.12);
@@ -2026,183 +3015,285 @@
   }
 
 
-  /* ============================================================= */
-  /* RESPONSIVE */
-  /* ============================================================= */
+  /* ============================================================ */
+  /* TABLET */
+  /* ============================================================ */
 
-  @media (max-width: 900px) {
+  @media (max-width: 1000px) {
 
-    .projects-heading-layout {
+    .projects-header-grid {
 
-      grid-template-columns: 1fr;
+      grid-template-columns:
+        1fr;
 
-      gap: 24px;
-
-    }
-
-
-    .projects-title {
-
-      font-size:
-        clamp(
-          3rem,
-          11vw,
-          5rem
-        );
+      gap:
+        30px;
 
     }
 
 
-    .project-card-inner {
+    .project-content {
 
-      align-items: flex-start;
+      grid-template-columns:
+        1fr;
 
-      flex-direction: column;
+      gap:
+        70px;
 
-      gap: 32px;
+      padding-left:
+        70px;
 
     }
 
 
-    .project-action {
+    .project-visual {
 
-      align-self: flex-start;
+      min-height:
+        360px;
 
     }
 
   }
 
 
+  /* ============================================================ */
+  /* MOBILE */
+  /* ============================================================ */
+
   @media (max-width: 640px) {
+
+    .projects-container {
+
+      width:
+        calc(100% - 40px);
+
+    }
+
 
     .projects-header {
 
-      padding-top: 6rem;
-
-      padding-bottom: 3.5rem;
-
-    }
-
-
-    .projects-title {
-
-      font-size: 3.25rem;
+      padding:
+        120px 0
+        80px;
 
     }
 
 
-    .projects-introduction {
+    .projects-heading {
 
-      font-size: 15px;
-
-    }
-
-
-    .project-card {
-
-      border-radius: 20px;
+      font-size:
+        clamp(
+          58px,
+          17vw,
+          82px
+        );
 
     }
 
 
-    .project-card-inner {
+    .projects-intro {
+
+      font-size:
+        16px;
+
+    }
+
+
+    .project {
+
+      min-height:
+        auto;
 
       padding:
-        30px
-        24px
-        28px;
+        75px 0;
 
     }
 
 
-    .project-number {
+    .project-index {
 
-      top: 24px;
+      position:
+        static;
 
-      right: 24px;
-
-    }
-
-
-    .project-meta {
-
-      padding-right: 55px;
-
-      font-size: 9px;
+      margin-bottom:
+        35px;
 
     }
 
 
-    .project-title {
+    .project-content {
 
-      font-size: 1.85rem;
+      padding-left:
+        0;
+
+      gap:
+        50px;
+
+    }
+
+
+    .project h3 {
+
+      font-size:
+        42px;
 
     }
 
 
     .project-description {
 
-      font-size: 15px;
+      font-size:
+        16px;
 
     }
 
 
-    .weather-preview {
+    .project-visual {
 
-      grid-template-columns: 1fr;
-
-    }
-
-
-    .project-highlight {
-
-      gap: 16px;
+      min-height:
+        300px;
 
     }
 
 
-    .highlight-divider {
+    .mini-window {
 
-      display: none;
+      width:
+        100%;
 
     }
 
 
-    .project-tags {
+    .mini-terminal {
 
-      margin-top: 24px;
+      padding:
+        25px;
+
+    }
+
+
+    .movie-display {
+
+      width:
+        250px;
+
+      height:
+        330px;
+
+    }
+
+
+    .weather-sphere {
+
+      transform:
+        scale(0.8);
+
+    }
+
+
+    .algorithm-bars {
+
+      width:
+        100%;
+
+      padding:
+        20px;
+
+    }
+
+
+    .algorithm-bars span {
+
+      width:
+        12px;
+
+    }
+
+
+    .network-stage {
+
+      transform:
+        scale(0.78);
+
+    }
+
+
+    .cpu-chip {
+
+      transform:
+        scale(0.82)
+        rotate(8deg);
+
+    }
+
+
+    .project:hover .cpu-chip {
+
+      transform:
+        scale(0.82)
+        rotate(0)
+        translateY(-5px);
+
+    }
+
+
+    .finance-card,
+    .fintrack-screen {
+
+      width:
+        100%;
+
+    }
+
+
+    .fintrack-screen {
+
+      transform:
+        none;
+
+    }
+
+
+    .project:hover .fintrack-screen {
+
+      transform:
+        translateY(-5px);
 
     }
 
 
     .projects-footer {
 
-      padding-bottom: 70px;
+      padding-bottom:
+        80px;
 
     }
 
   }
 
 
-  /* ============================================================= */
+  /* ============================================================ */
   /* REDUCED MOTION */
-  /* ============================================================= */
+  /* ============================================================ */
 
   @media (prefers-reduced-motion: reduce) {
 
-    .projects-glow-right,
-    .projects-glow-bottom {
+    .terminal-cursor,
+    .weather-sun,
+    .algorithm-bars span,
+    .network-line {
 
-      animation: none !important;
+      animation:
+        none !important;
 
     }
 
 
-    .project-card,
-    .project-action,
-    .project-arrow {
+    .project *,
+    .project::before {
 
-      transition: none !important;
+      transition:
+        none !important;
 
     }
 
