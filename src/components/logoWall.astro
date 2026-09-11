@@ -74,6 +74,7 @@ const getTechnologyName = (tech: string) => {
     </div>
   </div>
 
+  <!-- Technology wall -->
   <div class="technology-wall relative overflow-x-hidden py-6">
 
     <!-- Left fade -->
@@ -98,7 +99,7 @@ const getTechnologyName = (tech: string) => {
               index >= technologies.length ? "true" : "false"
             }
           >
-            <!-- Icon -->
+            <!-- Technology icon -->
             <div class="flex h-8 w-8 items-center justify-center">
               <img
                 src={getIconPath(tech)}
@@ -119,7 +120,7 @@ const getTechnologyName = (tech: string) => {
               />
             </div>
 
-            <!-- Name -->
+            <!-- Technology name -->
             <span
               class="whitespace-nowrap text-lg font-medium text-[var(--white-icon)] opacity-70 transition-opacity duration-300 group-hover:opacity-100"
             >
@@ -171,34 +172,34 @@ const getTechnologyName = (tech: string) => {
       <div
         class="
           group relative
-          flex w-full max-w-2xl
+          flex w-full max-w-3xl
           items-center
-          gap-8
+          gap-10
           overflow-hidden
           rounded-3xl
           border border-white/10
           bg-white/[0.035]
-          px-7 py-8
+          px-8 py-8
           backdrop-blur-2xl
           transition-all duration-500
           hover:border-white/20
           hover:bg-white/[0.06]
           hover:shadow-[0_20px_70px_rgba(0,0,0,0.25)]
-          md:gap-10
-          md:px-10
-          md:py-9
+          md:gap-14
+          md:px-12
+          md:py-10
         "
       >
 
-        <!-- Blue glow -->
+        <!-- Subtle blue glow -->
         <div
           class="
             pointer-events-none
             absolute
             -left-24
             -top-24
-            h-56
-            w-56
+            h-64
+            w-64
             rounded-full
             bg-blue-500/10
             blur-3xl
@@ -211,29 +212,22 @@ const getTechnologyName = (tech: string) => {
         ></div>
 
         <!-- ================================================= -->
-        <!-- UPV LOGO -->
+        <!-- LARGE UPV LOGO -->
+        <!-- No box / no border / no background -->
         <!-- ================================================= -->
 
         <div
           class="
             relative
             flex
-            h-36
-            w-44
+            h-48
+            w-60
             shrink-0
             items-center
             justify-center
-            overflow-hidden
-            rounded-2xl
-            border
-            border-white/10
-            bg-white/[0.06]
-            p-2
             transition-all
             duration-500
-            group-hover:scale-[1.03]
-            group-hover:border-white/20
-            group-hover:bg-white/[0.09]
+            group-hover:scale-105
           "
         >
           <img
@@ -246,10 +240,10 @@ const getTechnologyName = (tech: string) => {
               object-contain
               transition-transform
               duration-500
-              group-hover:scale-105
+              group-hover:scale-110
             "
-            width="176"
-            height="144"
+            width="240"
+            height="192"
             loading="lazy"
             decoding="async"
           />
@@ -259,7 +253,7 @@ const getTechnologyName = (tech: string) => {
         <!-- UPV INFORMATION -->
         <!-- ================================================= -->
 
-        <div class="relative min-w-0 pr-4">
+        <div class="relative min-w-0">
 
           <p
             class="
@@ -312,6 +306,10 @@ const getTechnologyName = (tech: string) => {
 <!-- ========================================================= -->
 
 <style is:global>
+  /* ========================================================= */
+  /* TECHNOLOGY SCROLL */
+  /* ========================================================= */
+
   @keyframes scroll {
     from {
       transform: translate3d(0, 0, 0);
@@ -326,22 +324,30 @@ const getTechnologyName = (tech: string) => {
     animation: scroll 60s linear infinite;
   }
 
-  /* Pause carousel on hover */
+  /* Pause carousel when cursor is above it */
   .technology-wall:hover .animate-scroll {
     animation-play-state: paused;
   }
 
-  /* Normal cursor — no pointer arrow */
+  /* Keep normal cursor — no pointer arrow */
   .technology-wall,
   .technology-wall * {
     cursor: default !important;
   }
+
+  /* ========================================================= */
+  /* DESKTOP */
+  /* ========================================================= */
 
   @media (min-width: 768px) {
     .animate-scroll {
       animation-duration: 50s;
     }
   }
+
+  /* ========================================================= */
+  /* REDUCED MOTION */
+  /* ========================================================= */
 
   @media (prefers-reduced-motion: reduce) {
     .animate-scroll {
