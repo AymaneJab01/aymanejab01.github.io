@@ -80,19 +80,16 @@ const getTechnologyName = (tech: string) => {
   <!-- ========================================================= -->
 
   <div class="technology-wall relative overflow-x-hidden py-6">
-    <!-- Left fade -->
     <div
       class="pointer-events-none absolute inset-y-0 left-0 z-20 w-24 bg-gradient-to-r from-[var(--background)] via-[var(--background)]/80 to-transparent md:w-40"
       aria-hidden="true"
     ></div>
 
-    <!-- Right fade -->
     <div
       class="pointer-events-none absolute inset-y-0 right-0 z-20 w-24 bg-gradient-to-l from-[var(--background)] via-[var(--background)]/80 to-transparent md:w-40"
       aria-hidden="true"
     ></div>
 
-    <!-- Scrolling technology list -->
     <div class="flex w-max animate-scroll will-change-transform">
       {
         [...technologies, ...technologies].map((tech, index) => (
@@ -100,7 +97,6 @@ const getTechnologyName = (tech: string) => {
             class="group flex shrink-0 items-center gap-3 pr-12 transition-all duration-300 md:pr-20"
             aria-hidden={index >= technologies.length ? "true" : "false"}
           >
-            <!-- Icon -->
             <div class="flex h-8 w-8 items-center justify-center">
               <img
                 src={getIconPath(tech)}
@@ -117,7 +113,6 @@ const getTechnologyName = (tech: string) => {
               />
             </div>
 
-            <!-- Name -->
             <span
               class="whitespace-nowrap text-lg font-medium text-[var(--white-icon)] opacity-70 transition-opacity duration-300 group-hover:opacity-100"
             >
@@ -222,7 +217,6 @@ const getTechnologyName = (tech: string) => {
           aria-hidden="true"
         ></div>
 
-        <!-- Small central glass reflection -->
         <div
           class="
             pointer-events-none
@@ -260,10 +254,7 @@ const getTechnologyName = (tech: string) => {
           "
         >
 
-          <!-- ================================================= -->
-          <!-- TIGHT WHITE AURA -->
-          <!-- ================================================= -->
-
+          <!-- Tight white aura -->
           <div
             class="
               pointer-events-none
@@ -287,10 +278,7 @@ const getTechnologyName = (tech: string) => {
             aria-hidden="true"
           ></div>
 
-          <!-- ================================================= -->
-          <!-- SMALL INNER GLOW -->
-          <!-- ================================================= -->
-
+          <!-- Small inner glow -->
           <div
             class="
               pointer-events-none
@@ -312,10 +300,7 @@ const getTechnologyName = (tech: string) => {
             aria-hidden="true"
           ></div>
 
-          <!-- ================================================= -->
-          <!-- TIGHT BLACK DEPTH -->
-          <!-- ================================================= -->
-
+          <!-- Tight black depth -->
           <div
             class="
               pointer-events-none
@@ -334,10 +319,7 @@ const getTechnologyName = (tech: string) => {
             aria-hidden="true"
           ></div>
 
-          <!-- ================================================= -->
-          <!-- UPV LOGO -->
-          <!-- ================================================= -->
-
+          <!-- UPV logo -->
           <img
             src="/svg/UPV.jpg"
             alt="Universitat Politècnica de València"
@@ -368,10 +350,7 @@ const getTechnologyName = (tech: string) => {
             decoding="async"
           />
 
-          <!-- ================================================= -->
-          <!-- SMALL SILVER LINE -->
-          <!-- ================================================= -->
-
+          <!-- Silver line -->
           <div
             class="
               pointer-events-none
@@ -395,10 +374,7 @@ const getTechnologyName = (tech: string) => {
             aria-hidden="true"
           ></div>
 
-          <!-- ================================================= -->
-          <!-- SMALL LIGHT POINT -->
-          <!-- ================================================= -->
-
+          <!-- Small central light -->
           <div
             class="
               pointer-events-none
@@ -430,7 +406,7 @@ const getTechnologyName = (tech: string) => {
 
         <div class="relative min-w-0">
 
-          <!-- Label -->
+          <!-- Status -->
           <p
             class="
               mb-3
@@ -442,10 +418,10 @@ const getTechnologyName = (tech: string) => {
               opacity-40
             "
           >
-            University
+            Student
           </p>
 
-          <!-- University -->
+          <!-- University name -->
           <h3
             class="
               text-2xl
@@ -460,7 +436,7 @@ const getTechnologyName = (tech: string) => {
             de València
           </h3>
 
-          <!-- Abbreviation -->
+          <!-- Short name -->
           <p
             class="
               mt-3
@@ -473,7 +449,7 @@ const getTechnologyName = (tech: string) => {
             UPV
           </p>
 
-          <!-- Accent -->
+          <!-- Elegant accent -->
           <div
             class="
               mt-6
@@ -542,10 +518,6 @@ const getTechnologyName = (tech: string) => {
 <!-- ========================================================= -->
 
 <style is:global>
-  /* ========================================================= */
-  /* TECHNOLOGY MARQUEE */
-  /* ========================================================= */
-
   @keyframes scroll {
     from {
       transform: translate3d(0, 0, 0);
@@ -560,20 +532,14 @@ const getTechnologyName = (tech: string) => {
     animation: scroll 60s linear infinite;
   }
 
-  /* Pause marquee on hover */
   .technology-wall:hover .animate-scroll {
     animation-play-state: paused;
   }
 
-  /* Keep default cursor */
   .technology-wall,
   .technology-wall * {
     cursor: default !important;
   }
-
-  /* ========================================================= */
-  /* DESKTOP */
-  /* ========================================================= */
 
   @media (min-width: 768px) {
     .animate-scroll {
@@ -581,19 +547,11 @@ const getTechnologyName = (tech: string) => {
     }
   }
 
-  /* ========================================================= */
-  /* ACCESSIBILITY */
-  /* ========================================================= */
-
   @media (prefers-reduced-motion: reduce) {
     .animate-scroll {
       animation-play-state: paused;
     }
   }
-
-  /* ========================================================= */
-  /* MOBILE */
-  /* ========================================================= */
 
   @media (max-width: 640px) {
     section[aria-label="Organizations"] .upv-card {
@@ -613,10 +571,6 @@ const getTechnologyName = (tech: string) => {
       margin-right: auto;
     }
   }
-
-  /* ========================================================= */
-  /* SMALL PHONES */
-  /* ========================================================= */
 
   @media (max-width: 420px) {
     section[aria-label="Organizations"] .upv-logo-area {
