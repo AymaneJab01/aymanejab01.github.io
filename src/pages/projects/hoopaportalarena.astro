@@ -432,7 +432,12 @@
     border:1px solid var(--line);
     padding:clamp(18px,3.4vw,36px);
     position:relative;overflow:hidden;
+    box-shadow:inset 0 0 0 0 transparent;transition:box-shadow 1.1s ease;
   }
+  /* a soft vignette closing in around the edges deepens the spotlight already put on the transforming
+     fighter, without needing another pseudo-element layer */
+  .arena-shell.mega-cinematic{box-shadow:inset 0 0 130px 30px rgba(4,2,10,0.55);}
+  @media (prefers-reduced-motion: reduce){ .arena-shell{transition:none;} }
   .arena-shell::before{
     content:"";position:absolute;inset:0;pointer-events:none;
     background:radial-gradient(700px 300px at 50% -10%, rgba(192,38,211,0.16), transparent 70%);
@@ -450,6 +455,26 @@
   @keyframes arenapulse{
     0%{opacity:0.55;}
     100%{opacity:0;}
+  }
+
+  /* CINEMATIC FRAMING — a clean, single-gesture way to say "this moment matters" without adding any
+     more visual clutter: two bars close in from the top and bottom like a widescreen crop, and the
+     whole arena eases into a very slight push-in, exactly like a film would frame a key beat. */
+  .cinema-bar{
+    position:absolute;left:0;right:0;height:15%;z-index:24;pointer-events:none;
+    background:linear-gradient(180deg, rgba(6,4,12,0.97), rgba(6,4,12,0.75));
+    transform:translateY(-100%);transition:transform .6s cubic-bezier(.16,.8,.24,1);
+  }
+  .cinema-bar-top{top:0;}
+  .cinema-bar-bottom{bottom:0;background:linear-gradient(0deg, rgba(6,4,12,0.97), rgba(6,4,12,0.75));transform:translateY(100%);}
+  .arena-shell.mega-cinematic .cinema-bar-top{transform:translateY(0);}
+  .arena-shell.mega-cinematic .cinema-bar-bottom{transform:translateY(0);}
+  .arena-shell .versus-grid{transition:transform 1.1s cubic-bezier(.16,.8,.24,1);}
+  .arena-shell.mega-cinematic .versus-grid{transform:scale(1.014);}
+  @media (prefers-reduced-motion: reduce){
+    .cinema-bar{transition:none;}
+    .arena-shell .versus-grid{transition:none;}
+    .arena-shell.mega-cinematic .versus-grid{transform:none;}
   }
   @keyframes bigshake{
     10%,90%{transform:translate3d(-1px,0,0);}
@@ -475,6 +500,34 @@
     100%{opacity:0;transform:translate(-50%,-50%) scale(0.94) translateY(-6px);}
   }
   .fx-round{color:var(--text-dim);font-size:clamp(15px,2.2vw,19px);letter-spacing:0.16em;text-transform:uppercase;}
+  /* a quieter, more "title card" treatment for the pre-transformation line — thin rule lines draw
+     outward from the text instead of the usual punchy scale-in, so the moment reads as deliberate
+     rather than just another impact banner */
+  .fx-transform{
+    color:var(--text);font-size:clamp(13px,2vw,16px);letter-spacing:0.34em;
+    text-transform:uppercase;font-weight:700;padding:0 4px;
+    /* deliberately no position here — .fx-banner already sets position:absolute on this same element,
+       and redeclaring it (even as "relative") would collide with that rule at equal specificity and
+       could win on source order, silently pulling the whole banner out of its intended placement */
+  }
+  /* the default banner position (38% down the whole arena-shell, actions/log included) lands right on
+     top of the panel border once a transformation is in play — pull this one up so its title-card
+     treatment sits cleanly over the header instead of straddling that edge */
+  .fx-banner.fx-transform{top:15%;}
+  .fx-transform::before, .fx-transform::after{
+    content:"";position:absolute;top:50%;width:42px;height:1px;
+    transform:translateY(-50%) scaleX(0);opacity:0;
+  }
+  .fx-transform::before{right:100%;margin-right:14px;transform-origin:right center;background:linear-gradient(90deg, transparent, var(--gold-2));}
+  .fx-transform::after{left:100%;margin-left:14px;transform-origin:left center;background:linear-gradient(90deg, var(--gold-2), transparent);}
+  .fx-banner.fx-transform.show::before, .fx-banner.fx-transform.show::after{animation:transformRule 1.5s cubic-bezier(.2,.85,.25,1.1) forwards;}
+  @keyframes transformRule{
+    0%{transform:translateY(-50%) scaleX(0);opacity:0;}
+    22%{opacity:1;}
+    42%{transform:translateY(-50%) scaleX(1);}
+    78%{opacity:1;transform:translateY(-50%) scaleX(1);}
+    100%{opacity:0;transform:translateY(-50%) scaleX(1);}
+  }
   .fx-mega{
     font-size:clamp(22px,4.2vw,36px);
     background:linear-gradient(120deg,var(--gold),var(--magenta-2));
@@ -517,6 +570,19 @@
     transition:transform .2s, box-shadow .2s;
   }
   .vs-mid .vs-badge.clash{animation:vsclash .5s ease;}
+  /* MOMENTUM BAR — a small tug-of-war readout between the two HP totals, so who's actually ahead in
+     the duel is visible at a glance instead of requiring a side-by-side number comparison */
+  .momentum-bar{
+    width:64px;height:6px;border-radius:999px;background:var(--surface-3);
+    overflow:hidden;position:relative;box-shadow:inset 0 1px 3px rgba(0,0,0,0.4);
+  }
+  .momentum-fill{
+    position:absolute;top:0;bottom:0;left:50%;width:0%;
+    background:linear-gradient(90deg,var(--magenta-2),var(--cyan));
+    transition:width .6s cubic-bezier(.2,.8,.2,1), left .6s cubic-bezier(.2,.8,.2,1);
+    border-radius:999px;
+  }
+  .momentum-label{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-faint);font-family:var(--font-display);}
   @keyframes vsclash{
     0%{transform:scale(1);box-shadow:none;}
     40%{transform:scale(1.35);box-shadow:0 0 30px 8px rgba(245,197,24,0.55);}
@@ -536,6 +602,25 @@
   }
   .fighter.you{border-color:rgba(232,121,249,0.18);}
   .fighter.cpu{border-color:rgba(34,211,238,0.18);}
+  /* MEGA EVOLUTION SPOTLIGHT — while one fighter transforms, the rest of the arena steps back so
+     every bit of visual attention lands on them, like a stage light narrowing to one performer */
+  .fighter{transition:opacity .55s ease, filter .55s ease, transform .55s cubic-bezier(.2,.8,.2,1), box-shadow .55s ease, z-index 0s;}
+  .fighter.mega-focus{
+    position:relative;z-index:6;transform:scale(1.018);
+    box-shadow:0 22px 54px rgba(0,0,0,0.45), 0 0 46px -6px var(--mh, var(--gold));
+  }
+  .fighter.mega-dim{opacity:0.34;filter:grayscale(0.55) saturate(0.7);}
+  .vs-mid{transition:opacity .55s ease;}
+  .vs-mid.mega-dim{opacity:0.3;}
+  @media (prefers-reduced-motion: reduce){ .fighter{transition:opacity .3s ease;} .fighter.mega-focus{transform:none;} }
+  /* DANGER STATE — a low, urgent pulse once a fighter drops to critical HP, so the tension is felt
+     in the panel itself and not just read off the number */
+  .fighter.danger{animation:dangerPulse 1.3s ease-in-out infinite;}
+  @keyframes dangerPulse{
+    0%,100%{box-shadow:0 14px 34px rgba(0,0,0,0.28), 0 0 0 1px rgba(251,113,133,0.25);}
+    50%{box-shadow:0 14px 34px rgba(0,0,0,0.28), 0 0 26px 2px rgba(251,113,133,0.55), 0 0 0 1px rgba(251,113,133,0.6);}
+  }
+  @media (prefers-reduced-motion: reduce){ .fighter.danger{animation:none;box-shadow:0 14px 34px rgba(0,0,0,0.28), 0 0 0 1px rgba(251,113,133,0.45);} }
   /* order is only needed once the grid collapses to a single column on mobile — applying it at
      desktop width too would hijack the grid's auto-placement (vs-mid has the default order:0 and
      would "steal" the first 1fr track), squashing the CPU panel into the narrow middle slot. */
@@ -549,7 +634,16 @@
     font-size:10px;font-family:var(--font-display);letter-spacing:0.04em;color:var(--gold-2);
     background:rgba(245,197,24,0.12);border:1px solid rgba(245,197,24,0.35);
     padding:3px 9px;border-radius:999px;white-space:nowrap;
+    /* this pill only ever gets (re)painted into the DOM at the instant a fighter's new form is
+       revealed, so a standing entrance animation here always lands right on cue without any extra
+       JS timing to coordinate — a small confident settle instead of just popping into existence */
+    animation:pillSettle .5s cubic-bezier(.2,.8,.2,1.15) both;
   }
+  @keyframes pillSettle{
+    0%{opacity:0;transform:translateY(-3px) scale(0.85);}
+    100%{opacity:1;transform:translateY(0) scale(1);}
+  }
+  @media (prefers-reduced-motion: reduce){ .mega-pill{animation:none;} }
 
   .fighter-portrait{
     aspect-ratio:4/3;border-radius:var(--r-sm);
@@ -612,6 +706,31 @@
     filter:brightness(0.07) saturate(0) drop-shadow(0 0 14px var(--mh, var(--gold)));
     transition:filter .5s ease;
   }
+  /* a soft scale-pop the instant the silhouette lifts, so the new form feels like it arrives with
+     weight rather than just fading up in place */
+  .fighter-portrait.reveal-pop{animation:revealPop .62s cubic-bezier(.2,.85,.25,1.3);}
+  @keyframes revealPop{
+    0%{transform:scale(1);}
+    38%{transform:scale(1.085);}
+    100%{transform:scale(1);}
+  }
+  /* a single diagonal light sheen sweeping across the portrait right at the reveal — the same kind
+     of glossy "unveil" pass a premium card-flip or product shot uses */
+  .fighter-portrait.reveal-sheen::after{
+    content:"";position:absolute;inset:0;z-index:5;pointer-events:none;
+    background:linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.75) 48%, transparent 66%);
+    background-size:250% 250%;background-position:-40% -40%;
+    animation:revealSheen .85s ease-out;
+  }
+  @keyframes revealSheen{
+    0%{background-position:-60% -60%;opacity:0;}
+    16%{opacity:0.9;}
+    100%{background-position:60% 60%;opacity:0;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .fighter-portrait.reveal-pop{animation:none;}
+    .fighter-portrait.reveal-sheen::after{animation:none;display:none;}
+  }
   .mega-halo{
     --h1:#e879f9; --h2:#f5c518; --h3:#22d3ee;
   }
@@ -637,6 +756,11 @@
   .dmg-pop.show{animation:popup 1s ease forwards;}
   .dmg-pop.heal{color:var(--good);}
   .dmg-pop.eff{color:var(--gold-2);}
+  .dmg-pop.crit{color:var(--gold-2);font-size:31px;text-shadow:0 2px 4px rgba(0,0,0,0.6), 0 0 18px rgba(245,197,24,0.85);}
+  .dmg-pop.crit::before{
+    content:"CRITICAL";position:absolute;left:50%;top:-16px;transform:translateX(-50%);
+    font-size:10px;letter-spacing:0.14em;color:var(--gold-2);white-space:nowrap;
+  }
   @keyframes popup{
     0%{opacity:0;transform:translate(-50%,10px) scale(0.7);}
     18%{opacity:1;transform:translate(-50%,-8px) scale(1.15);}
@@ -901,12 +1025,126 @@
   @media (prefers-reduced-motion: reduce){
     *{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;}
   }
+
+  /* ---------- CUSTOM SCROLLBAR — the last unstyled browser-chrome surface on the page ---------- */
+  html{scrollbar-width:thin;scrollbar-color:var(--magenta-2) transparent;}
+  ::-webkit-scrollbar{width:10px;height:10px;}
+  ::-webkit-scrollbar-track{background:transparent;}
+  ::-webkit-scrollbar-thumb{
+    background-color:var(--magenta-2);
+    background-image:linear-gradient(180deg,var(--gold),var(--magenta-2),var(--cyan));
+    border-radius:999px;border:2px solid var(--bg);background-clip:padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover{background-image:linear-gradient(180deg,var(--cyan),var(--magenta-2),var(--gold));}
+
+  /* ---------- BOOT VEIL — a quick ring-expand reveal on first load, echoing the theme-toggle's own
+     portal-wipe so the brand mark shows up at the very first moment the page is seen, not just in the
+     nav. Pure CSS (no JS dependency), so it can never get stuck open. ---------- */
+  .boot-veil{
+    position:fixed;inset:0;z-index:200;background:var(--bg);
+    display:flex;align-items:center;justify-content:center;
+    animation:bootVeilOut 1s ease forwards;
+  }
+  .boot-ring{
+    width:56px;height:56px;border-radius:50%;border:4px solid var(--magenta-2);
+    box-shadow:0 0 30px rgba(232,121,249,0.55);
+    animation:bootRingIn .85s cubic-bezier(.16,.8,.3,1) forwards;
+  }
+  @keyframes bootRingIn{
+    0%{transform:scale(0.2) rotate(0deg);opacity:0;border-color:var(--magenta-2);}
+    55%{transform:scale(1.3) rotate(200deg);opacity:1;border-color:var(--gold);}
+    100%{transform:scale(46) rotate(340deg);opacity:0;border-width:1px;border-color:var(--cyan);}
+  }
+  @keyframes bootVeilOut{
+    0%,58%{opacity:1;visibility:visible;}
+    100%{opacity:0;visibility:hidden;}
+  }
+  @media (prefers-reduced-motion: reduce){ .boot-veil{display:none;} }
+
+  /* ---------- BACK-TO-TOP — Hoopa's ring again, this time as a floating shortcut once you've
+     scrolled past the hero ---------- */
+  .back-to-top{
+    position:fixed;right:20px;bottom:20px;z-index:60;
+    width:44px;height:44px;border-radius:50%;
+    background:rgba(23,16,41,0.72);backdrop-filter:blur(12px) saturate(140%);
+    border:1px solid var(--line-strong);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;
+    opacity:0;pointer-events:none;transform:translateY(14px) scale(0.9);
+    transition:opacity .3s ease, transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease;
+  }
+  .back-to-top.show{opacity:1;pointer-events:auto;transform:translateY(0) scale(1);}
+  .back-to-top:hover{box-shadow:0 0 20px rgba(245,197,24,0.4);}
+  .back-to-top:active{transform:scale(0.9);}
+  .back-to-top .ring{width:16px;height:16px;}
+  :root[data-theme="light"] .back-to-top{background:rgba(255,255,255,0.78);}
+  @media (max-width:640px){ .back-to-top{right:14px;bottom:14px;width:40px;height:40px;} }
+
+  /* ---------- SIDE RAIL — a slim section map so a page this long stays easy to navigate, desktop only ---------- */
+  .side-rail{
+    position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:55;
+    display:flex;flex-direction:column;gap:15px;
+    opacity:0;pointer-events:none;transition:opacity .35s ease;
+  }
+  .side-rail.show{opacity:1;pointer-events:auto;}
+  .side-rail a{position:relative;width:10px;height:10px;display:block;}
+  .side-rail a span{
+    position:absolute;inset:0;border-radius:50%;background:var(--line-strong);
+    transition:background .25s ease, transform .25s ease, box-shadow .25s ease;
+  }
+  .side-rail a:hover span{background:var(--text-dim);}
+  .side-rail a.active span{background:var(--gold);transform:scale(1.6);box-shadow:0 0 10px rgba(245,197,24,0.7);}
+  .side-rail a::before{
+    content:attr(aria-label);position:absolute;right:20px;top:50%;transform:translateY(-50%);
+    font-family:var(--font-display);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--text-dim);white-space:nowrap;opacity:0;pointer-events:none;
+    background:var(--surface);padding:5px 9px;border-radius:6px;border:1px solid var(--line);
+    transition:opacity .2s ease;
+  }
+  .side-rail a:hover::before{opacity:1;}
+  @media (max-width:980px){ .side-rail{display:none;} }
+
+  /* ---------- CARD TILT — a light 3D pointer-follow tilt applied via JS to roster/mega/type cards
+     (desktop with a real pointer only); each card owns its own transition timing so the snap-back on
+     mouseleave doesn't fight the live tilt while the pointer is moving ---------- */
+  .tilt-card{transform-style:preserve-3d;will-change:transform;}
+
+  /* ---------- TYPES SECTION — a real two-column reference layout instead of the same stacked
+     single-column template every other section uses: the type legend acts as a sticky filter panel,
+     the weakness cards are the results ---------- */
+  .types-layout{display:grid;grid-template-columns:250px 1fr;gap:30px;align-items:start;}
+  .types-layout .type-grid{position:sticky;top:88px;}
+  .types-hint{font-size:11px;color:var(--text-faint);margin-bottom:10px;letter-spacing:0.02em;}
+  @media (max-width:880px){
+    .types-layout{grid-template-columns:1fr;}
+    .types-layout .type-grid{position:static;}
+  }
+  .type-chip{cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;border-radius:999px;}
+  .type-chip:hover{transform:translateY(-2px);}
+  .type-chip.active{box-shadow:0 0 0 2px currentColor inset;}
+  .weak-card{transition:transform .3s cubic-bezier(.2,.8,.2,1), border-color .3s ease, box-shadow .3s ease, opacity .3s ease;}
+  .weak-card.dim{opacity:0.32;}
+  .weak-card.hl-weak{border-color:var(--bad);box-shadow:0 14px 30px rgba(0,0,0,0.35), 0 0 0 1px var(--bad) inset;}
+  .weak-card.hl-resist{border-color:var(--good);box-shadow:0 14px 30px rgba(0,0,0,0.35), 0 0 0 1px var(--good) inset;}
     </style>
   </head>
   <body>
 
+<div class="boot-veil" id="boot-veil" aria-hidden="true"><span class="boot-ring"></span></div>
+
 <div class="bg-aurora" aria-hidden="true"></div>
 <div class="bg-grain" aria-hidden="true"></div>
+
+<button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top" title="Back to top">
+  <span class="ring"></span>
+</button>
+
+<nav class="side-rail" id="side-rail" aria-label="Section map">
+  <a href="#roster" aria-label="Roster"><span></span></a>
+  <a href="#arena" aria-label="Arena"><span></span></a>
+  <a href="#types" aria-label="Types"><span></span></a>
+  <a href="#megas" aria-label="Transforms"><span></span></a>
+  <a href="#rules" aria-label="Rules"><span></span></a>
+</nav>
 
 <div class="nav">
   <div class="brand">
@@ -919,6 +1157,7 @@
     <a href="#roster">Roster</a>
     <a href="#arena">Arena</a>
     <a href="#types">Types</a>
+    <a href="#megas">Transforms</a>
     <a href="#rules">Rules</a>
   </div>
   <button class="music-toggle" id="music-toggle" type="button" aria-pressed="false" title="Play battle theme (original violin-led score)">
@@ -950,7 +1189,7 @@
       <div class="portal-tilt" id="portal-tilt">
         <canvas id="hero-particles"></canvas>
         <div class="portal-core"></div>
-        <div class="portal-hoopa"><img src="/hoopa.png" alt="Hoopa, the Mischief Djinn"></div>
+        <div class="portal-hoopa"><img src="art/hoopa.png" alt="Hoopa, the Mischief Djinn"></div>
       </div>
     </div>
   </div>
@@ -977,6 +1216,8 @@
       <p>One continuous duel. Type effectiveness decides who lands the bigger blow each turn, and it keeps going until a Pokémon runs out of HP. Watch for Mega Evolutions — and Hoopa's Unbound Forme — they can flip a duel in one flash.</p>
     </div>
     <div class="arena-shell" id="arena-shell">
+      <div class="cinema-bar cinema-bar-top" aria-hidden="true"></div>
+      <div class="cinema-bar cinema-bar-bottom" aria-hidden="true"></div>
       <div class="arena-top">
         <div class="round-label" id="round-label">Awaiting Pokémon</div>
         <div class="round-track" id="round-track">
@@ -988,6 +1229,8 @@
         <div class="fighter you" id="you-panel"></div>
         <div class="vs-mid">
           <div class="vs-badge">VS</div>
+          <div class="momentum-bar" id="momentum-bar"><div class="momentum-fill" id="momentum-fill"></div></div>
+          <div class="momentum-label">Momentum</div>
         </div>
         <div class="fighter cpu" id="cpu-panel"></div>
       </div>
@@ -1024,9 +1267,13 @@
       <h2>All 18 elemental types</h2>
       <p>Every move and every Pokémon in the arena is built on the full Pokémon type wheel. Effectiveness (×2 super-effective, ×0.5 resisted, ×0 immune) drives every round.</p>
     </div>
-    <div class="type-grid" id="type-grid"></div>
-
-    <div class="weak-table" id="weak-table"></div>
+    <div class="types-layout">
+      <div>
+        <p class="types-hint">Tap a type to see which roster Pokémon are weak to it (red) or resist it (green).</p>
+        <div class="type-grid" id="type-grid"></div>
+      </div>
+      <div class="weak-table" id="weak-table"></div>
+    </div>
   </section>
 
   <section id="megas" class="wrap">
@@ -1143,12 +1390,12 @@ function effectiveness(atkType, defTypes){
 var POKEMON = {
   hoopa:{
     id:"hoopa", name:"Hoopa", title:"The Mischief Djinn", types:["psychic","ghost"],
-    hp:100, img:"/hoopa.png",
+    hp:100, img:"art/hoopa.png",
     move:{name:"Hyperspace Hole", type:"psychic", power:38,
       desc:"Hoopa punches a small ring into the air and yanks a fist straight through it into the foe."},
     mega:{
       chanceMode:"random", chance:0.30,
-      label:"Hoopa Unbound", img:"/hoopa-unbound.png",
+      label:"Hoopa Unbound", img:"art/hoopa-unbound.png",
       types:["psychic","dark"], lives:1, halo:["#f43f8f","#7c3aed","#f5c518"], shard:"ring",
       special:{name:"Djinn's Cataclysm", type:"dark", power:72, effect:"burst",
         desc:"Hundreds of rings tear open at once, crushing the arena in void energy."}
@@ -1156,12 +1403,12 @@ var POKEMON = {
   },
   darkrai:{
     id:"darkrai", name:"Darkrai", title:"The Pitch-Black Nightmare", types:["dark"],
-    hp:95, img:"/darkrai.png",
+    hp:95, img:"art/darkrai.png",
     move:{name:"Nightmare Pulse", type:"dark", power:42,
       desc:"A wave of pitch-black dream energy rolls out from Darkrai's crest, dragging the target's fears with it."},
     mega:{
       chanceMode:"random", chance:0.35,
-      label:"Mega Darkrai", img:"/darkrai-mega.png",
+      label:"Mega Darkrai", img:"art/darkrai-mega.png",
       types:["dark"], lives:1, halo:["#a21caf","#0f0a1e","#f472b6"], shard:"crescent",
       special:{name:"Infernal Dark Void", type:"dark", power:60, effect:"dot_heal", dot:8, heal:6,
         desc:"A huge blast of nightmare energy, then a curse that drains the foe and mends Darkrai every turn after."}
@@ -1169,12 +1416,12 @@ var POKEMON = {
   },
   amphinobi:{
     id:"amphinobi", name:"Amphinobi", title:"The Ninja Frog", types:["water"],
-    hp:90, img:"/amphinobi.png",
+    hp:90, img:"art/amphinobi.png",
     move:{name:"Aqua Kunai", type:"water", power:40,
       desc:"A blade of compressed water flicked from the fingertips, fast enough to whistle on the way in."},
     mega:{
       chanceMode:"random", chance:0.35,
-      label:"Mega Amphinobi", img:"/amphinobi-mega.png",
+      label:"Mega Amphinobi", img:"art/amphinobi-mega.png",
       types:["water","dark"], lives:1, halo:["#0ea5e9","#1e293b","#f472b6"], shard:"shuriken",
       special:{name:"Water Life Shurikens", type:"water", power:55, effect:"clone", cloneHpFrac:0.35, cloneCount:2, cloneDmgFrac:0.5,
         desc:"A shattering strike that splits into two lesser clones — same move, no further cloning."}
@@ -1182,12 +1429,12 @@ var POKEMON = {
   },
   zygarde:{
     id:"zygarde", name:"Zygarde", title:"The Order Guardian", types:["dragon","ground"],
-    hp:112, img:"/zygarde.png",
+    hp:112, img:"art/zygarde.png",
     move:{name:"Core Enforcer", type:"dragon", power:45,
       desc:"A lance of hexagonal core-cells streaks out and detonates on contact, enforcing order with raw draconic weight."},
     mega:{
       chanceMode:"onDamage", chance:0.50,
-      label:"Zygarde Complete Forme", img:"/zygarde-mega.png",
+      label:"Zygarde Complete Forme", img:"art/zygarde-mega.png",
       types:["dragon","ground"], lives:1, halo:["#16a34a","#7c3aed","#ef4444"], shard:"hex",
       special:{name:"Lux Nihilium", type:"dragon", power:82, effect:"aoe_paralyze_recharge",
         paralyzeChance:1/3, paralyzeRounds:3, recharge:2,
@@ -1196,15 +1443,15 @@ var POKEMON = {
   },
   raichu:{
     id:"raichu", name:"Raichu", title:"The Surging Mouse", types:["electric"],
-    hp:85, img:"/raichu.png",
+    hp:85, img:"art/raichu.png",
     move:{name:"Thunder Fang", type:"electric", power:44,
       desc:"A crackling bite that drives a jolt of live current straight through the target."},
     megaOptions:[
-      {chanceMode:"random", chance:0.16, label:"Mega Raichu X", img:"/raichu-mega-x.png",
+      {chanceMode:"random", chance:0.16, label:"Mega Raichu X", img:"art/raichu-mega-x.png",
         types:["electric"], lives:1, halo:["#facc15","#111827","#fb923c"], shard:"bolt",
         special:{name:"Raijin's Uppercut", type:"electric", power:58, effect:"power_surge", boost:0.28,
           desc:"Lightning-bolt legs plant a crowned uppercut, then keep this Raichu's power surging every turn after."}},
-      {chanceMode:"random", chance:0.16, label:"Mega Raichu Y", img:"/raichu-mega-y.png",
+      {chanceMode:"random", chance:0.16, label:"Mega Raichu Y", img:"art/raichu-mega-y.png",
         types:["electric"], lives:1, halo:["#fb923c","#facc15","#78350f"], shard:"bolt",
         special:{name:"Thunderwing Dive", type:"electric", power:56, effect:"power_surge", boost:0.24,
           desc:"Bat-like lightning ears fold into wings for a diving strike, charging fiercer with every hit."}}
@@ -1219,6 +1466,7 @@ var typeGrid = document.getElementById("type-grid");
 TYPES.forEach(function(t){
   var chip = document.createElement("div");
   chip.className = "type-chip";
+  chip.dataset.type = t;
   chip.style.color = TYPE_COLOR[t];
   chip.innerHTML = '<span class="dot" style="background:'+TYPE_COLOR[t]+'"></span><b style="color:'+TYPE_COLOR[t]+'">'+cap(t)+'</b>';
   typeGrid.appendChild(chip);
@@ -1240,7 +1488,9 @@ ROSTER_ORDER.forEach(function(key){
     else if(m < 1) resistedBy.push(t);
   });
   var card = document.createElement("div");
-  card.className = "weak-card reveal";
+  card.className = "weak-card reveal tilt-card";
+  card.dataset.weak = weakTo.join(",");
+  card.dataset.resist = resistedBy.join(",");
   card.style.setProperty("--accent", TYPE_COLOR[p.types[0]]);
   card.innerHTML =
     '<div class="wk-head"><img src="'+p.img+'" alt=""><div><h4>'+p.name+'</h4><div class="typebadges" style="justify-content:flex-start;margin-top:4px;">'+p.types.map(typeBadgeHTML).join("")+'</div></div></div>'+
@@ -1258,7 +1508,7 @@ function haloStyle(halo){
 }
 function addMegaCard(baseName, m){
   var el = document.createElement("div");
-  el.className = "mega-card reveal";
+  el.className = "mega-card reveal tilt-card";
   if(m.halo) el.style.setProperty("--h1", m.halo[0]);
   el.innerHTML =
     '<div class="art-wrap'+(m.cssFilter?' '+m.cssFilter:'')+(m.halo?' mega-halo':'')+'"'+haloStyle(m.halo)+'><img src="'+m.img+'" alt=""></div>'+
@@ -1411,6 +1661,7 @@ function startBattle(playerKey){
   renderFighter(cpu, cpuPanel, "Rival");
   renderRoundTrack();
   renderActions();
+  updateBattleTension();
   resultScreen.classList.remove("show");
 }
 
@@ -1578,8 +1829,9 @@ function rand(min,max){ return min + Math.random()*(max-min); }
 
 function computeHit(attacker, defenderTypes, move){
   var eff = effectiveness(move.type, defenderTypes);
-  var raw = move.power * (attacker.boostMult||1) * rand(0.9,1.15) * (eff===0?0:eff);
-  return {dmg: Math.round(raw), eff: eff};
+  var crit = eff>0 && Math.random() < 0.12;
+  var raw = move.power * (attacker.boostMult||1) * rand(0.9,1.15) * (eff===0?0:eff) * (crit?1.5:1);
+  return {dmg: Math.round(raw), eff: eff, crit: crit};
 }
 
 function dmgTier(dmg){ return dmg>=42 ? "huge" : dmg>=20 ? "medium" : "low"; }
@@ -1626,14 +1878,25 @@ function flashHit(side, color){
 
 function wait(ms){ return new Promise(function(resolve){ setTimeout(resolve, ms); }); }
 
+var bannerHideTimer = null;
 function showBanner(text, kind){
   var el = document.getElementById("fx-banner");
   if(!el) return;
+  // a banner shown while the previous one's own hide-timer is still pending (the mega/unbound
+  // sequence fires two banners under 1.5s apart) would otherwise get cut off mid-animation by that
+  // stale timer — always cancel any pending hide before starting a fresh one
+  if(bannerHideTimer){ clearTimeout(bannerHideTimer); bannerHideTimer = null; }
+  // when one banner fires while a previous one is still mid-animation (exactly what the mega/unbound
+  // sequence does), the "animation" declaration that plays it is identical for every kind — so if
+  // "show" is never actually removed, the browser treats this as the SAME animation instance
+  // continuing rather than a fresh one, and the new banner inherits however little time the old one
+  // had left. Removing "show" and forcing a reflow before re-adding it guarantees a clean restart.
+  el.classList.remove("show");
   el.textContent = text;
-  el.className = "fx-banner show fx-"+kind;
+  el.className = "fx-banner fx-"+kind;
   void el.offsetWidth;
   el.classList.add("show");
-  setTimeout(function(){ el.classList.remove("show"); }, 1500);
+  bannerHideTimer = setTimeout(function(){ el.classList.remove("show"); bannerHideTimer = null; }, 1500);
 }
 
 function chargePortrait(side){
@@ -1733,28 +1996,22 @@ function playMegaShardConverge(side, colors, durationMs, shape){
   if(!fx) return Promise.resolve();
   var ctx = fx.ctx, canvas = fx.canvas;
   var center = getPortraitCenter(side);
-  var c1=(colors&&colors[0])||"#f5c518", c2=(colors&&colors[1])||"#e879f9", c3=(colors&&colors[2])||"#22d3ee";
-  var palette=[c1,c2,c3];
+  var c1=(colors&&colors[0])||"#f5c518";
   var shape2 = shape || "diamond";
+  // a clean, single-color convergence: one small set of shards pulling straight in, nothing else
+  // competing for attention while it happens — restraint is what reads as premium here, not volume
   var shards = [];
-  var SHARD_N = 26;
+  var SHARD_N = 10;
   for(var i=0;i<SHARD_N;i++){
-    var ang = Math.random()*Math.PI*2;
-    var dist = 130+Math.random()*130;
+    var ang = (i/SHARD_N)*Math.PI*2 + Math.random()*0.3;
+    var dist = 140+Math.random()*90;
     shards.push({
       sx: center.x+Math.cos(ang)*dist, sy: center.y+Math.sin(ang)*dist,
-      delay: Math.random()*0.4,
-      size: 6+Math.random()*9,
+      delay: (i/SHARD_N)*0.3,
+      size: 8+Math.random()*7,
       rot0: Math.random()*Math.PI,
-      rotSpeed: (Math.random()-0.5)*10,
-      color: palette[i%3]
+      rotSpeed: (Math.random()-0.5)*8
     });
-  }
-  // faint ambient motes drifting around the target for atmosphere while the shards close in
-  var motes = [];
-  for(var m=0;m<14;m++){
-    var mang = Math.random()*Math.PI*2, mdist = 20+Math.random()*70;
-    motes.push({ang:mang, dist:mdist, speed:(Math.random()*0.6+0.3)*(Math.random()<0.5?1:-1), size:0.8+Math.random()*1.6, color:palette[m%3]});
   }
   return new Promise(function(resolve){
     var start=null;
@@ -1765,38 +2022,24 @@ function playMegaShardConverge(side, colors, durationMs, shape){
       // nothing ever fully erasing it, eventually painting the whole arena solid — always clear fully.
       ctx.clearRect(0,0,fx.w,fx.h);
 
-      // ambient motes
-      ctx.save();
-      motes.forEach(function(mo){
-        mo.ang += mo.speed*0.05;
-        var x = center.x + Math.cos(mo.ang)*mo.dist*(1-p*0.4);
-        var y = center.y + Math.sin(mo.ang)*mo.dist*(1-p*0.4);
-        ctx.beginPath();
-        ctx.arc(x,y,mo.size,0,Math.PI*2);
-        ctx.fillStyle = mo.color; ctx.globalAlpha = 0.4;
-        ctx.fill();
-      });
-      ctx.restore();
-
       // building core glow — intensifies as the shards close in, selling the charge-up
       var corePulse = Math.min(1,p*1.3);
       ctx.save();
       ctx.beginPath();
-      ctx.arc(center.x, center.y, 10+corePulse*16, 0, Math.PI*2);
-      ctx.fillStyle = c2; ctx.globalAlpha = corePulse*0.5;
-      ctx.shadowColor = c2; ctx.shadowBlur = 18;
+      ctx.arc(center.x, center.y, 9+corePulse*14, 0, Math.PI*2);
+      ctx.fillStyle = c1; ctx.globalAlpha = corePulse*0.45;
+      ctx.shadowColor = c1; ctx.shadowBlur = 16;
       ctx.fill();
       ctx.restore();
 
-      // double pulling vortex ring around the target while shards close in
+      // one clean ring pulsing gently as the shards pull in — a single confident gesture instead of
+      // a layered vortex
       ctx.save();
-      [0, 0.4].forEach(function(off){
-        ctx.beginPath();
-        ctx.arc(center.x, center.y, 24+off*20+Math.sin((p+off)*Math.PI*4)*4, 0, Math.PI*2);
-        ctx.strokeStyle = off===0?c2:c3; ctx.globalAlpha = (0.3+corePulse*0.3)*Math.sin(Math.min(1,p)*Math.PI);
-        ctx.lineWidth = 2;
-        ctx.stroke();
-      });
+      ctx.beginPath();
+      ctx.arc(center.x, center.y, 26+Math.sin(p*Math.PI*3)*3, 0, Math.PI*2);
+      ctx.strokeStyle = c1; ctx.globalAlpha = 0.4*Math.sin(Math.min(1,p)*Math.PI);
+      ctx.lineWidth = 1.6;
+      ctx.stroke();
       ctx.restore();
 
       shards.forEach(function(s){
@@ -1811,9 +2054,9 @@ function playMegaShardConverge(side, colors, durationMs, shape){
         ctx.rotate(s.rot0 + ease*s.rotSpeed);
         var sz = s.size*scale;
         drawShardShape(ctx, shape2, sz);
-        ctx.fillStyle = s.color;
-        ctx.shadowColor = s.color; ctx.shadowBlur = 11;
-        ctx.globalAlpha = 0.95;
+        ctx.fillStyle = c1;
+        ctx.shadowColor = c1; ctx.shadowBlur = 10;
+        ctx.globalAlpha = 0.9;
         ctx.fill();
         ctx.restore();
       });
@@ -1853,14 +2096,49 @@ function arenaMegaPulse(color){
 
 async function playMegaEvolution(f, cfg){
   var side = f.side;
+  var panel = side==="you" ? youPanel : cpuPanel;
+  var otherPanel = side==="you" ? cpuPanel : youPanel;
+  var vsMid = document.querySelector(".vs-mid");
+  var arenaEl = document.getElementById("arena-shell");
   var colors = cfg.halo || ["#f5c518","#e879f9","#22d3ee"];
+
+  // the spotlight narrows: the opposing fighter and the VS marker step back, the arena crops in like
+  // a widescreen frame, and everything eases forward very slightly — every cue says "watch this one"
+  panel.style.setProperty("--mh", colors[0]);
+  panel.classList.add("mega-focus");
+  if(otherPanel) otherPanel.classList.add("mega-dim");
+  if(vsMid) vsMid.classList.add("mega-dim");
+  if(arenaEl) arenaEl.classList.add("mega-cinematic");
+  if(musicPlaying && musicCtx) musicRiser(musicCtx.currentTime+0.02, 0.95);
+  await wait(220); // let the frame actually close in before the shards start — otherwise it reads as simultaneous clutter instead of a clean beat-by-beat build
+
   silhouettePortrait(side, true, colors[0]);
-  await playMegaShardConverge(side, colors, 760, cfg.shard);
+  await playMegaShardConverge(side, colors, 780, cfg.shard);
+  // the classic "beat drop": the mix ducks hard right as the swap happens, so it's nearly silent for
+  // a beat, then the mega sting lands into that cleared space instead of competing with a full mix —
+  // the momentary quiet is what makes the hit read as loud
+  if(musicPlaying && musicCtx) musicDuckHit(musicCtx.currentTime+0.02, 0.82, 0.55);
   await whiteoutSwapAndReveal(f, cfg);
   silhouettePortrait(side, false);
+
+  // the unveil itself: a light sheen sweeps the newly-revealed portrait with a soft weighted pop,
+  // timed to land right as the silhouette's own fade finishes lifting
+  var newPort = document.getElementById("port-"+side);
+  if(newPort){
+    newPort.classList.remove("reveal-pop","reveal-sheen"); void newPort.offsetWidth;
+    newPort.classList.add("reveal-pop","reveal-sheen");
+  }
+
   arenaMegaPulse(colors[1] || colors[0]);
   megaBurst(side, colors);
   musicMegaSting();
+
+  // hold the spotlight a beat so the reveal actually registers, then let the frame open back up
+  await wait(750);
+  panel.classList.remove("mega-focus");
+  if(otherPanel) otherPanel.classList.remove("mega-dim");
+  if(vsMid) vsMid.classList.remove("mega-dim");
+  if(arenaEl) arenaEl.classList.remove("mega-cinematic");
 }
 
 function megaBurst(side, colors){
@@ -1868,43 +2146,57 @@ function megaBurst(side, colors){
   if(!fx) return;
   var ctx = fx.ctx, canvas = fx.canvas;
   var center = getPortraitCenter(side);
-  var c1=(colors&&colors[0])||"#f5c518", c2=(colors&&colors[1])||"#e879f9", c3=(colors&&colors[2])||"#22d3ee";
-  var start=null, dur=1150;
+  var c1=(colors&&colors[0])||"#f5c518";
+  var start=null, dur=900;
+  // stripped down to three deliberate moves — a flash, one light streak, two rings — instead of
+  // layering rays, sparks and multi-color rings on top of each other. Restraint is what reads as
+  // clean and premium; a pile of simultaneous effects reads as noise no matter how nice each one is.
   function frame(ts){
     if(start===null) start=ts;
     var p = Math.min(1, (ts-start)/dur);
     ctx.clearRect(0,0,fx.w,fx.h);
-    [0,0.12,0.24,0.4].forEach(function(delay,i){
+
+    // a single anamorphic lens-flare streak sweeping horizontally through the reveal
+    if(p<0.4){
+      var flareP = p/0.4;
+      var flareAlpha = Math.sin(Math.min(1,flareP)*Math.PI);
+      var flareW = fx.w*1.5;
+      ctx.save();
+      ctx.translate(center.x, center.y);
+      var streakGrad = ctx.createLinearGradient(-flareW/2,0,flareW/2,0);
+      streakGrad.addColorStop(0,"transparent");
+      streakGrad.addColorStop(0.47,c1);
+      streakGrad.addColorStop(0.5,"#ffffff");
+      streakGrad.addColorStop(0.53,c1);
+      streakGrad.addColorStop(1,"transparent");
+      ctx.fillStyle = streakGrad;
+      ctx.globalAlpha = flareAlpha*0.5;
+      ctx.fillRect(-flareW/2, -1.1, flareW, 2.2);
+      ctx.restore();
+    }
+
+    // two clean rings, one color, no gradient rainbow — a single confident expanding pulse
+    [0, 0.12].forEach(function(delay,i){
       var lp = Math.max(0, Math.min(1,(p-delay)/(1-delay)));
       if(lp<=0) return;
-      var r = 8 + lp*(105+i*10);
+      var ease = 1-Math.pow(1-lp,2);
+      var r = 10 + ease*(100+i*18);
       ctx.beginPath();
       ctx.arc(center.x, center.y, r, 0, Math.PI*2);
-      ctx.strokeStyle = [c1,c2,c3,c1][i%3];
-      ctx.globalAlpha = (1-lp)*0.85;
-      ctx.lineWidth = 3.6 - i*0.5;
+      ctx.strokeStyle = c1;
+      ctx.globalAlpha = (1-lp)*0.7;
+      ctx.lineWidth = 2.4 - i*0.5;
       ctx.stroke();
     });
-    var sparkCount = 20;
-    for(var i=0;i<sparkCount;i++){
-      var ang = (i/sparkCount)*Math.PI*2 + p*0.7;
-      var len = 16 + p*92;
-      var sx = center.x + Math.cos(ang)*len;
-      var sy = center.y + Math.sin(ang)*len;
+
+    // soft flash core, fading fast — a gentle bloom rather than a hard white disc
+    if(p<0.26){
+      var flp = 1-p/0.26;
+      var fg = ctx.createRadialGradient(center.x,center.y,0,center.x,center.y,34*flp);
+      fg.addColorStop(0,"rgba(255,255,255,0.95)"); fg.addColorStop(1,"rgba(255,255,255,0)");
       ctx.beginPath();
-      ctx.moveTo(center.x+Math.cos(ang)*(len*0.45), center.y+Math.sin(ang)*(len*0.45));
-      ctx.lineTo(sx,sy);
-      ctx.strokeStyle = i%2===0?c1:c3;
-      ctx.shadowColor = i%2===0?c1:c3; ctx.shadowBlur = 6;
-      ctx.globalAlpha = Math.max(0,(1-p)*0.8);
-      ctx.lineWidth = 2;
-      ctx.stroke();
-    }
-    // bright flash core at the very start of the burst, fading fast
-    if(p<0.3){
-      ctx.beginPath();
-      ctx.arc(center.x, center.y, 34*(1-p/0.3), 0, Math.PI*2);
-      ctx.fillStyle = "#ffffff"; ctx.globalAlpha = (1-p/0.3)*0.75;
+      ctx.arc(center.x, center.y, 34*flp, 0, Math.PI*2);
+      ctx.fillStyle = fg; ctx.globalAlpha = flp*0.8;
       ctx.fill();
     }
     ctx.globalAlpha = 1;
@@ -2438,6 +2730,32 @@ function animateHpBar(side, fromHp, toHp, maxHp){
   requestAnimationFrame(frame);
 }
 
+/* battle tension: danger glow on a critically-low fighter, the momentum tug bar, and the music's
+   reaction to how close the duel currently is — one readout drives all three so they never disagree */
+function updateBattleTension(){
+  if(!state) return;
+  var you = state.you, cpu = state.cpu;
+  var youDanger = you.hp>0 && (you.hp/you.maxHp) <= 0.3;
+  var cpuDanger = cpu.hp>0 && (cpu.hp/cpu.maxHp) <= 0.3;
+  if(youPanel) youPanel.classList.toggle("danger", youDanger);
+  if(cpuPanel) cpuPanel.classList.toggle("danger", cpuDanger);
+
+  var fill = document.getElementById("momentum-fill");
+  if(fill){
+    var youPct = Math.max(0, (you.hp/you.maxHp)*100);
+    var cpuPct = Math.max(0, (cpu.hp/cpu.maxHp)*100);
+    var diff = youPct - cpuPct; // -100..100, positive favors you
+    var half = Math.min(50, Math.abs(diff)/2);
+    fill.style.left = (diff>=0 ? (50-half) : 50) + "%";
+    fill.style.width = half + "%";
+    fill.style.background = diff>=0
+      ? "linear-gradient(90deg,var(--cyan),var(--magenta-2))"
+      : "linear-gradient(90deg,var(--magenta-2),var(--cyan))";
+  }
+
+  setMusicTension(!state.matchOver && (youDanger || cpuDanger));
+}
+
 /* -------- round resolution -------- */
 function lockActionButton(locked){
   var btns = arenaActions.querySelectorAll("button");
@@ -2475,7 +2793,7 @@ async function resolveRound(){
       // Hoopa Unbound is a forme change, not a Mega Evolution, so it gets its own verb/banner instead
       // of borrowing the "Mega Evolves" language used by everyone else's actual Mega Evolutions
       var isFormeChange = (f.key === "hoopa");
-      showBanner(preName.toUpperCase()+(isFormeChange ? " IS UNBINDING..." : " IS EVOLVING..."), "round");
+      showBanner(preName.toUpperCase()+(isFormeChange ? " IS UNBINDING..." : " IS EVOLVING..."), "transform");
       await wait(1000);
       await playMegaEvolution(f, cfg);
       roundNote.push("⚡ <b>"+preName+"</b> "+(isFormeChange ? "transforms into" : "Mega Evolves into")+" <b>"+f.megaLabel+"</b>!");
@@ -2543,20 +2861,24 @@ async function resolveRound(){
   if(youHit){ cpuRevived = applyDamage(cpu, youHit.dmg); }
 
   if(cpuHit && cpuHit.dmg>0){
-    popDamage("you", "-"+cpuHit.dmg, "");
-    shakePortrait("you", dmgTier(cpuHit.dmg));
-    flashHit("you", cpuIsSpecial ? (cpu.halo&&cpu.halo[0]) : (TYPE_COLOR[cpuMove.type]));
+    popDamage("you", "-"+cpuHit.dmg, cpuHit.crit ? "crit" : "");
+    shakePortrait("you", cpuHit.crit ? "huge" : dmgTier(cpuHit.dmg));
+    flashHit("you", cpuHit.crit ? "#f5c518" : (cpuIsSpecial ? (cpu.halo&&cpu.halo[0]) : (TYPE_COLOR[cpuMove.type])));
     animateHpBar("you", youHpBefore, you.hp, you.maxHp);
+    if(cpuHit.crit) sfxCritHit("cpu");
   }
   if(youHit && youHit.dmg>0){
-    popDamage("cpu", "-"+youHit.dmg, "");
-    shakePortrait("cpu", dmgTier(youHit.dmg));
-    flashHit("cpu", youIsSpecial ? (you.halo&&you.halo[0]) : (TYPE_COLOR[youMove.type]));
+    popDamage("cpu", "-"+youHit.dmg, youHit.crit ? "crit" : "");
+    shakePortrait("cpu", youHit.crit ? "huge" : dmgTier(youHit.dmg));
+    flashHit("cpu", youHit.crit ? "#f5c518" : (youIsSpecial ? (you.halo&&you.halo[0]) : (TYPE_COLOR[youMove.type])));
     animateHpBar("cpu", cpuHpBefore, cpu.hp, cpu.maxHp);
+    if(youHit.crit) sfxCritHit("you");
   }
 
-  var bigHit = (youHit && youHit.eff>=2) || (cpuHit && cpuHit.eff>=2) || (youHit && youHit.dmg>=55) || (cpuHit && cpuHit.dmg>=55);
+  var bigHit = (youHit && youHit.eff>=2) || (cpuHit && cpuHit.eff>=2) || (youHit && youHit.dmg>=55) || (cpuHit && cpuHit.dmg>=55) || (youHit && youHit.crit) || (cpuHit && cpuHit.crit);
   if(bigHit) shakeArena();
+
+  updateBattleTension();
 
   // headline effectiveness banner — pick whichever hit is most dramatic
   function effWeight(hit){ if(!hit) return -1; if(hit.eff===0) return 3; if(hit.eff>=4) return 2.5; if(hit.eff>=2) return 2; if(hit.eff<1) return 1; return 0; }
@@ -2724,6 +3046,7 @@ async function resolveRound(){
   renderFighter(you, youPanel, "You");
   renderFighter(cpu, cpuPanel, "Rival");
   renderRoundTrack();
+  updateBattleTension();
 
   state.resolving = false;
 
@@ -2749,6 +3072,7 @@ function endMatch(youDead, cpuDead){
   state.matchOver = true;
   renderRoundTrack();
   renderActions();
+  setMusicTension(false);
 
   // true = you win, false = rival wins, null = a simultaneous mutual knockout — genuinely rare, but
   // possible now that both sides trade hits every single turn until one of them drops
@@ -3022,6 +3346,11 @@ var musicMasterFilter = null, music808Shaper = null;
 var musicDuck = null;
 var musicPortalCycle = 0;
 var sfxMaster = null;
+// battle tension: flips true whenever either fighter is critically low on HP, forcing the beat into
+// its most intense pocket and layering a low heartbeat thump under it, regardless of where the normal
+// cloud/drop cycle happens to be
+var musicTension = false;
+function setMusicTension(on){ musicTension = !!on; }
 var MUSIC_BPM = 138; // fast clock, but the drum pattern below is felt in half-time — classic cloud-rap pocket
 var MUSIC_ROOT = 146.83; // D3 — low and dreamy
 // 8-bar chord progression (semitone offsets from the root) — twice the old length so the harmony
@@ -3318,7 +3647,10 @@ function musicRiser(time, dur){
 // a doubled 808, and a bigger melody, so the beat actually feels like it drops instead of just humming along
 function musicPlanBar(barIdx){
   var section = (Math.floor(barIdx/4) % 2 === 0) ? "cloud" : "drop";
-  var plan = { hats:[], melody:[], section:section, voice: section==="drop" ? "pluck" : "bell" };
+  // a fighter on the ropes forces the beat into its most intense pocket immediately, instead of
+  // waiting out the normal 4-bar cloud/drop cycle
+  if(musicTension) section = "drop";
+  var plan = { hats:[], melody:[], section:section, voice: section==="drop" ? "pluck" : "bell", tense: musicTension };
   var hatChance = section==="drop" ? 0.5 : 0.22;
   var hatBaseVel = section==="drop" ? 0.07 : 0.05;
   for(var s=0; s<16; s++){
@@ -3402,6 +3734,16 @@ function musicScheduleStep(){
     if(musicBarPlan.section==="drop" && !bassHere && (idx===4 || idx===8 || idx===12)){
       musicKick(musicNextNoteTime, 0.7);
       musicDuckHit(musicNextNoteTime, 0.26, 0.2);
+    }
+    // heartbeat: a quick low lub-dub layered in only while a fighter is critically low, so the danger
+    // is felt physically in the beat, not just read off an HP bar
+    if(musicBarPlan.tense && idx===2){
+      musicKick(musicNextNoteTime, 0.55);
+      musicDuckHit(musicNextNoteTime, 0.2, 0.14);
+    }
+    if(musicBarPlan.tense && idx===3){
+      musicKick(musicNextNoteTime, 0.4);
+      musicDuckHit(musicNextNoteTime, 0.14, 0.1);
     }
     if(idx === 8) musicPlayClap(musicNextNoteTime);
     if(musicBarPlan.section==="drop" && idx===4) musicPlayClap(musicNextNoteTime);
@@ -3580,6 +3922,17 @@ function sfxTone(time, freqStart, freqEnd, dur, waveType, peakVel, side){
   osc.connect(g);
   sfxOut(g, side);
   osc.start(time); osc.stop(time+dur+0.05);
+}
+
+// a bright, unmistakable "critical hit" sting layered on top of whatever the move's own sfx just
+// played — a quick ascending glassy ping plus a sparkle-noise tail, so a crit reads instantly as
+// something extra rather than just a louder version of the normal hit
+function sfxCritHit(side){
+  if(!musicCtx) musicEnsureCtx();
+  var t = musicCtx.currentTime + 0.02;
+  sfxTone(t, 1200, 2000, 0.12, "square", 0.1, side);
+  sfxTone(t+0.05, 1800, 2600, 0.16, "sine", 0.12, side);
+  sfxNoiseBurst(t+0.03, 0.22, "highpass", 4200, 1.1, 0.09, side);
 }
 
 // one distinct sound per visual-FX "family" (the same grouping TYPE_FX already uses), so every
@@ -3778,24 +4131,88 @@ renderEmptyPanel(cpuPanel, "Rival");
     updateProgress();
   }
 
-  // scroll-spy: highlight the nav link for whichever section is currently in view
+  // scroll-spy: highlight the nav link (and side-rail dot) for whichever section is currently in view
   var navLinkEls = document.querySelectorAll(".navlinks a");
-  if(navLinkEls.length && "IntersectionObserver" in window){
+  var railLinkEls = document.querySelectorAll(".side-rail a");
+  var allSpyEls = document.querySelectorAll(".navlinks a, .side-rail a");
+  if(allSpyEls.length && "IntersectionObserver" in window){
     var linkBySection = {};
-    navLinkEls.forEach(function(a){
+    allSpyEls.forEach(function(a){
       var id = a.getAttribute("href").replace("#","");
-      linkBySection[id] = a;
+      (linkBySection[id] = linkBySection[id] || []).push(a);
     });
     var sectionIo = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
-        var link = linkBySection[entry.target.id];
-        if(!link) return;
-        if(entry.isIntersecting) navLinkEls.forEach(function(a){ a.classList.toggle("active", a===link); });
+        var links = linkBySection[entry.target.id];
+        if(!links) return;
+        if(entry.isIntersecting) allSpyEls.forEach(function(a){ a.classList.toggle("active", links.indexOf(a) !== -1); });
       });
     }, {rootMargin:"-45% 0px -50% 0px", threshold:0});
     Object.keys(linkBySection).forEach(function(id){
       var sec = document.getElementById(id);
       if(sec) sectionIo.observe(sec);
+    });
+  }
+
+  // back-to-top + side-rail: fade in once past the hero
+  var backToTop = document.getElementById("back-to-top");
+  var sideRail = document.getElementById("side-rail");
+  var heroEl = document.querySelector(".hero");
+  if(backToTop || sideRail){
+    var showThreshold = heroEl ? heroEl.offsetHeight * 0.7 : 400;
+    var chromeTicking = false;
+    function updateChrome(){
+      var past = (window.scrollY || document.documentElement.scrollTop) > showThreshold;
+      if(backToTop) backToTop.classList.toggle("show", past);
+      if(sideRail) sideRail.classList.toggle("show", past);
+      chromeTicking = false;
+    }
+    window.addEventListener("scroll", function(){
+      if(!chromeTicking){ requestAnimationFrame(updateChrome); chromeTicking = true; }
+    }, {passive:true});
+    updateChrome();
+  }
+  if(backToTop){
+    backToTop.addEventListener("click", function(){
+      window.scrollTo({top:0, behavior: reduced ? "auto" : "smooth"});
+    });
+  }
+
+  // card tilt: a light 3D pointer-follow tilt on roster/mega/weakness cards, pointer devices only
+  if(!reduced && window.matchMedia && window.matchMedia("(hover: hover)").matches){
+    document.querySelectorAll(".tilt-card").forEach(function(card){
+      card.addEventListener("mousemove", function(e){
+        var r = card.getBoundingClientRect();
+        var px = (e.clientX - r.left)/r.width - 0.5;
+        var py = (e.clientY - r.top)/r.height - 0.5;
+        card.style.transform = "perspective(700px) rotateY("+(px*10)+"deg) rotateX("+(-py*10)+"deg) translateY(-3px)";
+      });
+      card.addEventListener("mouseleave", function(){
+        card.style.transform = "";
+      });
+    });
+  }
+
+  // type chips: click a type to filter the weakness reference cards
+  var typeChips = document.querySelectorAll(".type-chip");
+  var weakCards = document.querySelectorAll(".weak-card");
+  if(typeChips.length && weakCards.length){
+    typeChips.forEach(function(chip){
+      chip.addEventListener("click", function(){
+        var isActive = chip.classList.contains("active");
+        typeChips.forEach(function(c){ c.classList.remove("active"); });
+        weakCards.forEach(function(c){ c.classList.remove("dim","hl-weak","hl-resist"); });
+        if(isActive) return; // clicking the active chip again clears the filter
+        chip.classList.add("active");
+        var t = chip.dataset.type;
+        weakCards.forEach(function(c){
+          var weak = (c.dataset.weak||"").split(",");
+          var resist = (c.dataset.resist||"").split(",");
+          if(weak.indexOf(t) !== -1) c.classList.add("hl-weak");
+          else if(resist.indexOf(t) !== -1) c.classList.add("hl-resist");
+          else c.classList.add("dim");
+        });
+      });
     });
   }
 })();
