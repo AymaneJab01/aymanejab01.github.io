@@ -139,6 +139,29 @@ footer{padding:70px 0 55px;border-top:1px solid var(--hairline)}.footer-grid{dis
 .wheel-box::after{content:"";position:absolute;inset:7%;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,rgba(255,202,66,.16) 8deg,transparent 22deg);animation:wheelSweep 6s linear infinite;pointer-events:none;mix-blend-mode:screen}
 @media (prefers-reduced-motion:reduce){.wheel-box::after{animation:none;display:none}}
 @keyframes wheelSweep{to{transform:rotate(360deg)}}
+
+/* =========================================================
+   DOCUMENTATION / QUICK REFERENCE — token-based, shared
+   with the base edition.
+   ========================================================= */
+.guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.guide-card{position:relative;min-height:220px;padding:28px;border:1px solid var(--hairline);background:linear-gradient(145deg,color-mix(in srgb,var(--bg-panel) 92%,transparent),color-mix(in srgb,var(--bg-raised) 45%,transparent));overflow:hidden}.guide-card::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 45%,color-mix(in srgb,var(--acid) 10%,transparent) 50%,transparent 55%);transform:translateX(-70%);transition:transform .8s ease}.guide-card:hover::before{transform:translateX(70%)}.guide-index{display:block;font-family:var(--display);font-size:12px;letter-spacing:.16em;color:var(--acid);margin-bottom:32px}.guide-card h4{font-size:26px;margin-bottom:10px}.guide-card p{font-size:14px;color:var(--text-dim);margin:0;max-width:48ch}@media(max-width:700px){.guide-grid{grid-template-columns:1fr}}
+
+/* =========================================================
+   APPLE-STYLE MOTION LAYER — cursor spotlight on the hero,
+   scroll-scrubbed focus reveal for headlines, magnetic nav
+   and theme-toggle, and a smoothed spring tilt on the cards.
+   ========================================================= */
+.hero-copy,.hero-visual{filter:blur(calc(var(--hero-blur,0) * 1px))}
+
+.hero-spotlight{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(460px circle at var(--mx,50%) var(--my,32%),color-mix(in srgb,var(--acid) 16%,transparent),transparent 62%);opacity:0;transition:opacity .5s ease}
+.hero:hover .hero-spotlight{opacity:1}
+@media (prefers-reduced-motion:reduce){.hero-spotlight{display:none}}
+
+.scrub{will-change:opacity,filter,transform}
+@media (prefers-reduced-motion:reduce){.scrub{opacity:1!important;filter:none!important;transform:none!important}}
+
+.navlinks a,.theme-toggle{transition:transform .3s cubic-bezier(.2,.8,.2,1),color .25s,border-color .3s,box-shadow .3s}
+@media (prefers-reduced-motion:reduce){.navlinks a,.theme-toggle{transition:color .25s,border-color .3s,box-shadow .3s}}
 </style>
 </head>
 <body>
@@ -156,6 +179,7 @@ footer{padding:70px 0 55px;border-top:1px solid var(--hairline)}.footer-grid{dis
       <a href="#overview">Overview</a>
       <a href="#wheel">Type Chart</a>
       <a href="#roster">Roster</a>
+      <a href="#guide">Documentation</a>
       <a href="#mega">Mega Rules</a>
     </div>
     <button class="theme-toggle" id="themeToggle">Light mode</button>
@@ -164,6 +188,7 @@ footer{padding:70px 0 55px;border-top:1px solid var(--hairline)}.footer-grid{dis
 
 <!-- ================= HERO ================= -->
 <section class="hero wrap" id="heroSection">
+  <div class="hero-spotlight" id="heroSpotlight"></div>
   <div class="hero-copy" id="heroCopy">
     <div class="hero-eyebrow"><span class="dot"></span>BATTLE CODEX — FIELD EDITION</div>
     <h1><span class="mask-reveal"><span>Hoopa Portal</span></span><br><span class="mask-reveal d1"><span>Arena.</span></span></h1>
@@ -304,6 +329,25 @@ footer{padding:70px 0 55px;border-top:1px solid var(--hairline)}.footer-grid{dis
   </div>
 </section>
 
+<!-- ================= DOCUMENTATION ================= -->
+<section class="section" id="guide">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker">Quick reference</div>
+        <h2 class="mask-reveal"><span>What to check during a round.</span></h2>
+      </div>
+      <p class="section-note">Everything above explains the reasoning behind the rules. This is the short version to glance at mid-match.</p>
+    </div>
+    <div class="guide-grid">
+      <article class="guide-card reveal"><span class="guide-index">01</span><h4>Identify both types</h4><p>Read your card's type and the opponent's. A mega evolution's second type is already folded into the matchups shown in the chart above.</p></article>
+      <article class="guide-card reveal"><span class="guide-index">02</span><h4>Check ×2, ×0.5 and ×0</h4><p>×2 wins the round outright, ×0 loses it outright, and everything else — ×0.5 or unlisted — is neutral. Tap any type above to see its full spread.</p></article>
+      <article class="guide-card reveal"><span class="guide-index">03</span><h4>Check the card's state</h4><p>Has it mega evolved yet? Any bleed, clones, a recharge counter, or bonus lives from an earlier round carry straight into this one.</p></article>
+      <article class="guide-card reveal"><span class="guide-index">04</span><h4>Resolve and move on</h4><p>If the chart already decided it, stop there. Otherwise compare total move damage — base move plus any special bonus in play — and carry every persistent effect into the next round.</p></article>
+    </div>
+  </div>
+</section>
+
 <!-- ================= STATEMENT: MEGA LEAD-IN ================= -->
 <section class="statement">
   <div class="wrap">
@@ -420,6 +464,7 @@ function onScroll(){
       heroVisual.style.transform = `translate3d(0, ${p*24}px, 0) scale(${1 - p*0.12})`;
       heroVisual.style.opacity = String(1 - p*1.1);
     }
+    if(!reducedMotion) updateScrub();
     ticking = false;
   });
 }
@@ -438,6 +483,53 @@ const spyObserver = new IntersectionObserver(entries=>{
   });
 }, { rootMargin:'-40% 0px -55% 0px', threshold:0 });
 spySections.forEach(s => spyObserver.observe(s));
+
+/* ============ APPLE-STYLE SCROLL SCRUB ============ */
+/* Continuous (not binary) focus: elements sharpen/rise as they cross the
+   viewport's center band, and soften again as they leave it either side. */
+document.querySelectorAll('.section-head h2, .statement h3, .statement p, .kicker').forEach(el=>el.classList.add('scrub'));
+const scrubEls = Array.from(document.querySelectorAll('.scrub'));
+function updateScrub(){
+  const vh = window.innerHeight || 1;
+  const center = vh / 2;
+  const band = vh * 0.42;
+  scrubEls.forEach(el=>{
+    const r = el.getBoundingClientRect();
+    const elCenter = r.top + r.height / 2;
+    const dist = Math.min(1, Math.abs(elCenter - center) / band);
+    const focus = 1 - dist;
+    el.style.opacity = String(0.35 + focus * 0.65);
+    el.style.filter = `blur(${(1 - focus) * 4}px)`;
+    el.style.transform = `translate3d(0, ${(1 - focus) * 14}px, 0)`;
+  });
+}
+if(!reducedMotion) updateScrub();
+
+/* ============ HERO CURSOR SPOTLIGHT ============ */
+const heroSpotlight = document.getElementById('heroSpotlight');
+if(heroSection && heroSpotlight && !reducedMotion){
+  heroSection.addEventListener('mousemove', e=>{
+    const r = heroSection.getBoundingClientRect();
+    const mx = ((e.clientX - r.left) / r.width) * 100;
+    const my = ((e.clientY - r.top) / r.height) * 100;
+    heroSpotlight.style.setProperty('--mx', mx + '%');
+    heroSpotlight.style.setProperty('--my', my + '%');
+  });
+}
+
+/* ============ MAGNETIC HOVER ============ */
+function magnetize(el, strength){
+  if(!el || reducedMotion) return;
+  el.addEventListener('mousemove', e=>{
+    const r = el.getBoundingClientRect();
+    const mx = (e.clientX - r.left - r.width/2) / (r.width/2);
+    const my = (e.clientY - r.top - r.height/2) / (r.height/2);
+    el.style.transform = `translate3d(${mx*strength}px, ${my*strength}px, 0)`;
+  });
+  el.addEventListener('mouseleave', ()=>{ el.style.transform = ''; });
+}
+document.querySelectorAll('.navlinks a').forEach(a => magnetize(a, 6));
+magnetize(document.getElementById('themeToggle'), 8);
 
 /* ============ FULL 18-TYPE CHART DATA ============ */
 const TYPES = {
@@ -819,14 +911,46 @@ grid.querySelectorAll('.card').forEach(card=>{
     card.classList.toggle('flipped');
     spawnFlipBurst(card);
   });
+
+  if(reducedMotion){
+    card.addEventListener('mousemove', e=>{
+      if(card.classList.contains('flipped')) return;
+      const r=card.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-.5;
+      const y=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`perspective(1200px) rotateX(${(-y*5).toFixed(2)}deg) rotateY(${(x*7).toFixed(2)}deg) translateY(-5px)`;
+    });
+    card.addEventListener('mouseleave', ()=>{ card.style.transform=''; });
+    return;
+  }
+
+  /* spring-smoothed tilt: the transform eases toward the cursor target
+     instead of snapping to it, so the card feels weighted rather than glued */
+  const state = { tx:0, ty:0, cx:0, cy:0, active:false, raf:null };
+  function loop(){
+    state.cx += (state.tx - state.cx) * 0.12;
+    state.cy += (state.ty - state.cy) * 0.12;
+    card.style.transform = `perspective(1200px) rotateX(${(-state.cy*5).toFixed(2)}deg) rotateY(${(state.cx*7).toFixed(2)}deg) translateY(${state.active ? -5 : 0}px)`;
+    if(state.active || Math.abs(state.tx-state.cx) > 0.001 || Math.abs(state.ty-state.cy) > 0.001){
+      state.raf = requestAnimationFrame(loop);
+    } else {
+      state.raf = null;
+    }
+  }
+  function kick(){ if(!state.raf) state.raf = requestAnimationFrame(loop); }
+
   card.addEventListener('mousemove', e=>{
-    if(reducedMotion || card.classList.contains('flipped')) return;
+    if(card.classList.contains('flipped')) return;
     const r=card.getBoundingClientRect();
-    const x=(e.clientX-r.left)/r.width-.5;
-    const y=(e.clientY-r.top)/r.height-.5;
-    card.style.transform=`perspective(1200px) rotateX(${(-y*5).toFixed(2)}deg) rotateY(${(x*7).toFixed(2)}deg) translateY(-5px)`;
+    state.tx = (e.clientX-r.left)/r.width-.5;
+    state.ty = (e.clientY-r.top)/r.height-.5;
+    state.active = true;
+    kick();
   });
-  card.addEventListener('mouseleave', ()=>{ card.style.transform=''; });
+  card.addEventListener('mouseleave', ()=>{
+    state.tx = 0; state.ty = 0; state.active = false;
+    kick();
+  });
 });
 
 /* ============ SCROLL REVEALS ============ */
@@ -853,6 +977,36 @@ document.querySelectorAll('.reveal, .card').forEach(el=>{
 });
 
 document.querySelectorAll('.mask-reveal').forEach(el => io.observe(el));
+
+/* ============ SPARKLE FIELD ============ */
+const sparkleField = document.getElementById('sparkles');
+if(sparkleField && !reducedMotion){
+  const SPARKLE_COUNT = 26;
+  for(let i=0;i<SPARKLE_COUNT;i++){
+    const s = document.createElement('span');
+    s.className = 'sparkle';
+    s.style.left = `${Math.random()*100}%`;
+    s.style.top = `${Math.random()*100}%`;
+    s.style.animationDuration = `${(2.5 + Math.random()*3.5).toFixed(2)}s`;
+    s.style.animationDelay = `${(Math.random()*5).toFixed(2)}s`;
+    sparkleField.appendChild(s);
+  }
+}
+
+/* ============ HERO STAT COUNT-UP ============ */
+document.querySelectorAll('.count-up').forEach(el=>{
+  const target = parseInt(el.dataset.target, 10) || 0;
+  if(reducedMotion){ el.textContent = target; return; }
+  const duration = 900;
+  const start = performance.now();
+  function tick(now){
+    const p = Math.min(1, (now - start) / duration);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(eased * target);
+    if(p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+});
 </script>
 
 </body>
