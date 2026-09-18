@@ -1189,7 +1189,7 @@
       <div class="portal-tilt" id="portal-tilt">
         <canvas id="hero-particles"></canvas>
         <div class="portal-core"></div>
-        <div class="portal-hoopa"><img src="art/hoopa.png" alt="Hoopa, the Mischief Djinn"></div>
+        <div class="portal-hoopa"><img src="/hoopa.png" alt="Hoopa, the Mischief Djinn"></div>
       </div>
     </div>
   </div>
@@ -1390,12 +1390,12 @@ function effectiveness(atkType, defTypes){
 var POKEMON = {
   hoopa:{
     id:"hoopa", name:"Hoopa", title:"The Mischief Djinn", types:["psychic","ghost"],
-    hp:100, img:"art/hoopa.png",
+    hp:100, img:"/hoopa.png",
     move:{name:"Hyperspace Hole", type:"psychic", power:38,
       desc:"Hoopa punches a small ring into the air and yanks a fist straight through it into the foe."},
     mega:{
       chanceMode:"random", chance:0.30,
-      label:"Hoopa Unbound", img:"art/hoopa-unbound.png",
+      label:"Hoopa Unbound", img:"/hoopa-unbound.png",
       types:["psychic","dark"], lives:1, halo:["#f43f8f","#7c3aed","#f5c518"], shard:"ring",
       special:{name:"Djinn's Cataclysm", type:"dark", power:72, effect:"burst",
         desc:"Hundreds of rings tear open at once, crushing the arena in void energy."}
@@ -1403,12 +1403,12 @@ var POKEMON = {
   },
   darkrai:{
     id:"darkrai", name:"Darkrai", title:"The Pitch-Black Nightmare", types:["dark"],
-    hp:95, img:"art/darkrai.png",
+    hp:95, img:"/darkrai.png",
     move:{name:"Nightmare Pulse", type:"dark", power:42,
       desc:"A wave of pitch-black dream energy rolls out from Darkrai's crest, dragging the target's fears with it."},
     mega:{
       chanceMode:"random", chance:0.35,
-      label:"Mega Darkrai", img:"art/darkrai-mega.png",
+      label:"Mega Darkrai", img:"/darkrai-mega.png",
       types:["dark"], lives:1, halo:["#a21caf","#0f0a1e","#f472b6"], shard:"crescent",
       special:{name:"Infernal Dark Void", type:"dark", power:60, effect:"dot_heal", dot:8, heal:6,
         desc:"A huge blast of nightmare energy, then a curse that drains the foe and mends Darkrai every turn after."}
@@ -1416,12 +1416,12 @@ var POKEMON = {
   },
   amphinobi:{
     id:"amphinobi", name:"Amphinobi", title:"The Ninja Frog", types:["water"],
-    hp:90, img:"art/amphinobi.png",
+    hp:90, img:"/amphinobi.png",
     move:{name:"Aqua Kunai", type:"water", power:40,
       desc:"A blade of compressed water flicked from the fingertips, fast enough to whistle on the way in."},
     mega:{
       chanceMode:"random", chance:0.35,
-      label:"Mega Amphinobi", img:"art/amphinobi-mega.png",
+      label:"Mega Amphinobi", img:"/amphinobi-mega.png",
       types:["water","dark"], lives:1, halo:["#0ea5e9","#1e293b","#f472b6"], shard:"shuriken",
       special:{name:"Water Life Shurikens", type:"water", power:55, effect:"clone", cloneHpFrac:0.35, cloneCount:2, cloneDmgFrac:0.5,
         desc:"A shattering strike that splits into two lesser clones — same move, no further cloning."}
@@ -1429,12 +1429,12 @@ var POKEMON = {
   },
   zygarde:{
     id:"zygarde", name:"Zygarde", title:"The Order Guardian", types:["dragon","ground"],
-    hp:112, img:"art/zygarde.png",
+    hp:112, img:"/zygarde.png",
     move:{name:"Core Enforcer", type:"dragon", power:45,
       desc:"A lance of hexagonal core-cells streaks out and detonates on contact, enforcing order with raw draconic weight."},
     mega:{
       chanceMode:"onDamage", chance:0.50,
-      label:"Zygarde Complete Forme", img:"art/zygarde-mega.png",
+      label:"Zygarde Complete Forme", img:"/zygarde-mega.png",
       types:["dragon","ground"], lives:1, halo:["#16a34a","#7c3aed","#ef4444"], shard:"hex",
       special:{name:"Lux Nihilium", type:"dragon", power:82, effect:"aoe_paralyze_recharge",
         paralyzeChance:1/3, paralyzeRounds:3, recharge:2,
@@ -1443,15 +1443,15 @@ var POKEMON = {
   },
   raichu:{
     id:"raichu", name:"Raichu", title:"The Surging Mouse", types:["electric"],
-    hp:85, img:"art/raichu.png",
+    hp:85, img:"/raichu.png",
     move:{name:"Thunder Fang", type:"electric", power:44,
       desc:"A crackling bite that drives a jolt of live current straight through the target."},
     megaOptions:[
-      {chanceMode:"random", chance:0.16, label:"Mega Raichu X", img:"art/raichu-mega-x.png",
+      {chanceMode:"random", chance:0.16, label:"Mega Raichu X", img:"/raichu-mega-x.png",
         types:["electric"], lives:1, halo:["#facc15","#111827","#fb923c"], shard:"bolt",
         special:{name:"Raijin's Uppercut", type:"electric", power:58, effect:"power_surge", boost:0.28,
           desc:"Lightning-bolt legs plant a crowned uppercut, then keep this Raichu's power surging every turn after."}},
-      {chanceMode:"random", chance:0.16, label:"Mega Raichu Y", img:"art/raichu-mega-y.png",
+      {chanceMode:"random", chance:0.16, label:"Mega Raichu Y", img:"/raichu-mega-y.png",
         types:["electric"], lives:1, halo:["#fb923c","#facc15","#78350f"], shard:"bolt",
         special:{name:"Thunderwing Dive", type:"electric", power:56, effect:"power_surge", boost:0.24,
           desc:"Bat-like lightning ears fold into wings for a diving strike, charging fiercer with every hit."}}
